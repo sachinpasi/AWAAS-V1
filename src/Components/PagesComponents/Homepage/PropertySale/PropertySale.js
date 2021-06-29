@@ -20,7 +20,11 @@ const PropertySale = () => {
     }
   };
 
-  // console.log(PropertyList);
+  const GetImgUrl = (str) => {
+    var list = str.split(",");
+    return list;
+  };
+
   useEffect(() => {
     FetchPropertyList();
   }, []);
@@ -33,11 +37,17 @@ const PropertySale = () => {
           {PropertyList.length !== 0 ? (
             <OwlCarousel loop items={2} nav={true} margin={30}>
               {PropertyList.map((item) => (
-                <div key={item.p_id} className="w-full h-full">
-                  <div className="h-3/5 w-full relative">
+                <div
+                  style={{
+                    height: "438px",
+                  }}
+                  key={item.p_id}
+                  className="w-full h-full"
+                >
+                  <div className="w-full h-72 relative">
                     <img
                       className="w-full h-full object-cover"
-                      src="/assets/images/homepage/propertysale/1.png"
+                      src={`https://codeiator.com/${GetImgUrl(item.photos)[0]}`}
                       alt=""
                     />
                     <div
@@ -47,7 +57,7 @@ const PropertySale = () => {
                       className="w-full h-full absolute top-0"
                     ></div>
                   </div>
-                  <div className="w-11/12 h-2/5 bg-white mx-auto">
+                  <div className="w-full h-2/5 bg-white mx-auto">
                     <div className="relative p-5">
                       <p
                         style={{

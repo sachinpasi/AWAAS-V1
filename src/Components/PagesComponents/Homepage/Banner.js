@@ -106,7 +106,7 @@ const Banner = () => {
                 className="cursor-pointer h-14 w-52 bg-blue text-1xl font-medium text-white  flex justify-center items-center"
                 type="submit"
               >
-                Serach
+                Search
               </button>
             </div>
           </div>

@@ -20,7 +20,11 @@ const PropertyRent = () => {
     }
   };
 
-  // console.log(PropertyList);
+  const GetImgUrl = (str) => {
+    var list = str.split(",");
+    return list;
+  };
+
   useEffect(() => {
     FetchPropertyList();
   }, []);
@@ -39,7 +43,7 @@ const PropertyRent = () => {
                   <div className="w-2/4 h-72 relative ">
                     <img
                       className="w-full h-full object-cover"
-                      src="/assets/images/homepage/propertyrent/1.png"
+                      src={`https://codeiator.com/${GetImgUrl(item.photos)[0]}`}
                       alt=""
                     />
                   </div>

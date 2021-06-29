@@ -35,10 +35,19 @@ const Projects = () => {
               {ProjectList.map((item) => (
                 <div
                   key={item.project_id}
+                  style={{
+                    height: "441px",
+                  }}
                   className="w-full h-full flex flex-col justify-between items-center"
                 >
-                  <div className="relative">
-                    <img src="assets/images/homepage/projects/1.png" alt="" />
+                  <div className="relative h-64">
+                    <img
+                      className="w-full h-full object-cover"
+                      src={`https://codeiator.com/${JSON.parse(
+                        item.banner_image
+                      )}`}
+                      alt=""
+                    />
                     <div
                       style={{
                         background: "rgba(0, 0, 0, 0.1)",
@@ -52,7 +61,7 @@ const Projects = () => {
                       />
                     </div>
                   </div>
-                  <div className="w-11/12 h-full bg-textbg">
+                  <div className="w-full h-48 bg-textbg">
                     <div className="relative p-4 ">
                       <div
                         style={{
