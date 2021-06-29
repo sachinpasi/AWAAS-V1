@@ -1,0 +1,23 @@
+.owl-nav {
+  position: absolute;
+  top: -110px;
+  right: 0px;
+  opacity: 0;
+  width: 90px;
+}
+
+.owl-prev {
+  width: 40px;
+  height: 40px;
+}
+
+.owl-nav span {
+  font-size: 50px !important;
+  height: 30px;
+}
+
+.owl-next {
+  width: 40px;
+  height: 40px;
+  margin-top: 0.5rem;
+}
