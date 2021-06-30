@@ -34,7 +34,7 @@ const Projects = () => {
             <OwlCarousel loop items={3} nav={true} margin={20}>
               {ProjectList.map((item) => (
                 <div
-                  key={item.project_id}
+                  key={item.id}
                   style={{
                     height: "441px",
                   }}
@@ -43,9 +43,7 @@ const Projects = () => {
                   <div className="relative h-64">
                     <img
                       className="w-full h-full object-cover"
-                      src={`https://codeiator.com/${JSON.parse(
-                        item.banner_image
-                      )}`}
+                      src={`https://codeiator.com/uploads/553128.jpeg`}
                       alt=""
                     />
                     <div
@@ -90,7 +88,7 @@ const Projects = () => {
 
                         <Link
                           className="bg-blue py-1 px-4 text-white font-medium tracking-tight"
-                          to="/"
+                          to={`/projects/${item.id}`}
                         >
                           View Details
                         </Link>

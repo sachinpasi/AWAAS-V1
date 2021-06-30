@@ -45,6 +45,7 @@ const PropertySale = () => {
                   className="w-full h-full"
                 >
                   <div className="w-full h-72 relative">
+                    {console.log(item)}
                     <img
                       className="w-full h-full object-cover"
                       src={`https://codeiator.com/${GetImgUrl(item.photos)[0]}`}
