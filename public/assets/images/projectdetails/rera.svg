@@ -1,1 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="192" height="40" viewBox="0 0 192 40"><g transform="translate(-495 -439)"><rect width="192" height="40" rx="20" transform="translate(495 439)" fill="#2bd8b5"/><g transform="translate(39.276)"><text transform="translate(498 465)" fill="#fff" font-size="17" font-family="Poppins-Medium, Poppins" font-weight="500" letter-spacing="0.013em"><tspan x="0" y="0">Rera Approved</tspan></text><path d="M6.116,17.741.264,11.889a.9.9,0,0,1,0-1.273L1.537,9.342a.9.9,0,0,1,1.273,0l3.942,3.942L15.2,4.841a.9.9,0,0,1,1.273,0l1.273,1.273a.9.9,0,0,1,0,1.273L7.389,17.741A.9.9,0,0,1,6.116,17.741Z" transform="translate(473.724 448.336)" fill="#fff"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="40" viewBox="0 0 192 40">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #2bd8b5;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        font-size: 17px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        letter-spacing: 0.013em;
+      }
+    </style>
+  </defs>
+  <g id="Group_96" data-name="Group 96" transform="translate(-495 -439)">
+    <rect id="Rectangle_93" data-name="Rectangle 93" class="cls-1" width="192" height="40" rx="20" transform="translate(495 439)"/>
+    <g id="Group_95" data-name="Group 95" transform="translate(39.276)">
+      <text id="Rera_Approved" data-name="Rera Approved" class="cls-2" transform="translate(498 465)"><tspan  x="0" y="0">Rera Approved</tspan></text>
+      <path id="Icon_awesome-check" data-name="Icon awesome-check" class="cls-3" d="M6.116,17.741.264,11.889a.9.9,0,0,1,0-1.273L1.537,9.342a.9.9,0,0,1,1.273,0l3.942,3.942L15.2,4.841a.9.9,0,0,1,1.273,0l1.273,1.273a.9.9,0,0,1,0,1.273L7.389,17.741A.9.9,0,0,1,6.116,17.741Z" transform="translate(473.724 448.336)"/>
+    </g>
+  </g>
+</svg>

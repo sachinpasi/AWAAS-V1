@@ -2,7 +2,10 @@ import React from "react";
 
 const ProjectOverview = () => {
   return (
-    <div className="w-full h-full border-1 border-projectsborder rounded px-4 my-4">
+    <div
+      id="overview"
+      className="w-full h-full border-1 border-projectsborder rounded px-4 my-4"
+    >
       <div className="w-full border-b-1 border-projectsborder py-4 ">
         <p className="text-3xl text-darkgray ">Project Overview</p>
       </div>

@@ -1,6 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { selectProjectDetails } from "../../../../Redux/_features/_ProjectDetailsSlice";
 
 const Amenities = () => {
+  const { Data } = useSelector(selectProjectDetails);
+  // console.log(JSON.parse(Data.parent.amenities)[0][1]);
   return (
     <div className="w-full h-full border-1 border-projectsborder rounded px-4 my-4">
       <div className="w-full border-b-1 border-projectsborder py-4 ">

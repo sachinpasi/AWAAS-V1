@@ -1,15 +1,22 @@
 import React from "react";
 import { MdLocationOn } from "react-icons/md";
+import Dropdown from "react-multilevel-dropdown";
+import { FaDownload } from "react-icons/fa";
 
-const Banner = ({ Data }) => {
-  // const imgurl = JSON.parse(Data?.parent.banner_image);
-  // console.log("https://codeiator.com/" + imgurl[0]);
+import { useSelector } from "react-redux";
+import { selectProjectDetails } from "../../../Redux/_features/_ProjectDetailsSlice";
+import "./Banner.css";
+
+const Banner = () => {
+  const { Data } = useSelector(selectProjectDetails);
 
   return (
     <section
-      // style={{
-      //   background: `url(https://codeiator.com/` + imgurl[0] + `)`,
-      // }}
+      style={{
+        background: `url(https://codeiator.com/${
+          JSON.parse(Data?.parent.banner_image)[0]
+        })`,
+      }}
       className="w-full h-96"
     >
       <div
@@ -39,11 +46,35 @@ const Banner = ({ Data }) => {
             className="flex items-center justify-start h-20 w-full bg-white shadow-lg absolute -bottom-10
            rounded"
           >
-            <NavItem Name="Overview" />
-            <NavItem Name="Configuration" />
-            <NavItem Name="Gallery" />
+            <NavItemLink To="#overview" Name="Overview" />
+            <NavItemLink To="#configuration" Name="Configuration" />
+            <NavItemLink To="#gallery" Name="Gallery" />
             <NavItem Name="Book Now" />
-            <NavItem Name="Download Brochure" />
+
+            <div className="mx-6 flex justify-center items-center">
+              {/* <p className="text-lg text-darkgray font-medium cursor-pointer">
+                Download Brochure
+              </p> */}
+
+              <Dropdown
+                wrapperClassName="buttonwrapper"
+                buttonClassName="dropdownbutton"
+                menuClassName="menu"
+                title="Download Brochure"
+              >
+                <Dropdown.Item className="item">
+                  <a
+                    className="flex justify-between items-center"
+                    href={`https://codeiator.com/${
+                      JSON.parse(Data.parent.brochure)[0].pdf
+                    }`}
+                  >
+                    {JSON.parse(Data.parent.brochure)[0].title}
+                    <FaDownload className="ml-4 " />
+                  </a>
+                </Dropdown.Item>
+              </Dropdown>
+            </div>
           </nav>
         </div>
       </div>
@@ -53,7 +84,13 @@ const Banner = ({ Data }) => {
 
 export default Banner;
 
-const NavItem = ({ Name }) => (
+const NavItemLink = ({ Name, To }) => (
+  <a href={To} className="mx-6">
+    <p className="text-lg text-darkgray font-medium cursor-pointer">{Name}</p>
+  </a>
+);
+
+const NavItem = ({ Name, To }) => (
   <div className="mx-6">
     <p className="text-lg text-darkgray font-medium cursor-pointer">{Name}</p>
   </div>

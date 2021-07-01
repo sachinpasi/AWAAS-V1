@@ -1,21 +1,30 @@
 import React, { useEffect } from "react";
+
+import { useDispatch } from "react-redux";
+import axios from "axios";
+
+import { API } from "../API";
 import Layout from "../Components/Layout/Layout";
 import Banner from "../Components/PagesComponents/ProjectDetails/Banner";
 import ProjectDetailsSection from "../Components/PagesComponents/ProjectDetails/ProjectDetailsSection/ProjectDetailsSection";
 import Projects from "../Components/PagesComponents/Homepage/Projects/Projects";
-
-import axios from "axios";
-import { API } from "../API";
-import { useState } from "react";
+import { SET_PROJECT_DETAILS } from "../Redux/_features/_ProjectDetailsSlice";
+import { useParams } from "react-router-dom";
 
 const ProjectDetails = () => {
-  const [Data, setData] = useState();
+  const dispatch = useDispatch();
+
+  const { id } = useParams();
 
   const FetchData = async () => {
-    const res = await axios.get(`${API}/projects/id/23`);
+    const res = await axios.get(`${API}/projects/id/${id}`);
     console.log(res.data.data);
     if (res.status === 200) {
-      setData(res.data.data);
+      dispatch(
+        SET_PROJECT_DETAILS({
+          Data: res.data.data,
+        })
+      );
     }
   };
 
@@ -24,8 +33,8 @@ const ProjectDetails = () => {
   }, []);
   return (
     <Layout>
-      <Banner Data={Data} />
-      <ProjectDetailsSection Data={Data} />
+      <Banner />
+      <ProjectDetailsSection />
       <Projects />
     </Layout>
   );

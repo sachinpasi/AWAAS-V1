@@ -19,7 +19,8 @@ const Projects = () => {
     }
   };
 
-  // console.log(ProjectList);
+  console.log(ProjectList);
+
   useEffect(() => {
     FetchProjectList();
   }, []);
@@ -41,9 +42,12 @@ const Projects = () => {
                   className="w-full h-full flex flex-col justify-between items-center"
                 >
                   <div className="relative h-64">
+                    {console.log()}
                     <img
                       className="w-full h-full object-cover"
-                      src={`https://codeiator.com/uploads/553128.jpeg`}
+                      src={`https://codeiator.com/${
+                        JSON.parse(item.banner_image)[0]
+                      }`}
                       alt=""
                     />
                     <div

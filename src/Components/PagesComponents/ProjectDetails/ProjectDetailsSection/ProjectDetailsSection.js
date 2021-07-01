@@ -7,19 +7,24 @@ import ProjectNav from "./ProjectNav";
 import ProjectOverview from "./ProjectOverview";
 import Sidebar from "./Sidebar";
 
-const ProjectDetailsSection = ({ Data }) => {
+const ProjectDetailsSection = () => {
   return (
     <section className="w-full h-full flex justify-between my-24">
-      <div className=" customContainer h-full flex justify-between">
-        <div className="w-3/4 h-full mr-4">
+      <div className=" customContainer h-full flex justify-between ">
+        <div style={{ width: "69%" }} className=" h-full ">
           <ProjectNav />
-          <Configuration Data={Data} />
+          <Configuration />
           <Gallery />
           <Amenities />
           <ProjectOverview />
           <AboutDeveloper />
         </div>
-        <div className="w-3/12 h-full">
+        <div
+          style={{
+            width: "29%",
+          }}
+          className="w-3/12 h-auto relative"
+        >
           <Sidebar />
         </div>
       </div>
