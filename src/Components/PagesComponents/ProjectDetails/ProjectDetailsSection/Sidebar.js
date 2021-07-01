@@ -17,9 +17,9 @@ const Sidebar = () => {
         }}
         className="pb-3 flex justify-start items-center h-1/5"
       >
-        <div className="h-full">
+        <div className="h-full w-2/6">
           <img
-            className="h-full"
+            className="h-full object-contain bg-white p-1"
             src={`https://codeiator.com/${
               JSON.parse(Data.parent.developerlogo)[0]
             }`}
