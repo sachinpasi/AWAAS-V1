@@ -61,13 +61,55 @@ const Configuration = () => {
               parentChild?.child.map((childItem, index) => (
                 <Fragment key={index}>
                   {CurrentTab.ActiveChildTab === childItem.name && (
-                    <>
-                      <div className="flex justify-center items-center py-4">
+                    <div className="flex flex-wrap items-center">
+                      <div className="flex justify-center items-center py-4  mx-4">
                         <img
                           src="/assets/images/projectdetails/plotarea.svg"
                           alt=""
                         />
-                        <div className=" ml-4 flex justify-center items-start flex-col">
+                        <div className=" mx-5 flex justify-center items-start flex-col">
+                          <p className="text-sm text-lightgray leading-5">
+                            Builtup Area
+                          </p>
+                          <p className="text-lg font-medium text-darkgray leading-5">
+                            {childItem.builtup_area}
+                          </p>
+                        </div>
+                      </div>{" "}
+                      <div className="flex justify-center items-center py-4 mx-4">
+                        <img
+                          src="/assets/images/projectdetails/plotarea.svg"
+                          alt=""
+                        />
+                        <div className=" mx-5 flex justify-center items-start flex-col">
+                          <p className="text-sm text-lightgray leading-5">
+                            Carpet Area
+                          </p>
+                          <p className="text-lg font-medium text-darkgray leading-5">
+                            {childItem.carpet_area}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex justify-center items-center py-4 mx-4">
+                        <img
+                          src="/assets/images/projectdetails/plotarea.svg"
+                          alt=""
+                        />
+                        <div className=" mx-5 flex justify-center items-start flex-col">
+                          <p className="text-sm text-lightgray leading-5">
+                            Super Area
+                          </p>
+                          <p className="text-lg font-medium text-darkgray leading-5">
+                            {childItem.superbuiltup_area}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex justify-center items-center py-4 mx-4">
+                        <img
+                          src="/assets/images/projectdetails/plotarea.svg"
+                          alt=""
+                        />
+                        <div className=" mx-5 flex justify-center items-start flex-col">
                           <p className="text-sm text-lightgray leading-5">
                             Plot Area
                           </p>
@@ -76,12 +118,12 @@ const Configuration = () => {
                           </p>
                         </div>
                       </div>
-                      <div className="ml-16 flex justify-center items-center py-4">
+                      <div className="flex justify-center items-center py-4 mx-4">
                         <img
                           src="/assets/images/projectdetails/price.svg"
                           alt=""
                         />
-                        <div className=" ml-4 flex justify-center items-start flex-col">
+                        <div className=" ml-5 flex justify-center items-start flex-col">
                           <p className="text-sm text-lightgray leading-5">
                             Price
                           </p>
@@ -90,7 +132,7 @@ const Configuration = () => {
                           </p>
                         </div>
                       </div>
-                    </>
+                    </div>
                   )}
                 </Fragment>
               ))}
