@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { MdLocationOn } from "react-icons/md";
 import Dropdown from "react-multilevel-dropdown";
 import { FaDownload } from "react-icons/fa";
@@ -6,79 +6,97 @@ import { FaDownload } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { selectProjectDetails } from "../../../Redux/_features/_ProjectDetailsSlice";
 import "./Banner.css";
+import { useEffect } from "react";
+import Loader from "../../Common/Loader";
 
 const Banner = () => {
+  const [isLoading, setisLoading] = useState(true);
   const { Data } = useSelector(selectProjectDetails);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setisLoading(false);
+    }, [500]);
+  }, [Data]);
+
   return (
-    <section
-      style={{
-        background: `url(https://codeiator.com/${
-          JSON.parse(Data?.parent.banner_image)[0]
-        })`,
-      }}
-      className="w-full h-96"
-    >
-      <div
+    <>
+      {/* {isLoading ? (
+        <></>
+      ) : ( */}
+      <section
         style={{
-          background: "rgba(0,0,0,0.5)",
+          background: `url(https://codeiator.com/${
+            Data.parent?.banner_image &&
+            JSON.parse(Data.parent?.banner_image)[0]
+          })`,
         }}
-        className="w-full h-full"
+        className="w-full h-96"
       >
-        <div className=" relative customContainer h-full flex flex-col justify-end items-start text-5xl text-white">
-          <p className="text-white text-5xl tracking-tight">
-            {Data?.parent.title}
-          </p>
-          <div className="flex justify-center items-center py-4 mb-16">
-            <div className="flex justify-center items-center">
-              <MdLocationOn className="text-blue text-3xl font-medium" />
-              <p className="text-white text-lg font-medium">
-                {Data?.parent.locality}, {Data?.parent.city}
-              </p>{" "}
-            </div>
-            {Data?.parent.rera && (
-              <div className="mx-4">
-                <img src="/assets/images/projectdetails/rera.svg" alt="" />
+        <div
+          style={{
+            background: "rgba(0,0,0,0.5)",
+          }}
+          className="w-full h-full"
+        >
+          <div className=" relative customContainer h-full flex flex-col justify-end items-start text-5xl text-white">
+            <p className="text-white text-5xl tracking-tight">
+              {Data?.parent?.title}
+            </p>
+            <div className="flex justify-center items-center py-4 mb-16">
+              <div className="flex justify-center items-center">
+                <MdLocationOn className="text-blue text-3xl font-medium" />
+                <p className="text-white text-lg font-medium">
+                  {Data?.parent?.locality}, {Data?.parent?.city}
+                </p>{" "}
               </div>
-            )}
-          </div>
-          <nav
-            className="flex items-center justify-start h-20 w-full bg-white shadow-lg absolute -bottom-10
-           rounded"
-          >
-            <NavItemLink To="#overview" Name="Overview" />
-            <NavItemLink To="#configuration" Name="Configuration" />
-            <NavItemLink To="#gallery" Name="Gallery" />
-            <NavItem Name="Book Now" />
-
-            <div className="mx-6 flex justify-center items-center">
-              {/* <p className="text-lg text-darkgray font-medium cursor-pointer">
-                Download Brochure
-              </p> */}
-
-              <Dropdown
-                wrapperClassName="buttonwrapper"
-                buttonClassName="dropdownbutton"
-                menuClassName="menu"
-                title="Download Brochure"
-              >
-                <Dropdown.Item className="item">
-                  <a
-                    className="flex justify-between items-center"
-                    href={`https://codeiator.com/${
-                      JSON.parse(Data.parent.brochure)[0].pdf
-                    }`}
-                  >
-                    {JSON.parse(Data.parent.brochure)[0].title}
-                    <FaDownload className="ml-4 " />
-                  </a>
-                </Dropdown.Item>
-              </Dropdown>
+              {Data?.parent?.rera && (
+                <div className="mx-4">
+                  <img src="/assets/images/projectdetails/rera.svg" alt="" />
+                </div>
+              )}
             </div>
-          </nav>
+            <nav
+              className="flex items-center justify-start h-20 w-full bg-white shadow-lg absolute -bottom-10
+           rounded"
+            >
+              <NavItemLink To="#overview" Name="Overview" />
+              <NavItemLink To="#configuration" Name="Configuration" />
+              <NavItemLink To="#gallery" Name="Gallery" />
+              <NavItem Name="Book Now" />
+
+              <div className="mx-6 flex justify-center items-center">
+                {/* <p className="text-lg text-darkgray font-medium cursor-pointer">
+                    Download Brochure
+                  </p> */}
+
+                <Dropdown
+                  wrapperClassName="buttonwrapper"
+                  buttonClassName="dropdownbutton"
+                  menuClassName="menu"
+                  title="Download Brochure"
+                >
+                  <Dropdown.Item className="item">
+                    <a
+                      className="flex justify-between items-center"
+                      href={`https://codeiator.com/${
+                        Data.parent?.brochure &&
+                        JSON.parse(Data.parent?.brochure)[0].pdf
+                      }`}
+                    >
+                      {Data?.parent?.brochure &&
+                        JSON.parse(Data?.parent?.brochure)[0].title}
+                      <FaDownload className="ml-4 " />
+                    </a>
+                  </Dropdown.Item>
+                </Dropdown>
+              </div>
+            </nav>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      {/* )} */}
+    </>
   );
 };
 

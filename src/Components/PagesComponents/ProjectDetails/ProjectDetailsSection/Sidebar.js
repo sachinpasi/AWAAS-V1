@@ -21,14 +21,15 @@ const Sidebar = () => {
           <img
             className="h-full object-contain bg-white p-1"
             src={`https://codeiator.com/${
-              JSON.parse(Data.parent.developerlogo)[0]
+              Data.parent?.developerlogo &&
+              JSON.parse(Data.parent?.developerlogo)[0]
             }`}
             alt=""
           />
         </div>
         <div>
           <p className="text-white text-2xl pl-4">
-            {Data.parent.developerName}
+            {Data.parent?.developerName}
           </p>
         </div>
       </div>

@@ -12,10 +12,16 @@ const ProjectDetailsSlice = createSlice({
       state.ProjectDetails = action.payload;
       console.log(state.ProjectDetails);
     },
+    REMOVE_PROJECT_DETAILS: (state) => {
+      state.ProjectDetails = {
+        Data: {},
+      };
+    },
   },
 });
 
-export const { SET_PROJECT_DETAILS } = ProjectDetailsSlice.actions;
+export const { SET_PROJECT_DETAILS, REMOVE_PROJECT_DETAILS } =
+  ProjectDetailsSlice.actions;
 
 export const selectProjectDetails = (state) =>
   state.ProjectDetailsReducer.ProjectDetails;

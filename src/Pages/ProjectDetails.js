@@ -8,7 +8,10 @@ import Layout from "../Components/Layout/Layout";
 import Banner from "../Components/PagesComponents/ProjectDetails/Banner";
 import ProjectDetailsSection from "../Components/PagesComponents/ProjectDetails/ProjectDetailsSection/ProjectDetailsSection";
 import Projects from "../Components/PagesComponents/Homepage/Projects/Projects";
-import { SET_PROJECT_DETAILS } from "../Redux/_features/_ProjectDetailsSlice";
+import {
+  SET_PROJECT_DETAILS,
+  REMOVE_PROJECT_DETAILS,
+} from "../Redux/_features/_ProjectDetailsSlice";
 import { useParams } from "react-router-dom";
 
 const ProjectDetails = () => {
@@ -30,6 +33,10 @@ const ProjectDetails = () => {
 
   useEffect(() => {
     FetchData();
+    window.scrollTo(0, 0);
+    return () => {
+      dispatch(REMOVE_PROJECT_DETAILS());
+    };
   }, []);
   return (
     <Layout>

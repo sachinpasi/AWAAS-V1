@@ -14,12 +14,14 @@ const ProjectNav = () => {
   const { Data } = useSelector(selectProjectDetails);
 
   useEffect(() => {
-    setActiveParentTab(Data?.parent_child[0].title);
-    setActiveChildTab(Data?.parent_child[0].child[0].new_name);
+    if (Data?.parent_child) {
+      setActiveParentTab(Data?.parent_child[0].title);
+      setActiveChildTab(Data?.parent_child[0].child[0].new_name);
+    }
   }, [Data]);
 
   useEffect(() => {
-    Data?.parent_child.map((item) => {
+    Data.parent_child?.map((item) => {
       if (ActiveParentTab === item.title) {
         setActiveChildTab(item.child[0].new_name);
       }
@@ -37,7 +39,7 @@ const ProjectNav = () => {
   return (
     <div className="w-full h-32 border-1 border-projectsborder rounded px-4">
       <div className="flex justify-start items-center w-full h-3/5 border-b-1 py-4">
-        {Data?.parent_child.map((item, index) => (
+        {Data.parent_child?.map((item, index) => (
           <div
             key={index}
             onClick={() => setActiveParentTab(item.title)}
@@ -56,7 +58,7 @@ const ProjectNav = () => {
         ))}
       </div>
       <div className="w-full h-2/5 flex items-center justify-start">
-        {Data?.parent_child.map((item, index) => (
+        {Data?.parent_child?.map((item, index) => (
           <Fragment key={index}>
             {ActiveParentTab === item.title &&
               item?.child.map((childItem, index) => (
