@@ -10,28 +10,19 @@ import { useEffect } from "react";
 import Loader from "../../Common/Loader";
 
 const Banner = () => {
-  const [isLoading, setisLoading] = useState(true);
   const { Data } = useSelector(selectProjectDetails);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setisLoading(false);
-    }, [500]);
-  }, [Data]);
 
   return (
     <>
-      {/* {isLoading ? (
-        <></>
-      ) : ( */}
       <section
         style={{
           background: `url(https://codeiator.com/${
             Data.parent?.banner_image &&
             JSON.parse(Data.parent?.banner_image)[0]
           })`,
+          backgroundSize: "cover",
         }}
-        className="w-full h-96"
+        className="w-full h-96 bg-cover"
       >
         <div
           style={{
@@ -95,7 +86,6 @@ const Banner = () => {
           </div>
         </div>
       </section>
-      {/* )} */}
     </>
   );
 };

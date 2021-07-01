@@ -37,7 +37,7 @@ const ProjectDetails = () => {
     return () => {
       dispatch(REMOVE_PROJECT_DETAILS());
     };
-  }, []);
+  }, [id]);
   return (
     <Layout>
       <Banner />
