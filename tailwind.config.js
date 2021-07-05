@@ -13,12 +13,21 @@ module.exports = {
         lightblue: "#B8D0FF",
         darkgray: "#292929",
         lightgray: "#808080",
+        littlelightgray: "#f5f5f5",
         extralightgray: "#F3F3F3",
         navborder: "#B1B1B1",
         widgetborder: "#88909F",
         projectsborder: "#E9E9E9",
+
         textbg: "#F8F8F8",
         navtext: "#4F525A",
+      },
+      height: {
+        "90percent": "90%",
+        "95percent": "95%",
+      },
+      width: {
+        "70percent": "70%",
       },
     },
   },

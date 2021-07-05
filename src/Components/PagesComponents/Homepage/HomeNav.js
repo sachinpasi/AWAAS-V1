@@ -47,7 +47,7 @@ const HomeNav = () => {
         </div>
         <div className="w-auto h-auto flex justify-between items-center">
           <NavItem Name="Post Property Free" To="/" />
-          <NavItem Name="Home Loan" To="/" />
+          <NavItem Name="Home Loan" To="/home-loans" />
           <NavItem Name="Investment Assistance" To="/" />
           <NavItem Name="Awaas Assist" To="/" />
           <NavItem Name="Vastu / Legal" To="/" />

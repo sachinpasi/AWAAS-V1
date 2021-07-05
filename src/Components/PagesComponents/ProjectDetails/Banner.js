@@ -21,17 +21,23 @@ const Banner = () => {
             JSON.parse(Data.parent?.banner_image)[0]
           })`,
           backgroundSize: "cover",
+          height: "27.5rem",
         }}
-        className="w-full h-96 bg-cover"
+        className="w-full "
       >
         <div
           style={{
-            background: "rgba(0,0,0,0.5)",
+            background: "rgba(0,0,0,0.2)",
           }}
           className="w-full h-full"
         >
           <div className=" relative customContainer h-full flex flex-col justify-end items-start text-5xl text-white">
-            <p className="text-white text-5xl tracking-tight">
+            <p
+              style={{
+                textShadow: "2px 3px 5px #000",
+              }}
+              className="text-white text-5xl tracking-tight"
+            >
               {Data?.parent?.title}
             </p>
             <div className="flex justify-center items-center py-4 mb-16">

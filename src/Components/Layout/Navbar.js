@@ -10,7 +10,7 @@ const Navbar = () => {
         </Link>
         <div className="w-auto h-full flex justify-center items-center">
           <NavItem Active Name="Post Property Free" />
-          <NavItem Name="Home Loan" />
+          <NavItem Name="Home Loan" To="/home-loans" />
           <NavItem Name="Investment Assistance" />
           <NavItem Name="Awaas Assist" />
           <NavAuthItem To="/" Name="Login" />
@@ -23,7 +23,7 @@ const Navbar = () => {
 export default Navbar;
 
 const NavItem = ({ Name, To, Active }) => (
-  <Link to="/" className="mx-2 h-full flex justify-center items-center">
+  <Link to={To} className="mx-2 h-full flex justify-center items-center">
     <p
       className={`flex justify-center items-center  text-base font-medium  h-full tracking-tight ${
         Active ? "text-blue border-b-2 border-blue" : "text-navtext"

@@ -62,78 +62,27 @@ const Configuration = () => {
                 {CurrentTab.ActiveParentTab === parentChild.title &&
                   parentChild?.child?.map((childItem, index) => (
                     <Fragment key={index}>
-                      {CurrentTab.ActiveChildTab === childItem.name && (
+                      {CurrentTab.ActiveChildTab === childItem.new_name && (
                         <div className="flex flex-wrap items-center">
-                          <div className="flex justify-center items-center py-4  mx-4">
-                            <img
-                              src="/assets/images/projectdetails/plotarea.svg"
-                              alt=""
-                            />
-                            <div className=" mx-5 flex justify-center items-start flex-col">
-                              <p className="text-sm text-lightgray leading-5">
-                                Builtup Area
-                              </p>
-                              <p className="text-lg font-medium text-darkgray leading-5">
-                                {childItem.builtup_area}
-                              </p>
+                          {childItem?.configuration.map((item, index) => (
+                            <div
+                              key={index}
+                              className="flex justify-center items-center py-4  mx-4"
+                            >
+                              <img
+                                src="/assets/images/projectdetails/plotarea.svg"
+                                alt=""
+                              />
+                              <div className=" mx-5 flex justify-center items-start flex-col">
+                                <p className="text-sm text-lightgray leading-5">
+                                  {item?.title}
+                                </p>
+                                <p className="text-lg font-medium text-darkgray leading-5">
+                                  {item?.value}
+                                </p>
+                              </div>
                             </div>
-                          </div>{" "}
-                          <div className="flex justify-center items-center py-4 mx-4">
-                            <img
-                              src="/assets/images/projectdetails/plotarea.svg"
-                              alt=""
-                            />
-                            <div className=" mx-5 flex justify-center items-start flex-col">
-                              <p className="text-sm text-lightgray leading-5">
-                                Carpet Area
-                              </p>
-                              <p className="text-lg font-medium text-darkgray leading-5">
-                                {childItem.carpet_area}
-                              </p>
-                            </div>
-                          </div>
-                          <div className="flex justify-center items-center py-4 mx-4">
-                            <img
-                              src="/assets/images/projectdetails/plotarea.svg"
-                              alt=""
-                            />
-                            <div className=" mx-5 flex justify-center items-start flex-col">
-                              <p className="text-sm text-lightgray leading-5">
-                                Super Area
-                              </p>
-                              <p className="text-lg font-medium text-darkgray leading-5">
-                                {childItem.superbuiltup_area}
-                              </p>
-                            </div>
-                          </div>
-                          <div className="flex justify-center items-center py-4 mx-4">
-                            <img
-                              src="/assets/images/projectdetails/plotarea.svg"
-                              alt=""
-                            />
-                            <div className=" mx-5 flex justify-center items-start flex-col">
-                              <p className="text-sm text-lightgray leading-5">
-                                Plot Area
-                              </p>
-                              <p className="text-lg font-medium text-darkgray leading-5">
-                                {childItem.plot_area}
-                              </p>
-                            </div>
-                          </div>
-                          <div className="flex justify-center items-center py-4 mx-4">
-                            <img
-                              src="/assets/images/projectdetails/price.svg"
-                              alt=""
-                            />
-                            <div className=" ml-5 flex justify-center items-start flex-col">
-                              <p className="text-sm text-lightgray leading-5">
-                                Price
-                              </p>
-                              <p className="text-lg font-medium text-darkgray leading-5">
-                                &#8377; {childItem.total_price}
-                              </p>
-                            </div>
-                          </div>
+                          ))}{" "}
                         </div>
                       )}
                     </Fragment>
