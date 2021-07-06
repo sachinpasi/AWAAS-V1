@@ -1,10 +1,31 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { API } from "../../../API";
 
 const Banner = () => {
+  const [Data, setData] = useState();
+
+  const FetchData = async () => {
+    const res = await axios.get(`${API}/projects/id/16`);
+    console.log(res.data.data);
+    if (res.status === 200) {
+      setData(res.data.data);
+    }
+  };
+
+  console.log(Data);
+
+  useEffect(() => {
+    FetchData();
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <section
       style={{
-        background: "url(/assets/images/homepage/banner/bg.png)",
+        background: `url(https://codeiator.com/${
+          Data?.parent?.banner_image &&
+          JSON.parse(Data?.parent?.banner_image)[0]
+        })`,
         height: "580px",
         backgroundSize: "cover",
       }}
@@ -24,32 +45,43 @@ const Banner = () => {
               }}
               className="text-white text-6xl "
             >
-              Luxury Villa in Panipat
+              {Data?.parent?.title}
             </p>
-            <p className="text-white text-base pl-1 py-2">1488 SQ-FT</p>
+            <p className="text-white text-base pl-1 py-2"></p>
 
             <div className="flex justify-between items-center w-11/12 py-2">
               <div className="cursor-pointer flex justify-center items-center">
                 <img
                   className="object-cover w-32 h-16 mx-1 rounded-md border-1 border-white"
-                  src="/assets/images/homepage/banner/1.png"
+                  src={`https://codeiator.com/${
+                    Data?.parent_child[0]?.child[0]?.space_images &&
+                    JSON.parse(Data?.parent_child[0]?.child[0].space_images)[0]
+                  }`}
                   alt=""
                 />
                 <img
                   className="object-cover w-32 h-16 mx-1 rounded-md border-1 border-white"
-                  src="/assets/images/homepage/banner/2.png"
+                  src={`https://codeiator.com/${
+                    Data?.parent_child[1]?.child[0]?.plot_images &&
+                    JSON.parse(Data?.parent_child[1]?.child[0].plot_images)[0]
+                  }`}
                   alt=""
                 />
                 <img
                   className="object-cover w-32 h-16 mx-1 rounded-md border-1 border-white"
-                  src="/assets/images/homepage/banner/3.png"
+                  src={`https://codeiator.com/${
+                    Data?.parent_child[2]?.child[0]?.commercial_images &&
+                    JSON.parse(
+                      Data?.parent_child[2]?.child[0].commercial_images
+                    )[0]
+                  }`}
                   alt=""
                 />
-                <img
+                {/* <img
                   className="object-cover w-32 h-16 mx-1 rounded-md border-1 border-white"
                   src="/assets/images/homepage/banner/4.png"
                   alt=""
-                />
+                /> */}
               </div>
             </div>
           </div>
