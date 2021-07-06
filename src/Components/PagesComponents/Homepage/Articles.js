@@ -61,7 +61,7 @@ const Articles = () => {
                     <p className="text-xl tracking-tight font-semibold py-2 ">
                       {item.title}
                     </p>
-                    <p className="text-xs text-darkgray pb-2">
+                    <p className="text-xs text-darkgray  line-clamp-4">
                       {item.description}
                     </p>
                     <Link
