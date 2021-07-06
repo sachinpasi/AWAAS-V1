@@ -1,9 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Slider.css";
 const CurrentIntrestRate = () => {
   const [HomeLoanAmount, setHomeLoanAmount] = useState("90");
   const [RateOfIntrest, setRateOfIntrest] = useState("12.5");
   const [LoanTenure, setLoanTenure] = useState("28");
+  const [Results, setResults] = useState({
+    MonthlyEMI: 0,
+    TotalIntrestPayable: 0,
+    TotalAmountPayable: 0,
+  });
+
+  const EMI_CALCULATION = () => {
+    const userAmount = Number(HomeLoanAmount * 100000);
+    const calculatedInterest = Number(RateOfIntrest) / 100 / 12;
+    const calculatedPayments = Number(LoanTenure) * 12;
+    const x = Math.pow(1 + calculatedInterest, calculatedPayments);
+    const monthly = (userAmount * x * calculatedInterest) / (x - 1);
+
+    if (isFinite(monthly)) {
+      const monthlyPaymentCalculated = monthly.toFixed(2);
+      const totalPaymentCalculated = (monthly * calculatedPayments).toFixed(2);
+      const totalInterestCalculated = (
+        monthly * calculatedPayments -
+        userAmount
+      ).toFixed(2);
+
+      // Set up results to the state to be displayed to the user
+      // setResults({
+      //   monthlyPayment: monthlyPaymentCalculated,
+      //   totalPayment: totalPaymentCalculated,
+      //   totalInterest: totalInterestCalculated,
+      //   isResult: true,
+      // });
+
+      setResults({
+        MonthlyEMI: monthlyPaymentCalculated,
+        TotalIntrestPayable: totalInterestCalculated,
+        TotalAmountPayable: totalPaymentCalculated,
+      });
+      return;
+    }
+  };
+
+  useEffect(() => {
+    EMI_CALCULATION();
+  }, [HomeLoanAmount, RateOfIntrest, LoanTenure]);
 
   return (
     <section className="w-fill h-full">
@@ -157,7 +198,7 @@ const CurrentIntrestRate = () => {
                     max="22.5"
                     step="0.5"
                     value={RateOfIntrest}
-                    class="slider"
+                    className="slider"
                     onChange={(e) => setRateOfIntrest(e.target.value)}
                   ></input>
                   <div className="flex justify-between scaleRange ">
@@ -188,7 +229,7 @@ const CurrentIntrestRate = () => {
                     min="0"
                     max="35"
                     value={LoanTenure}
-                    class="slider"
+                    className="slider"
                     onChange={(e) => setLoanTenure(e.target.value)}
                   ></input>
                   <div className="flex justify-between scaleRange ">
@@ -226,7 +267,9 @@ const CurrentIntrestRate = () => {
               >
                 Monthly EMI
               </p>
-              <p className="text-xl font-medium text-white">960000</p>
+              <p className="text-xl font-medium text-white">
+                {Results.MonthlyEMI}
+              </p>
             </div>{" "}
             <div>
               <p
@@ -237,12 +280,16 @@ const CurrentIntrestRate = () => {
               >
                 Total Interest Payable
               </p>
-              <p className="text-xl font-medium text-white">2,34,99,323/-</p>
+              <p className="text-xl font-medium text-white">
+                {Results.TotalIntrestPayable}/-
+              </p>
             </div>
             <div className="bg-blue w-full py-8">
               <p className="text-white text-xl">TOTAL AMOUNT PAYABLE</p>
               <p className="text-sm  text-white">Principal + Interest</p>
-              <p className="text-white text-xl font-medium">3,24,99,323/-</p>
+              <p className="text-white text-xl font-medium">
+                {Results.TotalAmountPayable}/-
+              </p>
             </div>
           </div>
         </div>

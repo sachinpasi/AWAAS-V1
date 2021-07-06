@@ -10,6 +10,7 @@ const Banner = () => {
     const res = await axios.post(`${API}/`);
     console.log(res.data);
   };
+
   return (
     <section
       style={{
@@ -65,7 +66,7 @@ const Banner = () => {
                   type="text"
                   value={Amount}
                   onChange={(e) => setAmount(e.target.value)}
-                  placeholder="Phone Number"
+                  placeholder="Amount"
                   className="w-full h-11 border-1 rounded px-2"
                 />
               </div>
