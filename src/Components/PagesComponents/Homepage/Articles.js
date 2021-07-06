@@ -47,7 +47,7 @@ const Articles = () => {
                     </div>
                   </div>
                   <div
-                    style={{ height: "280px" }}
+                    style={{ height: "250px" }}
                     className="w-11/12 mx-auto  flex flex-col items-start justify-between px-4 py-1 bg-white"
                   >
                     <p
