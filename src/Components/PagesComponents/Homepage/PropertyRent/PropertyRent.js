@@ -31,14 +31,14 @@ const PropertyRent = () => {
   return (
     <section className="w-full h-full  bg-textbg py-4 ">
       <div className="customContainer ">
-        <Header Title="Properties for Rent" />
-        <div className="w-full h-auto flex justify-center items-center my-10">
+        <Header Title="Properties for Rent" hidden />
+        <div className="w-full h-auto grid grid-cols-2 gap-8 my-10">
           {PropertyList.length !== 0 ? (
-            <OwlCarousel loop items={2} nav={true} margin={30}>
-              {PropertyList.map((item) => (
+            <>
+              {PropertyList.slice(0, 4).map((item) => (
                 <div
                   key={item.p_id}
-                  className="w-full flex justify-between items-center h-72"
+                  className="w-full flex justify-between items-center h-72 my-4"
                 >
                   <div className="w-2/4 h-72 relative ">
                     <img
@@ -73,7 +73,7 @@ const PropertyRent = () => {
                   </div>
                 </div>
               ))}
-            </OwlCarousel>
+            </>
           ) : (
             <p>Loading...</p>
           )}

@@ -32,61 +32,49 @@ const PropertySale = () => {
   return (
     <section className="w-full h-full  bg-textbg py-4 ">
       <div className="customContainer ">
-        <Header Title="Properties for sale" />
-        <div className="w-full h-auto flex justify-center items-center my-10">
+        <Header Title="Properties for sale" hidden />
+        <div className="w-full h-auto grid grid-cols-2 gap-8 my-10">
           {PropertyList.length !== 0 ? (
-            <OwlCarousel loop items={2} nav={true} margin={30}>
+            <>
               {PropertyList.map((item) => (
                 <div
-                  style={{
-                    height: "438px",
-                  }}
                   key={item.p_id}
-                  className="w-full h-full"
+                  className="w-full flex justify-between items-center h-72 my-4"
                 >
-                  <div className="w-full h-72 relative">
+                  <div className="w-2/4 h-72 relative ">
                     <img
                       className="w-full h-full object-cover"
                       src={`https://codeiator.com/${GetImgUrl(item.photos)[0]}`}
                       alt=""
                     />
-                    <div
-                      style={{
-                        background: "rgba(0, 0, 0, 0.1)",
-                      }}
-                      className="w-full h-full absolute top-0"
-                    ></div>
                   </div>
-                  <div className="w-full h-2/5 bg-white mx-auto">
-                    <div className="relative p-5">
-                      <p
-                        style={{
-                          lineHeight: "20px",
-                          borderBottom: "1px solid #7070702E",
-                        }}
-                        className="text-xl font-semibold pb-4 capitalize  "
-                      >
-                        {item.property_type} For Sale
-                      </p>
-                      <div className="flex justify-between items-center">
-                        <p className="text-base font-medium capitalize text-lightgray py-2">
-                          {item.city} : {item.locality}
-                        </p>
-                        <p className="text-2xl text-blue font-medium">
-                          &#8377; {item.total_price}
-                        </p>
-                      </div>
-                      <Link
-                        className="flex justify-center items-center w-36 font-medium tracking-tight  px-5 py-1.5 my-2 text-white bg-blue"
-                        to="/"
-                      >
-                        View Details
-                      </Link>
-                    </div>
+                  <div className="w-2/4 h-3/4 bg-white flex-col flex justify-center items-start p-4">
+                    <p
+                      style={{
+                        borderBottom: "1px solid #7070702E",
+                      }}
+                      className="text-xl font-semibold py-2 w-full capitalize"
+                    >
+                      {item.bedroom && item.bedroom} {item.bedroom && "BHK"}{" "}
+                      {item.property_type} For Sale
+                    </p>
+                    <p className="text-sm font-medium py-2">
+                      {item.city} : {item.locality}
+                    </p>
+                    <p className="text-2xl font-semibold text-blue py-2">
+                      {" "}
+                      &#8377; {item.total_price}
+                    </p>
+                    <Link
+                      className="flex justify-center items-center w-36 font-medium tracking-tight  px-5 py-1.5 my-2 text-white bg-blue"
+                      to={`property/${item.property_for}/${item.p_id}`}
+                    >
+                      View Details
+                    </Link>
                   </div>
                 </div>
               ))}
-            </OwlCarousel>
+            </>
           ) : (
             <p>Loading...</p>
           )}

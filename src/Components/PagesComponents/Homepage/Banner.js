@@ -13,8 +13,6 @@ const Banner = () => {
     }
   };
 
-  console.log(Data);
-
   useEffect(() => {
     FetchData();
     window.scrollTo(0, 0);
@@ -33,7 +31,7 @@ const Banner = () => {
     >
       <div
         style={{
-          background: "rgba(0,0,0,0.5)",
+          background: "rgba(0,0,0,0.2)",
         }}
         className="w-full h-full absolute z-0"
       >
@@ -42,46 +40,25 @@ const Banner = () => {
             <p
               style={{
                 lineHeight: "60px",
+                textShadow: "2px 3px 5px #000",
               }}
               className="text-white text-6xl "
             >
               {Data?.parent?.title}
             </p>
-            <p className="text-white text-base pl-1 py-2"></p>
+            <p className="text-white text-base pl-1 py-4"></p>
 
             <div className="flex justify-between items-center w-11/12 py-2">
               <div className="cursor-pointer flex justify-center items-center">
-                <img
-                  className="object-cover w-32 h-16 mx-1 rounded-md border-1 border-white"
-                  src={`https://codeiator.com/${
-                    Data?.parent_child[0]?.child[0]?.space_images &&
-                    JSON.parse(Data?.parent_child[0]?.child[0].space_images)[0]
-                  }`}
-                  alt=""
-                />
-                <img
-                  className="object-cover w-32 h-16 mx-1 rounded-md border-1 border-white"
-                  src={`https://codeiator.com/${
-                    Data?.parent_child[1]?.child[0]?.plot_images &&
-                    JSON.parse(Data?.parent_child[1]?.child[0].plot_images)[0]
-                  }`}
-                  alt=""
-                />
-                <img
-                  className="object-cover w-32 h-16 mx-1 rounded-md border-1 border-white"
-                  src={`https://codeiator.com/${
-                    Data?.parent_child[2]?.child[0]?.commercial_images &&
-                    JSON.parse(
-                      Data?.parent_child[2]?.child[0].commercial_images
-                    )[0]
-                  }`}
-                  alt=""
-                />
-                {/* <img
-                  className="object-cover w-32 h-16 mx-1 rounded-md border-1 border-white"
-                  src="/assets/images/homepage/banner/4.png"
-                  alt=""
-                /> */}
+                {Data?.library &&
+                  Data?.library?.map((item, index) => (
+                    <img
+                      key={index}
+                      className="object-cover w-32 h-16 mx-1 rounded-md border-1 border-white"
+                      src={`https://codeiator.com/${item}`}
+                      alt=""
+                    />
+                  ))}
               </div>
             </div>
           </div>

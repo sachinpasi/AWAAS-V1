@@ -27,29 +27,41 @@ const Articles = () => {
         <Header Title="Real Estate News / Articles for Panipat" />
         <div className="w-full h-full my-8">
           {ArticlesList.length !== 0 ? (
-            <OwlCarousel items={2} loop nav={true} margin={20}>
+            <OwlCarousel items={4} loop nav={true} margin={20}>
               {ArticlesList.slice(4).map((item) => (
                 <div key={item.bid} className="w-full h-full ">
-                  <div className="w-full h-3/5 relative">
-                    <img src="assets/images/homepage/articles/1.png" alt="" />
+                  <div
+                    style={{
+                      height: "180px",
+                    }}
+                    className="w-full  relative"
+                  >
+                    <img
+                      className="object-cover w-full h-full"
+                      src="assets/images/homepage/articles/1.png"
+                      alt=""
+                    />
                     <div className="absolute top-4 left-4  w-14 h-14 flex flex-col bg-blue justify-center items-center text-white">
                       <p className="text-xl font-bold">02</p>
                       <p className="text-xs font-bold">JUNE</p>
                     </div>
                   </div>
-                  <div className="w-3/4 mx-auto h-2/5 flex flex-col items-start justify-center px-4 py-2 bg-white">
+                  <div
+                    style={{ height: "280px" }}
+                    className="w-11/12 mx-auto  flex flex-col items-start justify-between px-4 py-1 bg-white"
+                  >
                     <p
                       style={{
                         borderBottom: "1px solid #7070702E",
                       }}
-                      className="py-2 w-full text-lg text-darkgray "
+                      className="py-1 w-full text-lg text-darkgray "
                     >
                       By<span className="text-blue pl-1">admin</span>
                     </p>
-                    <p className="text-xl tracking-tight font-semibold py-3 ">
+                    <p className="text-xl tracking-tight font-semibold py-2 ">
                       {item.title}
                     </p>
-                    <p className="text-xs text-darkgray pb-4">
+                    <p className="text-xs text-darkgray pb-2">
                       {item.description}
                     </p>
                     <Link
