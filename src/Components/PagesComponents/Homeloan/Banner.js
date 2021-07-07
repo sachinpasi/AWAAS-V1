@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { API } from "../../../API";
 import { toast } from "react-toastify";
+
 const Banner = () => {
   const [Name, setName] = useState("");
   const [Amount, setAmount] = useState("");

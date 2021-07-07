@@ -26,7 +26,12 @@ const HomeNav = () => {
               className="flex justify-center items-center px-4 border-l-1 border-navborder h-full"
             >
               <HiMail className="text-white text-2xl" />
-              <p className="text-white text-base pl-1 -mt-1">
+              <p
+                style={{
+                  textShadow: "2px 3px 5px #000",
+                }}
+                className="text-white text-base pl-1 -mt-1"
+              >
                 contact@gmail.com
               </p>
             </a>
@@ -35,7 +40,14 @@ const HomeNav = () => {
               className="flex justify-center items-center border-l-1 border-r-1 px-4 border-navborder h-full"
             >
               <FaWhatsapp className="text-white text-2xl" />
-              <p className="text-white text-base pl-1 -mt-1">+1 408 111 1234</p>
+              <p
+                style={{
+                  textShadow: "2px 3px 5px #000",
+                }}
+                className="text-white text-base pl-1 -mt-1"
+              >
+                +1 408 111 1234
+              </p>
             </a>
           </div>
         </div>
@@ -73,7 +85,14 @@ const SocialIcon = ({ Icon, Br, To }) => (
 
 const NavItem = ({ Name, To }) => (
   <Link className="w-auto" to={To}>
-    <p className="text-white text-base px-2">{Name}</p>
+    <p
+      style={{
+        textShadow: "2px 3px 5px #000",
+      }}
+      className="text-white text-base px-2"
+    >
+      {Name}
+    </p>
   </Link>
 );
 

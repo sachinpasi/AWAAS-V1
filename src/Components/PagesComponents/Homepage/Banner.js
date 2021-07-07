@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { API } from "../../../API";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const Banner = () => {
   const [Data, setData] = useState();
@@ -34,12 +36,58 @@ const Banner = () => {
       }}
       className="w-full relative"
     >
-      <img className="w-full h-full" src={BannerURL} alt="" />
+      <div
+        style={{
+          height: "580px",
+        }}
+        className="w-full relative "
+      >
+        {Data?.library && (
+          <Carousel
+            dynamicHeight={true}
+            autoPlay={true}
+            showThumbs={true}
+            showStatus={false}
+            emulateTouch={true}
+            infiniteLoop={true}
+            showIndicators={false}
+          >
+            <div>
+              <img
+                style={{
+                  maxHeight: "580px",
+                }}
+                className="object-cover h-full w-full"
+                src={`https://codeiator.com/${
+                  Data?.parent?.banner_image &&
+                  JSON.parse(Data?.parent?.banner_image)[0]
+                }`}
+                alt=""
+              />
+            </div>
+            {Data?.library?.length !== 0 &&
+              Data?.library?.map((item, index) => (
+                <div>
+                  <img
+                    style={{
+                      maxHeight: "580px",
+                    }}
+                    className="object-cover h-full w-full"
+                    key={index}
+                    src={`https://codeiator.com/${item}`}
+                    alt=""
+                  />
+                </div>
+              ))}
+          </Carousel>
+        )}
+      </div>
+
       <div
         style={{
           background: "rgba(0,0,0,0.3)",
         }}
-        className="w-full h-full absolute top-0 z-0"
+        className=" w-full h-full absolute top-0 z-0"
       >
         <div className="customContainer h-full flex justify-center items-start flex-col relative ">
           <div className="w-2/5">
@@ -53,26 +101,9 @@ const Banner = () => {
               {Data?.parent?.title}
             </p>
             <p className="text-white text-base pl-1 py-4"></p>
-
-            <div className="flex justify-between items-center w-11/12 py-2">
-              <div className="cursor-pointer flex justify-center items-center">
-                {Data?.library &&
-                  Data?.library?.map((item, index) => (
-                    <img
-                      key={index}
-                      onClick={() =>
-                        setBannerURL(`https://codeiator.com/${item}`)
-                      }
-                      className="object-cover w-32 h-16 mx-1 rounded-md border-1 border-white"
-                      src={`https://codeiator.com/${item}`}
-                      alt=""
-                    />
-                  ))}
-              </div>
-            </div>
           </div>
 
-          <div className="h-36 absolute -bottom-24 w-full bg-white rounded shadow-lg flex justify-center items-center flex-col">
+          <div className=" h-36 absolute -bottom-24 w-full bg-white rounded shadow-lg flex justify-center items-center flex-col">
             <div className="w-3/4 mx-auto flex justify-center items-center my-2">
               <NavItem Name="buy" Active />
               <NavItem Name="Rent" />

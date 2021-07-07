@@ -25,3 +25,17 @@ input {
   height: 100%;
   object-fit: cover;
 }
+
+.thumbs-wrapper {
+  position: absolute;
+  z-index: 10;
+  top: -250px;
+  left: 120px;
+}
+
+.thumb {
+  height: 55px;
+  border: 1.5px solid #fff !important;
+  border-radius: 4px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
