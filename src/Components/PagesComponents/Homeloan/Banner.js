@@ -1,14 +1,21 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { API } from "../../../API";
+import { toast } from "react-toastify";
 const Banner = () => {
   const [Name, setName] = useState("");
   const [Amount, setAmount] = useState("");
   const [Phone, setPhone] = useState("");
 
   const HandleSubmit = async () => {
-    const res = await axios.post(`${API}/`);
-    console.log(res.data);
+    const res = await axios.post(`${API}/leads/store-home-loan`, {
+      name: Name,
+      amount: Amount,
+      phone: Phone,
+    });
+    if (res.status === 200) {
+      return toast.success("You Will Get A Callback Soon!");
+    }
   };
 
   return (

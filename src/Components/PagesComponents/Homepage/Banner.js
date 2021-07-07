@@ -4,6 +4,7 @@ import { API } from "../../../API";
 
 const Banner = () => {
   const [Data, setData] = useState();
+  const [BannerURL, setBannerURL] = useState("");
 
   const FetchData = async () => {
     const res = await axios.get(`${API}/projects/id/16`);
@@ -17,23 +18,28 @@ const Banner = () => {
     FetchData();
     window.scrollTo(0, 0);
   }, []);
+  console.log(BannerURL);
+  useEffect(() => {
+    setBannerURL(
+      `https://codeiator.com/${
+        Data?.parent?.banner_image && JSON.parse(Data?.parent?.banner_image)[0]
+      }`
+    );
+  }, [Data]);
+
   return (
     <section
       style={{
-        background: `url(https://codeiator.com/${
-          Data?.parent?.banner_image &&
-          JSON.parse(Data?.parent?.banner_image)[0]
-        })`,
         height: "580px",
-        backgroundSize: "cover",
       }}
       className="w-full relative"
     >
+      <img className="w-full h-full" src={BannerURL} alt="" />
       <div
         style={{
-          background: "rgba(0,0,0,0.2)",
+          background: "rgba(0,0,0,0.3)",
         }}
-        className="w-full h-full absolute z-0"
+        className="w-full h-full absolute top-0 z-0"
       >
         <div className="customContainer h-full flex justify-center items-start flex-col relative ">
           <div className="w-2/5">
@@ -54,6 +60,9 @@ const Banner = () => {
                   Data?.library?.map((item, index) => (
                     <img
                       key={index}
+                      onClick={() =>
+                        setBannerURL(`https://codeiator.com/${item}`)
+                      }
                       className="object-cover w-32 h-16 mx-1 rounded-md border-1 border-white"
                       src={`https://codeiator.com/${item}`}
                       alt=""
