@@ -85,7 +85,7 @@ const Banner = () => {
 
       <div
         style={{
-          background: "rgba(0,0,0,0.3)",
+          background: "rgba(0,0,0,0.2)",
         }}
         className=" w-full h-full absolute top-0 z-0"
       >
