@@ -40,7 +40,7 @@ const PropertyRent = () => {
                   key={item.p_id}
                   className="w-full flex justify-between items-center h-72 my-4"
                 >
-                  <div className="w-2/4 h-72 relative ">
+                  <div className="w-2/4 h-3/4 relative ">
                     <img
                       className="w-full h-full object-cover"
                       src={`https://codeiator.com/${GetImgUrl(item.photos)[0]}`}
