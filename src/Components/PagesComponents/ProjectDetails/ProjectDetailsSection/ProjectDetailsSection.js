@@ -23,7 +23,7 @@ const ProjectDetailsSection = () => {
           style={{
             width: "29%",
           }}
-          className="w-3/12 h-auto relative"
+          className="w-3/12 h-auto mt-20 relative"
         >
           <Sidebar />
         </div>

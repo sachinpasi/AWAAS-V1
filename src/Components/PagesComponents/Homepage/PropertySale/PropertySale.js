@@ -33,22 +33,22 @@ const PropertySale = () => {
     <section className="w-full h-full  bg-textbg py-4 ">
       <div className="customContainer ">
         <Header Title="Properties for sale" hidden />
-        <div className="w-full h-auto grid grid-cols-2 gap-8 my-10">
+        <div className="w-full h-auto grid grid-cols-4 gap-4 my-4">
           {PropertyList.length !== 0 ? (
             <>
               {PropertyList.map((item) => (
                 <div
                   key={item.p_id}
-                  className="w-full flex justify-between items-center h-72 my-4"
+                  className="w-full flex flex-col justify-between items-center h-auto my-4"
                 >
-                  <div className="w-2/4 h-3/4 relative ">
+                  <div className="w-full h-3/4 relative ">
                     <img
                       className="w-full h-full object-cover"
                       src={`https://codeiator.com/${GetImgUrl(item.photos)[0]}`}
                       alt=""
                     />
                   </div>
-                  <div className="w-2/4 h-3/4 bg-white flex-col flex justify-center items-start p-4">
+                  <div className="w-full h-3/4 bg-white flex-col flex justify-center items-start p-4">
                     <p
                       style={{
                         borderBottom: "1px solid #7070702E",

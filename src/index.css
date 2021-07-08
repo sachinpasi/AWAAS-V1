@@ -26,7 +26,7 @@ input {
   object-fit: cover;
 }
 
-.thumbs-wrapper {
+/* .thumbs-wrapper {
   position: absolute;
   z-index: 10;
   top: -250px;
@@ -38,4 +38,4 @@ input {
   border: 1.5px solid #fff !important;
   border-radius: 4px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-}
+} */

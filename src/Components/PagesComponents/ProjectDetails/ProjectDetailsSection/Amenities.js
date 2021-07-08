@@ -11,12 +11,13 @@ const Amenities = () => {
         <p className="text-3xl text-darkgray ">Amenities</p>
       </div>
       <div className="py-4 flex justify-center items-center flex-wrap">
-        <div className="mx-8 my-4">
+        <div className="mx-8 my-4 flex justify-center items-center flex-col">
           <img
-            className="object-contain w-auto h-auto"
-            src="/assets/images/amenities/clubhouse.svg"
+            className="object-contain w-2/4 h-auto"
+            src="/assets/images/amenities/club-house.png"
             alt=""
           />
+          <p className="text-lg ">Club House</p>
         </div>{" "}
         <div className="mx-8 my-4">
           <img

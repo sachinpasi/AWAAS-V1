@@ -8,8 +8,9 @@ const Sidebar = () => {
     <div
       style={{
         height: "520px",
+        background: "#82a6ee",
       }}
-      className="w-full bg-blue rounded p-4 sticky top-5 "
+      className="w-full  rounded p-4 sticky top-5"
     >
       <div
         style={{
@@ -36,12 +37,7 @@ const Sidebar = () => {
 
       <div className="flex justify-center items-start flex-col py-2">
         <p className="text-xl text-white leading-5">Contact Developer</p>
-        <p
-          style={{
-            color: "#B8D0FF",
-          }}
-          className="text-sm leading-6"
-        >
+        <p style={{}} className="text-sm font-medium text-white leading-6">
           Please share you contact details
         </p>
 
@@ -82,14 +78,15 @@ const Sidebar = () => {
           />
         </div>
 
-        <button className="w-full my-4 h-12 bg-white rounded text-lg font-medium text-blue">
-          Contact To Developer
+        <button className="w-full my-4 h-12 text-white rounded text-lg font-medium bg-blue">
+          Contact Developer
         </button>
-        <div className="w-11/12 mx-auto text-lightblue">
+        <div className="w-11/12 mx-auto text-white">
           <p className="text-xs leading-4 text-center">
             By sending a request, you are accepting our{" "}
-            <span className="text-white font-medium">Terms of Services</span>{" "}
-            and <span className="text-white font-medium">Privacy Policy</span>
+            <span className="text-white font-semibold">Terms of Services</span>{" "}
+            and{" "}
+            <span className="text-white  font-semibold">Privacy Policy</span>
           </p>
         </div>
       </div>

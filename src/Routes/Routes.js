@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Homeloan from "../Pages/Homeloan";
 import Homepage from "../Pages/Homepage";
 import ProjectDetails from "../Pages/ProjectDetails";
+import PropertyForSaleDetails from "../Pages/PropertyForSaleDetails";
 
 const Routes = () => {
   return (
@@ -11,6 +12,11 @@ const Routes = () => {
         <Route exact path="/" component={Homepage} />
         <Route exact path="/home-loans" component={Homeloan} />
         <Route exact path="/projects/:id" component={ProjectDetails} />
+        <Route
+          exact
+          path="/property/sale/:id"
+          component={PropertyForSaleDetails}
+        />
       </Switch>
     </Router>
   );
