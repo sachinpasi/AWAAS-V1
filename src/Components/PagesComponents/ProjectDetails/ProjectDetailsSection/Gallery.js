@@ -3,11 +3,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
 import "swiper/components/pagination/pagination.min.css";
 import "swiper/components/navigation/navigation.min.css";
+import { selectProjectDetails } from "../../../../Redux/_features/_ProjectDetailsSlice";
 import SwiperCore, { Pagination, Navigation } from "swiper/core";
+import { useSelector } from "react-redux";
 
 SwiperCore.use([Pagination, Navigation]);
 
 const Gallery = () => {
+  const { Data } = useSelector(selectProjectDetails);
+
   return (
     <div
       id="gallery"
@@ -25,9 +29,17 @@ const Gallery = () => {
           }}
           navigation={true}
         >
-          <SwiperSlide>
-            <img src="/assets/images/projectdetails/img.png" alt="" />
-          </SwiperSlide>
+          {Data?.library?.map((item) => (
+            <SwiperSlide>
+              <img
+                style={{
+                  maxHeight: "400px",
+                }}
+                src={`https://codeiator.com/${item}`}
+                alt=""
+              />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </div>
