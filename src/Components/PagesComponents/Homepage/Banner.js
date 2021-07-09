@@ -11,7 +11,6 @@ import "./Banner.css";
 
 const Banner = () => {
   const [Data, setData] = useState([]);
-  const [Thumbnails, setThumbnails] = useState([]);
   const [BannerURL, setBannerURL] = useState("");
 
   const [ParentPropertyType, setParentPropertyType] = useState("");
@@ -142,14 +141,14 @@ const Banner = () => {
                       {item?.locality}, {item?.city}
                     </p>{" "}
                   </div>
-                  <div className=" flex justify-start items-center w-1/3  my-4 ">
+                  <div className=" flex justify-start items-center  my-4 ">
                     {item?.library.map((thumb, index) => (
                       <div
                         key={index}
                         onClick={() =>
                           setBannerURL(`https://codeiator.com/${thumb}`)
                         }
-                        className="mx-1 border-4 rounded-sm border-white shadow-2xl cursor-pointer
+                        className="mx-1 w-24 border-4 rounded-sm border-white shadow-2xl cursor-pointer
                       "
                       >
                         {/* {console.log(thumb)} */}
