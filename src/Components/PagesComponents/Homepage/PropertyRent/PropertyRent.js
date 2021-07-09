@@ -76,7 +76,7 @@ const PropertyRent = () => {
                     </p>
                     <Link
                       className="flex justify-center items-center w-36 font-medium tracking-tight  px-5 py-1.5 my-2 text-white bg-blue"
-                      to={`property/${item.property_for}/${item.p_id}`}
+                      to={`/property/${item.property_for}/${item.p_id}`}
                     >
                       View Details
                     </Link>

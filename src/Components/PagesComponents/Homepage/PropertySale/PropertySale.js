@@ -20,10 +20,10 @@ const PropertySale = () => {
     }
   };
 
-  const GetImgUrl = (str) => {
-    var list = str.split(",");
-    return list;
-  };
+  // const GetImgUrl = (str) => {
+  //   var list = str.split(",");
+  //   return list;
+  // };
 
   useEffect(() => {
     FetchPropertyList();
@@ -41,10 +41,13 @@ const PropertySale = () => {
                   key={item.p_id}
                   className="w-full flex flex-col justify-between items-center h-auto my-4"
                 >
+                  {console.log(item)}
                   <div className="w-full h-3/4 relative ">
                     <img
                       className="w-full h-full object-cover"
-                      src={`https://codeiator.com/${GetImgUrl(item.photos)[0]}`}
+                      src={`https://codeiator.com/${
+                        JSON.parse(item.photos)[0]
+                      }`}
                       alt=""
                     />
                   </div>
@@ -67,7 +70,7 @@ const PropertySale = () => {
                     </p>
                     <Link
                       className="flex justify-center items-center w-36 font-medium tracking-tight  px-5 py-1.5 my-2 text-white bg-blue"
-                      to={`property/${item.property_for}/${item.p_id}`}
+                      to={`/property/${item.property_for}/${item.p_id}`}
                     >
                       View Details
                     </Link>

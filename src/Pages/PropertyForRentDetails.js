@@ -2,18 +2,17 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-
 import { API } from "../API";
-import {
-  SET_PROPERTY_SALE_DETAILS,
-  REMOVE_PROPERTY_SALE_DETAILS,
-} from "../Redux/_features/_PropertySaleDetailsSlice";
 import Layout from "../Components/Layout/Layout";
-import Banner from "../Components/PagesComponents/PropertyForSaleDetails/Banner";
-import PropertySaleSection from "../Components/PagesComponents/PropertyForSaleDetails/PropertySaleDetailsSection/PropertyDetailsSection";
-import PropertySale from "../Components/PagesComponents/Homepage/PropertySale/PropertySale";
+import Banner from "../Components/PagesComponents/PropertyForRentDetails/Banner";
+import {
+  REMOVE_PROPERTY_RENT_DETAILS,
+  SET_PROPERTY_RENT_DETAILS,
+} from "../Redux/_features/_PropertyRentDetailsSlice";
+import PropertyRent from "../Components/PagesComponents/Homepage/PropertyRent/PropertyRent";
+import PropertyRentSection from "../Components/PagesComponents/PropertyForRentDetails/PropertyRentDetailsSection/PropertyDetailsSection";
 
-const PropertyForSaleDetails = () => {
+const PropertyForRentDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -22,7 +21,7 @@ const PropertyForSaleDetails = () => {
     console.log(res.data.data);
     if (res.status === 200) {
       dispatch(
-        SET_PROPERTY_SALE_DETAILS({
+        SET_PROPERTY_RENT_DETAILS({
           Data: res.data.data,
         })
       );
@@ -32,17 +31,16 @@ const PropertyForSaleDetails = () => {
     FetchData();
     window.scrollTo(0, 0);
     return () => {
-      dispatch(REMOVE_PROPERTY_SALE_DETAILS());
+      dispatch(REMOVE_PROPERTY_RENT_DETAILS());
     };
   }, [id]);
-
   return (
     <Layout>
       <Banner />
-      <PropertySaleSection />
-      <PropertySale />
+      <PropertyRentSection />
+      <PropertyRent />
     </Layout>
   );
 };
 
-export default PropertyForSaleDetails;
+export default PropertyForRentDetails;

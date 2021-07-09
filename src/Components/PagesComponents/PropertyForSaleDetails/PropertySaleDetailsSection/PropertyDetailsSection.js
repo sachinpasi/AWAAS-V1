@@ -1,29 +1,29 @@
 import React from "react";
-import AboutDeveloper from "./AboutDeveloper";
-import Amenities from "./Amenities";
-import Configuration from "./Configuration";
-import Gallery from "./Gallery";
-import ProjectNav from "./ProjectNav";
-import ProjectOverview from "./ProjectOverview";
-import Sidebar from "./Sidebar";
+import PriceSection from "./PriceSection";
 
-const ProjectDetailsSection = () => {
+import Sidebar from "./Sidebar";
+import Gallery from "./Gallery";
+import Configuration from "./Configuration";
+import Amenities from "../../ProjectDetails/ProjectDetailsSection/Amenities";
+import PropertyDescription from "./PropertyDescription";
+
+const PropertyDetailsSection = () => {
   return (
     <section className="w-full h-full flex justify-between my-24">
       <div className=" customContainer h-full flex justify-between ">
         <div style={{ width: "69%" }} className=" h-full ">
-          <ProjectNav />
-          <Configuration />
+          <PriceSection />
           <Gallery />
+
+          <Configuration />
           <Amenities />
-          <ProjectOverview />
-          <AboutDeveloper />
+          <PropertyDescription />
         </div>
         <div
           style={{
             width: "29%",
           }}
-          className="w-3/12 h-auto relative"
+          className="w-3/12 h-auto  relative"
         >
           <Sidebar />
         </div>
@@ -32,4 +32,4 @@ const ProjectDetailsSection = () => {
   );
 };
 
-export default ProjectDetailsSection;
+export default PropertyDetailsSection;

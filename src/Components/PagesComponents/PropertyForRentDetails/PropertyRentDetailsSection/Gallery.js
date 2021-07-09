@@ -3,14 +3,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
 import "swiper/components/pagination/pagination.min.css";
 import "swiper/components/navigation/navigation.min.css";
-import { selectProjectDetails } from "../../../../Redux/_features/_ProjectDetailsSlice";
+import { selectPropertyRentDetails } from "../../../../Redux/_features/_PropertyRentDetailsSlice";
 import SwiperCore, { Pagination, Navigation } from "swiper/core";
 import { useSelector } from "react-redux";
 
 SwiperCore.use([Pagination, Navigation]);
 
 const Gallery = () => {
-  const { Data } = useSelector(selectProjectDetails);
+  const { Data } = useSelector(selectPropertyRentDetails);
 
   return (
     <div
@@ -29,9 +29,8 @@ const Gallery = () => {
           }}
           navigation={true}
         >
-          {console.log(Data)}
-          {Data?.library?.map((item, index) => (
-            <SwiperSlide key={index}>
+          {Data?.library?.map((item) => (
+            <SwiperSlide>
               <img
                 style={{
                   maxHeight: "400px",

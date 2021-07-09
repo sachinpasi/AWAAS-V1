@@ -32,7 +32,7 @@ const HomeNav = () => {
                 }}
                 className="text-white text-base pl-1 -mt-1"
               >
-                contact@gmail.com
+                assist@awaasonline.com
               </p>
             </a>
             <a
@@ -46,7 +46,7 @@ const HomeNav = () => {
                 }}
                 className="text-white text-base pl-1 -mt-1"
               >
-                +1 408 111 1234
+                +91-999-639-8965
               </p>
             </a>
           </div>

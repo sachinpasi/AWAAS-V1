@@ -5,46 +5,25 @@ import { selectProjectDetails } from "../../../../Redux/_features/_ProjectDetail
 const Sidebar = () => {
   const { Data } = useSelector(selectProjectDetails);
   return (
-    <div
-      style={{
-        height: "520px",
-      }}
-      className="w-full bg-blue rounded p-4 sticky top-5 "
-    >
+    <div className="w-full bg-blue rounded p-4 sticky top-5 py-8 ">
       <div
         style={{
           borderBottom: "1px solid #2F5FBE",
         }}
-        className="pb-3 flex justify-start items-center h-1/5"
+        className="pb-3 flex flex-col justify-center items-start h-1/5"
       >
-        <div className="h-full w-2/6">
-          <img
-            className="h-full object-contain bg-white p-1"
-            src={`https://codeiator.com/${
-              Data.parent?.developerlogo &&
-              JSON.parse(Data.parent?.developerlogo)[0]
-            }`}
-            alt=""
-          />
-        </div>
-        <div>
-          <p className="text-white text-2xl pl-4">
-            {Data.parent?.developerName}
-          </p>
-        </div>
-      </div>
-
-      <div className="flex justify-center items-start flex-col py-2">
-        <p className="text-xl text-white leading-5">Contact Developer</p>
+        <p className="text-3xl text-white leading-5 mb-2">Contact Developer</p>
         <p
           style={{
             color: "#B8D0FF",
           }}
-          className="text-sm leading-6"
+          className="text-lg leading-6"
         >
           Please share you contact details
         </p>
+      </div>
 
+      <div className="flex justify-center items-start flex-col py-2">
         <div className="flex-col flex justify-center items-start w-full my-1">
           <p className="text-white">Name</p>
           <input

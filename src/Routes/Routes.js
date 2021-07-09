@@ -4,6 +4,7 @@ import Homeloan from "../Pages/Homeloan";
 import Homepage from "../Pages/Homepage";
 import ProjectDetails from "../Pages/ProjectDetails";
 import PropertyForSaleDetails from "../Pages/PropertyForSaleDetails";
+import PropertyForRentDetails from "../Pages/PropertyForRentDetails";
 
 const Routes = () => {
   return (
@@ -16,6 +17,11 @@ const Routes = () => {
           exact
           path="/property/sale/:id"
           component={PropertyForSaleDetails}
+        />
+        <Route
+          exact
+          path="/property/rent/:id"
+          component={PropertyForRentDetails}
         />
       </Switch>
     </Router>
