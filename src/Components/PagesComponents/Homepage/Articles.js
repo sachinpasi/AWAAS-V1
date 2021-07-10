@@ -24,7 +24,7 @@ const Articles = () => {
   return (
     <section className="w-full h-full bg-textbg py-10">
       <div className="customContainer">
-        <Header Title="Real Estate News / Articles for Panipat" />
+        <Header Title="Real Estate News / Articles for Panipat" hidden />
         <div className="w-full h-full my-8">
           {ArticlesList.length !== 0 ? (
             <OwlCarousel items={4} loop nav={true} margin={20}>

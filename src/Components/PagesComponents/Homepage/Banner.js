@@ -79,7 +79,6 @@ const Banner = () => {
         >
           {Data?.map((item) => (
             <div
-              to={`/projects/${item?.id}`}
               key={item.id}
               style={{
                 height: "580px ",
@@ -118,7 +117,7 @@ const Banner = () => {
               >
                 <div
                   style={{
-                    top: "40%",
+                    top: "35%",
                   }}
                   className="absolute left-32 text-white z-10 flex flex-col justify-center items-start"
                 >
@@ -130,7 +129,7 @@ const Banner = () => {
                   >
                     {item.title}
                   </p>
-                  <div className="flex justify-start items-center py-2">
+                  <div className="flex justify-start items-center py-4">
                     <MdLocationOn className="text-blue text-3xl font-medium" />
                     <p
                       style={{
@@ -141,7 +140,7 @@ const Banner = () => {
                       {item?.locality}, {item?.city}
                     </p>{" "}
                   </div>
-                  <div className=" flex justify-start items-center  my-4 ">
+                  <div className=" flex justify-start items-center  my-2 ">
                     {item?.library.map((thumb, index) => (
                       <div
                         key={index}
@@ -162,6 +161,14 @@ const Banner = () => {
                       </div>
                     ))}
                   </div>
+                </div>
+                <div className="w-full h-full flex justify-end items-end  ">
+                  <Link
+                    className="border-4 border-white  text-white bg-blue text-xl font-medium rounded  px-8 py-3  mb-32 mr-20"
+                    to={`/projects/${item?.id}`}
+                  >
+                    View Details
+                  </Link>
                 </div>
               </div>
             </div>
