@@ -143,9 +143,10 @@ const Footer = () => {
                 style={{
                   color: "#88909F",
                 }}
-                className="py-4"
+                className="py-4 text-center"
               >
-                256, 1st AVE, Manchester 125 , Noth England
+                Registered Office Sco No.6, Eldeco High Street,
+                <br /> Sector-40, Panipat- 132103
               </p>
             </div>
             <div
@@ -169,13 +170,13 @@ const Footer = () => {
                 />
               </div>
               <a
-                href="mailto:"
+                href="mailto:assist@awaasonline.com"
                 style={{
                   color: "#88909F",
                 }}
                 className="py-4"
               >
-                support@gmail.com
+                assist@awaasonline.com
               </a>
             </div>
             <div
@@ -205,7 +206,7 @@ const Footer = () => {
                 }}
                 className="py-4"
               >
-                +1-563-241-0987
+                +91-999-639-8965
               </a>
             </div>
           </div>
