@@ -60,8 +60,8 @@ const HomeNav = () => {
         <div className="w-auto h-auto flex justify-between items-center">
           <NavItem Name="Post Property Free" To="/" />
           <NavItem Name="Home Loan" To="/home-loans" />
-          <NavItem Name="Investment Assistance" To="/" />
-          <NavItem Name="Awaas Assist" To="/" />
+          <NavItem Name="Investment Assistance" To="/investment-assist" />
+          <NavItem Name="Awaas Assist" To="/awaas-assist" />
           <NavItem Name="Vastu / Legal" To="/" />
           <NavAuthItem Name="Login" To="/login" />
         </div>

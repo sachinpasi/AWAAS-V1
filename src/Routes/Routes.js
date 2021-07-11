@@ -5,6 +5,8 @@ import Homepage from "../Pages/Homepage";
 import ProjectDetails from "../Pages/ProjectDetails";
 import PropertyForSaleDetails from "../Pages/PropertyForSaleDetails";
 import PropertyForRentDetails from "../Pages/PropertyForRentDetails";
+import InvestmentAssist from "../Pages/InvestmentAssist";
+import AwaasAssist from "../Pages/AwaasAssist";
 
 const Routes = () => {
   return (
@@ -12,6 +14,8 @@ const Routes = () => {
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route exact path="/home-loans" component={Homeloan} />
+        <Route exact path="/investment-assist" component={InvestmentAssist} />
+        <Route exact path="/awaas-assist" component={AwaasAssist} />
         <Route exact path="/projects/:id" component={ProjectDetails} />
         <Route
           exact
