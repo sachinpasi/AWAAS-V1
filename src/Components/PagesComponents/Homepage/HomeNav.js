@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {
   FaFacebookF,
-  FaLinkedinIn,
+  FaInstagram,
   FaTwitter,
   FaYoutube,
   FaWhatsapp,
@@ -15,9 +15,18 @@ const HomeNav = () => {
       <div className="w-full h-11 border-b-1 border-navborder">
         <div className="customContainer mx-auto   h-full flex justify-between items-center">
           <div className="w-auto h-full flex justify-center items-center">
-            <SocialIcon To="/" Icon={FaFacebookF} />
-            <SocialIcon To="/" Icon={FaLinkedinIn} />
-            <SocialIcon To="/" Icon={FaTwitter} />
+            <SocialIcon
+              To="https://www.facebook.com/Awaasonline-111674134300495"
+              Icon={FaFacebookF}
+            />
+            <SocialIcon
+              To="https://www.instagram.com/awaasonline/"
+              Icon={FaInstagram}
+            />
+            <SocialIcon
+              To="/https://twitter.com/awaasonline"
+              Icon={FaTwitter}
+            />
             <SocialIcon To="/" Icon={FaYoutube} Br />
           </div>
           <div className="w-auto h-full flex justify-center items-center">
@@ -73,14 +82,15 @@ const HomeNav = () => {
 export default HomeNav;
 
 const SocialIcon = ({ Icon, Br, To }) => (
-  <Link
-    to={To}
+  <a
+    href={To}
+    target="_blank"
     className={`w-11 h-full flex justify-center items-center border-l-1 border-navborder ${
       Br && "border-r-1"
     } `}
   >
     <Icon className="text-white text-xl" />
-  </Link>
+  </a>
 );
 
 const NavItem = ({ Name, To }) => (
