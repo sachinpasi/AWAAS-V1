@@ -67,113 +67,116 @@ const Banner = () => {
         }}
         className="w-full relative "
       >
-        <Carousel
-          dynamicHeight={true}
-          autoPlay={true}
-          showThumbs={false}
-          showStatus={false}
-          emulateTouch={true}
-          infiniteLoop={true}
-          showIndicators={false}
-          onChange={() => setBannerURL("")}
-        >
-          {Data?.map((item) => (
-            <div
-              key={item.id}
-              style={{
-                height: "580px ",
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
-              }}
-              className="w-full "
-            >
-              {BannerURL ? (
-                <img
-                  style={{
-                    maxHeight: "580px",
-                  }}
-                  className="object-cover h-full w-full"
-                  src={BannerURL}
-                  alt=""
-                />
-              ) : (
-                <img
-                  style={{
-                    maxHeight: "580px",
-                  }}
-                  className="object-cover h-full w-full"
-                  src={`https://codeiator.com/${
-                    JSON.parse(item.banner_image)[0]
-                  }`}
-                  alt=""
-                />
-              )}
-
+        {Data.length !== 0 && (
+          <Carousel
+            dynamicHeight={true}
+            autoPlay={true}
+            autoFocus={true}
+            showThumbs={false}
+            showStatus={false}
+            emulateTouch={true}
+            infiniteLoop={true}
+            showIndicators={false}
+            onChange={() => setBannerURL("")}
+          >
+            {Data?.map((item) => (
               <div
+                key={item.id}
                 style={{
-                  background: "rgba(0,0,0,0.2)",
+                  height: "580px ",
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
                 }}
-                className=" w-full h-full absolute top-0 "
+                className="w-full "
               >
+                {BannerURL ? (
+                  <img
+                    style={{
+                      maxHeight: "580px",
+                    }}
+                    className="object-cover h-full w-full"
+                    src={BannerURL}
+                    alt=""
+                  />
+                ) : (
+                  <img
+                    style={{
+                      maxHeight: "580px",
+                    }}
+                    className="object-cover h-full w-full"
+                    src={`https://codeiator.com/${
+                      JSON.parse(item.banner_image)[0]
+                    }`}
+                    alt=""
+                  />
+                )}
+
                 <div
                   style={{
-                    top: "35%",
+                    background: "rgba(0,0,0,0.2)",
                   }}
-                  className="absolute left-32 text-white z-10 flex flex-col justify-center items-start"
+                  className=" w-full h-full absolute top-0 "
                 >
-                  <p
+                  <div
                     style={{
-                      textShadow: "2px 3px 5px #000",
+                      top: "35%",
                     }}
-                    className="text-5xl  font-medium   "
+                    className="absolute left-32 text-white z-10 flex flex-col justify-center items-start"
                   >
-                    {item.title}
-                  </p>
-                  <div className="flex justify-start items-center py-4">
-                    <MdLocationOn className="text-blue text-3xl font-medium" />
                     <p
                       style={{
                         textShadow: "2px 3px 5px #000",
                       }}
-                      className="text-white text-lg font-medium"
+                      className="text-5xl  font-medium   "
                     >
-                      {item?.locality}, {item?.city}
-                    </p>{" "}
-                  </div>
-                  <div className=" flex justify-start items-center  my-2 ">
-                    {item?.library.map((thumb, index) => (
-                      <div
-                        key={index}
-                        onClick={() =>
-                          setBannerURL(`https://codeiator.com/${thumb}`)
-                        }
-                        className="mx-1 w-24 border-4 rounded-sm border-white shadow-2xl cursor-pointer
-                      "
+                      {item.title}
+                    </p>
+                    <div className="flex justify-start items-center py-4">
+                      <MdLocationOn className="text-blue text-3xl font-medium" />
+                      <p
+                        style={{
+                          textShadow: "2px 3px 5px #000",
+                        }}
+                        className="text-white text-lg font-medium"
                       >
-                        {/* {console.log(thumb)} */}
-                        {/* {thumb} */}
-                        <img
-                          className="object-cover h-16 w-auto "
+                        {item?.locality}, {item?.city}
+                      </p>{" "}
+                    </div>
+                    <div className=" flex justify-start items-center  my-2 ">
+                      {item?.library.map((thumb, index) => (
+                        <div
                           key={index}
-                          src={`https://codeiator.com/${thumb}`}
-                          alt=""
-                        />
-                      </div>
-                    ))}
+                          onClick={() =>
+                            setBannerURL(`https://codeiator.com/${thumb}`)
+                          }
+                          className="mx-1 w-24 border-4 rounded-sm border-white shadow-2xl cursor-pointer
+                      "
+                        >
+                          {/* {console.log(thumb)} */}
+                          {/* {thumb} */}
+                          <img
+                            className="object-cover h-16 w-auto "
+                            key={index}
+                            src={`https://codeiator.com/${thumb}`}
+                            alt=""
+                          />
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-                <div className="w-full h-full flex justify-end items-end  ">
-                  <Link
-                    className="border-4 border-white  text-white bg-blue text-xl font-medium rounded  px-8 py-3  mb-32 mr-20"
-                    to={`/projects/${item?.id}`}
-                  >
-                    View Details
-                  </Link>
+                  <div className="w-full h-full flex justify-end items-end  ">
+                    <Link
+                      className="border-4 border-white  text-white bg-blue text-xl font-medium rounded  px-8 py-3  mb-32 mr-20"
+                      to={`/projects/${item?.id}`}
+                    >
+                      View Details
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </Carousel>
+            ))}
+          </Carousel>
+        )}
       </div>
 
       <div>
