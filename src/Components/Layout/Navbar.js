@@ -22,9 +22,9 @@ const Navbar = () => {
             To="/investment-assist"
           />
           <NavItem
-            Active={loaction.pathname === "/awass-assist"}
+            Active={loaction.pathname === "/awaas-assist"}
             Name="Awaas Assist"
-            To="/awass-assist"
+            To="/awaas-assist"
           />
           <NavAuthItem To="/" Name="Login" />
         </div>
