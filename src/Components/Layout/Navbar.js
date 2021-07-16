@@ -1,16 +1,24 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../Redux/_features/_userSlice";
 const Navbar = () => {
   const loaction = useLocation();
+  const user = useSelector(selectUser);
+
   return (
-    <nav className="w-full h-14 flex justify-center items-center ">
+    <nav className="w-full h-14 flex justify-center items-center shadow-md ">
       <div className=" w-full mx-6 flex justify-between items-center h-full">
         <Link to="/" className="w-44">
           <img src="/assets/images/logo/logo2.svg" alt="" />
         </Link>
         <div className="w-auto h-full flex justify-center items-center">
-          <NavItem Name="Post Property Free" />
+          <NavItem
+            To="/post-property"
+            Active={loaction.pathname === "/post-property"}
+            Name="Post Property Free"
+          />
           <NavItem
             Active={loaction.pathname === "/home-loans"}
             Name="Home Loan"
@@ -26,7 +34,11 @@ const Navbar = () => {
             Name="Awaas Assist"
             To="/awaas-assist"
           />
-          <NavAuthItem To="/" Name="Login" />
+          {user.isLoggedIn ? (
+            <NavAuthItem To="/" Name="Profile" />
+          ) : (
+            <NavAuthItem To="/" Name="Login" />
+          )}
         </div>
       </div>
     </nav>

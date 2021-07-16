@@ -29,7 +29,7 @@ const Banner = () => {
             }}
             className="text-5xl text-white tracking-tight "
           >
-            Residential Land For Sale
+            {Data?.title}
           </p>
           <div className="flex justify-center items-center py-4 ">
             <div className="flex justify-center items-center">

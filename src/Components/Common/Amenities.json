@@ -1,0 +1,72 @@
+[
+  {
+    "Id": 1,
+    "Image": "/assets/images/amenities/security.png",
+    "Title": "Security"
+  },
+  {
+    "Id": 2,
+    "Image": "/assets/images/amenities/club-house.png",
+    "Title": "Club House"
+  },
+  {
+    "Id": 3,
+    "Image": "/assets/images/amenities/swimming-pool.png",
+    "Title": "Swimming Pool"
+  },
+  {
+    "Id": 4,
+    "Image": "/assets/images/amenities/green-area.png",
+    "Title": "Green Area"
+  },
+  {
+    "Id": 5,
+    "Image": "/assets/images/amenities/gymnasium.png",
+    "Title": "Gym"
+  },
+  {
+    "Id": 6,
+    "Image": "/assets/images/amenities/commercial.png",
+    "Title": "Retail / Commercial"
+  },
+  {
+    "Id": 7,
+    "Image": "/assets/images/amenities/water-supply.png",
+    "Title": "Outdoor Play Area"
+  },
+  {
+    "Id": 8,
+    "Image": "/assets/images/amenities/water-supply.png",
+    "Title": "Indoor Play Area"
+  },
+  {
+    "Id": 9,
+    "Image": "/assets/images/amenities/vastu.png",
+    "Title": "Vastu Compliants"
+  },
+  {
+    "Id": 10,
+    "Image": "/assets/images/amenities/rain-water.png",
+    "Title": "Rain Water Harvesting"
+  },
+  {
+    "Id": 11,
+    "Image": "/assets/images/amenities/play-area.png",
+    "Title": "Outdoor Play Area"
+  },
+  {
+    "Id": 12,
+    "Image": "/assets/images/amenities/indoorgames.png",
+    "Title": "Indoor Play Area"
+  },
+  {
+    "Id": 13,
+    "Image": "/assets/images/amenities/maintenance.png",
+    "Title": "Maintenance Staff"
+  },
+  {
+    "Id": 14,
+    "Image": "/assets/images/amenities/parking.png",
+    "Title": "Reserved Parking"
+  }
+]

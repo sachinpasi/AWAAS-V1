@@ -13,7 +13,7 @@ const PropertySale = () => {
   const [PropertyList, setPropertyList] = useState([]);
 
   const FetchPropertyList = async () => {
-    const res = await axios.get(`${API}/property/list/sale`);
+    const res = await axios.get(`${API}/property/list/sell`);
 
     if (res.status === 200) {
       setPropertyList(res.data.data);
@@ -43,13 +43,15 @@ const PropertySale = () => {
                 >
                   {console.log(item)}
                   <div className="w-full h-3/4 relative ">
-                    <img
-                      className="w-full h-full object-cover"
-                      src={`https://codeiator.com/${
-                        JSON.parse(item.photos)[0]
-                      }`}
-                      alt=""
-                    />
+                    {item?.photos && (
+                      <img
+                        className="w-full h-full object-cover"
+                        src={`https://codeiator.com/awaas/public/storage/property/images/${
+                          JSON.parse(item.photos)[0]
+                        }`}
+                        alt=""
+                      />
+                    )}
                   </div>
                   <div className="w-full h-3/4 bg-white flex-col flex justify-center items-start p-4">
                     <p

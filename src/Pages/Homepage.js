@@ -9,6 +9,7 @@ import PropertyRent from "../Components/PagesComponents/Homepage/PropertyRent/Pr
 import Testimonial from "../Components/PagesComponents/Homepage/Testimonial";
 import Articles from "../Components/PagesComponents/Homepage/Articles";
 import Footer from "../Components/Layout/Footer";
+
 const Homepage = () => {
   return (
     <>
@@ -16,7 +17,7 @@ const Homepage = () => {
       <Banner />
       <Projects />
       <PropertySale />
-      <Ad />
+      {/* <Ad /> */}
       <PropertyRent />
       <Testimonial />
       <Articles />
