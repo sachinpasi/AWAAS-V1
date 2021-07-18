@@ -29,13 +29,13 @@ const Gallery = () => {
           }}
           navigation={true}
         >
-          {Data?.library?.map((item) => (
-            <SwiperSlide>
+          {Data?.library?.map((item, index) => (
+            <SwiperSlide key={index}>
               <img
                 style={{
                   maxHeight: "400px",
                 }}
-                src={`https://codeiator.com/awaas/public/storage/property/images/${item}`}
+                src={item}
                 alt=""
               />
             </SwiperSlide>

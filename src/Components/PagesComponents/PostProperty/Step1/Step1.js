@@ -9,6 +9,7 @@ import { SET_CURRENT_STEP } from "../../../../Redux/_features/_PostPropertyStepS
 import { API } from "../../../../API";
 import SideImage from "../SideImage";
 import { selectUser } from "../../../../Redux/_features/_userSlice";
+import { toast } from "react-toastify";
 
 const Step1 = () => {
   const [SelectedProperty_For, setSelectedProperty_For] = useState(null);
@@ -40,6 +41,8 @@ const Step1 = () => {
         dispatch(SET_POST_PROPERTY_ID(res.data.data.id));
         HandleContinue();
       }
+    } else {
+      return toast.error("All Fields Are Mandatory");
     }
   };
 

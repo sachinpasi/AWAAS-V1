@@ -7,6 +7,8 @@ import PropertySaleDetailsReducer from "../_features/_PropertySaleDetailsSlice";
 import PropertyRentDetailsReducer from "../_features/_PropertyRentDetailsSlice";
 import PostPropertyStepReducer from "../_features/_PostPropertyStepSlice";
 import PostPropertyReducer from "../_features/_PostPropertySlice";
+import PostProjectStepReducer from "../_features/_PostProjectStepSlice";
+import PostProjectReducer from "../_features/_PostProjectSlice";
 
 const reducers = combineReducers({
   userReducer,
@@ -16,6 +18,8 @@ const reducers = combineReducers({
   PropertyRentDetailsReducer,
   PostPropertyReducer,
   PostPropertyStepReducer,
+  PostProjectStepReducer,
+  PostProjectReducer,
 });
 
 export default reducers;

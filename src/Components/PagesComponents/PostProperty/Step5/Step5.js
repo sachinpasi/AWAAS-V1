@@ -132,18 +132,6 @@ const Step5 = () => {
       setisUploading(false);
       setisUploaded(true);
     }
-    // const res = await axios.post(
-    //   `${API}/property/store-images`,
-    //   {
-    //     id: TableId,
-    //     images: images,
-    //   },
-    //   {
-    //     headers: {
-    //       Authorization: `Bearer ${user.token}`,
-    //     },
-    //   }
-    // );
   };
 
   useEffect(() => {

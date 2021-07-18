@@ -48,7 +48,7 @@ const PropertyRent = () => {
                   >
                     <img
                       className="w-full h-full object-cover"
-                      src={`https://codeiator.com/${GetImgUrl(item.photos)[0]}`}
+                      src={item?.photos && JSON.parse(item?.photos)[0]}
                       alt=""
                     />
                   </div>
@@ -67,8 +67,8 @@ const PropertyRent = () => {
                       {item.bedroom && item.bedroom} {item.bedroom && "BHK"}{" "}
                       {item.property_type} For Rent
                     </p>
-                    <p className="text-sm font-medium py-2">
-                      At {item.locality}, {item.city}
+                    <p className="text-sm font-medium py-2 capitalize">
+                      At {item.locality_name}, {item.city}
                     </p>
                     <p className="text-2xl font-semibold text-blue py-2">
                       {" "}

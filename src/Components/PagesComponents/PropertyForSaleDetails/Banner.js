@@ -27,7 +27,7 @@ const Banner = () => {
             style={{
               textShadow: "2px 3px 5px #000",
             }}
-            className="text-5xl text-white tracking-tight "
+            className="text-5xl text-white tracking-tight capitalize "
           >
             {Data?.title}
           </p>
@@ -35,12 +35,12 @@ const Banner = () => {
             <div className="flex justify-center items-center">
               <MdLocationOn className="text-blue text-3xl font-medium" />
               <p className="text-white text-lg font-medium">
-                {Data?.locality}, {Data?.city}
+                {Data?.locality_name}, {Data?.city}
               </p>{" "}
             </div>
             {/* {Data?.parent?.rera && ( */}
             <div className="mx-4">
-              <img src="/assets/images/projectdetails/rera.svg" alt="" />
+              <img src="/assets/images/propertysale/rera.svg" alt="" />
             </div>
             {/* )} */}
           </div>

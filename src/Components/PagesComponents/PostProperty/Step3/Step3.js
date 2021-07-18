@@ -49,6 +49,7 @@ const Step3 = () => {
       {
         ...data,
         id: TableId,
+        purchase_type: "Resale",
       },
       {
         headers: { Authorization: `Bearer ${user.token}` },
@@ -401,33 +402,35 @@ const Step3 = () => {
                           </select>
                         </div>
                       )}
-                    </div>
 
-                    <div>
-                      <p className="text-xl my-2">Purchase Type</p>
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
-                        <input
-                          className=" w-5 h-5 "
-                          type="radio"
-                          {...register("purchase_type")}
-                          value="New Booking"
-                        />
-                        <span className="text-lg ml-4 text-gray-600">
-                          New Booking
-                        </span>
-                      </div>
+                      {PostProperty?.PProperty_For === "sell" && (
+                        <div>
+                          <p className="text-xl my-2">Purchase Type</p>
+                          <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                            <input
+                              className=" w-5 h-5 "
+                              type="radio"
+                              {...register("purchase_type")}
+                              value="New Booking"
+                            />
+                            <span className="text-lg ml-4 text-gray-600">
+                              New Booking
+                            </span>
+                          </div>
 
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
-                        <input
-                          className=" w-5 h-5 "
-                          type="radio"
-                          {...register("purchase_type")}
-                          value="Resale"
-                        />
-                        <span className="text-lg ml-4 text-gray-600">
-                          Resale
-                        </span>
-                      </div>
+                          <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                            <input
+                              className=" w-5 h-5 "
+                              type="radio"
+                              {...register("purchase_type")}
+                              value="Resale"
+                            />
+                            <span className="text-lg ml-4 text-gray-600">
+                              Resale
+                            </span>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </>
                 </div>
@@ -663,32 +666,34 @@ const Step3 = () => {
                       )}
                     </div>
 
-                    <div>
-                      <p className="text-xl my-2">Purchase Type</p>
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
-                        <input
-                          className=" w-5 h-5 "
-                          type="radio"
-                          {...register("purchase_type")}
-                          value="New Booking"
-                        />
-                        <span className="text-lg ml-4 text-gray-600">
-                          New Booking
-                        </span>
-                      </div>
+                    {PostProperty?.PProperty_For === "sell" && (
+                      <div>
+                        <p className="text-xl my-2">Purchase Type</p>
+                        <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                          <input
+                            className=" w-5 h-5 "
+                            type="radio"
+                            {...register("purchase_type")}
+                            value="New Booking"
+                          />
+                          <span className="text-lg ml-4 text-gray-600">
+                            New Booking
+                          </span>
+                        </div>
 
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
-                        <input
-                          className=" w-5 h-5 "
-                          type="radio"
-                          {...register("purchase_type")}
-                          value="Resale"
-                        />
-                        <span className="text-lg ml-4 text-gray-600">
-                          Resale
-                        </span>
+                        <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                          <input
+                            className=" w-5 h-5 "
+                            type="radio"
+                            {...register("purchase_type")}
+                            value="Resale"
+                          />
+                          <span className="text-lg ml-4 text-gray-600">
+                            Resale
+                          </span>
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </>
                 </div>
               )}
@@ -931,34 +936,34 @@ const Step3 = () => {
                       )}
                     </div>
 
-                    <div>
-                      <p className="text-xl my-2">Purchase Type</p>
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
-                        <input
-                          className=" w-5 h-5 "
-                          type="radio"
-                          {...register("purchase_type")}
-                          id="underConstruction"
-                          value="New Booking"
-                        />
-                        <span className="text-lg ml-4 text-gray-600">
-                          New Booking
-                        </span>
-                      </div>
+                    {PostProperty?.PProperty_For === "sell" && (
+                      <div>
+                        <p className="text-xl my-2">Purchase Type</p>
+                        <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                          <input
+                            className=" w-5 h-5 "
+                            type="radio"
+                            {...register("purchase_type")}
+                            value="New Booking"
+                          />
+                          <span className="text-lg ml-4 text-gray-600">
+                            New Booking
+                          </span>
+                        </div>
 
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
-                        <input
-                          className=" w-5 h-5 "
-                          type="radio"
-                          {...register("purchase_type")}
-                          id="readyToMove"
-                          value="Resale"
-                        />
-                        <span className="text-lg ml-4 text-gray-600">
-                          Resale
-                        </span>
+                        <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                          <input
+                            className=" w-5 h-5 "
+                            type="radio"
+                            {...register("purchase_type")}
+                            value="Resale"
+                          />
+                          <span className="text-lg ml-4 text-gray-600">
+                            Resale
+                          </span>
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </>
                 </div>
               )}
@@ -1213,34 +1218,34 @@ const Step3 = () => {
                       )}
                     </div>
 
-                    <div>
-                      <p className="text-xl my-2">Purchase Type</p>
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
-                        <input
-                          className=" w-5 h-5 "
-                          type="radio"
-                          {...register("purchase_type")}
-                          id="underConstruction"
-                          value="New Booking"
-                        />
-                        <span className="text-lg ml-4 text-gray-600">
-                          New Booking
-                        </span>
-                      </div>
+                    {PostProperty?.PProperty_For === "sell" && (
+                      <div>
+                        <p className="text-xl my-2">Purchase Type</p>
+                        <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                          <input
+                            className=" w-5 h-5 "
+                            type="radio"
+                            {...register("purchase_type")}
+                            value="New Booking"
+                          />
+                          <span className="text-lg ml-4 text-gray-600">
+                            New Booking
+                          </span>
+                        </div>
 
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
-                        <input
-                          className=" w-5 h-5 "
-                          type="radio"
-                          {...register("purchase_type")}
-                          id="readyToMove"
-                          value="Resale"
-                        />
-                        <span className="text-lg ml-4 text-gray-600">
-                          Resale
-                        </span>
+                        <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                          <input
+                            className=" w-5 h-5 "
+                            type="radio"
+                            {...register("purchase_type")}
+                            value="Resale"
+                          />
+                          <span className="text-lg ml-4 text-gray-600">
+                            Resale
+                          </span>
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </>
                 </div>
               )}
@@ -1327,9 +1332,8 @@ const Step3 = () => {
                           <input
                             className=" w-5 h-5 "
                             type="radio"
-                            {...register("bathrooms")}
                             value="Private Washroom"
-                            checked=""
+                            {...register("bathrooms")}
                           />
                           <span className="text-lg ml-4 text-gray-600">
                             {" "}
@@ -1463,32 +1467,34 @@ const Step3 = () => {
                       )}
                     </div>
 
-                    <div>
-                      <p className="text-xl my-2">Purchase Type</p>
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
-                        <input
-                          className=" w-5 h-5 "
-                          type="radio"
-                          {...register("purchase_type")}
-                          value="New Booking"
-                        />
-                        <span className="text-lg ml-4 text-gray-600">
-                          New Booking
-                        </span>
-                      </div>
+                    {PostProperty?.PProperty_For === "sell" && (
+                      <div>
+                        <p className="text-xl my-2">Purchase Type</p>
+                        <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                          <input
+                            className=" w-5 h-5 "
+                            type="radio"
+                            {...register("purchase_type")}
+                            value="New Booking"
+                          />
+                          <span className="text-lg ml-4 text-gray-600">
+                            New Booking
+                          </span>
+                        </div>
 
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
-                        <input
-                          className=" w-5 h-5 "
-                          type="radio"
-                          {...register("purchase_type")}
-                          value="Resale"
-                        />
-                        <span className="text-lg ml-4 text-gray-600">
-                          Resale
-                        </span>
+                        <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                          <input
+                            className=" w-5 h-5 "
+                            type="radio"
+                            {...register("purchase_type")}
+                            value="Resale"
+                          />
+                          <span className="text-lg ml-4 text-gray-600">
+                            Resale
+                          </span>
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </>
                 </div>
               )}
@@ -1555,9 +1561,8 @@ const Step3 = () => {
                           <input
                             className=" w-5 h-5 "
                             type="radio"
-                            {...register("bathrooms")}
                             value="Private Washroom"
-                            checked=""
+                            {...register("bathrooms")}
                           />
                           <span className="text-lg ml-4 text-gray-600">
                             {" "}
@@ -1568,8 +1573,8 @@ const Step3 = () => {
                           <input
                             className=" w-5 h-5 "
                             type="radio"
-                            {...register("bathrooms")}
                             value="Shared Washroom"
+                            {...register("bathrooms")}
                           />
                           <span className="text-lg ml-4 text-gray-600">
                             Shared Washroom
@@ -1690,32 +1695,34 @@ const Step3 = () => {
                       )}
                     </div>
 
-                    <div>
-                      <p className="text-xl my-2">Purchase Type</p>
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
-                        <input
-                          className=" w-5 h-5 "
-                          type="radio"
-                          {...register("purchase_type")}
-                          value="New Booking"
-                        />
-                        <span className="text-lg ml-4 text-gray-600">
-                          New Booking
-                        </span>
-                      </div>
+                    {PostProperty?.PProperty_For === "sell" && (
+                      <div>
+                        <p className="text-xl my-2">Purchase Type</p>
+                        <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                          <input
+                            className=" w-5 h-5 "
+                            type="radio"
+                            {...register("purchase_type")}
+                            value="New Booking"
+                          />
+                          <span className="text-lg ml-4 text-gray-600">
+                            New Booking
+                          </span>
+                        </div>
 
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
-                        <input
-                          className=" w-5 h-5 "
-                          type="radio"
-                          {...register("purchase_type")}
-                          value="Resale"
-                        />
-                        <span className="text-lg ml-4 text-gray-600">
-                          Resale
-                        </span>
+                        <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                          <input
+                            className=" w-5 h-5 "
+                            type="radio"
+                            {...register("purchase_type")}
+                            value="Resale"
+                          />
+                          <span className="text-lg ml-4 text-gray-600">
+                            Resale
+                          </span>
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </>
                 </div>
               )}
@@ -1949,37 +1956,39 @@ const Step3 = () => {
                       )}
                     </div>
 
-                    <div>
-                      <p className="text-xl my-2">Purchase Type</p>
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
-                        <input
-                          className=" w-5 h-5 "
-                          type="radio"
-                          {...register("purchase_type")}
-                          value="New Booking"
-                        />
-                        <span className="text-lg ml-4 text-gray-600">
-                          New Booking
-                        </span>
-                      </div>
+                    {PostProperty?.PProperty_For === "sell" && (
+                      <div>
+                        <p className="text-xl my-2">Purchase Type</p>
+                        <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                          <input
+                            className=" w-5 h-5 "
+                            type="radio"
+                            {...register("purchase_type")}
+                            value="New Booking"
+                          />
+                          <span className="text-lg ml-4 text-gray-600">
+                            New Booking
+                          </span>
+                        </div>
 
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
-                        <input
-                          className=" w-5 h-5 "
-                          type="radio"
-                          {...register("purchase_type")}
-                          value="Resale"
-                        />
-                        <span className="text-lg ml-4 text-gray-600">
-                          Resale
-                        </span>
+                        <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                          <input
+                            className=" w-5 h-5 "
+                            type="radio"
+                            {...register("purchase_type")}
+                            value="Resale"
+                          />
+                          <span className="text-lg ml-4 text-gray-600">
+                            Resale
+                          </span>
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </>
                 </div>
               )}
 
-              {/* {PostProperty?.Property_Type === "warehouse" && (
+              {PostProperty?.Property_Type === "warehouse" && (
                 <div>
                   <>
                     <div className="flex justify-center items-start flex-col ">
@@ -2279,7 +2288,7 @@ const Step3 = () => {
                     </div>
                   </>
                 </div>
-              )} */}
+              )}
             </div>
           )}
         </div>

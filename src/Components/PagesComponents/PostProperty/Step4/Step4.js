@@ -221,7 +221,8 @@ const Step4 = () => {
                   </>
                 )}
 
-              {(PostProperty.Property_Type === "villa" ||
+              {(PostProperty.Property_Type === "floor" ||
+                PostProperty.Property_Type === "villa" ||
                 PostProperty.Property_Type === "flat" ||
                 PostProperty.Property_Type === "office" ||
                 PostProperty.Property_Type === "shop" ||

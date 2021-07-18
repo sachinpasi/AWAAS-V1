@@ -96,7 +96,7 @@ const Step2 = () => {
                     />
 
                     <input
-                      {...register("project_name")}
+                      {...register("project_name", { required: true })}
                       className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
                       type="text"
                       placeholder="Apartment / Society"
@@ -104,7 +104,7 @@ const Step2 = () => {
                     />
 
                     <select
-                      {...register("locality_id")}
+                      {...register("locality_id", { required: true })}
                       className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
                       type="text"
                       placeholder="Locality"
@@ -127,7 +127,7 @@ const Step2 = () => {
                     </select>
 
                     <input
-                      {...register("plot_no")}
+                      {...register("plot_no", { required: true })}
                       className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
                       type="text"
                       placeholder="Plot No."

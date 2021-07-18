@@ -10,18 +10,27 @@ import {
 } from "react-icons/fa";
 import { HiMail } from "react-icons/hi";
 import Login from "../../PagesComponents/Login/Login";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../../Redux/_features/_userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser, SIGNOUT } from "../../../Redux/_features/_userSlice";
 
 const HomeNav = () => {
   const [isLoginModalOpen, setisLoginModalOpen] = useState(false);
   const user = useSelector(selectUser);
 
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const HandlePostProperty = () => {
     if (user.isLoggedIn) {
       history.push("/post-property");
+    } else {
+      setisLoginModalOpen(true);
+    }
+  };
+
+  const HandlePostProject = () => {
+    if (user.isLoggedIn) {
+      history.push("/post-project");
     } else {
       setisLoginModalOpen(true);
     }
@@ -95,12 +104,32 @@ const HomeNav = () => {
                 Post Property Free
               </p>
             </div>
+
+            {user.accountType === 0 && (
+              <div
+                onClick={HandlePostProject}
+                className="w-auto cursor-pointer"
+              >
+                <p
+                  style={{
+                    textShadow: "2px 3px 5px #000",
+                  }}
+                  className="text-white text-base px-2"
+                >
+                  Post Project
+                </p>
+              </div>
+            )}
+
             <NavItem Name="Home Loan" To="/home-loans" />
             <NavItem Name="Investment Assistance" To="/investment-assist" />
             <NavItem Name="Awaas Assist" To="/awaas-assist" />
             <NavItem Name="Vastu / Legal" To="/" />
             {user.isLoggedIn ? (
-              <div className="w-auto bg-blue flex justify-center items-center py-1 px-4 rounded shadow-md ml-2 cursor-pointer ">
+              <div
+                onClick={() => dispatch(SIGNOUT())}
+                className="w-auto bg-blue flex justify-center items-center py-1 px-4 rounded shadow-md ml-2 cursor-pointer "
+              >
                 <FaUserCircle className="text-white text-xl" />
                 <p className="text-white text-lg pl-1 ">Profile</p>
               </div>

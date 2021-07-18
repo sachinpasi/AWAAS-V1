@@ -27,14 +27,21 @@ const Login = ({ isLoginModalOpen, setisLoginModalOpen }) => {
   const onMobileNoSubmit = async (data) => {
     console.log(data);
     setMobileNo(data.mobile);
-    const res = await axios.post(`${API}/users/login?mobile=${data.mobile}`);
-    console.log(res.data);
-    if (res.status === 200) {
-      setisOtpSent(true);
-      return toast.success(`OTP Sent To ${data.mobile} `);
+    try {
+      const res = await axios.post(`${API}/users/login?mobile=${data.mobile}`);
+      console.log(res.data);
+      if (res.status === 200) {
+        setisOtpSent(true);
+        return toast.success(`OTP Sent To ${data.mobile} `);
+      }
+    } catch (error) {
+      if (error.response) {
+        if (error.response.data.message) {
+          return toast.error("Please Signup First");
+        }
+      }
     }
   };
-  console.log(errors);
 
   const onOtpSubmit = async (data) => {
     const { otp } = data;
@@ -51,6 +58,7 @@ const Login = ({ isLoginModalOpen, setisLoginModalOpen }) => {
           email: res.data.data.email,
           mobile: res.data.data.contactNo,
           token: res.data.data.api_token,
+          accountType: res.data.data.account_type,
         })
       );
 
@@ -60,15 +68,25 @@ const Login = ({ isLoginModalOpen, setisLoginModalOpen }) => {
 
   const onResisterSubmit = async (data) => {
     const { name, email, mobile } = data;
-    const res = await axios.post(`${API}/users/register`, {
-      mobile: mobile,
-      name: name,
-      email: email,
-      account_type: 1,
-    });
-    console.log(res);
-    if (res.status === 200) {
-      return toast.success("Signup Successfully!");
+    try {
+      const res = await axios.post(`${API}/users/register`, {
+        mobile: mobile,
+        name: name,
+        email: email,
+        account_type: 1,
+      });
+      console.log(res);
+      if (res.status === 200) {
+        return toast.success("Signup Successfully!");
+      }
+    } catch (error) {
+      if (error.response) {
+        if (error.response.data.errors.email) {
+          return toast.error(error.response.data.errors.email[0]);
+        } else if (error.response.data.errors.mobile) {
+          return toast.error(error.response.data.errors.mobile[0]);
+        }
+      }
     }
   };
 
@@ -91,10 +109,10 @@ const Login = ({ isLoginModalOpen, setisLoginModalOpen }) => {
       > */}
       <div
         style={{
-          transition: "all 0.2s ease-in",
+          transition: "all 0.3s linear",
         }}
         className={`w-3/5 h-500px bg-white rounded-lg flex justify-center z-50  overflow-hidden   shadow-2xl left-2/4 right-2/4 top-2/4 bottom-2/4 transform -translate-x-2/4 -translate-y-2/4 fixed  ${
-          isLoginModalOpen ? "top-auto" : "-top-full"
+          isLoginModalOpen ? "top-auto opacity-100" : "-top-full opacity-0"
         }`}
       >
         <div className="p-8 w-2/5 relative h-full flex flex-col justify-center items-start ">
@@ -259,9 +277,9 @@ const Login = ({ isLoginModalOpen, setisLoginModalOpen }) => {
         <div className="w-3/5 h-full relative">
           <div
             onClick={() => setisLoginModalOpen(false)}
-            className="absolute right-0 top-0 z-50 bg-white w-8 h-8 flex justify-center items-center rounded-full font-medium text-2xl leading-none cursor-pointer"
+            className="absolute right-0 top-0 z-50 w-8 h-8 flex justify-center items-center rounded-full font-medium text-2xl leading-none cursor-pointer"
           >
-            <AiOutlineClose />
+            <AiOutlineClose className="text-white" />
           </div>
           <img
             className="w-full h-full object-cover"

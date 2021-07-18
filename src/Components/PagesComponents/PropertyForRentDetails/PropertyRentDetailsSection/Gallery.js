@@ -35,7 +35,7 @@ const Gallery = () => {
                 style={{
                   maxHeight: "400px",
                 }}
-                src={`https://codeiator.com/${item}`}
+                src={item}
                 alt=""
               />
             </SwiperSlide>

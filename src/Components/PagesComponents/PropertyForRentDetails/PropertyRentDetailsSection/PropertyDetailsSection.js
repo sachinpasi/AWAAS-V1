@@ -4,8 +4,9 @@ import PriceSection from "./PriceSection";
 import Sidebar from "./Sidebar";
 import Gallery from "./Gallery";
 import Configuration from "./Configuration";
-import Amenities from "../../ProjectDetails/ProjectDetailsSection/Amenities";
+
 import PropertyDescription from "./PropertyDescription";
+import Amenities from "./Amenities";
 
 const PropertyDetailsSection = () => {
   return (

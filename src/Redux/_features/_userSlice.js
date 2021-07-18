@@ -9,6 +9,7 @@ const userSlice = createSlice({
       email: null,
       contactNo: null,
       token: null,
+      accountType: null,
     },
   },
   reducers: {

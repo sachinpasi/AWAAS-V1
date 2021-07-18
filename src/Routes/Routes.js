@@ -8,6 +8,7 @@ import PropertyForRentDetails from "../Pages/PropertyForRentDetails";
 import InvestmentAssist from "../Pages/InvestmentAssist";
 import AwaasAssist from "../Pages/AwaasAssist";
 import PostProperty from "../Pages/PostProperty";
+import PostProject from "../Pages/PostProject";
 
 const Routes = () => {
   return (
@@ -30,6 +31,7 @@ const Routes = () => {
         />
 
         <Route exact path="/post-property" component={PostProperty} />
+        <Route exact path="/post-project" component={PostProject} />
       </Switch>
     </Router>
   );

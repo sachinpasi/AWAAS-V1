@@ -14,8 +14,9 @@ const Configuration = () => {
       </div>
 
       <div className="w-full h-full grid grid-cols-3 gap-6 my-4 ">
-        {Data?.configuration?.slice(0, 5).map((item) => (
+        {Data?.configuration?.slice(0, 5).map((item, index) => (
           <div
+            key={index}
             style={{
               background: "linear-gradient(to right,#598df5, #2f5fbe)",
             }}
