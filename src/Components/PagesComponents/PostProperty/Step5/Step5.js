@@ -171,13 +171,16 @@ const Step5 = () => {
               </div>
             </div>
           </div>
-          <div>
-            <input
-              className=""
-              type="file"
-              multiple
-              onChange={ImageHandleChange}
-            ></input>
+          <div className="flex flex-col">
+            <label className="customfileUpload bg-blue font-medium w-60">
+              Choose Images
+              <input
+                className=""
+                type="file"
+                multiple
+                onChange={ImageHandleChange}
+              ></input>
+            </label>
 
             <div className="grid grid-cols-4 gap-4 my-4 ">
               {RenderPhotos(SelectedFileForPrev)}
@@ -192,7 +195,7 @@ const Step5 = () => {
             )}
             <button
               onClick={HandleImageUpload}
-              className="w-44  h-12 bg-blue text-xl font-medium text-white ml-2"
+              className="w-44  h-12 bg-blue text-xl font-medium text-white  my-2"
             >
               Upload Images
             </button>

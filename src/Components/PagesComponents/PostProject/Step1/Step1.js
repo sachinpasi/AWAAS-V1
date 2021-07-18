@@ -10,6 +10,7 @@ import {
   selectPostProjectId,
   SET_POST_PROJECT_ID,
 } from "../../../../Redux/_features/_PostProjectSlice";
+import { SET_CURRENT_STEP } from "../../../../Redux/_features/_PostProjectStepSlice";
 import { selectUser } from "../../../../Redux/_features/_userSlice";
 
 const Step1 = () => {
@@ -19,12 +20,6 @@ const Step1 = () => {
   });
 
   const user = useSelector(selectUser);
-  const [Brochure, setBrochure] = useState([
-    {
-      title: "",
-      file: null,
-    },
-  ]);
 
   const [BannerImg, setBannerImg] = useState(null);
   const [ProjectLogo, setProjectLogo] = useState(null);
@@ -32,33 +27,6 @@ const Step1 = () => {
   const [BannerImgPrev, setBannerImgPrev] = useState(null);
   const [ProjectLogoPrev, setProjectLogoPrev] = useState(null);
   const [DeveloperLogoPrev, setDeveloperLogoPrev] = useState(null);
-
-  console.log(Brochure);
-
-  const HandleChange = (e, index) => {
-    console.log(e);
-    const { name, value } = e.target;
-    const list = [...Brochure];
-    list[index][name] = value;
-    setBrochure(list);
-  };
-
-  const HandleDocumentChange = (e, index) => {
-    const { name, files } = e.target;
-    const list = [...Brochure];
-    list[index][name] = files[0];
-    setBrochure(list);
-  };
-
-  const handleAddClick = () => {
-    setBrochure([...Brochure, { title: "", file: null }]);
-  };
-
-  const handleRemoveClick = (index) => {
-    const list = [...Brochure];
-    list.splice(index, 1);
-    setBrochure(list);
-  };
 
   const HandleBannerImgChange = (e) => {
     setBannerImg(e.target.files[0]);
@@ -73,9 +41,33 @@ const Step1 = () => {
     }
   };
 
+  const HandleProjectLogoChange = (e) => {
+    setProjectLogo(e.target.files[0]);
+    if (e.target.files) {
+      const fileArray = Array.from(e.target.files).map((file) =>
+        URL.createObjectURL(file)
+      );
+
+      console.log(fileArray);
+      setProjectLogoPrev(fileArray);
+      Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
+    }
+  };
+  const HandleDeveloperLogoChange = (e) => {
+    setDeveloperLogo(e.target.files[0]);
+    if (e.target.files) {
+      const fileArray = Array.from(e.target.files).map((file) =>
+        URL.createObjectURL(file)
+      );
+
+      console.log(fileArray);
+      setDeveloperLogoPrev(fileArray);
+      Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
+    }
+  };
+
   const RenderPhotos = (source) => {
-    console.log(source);
-    return source.map((photo) => {
+    return source?.map((photo) => {
       return (
         <img
           className="w-full h-full object-cover"
@@ -88,42 +80,16 @@ const Step1 = () => {
   };
 
   const dispatch = useDispatch();
-  const history = useHistory();
-  const TableId = useSelector(selectPostProjectId);
+
+  const HandleContinue = () => {
+    dispatch(SET_CURRENT_STEP(2));
+  };
 
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
-
-  const HandleBroucherUpload = () => {
-    Brochure.forEach((item) => {
-      if (item) {
-        const formData = new FormData();
-        formData.append("brochure", item.file);
-        formData.append("brochure_title", item.title);
-        formData.append("id", TableId);
-
-        const UploadBrochure = async () => {
-          const res = await axios.post(
-            `${API}/projects/store-brochure`,
-            formData,
-            {
-              headers: {
-                Method: "POST",
-                ContentType: "multipart/form-data",
-                Authorization: `Bearer ${user.token}`,
-              },
-            }
-          );
-
-          console.log(res);
-        };
-        UploadBrochure();
-      }
-    });
-  };
 
   const HandleStep1Submit = async (data) => {
     console.log(data);
@@ -165,13 +131,10 @@ const Step1 = () => {
     if (res.status === 200) {
       console.log(res);
       dispatch(SET_POST_PROJECT_ID(res.data.data.id));
+      HandleContinue();
     }
   };
-  useEffect(() => {
-    return () => {
-      dispatch(RESET_POST_PROJECT_ID());
-    };
-  }, [dispatch]);
+
   return (
     <form
       onSubmit={handleSubmit(HandleStep1Submit)}
@@ -341,7 +304,7 @@ const Step1 = () => {
                   <label className="customfileUpload bg-blue font-medium w-60">
                     Choose Project Logo
                     <input
-                      onChange={(e) => setProjectLogo(e.target.files[0])}
+                      onChange={HandleProjectLogoChange}
                       type="file"
                       name="file"
                     />
@@ -351,7 +314,7 @@ const Step1 = () => {
                   <label className="customfileUpload bg-blue font-medium w-60">
                     Choose Developer Logo
                     <input
-                      onChange={(e) => setDeveloperLogo(e.target.files[0])}
+                      onChange={HandleDeveloperLogoChange}
                       type="file"
                       name="file"
                     />
@@ -359,8 +322,32 @@ const Step1 = () => {
                 </div>
               </div>
             </div>
-            <div className="w-1/4 flex flex-col items-center">
-              <div className="w-40 h-20 ">{RenderPhotos(BannerImgPrev)}</div>
+            <div className="w-1/5 flex flex-col items-start">
+              {BannerImg && (
+                <div className="my-2">
+                  <p className="text-lg">Project Logo Preview</p>
+                  <div className="w-40 h-20 border-1 my-2 ">
+                    {RenderPhotos(BannerImgPrev)}
+                  </div>
+                </div>
+              )}
+              {ProjectLogo && (
+                <div className="my-3">
+                  <p className="text-lg">Banner Image Preview</p>
+                  <div className="w-40 h-20 border-1 my-2 ">
+                    {RenderPhotos(ProjectLogoPrev)}
+                  </div>
+                </div>
+              )}
+
+              {DeveloperLogo && (
+                <div className="my-3">
+                  <p className="text-lg">Developer Logo Preview</p>
+                  <div className="w-40 h-20 border-1 my-2 ">
+                    {RenderPhotos(DeveloperLogoPrev)}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
           <div className="w-full flex my-4">
@@ -370,69 +357,6 @@ const Step1 = () => {
             >
               Next
             </button>
-          </div>
-          <div id="brochure" className="w-3/4 my-4 border-t-2 pt-4 relative ">
-            <p className="text-3xl font-medium uppercase pb-4">
-              Broucher Details
-            </p>
-            {TableId === null && (
-              <div className="w-full h-4/5 absolute cursor-not-allowed bg-opacitygray hover:bg-gray-300  z-50 flex justify-center items-center">
-                <p className="text-center text-white font-medium text-3xl">
-                  Please Fill The Project Details First
-                </p>
-              </div>
-            )}
-            {Brochure.map((x, i) => (
-              <div key={i} className="w-full flex justify-between">
-                <input
-                  className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
-                  type="text"
-                  name="title"
-                  placeholder="Brochure Title"
-                  value={x.title}
-                  onChange={(e) => HandleChange(e, i)}
-                />
-                <div
-                  className={`flex w-96  ${
-                    Brochure.length === 1 ? "justify-end" : "justify-between"
-                  } items-center my-2`}
-                >
-                  <label className="customfileUpload bg-blue font-medium w-60">
-                    Choose Brochure File
-                    <input
-                      value={i.file}
-                      onChange={(e) => HandleDocumentChange(e, i)}
-                      type="file"
-                      name="file"
-                    />
-                  </label>
-                  {Brochure.length !== 1 && (
-                    <button
-                      className="bg-blue text-white flex justify-center items-center px-8 h-10 font-medium text-lg "
-                      onClick={() => handleRemoveClick(i)}
-                    >
-                      Remove
-                    </button>
-                  )}
-                </div>
-              </div>
-            ))}
-
-            <div className="w-full flex flex-col justify-end items-end ">
-              <button
-                onClick={handleAddClick}
-                className="bg-blue text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg w-60 "
-              >
-                + Add More Brochure
-              </button>
-
-              <button
-                onClick={HandleBroucherUpload}
-                className="bg-blue text-white flex justify-center items-center  h-10 font-medium text-lg w-60 "
-              >
-                Upload Brochure
-              </button>
-            </div>
           </div>
         </div>
       </div>
