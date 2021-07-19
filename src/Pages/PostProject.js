@@ -5,6 +5,7 @@ import Step1 from "../Components/PagesComponents/PostProject/Step1/Step1";
 import Step2 from "../Components/PagesComponents/PostProject/Step2/Step2";
 import Step3 from "../Components/PagesComponents/PostProject/Step3/Step3";
 import Step4 from "../Components/PagesComponents/PostProject/Step4/Step4";
+
 import {
   RESET_CURRENT_STEP,
   selectCurrentStep,
