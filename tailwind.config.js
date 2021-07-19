@@ -19,6 +19,7 @@ module.exports = {
         widgetborder: "#88909F",
         projectsborder: "#E9E9E9",
         opacitygray: "rgba(192,192,192,0.8)",
+        red: "#FF0000",
 
         textbg: "#F8F8F8",
         navtext: "#4F525A",

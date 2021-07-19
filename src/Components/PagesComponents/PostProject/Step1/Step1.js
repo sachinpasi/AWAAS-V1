@@ -201,7 +201,7 @@ const Step1 = () => {
                       className=" w-5 h-5 "
                       type="radio"
                       {...register("possession")}
-                      value="Ready to move"
+                      value="Ready To Move"
                       onClick={(e) =>
                         setPossessionState({
                           ReadyToMove: "Ready To Move",
