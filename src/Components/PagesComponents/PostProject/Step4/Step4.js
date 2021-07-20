@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -61,6 +61,16 @@ const Step4 = () => {
       TotalCommercialtRequest +
       TotalOfficeRequest
   );
+
+  const ResetEveryThing = () => {
+    setTotalFlatRequest(0);
+    setTotalVillaRequest(0);
+    setTotalScoRequest(0);
+    setTotalPlotRequest(0);
+    setTotalCommercialRequest(0);
+    setTotalOfficeRequest(0);
+    setError([]);
+  };
 
   const [Response, setResponse] = useState([]);
 
@@ -208,7 +218,7 @@ const Step4 = () => {
             } catch (error) {
               if (error.response.status !== 200) {
                 setResponse((Prev) => [...Prev, false]);
-                setError((prev) => [...prev, ["Flat", index + 1]]);
+                setError((prev) => [...prev, ["Flat", index]]);
               }
             }
           };
@@ -220,7 +230,7 @@ const Step4 = () => {
     if (data?.VILLA) {
       const VILLA_ARRAY = data?.VILLA;
       setTotalVillaRequest(TotalVillaRequest + VILLA_ARRAY?.length);
-      VILLA_ARRAY.forEach((item) => {
+      VILLA_ARRAY.forEach((item, index) => {
         if (item) {
           const formData = new FormData();
           formData.append("villaTitle", item.villaTitle);
@@ -271,6 +281,7 @@ const Step4 = () => {
             } catch (error) {
               if (error.response.status !== 200) {
                 setResponse((Prev) => [...Prev, false]);
+                setError((prev) => [...prev, ["Flat", index]]);
               }
             }
           };
@@ -284,7 +295,7 @@ const Step4 = () => {
       const SCO_ARRAY = data?.SCO;
       setTotalScoRequest(TotalScoRequest + SCO_ARRAY?.length);
 
-      SCO_ARRAY.forEach((item) => {
+      SCO_ARRAY.forEach((item, index) => {
         if (item) {
           const formData = new FormData();
           formData.append("Title", item.Title);
@@ -334,6 +345,7 @@ const Step4 = () => {
             } catch (error) {
               if (error.response.status !== 200) {
                 setResponse((Prev) => [...Prev, false]);
+                setError((prev) => [...prev, ["Flat", index]]);
               }
             }
           };
@@ -347,7 +359,7 @@ const Step4 = () => {
       const PLOT_ARRAY = data?.PLOT;
       setTotalPlotRequest(TotalPlotRequest + PLOT_ARRAY?.length);
 
-      PLOT_ARRAY.forEach((item) => {
+      PLOT_ARRAY.forEach((item, index) => {
         if (item) {
           const formData = new FormData();
           formData.append("Title", item.Title);
@@ -391,6 +403,7 @@ const Step4 = () => {
             } catch (error) {
               if (error.response.status !== 200) {
                 setResponse((Prev) => [...Prev, false]);
+                setError((prev) => [...prev, ["Flat", index]]);
               }
             }
           };
@@ -406,7 +419,7 @@ const Step4 = () => {
         TotalCommercialtRequest + COMMERCIAL_ARRAY?.length
       );
 
-      COMMERCIAL_ARRAY.forEach((item) => {
+      COMMERCIAL_ARRAY.forEach((item, index) => {
         if (item) {
           const formData = new FormData();
           formData.append("Title", item.Title);
@@ -450,6 +463,7 @@ const Step4 = () => {
             } catch (error) {
               if (error.response.status !== 200) {
                 setResponse((Prev) => [...Prev, false]);
+                setError((prev) => [...prev, ["Flat", index]]);
               }
             }
           };
@@ -462,7 +476,7 @@ const Step4 = () => {
     if (data?.OFFICE) {
       const OFFICE_ARRAY = data?.OFFICE;
       setTotalOfficeRequest(TotalOfficeRequest + OFFICE_ARRAY?.length);
-      OFFICE_ARRAY.forEach((item) => {
+      OFFICE_ARRAY.forEach((item, index) => {
         if (item) {
           const formData = new FormData();
           formData.append("Title", item.Title);
@@ -514,6 +528,7 @@ const Step4 = () => {
             } catch (error) {
               if (error.response.status !== 200) {
                 setResponse((Prev) => [...Prev, false]);
+                setError((prev) => [...prev, ["Flat", index]]);
               }
             }
           };
@@ -537,7 +552,7 @@ const Step4 = () => {
     ) {
       if (Response.length !== 0) {
         if (Response.every(CheckTrue)) {
-          // history.push("/");
+          history.push("/");
           return toast.success("Project Added Sucessfully");
         } else {
           return toast.error("All Fields Are Mandatory");
@@ -550,6 +565,7 @@ const Step4 = () => {
     if (Error.length !== 0) {
       Error?.forEach((item, index) => {
         console.log(item[0], item[1]);
+        // document.getElementById().scrollIntoView(true);
       });
     }
   }, [Error]);
@@ -750,6 +766,7 @@ const Step4 = () => {
                     <fieldset
                       name={fieldName}
                       key={fieldName}
+                      id={fieldName}
                       className="w-3/4 my-4  flex flex-col items-start border-b-2"
                     >
                       <h4 className="text-2xl font-medium  uppercase mb-4">
@@ -1824,6 +1841,7 @@ const Step4 = () => {
               <button
                 className="bg-blue text-white flex justify-center items-center  h-10 my-2 font-medium text-lg w-52 "
                 type="submit"
+                onClick={ResetEveryThing}
               >
                 POST PROJECT
               </button>
