@@ -72,7 +72,7 @@ const ProjectNav = () => {
                   }`}
                 >
                   <p
-                    className={`text-base font-medium  px-2  ${
+                    className={`text-base font-medium capitalize  px-2  ${
                       ActiveChildTab === childItem.new_name
                         ? "text-blue"
                         : "text-darkgray"

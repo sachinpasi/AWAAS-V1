@@ -44,13 +44,27 @@ const Step4 = () => {
   const [COMMERCIAL_COUNTER, setCOMMERCIAL_COUNTER] = useState(0);
   const [OFFICE_COUNTER, setOFFICE_COUNTER] = useState(0);
 
-  const [TotalApiHitCount, setTotalApiHitCount] = useState(0);
+  const [TotalFlatRequest, setTotalFlatRequest] = useState(0);
+  const [TotalVillaRequest, setTotalVillaRequest] = useState(0);
+  const [TotalScoRequest, setTotalScoRequest] = useState(0);
+  const [TotalPlotRequest, setTotalPlotRequest] = useState(0);
+  const [TotalCommercialtRequest, setTotalCommercialRequest] = useState(0);
+  const [TotalOfficeRequest, setTotalOfficeRequest] = useState(0);
 
-  console.log(TotalApiHitCount);
+  const [Error, setError] = useState([]);
+
+  console.log(
+    TotalFlatRequest +
+      TotalVillaRequest +
+      TotalScoRequest +
+      TotalPlotRequest +
+      TotalCommercialtRequest +
+      TotalOfficeRequest
+  );
 
   const [Response, setResponse] = useState([]);
 
-  console.log(Response);
+  console.log(Error);
 
   const [isNavOpen, setisNavOpen] = useState(false);
 
@@ -141,9 +155,8 @@ const Step4 = () => {
 
     if (data?.FLAT) {
       const FLAT_ARRAY = data?.FLAT;
-
-      setTotalApiHitCount(TotalApiHitCount + FLAT_ARRAY?.length);
-      FLAT_ARRAY.forEach((item) => {
+      setTotalFlatRequest(TotalFlatRequest + FLAT_ARRAY?.length);
+      FLAT_ARRAY.forEach((item, index) => {
         if (item) {
           const formData = new FormData();
           formData.append("flatTitle", item.flatTitle);
@@ -174,8 +187,8 @@ const Step4 = () => {
             formData.append(`flatImages[${index}]`, file)
           );
 
-          try {
-            const UploadFlat = async () => {
+          const UploadFlat = async () => {
+            try {
               const res = await axios.post(
                 `${API}/projects/store-flat`,
                 formData,
@@ -192,20 +205,21 @@ const Step4 = () => {
               if (res.status === 200) {
                 setResponse((Prev) => [...Prev, true]);
               }
-            };
-            UploadFlat();
-          } catch (error) {
-            if (error) {
-              setResponse((Prev) => [...Prev, false]);
+            } catch (error) {
+              if (error.response.status !== 200) {
+                setResponse((Prev) => [...Prev, false]);
+                setError((prev) => [...prev, ["Flat", index + 1]]);
+              }
             }
-          }
+          };
+          UploadFlat();
         }
       });
     }
 
     if (data?.VILLA) {
       const VILLA_ARRAY = data?.VILLA;
-      console.log(VILLA_ARRAY);
+      setTotalVillaRequest(TotalVillaRequest + VILLA_ARRAY?.length);
       VILLA_ARRAY.forEach((item) => {
         if (item) {
           const formData = new FormData();
@@ -235,8 +249,9 @@ const Step4 = () => {
           Array.from(item.villaImages).map((file, index) =>
             formData.append(`villaImages[${index}]`, file)
           );
-          try {
-            const UploadFlat = async () => {
+
+          const UploadFlat = async () => {
+            try {
               const res = await axios.post(
                 `${API}/projects/store-villa`,
                 formData,
@@ -253,21 +268,22 @@ const Step4 = () => {
               if (res.status === 200) {
                 setResponse((Prev) => [...Prev, true]);
               }
-            };
-
-            UploadFlat();
-          } catch (error) {
-            if (error) {
-              setResponse((Prev) => [...Prev, false]);
+            } catch (error) {
+              if (error.response.status !== 200) {
+                setResponse((Prev) => [...Prev, false]);
+              }
             }
-          }
+          };
+
+          UploadFlat();
         }
       });
     }
 
     if (data?.SCO) {
       const SCO_ARRAY = data?.SCO;
-      console.log(SCO_ARRAY);
+      setTotalScoRequest(TotalScoRequest + SCO_ARRAY?.length);
+
       SCO_ARRAY.forEach((item) => {
         if (item) {
           const formData = new FormData();
@@ -296,8 +312,9 @@ const Step4 = () => {
           Array.from(item.Images).map((file, index) =>
             formData.append(`Images[${index}]`, file)
           );
-          try {
-            const UploadFlat = async () => {
+
+          const UploadFlat = async () => {
+            try {
               const res = await axios.post(
                 `${API}/projects/store-sco`,
                 formData,
@@ -314,19 +331,22 @@ const Step4 = () => {
               if (res.status === 200) {
                 setResponse((Prev) => [...Prev, true]);
               }
-            };
+            } catch (error) {
+              if (error.response.status !== 200) {
+                setResponse((Prev) => [...Prev, false]);
+              }
+            }
+          };
 
-            UploadFlat();
-          } catch (error) {
-            setResponse((Prev) => [...Prev, false]);
-          }
+          UploadFlat();
         }
       });
     }
 
     if (data?.PLOT) {
       const PLOT_ARRAY = data?.PLOT;
-      console.log(PLOT_ARRAY);
+      setTotalPlotRequest(TotalPlotRequest + PLOT_ARRAY?.length);
+
       PLOT_ARRAY.forEach((item) => {
         if (item) {
           const formData = new FormData();
@@ -351,21 +371,27 @@ const Step4 = () => {
           );
 
           const UploadPlot = async () => {
-            const res = await axios.post(
-              `${API}/projects/store-plot`,
-              formData,
-              {
-                headers: {
-                  Method: "POST",
-                  ContentType: "multipart/form-data",
-                  Authorization: `Bearer ${user.token}`,
-                },
-              }
-            );
+            try {
+              const res = await axios.post(
+                `${API}/projects/store-plot`,
+                formData,
+                {
+                  headers: {
+                    Method: "POST",
+                    ContentType: "multipart/form-data",
+                    Authorization: `Bearer ${user.token}`,
+                  },
+                }
+              );
 
-            console.log(res);
-            if (res.status === 200) {
-              setResponse((Prev) => [...Prev, true]);
+              console.log(res);
+              if (res.status === 200) {
+                setResponse((Prev) => [...Prev, true]);
+              }
+            } catch (error) {
+              if (error.response.status !== 200) {
+                setResponse((Prev) => [...Prev, false]);
+              }
             }
           };
 
@@ -376,7 +402,10 @@ const Step4 = () => {
 
     if (data?.COMMERCIAL) {
       const COMMERCIAL_ARRAY = data?.COMMERCIAL;
-      console.log(COMMERCIAL_ARRAY);
+      setTotalCommercialRequest(
+        TotalCommercialtRequest + COMMERCIAL_ARRAY?.length
+      );
+
       COMMERCIAL_ARRAY.forEach((item) => {
         if (item) {
           const formData = new FormData();
@@ -401,21 +430,27 @@ const Step4 = () => {
           );
 
           const UploadCommercial = async () => {
-            const res = await axios.post(
-              `${API}/projects/store-plot`,
-              formData,
-              {
-                headers: {
-                  Method: "POST",
-                  ContentType: "multipart/form-data",
-                  Authorization: `Bearer ${user.token}`,
-                },
-              }
-            );
+            try {
+              const res = await axios.post(
+                `${API}/projects/store-plot`,
+                formData,
+                {
+                  headers: {
+                    Method: "POST",
+                    ContentType: "multipart/form-data",
+                    Authorization: `Bearer ${user.token}`,
+                  },
+                }
+              );
 
-            console.log(res);
-            if (res.status === 200) {
-              setResponse((Prev) => [...Prev, true]);
+              console.log(res);
+              if (res.status === 200) {
+                setResponse((Prev) => [...Prev, true]);
+              }
+            } catch (error) {
+              if (error.response.status !== 200) {
+                setResponse((Prev) => [...Prev, false]);
+              }
             }
           };
 
@@ -426,7 +461,7 @@ const Step4 = () => {
 
     if (data?.OFFICE) {
       const OFFICE_ARRAY = data?.OFFICE;
-      console.log(OFFICE_ARRAY);
+      setTotalOfficeRequest(TotalOfficeRequest + OFFICE_ARRAY?.length);
       OFFICE_ARRAY.forEach((item) => {
         if (item) {
           const formData = new FormData();
@@ -459,21 +494,27 @@ const Step4 = () => {
           );
 
           const UploadCommercial = async () => {
-            const res = await axios.post(
-              `${API}/projects/store-space`,
-              formData,
-              {
-                headers: {
-                  Method: "POST",
-                  ContentType: "multipart/form-data",
-                  Authorization: `Bearer ${user.token}`,
-                },
-              }
-            );
+            try {
+              const res = await axios.post(
+                `${API}/projects/store-space`,
+                formData,
+                {
+                  headers: {
+                    Method: "POST",
+                    ContentType: "multipart/form-data",
+                    Authorization: `Bearer ${user.token}`,
+                  },
+                }
+              );
 
-            console.log(res);
-            if (res.status === 200) {
-              setResponse((Prev) => [...Prev, true]);
+              console.log(res);
+              if (res.status === 200) {
+                setResponse((Prev) => [...Prev, true]);
+              }
+            } catch (error) {
+              if (error.response.status !== 200) {
+                setResponse((Prev) => [...Prev, false]);
+              }
             }
           };
 
@@ -485,13 +526,33 @@ const Step4 = () => {
 
   useEffect(() => {
     const CheckTrue = (value) => value === true;
-    if (Response.length !== 0) {
-      if (Response.every(CheckTrue)) {
-        history.push("/");
-        return toast.success("Project Added Sucessfully");
+    if (
+      Response.length ===
+      TotalFlatRequest +
+        TotalVillaRequest +
+        TotalScoRequest +
+        TotalPlotRequest +
+        TotalCommercialtRequest +
+        TotalOfficeRequest
+    ) {
+      if (Response.length !== 0) {
+        if (Response.every(CheckTrue)) {
+          // history.push("/");
+          return toast.success("Project Added Sucessfully");
+        } else {
+          return toast.error("All Fields Are Mandatory");
+        }
       }
     }
   }, [Response]);
+
+  useEffect(() => {
+    if (Error.length !== 0) {
+      Error?.forEach((item, index) => {
+        console.log(item[0], item[1]);
+      });
+    }
+  }, [Error]);
 
   useEffect(() => {
     dispatch(
