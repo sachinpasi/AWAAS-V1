@@ -45,9 +45,7 @@ const Projects = () => {
                     {console.log()}
                     <img
                       className="w-full h-full object-cover"
-                      src={`https://codeiator.com/${
-                        JSON.parse(item.banner_image)[0]
-                      }`}
+                      src={item?.banner_image_path}
                       alt=""
                     />
                     <div

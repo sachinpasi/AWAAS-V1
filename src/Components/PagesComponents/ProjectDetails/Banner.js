@@ -16,10 +16,7 @@ const Banner = () => {
     <>
       <section
         style={{
-          background: `url(https://codeiator.com/${
-            Data.parent?.banner_image &&
-            JSON.parse(Data.parent?.banner_image)[0]
-          })`,
+          background: `url(${Data?.parent?.banner_image_path})`,
           backgroundSize: "cover",
           height: "27.5rem",
         }}

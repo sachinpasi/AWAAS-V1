@@ -20,10 +20,7 @@ const Sidebar = () => {
         <div className="h-full w-2/6">
           <img
             className="h-full object-contain bg-white p-1"
-            src={`https://codeiator.com/${
-              Data.parent?.developerlogo &&
-              JSON.parse(Data.parent?.developerlogo)[0]
-            }`}
+            src={Data?.parent?.developerlogo_path}
             alt=""
           />
         </div>

@@ -15,15 +15,15 @@ const ProjectNav = () => {
 
   useEffect(() => {
     if (Data?.parent_child) {
-      setActiveParentTab(Data?.parent_child[0].title);
-      setActiveChildTab(Data?.parent_child[0].child[0].new_name);
+      setActiveParentTab(Data?.parent_child[0]?.title);
+      setActiveChildTab(Data?.parent_child[0]?.child[0]?.new_name);
     }
   }, [Data]);
 
   useEffect(() => {
     Data.parent_child?.map((item) => {
       if (ActiveParentTab === item.title) {
-        setActiveChildTab(item.child[0].new_name);
+        setActiveChildTab(item.child[0]?.new_name);
       }
     });
   }, [ActiveParentTab]);

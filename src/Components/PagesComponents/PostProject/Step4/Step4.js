@@ -52,6 +52,7 @@ const Step4 = () => {
   const [TotalOfficeRequest, setTotalOfficeRequest] = useState(0);
 
   const [Error, setError] = useState([]);
+  const [isLoading, setisLoading] = useState(false);
 
   console.log(
     TotalFlatRequest +
@@ -74,7 +75,7 @@ const Step4 = () => {
 
   const [Response, setResponse] = useState([]);
 
-  console.log(Error);
+  console.log(isLoading);
 
   const [isNavOpen, setisNavOpen] = useState(false);
 
@@ -162,6 +163,9 @@ const Step4 = () => {
 
   const onSubmit = (data) => {
     setData(data);
+    if (data) {
+      setisLoading(true);
+    }
 
     if (data?.FLAT) {
       const FLAT_ARRAY = data?.FLAT;
@@ -218,7 +222,7 @@ const Step4 = () => {
             } catch (error) {
               if (error.response.status !== 200) {
                 setResponse((Prev) => [...Prev, false]);
-                setError((prev) => [...prev, ["Flat", index]]);
+                setError((prev) => [...prev, ["FLAT", index]]);
               }
             }
           };
@@ -281,7 +285,7 @@ const Step4 = () => {
             } catch (error) {
               if (error.response.status !== 200) {
                 setResponse((Prev) => [...Prev, false]);
-                setError((prev) => [...prev, ["Flat", index]]);
+                setError((prev) => [...prev, ["VILLA", index]]);
               }
             }
           };
@@ -345,7 +349,7 @@ const Step4 = () => {
             } catch (error) {
               if (error.response.status !== 200) {
                 setResponse((Prev) => [...Prev, false]);
-                setError((prev) => [...prev, ["Flat", index]]);
+                setError((prev) => [...prev, ["SCO", index]]);
               }
             }
           };
@@ -403,7 +407,7 @@ const Step4 = () => {
             } catch (error) {
               if (error.response.status !== 200) {
                 setResponse((Prev) => [...Prev, false]);
-                setError((prev) => [...prev, ["Flat", index]]);
+                setError((prev) => [...prev, ["PLOT", index]]);
               }
             }
           };
@@ -463,7 +467,7 @@ const Step4 = () => {
             } catch (error) {
               if (error.response.status !== 200) {
                 setResponse((Prev) => [...Prev, false]);
-                setError((prev) => [...prev, ["Flat", index]]);
+                setError((prev) => [...prev, ["COMMERCIAL", index]]);
               }
             }
           };
@@ -528,7 +532,7 @@ const Step4 = () => {
             } catch (error) {
               if (error.response.status !== 200) {
                 setResponse((Prev) => [...Prev, false]);
-                setError((prev) => [...prev, ["Flat", index]]);
+                setError((prev) => [...prev, ["OFFICE", index]]);
               }
             }
           };
@@ -537,6 +541,8 @@ const Step4 = () => {
         }
       });
     }
+
+    setisLoading(false);
   };
 
   useEffect(() => {
@@ -564,8 +570,12 @@ const Step4 = () => {
   useEffect(() => {
     if (Error.length !== 0) {
       Error?.forEach((item, index) => {
-        console.log(item[0], item[1]);
-        // document.getElementById().scrollIntoView(true);
+        console.log(`${item[0]}[${item[1]}]`);
+        if (item !== null) {
+          document
+            .getElementById(`${item[0]}[${item[1]}]`)
+            ?.scrollIntoView(true);
+        }
       });
     }
   }, [Error]);
@@ -767,8 +777,14 @@ const Step4 = () => {
                       name={fieldName}
                       key={fieldName}
                       id={fieldName}
-                      className="w-3/4 my-4  flex flex-col items-start border-b-2"
+                      className="w-3/4 my-4  flex flex-col items-start border-b-2 relative"
                     >
+                      <div className="absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
+                        {`Flat No `}
+                        <div className="bg-blue text-white w-12 h-12 flex justify-center items-center rounded-full">
+                          {index + 1}
+                        </div>
+                      </div>
                       <h4 className="text-2xl font-medium  uppercase mb-4">
                         {" "}
                         Flat / APARTMENT / FLOOR DETAILS
@@ -942,8 +958,14 @@ const Step4 = () => {
                     <fieldset
                       name={fieldName}
                       key={fieldName}
-                      className="w-3/4 my-4  flex flex-col items-start border-b-2"
+                      className="w-3/4 my-4  flex flex-col items-start border-b-2 relative"
                     >
+                      <div className="absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
+                        {`VILLA No `}
+                        <div className="bg-blue text-white w-12 h-12 flex justify-center items-center rounded-full">
+                          {index + 1}
+                        </div>
+                      </div>
                       <h4 className="text-2xl font-medium  uppercase mb-4">
                         {" "}
                         VILLA DETAILS
@@ -1110,8 +1132,14 @@ const Step4 = () => {
                     <fieldset
                       name={fieldName}
                       key={fieldName}
-                      className="w-3/4 my-4  flex flex-col items-start border-b-2"
+                      className="w-3/4 my-4  flex flex-col items-start border-b-2 relative"
                     >
+                      <div className="absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
+                        {`SCO No `}
+                        <div className="bg-blue text-white w-12 h-12 flex justify-center items-center rounded-full">
+                          {index + 1}
+                        </div>
+                      </div>
                       <h4 className="text-2xl font-medium  uppercase mb-4">
                         {" "}
                         SCO (SHOP CUM OFFICE) DETAILS
@@ -1300,8 +1328,14 @@ const Step4 = () => {
                     <fieldset
                       name={fieldName}
                       key={fieldName}
-                      className="w-3/4 my-4  flex flex-col items-start border-b-2"
+                      className="w-3/4 my-4  flex flex-col items-start border-b-2  relative"
                     >
+                      <div className="absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
+                        {`PLOT No `}
+                        <div className="bg-blue text-white w-12 h-12 flex justify-center items-center rounded-full">
+                          {index + 1}
+                        </div>
+                      </div>
                       <h4 className="text-2xl font-medium  uppercase mb-4">
                         {" "}
                         PLOT / LAND DETAILS
@@ -1442,8 +1476,14 @@ const Step4 = () => {
                     <fieldset
                       name={fieldName}
                       key={fieldName}
-                      className="w-3/4 my-4  flex flex-col items-start border-b-2"
+                      className="w-3/4 my-4  flex flex-col items-start border-b-2  relative"
                     >
+                      <div className="absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
+                        {`COMMERCIAL No `}
+                        <div className="bg-blue text-white w-12 h-12 flex justify-center items-center rounded-full">
+                          {index + 1}
+                        </div>
+                      </div>
                       <h4 className="text-2xl font-medium  uppercase mb-4">
                         {" "}
                         Commercial SCO Plot / Land Details
@@ -1614,8 +1654,14 @@ const Step4 = () => {
                     <fieldset
                       name={fieldName}
                       key={fieldName}
-                      className="w-3/4 my-4  flex flex-col items-start border-b-2"
+                      className="w-3/4 my-4  flex flex-col items-start border-b-2  relative"
                     >
+                      <div className="absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
+                        {`OFFICE No `}
+                        <div className="bg-blue text-white w-12 h-12 flex justify-center items-center rounded-full">
+                          {index + 1}
+                        </div>
+                      </div>
                       <h4 className="text-2xl font-medium  uppercase mb-4">
                         {" "}
                         MALL / OFFICE SPACE DETAILS
