@@ -9,12 +9,15 @@ import InvestmentAssist from "../Pages/InvestmentAssist";
 import AwaasAssist from "../Pages/AwaasAssist";
 import PostProperty from "../Pages/PostProperty";
 import PostProject from "../Pages/PostProject";
+import Search from "../Pages/Search";
 
 const Routes = () => {
   return (
     <Router>
       <Switch>
         <Route exact path="/" component={Homepage} />
+        <Route path="/search" component={Search} />
+
         <Route exact path="/home-loans" component={Homeloan} />
         <Route exact path="/investment-assist" component={InvestmentAssist} />
         <Route exact path="/awaas-assist" component={AwaasAssist} />

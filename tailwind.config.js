@@ -20,6 +20,7 @@ module.exports = {
         projectsborder: "#E9E9E9",
         opacitygray: "rgba(192,192,192,0.8)",
         red: "#FF0000",
+        green: "#2BD8B5",
 
         textbg: "#F8F8F8",
         navtext: "#4F525A",
@@ -30,9 +31,11 @@ module.exports = {
         "70vh": "70vh",
         "500px": "500px",
         "450px": "450px",
+        "58percent": "58%",
       },
       width: {
         "70percent": "70%",
+        "72percent": "72%",
         "30percent": "30%",
         "65percent": "65%",
       },

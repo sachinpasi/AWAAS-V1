@@ -5,16 +5,20 @@ import { MdLocationOn } from "react-icons/md";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Dropdown from "react-multilevel-dropdown";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import "./Banner.css";
 
 const Banner = () => {
   const [Data, setData] = useState([]);
   const [BannerURL, setBannerURL] = useState("");
-
+  const [LocalityList, setLocalityList] = useState([]);
+  const [PARAMS, setPARAMS] = useState();
+  console.log(PARAMS);
+  const history = useHistory();
+  const [Locality, setLocality] = useState();
   const [ParentPropertyType, setParentPropertyType] = useState("");
-  const [CurrentTab, setCurrentTab] = useState("BUY");
+  const [CurrentTab, setCurrentTab] = useState("buy");
   const [PropertyType, setPropertyType] = useState("Property Type");
   const [BudgetMin, setBudgetMin] = useState(0);
   const [BudgetMax, setBudgetMax] = useState(0);
@@ -48,11 +52,70 @@ const Banner = () => {
     </li>
   );
 
+  const FetchLocality = async () => {
+    const res = await axios.get(`${API}/locality/list`);
+    if (res.status === 200) {
+      setLocalityList(res.data.data);
+    }
+  };
+  useEffect(() => {
+    FetchLocality();
+  }, []);
+
   useEffect(() => {
     FetchData();
 
     window.scrollTo(0, 0);
   }, []);
+
+  const HandleSearch = () => {
+    history.push({ pathname: "/search", search: PARAMS });
+  };
+
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (CurrentTab) {
+      params.append("propertyFor", CurrentTab);
+    } else {
+      params.delete("propertyFor");
+    }
+    if (Locality) {
+      params.append("locality", Locality);
+    } else {
+      params.delete("locality");
+    }
+
+    if (PropertyType !== "Property Type") {
+      params.append("propertyType", PropertyType);
+    } else {
+      params.delete("propertyType");
+    }
+    if (ParentPropertyType) {
+      params.append("parentProperty", ParentPropertyType);
+    } else {
+      params.delete("parentProperty");
+    }
+    if (BudgetMin) {
+      params.append("min", BudgetMin);
+    } else {
+      params.delete("min");
+    }
+
+    if (BudgetMax) {
+      params.append("max", BudgetMax);
+    } else {
+      params.delete("max");
+    }
+
+    setPARAMS(params.toString());
+  }, [
+    Locality,
+    PropertyType,
+    BudgetMin,
+    BudgetMax,
+    ParentPropertyType,
+    history,
+  ]);
 
   return (
     <section
@@ -183,8 +246,16 @@ const Banner = () => {
         <div className="customContainer h-full flex justify-center items-start flex-col relative ">
           <div className=" h-36 absolute -bottom-24 w-full bg-white rounded shadow-lg flex justify-center items-center flex-col">
             <div className="w-3/4 mx-auto flex justify-center items-center my-2">
-              <NavItem Name="buy" Active />
-              <NavItem Name="Rent" />
+              <NavItem
+                Name="buy"
+                Active={CurrentTab === "buy"}
+                onClick={() => setCurrentTab("buy")}
+              />
+              <NavItem
+                Name="rent"
+                Active={CurrentTab === "rent"}
+                onClick={() => setCurrentTab("rent")}
+              />
               <NavItem Name="Projects" />
               <NavItem Name="SELL / LIST" />
             </div>
@@ -193,20 +264,34 @@ const Banner = () => {
               <div className="w-full h-14">
                 <select
                   className="border-l-1 border-t-1 border-b-1 w-full h-full flex items-center justify-center px-4 outline-none "
-                  name=""
-                  id=""
                   disabled
                 >
-                  <option value="">Panipat</option>
+                  <option defaultChecked value="Panipat">
+                    Panipat
+                  </option>
                 </select>
               </div>
               <div className="w-full h-14">
-                <input
-                  className="border-l-1 border-t-1 border-b-1 w-full h-full flex items-center justify-center px-4 outline-none placeholder-darkgray "
-                  name=""
-                  id=""
+                <select
+                  className="border-l-1 border-t-1 border-b-1 w-full h-full flex items-center justify-center px-4 outline-none placeholder-darkgray capitalize "
+                  type="text"
                   placeholder="Locality"
-                ></input>
+                  value={Locality}
+                  onChange={(e) => setLocality(e.target.value)}
+                >
+                  <option selected hidden>
+                    Locality
+                  </option>
+                  {LocalityList.map((item) => (
+                    <option
+                      key={item.id}
+                      className="capitalize"
+                      value={item.id}
+                    >
+                      {item.name}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="w-full h-14">
                 <div className=" border-l-1 border-t-1 border-b-1 w-full h-full flex items-center justify-center outline-none ">
@@ -222,8 +307,8 @@ const Banner = () => {
                       <Dropdown.Submenu position="right" className="Submenu">
                         <Dropdown.Item
                           onClick={() => {
-                            setPropertyType("Land");
-                            setParentPropertyType("Residential");
+                            setPropertyType("land");
+                            setParentPropertyType("residential");
                           }}
                           className="Item"
                         >
@@ -231,8 +316,8 @@ const Banner = () => {
                         </Dropdown.Item>
                         <Dropdown.Item
                           onClick={() => {
-                            setPropertyType("Villa");
-                            setParentPropertyType("Residential");
+                            setPropertyType("villa");
+                            setParentPropertyType("residential");
                           }}
                           className="Item"
                         >
@@ -240,8 +325,8 @@ const Banner = () => {
                         </Dropdown.Item>
                         <Dropdown.Item
                           onClick={() => {
-                            setPropertyType("Flat");
-                            setParentPropertyType("Residential");
+                            setPropertyType("flat");
+                            setParentPropertyType("residential");
                           }}
                           className="Item"
                         >
@@ -249,8 +334,8 @@ const Banner = () => {
                         </Dropdown.Item>
                         <Dropdown.Item
                           onClick={() => {
-                            setPropertyType("Floor");
-                            setParentPropertyType("Residential");
+                            setPropertyType("floor");
+                            setParentPropertyType("residential");
                           }}
                           className="Item"
                         >
@@ -258,8 +343,8 @@ const Banner = () => {
                         </Dropdown.Item>
                         <Dropdown.Item
                           onClick={() => {
-                            setPropertyType("Farmhouse");
-                            setParentPropertyType("Residential");
+                            setPropertyType("farmhouse");
+                            setParentPropertyType("residential");
                           }}
                           className="Item"
                         >
@@ -273,8 +358,8 @@ const Banner = () => {
                       <Dropdown.Submenu position="right" className="Submenu">
                         <Dropdown.Item
                           onClick={() => {
-                            setPropertyType("Land");
-                            setParentPropertyType("Commercial");
+                            setPropertyType("land");
+                            setParentPropertyType("commercial");
                           }}
                           className="Item"
                         >
@@ -282,8 +367,8 @@ const Banner = () => {
                         </Dropdown.Item>
                         <Dropdown.Item
                           onClick={() => {
-                            setPropertyType("Shop");
-                            setParentPropertyType("Commercial");
+                            setPropertyType("shop");
+                            setParentPropertyType("commercial");
                           }}
                           className="Item"
                         >
@@ -291,8 +376,8 @@ const Banner = () => {
                         </Dropdown.Item>
                         <Dropdown.Item
                           onClick={() => {
-                            setPropertyType("Officespace");
-                            setParentPropertyType("Commercial");
+                            setPropertyType("officespace");
+                            setParentPropertyType("commercial");
                           }}
                           className="Item"
                         >
@@ -306,8 +391,8 @@ const Banner = () => {
                       <Dropdown.Submenu position="right" className="Submenu">
                         <Dropdown.Item
                           onClick={() => {
-                            setPropertyType("Land");
-                            setParentPropertyType("Industrial");
+                            setPropertyType("land");
+                            setParentPropertyType("industrial");
                           }}
                           className="Item"
                         >
@@ -315,8 +400,8 @@ const Banner = () => {
                         </Dropdown.Item>
                         <Dropdown.Item
                           onClick={() => {
-                            setPropertyType("Factory");
-                            setParentPropertyType("Industrial");
+                            setPropertyType("factory");
+                            setParentPropertyType("industrial");
                           }}
                           className="Item"
                         >
@@ -324,8 +409,8 @@ const Banner = () => {
                         </Dropdown.Item>
                         <Dropdown.Item
                           onClick={() => {
-                            setPropertyType("Shop");
-                            setParentPropertyType("Industrial");
+                            setPropertyType("shop");
+                            setParentPropertyType("industrial");
                           }}
                           className="Item"
                         >
@@ -402,8 +487,8 @@ const Banner = () => {
 
             <div className="w-11/12 mx-auto flex justify-center items-center my-2">
               <button
+                onClick={HandleSearch}
                 className="cursor-pointer h-14 w-52 bg-blue text-1xl font-medium text-white  flex justify-center items-center"
-                type="submit"
               >
                 Search
               </button>
@@ -417,8 +502,9 @@ const Banner = () => {
 
 export default Banner;
 
-const NavItem = ({ Name, Active }) => (
+const NavItem = ({ Name, Active, onClick }) => (
   <div
+    onClick={onClick}
     style={{
       marginRight: "0.05rem",
       marginLeft: "0.05rem",
