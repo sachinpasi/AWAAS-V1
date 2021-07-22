@@ -40,7 +40,8 @@ const Result = () => {
             <div className="w-full  h-full flex">
               <img
                 className="h-full w-30percent object-cover rounded"
-                src="/assets/images/search/1.jpg"
+                // src="/assets/images/search/1.jpg"
+                src={`${item.single_image}`}
                 alt=""
               />
               <div className="ml-4 w-70percent flex flex-col ">
