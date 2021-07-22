@@ -31,14 +31,7 @@ const Configuration = () => {
 
       case "flat":
         if (childItem.flat_floor_images.length !== 0) {
-          return (
-            <img
-              src={`https://codeiator.com/${
-                JSON.parse(childItem.flat_floor_images)[0]
-              }`}
-              alt=""
-            />
-          );
+          return <img src={childItem.flat_floor_images_path[0]} alt="" />;
         }
 
       default:

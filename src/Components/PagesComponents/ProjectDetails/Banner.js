@@ -16,11 +16,9 @@ const Banner = () => {
     <>
       <section
         style={{
-          background: `url(${Data?.parent?.banner_image_path})`,
-          backgroundSize: "cover",
+          background: `url(${Data?.parent?.banner_image_path})  `,
           height: "27.5rem",
         }}
-        className="w-full "
       >
         <div
           style={{

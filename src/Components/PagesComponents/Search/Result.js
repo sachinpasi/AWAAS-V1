@@ -45,54 +45,36 @@ const Result = () => {
               />
               <div className="ml-4 w-70percent flex flex-col ">
                 <div className="w-full my-2 flex flex-col items-start border-b-1 border-dashed border-navborder pb-2">
-                  <p className="text-sm  text-widgetborder capitalize ">
-                    3 Bedroom Independent House in Samardha
+                  <p className="text-base  text-widgetborder capitalize ">
+                    {item?.city}
                   </p>
                   <p className="text-2xl py-1  font-medium text-darkgray capitalize">
-                    Sahib Prithvi Courtyard
+                    {item?.title}
                   </p>
                   <div className="flex my-1 justify-between w-3/4">
-                    <div className="flex flex-col">
-                      <p className="text-sm text-blue">Price</p>
-                      <p className="font-medium text-lg">
-                        &#8377; 39.51 - 44.51
-                        <span className="font-normal ml-1 text-base text-lightgray">
-                          Lac
-                        </span>
-                      </p>
-                    </div>
-                    <div className="flex flex-col">
-                      <p className="text-sm text-blue">Area</p>
-                      <p className="font-medium text-lg">
-                        1320-1640
-                        <span className="font-normal ml-1 text-base text-lightgray">
-                          Sq.ft
-                        </span>
-                      </p>
-                    </div>
-                    <div className="flex flex-col">
-                      <p className="text-sm text-blue">Room</p>
-                      <p className="font-medium text-lg">3BHK</p>
-                    </div>
+                    {item?.configuration.map((item, index) => (
+                      <div key={index} className="flex flex-col">
+                        <p className="text-sm text-blue capitalize">
+                          {item?.title}
+                        </p>
+                        <p className="font-medium text-lg capitalize">
+                          {item?.val}
+                        </p>
+                      </div>
+                    ))}
                   </div>
 
                   <p className=" line-clamp-1 capitalize w-11/12 text-widgetborder">
-                    Sahib prithvi courtyard in samardha, bhopal by sahib
-                    developers is a residential project. The project offers
-                    villa with perfect combination of contemporary architecture
-                    and features to provide comfortable living. The villa are of
-                    the following configurations: 3bhk. The area of the villa is
-                    from 95.97 sq. Mt to 135.17 sq. Mt Sahib prithvi courtyard
-                    offers facilities such as gymnasium.It also has...
+                    {item?.description}
                   </p>
                 </div>
                 <div className="flex h-full justify-between items-center w-full">
                   <p className="text-base text-blue font-medium capitalize">
-                    Posted On - 02-july-2021 by Builder
+                    Posted On - {item?.date} by Builder
                   </p>
 
                   <button className="bg-green rounded px-4 py-2 font-medium text-white">
-                    Contact Builder
+                    Contact
                   </button>
                 </div>
               </div>
