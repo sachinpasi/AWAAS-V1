@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { API } from "../../../API";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import queryString from "query-string";
 import { useEffect } from "react";
 
 const Result = () => {
   const [SearchResult, setSearchResult] = useState([]);
   const { search } = useLocation();
-  const { parentProperty, propertyType, locality, max, min } =
+  const { parentProperty, propertyType, propertyFor, locality, max, min } =
     queryString.parse(search);
 
   const FetchQuery = async () => {
@@ -28,12 +28,13 @@ const Result = () => {
     <div className="w-72percent  h-auto flex flex-col items-start  my-4">
       <p className="text-sm text-widgetborder ">Home > Property in Panipat</p>
       <p className="text-2xl text-darkgray my-2 leading-8 capitalize">
-        {SearchResult?.length} results |{parentProperty} / {propertyType} for
-        Sale in Panipat Above {min} with Photo
+        {SearchResult?.length} results |{parentProperty} | {propertyType} for
+        {propertyFor === "buy" && " sale"} in Panipat Above {min} with Photo
       </p>
       <div className="w-full h-full flex flex-col ">
         {SearchResult.map((item, index) => (
-          <div
+          <Link
+            to={`property/${propertyFor === "buy" && "sell"}/${item.p_id}`}
             key={index}
             className="bg-white h-64 w-full p-4 rounded-md shadow-md border-b-4 border-blue cursor-pointer my-4"
           >
@@ -89,7 +90,7 @@ const Result = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

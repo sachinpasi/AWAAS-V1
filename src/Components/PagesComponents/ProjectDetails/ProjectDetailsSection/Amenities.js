@@ -4,12 +4,12 @@ import { selectProjectDetails } from "../../../../Redux/_features/_ProjectDetail
 
 const Amenities = () => {
   const { Data } = useSelector(selectProjectDetails);
-  // console.log(JSON.parse(Data.parent.amenities)[0][1]);
+  console.log(Data?.parent?.amenities);
   const [AmenitiesList, setAmenitiesList] = useState([]);
 
   useEffect(() => {
     if (Data?.parent?.amenities) {
-      setAmenitiesList(JSON.parse(Data?.parent?.amenities));
+      setAmenitiesList(Data?.parent?.amenities);
     }
   }, [Data]);
 
@@ -29,10 +29,10 @@ const Amenities = () => {
           >
             <img
               className="object-contain w-1/5 h-auto"
-              src={`https://codeiator.com/uploads/${item[1]}`}
+              src={item?.icon}
               alt=""
             />
-            <p className="text-lg capitalize my-2 ">{item[0]}</p>
+            <p className="text-lg capitalize my-2 ">{item?.name}</p>
           </div>
         ))}{" "}
       </div>

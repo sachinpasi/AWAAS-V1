@@ -33,7 +33,7 @@ const Amenities = () => {
           >
             <img
               className="object-contain w-1/5 h-auto"
-              src={`https://codeiator.com/uploads/${item.icon}`}
+              src={item.icon}
               alt=""
             />
             <p className="text-lg capitalize my-2 ">{item.name}</p>

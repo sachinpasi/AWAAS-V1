@@ -10,6 +10,7 @@ import AwaasAssist from "../Pages/AwaasAssist";
 import PostProperty from "../Pages/PostProperty";
 import PostProject from "../Pages/PostProject";
 import Search from "../Pages/Search";
+import Article from "../Pages/Article";
 
 const Routes = () => {
   return (
@@ -21,12 +22,16 @@ const Routes = () => {
         <Route exact path="/home-loans" component={Homeloan} />
         <Route exact path="/investment-assist" component={InvestmentAssist} />
         <Route exact path="/awaas-assist" component={AwaasAssist} />
+
         <Route exact path="/projects/:id" component={ProjectDetails} />
+        <Route exact path="/article/:id" component={Article} />
+
         <Route
           exact
           path="/property/sell/:id"
           component={PropertyForSaleDetails}
         />
+
         <Route
           exact
           path="/property/rent/:id"

@@ -71,13 +71,12 @@ const Banner = () => {
                   <Dropdown.Item className="item">
                     <a
                       className="flex justify-between items-center"
-                      href={`https://codeiator.com/${
-                        Data.parent?.brochure &&
-                        JSON.parse(Data.parent?.brochure)[0].pdf
+                      href={`${
+                        Data.parent?.brochure && Data.parent?.brochure[0].icon
                       }`}
                     >
                       {Data?.parent?.brochure &&
-                        JSON.parse(Data?.parent?.brochure)[0].title}
+                        Data?.parent?.brochure[0].title}
                       <FaDownload className="ml-4 " />
                     </a>
                   </Dropdown.Item>

@@ -20,14 +20,7 @@ const Configuration = () => {
           />
         );
       case "plot":
-        return (
-          <img
-            // src={`https://codeiator.com/${
-            //   JSON.parse(childItem.floor_plan_image)[0]
-            // }`}
-            alt=""
-          />
-        );
+        return <img src={childItem.plot_images_path[0]} alt="" />;
 
       case "flat":
         if (childItem.flat_floor_images.length !== 0) {
