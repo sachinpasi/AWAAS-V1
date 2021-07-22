@@ -38,12 +38,21 @@ const Result = () => {
             className="bg-white h-64 w-full p-4 rounded-md shadow-md border-b-4 border-blue cursor-pointer my-4"
           >
             <div className="w-full  h-full flex">
-              <img
-                className="h-full w-30percent object-cover rounded"
-                // src="/assets/images/search/1.jpg"
-                src={`${item.single_image}`}
-                alt=""
-              />
+              {item.single_image === null ? (
+                <img
+                  className="h-full w-30percent object-cover rounded"
+                  src="/assets/images/search/palceholder.jpg"
+                  alt=""
+                />
+              ) : (
+                <img
+                  className="h-full w-30percent object-cover rounded"
+                  // src="/assets/images/search/1.jpg"
+                  src={`${item.single_image}`}
+                  alt=""
+                />
+              )}
+
               <div className="ml-4 w-70percent flex flex-col ">
                 <div className="w-full my-2 flex flex-col items-start border-b-1 border-dashed border-navborder pb-2">
                   <p className="text-base  text-widgetborder capitalize ">
