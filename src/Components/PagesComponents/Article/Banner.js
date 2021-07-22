@@ -1,6 +1,12 @@
 import React from "react";
-
-const Banner = () => {
+import moment from "moment";
+const Banner = ({ ArticleData }) => {
+  const getDate = (assignDate) => {
+    if (assignDate === undefined) return "";
+    let date;
+    date = moment(assignDate).format("MMMM D, YYYY");
+    return date;
+  };
   return (
     <section
       style={{
@@ -20,10 +26,10 @@ const Banner = () => {
       >
         <div className="customContainer flex flex-col items-start justify-center h-full">
           <p className="text-5xl font-semibold text-white w-2/4">
-            Guide to claim tax benefits on home loan interest
+            {ArticleData?.title}
           </p>
           <p className="text-white my-2 text-lg">
-            September 2,2020 by Himanshu Arora
+            {getDate(ArticleData?.created_at)}
           </p>
         </div>
       </div>
