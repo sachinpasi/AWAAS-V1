@@ -115,6 +115,7 @@ const Banner = () => {
     BudgetMax,
     ParentPropertyType,
     history,
+    CurrentTab,
   ]);
 
   return (
