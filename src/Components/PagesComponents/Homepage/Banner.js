@@ -8,6 +8,9 @@ import Dropdown from "react-multilevel-dropdown";
 import { Link, useHistory } from "react-router-dom";
 
 import "./Banner.css";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser } from "../../../Redux/_features/_userSlice";
+import { SET_LOGIN_MODAL_OPEN } from "../../../Redux/_features/_LoginModalSlice";
 
 const Banner = () => {
   const [Data, setData] = useState([]);
@@ -28,6 +31,20 @@ const Banner = () => {
     console.log(res.data.data);
     if (res.status === 200) {
       setData(res.data.data);
+    }
+  };
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+
+  const HandlePostProperty = () => {
+    if (user.isLoggedIn) {
+      history.push("/post-property");
+    } else {
+      dispatch(
+        SET_LOGIN_MODAL_OPEN({
+          isLoginModalOpen: true,
+        })
+      );
     }
   };
 
@@ -258,7 +275,7 @@ const Banner = () => {
                 onClick={() => setCurrentTab("rent")}
               />
               <NavItem Name="Projects" />
-              <NavItem Name="SELL / LIST" />
+              <NavItem onClick={HandlePostProperty} Name="SELL / LIST" />
             </div>
 
             <div className="w-11/12 mx-auto flex justify-center items-center my-2">

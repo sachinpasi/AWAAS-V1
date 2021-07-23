@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import MultiRangeSlider from "./MultiRangeSelect/MultiRangeSlider";
 
 const Filter = () => {
+  const [SelectedFliters, setSelectedFliters] = useState({
+    BudgetMin: 0,
+    BudgetMax: 0,
+  });
+  const HandleBudgetChange = (min, max) => {
+    console.log(min, max);
+    // setSelectedFliters((Prev))
+  };
   return (
     <div className="w-3/12 h-auto bg-white my-4 rounded shadow-xl">
       <div className="flex flex-col items-start p-4 px-5 ">
@@ -14,9 +22,7 @@ const Filter = () => {
             <MultiRangeSlider
               min={0}
               max={1000000000}
-              onChange={({ min, max }) =>
-                console.log(`min = ${min}, max = ${max}`)
-              }
+              onChange={({ min, max }) => HandleBudgetChange(min, max)}
             />
           </div>
           <div className="flex w-full justify-between my-4">

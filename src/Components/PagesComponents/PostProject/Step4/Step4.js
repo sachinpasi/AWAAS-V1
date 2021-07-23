@@ -116,7 +116,11 @@ const Step4 = () => {
   };
 
   const removeFlatField = (index) => () => {
-    setFLAT((prevIndexes) => [...prevIndexes.filter((item) => item !== index)]);
+    setFLAT((prevIndexes) => {
+      console.log(prevIndexes);
+      console.log([...prevIndexes.filter((i) => i !== index)]);
+      return [...prevIndexes.filter((item) => item !== index)];
+    });
     setFLAT_COUNTER((prevCounter) => prevCounter - 1);
   };
 
@@ -166,67 +170,73 @@ const Step4 = () => {
     if (data) {
       setisLoading(true);
     }
+    console.log(data);
 
     if (data?.FLAT) {
       const FLAT_ARRAY = data?.FLAT;
-      setTotalFlatRequest(TotalFlatRequest + FLAT_ARRAY?.length);
+      console.log(data?.FLAT);
+
       FLAT_ARRAY.forEach((item, index) => {
-        if (item) {
-          const formData = new FormData();
-          formData.append("flatTitle", item.flatTitle);
-          formData.append("flatName", item.flatName);
-          formData.append("flatArea", item.flatArea);
-          formData.append("flatAreaUnit", item.flatAreaUnit);
-          formData.append("flatCarpetArea", item.flatCarpetArea);
-          formData.append("flatCarpetAreaUnit", item.flatCarpetAreaUnit);
-          formData.append("flatBuiltUpArea", item.flatBuiltUpArea);
-          formData.append("flatBuiltUpAreaUnit", item.flatBuiltUpAreaUnit);
-          formData.append("flatSuperBuiltUpArea", item.flatSuperBuiltUpArea);
-          formData.append(
-            "flatSuperBuiltUpAreaUnit",
-            item.flatSuperBuiltUpAreaUnit
-          );
-          formData.append("flatPrice", item.flatPrice);
-          formData.append("flatPriceUnit", item.flatPriceUnit);
-          formData.append("flatTotalPrice", item.flatTotalPrice);
-          formData.append("flatMinimunPrice", item.flatMinimunPrice);
-          formData.append("flatMaximumPrice", item.flatMaximumPrice);
+        console.log(index);
+        if (FLAT.includes(index)) {
+          setTotalFlatRequest(TotalFlatRequest + FLAT_ARRAY?.length);
+          if (item) {
+            const formData = new FormData();
+            formData.append("flatTitle", item.flatTitle);
+            formData.append("flatName", item.flatName);
+            formData.append("flatArea", item.flatArea);
+            formData.append("flatAreaUnit", item.flatAreaUnit);
+            formData.append("flatCarpetArea", item.flatCarpetArea);
+            formData.append("flatCarpetAreaUnit", item.flatCarpetAreaUnit);
+            formData.append("flatBuiltUpArea", item.flatBuiltUpArea);
+            formData.append("flatBuiltUpAreaUnit", item.flatBuiltUpAreaUnit);
+            formData.append("flatSuperBuiltUpArea", item.flatSuperBuiltUpArea);
+            formData.append(
+              "flatSuperBuiltUpAreaUnit",
+              item.flatSuperBuiltUpAreaUnit
+            );
+            formData.append("flatPrice", item.flatPrice);
+            formData.append("flatPriceUnit", item.flatPriceUnit);
+            formData.append("flatTotalPrice", item.flatTotalPrice);
+            formData.append("flatMinimunPrice", item.flatMinimunPrice);
+            formData.append("flatMaximumPrice", item.flatMaximumPrice);
 
-          formData.append("id", TableId);
+            formData.append("id", TableId);
 
-          Array.from(item.flatFloorPlan).map((file, index) =>
-            formData.append(`flatFloorPlan[${index}]`, file)
-          );
-          Array.from(item.flatImages).map((file, index) =>
-            formData.append(`flatImages[${index}]`, file)
-          );
+            Array.from(item.flatFloorPlan).map((file, index) =>
+              formData.append(`flatFloorPlan[${index}]`, file)
+            );
+            Array.from(item.flatImages).map((file, index) =>
+              formData.append(`flatImages[${index}]`, file)
+            );
 
-          const UploadFlat = async () => {
-            try {
-              const res = await axios.post(
-                `${API}/projects/store-flat`,
-                formData,
-                {
-                  headers: {
-                    Method: "POST",
-                    ContentType: "multipart/form-data",
-                    Authorization: `Bearer ${user.token}`,
-                  },
+            const UploadFlat = async () => {
+              try {
+                const res = await axios.post(
+                  `${API}/projects/store-flat`,
+                  formData,
+                  {
+                    headers: {
+                      Method: "POST",
+                      ContentType: "multipart/form-data",
+                      Authorization: `Bearer ${user.token}`,
+                    },
+                  }
+                );
+
+                console.log(res);
+                if (res.status === 200) {
+                  setResponse((Prev) => [...Prev, true]);
                 }
-              );
-
-              console.log(res);
-              if (res.status === 200) {
-                setResponse((Prev) => [...Prev, true]);
+              } catch (error) {
+                if (error.response.status !== 200) {
+                  setResponse((Prev) => [...Prev, false]);
+                  setError((prev) => [...prev, ["FLAT", index]]);
+                }
               }
-            } catch (error) {
-              if (error.response.status !== 200) {
-                setResponse((Prev) => [...Prev, false]);
-                setError((prev) => [...prev, ["FLAT", index]]);
-              }
-            }
-          };
-          UploadFlat();
+            };
+            UploadFlat();
+          }
         }
       });
     }
@@ -770,7 +780,7 @@ const Step4 = () => {
 
             {ActiveTabs?.addFlat && (
               <>
-                {FLAT.map((index) => {
+                {FLAT.map((index, i) => {
                   const fieldName = `FLAT[${index}]`;
                   return (
                     <fieldset
@@ -782,7 +792,8 @@ const Step4 = () => {
                       <div className="absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
                         {`Flat No `}
                         <div className="bg-blue text-white w-12 h-12 flex justify-center items-center rounded-full">
-                          {index + 1}
+                          {i + 1}
+                          {console.log(index)}
                         </div>
                       </div>
                       <h4 className="text-2xl font-medium  uppercase mb-4">

@@ -9,10 +9,12 @@ module.exports = {
     },
     extend: {
       colors: {
+        darkblue: "#5486EB",
         blue: "#4D81E8",
         lightblue: "#B8D0FF",
         darkgray: "#292929",
         lightgray: "#808080",
+        lightgrayplus: "#DEDEDE",
         littlelightgray: "#f5f5f5",
         extralightgray: "#F3F3F3",
         navborder: "#B1B1B1",
