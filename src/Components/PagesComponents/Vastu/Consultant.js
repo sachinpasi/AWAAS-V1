@@ -38,7 +38,6 @@ const Consultant = () => {
                     <div className="flex items-center">
                       <div className="w-10">
                         <svg
-                          xmlns="http://www.w3.org/2000/svg"
                           width="20.828"
                           height="17.043"
                           viewBox="0 0 20.828 17.043"
@@ -147,22 +146,30 @@ const Consultant = () => {
 
               <div className="h-2/4 w-full  flex items-center flex-col  ">
                 <div className="w-full h-full flex justify-between items-center py-4">
-                  <div className="w-2/4 h-full rounded-xl border-1 shadow cursor-pointer border-blue mr-4 flex flex-col justify-center items-center">
+                  <input className="hidden" id="option1" type="radio"></input>
+                  <label
+                    for="option1"
+                    className="w-2/4 h-full rounded-xl border-1 shadow cursor-pointer border-blue mr-4 flex flex-col justify-center items-center"
+                  >
                     <p className="text-darkgray font-medium text-center text-base leading-5 capitalize">
                       Trial pack <br /> (talk for 15 min)
                     </p>
                     <p className="text-xl font-medium text-blue mt-1">
                       &#8377; 499
                     </p>
-                  </div>
-                  <div className="w-2/4 h-full border-1 rounded-xl cursor-pointer shadow border-lightgrayplus ml-4 flex flex-col justify-center items-center">
+                  </label>
+                  <input className="hidden" id="option2" type="radio"></input>
+                  <label
+                    for="option2"
+                    className="w-2/4 h-full border-1 rounded-xl cursor-pointer shadow border-lightgrayplus ml-4 flex flex-col justify-center items-center"
+                  >
                     <p className="text-darkgray font-medium text-center text-base leading-5 capitalize">
                       Telephonic <br /> consultancy with Report
                     </p>
                     <p className="text-xl font-medium text-blue mt-1">
                       &#8377; 2500
                     </p>
-                  </div>
+                  </label>
                 </div>
                 <button className="border-2 border-green rounded text-green text-lg font-medium w-full h-14">
                   Book Now
