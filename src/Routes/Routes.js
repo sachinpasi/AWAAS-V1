@@ -12,6 +12,7 @@ import PostProject from "../Pages/PostProject";
 import Search from "../Pages/Search";
 import Article from "../Pages/Article";
 import Vastu from "../Pages/Vastu";
+import VerfiyProject from "../Pages/Verfiy/VerfiyProject";
 
 const Routes = () => {
   return (
@@ -42,6 +43,8 @@ const Routes = () => {
 
         <Route exact path="/post-property" component={PostProperty} />
         <Route exact path="/post-project" component={PostProject} />
+
+        <Route exact path="/verfiy-project/:id" component={VerfiyProject} />
       </Switch>
     </Router>
   );
