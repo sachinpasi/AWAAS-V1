@@ -21,7 +21,7 @@ const Banner = () => {
   const history = useHistory();
   const [Locality, setLocality] = useState();
   const [ParentPropertyType, setParentPropertyType] = useState("");
-  const [CurrentTab, setCurrentTab] = useState("buy");
+  const [CurrentTab, setCurrentTab] = useState("sell");
   const [PropertyType, setPropertyType] = useState("Property Type");
   const [BudgetMin, setBudgetMin] = useState(0);
   const [BudgetMax, setBudgetMax] = useState(0);
@@ -53,7 +53,7 @@ const Banner = () => {
   const BudgetMinItem = ({ Value, title }) => (
     <li
       className="p-1 cursor-pointer text-xs"
-      onClick={() => setBudgetMin(title)}
+      onClick={() => setBudgetMin(Value)}
       value={Value}
     >
       {title}
@@ -62,7 +62,7 @@ const Banner = () => {
   const BudgetMaxItem = ({ Value, title }) => (
     <li
       className="p-1 cursor-pointer text-xs"
-      onClick={() => setBudgetMax(title)}
+      onClick={() => setBudgetMax(Value)}
       value={Value}
     >
       {title}
@@ -185,9 +185,7 @@ const Banner = () => {
                       maxHeight: "580px",
                     }}
                     className="object-cover h-full w-full"
-                    src={`https://codeiator.com/${
-                      JSON.parse(item.banner_image)[0]
-                    }`}
+                    src={item.banner_image_path}
                     alt=""
                   />
                 )}
@@ -227,9 +225,7 @@ const Banner = () => {
                       {item?.library.map((thumb, index) => (
                         <div
                           key={index}
-                          onClick={() =>
-                            setBannerURL(`https://codeiator.com/${thumb}`)
-                          }
+                          onClick={() => setBannerURL(thumb)}
                           className="mx-1 w-24 border-4 rounded-sm border-white shadow-2xl cursor-pointer
                       "
                         >
@@ -238,7 +234,7 @@ const Banner = () => {
                           <img
                             className="object-cover h-16 w-auto "
                             key={index}
-                            src={`https://codeiator.com/${thumb}`}
+                            src={thumb}
                             alt=""
                           />
                         </div>
@@ -266,8 +262,8 @@ const Banner = () => {
             <div className="w-3/4 mx-auto flex justify-center items-center my-2">
               <NavItem
                 Name="buy"
-                Active={CurrentTab === "buy"}
-                onClick={() => setCurrentTab("buy")}
+                Active={CurrentTab === "sell"}
+                onClick={() => setCurrentTab("sell")}
               />
               <NavItem
                 Name="rent"

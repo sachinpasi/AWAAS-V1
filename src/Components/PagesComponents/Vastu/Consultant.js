@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Consultant = () => {
-  const [List, setList] = useState([1, 2, 3, 4, 5, 6]);
+  const [List, setList] = useState([1, 2, 3, 4]);
   return (
     <section className="w-full bg-textbg">
       <div className="customContainer flex flex-col">
@@ -26,7 +26,7 @@ const Consultant = () => {
                 <div className="w-40 h-40 ">
                   <img
                     className="w-full h-full object-cover"
-                    src="/assets/images/vastu/1.png"
+                    src="/assets/images/vastu/1.jfif"
                     alt=""
                   />
                 </div>

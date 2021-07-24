@@ -13,6 +13,8 @@ const ProjectNav = () => {
   const dispatch = useDispatch();
   const { Data } = useSelector(selectProjectDetails);
 
+  console.log(ActiveParentTab, ActiveChildTab);
+
   useEffect(() => {
     if (Data?.parent_child) {
       setActiveParentTab(Data?.parent_child[0]?.title);

@@ -9,6 +9,7 @@ import PostPropertyStepReducer from "../_features/_PostPropertyStepSlice";
 import PostPropertyReducer from "../_features/_PostPropertySlice";
 import PostProjectStepReducer from "../_features/_PostProjectStepSlice";
 import PostProjectReducer from "../_features/_PostProjectSlice";
+import FilterReducer from "../_features/_FliterSlice";
 
 const reducers = combineReducers({
   userReducer,
@@ -20,6 +21,7 @@ const reducers = combineReducers({
   PostPropertyStepReducer,
   PostProjectStepReducer,
   PostProjectReducer,
+  FilterReducer,
 });
 
 export default reducers;

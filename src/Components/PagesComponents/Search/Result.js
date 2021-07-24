@@ -4,6 +4,8 @@ import { API } from "../../../API";
 import { Link, useLocation } from "react-router-dom";
 import queryString from "query-string";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { selectFilter } from "../../../Redux/_features/_FliterSlice";
 
 const Result = () => {
   const [SearchResult, setSearchResult] = useState([]);
@@ -11,11 +13,30 @@ const Result = () => {
   const { parentProperty, propertyType, propertyFor, locality, max, min } =
     queryString.parse(search);
 
+  const Filter = useSelector(selectFilter);
+  const CancelToken = axios.CancelToken;
   const FetchQuery = async () => {
-    const res = await axios.post(`${API}/property/search`, {
-      parent_type: parentProperty,
-      city: "panipat",
-    });
+    let source;
+    source = CancelToken.source();
+    const res = await axios.get(
+      `${API}/property/search`,
+      {
+        params: {
+          parent_type: parentProperty,
+          property_for: propertyFor,
+          city: "panipat",
+          locality_id: locality,
+          max_budget: max,
+          min_budget: min,
+          property_type: Filter.PropertyType,
+          photos: Filter.iswithPhoto,
+          bedroom: Filter.NoOfBedroom,
+        },
+      },
+      {
+        cancelToken: source.token,
+      }
+    );
     console.log(res);
     setSearchResult(res.data.data);
   };
@@ -23,7 +44,7 @@ const Result = () => {
   useEffect(() => {
     FetchQuery();
     // eslint-disable-next-line
-  }, []);
+  }, [Filter]);
   return (
     <div className="w-72percent  h-auto flex flex-col items-start  my-4">
       <p className="text-sm text-widgetborder ">Home > Property in Panipat</p>
@@ -34,7 +55,7 @@ const Result = () => {
       <div className="w-full h-full flex flex-col ">
         {SearchResult.map((item, index) => (
           <Link
-            to={`property/${propertyFor === "buy" && "sell"}/${item.p_id}`}
+            to={`property/${propertyFor}/${item.p_id}`}
             key={index}
             className="bg-white h-64 w-full p-4 rounded-md shadow-md border-b-4 border-blue cursor-pointer my-4"
           >

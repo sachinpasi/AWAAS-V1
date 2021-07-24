@@ -124,7 +124,7 @@ const HomeNav = () => {
             <NavItem Name="Home Loan" To="/home-loans" />
             <NavItem Name="Investment Assistance" To="/investment-assist" />
             <NavItem Name="Awaas Assist" To="/awaas-assist" />
-            <NavItem Name="Vastu / Legal" To="/vastu" />
+            <NavItem Name="Vastu" To="/vastu" />
             {user.isLoggedIn ? (
               <div
                 onClick={() => dispatch(SIGNOUT())}
