@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { IoMdHome } from "react-icons/io";
 const SearchNav = () => {
+  const [isNavOpen, setisNavOpen] = useState(false);
+
+  const HandleNavScroll = () => {
+    if (window.scrollY >= 50) {
+      setisNavOpen(true);
+    } else {
+      setisNavOpen(false);
+    }
+  };
+
+  window.addEventListener("scroll", HandleNavScroll);
   return (
-    <div className="w-full h-20 bg-blue flex justify-center items-center ">
+    <div
+      style={{
+        transition: "0.3s all ease",
+      }}
+      className={`w-full h-20 bg-blue flex justify-center items-center z-10 fixed ${
+        isNavOpen ? "top-0" : ""
+      } `}
+    >
       <div className="customContainer flex justify-between items-center h-58percent ">
         <select className=" w-24 h-full mr-2  rounded px-2">
           <option value="">Buy</option>

@@ -15,7 +15,7 @@ const Homepage = () => {
     <>
       <HomeNav />
       <Banner />
-      <Projects />
+      <Projects Title="Projects In Panipat" />
       <PropertySale />
       {/* <Ad /> */}
       <PropertyRent />

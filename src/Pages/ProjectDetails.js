@@ -42,7 +42,7 @@ const ProjectDetails = () => {
     <Layout>
       <Banner />
       <ProjectDetailsSection />
-      <Projects />
+      <Projects Title="Similar Project In Panipat" />
     </Layout>
   );
 };

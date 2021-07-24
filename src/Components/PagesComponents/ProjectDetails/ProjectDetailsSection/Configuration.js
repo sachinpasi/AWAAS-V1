@@ -45,10 +45,13 @@ const Configuration = () => {
           <>
             {Data?.parent_child?.map((parentChild, index) => (
               <Fragment key={index}>
-                {CurrentTab.ActiveParentTab === parentChild.title &&
+                {console.log(parentChild)}
+                {CurrentTab.ActiveParentTab ===
+                  `${parentChild.title}[${index}]` &&
                   parentChild?.child?.map((childItem, index) => (
                     <Fragment key={index}>
-                      {CurrentTab.ActiveChildTab === childItem.new_name && (
+                      {CurrentTab.ActiveChildTab ===
+                        `${childItem.new_name}[${index}]` && (
                         <div className="flex flex-wrap items-center">
                           {childItem?.configuration.map((item, index) => (
                             <div
@@ -81,10 +84,11 @@ const Configuration = () => {
       <div className="w-full h-full flex justify-start items-center pb-4 border-b-1 border-projectsborder">
         {Data?.parent_child?.map((parentChild, index) => (
           <Fragment key={index}>
-            {CurrentTab.ActiveParentTab === parentChild.title &&
+            {CurrentTab.ActiveParentTab === `${parentChild.title}[${index}]` &&
               parentChild?.child.map((childItem, index) => (
                 <Fragment key={index}>
-                  {CurrentTab.ActiveChildTab === childItem.new_name && (
+                  {CurrentTab.ActiveChildTab ===
+                    `${childItem.new_name}[${index}]` && (
                     <>
                       {console.log("Selected Child --", childItem)}
 

@@ -9,8 +9,8 @@ const Search = () => {
   return (
     <Layout>
       <SearchNav />
-      <main className="bg-textbg">
-        <div className="customContainer flex justify-between items-start ">
+      <main className="bg-textbg pt-28 h-full">
+        <div className="customContainer h-full flex justify-between items-start ">
           <Filter />
           <Result />
         </div>

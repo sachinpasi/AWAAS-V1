@@ -437,65 +437,135 @@ const Banner = () => {
                 </div>
               </div>
               <div className="w-full h-14 border-1 ">
-                <Dropdown
-                  wrapperClassName="SelectWrapper"
-                  buttonClassName="SelectButton"
-                  menuClassName="MenuBudegt"
-                  title={
-                    BudgetMin || BudgetMax
-                      ? `${BudgetMin} - ${BudgetMax}`
-                      : "Budget"
-                  }
-                >
-                  <Dropdown.Item className="ItemBudget">
-                    <div className="w-2/4 border-r-1">
-                      <ul className="list-none m-0 p-0 text-center">
-                        Min
-                        <BudgetMinItem Value="1000000" title="10 Lacs" />
-                        <BudgetMinItem Value="2000000" title="20 Lacs" />
-                        <BudgetMinItem Value="3000000" title="30 Lacs" />
-                        <BudgetMinItem Value="4000000" title="40 Lacs" />
-                        <BudgetMinItem Value="5000000" title="50 Lacs" />
-                        <BudgetMinItem Value="6000000" title="60 Lacs" />
-                        <BudgetMinItem Value="7000000" title="70 Lacs" />
-                        <BudgetMinItem Value="8000000" title="80 Lacs" />
-                        <BudgetMinItem Value="9000000" title="90 Lacs" />
-                        <BudgetMinItem Value="10000000" title="1 Cr" />
-                        <BudgetMinItem Value="15000000" title="1.5 Cr" />
-                        <BudgetMinItem Value="20000000" title="2 Cr" />
-                        <BudgetMinItem Value="30000000" title="3 Cr" />
-                        <BudgetMinItem Value="40000000" title="4 Cr" />
-                        <BudgetMinItem Value="50000000" title="5 Cr" />
-                        <BudgetMinItem Value="60000000" title="6 Cr" />
-                        <BudgetMinItem Value="70000000" title="7 Cr" />
-                        <BudgetMinItem Value="80000000" title="8 Cr" />
-                      </ul>
-                    </div>
-                    <div className="w-2/4">
-                      <ul className="list-none m-0 p-0 text-center">
-                        Max
-                        <BudgetMaxItem Value="1500000" title="15 Lacs" />
-                        <BudgetMaxItem Value="2500000" title="25 Lacs" />
-                        <BudgetMaxItem Value="3500000" title="35 Lacs" />
-                        <BudgetMaxItem Value="4500000" title="45 Lacs" />
-                        <BudgetMaxItem Value="5500000" title="55 Lacs" />
-                        <BudgetMaxItem Value="6500000" title="65 Lacs" />
-                        <BudgetMaxItem Value="7500000" title="75 Lacs" />
-                        <BudgetMaxItem Value="8500000" title="85 Lacs" />
-                        <BudgetMaxItem Value="9500000" title="95 Lacs" />
-                        <BudgetMaxItem Value="15000000" title="1.5 Cr" />
-                        <BudgetMaxItem Value="25000000" title="2.5 Cr" />
-                        <BudgetMaxItem Value="35000000" title="3.5 Cr" />
-                        <BudgetMaxItem Value="45000000" title="4.5 Cr" />
-                        <BudgetMaxItem Value="55000000" title="5.5 Cr" />
-                        <BudgetMaxItem Value="65000000" title="6.5 Cr" />
-                        <BudgetMaxItem Value="75000000" title="7.5 Cr" />
-                        <BudgetMaxItem Value="85000000" title="8.5 Cr" />
-                        <BudgetMaxItem Value="90000000" title="9 Cr" />
-                      </ul>
-                    </div>
-                  </Dropdown.Item>
-                </Dropdown>
+                {CurrentTab === "sell" ? (
+                  <Dropdown
+                    wrapperClassName="SelectWrapper"
+                    buttonClassName="SelectButton"
+                    menuClassName="MenuBudegt"
+                    title={
+                      BudgetMin || BudgetMax
+                        ? `${BudgetMin} - ${BudgetMax}`
+                        : "Budget"
+                    }
+                  >
+                    <Dropdown.Item className="ItemBudget">
+                      <div className="w-2/4 border-r-1">
+                        <ul className="list-none m-0 p-0 text-center">
+                          Min
+                          <BudgetMinItem Value="1000000" title="10 Lacs" />
+                          <BudgetMinItem Value="2000000" title="20 Lacs" />
+                          <BudgetMinItem Value="3000000" title="30 Lacs" />
+                          <BudgetMinItem Value="4000000" title="40 Lacs" />
+                          <BudgetMinItem Value="5000000" title="50 Lacs" />
+                          <BudgetMinItem Value="6000000" title="60 Lacs" />
+                          <BudgetMinItem Value="7000000" title="70 Lacs" />
+                          <BudgetMinItem Value="8000000" title="80 Lacs" />
+                          <BudgetMinItem Value="9000000" title="90 Lacs" />
+                          <BudgetMinItem Value="10000000" title="1 Cr" />
+                          <BudgetMinItem Value="15000000" title="1.5 Cr" />
+                          <BudgetMinItem Value="20000000" title="2 Cr" />
+                          <BudgetMinItem Value="30000000" title="3 Cr" />
+                          <BudgetMinItem Value="40000000" title="4 Cr" />
+                          <BudgetMinItem Value="50000000" title="5 Cr" />
+                          <BudgetMinItem Value="60000000" title="6 Cr" />
+                          <BudgetMinItem Value="70000000" title="7 Cr" />
+                          <BudgetMinItem Value="80000000" title="8 Cr" />
+                        </ul>
+                      </div>
+                      <div className="w-2/4">
+                        <ul className="list-none m-0 p-0 text-center">
+                          Max
+                          <BudgetMaxItem Value="1500000" title="15 Lacs" />
+                          <BudgetMaxItem Value="2500000" title="25 Lacs" />
+                          <BudgetMaxItem Value="3500000" title="35 Lacs" />
+                          <BudgetMaxItem Value="4500000" title="45 Lacs" />
+                          <BudgetMaxItem Value="5500000" title="55 Lacs" />
+                          <BudgetMaxItem Value="6500000" title="65 Lacs" />
+                          <BudgetMaxItem Value="7500000" title="75 Lacs" />
+                          <BudgetMaxItem Value="8500000" title="85 Lacs" />
+                          <BudgetMaxItem Value="9500000" title="95 Lacs" />
+                          <BudgetMaxItem Value="15000000" title="1.5 Cr" />
+                          <BudgetMaxItem Value="25000000" title="2.5 Cr" />
+                          <BudgetMaxItem Value="35000000" title="3.5 Cr" />
+                          <BudgetMaxItem Value="45000000" title="4.5 Cr" />
+                          <BudgetMaxItem Value="55000000" title="5.5 Cr" />
+                          <BudgetMaxItem Value="65000000" title="6.5 Cr" />
+                          <BudgetMaxItem Value="75000000" title="7.5 Cr" />
+                          <BudgetMaxItem Value="85000000" title="8.5 Cr" />
+                          <BudgetMaxItem Value="90000000" title="9 Cr" />
+                        </ul>
+                      </div>
+                    </Dropdown.Item>
+                  </Dropdown>
+                ) : (
+                  <Dropdown
+                    wrapperClassName="SelectWrapper"
+                    buttonClassName="SelectButton"
+                    menuClassName="MenuBudegt"
+                    title={
+                      BudgetMin || BudgetMax
+                        ? `${BudgetMin} - ${BudgetMax}`
+                        : "Budget"
+                    }
+                  >
+                    <Dropdown.Item className="ItemBudget">
+                      <div className="w-2/4 border-r-1">
+                        <ul className="list-none m-0 p-0 text-center">
+                          Min
+                          <BudgetMinItem Value="2500" title="2500" />
+                          <BudgetMinItem Value="5000" title="5000" />
+                          <BudgetMinItem Value="10000" title="10000" />
+                          <BudgetMinItem Value="20000" title="20000" />
+                          <BudgetMinItem Value="30000" title="30000" />
+                          <BudgetMinItem Value="40000" title="40000" />
+                          <BudgetMinItem Value="50000" title="50000" />
+                          <BudgetMinItem Value="60000" title="60000" />
+                          <BudgetMinItem Value="70000" title="70000" />
+                          <BudgetMinItem Value="80000" title="80000" />
+                          <BudgetMinItem Value="90000" title="90000" />
+                          <BudgetMinItem Value="100000" title="1 Lac" />
+                          <BudgetMinItem Value="120000" title="1.2 Lac" />
+                          <BudgetMinItem Value="140000" title="1.4 Lac" />
+                          <BudgetMinItem Value="160000" title="1.6 Lac" />
+                          <BudgetMinItem Value="180000" title="1.8 Lac" />
+                          <BudgetMinItem Value="200000" title="2 Lac" />
+                          <BudgetMinItem Value="250000" title="2.5 Lac" />
+                          <BudgetMinItem Value="300000" title="3 Lac" />
+                          <BudgetMinItem Value="350000" title="3.5 Lac" />
+                          <BudgetMinItem Value="400000" title="4 Lac" />
+                          <BudgetMinItem Value="500000" title="5 Lac" />
+                        </ul>
+                      </div>
+                      <div className="w-2/4">
+                        <ul className="list-none m-0 p-0 text-center">
+                          Max
+                          <BudgetMaxItem Value="5000" title="5000" />
+                          <BudgetMaxItem Value="10000" title="10000" />
+                          <BudgetMaxItem Value="20000" title="20000" />
+                          <BudgetMaxItem Value="30000" title="30000" />
+                          <BudgetMaxItem Value="40000" title="40000" />
+                          <BudgetMaxItem Value="50000" title="50000" />
+                          <BudgetMaxItem Value="60000" title="60000" />
+                          <BudgetMaxItem Value="70000" title="70000" />
+                          <BudgetMaxItem Value="80000" title="80000" />
+                          <BudgetMaxItem Value="90000" title="90000" />
+                          <BudgetMaxItem Value="100000" title="1 Lac" />
+                          <BudgetMaxItem Value="120000" title="1.2 Lac" />
+                          <BudgetMaxItem Value="140000" title="1.4 Lac" />
+                          <BudgetMaxItem Value="160000" title="1.6 Lac" />
+                          <BudgetMaxItem Value="180000" title="1.8 Lac" />
+                          <BudgetMaxItem Value="200000" title="2 Lac" />
+                          <BudgetMaxItem Value="250000" title="2.5 Lac" />
+                          <BudgetMaxItem Value="300000" title="3 Lac" />
+                          <BudgetMaxItem Value="350000" title="3.5 Lac" />
+                          <BudgetMaxItem Value="400000" title="4 Lac" />
+                          <BudgetMinItem Value="500000" title="5 Lac" />
+                          <BudgetMinItem Value="600000" title="6 Lac" />
+                        </ul>
+                      </div>
+                    </Dropdown.Item>
+                  </Dropdown>
+                )}
               </div>
             </div>
 

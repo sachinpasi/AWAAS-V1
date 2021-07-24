@@ -459,7 +459,7 @@ const Step4 = () => {
           const UploadCommercial = async () => {
             try {
               const res = await axios.post(
-                `${API}/projects/store-plot`,
+                `${API}/projects/store-commercial`,
                 formData,
                 {
                   headers: {
@@ -1362,7 +1362,7 @@ const Step4 = () => {
                           className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
                           type="text"
                           placeholder="PLOT Type / Name"
-                          {...register(`${fieldName}.Name`)}
+                          {...register(`${fieldName}.ProjectTitle`)}
                         />
                       </div>
                       {/* <div className="flex">

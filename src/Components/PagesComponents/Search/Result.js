@@ -14,31 +14,37 @@ const Result = () => {
     queryString.parse(search);
 
   const Filter = useSelector(selectFilter);
-  const CancelToken = axios.CancelToken;
+  let cancelToken;
   const FetchQuery = async () => {
-    let source;
-    source = CancelToken.source();
-    const res = await axios.get(
-      `${API}/property/search`,
-      {
-        params: {
-          parent_type: parentProperty,
-          property_for: propertyFor,
-          city: "panipat",
-          locality_id: locality,
-          max_budget: max,
-          min_budget: min,
-          property_type: Filter.PropertyType,
-          photos: Filter.iswithPhoto,
-          bedroom: Filter.NoOfBedroom,
+    if (typeof cancelToken != typeof undefined) {
+      cancelToken.cancel("Operation canceled due to new request.");
+    }
+
+    //Save the cancel token for the current request
+    cancelToken = axios.CancelToken.source();
+    try {
+      const res = await axios.get(
+        `${API}/property/search`,
+        {
+          params: {
+            parent_type: parentProperty,
+            property_for: propertyFor,
+            city: "panipat",
+            locality_id: locality,
+            max_budget: max,
+            min_budget: min,
+            property_type: Filter.PropertyType,
+            photos: Filter.iswithPhoto,
+            bedroom: Filter.NoOfBedroom,
+          },
         },
-      },
-      {
-        cancelToken: source.token,
-      }
-    );
-    console.log(res);
-    setSearchResult(res.data.data);
+        { cancelToken: cancelToken.token }
+      );
+      console.log(res);
+      setSearchResult(res.data.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

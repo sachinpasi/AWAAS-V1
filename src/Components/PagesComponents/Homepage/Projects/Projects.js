@@ -8,7 +8,7 @@ import "./Project.css";
 import { API } from "../../../../API";
 import Header from "../../../Common/Header";
 
-const Projects = () => {
+const Projects = ({ Title }) => {
   const [ProjectList, setProjectList] = useState([]);
 
   const FetchProjectList = async () => {
@@ -28,7 +28,7 @@ const Projects = () => {
     <section className="w-full h-full mt-40">
       <div className="customContainer ">
         <div className="w-full flex flex-col justify-between items-start ">
-          <Header Title="Projects In Panipat" />
+          <Header Title={Title} />
         </div>
         <div className="w-full h-auto flex justify-center items-center my-10">
           {ProjectList.length !== 0 ? (
