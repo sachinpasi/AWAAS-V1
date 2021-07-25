@@ -10,7 +10,7 @@ const Filter = ({ PropertyFor }) => {
   const [BudgetMinSelect, setBudgetMinSelect] = useState();
   const [BudgetMaxSelect, setBudgetMaxSelect] = useState();
   const [NoOfBedroom, setNoOfBedroom] = useState();
-  const [PropertyType, setPropertyType] = useState();
+  const [ParentPropertyType, setParentPropertyType] = useState();
   const [AreaMin, setAreaMin] = useState();
   const [AreaMax, setAreaMax] = useState();
   const [AreaMinSelect, setAreaMinSelect] = useState();
@@ -22,6 +22,7 @@ const Filter = ({ PropertyFor }) => {
   const HandleBudgetChange = (min, max) => {
     setBudgetMin(min);
     setBudgetMax(max);
+    console.log(BudgetMin);
   };
   const HandleAreaChange = (min, max) => {
     setAreaMin(min);
@@ -42,10 +43,10 @@ const Filter = ({ PropertyFor }) => {
     } else {
       params.delete("bedroom");
     }
-    if (PropertyType) {
-      params.append("property_type", PropertyType);
+    if (ParentPropertyType) {
+      params.append("parent_type", ParentPropertyType);
     } else {
-      params.delete("property_type");
+      params.delete("parent_type");
     }
     if (isVerified) {
       params.append("awaas_verify", isVerified);
@@ -113,7 +114,7 @@ const Filter = ({ PropertyFor }) => {
     history.push({ pathname: "/search", search: params.toString() });
   }, [
     NoOfBedroom,
-    PropertyType,
+    ParentPropertyType,
     history,
     isVerified,
     iswithPhoto,
@@ -145,70 +146,25 @@ const Filter = ({ PropertyFor }) => {
           <div className="flex flex-col items-start py-2 border-b-2 w-full border-dashed">
             <p className="text-xl font-medium">Budget</p>
             <div className="w-full my-4 py-4">
-              <MultiRangeSlider
-                min={0}
-                max={100000000}
-                onChange={({ min, max }) => HandleBudgetChange(min, max)}
-              />
+              {PropertyFor === "rent" ? (
+                <div>
+                  <MultiRangeSlider
+                    min={2500}
+                    max={600000}
+                    onChange={({ min, max }) => HandleBudgetChange(min, max)}
+                  />
+                </div>
+              ) : (
+                <div>
+                  <MultiRangeSlider
+                    min={0}
+                    max={100000000}
+                    onChange={({ min, max }) => HandleBudgetChange(min, max)}
+                  />
+                </div>
+              )}
             </div>
-            {PropertyFor === "sell" ? (
-              <div className="flex w-full justify-between my-4">
-                <select
-                  value={BudgetMinSelect}
-                  onChange={(e) => setBudgetMinSelect(e.target.value)}
-                  className="w-2/4 mr-2 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-sm font-medium px-2"
-                >
-                  <option selected hidden value="">
-                    Min
-                  </option>
-                  <Option Value="1000000" title="10 Lacs" />
-                  <Option Value="2000000" title="20 Lacs" />
-                  <Option Value="3000000" title="30 Lacs" />
-                  <Option Value="4000000" title="40 Lacs" />
-                  <Option Value="5000000" title="50 Lacs" />
-                  <Option Value="6000000" title="60 Lacs" />
-                  <Option Value="7000000" title="70 Lacs" />
-                  <Option Value="8000000" title="80 Lacs" />
-                  <Option Value="9000000" title="90 Lacs" />
-                  <Option Value="10000000" title="1 Cr" />
-                  <Option Value="15000000" title="1.5 Cr" />
-                  <Option Value="20000000" title="2 Cr" />
-                  <Option Value="30000000" title="3 Cr" />
-                  <Option Value="40000000" title="4 Cr" />
-                  <Option Value="50000000" title="5 Cr" />
-                  <Option Value="60000000" title="6 Cr" />
-                  <Option Value="70000000" title="7 Cr" />
-                  <Option Value="80000000" title="8 Cr" />
-                </select>
-                <select
-                  value={BudgetMaxSelect}
-                  onChange={(e) => setBudgetMaxSelect(e.target.value)}
-                  className="w-2/4 ml-2 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-sm font-medium px-2"
-                >
-                  <option defaultChecked hidden value="">
-                    Max Budget
-                  </option>
-                  <Option Value="1500000" title="15 Lacs" />
-                  <Option Value="2500000" title="25 Lacs" />
-                  <Option Value="3500000" title="35 Lacs" />
-                  <Option Value="4500000" title="45 Lacs" />
-                  <Option Value="5500000" title="55 Lacs" />
-                  <Option Value="6500000" title="65 Lacs" />
-                  <Option Value="7500000" title="75 Lacs" />
-                  <Option Value="8500000" title="85 Lacs" />
-                  <Option Value="9500000" title="95 Lacs" />
-                  <Option Value="15000000" title="1.5 Cr" />
-                  <Option Value="25000000" title="2.5 Cr" />
-                  <Option Value="35000000" title="3.5 Cr" />
-                  <Option Value="45000000" title="4.5 Cr" />
-                  <Option Value="55000000" title="5.5 Cr" />
-                  <Option Value="65000000" title="6.5 Cr" />
-                  <Option Value="75000000" title="7.5 Cr" />
-                  <Option Value="85000000" title="8.5 Cr" />
-                  <Option Value="90000000" title="9 Cr" />
-                </select>
-              </div>
-            ) : (
+            {PropertyFor === "rent" ? (
               <div className="flex w-full justify-between my-4">
                 <select
                   value={BudgetMinSelect}
@@ -271,6 +227,63 @@ const Filter = ({ PropertyFor }) => {
                   <Option Value="400000" title="4 Lac" />
                   <Option Value="500000" title="5 Lac" />
                   <Option Value="600000" title="6 Lac" />
+                </select>
+              </div>
+            ) : (
+              <div className="flex w-full justify-between my-4">
+                <select
+                  value={BudgetMinSelect}
+                  onChange={(e) => setBudgetMinSelect(e.target.value)}
+                  className="w-2/4 mr-2 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-sm font-medium px-2"
+                >
+                  <option selected hidden value="">
+                    Min
+                  </option>
+                  <Option Value="1000000" title="10 Lacs" />
+                  <Option Value="2000000" title="20 Lacs" />
+                  <Option Value="3000000" title="30 Lacs" />
+                  <Option Value="4000000" title="40 Lacs" />
+                  <Option Value="5000000" title="50 Lacs" />
+                  <Option Value="6000000" title="60 Lacs" />
+                  <Option Value="7000000" title="70 Lacs" />
+                  <Option Value="8000000" title="80 Lacs" />
+                  <Option Value="9000000" title="90 Lacs" />
+                  <Option Value="10000000" title="1 Cr" />
+                  <Option Value="15000000" title="1.5 Cr" />
+                  <Option Value="20000000" title="2 Cr" />
+                  <Option Value="30000000" title="3 Cr" />
+                  <Option Value="40000000" title="4 Cr" />
+                  <Option Value="50000000" title="5 Cr" />
+                  <Option Value="60000000" title="6 Cr" />
+                  <Option Value="70000000" title="7 Cr" />
+                  <Option Value="80000000" title="8 Cr" />
+                </select>
+                <select
+                  value={BudgetMaxSelect}
+                  onChange={(e) => setBudgetMaxSelect(e.target.value)}
+                  className="w-2/4 ml-2 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-sm font-medium px-2"
+                >
+                  <option defaultChecked hidden value="">
+                    Max Budget
+                  </option>
+                  <Option Value="1500000" title="15 Lacs" />
+                  <Option Value="2500000" title="25 Lacs" />
+                  <Option Value="3500000" title="35 Lacs" />
+                  <Option Value="4500000" title="45 Lacs" />
+                  <Option Value="5500000" title="55 Lacs" />
+                  <Option Value="6500000" title="65 Lacs" />
+                  <Option Value="7500000" title="75 Lacs" />
+                  <Option Value="8500000" title="85 Lacs" />
+                  <Option Value="9500000" title="95 Lacs" />
+                  <Option Value="15000000" title="1.5 Cr" />
+                  <Option Value="25000000" title="2.5 Cr" />
+                  <Option Value="35000000" title="3.5 Cr" />
+                  <Option Value="45000000" title="4.5 Cr" />
+                  <Option Value="55000000" title="5.5 Cr" />
+                  <Option Value="65000000" title="6.5 Cr" />
+                  <Option Value="75000000" title="7.5 Cr" />
+                  <Option Value="85000000" title="8.5 Cr" />
+                  <Option Value="90000000" title="9 Cr" />
                 </select>
               </div>
             )}
@@ -337,35 +350,35 @@ const Filter = ({ PropertyFor }) => {
             <p className="text-xl font-medium">Type of Property</p>
             <div className="w-full  py-4 flex flex-col items-start ">
               <div
-                onClick={() => setPropertyType("villa")}
+                onClick={() => setParentPropertyType("industrial")}
                 className={` ${
-                  PropertyType === "villa"
+                  ParentPropertyType === "industrial"
                     ? "bg-blue text-white"
                     : "border-widgetborder text-widgetborder"
                 } mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md  text-sm font-medium px-2`}
               >
-                <p> + Independent House/Villa</p>
+                <p> + Industrial</p>
               </div>
 
               <div
-                onClick={() => setPropertyType("apartment")}
+                onClick={() => setParentPropertyType("commercial")}
                 className={` ${
-                  PropertyType === "apartment"
+                  ParentPropertyType === "commercial"
                     ? "bg-blue text-white"
                     : "border-widgetborder text-widgetborder"
                 } mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md  text-sm font-medium px-2`}
               >
-                <p> + Residential Apartment</p>
+                <p> + Commercial</p>
               </div>
               <div
-                onClick={() => setPropertyType("land")}
+                onClick={() => setParentPropertyType("residential")}
                 className={` ${
-                  PropertyType === "land"
+                  ParentPropertyType === "residential"
                     ? "bg-blue text-white"
                     : "border-widgetborder text-widgetborder"
                 } mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md  text-sm font-medium px-2`}
               >
-                <p> + Residential Land</p>
+                <p> + Residential</p>
               </div>
             </div>
           </div>
