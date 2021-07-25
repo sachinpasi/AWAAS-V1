@@ -7,14 +7,30 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectFilter } from "../../../Redux/_features/_FliterSlice";
 
-const Result = () => {
+const Result = ({ PropertyFor }) => {
   const [SearchResult, setSearchResult] = useState([]);
   const { search } = useLocation();
-  const { parentProperty, propertyType, propertyFor, locality, max, min } =
-    queryString.parse(search);
+  const {
+    parentProperty,
+    propertyType,
+    property_for,
+    locality,
+    max,
+    min,
+    bedroom,
+    property_type,
+    awaas_verify,
+    photos,
+    furnished_status,
+    mini_area,
+    max_area,
+    max_budget,
+    mini_budget,
+  } = queryString.parse(search);
 
   const Filter = useSelector(selectFilter);
   let cancelToken;
+
   const FetchQuery = async () => {
     if (typeof cancelToken != typeof undefined) {
       cancelToken.cancel("Operation canceled due to new request.");
@@ -27,15 +43,18 @@ const Result = () => {
         `${API}/property/search`,
         {
           params: {
-            parent_type: parentProperty,
-            property_for: propertyFor,
+            property_type: property_type,
+            property_for: property_for,
             city: "panipat",
             locality_id: locality,
-            max_budget: max,
-            min_budget: min,
-            property_type: Filter.PropertyType,
-            photos: Filter.iswithPhoto,
-            bedroom: Filter.NoOfBedroom,
+            photos: photos,
+            bedroom: bedroom,
+            awaas_verify: awaas_verify,
+            furnished_status: furnished_status,
+            mini_area: mini_area,
+            max_area: max_area,
+            mini_budget: mini_budget,
+            max_budget: max_budget,
           },
         },
         { cancelToken: cancelToken.token }
@@ -50,20 +69,32 @@ const Result = () => {
   useEffect(() => {
     FetchQuery();
     // eslint-disable-next-line
-  }, [Filter]);
+  }, [
+    Filter,
+    bedroom,
+    property_type,
+    photos,
+    awaas_verify,
+    furnished_status,
+    property_for,
+    max_area,
+    mini_area,
+    mini_budget,
+    max_budget,
+  ]);
   return (
     <div className="w-72percent  h-auto flex flex-col items-start  my-4">
-      <p className="text-sm text-widgetborder ">Home > Property in Panipat</p>
+      {/* <p className="text-sm text-widgetborder ">Home > Property in Panipat</p> */}
       <p className="text-2xl text-darkgray my-2 leading-8 capitalize">
         {SearchResult?.length} results |{parentProperty} | {propertyType} for
-        {propertyFor === "buy" && " sale"} in Panipat Above {min} with Photo
+        {property_for === "buy" && " sale"} in Panipat Above {min} with Photo
       </p>
       <div className="w-full h-full flex flex-col ">
         {SearchResult.map((item, index) => (
-          <Link
-            to={`property/${propertyFor}/${item.p_id}`}
+          <div
+            //
             key={index}
-            className="bg-white h-64 w-full p-4 rounded-md shadow-md border-b-4 border-blue cursor-pointer my-4"
+            className="bg-white h-64 w-full p-4 rounded-md shadow-md border-b-4 border-blue  my-4"
           >
             <div className="w-full  h-full flex">
               {item.single_image === null ? (
@@ -96,6 +127,7 @@ const Result = () => {
                           {item?.title}
                         </p>
                         <p className="font-medium text-lg capitalize">
+                          {item?.title === "price" && <span>&#8377; </span>}
                           {item?.val}
                         </p>
                       </div>
@@ -108,16 +140,19 @@ const Result = () => {
                 </div>
                 <div className="flex h-full justify-between items-center w-full">
                   <p className="text-base text-blue font-medium capitalize">
-                    Posted On - {item?.date} by Builder
+                    Posted On - {item?.date}
                   </p>
 
-                  <button className="bg-green rounded px-4 py-2 font-medium text-white">
-                    Contact
-                  </button>
+                  <Link
+                    to={`property/${item.property_for}/${item.p_id}`}
+                    className="bg-green rounded px-4 py-2 font-medium text-white"
+                  >
+                    View Property
+                  </Link>
                 </div>
               </div>
             </div>
-          </Link>
+          </div>
         ))}
       </div>
     </div>

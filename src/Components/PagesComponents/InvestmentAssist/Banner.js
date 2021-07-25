@@ -1,6 +1,21 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import { API } from "../../../API";
+import axios from "axios";
+import { toast } from "react-toastify";
 const Banner = () => {
+  const [Name, setName] = useState("");
+  const [Phone, setPhone] = useState("");
+
+  const HandleSubmit = async () => {
+    const res = await axios.post(`${API}/leads/store-home-loan`, {
+      name: Name,
+      phone: Phone,
+    });
+    if (res.status === 200) {
+      return toast.success("You Will Get A Callback Soon!");
+    }
+  };
+
   return (
     <section
       style={{
@@ -30,13 +45,20 @@ const Banner = () => {
                 className="w-full h-full rounded border-2 mr-1 px-4 "
                 type="text"
                 placeholder="Name"
+                value={Name}
+                onChange={(e) => setName(e.target.value)}
               />
               <input
                 className="w-full h-full  rounded border-2 mx-2 px-4 "
                 type="text"
                 placeholder="Phone Number"
+                value={Phone}
+                onChange={(e) => setPhone(e.target.value)}
               />
-              <button className="w-full h-full bg-blue rounded text-white font-medium ml-1">
+              <button
+                onClick={HandleSubmit}
+                className="w-full h-full bg-blue rounded text-white font-medium ml-1"
+              >
                 {" "}
                 Get Call Back
               </button>

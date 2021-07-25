@@ -15,6 +15,7 @@ const Articles = () => {
   const FetchArticlesList = async () => {
     const res = await axios.get(`${API}/blogs/list`);
     setArticlesList(res.data.data);
+    console.log(res.data.data);
   };
 
   useEffect(() => {
@@ -28,7 +29,7 @@ const Articles = () => {
         <div className="w-full h-full my-8">
           {ArticlesList.length !== 0 ? (
             <OwlCarousel items={4} loop nav={true} margin={20}>
-              {ArticlesList.slice(4).map((item) => (
+              {ArticlesList.map((item) => (
                 <div key={item.bid} className="w-full h-full ">
                   <div
                     style={{

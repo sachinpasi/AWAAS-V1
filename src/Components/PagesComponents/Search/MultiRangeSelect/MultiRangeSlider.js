@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import "./Range.css";
 
-const MultiRangeSlider = ({ min, max, onChange }) => {
+const MultiRangeSlider = ({ min, max, onChange, BudgetMin }) => {
   const [minVal, setMinVal] = useState(min);
   const [maxVal, setMaxVal] = useState(max);
   const minValRef = useRef(min);
@@ -67,7 +67,7 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
 
       <div className="slider__search">
         <div className="slider__track__search" />
-        <div ref={range} className="slider__range__search" />
+        <div className="slider__range__search" />
         <div className="slider__left-value__search">{minVal}</div>
         <div className="slider__right-value__search">{maxVal}</div>
       </div>
