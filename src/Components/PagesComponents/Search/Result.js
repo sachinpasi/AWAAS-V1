@@ -15,8 +15,7 @@ const Result = ({ PropertyFor }) => {
     propertyType,
     property_for,
     locality,
-    max,
-    min,
+    parent_type,
     bedroom,
     property_type,
     awaas_verify,
@@ -43,7 +42,7 @@ const Result = ({ PropertyFor }) => {
         `${API}/property/search`,
         {
           params: {
-            property_type: property_type,
+            property_type: parent_type,
             property_for: property_for,
             city: "panipat",
             locality_id: locality,
@@ -81,13 +80,15 @@ const Result = ({ PropertyFor }) => {
     mini_area,
     mini_budget,
     max_budget,
+    parent_type,
   ]);
   return (
     <div className="w-72percent  h-auto flex flex-col items-start  my-4">
       {/* <p className="text-sm text-widgetborder ">Home > Property in Panipat</p> */}
       <p className="text-2xl text-darkgray my-2 leading-8 capitalize">
         {SearchResult?.length} results |{parentProperty} | {propertyType} for
-        {property_for === "buy" && " sale"} in Panipat Above {min} with Photo
+        {property_for === "buy" && " sale"} in Panipat Above {mini_budget} with
+        Photo
       </p>
       <div className="w-full h-full flex flex-col ">
         {SearchResult.map((item, index) => (

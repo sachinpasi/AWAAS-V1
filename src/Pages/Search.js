@@ -14,7 +14,7 @@ const Search = () => {
 
   return (
     <Layout>
-      <SearchNav setPropertyFor={setPropertyFor} />
+      <SearchNav PropertyFor={PropertyFor} setPropertyFor={setPropertyFor} />
       <main className="bg-textbg pt-28">
         <div className="customContainer flex h-full justify-between  ">
           <Filter PropertyFor={PropertyFor} />

@@ -3,33 +3,34 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { SET_FILTER } from "../../../Redux/_features/_FliterSlice";
 import MultiRangeSlider from "./MultiRangeSelect/MultiRangeSlider";
+import { Range } from "rc-slider";
+import "rc-slider/assets/index.css";
 
 const Filter = ({ PropertyFor }) => {
-  const [BudgetMin, setBudgetMin] = useState();
-  const [BudgetMax, setBudgetMax] = useState();
+  const [Budget, setBudget] = useState([0, 100000000]);
   const [BudgetMinSelect, setBudgetMinSelect] = useState();
   const [BudgetMaxSelect, setBudgetMaxSelect] = useState();
   const [NoOfBedroom, setNoOfBedroom] = useState();
   const [ParentPropertyType, setParentPropertyType] = useState();
-  const [AreaMin, setAreaMin] = useState();
-  const [AreaMax, setAreaMax] = useState();
-  const [AreaMinSelect, setAreaMinSelect] = useState();
-  const [AreaMaxSelect, setAreaMaxSelect] = useState();
+  const [Area, setArea] = useState([0, 1000]);
+
   const [isVerified, setisVerified] = useState(false);
   const [iswithPhoto, setiswithPhoto] = useState(false);
   const [FurnishedStatus, setFurnishedStatus] = useState();
 
-  const HandleBudgetChange = (min, max) => {
-    setBudgetMin(min);
-    setBudgetMax(max);
-    console.log(BudgetMin);
+  const HandleBudgetChange = (value) => {
+    setBudget([value[0], value[1]]);
   };
-  const HandleAreaChange = (min, max) => {
-    setAreaMin(min);
-    setAreaMax(max);
+
+  const HandleAreaChange = (value) => {
+    setArea([value[0], value[1]]);
   };
 
   const history = useHistory();
+
+  // useEffect(() => {
+  //   setBudget([BudgetMinSelect]);
+  // }, [BudgetMinSelect, BudgetMaxSelect]);
 
   useEffect(() => {
     const params = new URLSearchParams();
@@ -64,51 +65,18 @@ const Filter = ({ PropertyFor }) => {
       params.delete("furnished_status");
     }
 
-    if (AreaMin) {
-      params.append("mini_area", AreaMin);
+    if (Area) {
+      params.append("mini_area", Area[0]);
     } else {
       params.delete("mini_area");
     }
 
-    if (AreaMax !== 1000) {
-      params.append("max_area", AreaMax);
-    } else {
-      params.delete("max_area");
-    }
-
-    if (BudgetMin) {
-      params.append("mini_budget", BudgetMin);
+    if (Budget) {
+      params.append("mini_budget", Budget[0]);
+      params.append("max_budget", Budget[1]);
     } else {
       params.delete("mini_budget");
-    }
-
-    if (BudgetMax !== 100000000) {
-      params.append("max_budget", BudgetMax);
-    } else {
       params.delete("max_budget");
-    }
-    if (BudgetMinSelect) {
-      params.append("mini_budget", BudgetMinSelect);
-    } else {
-      params.delete("mini_budget");
-    }
-
-    if (BudgetMaxSelect) {
-      params.append("max_budget", BudgetMaxSelect);
-    } else {
-      params.delete("max_budget");
-    }
-
-    if (AreaMinSelect) {
-      params.append("mini_area", AreaMinSelect);
-    } else {
-      params.delete("mini_area");
-    }
-
-    if (AreaMaxSelect) {
-      params.append("max_area", AreaMaxSelect);
-    } else {
-      params.delete("max_area");
     }
 
     history.push({ pathname: "/search", search: params.toString() });
@@ -120,14 +88,8 @@ const Filter = ({ PropertyFor }) => {
     iswithPhoto,
     FurnishedStatus,
     PropertyFor,
-    AreaMax,
-    AreaMin,
-    BudgetMin,
-    BudgetMax,
-    BudgetMinSelect,
-    BudgetMaxSelect,
-    AreaMinSelect,
-    AreaMaxSelect,
+    Area,
+    Budget,
   ]);
 
   const Option = ({ Value, title }) => (
@@ -145,33 +107,49 @@ const Filter = ({ PropertyFor }) => {
           </p>
           <div className="flex flex-col items-start py-2 border-b-2 w-full border-dashed">
             <p className="text-xl font-medium">Budget</p>
-            <div className="w-full my-4 py-4">
+            <div className="w-full py-4 ">
               {PropertyFor === "rent" ? (
                 <div>
-                  <MultiRangeSlider
-                    min={2500}
-                    max={600000}
-                    onChange={({ min, max }) => HandleBudgetChange(min, max)}
-                  />
+                  <div>
+                    <Range
+                      defaultValue={[2500, 600000]}
+                      value={Budget}
+                      min={2500}
+                      max={600000}
+                      onChange={HandleBudgetChange}
+                      allowCross={false}
+                    />
+                    <div className="flex justify-between pt-1 text-widgetborder text-sm ">
+                      <p>{Budget[0]}</p>
+                      <p>{Budget[1]}</p>
+                    </div>
+                  </div>
                 </div>
               ) : (
                 <div>
-                  <MultiRangeSlider
+                  <Range
+                    defaultValue={[0, 100000000]}
+                    value={Budget}
                     min={0}
                     max={100000000}
-                    onChange={({ min, max }) => HandleBudgetChange(min, max)}
+                    onChange={HandleBudgetChange}
+                    allowCross={false}
                   />
+                  <div className="flex justify-between pt-1 text-widgetborder text-sm ">
+                    <p>{Budget[0]}</p>
+                    <p>{Budget[1]}</p>
+                  </div>
                 </div>
               )}
             </div>
             {PropertyFor === "rent" ? (
               <div className="flex w-full justify-between my-4">
                 <select
-                  value={BudgetMinSelect}
-                  onChange={(e) => setBudgetMinSelect(e.target.value)}
+                  value={Budget[0]}
+                  onChange={(e) => setBudget([e.target.value, Budget[1]])}
                   className="w-2/4 mr-2 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-sm font-medium px-2"
                 >
-                  <option selected hidden value="">
+                  <option defaultChecked hidden value="">
                     Min
                   </option>
                   <Option Value="2500" title="2500" />
@@ -198,8 +176,8 @@ const Filter = ({ PropertyFor }) => {
                   <Option Value="500000" title="5 Lac" />
                 </select>
                 <select
-                  value={BudgetMaxSelect}
-                  onChange={(e) => setBudgetMaxSelect(e.target.value)}
+                  value={Budget[1]}
+                  onChange={(e) => setBudget([Budget[0], e.target.value])}
                   className="w-2/4 ml-2 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-sm font-medium px-2"
                 >
                   <option defaultChecked hidden value="">
@@ -232,11 +210,11 @@ const Filter = ({ PropertyFor }) => {
             ) : (
               <div className="flex w-full justify-between my-4">
                 <select
-                  value={BudgetMinSelect}
-                  onChange={(e) => setBudgetMinSelect(e.target.value)}
+                  value={Budget[0]}
+                  onChange={(e) => setBudget([e.target.value, Budget[1]])}
                   className="w-2/4 mr-2 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-sm font-medium px-2"
                 >
-                  <option selected hidden value="">
+                  <option selected hidden value="100000000">
                     Min
                   </option>
                   <Option Value="1000000" title="10 Lacs" />
@@ -259,8 +237,8 @@ const Filter = ({ PropertyFor }) => {
                   <Option Value="80000000" title="8 Cr" />
                 </select>
                 <select
-                  value={BudgetMaxSelect}
-                  onChange={(e) => setBudgetMaxSelect(e.target.value)}
+                  value={Budget[1]}
+                  onChange={(e) => setBudget([Budget[0], e.target.value])}
                   className="w-2/4 ml-2 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-sm font-medium px-2"
                 >
                   <option defaultChecked hidden value="">
@@ -386,18 +364,30 @@ const Filter = ({ PropertyFor }) => {
           <div className="flex flex-col items-start py-2 border-b-2 w-full border-dashed">
             <p className="text-xl font-medium">Area</p>
             <div className="w-full my-4 py-4">
-              <MultiRangeSlider
-                min={0}
-                max={1000}
-                onChange={({ min, max }) => HandleAreaChange(min, max)}
-              />
+              <div>
+                <Range
+                  defaultValue={[0, 1000]}
+                  value={Area}
+                  min={0}
+                  max={1000}
+                  onChange={HandleAreaChange}
+                  allowCross={false}
+                />
+                <div className="flex justify-between pt-1 text-widgetborder text-sm ">
+                  <p>{Area[0]}</p>
+                  <p>{Area[1]}</p>
+                </div>
+              </div>
             </div>
             <div className="flex w-full justify-between my-4">
               <select
-                onChange={(e) => setAreaMinSelect(e.target.value)}
+                value={Area[0]}
+                onChange={(e) => setArea([e.target.value, Area[0]])}
                 className="w-2/4 mr-2 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-sm font-medium px-2"
               >
-                <option value="">Min Area</option>
+                <option defaultChecked value="">
+                  Min Area
+                </option>
                 <option value="10">10</option>
                 <option value="20">20</option>
                 <option value="30">30</option>
@@ -418,10 +408,13 @@ const Filter = ({ PropertyFor }) => {
                 <option value="900">900</option>
               </select>
               <select
-                onChange={(e) => setAreaMaxSelect(e.target.value)}
+                value={Area[1]}
+                onChange={(e) => setArea([Area[0], e.target.value])}
                 className="w-2/4 ml-2 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-sm font-medium px-2"
               >
-                <option value="">Max Area</option>
+                <option defaultChecked hidden value="">
+                  Max Area
+                </option>
                 <option value="20">20</option>
                 <option value="30">30</option>
                 <option value="40">40</option>

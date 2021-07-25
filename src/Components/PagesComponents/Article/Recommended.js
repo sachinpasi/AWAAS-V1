@@ -28,7 +28,7 @@ const Recommended = () => {
             alt=""
           />
           <div className="p-4">
-            <h1 className="text-xl ">{item.title}</h1>
+            <h1 className="text-xl pb-4 ">{item.title}</h1>
             <div className="flex justify-end ">
               <Link
                 className="bg-blue py-2 px-8 text-white font-medium text-xl tracking-tight"

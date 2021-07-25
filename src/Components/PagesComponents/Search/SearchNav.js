@@ -4,7 +4,7 @@ import { IoMdHome } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { selectUser } from "../../../Redux/_features/_userSlice";
-const SearchNav = ({ setPropertyFor }) => {
+const SearchNav = ({ setPropertyFor, PropertyFor }) => {
   const [isNavOpen, setisNavOpen] = useState(false);
 
   const HandleNavScroll = () => {
@@ -38,6 +38,7 @@ const SearchNav = ({ setPropertyFor }) => {
     >
       <div className="customContainer flex justify-between items-center h-58percent ">
         <select
+          value={PropertyFor}
           onChange={(e) => setPropertyFor(e.target.value)}
           className="w-48 h-full mr-2 text-xl  rounded px-2"
         >
