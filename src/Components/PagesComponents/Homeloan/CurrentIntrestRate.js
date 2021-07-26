@@ -47,119 +47,160 @@ const CurrentIntrestRate = () => {
   }, [HomeLoanAmount, RateOfIntrest, LoanTenure]);
 
   return (
-    <section className="w-fill h-full">
-      <div className="customContainer py-20">
+    <section className="w-full h-full">
+      <div className="customContainer py-20 h-full">
         <p className="text-4xl font-light text-darkgray py-2">
           Current Interest Rates Of Banks
         </p>
-        <div className="w-70percent h-full my-5">
-          <div className="border-b-1 border-r-1 border-l-1 rounded mb-4">
-            <div className="w-full bg-littlelightgray flex justify-evenly py-5">
-              <div className="w-1/4 flex justify-center items-center">
-                <p className="text-xl font-medium text-darkgray">Bank Name</p>
-              </div>{" "}
-              <div className="w-1/4 flex justify-center items-center">
-                <p className="text-xl font-medium text-darkgray">
-                  Rate of interest
+        <div className="w-full flex justify-between items-start  h-full">
+          <div className="w-70percent h-full my-5">
+            <div className="border-b-1 border-r-1 border-l-1 rounded mb-4">
+              <div className="w-full bg-littlelightgray flex justify-evenly py-5">
+                <div className="w-1/4 flex justify-center items-center">
+                  <p className="text-xl font-medium text-darkgray">Bank Name</p>
+                </div>{" "}
+                <div className="w-1/4 flex justify-center items-center">
+                  <p className="text-xl font-medium text-darkgray">
+                    Rate of interest
+                  </p>
+                </div>{" "}
+                <div className="w-1/4 flex justify-center items-center">
+                  <p className="text-xl font-medium text-darkgray">
+                    Processing Fee
+                  </p>
+                </div>{" "}
+                <div className="w-1/4 flex justify-center items-center">
+                  <p className="text-xl font-medium text-darkgray">Tenure</p>
+                </div>
+              </div>
+              <div className="flex justify-evenly py-4 pb-1 border-b-2 border-dashed">
+                <div className="w-1/4 flex flex-col justify-center items-center">
+                  <img src="/assets/images/homeloans/sbi.svg" alt="" />
+                  <p className="font-medium py-1">SBI</p>
+                </div>
+                <div className="w-1/4 flex flex-col justify-center items-center">
+                  <p className="text-xl font-medium">6.90%</p>
+                </div>
+                <div className="w-1/4 flex flex-col justify-center items-center">
+                  <p className="text-xl font-medium">5000/-</p>
+                </div>
+                <div className="w-1/4 flex flex-col justify-center items-center">
+                  <p className="text-xl font-medium">0-30 Yrs</p>
+                </div>
+              </div>
+              <div className="flex justify-evenly py-4 pb-1 border-b-2 border-dashed">
+                <div className="w-1/4 flex flex-col justify-center items-center">
+                  <img src="/assets/images/homeloans/sbi.svg" alt="" />
+                  <p className="font-medium py-1">PNB</p>
+                </div>
+                <div className="w-1/4 flex flex-col justify-center items-center">
+                  <p className="text-xl font-medium">6.90%</p>
+                </div>
+                <div className="w-1/4 flex flex-col justify-center items-center">
+                  <p className="text-xl font-medium">5000/-</p>
+                </div>
+                <div className="w-1/4 flex flex-col justify-center items-center">
+                  <p className="text-xl font-medium">0-30 Yrs</p>
+                </div>
+              </div>
+              <div className="flex justify-evenly py-4 pb-1  border-b-2 border-dashed  ">
+                <div className="w-1/4 flex flex-col justify-center items-center">
+                  <img src="/assets/images/homeloans/hdfc.svg" alt="" />
+                  <p className="font-medium py-1">HDFC</p>
+                </div>
+                <div className="w-1/4 flex flex-col justify-center items-center">
+                  <p className="text-xl font-medium">6.80%</p>
+                </div>
+                <div className="w-1/4 flex flex-col justify-center items-center">
+                  <p className="text-xl font-medium">15000/-</p>
+                </div>
+                <div className="w-1/4 flex flex-col justify-center items-center">
+                  <p className="text-xl font-medium">3-30 Yrs</p>
+                </div>
+              </div>
+              <div className="flex justify-evenly py-4 pb-1 border-b-2 border-dashed">
+                <div className="w-1/4 flex flex-col justify-center items-center">
+                  <img src="/assets/images/homeloans/icici.svg" alt="" />
+                  <p className="font-medium py-1">ICICI</p>
+                </div>
+                <div className="w-1/4 flex flex-col justify-center items-center">
+                  <p className="text-xl font-medium">6.80%</p>
+                </div>
+                <div className="w-1/4 flex flex-col justify-center items-center">
+                  <p className="text-xl font-medium">10000/-</p>
+                </div>
+                <div className="w-1/4 flex flex-col justify-center items-center">
+                  <p className="text-xl font-medium">3-30 Yrs</p>
+                </div>
+              </div>
+              <div className="flex justify-evenly py-4 pb-1 border-b-2 border-dashed">
+                <div className="w-1/4 flex flex-col justify-center items-center">
+                  <img src="/assets/images/homeloans/icici.svg" alt="" />
+                  <p className="font-medium py-1">AXIS</p>
+                </div>
+                <div className="w-1/4 flex flex-col justify-center items-center">
+                  <p className="text-xl font-medium">6.80%</p>
+                </div>
+                <div className="w-1/4 flex flex-col justify-center items-center">
+                  <p className="text-xl font-medium">10000/-</p>
+                </div>
+                <div className="w-1/4 flex flex-col justify-center items-center">
+                  <p className="text-xl font-medium">3-30 Yrs</p>
+                </div>
+              </div>
+              <div className="flex justify-evenly py-4 pb-1 border-b-2 border-dashed">
+                <div className="w-1/4 flex flex-col justify-center items-center">
+                  <img src="/assets/images/homeloans/icici.svg" alt="" />
+                  <p className="font-medium py-1">IIFL</p>
+                </div>
+                <div className="w-1/4 flex flex-col justify-center items-center">
+                  <p className="text-xl font-medium">6.80%</p>
+                </div>
+                <div className="w-1/4 flex flex-col justify-center items-center">
+                  <p className="text-xl font-medium">10000/-</p>
+                </div>
+                <div className="w-1/4 flex flex-col justify-center items-center">
+                  <p className="text-xl font-medium">3-30 Yrs</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="w-30percent h-full pl-8 my-5  ">
+            <div className="w-full h-500px bg-white shadow-2xl rounded p-4 flex flex-col items-start justify-between sticky top-0 ">
+              <div>
+                <p className="text-2xl text-darkgray mb-2">Contact Us</p>
+                <p className="text-xl font-medium">
+                  Have any queries? we'd love to here from you
                 </p>
-              </div>{" "}
-              <div className="w-1/4 flex justify-center items-center">
-                <p className="text-xl font-medium text-darkgray">
-                  Processing Fee
+                <div className="my-4">
+                  <p className="text-xl text-blue font-medium">Call Us</p>
+                  <p className="text-xl text-darkgray">0755-98765432</p>
+                </div>
+                <div className="my-4">
+                  <p className="text-xl text-blue font-medium">Mail Us</p>
+                  <p className="text-xl text-darkgray">
+                    support@awasonline.com
+                  </p>
+                </div>
+              </div>
+              <div className="w-full text-center flex items-center justify-evenly text-2xl text-lightgray font-semibold uppercase">
+                <span className="w-20 h-2 block border-b-2 border-solid"></span>{" "}
+                or{" "}
+                <span className="w-20 h-2 block border-b-2 border-solid"></span>
+              </div>
+              <div className="w-full">
+                <p className="text-xl font-medium text-darkgray my-2">
+                  Request a call back
                 </p>
-              </div>{" "}
-              <div className="w-1/4 flex justify-center items-center">
-                <p className="text-xl font-medium text-darkgray">Tenure</p>
-              </div>
-            </div>
-            <div className="flex justify-evenly py-4 pb-1 border-b-2 border-dashed">
-              <div className="w-1/4 flex flex-col justify-center items-center">
-                <img src="/assets/images/homeloans/sbi.svg" alt="" />
-                <p className="font-medium py-1">SBI</p>
-              </div>
-              <div className="w-1/4 flex flex-col justify-center items-center">
-                <p className="text-xl font-medium">6.90%</p>
-              </div>
-              <div className="w-1/4 flex flex-col justify-center items-center">
-                <p className="text-xl font-medium">5000/-</p>
-              </div>
-              <div className="w-1/4 flex flex-col justify-center items-center">
-                <p className="text-xl font-medium">0-30 Yrs</p>
-              </div>
-            </div>
-            <div className="flex justify-evenly py-4 pb-1 border-b-2 border-dashed">
-              <div className="w-1/4 flex flex-col justify-center items-center">
-                <img src="/assets/images/homeloans/sbi.svg" alt="" />
-                <p className="font-medium py-1">PNB</p>
-              </div>
-              <div className="w-1/4 flex flex-col justify-center items-center">
-                <p className="text-xl font-medium">6.90%</p>
-              </div>
-              <div className="w-1/4 flex flex-col justify-center items-center">
-                <p className="text-xl font-medium">5000/-</p>
-              </div>
-              <div className="w-1/4 flex flex-col justify-center items-center">
-                <p className="text-xl font-medium">0-30 Yrs</p>
-              </div>
-            </div>
-            <div className="flex justify-evenly py-4 pb-1  border-b-2 border-dashed  ">
-              <div className="w-1/4 flex flex-col justify-center items-center">
-                <img src="/assets/images/homeloans/hdfc.svg" alt="" />
-                <p className="font-medium py-1">HDFC</p>
-              </div>
-              <div className="w-1/4 flex flex-col justify-center items-center">
-                <p className="text-xl font-medium">6.80%</p>
-              </div>
-              <div className="w-1/4 flex flex-col justify-center items-center">
-                <p className="text-xl font-medium">15000/-</p>
-              </div>
-              <div className="w-1/4 flex flex-col justify-center items-center">
-                <p className="text-xl font-medium">3-30 Yrs</p>
-              </div>
-            </div>
-            <div className="flex justify-evenly py-4 pb-1 border-b-2 border-dashed">
-              <div className="w-1/4 flex flex-col justify-center items-center">
-                <img src="/assets/images/homeloans/icici.svg" alt="" />
-                <p className="font-medium py-1">ICICI</p>
-              </div>
-              <div className="w-1/4 flex flex-col justify-center items-center">
-                <p className="text-xl font-medium">6.80%</p>
-              </div>
-              <div className="w-1/4 flex flex-col justify-center items-center">
-                <p className="text-xl font-medium">10000/-</p>
-              </div>
-              <div className="w-1/4 flex flex-col justify-center items-center">
-                <p className="text-xl font-medium">3-30 Yrs</p>
-              </div>
-            </div>
-            <div className="flex justify-evenly py-4 pb-1 border-b-2 border-dashed">
-              <div className="w-1/4 flex flex-col justify-center items-center">
-                <img src="/assets/images/homeloans/icici.svg" alt="" />
-                <p className="font-medium py-1">AXIS</p>
-              </div>
-              <div className="w-1/4 flex flex-col justify-center items-center">
-                <p className="text-xl font-medium">6.80%</p>
-              </div>
-              <div className="w-1/4 flex flex-col justify-center items-center">
-                <p className="text-xl font-medium">10000/-</p>
-              </div>
-              <div className="w-1/4 flex flex-col justify-center items-center">
-                <p className="text-xl font-medium">3-30 Yrs</p>
-              </div>
-            </div>
-            <div className="flex justify-evenly py-4 pb-1 border-b-2 border-dashed">
-              <div className="w-1/4 flex flex-col justify-center items-center">
-                <img src="/assets/images/homeloans/icici.svg" alt="" />
-                <p className="font-medium py-1">IIFL</p>
-              </div>
-              <div className="w-1/4 flex flex-col justify-center items-center">
-                <p className="text-xl font-medium">6.80%</p>
-              </div>
-              <div className="w-1/4 flex flex-col justify-center items-center">
-                <p className="text-xl font-medium">10000/-</p>
-              </div>
-              <div className="w-1/4 flex flex-col justify-center items-center">
-                <p className="text-xl font-medium">3-30 Yrs</p>
+                <input
+                  type="text"
+                  placeholder="Mobile Number"
+                  className="w-full h-12 border-1 border-navborder rounded px-2 text-xl"
+                />
+                <button className="text-xl font-medium text-white bg-blue rounded w-full h-12 mt-8">
+                  Submit
+                </button>
               </div>
             </div>
           </div>

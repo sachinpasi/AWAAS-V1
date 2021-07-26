@@ -26,6 +26,17 @@ const Footer = () => {
           <ul className="flex justify-evenly items-center w-3/4 py-4">
             <li>
               <Link
+                to="/about-us"
+                style={{
+                  color: "#88909F",
+                }}
+                className="text-base "
+              >
+                About Us
+              </Link>
+            </li>
+            <li>
+              <Link
                 to="/"
                 style={{
                   color: "#88909F",
@@ -35,17 +46,6 @@ const Footer = () => {
                 Services
               </Link>
             </li>{" "}
-            <li>
-              <Link
-                to="/"
-                style={{
-                  color: "#88909F",
-                }}
-                className="text-base "
-              >
-                Agent
-              </Link>
-            </li>
             <li>
               <Link
                 to="/"

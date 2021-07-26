@@ -11,6 +11,7 @@ const Search = () => {
   const { search } = useLocation();
   const { propertyFor } = queryString.parse(search);
   const [PropertyFor, setPropertyFor] = useState(propertyFor);
+  console.log(propertyFor);
 
   return (
     <Layout>

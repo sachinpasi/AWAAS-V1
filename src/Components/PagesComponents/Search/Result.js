@@ -44,7 +44,7 @@ const Result = ({ PropertyFor }) => {
           params: {
             property_type: parent_type,
             property_for: property_for,
-            city: "panipat",
+            // city: "panipat",
             locality_id: locality,
             photos: photos,
             bedroom: bedroom,

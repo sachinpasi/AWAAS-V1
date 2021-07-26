@@ -1,44 +1,58 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { SET_FILTER } from "../../../Redux/_features/_FliterSlice";
-import MultiRangeSlider from "./MultiRangeSelect/MultiRangeSlider";
-import { Range } from "rc-slider";
-import "rc-slider/assets/index.css";
+import { useHistory, useLocation } from "react-router-dom";
+
+import queryString from "query-string";
 
 const Filter = ({ PropertyFor }) => {
-  const [Budget, setBudget] = useState([0, 100000000]);
-  const [BudgetMinSelect, setBudgetMinSelect] = useState();
-  const [BudgetMaxSelect, setBudgetMaxSelect] = useState();
   const [NoOfBedroom, setNoOfBedroom] = useState();
   const [ParentPropertyType, setParentPropertyType] = useState();
-  const [Area, setArea] = useState([0, 1000]);
+  const [AreaMin, setAreaMin] = useState();
+  const [AreaMax, setAreaMax] = useState();
+  const [BudgetMin, setBudgetMin] = useState();
+  const [BudgetMax, setBudgetMax] = useState();
 
   const [isVerified, setisVerified] = useState(false);
   const [iswithPhoto, setiswithPhoto] = useState(false);
   const [FurnishedStatus, setFurnishedStatus] = useState();
+  const [PARAMS, setPARAMS] = useState();
 
-  const HandleBudgetChange = (value) => {
-    setBudget([value[0], value[1]]);
-  };
+  const { search } = useLocation();
 
-  const HandleAreaChange = (value) => {
-    setArea([value[0], value[1]]);
-  };
+  const { property_for, locality_id, parent_type, property_type } =
+    queryString.parse(search);
 
   const history = useHistory();
 
-  // useEffect(() => {
-  //   setBudget([BudgetMinSelect]);
-  // }, [BudgetMinSelect, BudgetMaxSelect]);
-
   useEffect(() => {
     const params = new URLSearchParams();
-    if (PropertyFor) {
-      params.append("property_for", PropertyFor);
+    if (property_for) {
+      params.append("property_for", property_for);
     } else {
       params.delete("property_for");
     }
+    if (locality_id) {
+      params.append("locality_id", locality_id);
+    } else {
+      params.delete("locality_id");
+    }
+
+    if (property_type) {
+      params.append("property_type", property_type);
+    } else {
+      params.delete("property_type");
+    }
+    if (BudgetMin) {
+      params.append("mini_budget", BudgetMin);
+    } else {
+      params.delete("mini_budget");
+    }
+    if (BudgetMax) {
+      params.append("max_budget", BudgetMax);
+    } else {
+      params.delete("max_budget");
+    }
+
     if (NoOfBedroom) {
       params.append("bedroom", NoOfBedroom);
     } else {
@@ -49,6 +63,7 @@ const Filter = ({ PropertyFor }) => {
     } else {
       params.delete("parent_type");
     }
+
     if (isVerified) {
       params.append("awaas_verify", isVerified);
     } else {
@@ -65,32 +80,24 @@ const Filter = ({ PropertyFor }) => {
       params.delete("furnished_status");
     }
 
-    if (Area) {
-      params.append("mini_area", Area[0]);
-    } else {
-      params.delete("mini_area");
-    }
-
-    if (Budget) {
-      params.append("mini_budget", Budget[0]);
-      params.append("max_budget", Budget[1]);
-    } else {
-      params.delete("mini_budget");
-      params.delete("max_budget");
-    }
-
-    history.push({ pathname: "/search", search: params.toString() });
+    setPARAMS(params.toString());
   }, [
+    BudgetMin,
+    property_for,
+    BudgetMax,
+    property_type,
+    parent_type,
+    locality_id,
     NoOfBedroom,
-    ParentPropertyType,
-    history,
     isVerified,
     iswithPhoto,
     FurnishedStatus,
-    PropertyFor,
-    Area,
-    Budget,
+    ParentPropertyType,
   ]);
+
+  const HandleApplyFilter = () => {
+    history.push({ pathname: "/search", search: PARAMS });
+  };
 
   const Option = ({ Value, title }) => (
     <option className="text-black" value={Value}>
@@ -107,46 +114,12 @@ const Filter = ({ PropertyFor }) => {
           </p>
           <div className="flex flex-col items-start py-2 border-b-2 w-full border-dashed">
             <p className="text-xl font-medium">Budget</p>
-            <div className="w-full py-4 ">
-              {PropertyFor === "rent" ? (
-                <div>
-                  <div>
-                    <Range
-                      defaultValue={[2500, 600000]}
-                      value={Budget}
-                      min={2500}
-                      max={600000}
-                      onChange={HandleBudgetChange}
-                      allowCross={false}
-                    />
-                    <div className="flex justify-between pt-1 text-widgetborder text-sm ">
-                      <p>{Budget[0]}</p>
-                      <p>{Budget[1]}</p>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div>
-                  <Range
-                    defaultValue={[0, 100000000]}
-                    value={Budget}
-                    min={0}
-                    max={100000000}
-                    onChange={HandleBudgetChange}
-                    allowCross={false}
-                  />
-                  <div className="flex justify-between pt-1 text-widgetborder text-sm ">
-                    <p>{Budget[0]}</p>
-                    <p>{Budget[1]}</p>
-                  </div>
-                </div>
-              )}
-            </div>
+
             {PropertyFor === "rent" ? (
               <div className="flex w-full justify-between my-4">
                 <select
-                  value={Budget[0]}
-                  onChange={(e) => setBudget([e.target.value, Budget[1]])}
+                  onChange={(e) => setBudgetMin(e.target.value)}
+                  value={BudgetMin}
                   className="w-2/4 mr-2 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-sm font-medium px-2"
                 >
                   <option defaultChecked hidden value="">
@@ -176,8 +149,8 @@ const Filter = ({ PropertyFor }) => {
                   <Option Value="500000" title="5 Lac" />
                 </select>
                 <select
-                  value={Budget[1]}
-                  onChange={(e) => setBudget([Budget[0], e.target.value])}
+                  onChange={(e) => setBudgetMax(e.target.value)}
+                  value={BudgetMax}
                   className="w-2/4 ml-2 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-sm font-medium px-2"
                 >
                   <option defaultChecked hidden value="">
@@ -210,8 +183,8 @@ const Filter = ({ PropertyFor }) => {
             ) : (
               <div className="flex w-full justify-between my-4">
                 <select
-                  value={Budget[0]}
-                  onChange={(e) => setBudget([e.target.value, Budget[1]])}
+                  onChange={(e) => setBudgetMin(e.target.value)}
+                  value={BudgetMin}
                   className="w-2/4 mr-2 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-sm font-medium px-2"
                 >
                   <option selected hidden value="100000000">
@@ -237,8 +210,8 @@ const Filter = ({ PropertyFor }) => {
                   <Option Value="80000000" title="8 Cr" />
                 </select>
                 <select
-                  value={Budget[1]}
-                  onChange={(e) => setBudget([Budget[0], e.target.value])}
+                  onChange={(e) => setBudgetMax(e.target.value)}
+                  value={BudgetMax}
                   className="w-2/4 ml-2 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-sm font-medium px-2"
                 >
                   <option defaultChecked hidden value="">
@@ -363,26 +336,11 @@ const Filter = ({ PropertyFor }) => {
 
           <div className="flex flex-col items-start py-2 border-b-2 w-full border-dashed">
             <p className="text-xl font-medium">Area</p>
-            <div className="w-full my-4 py-4">
-              <div>
-                <Range
-                  defaultValue={[0, 1000]}
-                  value={Area}
-                  min={0}
-                  max={1000}
-                  onChange={HandleAreaChange}
-                  allowCross={false}
-                />
-                <div className="flex justify-between pt-1 text-widgetborder text-sm ">
-                  <p>{Area[0]}</p>
-                  <p>{Area[1]}</p>
-                </div>
-              </div>
-            </div>
+
             <div className="flex w-full justify-between my-4">
               <select
-                value={Area[0]}
-                onChange={(e) => setArea([e.target.value, Area[0]])}
+                value={AreaMin}
+                onChange={(e) => setAreaMin(e.target.value)}
                 className="w-2/4 mr-2 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-sm font-medium px-2"
               >
                 <option defaultChecked value="">
@@ -408,8 +366,8 @@ const Filter = ({ PropertyFor }) => {
                 <option value="900">900</option>
               </select>
               <select
-                value={Area[1]}
-                onChange={(e) => setArea([Area[0], e.target.value])}
+                value={AreaMax}
+                onChange={(e) => setAreaMax(e.target.value)}
                 className="w-2/4 ml-2 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-sm font-medium px-2"
               >
                 <option defaultChecked hidden value="">
@@ -498,6 +456,14 @@ const Filter = ({ PropertyFor }) => {
                 <p> + Furnished</p>
               </div>
             </div>
+          </div>
+          <div className="w-full">
+            <button
+              onClick={HandleApplyFilter}
+              className="text-white font-medium bg-green w-full h-12 mt-2 rounded-sm"
+            >
+              APPLY FILTER
+            </button>
           </div>
         </div>
       </div>

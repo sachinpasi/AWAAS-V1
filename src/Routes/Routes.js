@@ -13,6 +13,7 @@ import Search from "../Pages/Search";
 import Article from "../Pages/Article";
 import Vastu from "../Pages/Vastu";
 import VerfiyProject from "../Pages/Verfiy/VerfiyProject";
+import Aboutus from "../Pages/Aboutus";
 
 const Routes = () => {
   return (
@@ -22,6 +23,7 @@ const Routes = () => {
         <Route path="/search" component={Search} />
 
         <Route exact path="/home-loans" component={Homeloan} />
+        <Route exact path="/about-us" component={Aboutus} />
         <Route exact path="/vastu" component={Vastu} />
         <Route exact path="/investment-assist" component={InvestmentAssist} />
         <Route exact path="/awaas-assist" component={AwaasAssist} />
