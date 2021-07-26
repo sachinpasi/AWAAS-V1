@@ -42,7 +42,7 @@ const Result = ({ PropertyFor }) => {
         `${API}/property/search`,
         {
           params: {
-            property_type: parent_type,
+            parent_type: parent_type,
             property_for: property_for,
             // city: "panipat",
             locality_id: locality,

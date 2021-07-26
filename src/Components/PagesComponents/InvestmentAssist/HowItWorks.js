@@ -2,7 +2,7 @@ import React from "react";
 
 const HowItWorks = () => {
   return (
-    <section className="w-full h-full bg-textbg flex flex-col justify-center items-center pt-48 ">
+    <section className="w-full h-full bg-textbg flex flex-col justify-center items-center pt-32 ">
       <p className="text-5xl text-darkgray font-medium">How it works?</p>
       <div className=" flex justify-between items-center h-72">
         <div

@@ -19,37 +19,42 @@ const Banner = () => {
   return (
     <section
       style={{
-        background: "url(/assets/images/investmentassist/bg.png)",
-        height: "50vh",
+        background: "url(/assets/images/investmentassist/bg.jpg)",
+
         backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
       }}
-      className="w-full "
+      className="w-full h-450px "
     >
       <div
         style={{
           background: "rgba(0,0,0,0.2)",
         }}
-        className="w-full h-full relative flex justify-center items-end"
+        className="w-full h-full relative flex justify-evenly items-center"
       >
-        <div className="w-2/3 h-60  bg-white -mb-32 shadow-xl rounded-sm flex flex-col justify-center items-center px-8 ">
+        <div>
+          <p className="text-6xl text-white font-semibold capitalize ">
+            Invest With Awaasonline
+          </p>
+        </div>
+        <div className="w-1/5 h-80 rounded-lg  bg-white shadow-xl  flex flex-col justify-center items-center px-8 ">
           <div className="flex justify-center items-center flex-col border-b-2 border-dashed w-full py-2">
-            <p className="text-4xl font-medium py-1">Invest In Real Estate</p>
             <p className="text-lg text-darkgray">
               Get investment advice from our experienced advisers
             </p>
           </div>
-          <div className="flex justify-center items-center flex-col w-full py-4">
+          <div className="flex justify-center items-center flex-col w-full py-2">
             <p className="text-2xl font-medium pb-3">Request Callback</p>
-            <div className="w-full flex justify-between items-center h-11">
+            <div className="w-full flex justify-between items-center flex-col">
               <input
-                className="w-full h-full rounded border-2 mr-1 px-4 "
+                className="w-full h-10 rounded border-2 mr-1 px-4 "
                 type="text"
                 placeholder="Name"
                 value={Name}
                 onChange={(e) => setName(e.target.value)}
               />
               <input
-                className="w-full h-full  rounded border-2 mx-2 px-4 "
+                className="w-full h-10 my-2  rounded border-2 mx-2 px-4 "
                 type="text"
                 placeholder="Phone Number"
                 value={Phone}
@@ -57,7 +62,7 @@ const Banner = () => {
               />
               <button
                 onClick={HandleSubmit}
-                className="w-full h-full bg-blue rounded text-white font-medium ml-1"
+                className="w-full h-10 my-2 bg-blue rounded text-white font-medium ml-1"
               >
                 {" "}
                 Get Call Back

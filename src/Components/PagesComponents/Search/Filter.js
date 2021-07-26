@@ -24,13 +24,24 @@ const Filter = ({ PropertyFor }) => {
 
   const history = useHistory();
 
+  console.log(PropertyFor);
+
   useEffect(() => {
     const params = new URLSearchParams();
-    if (property_for) {
-      params.append("property_for", property_for);
+    if (PropertyFor) {
+      if (PropertyFor) {
+        params.append("property_for", PropertyFor);
+      } else {
+        params.delete("property_for");
+      }
     } else {
-      params.delete("property_for");
+      if (property_for) {
+        params.append("property_for", property_for);
+      } else {
+        params.delete("property_for");
+      }
     }
+
     if (locality_id) {
       params.append("locality_id", locality_id);
     } else {
@@ -93,6 +104,7 @@ const Filter = ({ PropertyFor }) => {
     iswithPhoto,
     FurnishedStatus,
     ParentPropertyType,
+    PropertyFor,
   ]);
 
   const HandleApplyFilter = () => {

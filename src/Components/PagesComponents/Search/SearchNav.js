@@ -4,6 +4,7 @@ import { IoMdHome } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { selectUser } from "../../../Redux/_features/_userSlice";
+
 const SearchNav = ({ setPropertyFor, PropertyFor }) => {
   const [isNavOpen, setisNavOpen] = useState(false);
 
@@ -14,6 +15,8 @@ const SearchNav = ({ setPropertyFor, PropertyFor }) => {
       setisNavOpen(false);
     }
   };
+
+  console.log(PropertyFor);
 
   const user = useSelector(selectUser);
   const history = useHistory();

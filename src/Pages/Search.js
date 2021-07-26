@@ -9,9 +9,9 @@ import queryString from "query-string";
 
 const Search = () => {
   const { search } = useLocation();
-  const { propertyFor } = queryString.parse(search);
-  const [PropertyFor, setPropertyFor] = useState(propertyFor);
-  console.log(propertyFor);
+  const { property_for } = queryString.parse(search);
+  const [PropertyFor, setPropertyFor] = useState(property_for);
+  console.log(property_for);
 
   return (
     <Layout>
