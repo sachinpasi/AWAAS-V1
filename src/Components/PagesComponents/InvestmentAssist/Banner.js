@@ -7,7 +7,7 @@ const Banner = () => {
   const [Phone, setPhone] = useState("");
 
   const HandleSubmit = async () => {
-    const res = await axios.post(`${API}/leads/store-home-loan`, {
+    const res = await axios.post(`${API}/leads/store-investment`, {
       name: Name,
       phone: Phone,
     });
