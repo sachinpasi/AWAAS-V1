@@ -118,8 +118,10 @@ const Filter = ({ PropertyFor }) => {
   );
 
   return (
-    <div className="w-3/12 relative">
-      <div className={`w-full h-auto bg-white my-4 rounded shadow-xl  `}>
+    <div className="w-3/12 relative ">
+      <div
+        className={`w-full sticky -top-96 h-auto bg-white my-4 rounded shadow-xl  `}
+      >
         <div className="flex flex-col items-start p-4 px-5 ">
           <p className="text-3xl font-medium text-darkgray border-b-2 w-full pb-4 border-dashed">
             Fliter By
@@ -346,7 +348,7 @@ const Filter = ({ PropertyFor }) => {
             </div>
           </div>
 
-          <div className="flex flex-col items-start py-2 border-b-2 w-full border-dashed">
+          {/* <div className="flex flex-col items-start py-2 border-b-2 w-full border-dashed">
             <p className="text-xl font-medium">Area</p>
 
             <div className="flex w-full justify-between my-4">
@@ -405,7 +407,7 @@ const Filter = ({ PropertyFor }) => {
                 <option value="1000">1000</option>
               </select>
             </div>
-          </div>
+          </div> */}
 
           <div className="flex justify-between py-4  items-center  border-b-2 w-full border-dashed">
             <p className="text-xl font-medium">Verified properties</p>
