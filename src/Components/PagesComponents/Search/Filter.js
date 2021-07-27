@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 
 import queryString from "query-string";
-// import "./Switch.css";
+import "./Switch.css";
 
 const Filter = ({ PropertyFor }) => {
   const [NoOfBedroom, setNoOfBedroom] = useState();
