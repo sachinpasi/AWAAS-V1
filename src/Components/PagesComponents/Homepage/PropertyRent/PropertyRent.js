@@ -32,7 +32,7 @@ const PropertyRent = () => {
     <section className="w-full h-full  bg-textbg py-4 ">
       <div className="customContainer ">
         <Header Title="Properties for Rent" hidden />
-        <div className="w-full h-auto grid grid-cols-2 gap-8 my-10">
+        <div className="w-full h-auto grid grid-cols-2 gap-8 mt-10">
           {PropertyList.length !== 0 ? (
             <>
               {PropertyList.slice(0, 2).map((item) => (
@@ -87,7 +87,14 @@ const PropertyRent = () => {
           ) : (
             <p>Loading...</p>
           )}
-          -
+        </div>
+        <div className="flex justify-end w-full py-4">
+          <Link
+            to="/search/property/rent"
+            className="text-xl font-medium hover:underline text-blue px-8 py-2"
+          >
+            View More..
+          </Link>
         </div>
       </div>
     </section>

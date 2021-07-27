@@ -14,9 +14,9 @@ const Banner = () => {
             Projects In Panipat
           </p>
           <p className="text-lg py-4 capitalize text-white tracking-tight text-center">
-            We are very proud of the service provide. See what our guests have
+            We Are Proud To Present The Most Reputable Projects and townships of
             <br />
-            to say about us ,our loacation and services.
+            Panipat to you, all in one place..
           </p>
           <div className="mt-8">
             <div className="w-36 h-1 border-b-3 border-t-4 border-green rounded-full"></div>

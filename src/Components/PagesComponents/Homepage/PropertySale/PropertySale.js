@@ -82,6 +82,14 @@ const PropertySale = () => {
             <p>Loading...</p>
           )}
         </div>
+        <div className="flex justify-end w-full py-4">
+          <Link
+            to="/search/property/sell"
+            className="text-xl font-medium hover:underline text-blue px-8 py-2"
+          >
+            View More...
+          </Link>
+        </div>
       </div>
     </section>
   );

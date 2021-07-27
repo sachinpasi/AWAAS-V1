@@ -56,7 +56,7 @@ const Projects = ({ Title }) => {
                     ></div>
                     <div className="w-40 absolute top-4 left-4 ">
                       <img
-                        src="assets/images/homepage/projects/approved.svg"
+                        src="/assets/images/homepage/projects/approved.svg"
                         alt=""
                       />
                     </div>
@@ -111,7 +111,7 @@ const Projects = ({ Title }) => {
         <div className="flex justify-end w-full mb-10">
           <Link
             to="search/projects"
-            className="text-xl font-medium text-white bg-blue px-8 py-2"
+            className="text-xl font-medium hover:underline text-blue px-8 py-2"
           >
             View All Projects
           </Link>

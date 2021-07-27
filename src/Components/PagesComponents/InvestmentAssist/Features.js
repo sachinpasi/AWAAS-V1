@@ -25,7 +25,7 @@ const Features = () => {
             alt=""
           />
           <p className="text-xl font-medium text-darkgray text-center">
-            Reupdated Co-investors
+            Reputable Co-investors
           </p>
           <p className="text-center text-base text-darkgray">
             Our Investors are brands withing themselves, investing alongside
