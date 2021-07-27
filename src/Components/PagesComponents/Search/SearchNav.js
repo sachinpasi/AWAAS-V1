@@ -16,8 +16,6 @@ const SearchNav = ({ setPropertyFor, PropertyFor }) => {
     }
   };
 
-  console.log(PropertyFor);
-
   const user = useSelector(selectUser);
   const history = useHistory();
 
@@ -60,7 +58,7 @@ const SearchNav = ({ setPropertyFor, PropertyFor }) => {
         </button>
         <Link
           to="/home-loans"
-          className="flex w-48 justify-center ml-2 items-center border-2  rounded cursor-pointer  px-4 h-full"
+          className="flex w-52 justify-center ml-2 items-center border-2  rounded cursor-pointer  px-4 h-full"
         >
           <IoMdHome className="text-white text-2xl mr-2" />
           <p className="text-lg text-white">Home Loan</p>

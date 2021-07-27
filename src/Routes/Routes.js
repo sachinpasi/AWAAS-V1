@@ -14,13 +14,15 @@ import Article from "../Pages/Article";
 import Vastu from "../Pages/Vastu";
 import VerfiyProject from "../Pages/Verfiy/VerfiyProject";
 import Aboutus from "../Pages/Aboutus";
+import ViewAllProjects from "../Pages/ViewAllProjects";
 
 const Routes = () => {
   return (
     <Router>
       <Switch>
         <Route exact path="/" component={Homepage} />
-        <Route path="/search" component={Search} />
+        <Route exact path="/search" component={Search} />
+        <Route exact path="/search/projects" component={ViewAllProjects} />
 
         <Route exact path="/home-loans" component={Homeloan} />
         <Route exact path="/about-us" component={Aboutus} />

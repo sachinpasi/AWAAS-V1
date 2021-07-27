@@ -30,7 +30,7 @@ const Projects = ({ Title }) => {
         <div className="w-full flex flex-col justify-between items-start ">
           <Header Title={Title} />
         </div>
-        <div className="w-full h-auto flex justify-center items-center my-10">
+        <div className="w-full h-auto flex justify-center items-center mt-10">
           {ProjectList.length !== 0 ? (
             <OwlCarousel loop items={3} nav={true} margin={20}>
               {ProjectList.map((item) => (
@@ -107,6 +107,14 @@ const Projects = ({ Title }) => {
           ) : (
             <p>Loading..</p>
           )}
+        </div>
+        <div className="flex justify-end w-full mb-10">
+          <Link
+            to="search/projects"
+            className="text-xl font-medium text-white bg-blue px-8 py-2"
+          >
+            View All Projects
+          </Link>
         </div>
       </div>
     </section>

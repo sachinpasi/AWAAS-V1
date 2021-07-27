@@ -34,6 +34,7 @@ module.exports = {
         "500px": "500px",
         "450px": "450px",
         "400px": "400px",
+        "350px": "350px",
         "58percent": "58%",
       },
       width: {

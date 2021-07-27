@@ -3,14 +3,15 @@ import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 
 import queryString from "query-string";
+// import "./Switch.css";
 
 const Filter = ({ PropertyFor }) => {
   const [NoOfBedroom, setNoOfBedroom] = useState();
   const [ParentPropertyType, setParentPropertyType] = useState();
-  const [AreaMin, setAreaMin] = useState();
-  const [AreaMax, setAreaMax] = useState();
-  const [BudgetMin, setBudgetMin] = useState();
-  const [BudgetMax, setBudgetMax] = useState();
+  // const [AreaMin, setAreaMin] = useState();
+  // const [AreaMax, setAreaMax] = useState();
+  const [BudgetMin, setBudgetMin] = useState(undefined);
+  const [BudgetMax, setBudgetMax] = useState(undefined);
 
   const [isVerified, setisVerified] = useState(false);
   const [iswithPhoto, setiswithPhoto] = useState(false);
@@ -19,12 +20,24 @@ const Filter = ({ PropertyFor }) => {
 
   const { search } = useLocation();
 
-  const { property_for, locality_id, parent_type, property_type } =
-    queryString.parse(search);
+  const {
+    property_for,
+    locality_id,
+    parent_type,
+    property_type,
+    mini_budget,
+    max_budget,
+  } = queryString.parse(search);
 
   const history = useHistory();
-
-  console.log(PropertyFor);
+  useEffect(() => {
+    if (mini_budget) {
+      setBudgetMin(mini_budget);
+    }
+    if (max_budget) {
+      setBudgetMax(max_budget);
+    }
+  }, [mini_budget, max_budget]);
 
   useEffect(() => {
     const params = new URLSearchParams();
@@ -53,6 +66,12 @@ const Filter = ({ PropertyFor }) => {
     } else {
       params.delete("property_type");
     }
+    // if (mini_budget) {
+    //   params.append("mini_budget", mini_budget);
+    // } else {
+    //   params.delete("mini_budget");
+    // }
+
     if (BudgetMin) {
       params.append("mini_budget", BudgetMin);
     } else {
@@ -92,7 +111,9 @@ const Filter = ({ PropertyFor }) => {
     }
 
     setPARAMS(params.toString());
+    history.push({ pathname: "/search", search: params.toString() });
   }, [
+    mini_budget,
     BudgetMin,
     property_for,
     BudgetMax,
@@ -105,10 +126,27 @@ const Filter = ({ PropertyFor }) => {
     FurnishedStatus,
     ParentPropertyType,
     PropertyFor,
+    history,
   ]);
 
-  const HandleApplyFilter = () => {
-    history.push({ pathname: "/search", search: PARAMS });
+  const HandleResetFilter = () => {
+    setNoOfBedroom(null);
+    setParentPropertyType(null);
+    setBudgetMax(null);
+    setBudgetMin(null);
+    setisVerified(false);
+    setiswithPhoto(false);
+    setFurnishedStatus(null);
+    const params = new URLSearchParams();
+    params.delete("bedroom");
+    params.delete("parent_type");
+    params.delete("mini_budget");
+    params.delete("max_budget");
+    params.delete("awaas_verify");
+    params.delete("photos");
+    params.delete("furnished_status");
+
+    history.push({ pathname: "/search", search: params.toString() });
   };
 
   const Option = ({ Value, title }) => (
@@ -413,6 +451,8 @@ const Filter = ({ PropertyFor }) => {
             <p className="text-xl font-medium">Verified properties</p>
             <label className="switch">
               <input
+                value={isVerified}
+                checked={isVerified}
                 onChange={() => setisVerified(!isVerified)}
                 type="checkbox"
               />
@@ -426,7 +466,9 @@ const Filter = ({ PropertyFor }) => {
             <p className="text-xl font-medium">Properties with Photos</p>
             <label className="switch">
               <input
-                onChange={() => setiswithPhoto(!isVerified)}
+                value={iswithPhoto}
+                checked={iswithPhoto}
+                onChange={() => setiswithPhoto(!iswithPhoto)}
                 type="checkbox"
               />
               <div>
@@ -473,10 +515,10 @@ const Filter = ({ PropertyFor }) => {
           </div>
           <div className="w-full">
             <button
-              onClick={HandleApplyFilter}
-              className="text-white font-medium bg-green w-full h-12 mt-2 rounded-sm"
+              onClick={HandleResetFilter}
+              className="text-white font-medium bg-lightgray w-full h-12 mt-2 rounded-sm"
             >
-              APPLY FILTER
+              RESET FILTER
             </button>
           </div>
         </div>
