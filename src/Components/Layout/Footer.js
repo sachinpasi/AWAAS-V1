@@ -14,7 +14,7 @@ const Footer = () => {
     >
       <div className="customContainer pt-20">
         <div className="flex flex-col justify-center items-center">
-          <img src="assets/images/logo/logo.svg" alt="" />
+          <img src="/assets/images/logo/logo.svg" alt="" />
 
           <p className="text-xs text-white text-center w-2/4 py-4">
             Awaasonline dreams and commits towards making buying, selling and

@@ -11,7 +11,7 @@ const Filter = ({ PropertyFor }) => {
   // const [AreaMin, setAreaMin] = useState();
   // const [AreaMax, setAreaMax] = useState();
   const [BudgetMin, setBudgetMin] = useState(undefined);
-  const [BudgetMax, setBudgetMax] = useState(undefined);
+  const [BudgetMax, setBudgetMax] = useState(90000000);
 
   const [isVerified, setisVerified] = useState(false);
   const [iswithPhoto, setiswithPhoto] = useState(false);
