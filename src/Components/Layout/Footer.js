@@ -70,7 +70,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                to="/"
+                to="/blogs"
                 style={{
                   color: "#88909F",
                 }}

@@ -15,9 +15,9 @@ const Banner = () => {
             Blogs
           </p>
           <p className="text-lg py-4 capitalize text-white tracking-tight text-center">
-            We Are Proud To Present The Blogs and townships of
+            Enhance your knowledge and stay up to date with all real estate news{" "}
             <br />
-            Panipat to you, all in one place..
+            and articles on Awaasonline.
           </p>
           <div className="mt-8">
             <div className="w-36 h-1 border-b-3 border-t-4 border-green rounded-full"></div>
