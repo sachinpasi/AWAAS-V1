@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Layout from "../Components/Layout/Layout";
@@ -12,7 +12,9 @@ const Search = () => {
   const { property_for } = queryString.parse(search);
   const [PropertyFor, setPropertyFor] = useState(property_for);
   console.log(property_for);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <Layout>
       <SearchNav PropertyFor={PropertyFor} setPropertyFor={setPropertyFor} />

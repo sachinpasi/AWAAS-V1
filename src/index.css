@@ -70,3 +70,9 @@ input[type="file"] {
   left: -154px;
   cursor: pointer;
 }
+
+.bg-cover-norepeat {
+  width: 100% !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+}

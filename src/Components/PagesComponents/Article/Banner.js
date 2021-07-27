@@ -10,13 +10,10 @@ const Banner = ({ ArticleData }) => {
   return (
     <section
       style={{
-        background: `url(/assets/images/articles/bg.png)`,
+        background: `url(${ArticleData?.img})`,
         height: "350px",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
       }}
-      className="w-full "
+      className="w-full  bg-cover-norepeat  "
     >
       <div
         style={{

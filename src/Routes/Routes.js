@@ -15,12 +15,14 @@ import Vastu from "../Pages/Vastu";
 import VerfiyProject from "../Pages/Verfiy/VerfiyProject";
 import Aboutus from "../Pages/Aboutus";
 import ViewAllProjects from "../Pages/ViewAllProjects";
+import ViewAllBlogs from "../Pages/ViewAllBlogs";
 
 const Routes = () => {
   return (
     <Router>
       <Switch>
         <Route exact path="/" component={Homepage} />
+        <Route exact path="/blogs" component={ViewAllBlogs} />
         <Route exact path="/search" component={Search} />
         <Route exact path="/search/projects" component={ViewAllProjects} />
 

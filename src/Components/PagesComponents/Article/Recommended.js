@@ -22,11 +22,7 @@ const Recommended = () => {
           className="w-full h-auto overflow-hidden bg-white shadow-lg  my-2"
           key={item.bid}
         >
-          <img
-            className="w-full h-48 object-cover"
-            src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=859&q=80"
-            alt=""
-          />
+          <img className="w-full h-48 object-cover" src={item.img} alt="" />
           <div className="p-4">
             <h1 className="text-xl pb-4 ">{item.title}</h1>
             <div className="flex justify-end ">

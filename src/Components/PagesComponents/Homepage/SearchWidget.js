@@ -63,6 +63,10 @@ const SearchWidget = () => {
     }
   };
 
+  const HandleProject = () => {
+    history.push("/search/projects");
+  };
+
   const HandleSearch = () => {
     history.push({ pathname: "/search", search: PARAMS });
   };
@@ -124,7 +128,7 @@ const SearchWidget = () => {
             Active={CurrentTab === "rent"}
             onClick={() => setCurrentTab("rent")}
           />
-          <NavItem Name="Projects" />
+          <NavItem onClick={HandleProject} Name="Projects" />
           <NavItem onClick={HandlePostProperty} Name="SELL / LIST" />
         </div>
 
