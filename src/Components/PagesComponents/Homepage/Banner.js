@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 import SearchWidget from "./SearchWidget";
 
-const Banner = () => {
+const Banner = ({ setisLoading }) => {
   const [Data, setData] = useState([]);
   const [BannerURL, setBannerURL] = useState("");
 
@@ -18,6 +18,7 @@ const Banner = () => {
     console.log(res.data.data);
     if (res.status === 200) {
       setData(res.data.data);
+      setisLoading(false);
     }
   };
 

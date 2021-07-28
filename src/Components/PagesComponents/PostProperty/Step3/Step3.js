@@ -121,12 +121,12 @@ const Step3 = () => {
                         <option selected hidden>
                           Road Connectivity
                         </option>
-                        <option>9 mtrs</option>
-                        <option>12 mtrs</option>
-                        <option>18 mtrs</option>
-                        <option>24 mtrs</option>
-                        <option>45 mtrs</option>
-                        <option>60 mtrs</option>
+                        <option value="9">9 mtrs</option>
+                        <option value="12">12 mtrs</option>
+                        <option value="18">18 mtrs</option>
+                        <option value="24">24 mtrs</option>
+                        <option value="45">45 mtrs</option>
+                        <option value="60">60 mtrs</option>
                       </select>
                     </div>
 

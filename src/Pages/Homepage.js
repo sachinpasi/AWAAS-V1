@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import HomeNav from "../Components/PagesComponents/Homepage/HomeNav";
 import Banner from "../Components/PagesComponents/Homepage/Banner";
@@ -9,12 +9,16 @@ import PropertyRent from "../Components/PagesComponents/Homepage/PropertyRent/Pr
 import Testimonial from "../Components/PagesComponents/Homepage/Testimonial";
 import Articles from "../Components/PagesComponents/Homepage/Articles";
 import Footer from "../Components/Layout/Footer";
+import PreloaderStart from "../Components/Preloader/PreloaderStart";
 
 const Homepage = () => {
+  const [isLoading, setisLoading] = useState(true);
+
   return (
     <>
+      <PreloaderStart isLoading={isLoading} />
       <HomeNav />
-      <Banner />
+      <Banner setisLoading={setisLoading} />
       <Projects Title="Projects In Panipat" />
       <PropertySale />
       {/* <Ad /> */}
