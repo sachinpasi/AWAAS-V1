@@ -104,7 +104,6 @@ const HomeNav = () => {
                 Post Property Free
               </p>
             </div>
-
             {user.accountType === 0 && (
               <div
                 onClick={HandlePostProject}
@@ -120,19 +119,19 @@ const HomeNav = () => {
                 </p>
               </div>
             )}
-
             <NavItem Name="Home Loan" To="/home-loans" />
             <NavItem Name="Investment Assistance" To="/investment-assist" />
             <NavItem Name="Awaas Assist" To="/awaas-assist" />
-            <NavItem Name="Vastu" To="/vastu" />
+            <NavItem Name="Vastu" To="/vastu" />{" "}
+            <NavItem Name="Legal" To="/legal" />
             {user.isLoggedIn ? (
-              <div
-                onClick={() => dispatch(SIGNOUT())}
+              <Link
+                to="/profile/overview"
                 className="w-auto bg-blue flex justify-center items-center py-1 px-4 rounded shadow-md ml-2 cursor-pointer "
               >
                 <FaUserCircle className="text-white text-xl" />
                 <p className="text-white text-lg pl-1 ">Profile</p>
-              </div>
+              </Link>
             ) : (
               <div
                 onClick={() => setisLoginModalOpen(true)}

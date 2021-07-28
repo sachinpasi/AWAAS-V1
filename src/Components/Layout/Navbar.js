@@ -8,7 +8,7 @@ const Navbar = () => {
   const user = useSelector(selectUser);
 
   return (
-    <nav className="w-full h-14 flex justify-center items-center shadow-md ">
+    <nav className="w-full h-14 flex justify-center items-center border-b-2 border-darkblue ">
       <div className=" w-full mx-6 flex justify-between items-center h-full">
         <Link to="/" className="w-44">
           <img src="/assets/images/logo/logo2.svg" alt="" />
@@ -35,7 +35,7 @@ const Navbar = () => {
             To="/awaas-assist"
           />
           {user.isLoggedIn ? (
-            <NavAuthItem To="/" Name="Profile" />
+            <NavAuthItem To="/profile/overview" Name="Profile" />
           ) : (
             <NavAuthItem To="/" Name="Login" />
           )}

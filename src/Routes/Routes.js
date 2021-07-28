@@ -16,6 +16,11 @@ import VerfiyProject from "../Pages/Verfiy/VerfiyProject";
 import Aboutus from "../Pages/Aboutus";
 import ViewAllProjects from "../Pages/ViewAllProjects";
 import ViewAllBlogs from "../Pages/ViewAllBlogs";
+import Profile from "../Pages/Profile/Profile";
+import VerifyProperty from "../Pages/Verfiy/VerifyProperty";
+import Legal from "../Pages/Legal";
+
+import PrivateRoutes from "./PrivateRoutes";
 
 const Routes = () => {
   return (
@@ -29,6 +34,7 @@ const Routes = () => {
         <Route exact path="/home-loans" component={Homeloan} />
         <Route exact path="/about-us" component={Aboutus} />
         <Route exact path="/vastu" component={Vastu} />
+        <Route exact path="/legal" component={Legal} />
         <Route exact path="/investment-assist" component={InvestmentAssist} />
         <Route exact path="/awaas-assist" component={AwaasAssist} />
 
@@ -51,6 +57,9 @@ const Routes = () => {
         <Route exact path="/post-project" component={PostProject} />
 
         <Route exact path="/verfiy-project/:id" component={VerfiyProject} />
+        <Route exact path="/verfiy-property/:id" component={VerifyProperty} />
+
+        <PrivateRoutes exact path="/profile/overview" component={Profile} />
       </Switch>
     </Router>
   );

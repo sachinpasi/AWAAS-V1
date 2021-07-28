@@ -1,12 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Dropdown from "react-multilevel-dropdown";
+import SelectSearch from "react-select-search";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { API } from "../../../API";
 import { SET_LOGIN_MODAL_OPEN } from "../../../Redux/_features/_LoginModalSlice";
 import { selectUser } from "../../../Redux/_features/_userSlice";
 import "./Banner.css";
+import "react-select-search/style.css";
+import Fuse from "fuse.js";
 
 const SearchWidget = () => {
   const history = useHistory();
@@ -44,6 +47,25 @@ const SearchWidget = () => {
       setLocalityList(res.data.data);
     }
   };
+
+  const options = LocalityList.map((_) => ({
+    name: _.name,
+    value: _.id,
+  }));
+  function fuzzySearch(options) {
+    const fuse = new Fuse(options, {
+      keys: ["name", "groupName", "items.name"],
+      threshold: 0.3,
+    });
+
+    return (value) => {
+      if (!value.length) {
+        return options;
+      }
+
+      return fuse.search(value);
+    };
+  }
   useEffect(() => {
     FetchLocality();
   }, []);
@@ -143,23 +165,15 @@ const SearchWidget = () => {
               </option>
             </select>
           </div>
-          <div className="w-full h-14">
-            <select
-              className="border-l-1 border-t-1 border-b-1 w-full h-full flex items-center justify-center px-4 outline-none placeholder-darkgray capitalize "
-              type="text"
+          <div className="w-full h-14 border-l-1 border-t-1 border-b-1">
+            <SelectSearch
+              closeOnSelect
+              onChange={(selected) => setLocality(selected)}
+              options={options}
               placeholder="Locality"
-              value={Locality}
-              onChange={(e) => setLocality(e.target.value)}
-            >
-              <option selected hidden>
-                Locality
-              </option>
-              {LocalityList.map((item) => (
-                <option key={item.id} className="capitalize" value={item.id}>
-                  {item.name}
-                </option>
-              ))}
-            </select>
+              filterOptions={fuzzySearch}
+              search
+            />
           </div>
           <div className="w-full h-14">
             <div className=" border-l-1 border-t-1 border-b-1 w-full h-full flex items-center justify-center outline-none ">
