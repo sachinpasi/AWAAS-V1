@@ -97,6 +97,7 @@ input[type="file"] {
 
 .select-search {
   height: 100%;
+  width: 100% !important;
 }
 
 .select-search__value {

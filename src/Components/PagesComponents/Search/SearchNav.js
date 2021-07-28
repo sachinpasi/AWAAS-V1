@@ -1,12 +1,18 @@
-import React, { useState } from "react";
-import { BsSearch } from "react-icons/bs";
+import React, { useEffect, useState } from "react";
+
 import { IoMdHome } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { selectUser } from "../../../Redux/_features/_userSlice";
+import SelectSearch from "react-select-search";
+import "react-select-search/style.css";
+import Fuse from "fuse.js";
+import axios from "axios";
+import { API } from "../../../API";
 
-const SearchNav = ({ setPropertyFor, PropertyFor }) => {
+const SearchNav = ({ setPropertyFor, PropertyFor, setLocality }) => {
   const [isNavOpen, setisNavOpen] = useState(false);
+  const [LocalityList, setLocalityList] = useState([]);
 
   const HandleNavScroll = () => {
     if (window.scrollY >= 40) {
@@ -18,6 +24,35 @@ const SearchNav = ({ setPropertyFor, PropertyFor }) => {
 
   const user = useSelector(selectUser);
   const history = useHistory();
+
+  const FetchLocality = async () => {
+    const res = await axios.get(`${API}/locality/list`);
+    if (res.status === 200) {
+      setLocalityList(res.data.data);
+    }
+  };
+
+  const options = LocalityList.map((_) => ({
+    name: _.name,
+    value: _.id,
+  }));
+  function fuzzySearch(options) {
+    const fuse = new Fuse(options, {
+      keys: ["name", "groupName", "items.name"],
+      threshold: 0.3,
+    });
+
+    return (value) => {
+      if (!value.length) {
+        return options;
+      }
+
+      return fuse.search(value);
+    };
+  }
+  useEffect(() => {
+    FetchLocality();
+  }, []);
 
   const HandlePostProperty = () => {
     if (user.isLoggedIn) {
@@ -47,8 +82,14 @@ const SearchNav = ({ setPropertyFor, PropertyFor }) => {
           <option value="rent">Rent</option>
         </select>
         <div className=" w-8/12 mx-2 flex  justify-between items-center rounded bg-white px-4 h-full ">
-          <input type="text" className="w-full " placeholder="Search" />
-          <BsSearch className="text-xl text-gray-600" />
+          <SelectSearch
+            closeOnSelect
+            onChange={(selected) => setLocality(selected)}
+            options={options}
+            placeholder="Search For Locality"
+            filterOptions={fuzzySearch}
+            search
+          />
         </div>
         <button
           onClick={HandlePostProperty}

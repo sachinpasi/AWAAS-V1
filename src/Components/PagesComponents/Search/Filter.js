@@ -5,7 +5,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import queryString from "query-string";
 import "./Switch.css";
 
-const Filter = ({ PropertyFor }) => {
+const Filter = ({ PropertyFor, Locality }) => {
   const [NoOfBedroom, setNoOfBedroom] = useState();
   const [ParentPropertyType, setParentPropertyType] = useState();
   // const [AreaMin, setAreaMin] = useState();
@@ -54,11 +54,18 @@ const Filter = ({ PropertyFor }) => {
         params.delete("property_for");
       }
     }
-
-    if (locality_id) {
-      params.append("locality_id", locality_id);
+    if (Locality) {
+      if (Locality) {
+        params.append("locality_id", Locality);
+      } else {
+        params.delete("locality_id");
+      }
     } else {
-      params.delete("locality_id");
+      if (locality_id) {
+        params.append("locality_id", locality_id);
+      } else {
+        params.delete("locality_id");
+      }
     }
 
     if (property_type) {
@@ -127,6 +134,7 @@ const Filter = ({ PropertyFor }) => {
     ParentPropertyType,
     PropertyFor,
     history,
+    Locality,
   ]);
 
   const HandleResetFilter = () => {

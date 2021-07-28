@@ -25,6 +25,7 @@ const Result = ({ PropertyFor }) => {
     max_area,
     max_budget,
     mini_budget,
+    locality_id,
   } = queryString.parse(search);
 
   const Filter = useSelector(selectFilter);
@@ -45,7 +46,7 @@ const Result = ({ PropertyFor }) => {
             parent_type: parent_type,
             property_for: property_for,
             // city: "panipat",
-            locality_id: locality,
+            locality_id: locality_id,
             photos: photos,
             bedroom: bedroom,
             awaas_verify: awaas_verify,
@@ -81,6 +82,7 @@ const Result = ({ PropertyFor }) => {
     mini_budget,
     max_budget,
     parent_type,
+    locality_id,
   ]);
   return (
     <div className="w-72percent  h-auto flex flex-col items-start  my-4">

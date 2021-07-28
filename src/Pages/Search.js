@@ -11,16 +11,22 @@ const Search = () => {
   const { search } = useLocation();
   const { property_for } = queryString.parse(search);
   const [PropertyFor, setPropertyFor] = useState(property_for);
+  const [Locality, setLocality] = useState();
+
   console.log(property_for);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
     <Layout>
-      <SearchNav PropertyFor={PropertyFor} setPropertyFor={setPropertyFor} />
+      <SearchNav
+        setLocality={setLocality}
+        PropertyFor={PropertyFor}
+        setPropertyFor={setPropertyFor}
+      />
       <main className="bg-textbg pt-28">
         <div className="customContainer flex h-full justify-between  ">
-          <Filter PropertyFor={PropertyFor} />
+          <Filter Locality={Locality} PropertyFor={PropertyFor} />
           <Result />
         </div>
       </main>
