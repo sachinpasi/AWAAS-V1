@@ -25,6 +25,7 @@ const PostProperty = () => {
       dispatch(RESET_CURRENT_STEP());
     };
   }, [dispatch]);
+
   return (
     <Layout>
       <main className="customContainer min-h-70vh h-full flex justify-center items-start py-12">

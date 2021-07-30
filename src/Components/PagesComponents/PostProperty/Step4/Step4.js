@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { API } from "../../../../API";
@@ -88,6 +88,10 @@ const Step4 = () => {
       HandleNext();
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="w-full h-full flex justify-between ">
       <SideImage />
@@ -176,7 +180,7 @@ const Step4 = () => {
                           className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
                           type="text"
                           {...register("total_price")}
-                          placeholder="Total Price"
+                          placeholder="Asking Price"
                           value={TotalAmount}
                           onChange={(e) => setTotalAmount(e.target.value)}
                           onKeyUp={ConvertToWord}
@@ -240,7 +244,7 @@ const Step4 = () => {
                           className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
                           type="text"
                           {...register("total_price")}
-                          placeholder="Total Price"
+                          placeholder="Asking Price"
                           value={TotalAmount}
                           onChange={(e) => setTotalAmount(e.target.value)}
                           onKeyUp={ConvertToWord}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
@@ -53,6 +53,10 @@ const Step6 = () => {
       return toast.success("Property Added Sucessfully");
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="w-full h-full flex justify-between ">
       <SideImage />
@@ -74,7 +78,7 @@ const Step6 = () => {
                     id="description"
                     {...register("description")}
                     required=""
-                    placeholder="Property description in few lines..."
+                    placeholder="Property description"
                     aria-required="true"
                   ></textarea>
                 </label>

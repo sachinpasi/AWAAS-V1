@@ -5,13 +5,15 @@ import { useHistory, useLocation } from "react-router-dom";
 import queryString from "query-string";
 import "./Switch.css";
 
-const Filter = ({ PropertyFor, Locality }) => {
+const Filter = ({
+  PropertyFor,
+  Locality,
+  setParentPropertyType,
+  ParentPropertyType,
+}) => {
   const [NoOfBedroom, setNoOfBedroom] = useState();
-  const [ParentPropertyType, setParentPropertyType] = useState();
   // const [AreaMin, setAreaMin] = useState();
   // const [AreaMax, setAreaMax] = useState();
-  const [BudgetMin, setBudgetMin] = useState(undefined);
-  const [BudgetMax, setBudgetMax] = useState(90000000);
 
   const [isVerified, setisVerified] = useState(false);
   const [iswithPhoto, setiswithPhoto] = useState(false);
@@ -30,12 +32,19 @@ const Filter = ({ PropertyFor, Locality }) => {
   } = queryString.parse(search);
 
   const history = useHistory();
+
+  const [BudgetMin, setBudgetMin] = useState(mini_budget);
+  const [BudgetMax, setBudgetMax] = useState(max_budget);
+
   useEffect(() => {
-    if (mini_budget) {
-      setBudgetMin(mini_budget);
-    }
-    if (max_budget) {
-      setBudgetMax(max_budget);
+    // if (mini_budget) {
+    //   setBudgetMin(mini_budget);
+    // }
+    // if (max_budget) {
+    //   setBudgetMax(max_budget);
+    // }
+    if (!max_budget) {
+      setBudgetMax(90000000);
     }
   }, [mini_budget, max_budget]);
 
@@ -309,9 +318,9 @@ const Filter = ({ PropertyFor, Locality }) => {
                   NoOfBedroom === 1
                     ? "bg-blue border-blue text-white"
                     : "border-widgetborder text-widgetborder"
-                }  mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md   text-sm font-medium px-2`}
+                }  mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md   text-sm font-medium px-3`}
               >
-                <p>+ 1 RK/1BHK</p>
+                <p>+ 1BHK</p>
               </div>
 
               <div
@@ -320,7 +329,7 @@ const Filter = ({ PropertyFor, Locality }) => {
                   NoOfBedroom === 2
                     ? "bg-blue border-blue text-white"
                     : "border-widgetborder text-widgetborder"
-                }  mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md   text-sm font-medium px-2`}
+                }  mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md   text-sm font-medium px-3`}
               >
                 <p>+ 2BHK</p>
               </div>
@@ -330,7 +339,7 @@ const Filter = ({ PropertyFor, Locality }) => {
                   NoOfBedroom === 3
                     ? "bg-blue border-blue text-white"
                     : "border-widgetborder text-widgetborder"
-                }  mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md   text-sm font-medium px-2`}
+                }  mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md   text-sm font-medium px-3`}
               >
                 <p>+ 3BHK</p>
               </div>
@@ -340,7 +349,7 @@ const Filter = ({ PropertyFor, Locality }) => {
                   NoOfBedroom === 4
                     ? "bg-blue border-blue text-white"
                     : "border-widgetborder text-widgetborder"
-                }  mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md   text-sm font-medium px-2`}
+                }  mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md   text-sm font-medium px-3`}
               >
                 <p>+ 4BHK</p>
               </div>
@@ -350,7 +359,7 @@ const Filter = ({ PropertyFor, Locality }) => {
                   NoOfBedroom === 5
                     ? "bg-blue border-blue text-white"
                     : "border-widgetborder text-widgetborder"
-                }  mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md   text-sm font-medium px-2`}
+                }  mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md   text-sm font-medium px-3`}
               >
                 <p>+ 5BHK</p>
               </div>
@@ -366,7 +375,7 @@ const Filter = ({ PropertyFor, Locality }) => {
                   ParentPropertyType === "industrial"
                     ? "bg-blue text-white"
                     : "border-widgetborder text-widgetborder"
-                } mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md  text-sm font-medium px-2`}
+                } mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md  text-sm font-medium px-2 w-full`}
               >
                 <p> + Industrial</p>
               </div>
@@ -377,7 +386,7 @@ const Filter = ({ PropertyFor, Locality }) => {
                   ParentPropertyType === "commercial"
                     ? "bg-blue text-white"
                     : "border-widgetborder text-widgetborder"
-                } mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md  text-sm font-medium px-2`}
+                } mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md  text-sm font-medium px-2 w-full`}
               >
                 <p> + Commercial</p>
               </div>
@@ -387,7 +396,7 @@ const Filter = ({ PropertyFor, Locality }) => {
                   ParentPropertyType === "residential"
                     ? "bg-blue text-white"
                     : "border-widgetborder text-widgetborder"
-                } mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md  text-sm font-medium px-2`}
+                } mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md  text-sm font-medium px-2 w-full`}
               >
                 <p> + Residential</p>
               </div>
@@ -494,7 +503,7 @@ const Filter = ({ PropertyFor, Locality }) => {
                   FurnishedStatus === "Un-Furnished"
                     ? "bg-blue text-white"
                     : "border-widgetborder text-widgetborder"
-                } mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md  text-sm font-medium px-2`}
+                } mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md  text-sm font-medium px-2  w-full`}
               >
                 <p> + Unfurnished</p>
               </div>
@@ -505,7 +514,7 @@ const Filter = ({ PropertyFor, Locality }) => {
                   FurnishedStatus === "Semi-Furnished"
                     ? "bg-blue text-white"
                     : "border-widgetborder text-widgetborder"
-                } mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md  text-sm font-medium px-2`}
+                } mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md  text-sm font-medium px-2  w-full`}
               >
                 <p> + Semifurnished</p>
               </div>
@@ -515,7 +524,7 @@ const Filter = ({ PropertyFor, Locality }) => {
                   FurnishedStatus === "Furnished"
                     ? "bg-blue text-white"
                     : "border-widgetborder text-widgetborder"
-                } mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md  text-sm font-medium px-2`}
+                } mr-2 my-2 cursor-pointer flex justify-center items-center h-10 border-1 rounded-md  text-sm font-medium px-2  w-full`}
               >
                 <p> + Furnished</p>
               </div>

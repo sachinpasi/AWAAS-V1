@@ -49,6 +49,9 @@ const Step1 = () => {
   const HandleContinue = () => {
     dispatch(SET_CURRENT_STEP(2));
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     dispatch(
@@ -255,7 +258,25 @@ const Step1 = () => {
                       : "text-darkgray"
                   } text-white uppercase`}
                 >
-                  Builder Floor
+                  Floor / Builder Floor
+                </p>
+              </div>{" "}
+              <div
+                onClick={() => setSelectedProperty_Type("farmhouse")}
+                className={`px-7 py-2 ${
+                  SelectedProperty_Type === "farmhouse"
+                    ? "bg-blue"
+                    : "bg-littlelightgray"
+                }  rounded-full cursor-pointer mr-4 mb-4`}
+              >
+                <p
+                  className={`text-base font-medium text-center ${
+                    SelectedProperty_Type === "farmhouse"
+                      ? "text-white"
+                      : "text-darkgray"
+                  } text-white uppercase`}
+                >
+                  Farmhouse
                 </p>
               </div>
             </div>
@@ -264,21 +285,21 @@ const Step1 = () => {
           {SelectedParent_Property === "commercial" && (
             <div className=" flex  items-center flex-wrap ">
               <div
-                onClick={() => setSelectedProperty_Type("office")}
+                onClick={() => setSelectedProperty_Type("land")}
                 className={`px-7 py-2 ${
-                  SelectedProperty_Type === "office"
+                  SelectedProperty_Type === "land"
                     ? "bg-blue"
                     : "bg-littlelightgray"
                 }  rounded-full cursor-pointer mr-4 mb-4`}
               >
                 <p
                   className={`text-base font-medium text-center ${
-                    SelectedProperty_Type === "office"
+                    SelectedProperty_Type === "land"
                       ? "text-white"
                       : "text-darkgray"
                   } text-white uppercase`}
                 >
-                  Office
+                  Plot / Land
                 </p>
               </div>{" "}
               <div
@@ -300,21 +321,21 @@ const Step1 = () => {
                 </p>
               </div>{" "}
               <div
-                onClick={() => setSelectedProperty_Type("land")}
+                onClick={() => setSelectedProperty_Type("office")}
                 className={`px-7 py-2 ${
-                  SelectedProperty_Type === "land"
+                  SelectedProperty_Type === "office"
                     ? "bg-blue"
                     : "bg-littlelightgray"
                 }  rounded-full cursor-pointer mr-4 mb-4`}
               >
                 <p
                   className={`text-base font-medium text-center ${
-                    SelectedProperty_Type === "land"
+                    SelectedProperty_Type === "office"
                       ? "text-white"
                       : "text-darkgray"
                   } text-white uppercase`}
                 >
-                  Plot / Land
+                  Office
                 </p>
               </div>
             </div>

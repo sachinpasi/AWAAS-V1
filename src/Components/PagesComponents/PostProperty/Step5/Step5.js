@@ -137,6 +137,9 @@ const Step5 = () => {
   useEffect(() => {
     FetchAmenities();
   }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="w-full h-full flex justify-between">
