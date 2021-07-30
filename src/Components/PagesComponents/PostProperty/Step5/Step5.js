@@ -175,7 +175,26 @@ const Step5 = () => {
             </div>
           </div>
           <div className="flex flex-col">
-            <label className="customfileUpload bg-blue font-medium w-60">
+            <div class="flex w-full  items-center justify-start bg-grey-lighter">
+              <label class="w-48 flex flex-col items-center px-4 py-4  rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer bg-blue text-white">
+                <svg
+                  class="w-8 h-8"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                </svg>
+                <span class="mt-2 text-base leading-normal">Select Images</span>
+                <input
+                  className=""
+                  type="file"
+                  multiple
+                  onChange={ImageHandleChange}
+                ></input>
+              </label>
+            </div>
+            {/* <label className="customfileUpload bg-blue font-medium w-60">
               Choose Images
               <input
                 className=""
@@ -183,7 +202,7 @@ const Step5 = () => {
                 multiple
                 onChange={ImageHandleChange}
               ></input>
-            </label>
+            </label> */}
 
             <div className="grid grid-cols-4 gap-4 my-4 ">
               {RenderPhotos(SelectedFileForPrev)}
@@ -200,7 +219,7 @@ const Step5 = () => {
               onClick={HandleImageUpload}
               className="w-44  h-12 bg-blue text-xl font-medium text-white  my-2"
             >
-              Upload Images
+              Upload
             </button>
           </div>
         </div>

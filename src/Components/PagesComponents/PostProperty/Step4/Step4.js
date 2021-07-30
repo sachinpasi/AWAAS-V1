@@ -177,7 +177,7 @@ const Step4 = () => {
                       <div className="flex justify-start items-center">
                         <p className="mr-4">&#8377;</p>
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg w-72  my-1 placeholder-gray-600"
                           type="text"
                           {...register("total_price")}
                           placeholder="Asking Price"

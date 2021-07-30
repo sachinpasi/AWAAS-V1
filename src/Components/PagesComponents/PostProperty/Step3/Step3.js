@@ -109,49 +109,24 @@ const Step3 = () => {
                     </div>
 
                     <div className="flex">
-                      <input
-                        className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                        type="text"
-                        {...register("total_floor")}
-                        id="totalFloors"
-                        placeholder="Basement + Floors Allowed"
-                      ></input>
                       <select
                         {...register("road_connectivity")}
-                        className="border-1 h-11  px-2 text-lg w-52 my-1 mx-2 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
                         id="road-connectivity"
                         title="Road Connectivity"
                       >
                         <option selected hidden>
                           Road Connectivity
                         </option>
-                        <option value="9">9 mtrs</option>
-                        <option value="12">12 mtrs</option>
-                        <option value="18">18 mtrs</option>
-                        <option value="24">24 mtrs</option>
-                        <option value="45">45 mtrs</option>
-                        <option value="60">60 mtrs</option>
+                        <option value="9">9</option>
+                        <option value="12">12</option>
+                        <option value="18">18</option>
+                        <option value="24">24</option>
+                        <option value="60">60</option>
                       </select>
-                    </div>
-
-                    <div className="flex">
-                      <input
-                        {...register("length")}
-                        className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                        type="text"
-                        id="plot-length"
-                        placeholder="Length"
-                      ></input>
-                      <input
-                        {...register("width")}
-                        className="border-1 h-11  px-2 text-lg w-72 mx-2 my-1 placeholder-gray-600"
-                        type="text"
-                        id="plot-breadth"
-                        placeholder="Width"
-                      ></input>
                       <select
                         {...register("length_width_type")}
-                        className="border-1 h-11  px-2 text-lg w-40 my-1  placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg w-52  my-1  placeholder-gray-600"
                         id="plot-length-type"
                         title="Sq-ft"
                       >
@@ -164,6 +139,60 @@ const Step3 = () => {
                         <option>hectares</option>
                       </select>
                     </div>
+
+                    <div className="flex">
+                      <input
+                        {...register("length")}
+                        className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                        type="text"
+                        id="plot-length"
+                        placeholder="Length"
+                      ></input>
+                      <select
+                        {...register("length_width_type")}
+                        className="border-1 h-11  px-2 text-lg w-52  my-1  placeholder-gray-600"
+                        id="plot-length-type"
+                        title="Sq-ft"
+                      >
+                        <option>fts</option>
+                        <option>yards</option>
+                        <option>mts</option>
+                        <option>Marla</option>
+                        <option>bighas</option>
+                        <option>acres</option>
+                        <option>hectares</option>
+                      </select>
+                    </div>
+                    <div className="flex">
+                      <input
+                        {...register("width")}
+                        className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                        type="text"
+                        id="plot-breadth"
+                        placeholder="Width"
+                      ></input>
+                      <select
+                        {...register("length_width_type")}
+                        className="border-1 h-11  px-2 text-lg w-52 my-1  placeholder-gray-600"
+                        id="plot-length-type"
+                        title="Sq-ft"
+                      >
+                        <option>fts</option>
+                        <option>yards</option>
+                        <option>mts</option>
+                        <option>Marla</option>
+                        <option>bighas</option>
+                        <option>acres</option>
+                        <option>hectares</option>
+                      </select>
+                    </div>
+                    <input
+                      className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                      type="text"
+                      {...register("total_floor")}
+                      id="totalFloors"
+                      placeholder="Basement + Floors Allowed"
+                    ></input>
                   </div>
                 </>
               )}
