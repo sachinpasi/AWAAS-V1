@@ -131,12 +131,7 @@ const Step3 = () => {
                         title="Sq-ft"
                       >
                         <option>fts</option>
-                        <option>yards</option>
                         <option>mts</option>
-                        <option>Marla</option>
-                        <option>bighas</option>
-                        <option>acres</option>
-                        <option>hectares</option>
                       </select>
                     </div>
 

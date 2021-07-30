@@ -157,7 +157,7 @@ const SearchWidget = () => {
         <div className="w-11/12 mx-auto flex justify-center items-center my-2">
           <div className="w-full h-14">
             <select
-              className="border-l-1 border-t-1 border-b-1 w-full h-full flex items-center justify-center px-4 outline-none "
+              className="border-l-1 text-base border-t-1 border-b-1 w-full h-full flex items-center justify-center px-4 outline-none "
               disabled
             >
               <option defaultChecked value="Panipat">
@@ -165,7 +165,7 @@ const SearchWidget = () => {
               </option>
             </select>
           </div>
-          <div className="w-full h-14 border-l-1 border-t-1 border-b-1">
+          <div className="w-full h-14 border-l-1 border-t-1 border-b-1 text-base">
             <SelectSearch
               closeOnSelect
               onChange={(selected) => setLocality(selected)}

@@ -94,7 +94,9 @@ const SearchNav = ({
             className="w-3/5 h-full mr-2 text-xl  rounded px-2"
           >
             {" "}
-            <option value="">Property Type</option>
+            <option value="" defaultChecked hidden>
+              Property Type
+            </option>
             <option value="industrial">Industrial</option>
             <option value="commercial">Commercial</option>
             <option value="residential">Residential</option>

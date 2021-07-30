@@ -149,16 +149,28 @@ const Step4 = () => {
                         <p className="mr-4">&#8377;</p>
 
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg w-48 my-1 mr-2 placeholder-gray-600"
                           type="text"
                           {...register("price_per_feet")}
-                          placeholder="Rent / sq. ft"
+                          placeholder="Price / sq. ft / sq. yard / sq. mtr"
                           value={PricePerSpace}
                           onChange={(e) => setPricePerSpace(e.target.value)}
                           onKeyUp={ConvertToWord}
-                          required=""
-                          aria-required="true"
-                        ></input>
+                        />
+                        <select
+                          // {...register("length_width_type")}
+                          className="border-1 h-11  mx-2  px-2 text-lg w-20  my-1  placeholder-gray-600"
+                          id="plot-length-type"
+                          title="Sq-ft"
+                        >
+                          <option>fts</option>
+                          <option>yards</option>
+                          <option>mts</option>
+                          <option>Marla</option>
+                          <option>bighas</option>
+                          <option>acres</option>
+                          <option>hectares</option>
+                        </select>
                         <span className="ml-4">
                           {ConvertedTotalAmountPricePerSpace}
                         </span>
@@ -209,7 +221,7 @@ const Step4 = () => {
                       <div className="flex justify-start items-center">
                         <p className="mr-4">&#8377;</p>
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg w-48 my-1 mr-2 placeholder-gray-600"
                           type="text"
                           {...register("price_per_feet")}
                           placeholder="Price / sq. ft / sq. yard / sq. mtr"
@@ -217,6 +229,20 @@ const Step4 = () => {
                           onChange={(e) => setPricePerSpace(e.target.value)}
                           onKeyUp={ConvertToWord}
                         />
+                        <select
+                          // {...register("length_width_type")}
+                          className="border-1 h-11  mx-2  px-2 text-lg w-20  my-1  placeholder-gray-600"
+                          id="plot-length-type"
+                          title="Sq-ft"
+                        >
+                          <option>fts</option>
+                          <option>yards</option>
+                          <option>mts</option>
+                          <option>Marla</option>
+                          <option>bighas</option>
+                          <option>acres</option>
+                          <option>hectares</option>
+                        </select>
                         <span className="ml-4">
                           {ConvertedTotalAmountPricePerSpace}
                         </span>
@@ -273,7 +299,7 @@ const Step4 = () => {
                       <div className="flex justify-start items-center">
                         <p className="mr-4">&#8377;</p>
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg w-48 my-1 mr-2 placeholder-gray-600"
                           type="text"
                           {...register("price_per_feet")}
                           placeholder="Price / sq. ft / sq. yard / sq. mtr"
@@ -281,6 +307,20 @@ const Step4 = () => {
                           onChange={(e) => setPricePerSpace(e.target.value)}
                           onKeyUp={ConvertToWord}
                         />
+                        <select
+                          // {...register("length_width_type")}
+                          className="border-1 h-11  mx-2  px-2 text-lg w-20  my-1  placeholder-gray-600"
+                          id="plot-length-type"
+                          title="Sq-ft"
+                        >
+                          <option>fts</option>
+                          <option>yards</option>
+                          <option>mts</option>
+                          <option>Marla</option>
+                          <option>bighas</option>
+                          <option>acres</option>
+                          <option>hectares</option>
+                        </select>
                         <span className="ml-4">
                           {ConvertedTotalAmountPricePerSpace}
                         </span>
@@ -341,16 +381,28 @@ const Step4 = () => {
                         <p className="mr-4">&#8377;</p>
 
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg w-48 my-1 mr-2 placeholder-gray-600"
                           type="text"
                           {...register("price_per_feet")}
-                          placeholder="Rent / sq. ft"
+                          placeholder="Price / sq. ft / sq. yard / sq. mtr"
                           value={PricePerSpace}
                           onChange={(e) => setPricePerSpace(e.target.value)}
                           onKeyUp={ConvertToWord}
-                          required=""
-                          aria-required="true"
-                        ></input>
+                        />
+                        <select
+                          // {...register("length_width_type")}
+                          className="border-1 h-11  mx-2  px-2 text-lg w-20  my-1  placeholder-gray-600"
+                          id="plot-length-type"
+                          title="Sq-ft"
+                        >
+                          <option>fts</option>
+                          <option>yards</option>
+                          <option>mts</option>
+                          <option>Marla</option>
+                          <option>bighas</option>
+                          <option>acres</option>
+                          <option>hectares</option>
+                        </select>
                         <span className="ml-4">
                           {ConvertedTotalAmountPricePerSpace}
                         </span>
