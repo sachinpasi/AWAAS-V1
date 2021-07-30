@@ -53,6 +53,7 @@ const Banner = ({ setisLoading }) => {
             emulateTouch={true}
             infiniteLoop={true}
             showIndicators={false}
+            interval={6000}
             onChange={() => setBannerURL("")}
           >
             {Data?.map((item) => (
