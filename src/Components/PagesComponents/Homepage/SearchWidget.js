@@ -10,6 +10,7 @@ import { selectUser } from "../../../Redux/_features/_userSlice";
 import "./Banner.css";
 import "react-select-search/style.css";
 import Fuse from "fuse.js";
+import { BsChevronDown } from "react-icons/bs";
 
 const SearchWidget = () => {
   const history = useHistory();
@@ -21,6 +22,7 @@ const SearchWidget = () => {
   const [BudgetMax, setBudgetMax] = useState(0);
   const [LocalityList, setLocalityList] = useState([]);
   const [PARAMS, setPARAMS] = useState();
+  const [isAnyThingSelected, setisAnyThingSelected] = useState(false);
 
   const BudgetMinItem = ({ Value, title }) => (
     <li
@@ -136,6 +138,10 @@ const SearchWidget = () => {
     CurrentTab,
   ]);
 
+  function gfg_Run() {
+    document.getElementById("div").classList.remove("hover");
+  }
+
   return (
     <div className="customContainer h-full flex justify-center items-start flex-col relative ">
       <div className=" h-36 absolute -bottom-24 w-full bg-white rounded shadow-lg flex justify-center items-center flex-col">
@@ -177,7 +183,7 @@ const SearchWidget = () => {
           </div>
           <div className="w-full h-14">
             <div className=" border-l-1 border-t-1 border-b-1 w-full h-full flex items-center justify-center outline-none ">
-              <Dropdown
+              {/* <Dropdown
                 wrapperClassName="SelectWrapper"
                 buttonClassName="SelectButton"
                 menuClassName="Menu"
@@ -185,7 +191,6 @@ const SearchWidget = () => {
               >
                 <Dropdown.Item className="Item">
                   Residential
-                  {/* <ArrowRight /> */}
                   <Dropdown.Submenu position="right" className="Submenu">
                     <Dropdown.Item
                       onClick={() => {
@@ -236,7 +241,6 @@ const SearchWidget = () => {
                 </Dropdown.Item>
                 <Dropdown.Item className="Item">
                   Commercial
-                  {/* <ArrowRight /> */}
                   <Dropdown.Submenu position="right" className="Submenu">
                     <Dropdown.Item
                       onClick={() => {
@@ -269,7 +273,6 @@ const SearchWidget = () => {
                 </Dropdown.Item>
                 <Dropdown.Item className="Item">
                   Industrial
-                  {/* <ArrowRight /> */}
                   <Dropdown.Submenu position="right" className="Submenu">
                     <Dropdown.Item
                       onClick={() => {
@@ -300,11 +303,183 @@ const SearchWidget = () => {
                     </Dropdown.Item>
                   </Dropdown.Submenu>
                 </Dropdown.Item>
-              </Dropdown>
-              {/* <ArrowDown /> */}
+              </Dropdown> */}
+              <div className="dropdown inline-block relative w-full h-full">
+                <button
+                  onMouseEnter={() => setisAnyThingSelected(false)}
+                  // onClick={() => setisAnyThingSelected(false)}
+                  className="w-full h-full text-darkgray py-2 px-4 justify-between rounded inline-flex items-center"
+                >
+                  <span className="capitalize">
+                    {PropertyType ? PropertyType : "Property Type"}
+                  </span>
+                  <BsChevronDown />
+                </button>
+                <ul
+                  id="div"
+                  className={`${
+                    isAnyThingSelected ? "" : "dropdown-content"
+                  }   hidden absolute z-20 w-full  text-darkgray  shadow-xl rounded-lg `}
+                >
+                  <li className="dropdown w-full rounded-t-lg">
+                    <div className="rounded-t-lg cursor-pointer hover:bg-textbg w-full bg-white  py-2 px-4 block whitespace-no-wrap">
+                      Residential
+                    </div>
+                    <ul className="dropdown-content rounded-lg hidden absolute z-10 w-40 shadow-xl  text-darkgray left-full  -mt-10">
+                      <li>
+                        <div
+                          onClick={() => {
+                            setPropertyType("land");
+                            setParentPropertyType("residential");
+                            setisAnyThingSelected(true);
+                          }}
+                          className="bg-white rounded-t-lg cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                        >
+                          Land / Plot
+                        </div>
+                      </li>
+                      <li>
+                        <div
+                          onClick={() => {
+                            setPropertyType("villa");
+                            setParentPropertyType("residential");
+                            setisAnyThingSelected(true);
+                          }}
+                          className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                        >
+                          Villa / House
+                        </div>
+                      </li>
+                      <li>
+                        <div
+                          onClick={() => {
+                            setPropertyType("flat");
+                            setParentPropertyType("residential");
+                            setisAnyThingSelected(true);
+                          }}
+                          className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                        >
+                          Flat / Apartment
+                        </div>
+                      </li>
+                      <li>
+                        <div
+                          onClick={() => {
+                            setPropertyType("floor");
+                            setParentPropertyType("residential");
+                            setisAnyThingSelected(true);
+                          }}
+                          className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                        >
+                          Floor
+                        </div>
+                      </li>
+                      <li>
+                        <div
+                          onClick={() => {
+                            setPropertyType("farmhouse");
+                            setParentPropertyType("residential");
+                            setisAnyThingSelected(true);
+                          }}
+                          className="bg-white rounded-b-lg cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                        >
+                          Farmhouse
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                  <li className="dropdown w-full">
+                    <div className=" cursor-pointer hover:bg-textbg w-full bg-white  py-2 px-4 block whitespace-no-wrap">
+                      Commercial
+                    </div>
+                    <ul className="dropdown-content rounded-lg overflow-hidden hidden absolute w-40 shadow-xl  text-darkgray left-full  -mt-10">
+                      <li>
+                        <div
+                          onClick={() => {
+                            setPropertyType("land");
+                            setisAnyThingSelected(true);
+                            setParentPropertyType("commercial");
+                          }}
+                          className="bg-white  cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                        >
+                          Land / Plot
+                        </div>
+                      </li>
+                      <li>
+                        <div
+                          onClick={() => {
+                            setPropertyType("shop");
+                            setParentPropertyType("commercial");
+                            setisAnyThingSelected(true);
+                          }}
+                          className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                        >
+                          Shop / Showroom
+                        </div>
+                      </li>
+                      <li>
+                        <div
+                          onClick={() => {
+                            setPropertyType("officespace");
+                            setParentPropertyType("commercial");
+                            setisAnyThingSelected(true);
+                          }}
+                          className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                        >
+                          Officespace
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                  <li className="dropdown w-full rounded-b-lg">
+                    <div className=" cursor-pointer rounded-b-lg hover:bg-textbg w-full bg-white  py-2 px-4 block whitespace-no-wrap">
+                      Industrial
+                    </div>
+                    <ul className="dropdown-content rounded-lg   overflow-hidden hidden absolute w-40 shadow-xl  text-darkgray left-full  -mt-10">
+                      <li>
+                        <div
+                          onClick={() => {
+                            setPropertyType("land");
+                            setParentPropertyType("industrial");
+                            setisAnyThingSelected(true);
+                          }}
+                          className="bg-white  cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                        >
+                          Land / Plot
+                        </div>
+                      </li>
+                      <li>
+                        <div
+                          onClick={() => {
+                            setPropertyType("factory");
+                            setParentPropertyType("industrial");
+                            setisAnyThingSelected(true);
+                          }}
+                          className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                        >
+                          Factory / Builtup
+                        </div>
+                      </li>
+                      <li>
+                        <div
+                          onClick={() => {
+                            setPropertyType("shop");
+                            setParentPropertyType("industrial");
+                            setisAnyThingSelected(true);
+                          }}
+                          className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                        >
+                          Shop / Showroom
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
-          <div className="w-full h-14 border-1 ">
+          <div className="w-full h-14 border-1 flex justify-center items-center px-4 ">
+            &#x20B9;
             {CurrentTab === "sell" ? (
               <Dropdown
                 wrapperClassName="SelectWrapper"
@@ -313,7 +488,7 @@ const SearchWidget = () => {
                 title={
                   BudgetMin || BudgetMax
                     ? `${BudgetMin} - ${BudgetMax}`
-                    : "Budget"
+                    : " Budget"
                 }
               >
                 <Dropdown.Item className="ItemBudget">
@@ -460,7 +635,7 @@ const NavItem = ({ Name, Active, onClick }) => (
       marginLeft: "0.05rem",
     }}
     className={` cursor-pointer h-14 w-full  flex justify-center items-center ${
-      Active ? `bg-blue shadow-lg` : `bg-lightblue`
+      Active ? `bg-blue shadow-xl` : `bg-lightblue`
     }`}
   >
     <p className="text-white text-lg uppercase font-medium">{Name}</p>

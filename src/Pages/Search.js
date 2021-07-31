@@ -12,8 +12,11 @@ const Search = () => {
   const { property_for } = queryString.parse(search);
   const [PropertyFor, setPropertyFor] = useState(property_for);
   const [ParentPropertyType, setParentPropertyType] = useState();
+  const [PropertyType, setPropertyType] = useState();
 
   const [Locality, setLocality] = useState();
+
+  console.log(PropertyType);
 
   console.log(property_for);
   useEffect(() => {
@@ -27,6 +30,8 @@ const Search = () => {
         setPropertyFor={setPropertyFor}
         setParentPropertyType={setParentPropertyType}
         ParentPropertyType={ParentPropertyType}
+        setPropertyType={setPropertyType}
+        PropertyType={PropertyType}
       />
       <main className="bg-textbg pt-28">
         <div className="customContainer flex h-full justify-between  ">
@@ -35,6 +40,8 @@ const Search = () => {
             ParentPropertyType={ParentPropertyType}
             Locality={Locality}
             PropertyFor={PropertyFor}
+            setPropertyType={setPropertyType}
+            PropertyType={PropertyType}
           />
           <Result />
         </div>

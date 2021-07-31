@@ -122,13 +122,13 @@ const Banner = ({ setisLoading }) => {
                         <div
                           key={index}
                           onClick={() => setBannerURL(thumb)}
-                          className="mx-1 w-28 border-4 rounded-sm border-white shadow-2xl cursor-pointer
+                          className="mx-1 w-36 border-4 rounded-sm border-white shadow-2xl cursor-pointer
                       "
                         >
                           {/* {console.log(thumb)} */}
                           {/* {thumb} */}
                           <img
-                            className="object-cover h-16 w-auto "
+                            className="object-cover h-20 w-auto "
                             key={index}
                             src={thumb}
                             alt=""

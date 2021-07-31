@@ -47,6 +47,7 @@ const Step2 = () => {
         ...data,
         city: "Panipat",
         id: TableId,
+        purchase_type: "Resale",
       },
       {
         headers: { Authorization: `Bearer ${user.token}` },
@@ -189,6 +190,13 @@ const Step2 = () => {
                         </option>
                       ))}
                     </select>
+                    <input
+                      // {...register("project_name", { required: true })}
+                      className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                      type="text"
+                      placeholder="Unit No"
+                      id="apart"
+                    />
                   </div>
                 </>
               )}

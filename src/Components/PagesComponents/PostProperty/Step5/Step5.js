@@ -176,16 +176,16 @@ const Step5 = () => {
           </div>
           <div className="flex flex-col">
             <div class="flex w-full  items-center justify-start bg-grey-lighter">
-              <label class="w-48 flex flex-col items-center px-4 py-4  rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer bg-blue text-white">
+              <label class="w-48 flex justify-center items-center px-2 py-4  mt-4 rounded-lg shadow-lg tracking-wide uppercase border border-2 cursor-pointer bg-textbg text-darkgray">
                 <svg
-                  class="w-8 h-8"
+                  class="w-8 h-8 mr-2"
                   fill="currentColor"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                 >
                   <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
                 </svg>
-                <span class="mt-2 text-base leading-normal">Select Images</span>
+                <span class=" text-base leading-normal">Select Images</span>
                 <input
                   className=""
                   type="file"
@@ -217,7 +217,7 @@ const Step5 = () => {
             )}
             <button
               onClick={HandleImageUpload}
-              className="w-44  h-12 bg-blue text-xl font-medium text-white  my-2"
+              className="w-48  h-12 bg-blue text-xl font-medium text-white  my-2"
             >
               Upload
             </button>

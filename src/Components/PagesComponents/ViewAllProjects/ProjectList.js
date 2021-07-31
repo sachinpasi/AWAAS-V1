@@ -31,7 +31,7 @@ const ProjectList = () => {
             }}
             className="w-full h-400px flex flex-col justify-between items-center"
           >
-            <div className="relative h-72">
+            <div className="relative w-full h-72">
               <img
                 className="w-full h-full object-cover"
                 src={item?.banner_image_path}

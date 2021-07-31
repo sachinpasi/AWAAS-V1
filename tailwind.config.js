@@ -53,6 +53,9 @@ module.exports = {
         "70vh": "70vh",
         full: "100%",
       },
+      margin: {
+        260: "260px",
+      },
     },
   },
   variants: {

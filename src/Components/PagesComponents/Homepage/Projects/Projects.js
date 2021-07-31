@@ -41,8 +41,7 @@ const Projects = ({ Title }) => {
                   }}
                   className="w-full h-full flex flex-col justify-between items-center"
                 >
-                  <div className="relative h-64">
-                    {console.log()}
+                  <Link to={`/projects/${item.id}`} className="relative h-64">
                     <img
                       className="w-full h-full object-cover"
                       src={item?.banner_image_path}
@@ -60,7 +59,7 @@ const Projects = ({ Title }) => {
                         alt=""
                       />
                     </div>
-                  </div>
+                  </Link>
                   <div className="w-full h-48 bg-textbg">
                     <div className="relative p-4 ">
                       <div
@@ -110,7 +109,7 @@ const Projects = ({ Title }) => {
         </div>
         <div className="flex justify-end w-full mb-10">
           <Link
-            to="search/projects"
+            to="/search/projects"
             className="text-xl font-medium hover:underline text-blue px-8 py-2"
           >
             View All Projects

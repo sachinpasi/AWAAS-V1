@@ -21,6 +21,8 @@ import VerifyProperty from "../Pages/Verfiy/VerifyProperty";
 import Legal from "../Pages/Legal";
 
 import PrivateRoutes from "./PrivateRoutes";
+import News from "../Pages/News";
+import NewsDetails from "../Pages/NewsDetails";
 
 const Routes = () => {
   return (
@@ -28,6 +30,8 @@ const Routes = () => {
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route exact path="/blogs" component={ViewAllBlogs} />
+        <Route exact path="/news" component={News} />
+        <Route exact path="/news/:id" component={NewsDetails} />
         <Route exact path="/search" component={Search} />
         <Route exact path="/search/projects" component={ViewAllProjects} />
 

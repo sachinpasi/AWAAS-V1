@@ -8,8 +8,10 @@ import "./Switch.css";
 const Filter = ({
   PropertyFor,
   Locality,
-  setParentPropertyType,
   ParentPropertyType,
+  setParentPropertyType,
+  PropertyType,
+  setPropertyType,
 }) => {
   const [NoOfBedroom, setNoOfBedroom] = useState();
   // const [AreaMin, setAreaMin] = useState();
@@ -44,9 +46,21 @@ const Filter = ({
     //   setBudgetMax(max_budget);
     // }
     if (!max_budget) {
-      setBudgetMax(90000000);
+      // setBudgetMax(90000000);
     }
   }, [mini_budget, max_budget]);
+
+  useEffect(() => {
+    if (property_type) {
+      setPropertyType(property_type);
+    }
+  }, [property_type]);
+
+  useEffect(() => {
+    if (parent_type) {
+      setParentPropertyType(parent_type);
+    }
+  }, [parent_type]);
 
   useEffect(() => {
     const params = new URLSearchParams();
@@ -77,11 +91,20 @@ const Filter = ({
       }
     }
 
-    if (property_type) {
-      params.append("property_type", property_type);
+    if (PropertyType) {
+      if (PropertyType) {
+        params.append("property_type", PropertyType);
+      } else {
+        params.delete("property_type");
+      }
     } else {
-      params.delete("property_type");
+      if (property_type) {
+        params.append("property_type", property_type);
+      } else {
+        params.delete("property_type");
+      }
     }
+
     // if (mini_budget) {
     //   params.append("mini_budget", mini_budget);
     // } else {
@@ -144,6 +167,7 @@ const Filter = ({
     PropertyFor,
     history,
     Locality,
+    PropertyType,
   ]);
 
   const HandleResetFilter = () => {
@@ -192,30 +216,30 @@ const Filter = ({
                   className="w-2/4 mr-2 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-sm font-medium px-2"
                 >
                   <option defaultChecked hidden value="">
-                    Min
+                    Min Budget
                   </option>
-                  <Option Value="2500" title="2500" />
-                  <Option Value="5000" title="5000" />
-                  <Option Value="10000" title="10000" />
-                  <Option Value="20000" title="20000" />
-                  <Option Value="30000" title="30000" />
-                  <Option Value="40000" title="40000" />
-                  <Option Value="50000" title="50000" />
-                  <Option Value="60000" title="60000" />
-                  <Option Value="70000" title="70000" />
-                  <Option Value="80000" title="80000" />
-                  <Option Value="90000" title="90000" />
-                  <Option Value="100000" title="1 Lac" />
-                  <Option Value="120000" title="1.2 Lac" />
-                  <Option Value="140000" title="1.4 Lac" />
-                  <Option Value="160000" title="1.6 Lac" />
-                  <Option Value="180000" title="1.8 Lac" />
-                  <Option Value="200000" title="2 Lac" />
-                  <Option Value="250000" title="2.5 Lac" />
-                  <Option Value="300000" title="3 Lac" />
-                  <Option Value="350000" title="3.5 Lac" />
-                  <Option Value="400000" title="4 Lac" />
-                  <Option Value="500000" title="5 Lac" />
+                  <Option Value="2500" title=" &#x20B9; 2500" />
+                  <Option Value="5000" title=" &#x20B9; 5000" />
+                  <Option Value="10000" title=" &#x20B9; 10000" />
+                  <Option Value="20000" title=" &#x20B9; 20000" />
+                  <Option Value="30000" title=" &#x20B9; 30000" />
+                  <Option Value="40000" title=" &#x20B9; 40000" />
+                  <Option Value="50000" title="&#x20B9; 50000" />
+                  <Option Value="60000" title="&#x20B9; 60000" />
+                  <Option Value="70000" title="&#x20B9; 70000" />
+                  <Option Value="80000" title="&#x20B9; 80000" />
+                  <Option Value="90000" title="&#x20B9; 90000" />
+                  <Option Value="100000" title="&#x20B9; 1 Lac" />
+                  <Option Value="120000" title="&#x20B9; 1.2 Lac" />
+                  <Option Value="140000" title="&#x20B9; 1.4 Lac" />
+                  <Option Value="160000" title="&#x20B9; 1.6 Lac" />
+                  <Option Value="180000" title="&#x20B9; 1.8 Lac" />
+                  <Option Value="200000" title="&#x20B9; 2 Lac" />
+                  <Option Value="250000" title="&#x20B9; 2.5 Lac" />
+                  <Option Value="300000" title="&#x20B9; 3 Lac" />
+                  <Option Value="350000" title="&#x20B9; 3.5 Lac" />
+                  <Option Value="400000" title="&#x20B9; 4 Lac" />
+                  <Option Value="500000" title="&#x20B9; 5 Lac" />
                 </select>
                 <select
                   onChange={(e) => setBudgetMax(e.target.value)}
@@ -225,28 +249,28 @@ const Filter = ({
                   <option defaultChecked hidden value="">
                     Max Budget
                   </option>
-                  <Option Value="5000" title="5000" />
-                  <Option Value="10000" title="10000" />
-                  <Option Value="20000" title="20000" />
-                  <Option Value="30000" title="30000" />
-                  <Option Value="40000" title="40000" />
-                  <Option Value="50000" title="50000" />
-                  <Option Value="60000" title="60000" />
-                  <Option Value="70000" title="70000" />
-                  <Option Value="80000" title="80000" />
-                  <Option Value="90000" title="90000" />
-                  <Option Value="100000" title="1 Lac" />
-                  <Option Value="120000" title="1.2 Lac" />
-                  <Option Value="140000" title="1.4 Lac" />
-                  <Option Value="160000" title="1.6 Lac" />
-                  <Option Value="180000" title="1.8 Lac" />
-                  <Option Value="200000" title="2 Lac" />
-                  <Option Value="250000" title="2.5 Lac" />
-                  <Option Value="300000" title="3 Lac" />
-                  <Option Value="350000" title="3.5 Lac" />
-                  <Option Value="400000" title="4 Lac" />
-                  <Option Value="500000" title="5 Lac" />
-                  <Option Value="600000" title="6 Lac" />
+                  <Option Value="5000" title="&#x20B9; 5000" />
+                  <Option Value="10000" title="&#x20B9; 10000" />
+                  <Option Value="20000" title="&#x20B9; 20000" />
+                  <Option Value="30000" title="&#x20B9; 30000" />
+                  <Option Value="40000" title="&#x20B9; 40000" />
+                  <Option Value="50000" title="&#x20B9; 50000" />
+                  <Option Value="60000" title="&#x20B9; 60000" />
+                  <Option Value="70000" title="&#x20B9; 70000" />
+                  <Option Value="80000" title="&#x20B9; 80000" />
+                  <Option Value="90000" title="&#x20B9; 90000" />
+                  <Option Value="100000" title="&#x20B9; 1 Lac" />
+                  <Option Value="120000" title="&#x20B9; 1.2 Lac" />
+                  <Option Value="140000" title="&#x20B9; 1.4 Lac" />
+                  <Option Value="160000" title="&#x20B9; 1.6 Lac" />
+                  <Option Value="180000" title="&#x20B9; 1.8 Lac" />
+                  <Option Value="200000" title="&#x20B9; 2 Lac" />
+                  <Option Value="250000" title="&#x20B9; 2.5 Lac" />
+                  <Option Value="300000" title="&#x20B9; 3 Lac" />
+                  <Option Value="350000" title="&#x20B9; 3.5 Lac" />
+                  <Option Value="400000" title="&#x20B9; 4 Lac" />
+                  <Option Value="500000" title="&#x20B9; 5 Lac" />
+                  <Option Value="600000" title="&#x20B9; 6 Lac" />
                 </select>
               </div>
             ) : (
@@ -257,26 +281,26 @@ const Filter = ({
                   className="w-2/4 mr-2 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-sm font-medium px-2"
                 >
                   <option selected hidden value="100000000">
-                    Min
+                    Min Budget
                   </option>
-                  <Option Value="1000000" title="10 Lacs" />
-                  <Option Value="2000000" title="20 Lacs" />
-                  <Option Value="3000000" title="30 Lacs" />
-                  <Option Value="4000000" title="40 Lacs" />
-                  <Option Value="5000000" title="50 Lacs" />
-                  <Option Value="6000000" title="60 Lacs" />
-                  <Option Value="7000000" title="70 Lacs" />
-                  <Option Value="8000000" title="80 Lacs" />
-                  <Option Value="9000000" title="90 Lacs" />
-                  <Option Value="10000000" title="1 Cr" />
-                  <Option Value="15000000" title="1.5 Cr" />
-                  <Option Value="20000000" title="2 Cr" />
-                  <Option Value="30000000" title="3 Cr" />
-                  <Option Value="40000000" title="4 Cr" />
-                  <Option Value="50000000" title="5 Cr" />
-                  <Option Value="60000000" title="6 Cr" />
-                  <Option Value="70000000" title="7 Cr" />
-                  <Option Value="80000000" title="8 Cr" />
+                  <Option Value="1000000" title="&#x20B9; 10 Lacs" />
+                  <Option Value="2000000" title="&#x20B9; 20 Lacs" />
+                  <Option Value="3000000" title="&#x20B9; 30 Lacs" />
+                  <Option Value="4000000" title="&#x20B9; 40 Lacs" />
+                  <Option Value="5000000" title="&#x20B9; 50 Lacs" />
+                  <Option Value="6000000" title="&#x20B9; 60 Lacs" />
+                  <Option Value="7000000" title="&#x20B9; 70 Lacs" />
+                  <Option Value="8000000" title="&#x20B9; 80 Lacs" />
+                  <Option Value="9000000" title="&#x20B9; 90 Lacs" />
+                  <Option Value="10000000" title="&#x20B9; 1 Cr" />
+                  <Option Value="15000000" title="&#x20B9; 1.5 Cr" />
+                  <Option Value="20000000" title="&#x20B9; 2 Cr" />
+                  <Option Value="30000000" title="&#x20B9; 3 Cr" />
+                  <Option Value="40000000" title="&#x20B9; 4 Cr" />
+                  <Option Value="50000000" title="&#x20B9; 5 Cr" />
+                  <Option Value="60000000" title="&#x20B9; 6 Cr" />
+                  <Option Value="70000000" title="&#x20B9; 7 Cr" />
+                  <Option Value="80000000" title="&#x20B9; 8 Cr" />
                 </select>
                 <select
                   onChange={(e) => setBudgetMax(e.target.value)}
@@ -286,24 +310,24 @@ const Filter = ({
                   <option defaultChecked hidden value="">
                     Max Budget
                   </option>
-                  <Option Value="1500000" title="15 Lacs" />
-                  <Option Value="2500000" title="25 Lacs" />
-                  <Option Value="3500000" title="35 Lacs" />
-                  <Option Value="4500000" title="45 Lacs" />
-                  <Option Value="5500000" title="55 Lacs" />
-                  <Option Value="6500000" title="65 Lacs" />
-                  <Option Value="7500000" title="75 Lacs" />
-                  <Option Value="8500000" title="85 Lacs" />
-                  <Option Value="9500000" title="95 Lacs" />
-                  <Option Value="15000000" title="1.5 Cr" />
-                  <Option Value="25000000" title="2.5 Cr" />
-                  <Option Value="35000000" title="3.5 Cr" />
-                  <Option Value="45000000" title="4.5 Cr" />
-                  <Option Value="55000000" title="5.5 Cr" />
-                  <Option Value="65000000" title="6.5 Cr" />
-                  <Option Value="75000000" title="7.5 Cr" />
-                  <Option Value="85000000" title="8.5 Cr" />
-                  <Option Value="90000000" title="9 Cr" />
+                  <Option Value="1500000" title="&#x20B9; 15 Lacs" />
+                  <Option Value="2500000" title="&#x20B9; 25 Lacs" />
+                  <Option Value="3500000" title="&#x20B9; 35 Lacs" />
+                  <Option Value="4500000" title="&#x20B9; 45 Lacs" />
+                  <Option Value="5500000" title="&#x20B9; 55 Lacs" />
+                  <Option Value="6500000" title="&#x20B9; 65 Lacs" />
+                  <Option Value="7500000" title="&#x20B9; 75 Lacs" />
+                  <Option Value="8500000" title="&#x20B9; 85 Lacs" />
+                  <Option Value="9500000" title="&#x20B9; 95 Lacs" />
+                  <Option Value="15000000" title="&#x20B9; 1.5 Cr" />
+                  <Option Value="25000000" title="&#x20B9; 2.5 Cr" />
+                  <Option Value="35000000" title="&#x20B9; 3.5 Cr" />
+                  <Option Value="45000000" title="&#x20B9; 4.5 Cr" />
+                  <Option Value="55000000" title="&#x20B9; 5.5 Cr" />
+                  <Option Value="65000000" title="&#x20B9; 6.5 Cr" />
+                  <Option Value="75000000" title="&#x20B9; 7.5 Cr" />
+                  <Option Value="85000000" title="&#x20B9; 8.5 Cr" />
+                  <Option Value="90000000" title="&#x20B9; 9 Cr" />
                 </select>
               </div>
             )}

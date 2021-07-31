@@ -55,6 +55,7 @@ const Result = ({ PropertyFor }) => {
             max_area: max_area,
             mini_budget: mini_budget,
             max_budget: max_budget,
+            property_type: property_type,
           },
         },
         { cancelToken: cancelToken.token }

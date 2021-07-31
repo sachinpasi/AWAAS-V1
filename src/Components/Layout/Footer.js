@@ -12,7 +12,7 @@ const Footer = () => {
       }}
       className="w-full h-full "
     >
-      <div className="customContainer pt-20">
+      <div className="customContainer pt-10">
         <div className="flex flex-col justify-center items-center">
           <img src="/assets/images/logo/logo.svg" alt="" />
 
@@ -43,18 +43,7 @@ const Footer = () => {
                 }}
                 className="text-base "
               >
-                Services
-              </Link>
-            </li>{" "}
-            <li>
-              <Link
-                to="/"
-                style={{
-                  color: "#88909F",
-                }}
-                className="text-base "
-              >
-                Properties
+                Investment
               </Link>
             </li>
             <li>
@@ -65,7 +54,40 @@ const Footer = () => {
                 }}
                 className="text-base "
               >
-                Features
+                Vastu
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/"
+                style={{
+                  color: "#88909F",
+                }}
+                className="text-base "
+              >
+                Legal
+              </Link>
+            </li>{" "}
+            <li>
+              <Link
+                to="/"
+                style={{
+                  color: "#88909F",
+                }}
+                className="text-base "
+              >
+                Media Coverage
+              </Link>
+            </li>{" "}
+            <li>
+              <Link
+                to="/news"
+                style={{
+                  color: "#88909F",
+                }}
+                className="text-base "
+              >
+                News
               </Link>
             </li>
             <li>
@@ -77,17 +99,6 @@ const Footer = () => {
                 className="text-base "
               >
                 Blogs
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/"
-                style={{
-                  color: "#88909F",
-                }}
-                className="text-base "
-              >
-                Contact
               </Link>
             </li>
           </ul>

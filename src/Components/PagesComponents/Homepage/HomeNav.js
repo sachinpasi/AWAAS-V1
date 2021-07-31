@@ -7,6 +7,7 @@ import {
   FaYoutube,
   FaWhatsapp,
   FaUserCircle,
+  FaLinkedinIn,
 } from "react-icons/fa";
 import { HiMail } from "react-icons/hi";
 import Login from "../../PagesComponents/Login/Login";
@@ -51,10 +52,18 @@ const HomeNav = () => {
                 Icon={FaInstagram}
               />
               <SocialIcon
-                To="/https://twitter.com/awaasonline"
+                To="https://twitter.com/awaasonline"
                 Icon={FaTwitter}
               />
-              <SocialIcon To="/" Icon={FaYoutube} Br />
+              <SocialIcon
+                To="https://www.linkedin.com/in/awaasonline-panipat-5b5826208/"
+                Icon={FaLinkedinIn}
+              />
+              <SocialIcon
+                To="https://www.youtube.com/channel/UC5iFENaN18NSmbjyDHnRe0A"
+                Icon={FaYoutube}
+                Br
+              />
             </div>
             <div className="w-auto h-full flex justify-center items-center">
               <a

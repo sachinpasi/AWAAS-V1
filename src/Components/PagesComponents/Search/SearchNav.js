@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-import { IoMdHome } from "react-icons/io";
 import { useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { selectUser } from "../../../Redux/_features/_userSlice";
 import SelectSearch from "react-select-search";
 import "react-select-search/style.css";
 import Fuse from "fuse.js";
 import axios from "axios";
 import { API } from "../../../API";
+import { BsChevronDown } from "react-icons/bs";
 
 const SearchNav = ({
   setPropertyFor,
@@ -16,9 +16,12 @@ const SearchNav = ({
   setLocality,
   setParentPropertyType,
   ParentPropertyType,
+  PropertyType,
+  setPropertyType,
 }) => {
   const [isNavOpen, setisNavOpen] = useState(false);
   const [LocalityList, setLocalityList] = useState([]);
+  const [isAnyThingSelected, setisAnyThingSelected] = useState(false);
 
   const HandleNavScroll = () => {
     if (window.scrollY >= 40) {
@@ -42,6 +45,7 @@ const SearchNav = ({
     name: _.name,
     value: _.id,
   }));
+
   function fuzzySearch(options) {
     const fuse = new Fuse(options, {
       keys: ["name", "groupName", "items.name"],
@@ -79,28 +83,194 @@ const SearchNav = ({
       } `}
     >
       <div className="customContainer flex justify-between items-center h-58percent ">
+        <input
+          defaultValue="Panipat"
+          disabled
+          className=" cursor-not-allowed h-full mr-2 bg-white text-base text-darkgray  rounded px-4"
+        ></input>
         <div className="w-3/12 h-full flex justify-between items-center">
           <select
             value={PropertyFor}
             onChange={(e) => setPropertyFor(e.target.value)}
-            className="w-2/5 h-full mr-2 text-xl  rounded px-2"
+            className="w-2/5 h-full mr-2 text-base  rounded px-2"
           >
             <option value="sell">Buy</option>
             <option value="rent">Rent</option>
           </select>
-          <select
-            value={ParentPropertyType}
-            onChange={(e) => setParentPropertyType(e.target.value)}
-            className="w-3/5 h-full mr-2 text-xl  rounded px-2"
-          >
-            {" "}
-            <option value="" defaultChecked hidden>
-              Property Type
-            </option>
-            <option value="industrial">Industrial</option>
-            <option value="commercial">Commercial</option>
-            <option value="residential">Residential</option>
-          </select>
+
+          <div className="dropdown bg-white rounded inline-block  relative w-full h-full">
+            <button
+              onMouseEnter={() => setisAnyThingSelected(false)}
+              // onClick={() => setisAnyThingSelected(false)}
+              className="w-full h-full text-darkgray py-2 px-4 rounded justify-between inline-flex items-center"
+            >
+              <span className="capitalize">
+                {PropertyType ? PropertyType : "Property Type"}
+              </span>
+              <BsChevronDown />
+            </button>
+
+            <ul
+              id="div"
+              className={`${
+                isAnyThingSelected ? "" : "dropdown-content"
+              }   hidden absolute z-20 w-full  text-darkgray  shadow-xl rounded-lg `}
+            >
+              <li className="dropdown w-full rounded-t-lg">
+                <div className="rounded-t-lg cursor-pointer hover:bg-textbg w-full bg-white  py-2 px-4 block whitespace-no-wrap">
+                  Residential
+                </div>
+                <ul className="dropdown-content rounded-lg hidden absolute z-10 w-40 shadow-xl  text-darkgray left-full  -mt-10">
+                  <li>
+                    <div
+                      onClick={() => {
+                        setPropertyType("land");
+                        setParentPropertyType("residential");
+                        setisAnyThingSelected(true);
+                      }}
+                      className="bg-white rounded-t-lg cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                    >
+                      Land / Plot
+                    </div>
+                  </li>
+                  <li>
+                    <div
+                      onClick={() => {
+                        setPropertyType("villa");
+                        setParentPropertyType("residential");
+                        setisAnyThingSelected(true);
+                      }}
+                      className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                    >
+                      Villa / House
+                    </div>
+                  </li>
+                  <li>
+                    <div
+                      onClick={() => {
+                        setPropertyType("flat");
+                        setParentPropertyType("residential");
+                        setisAnyThingSelected(true);
+                      }}
+                      className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                    >
+                      Flat / Apartment
+                    </div>
+                  </li>
+                  <li>
+                    <div
+                      onClick={() => {
+                        setPropertyType("floor");
+                        setParentPropertyType("residential");
+                        setisAnyThingSelected(true);
+                      }}
+                      className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                    >
+                      Floor
+                    </div>
+                  </li>
+                  <li>
+                    <div
+                      onClick={() => {
+                        setPropertyType("farmhouse");
+                        setParentPropertyType("residential");
+                        setisAnyThingSelected(true);
+                      }}
+                      className="bg-white rounded-b-lg cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                    >
+                      Farmhouse
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li className="dropdown w-full">
+                <div className=" cursor-pointer hover:bg-textbg w-full bg-white  py-2 px-4 block whitespace-no-wrap">
+                  Commercial
+                </div>
+                <ul className="dropdown-content rounded-lg overflow-hidden hidden absolute w-40 shadow-xl  text-darkgray left-full  -mt-10">
+                  <li>
+                    <div
+                      onClick={() => {
+                        setPropertyType("land");
+                        setisAnyThingSelected(true);
+                        setParentPropertyType("commercial");
+                      }}
+                      className="bg-white  cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                    >
+                      Land / Plot
+                    </div>
+                  </li>
+                  <li>
+                    <div
+                      onClick={() => {
+                        setPropertyType("shop");
+                        setParentPropertyType("commercial");
+                        setisAnyThingSelected(true);
+                      }}
+                      className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                    >
+                      Shop / Showroom
+                    </div>
+                  </li>
+                  <li>
+                    <div
+                      onClick={() => {
+                        setPropertyType("officespace");
+                        setParentPropertyType("commercial");
+                        setisAnyThingSelected(true);
+                      }}
+                      className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                    >
+                      Officespace
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li className="dropdown w-full rounded-b-lg">
+                <div className=" cursor-pointer rounded-b-lg hover:bg-textbg w-full bg-white  py-2 px-4 block whitespace-no-wrap">
+                  Industrial
+                </div>
+                <ul className="dropdown-content rounded-lg   overflow-hidden hidden absolute w-40 shadow-xl  text-darkgray left-full  -mt-10">
+                  <li>
+                    <div
+                      onClick={() => {
+                        setPropertyType("land");
+                        setParentPropertyType("industrial");
+                        setisAnyThingSelected(true);
+                      }}
+                      className="bg-white  cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                    >
+                      Land / Plot
+                    </div>
+                  </li>
+                  <li>
+                    <div
+                      onClick={() => {
+                        setPropertyType("factory");
+                        setParentPropertyType("industrial");
+                        setisAnyThingSelected(true);
+                      }}
+                      className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                    >
+                      Factory / Builtup
+                    </div>
+                  </li>
+                  <li>
+                    <div
+                      onClick={() => {
+                        setPropertyType("shop");
+                        setParentPropertyType("industrial");
+                        setisAnyThingSelected(true);
+                      }}
+                      className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                    >
+                      Shop / Showroom
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div className="w-3/4 flex h-full justify-between items-center">

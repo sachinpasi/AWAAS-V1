@@ -96,7 +96,6 @@ const Step3 = () => {
                         {...register("plot_area_type")}
                         className="border-1 h-11  px-2 text-lg w-52 my-1 mx-2 placeholder-gray-600"
                         id="plot-area-type"
-                        title="sq-ft"
                       >
                         <option>sq-fts</option>
                         <option>sq-yards</option>
@@ -128,10 +127,8 @@ const Step3 = () => {
                         {...register("length_width_type")}
                         className="border-1 h-11  px-2 text-lg w-52  my-1  placeholder-gray-600"
                         id="plot-length-type"
-                        title="Sq-ft"
                       >
-                        <option>fts</option>
-                        <option>mts</option>
+                        <option>mtrs</option>
                       </select>
                     </div>
 
@@ -147,7 +144,6 @@ const Step3 = () => {
                         {...register("length_width_type")}
                         className="border-1 h-11  px-2 text-lg w-52  my-1  placeholder-gray-600"
                         id="plot-length-type"
-                        title="Sq-ft"
                       >
                         <option>fts</option>
                         <option>yards</option>
@@ -170,7 +166,6 @@ const Step3 = () => {
                         {...register("length_width_type")}
                         className="border-1 h-11  px-2 text-lg w-52 my-1  placeholder-gray-600"
                         id="plot-length-type"
-                        title="Sq-ft"
                       >
                         <option>fts</option>
                         <option>yards</option>
@@ -199,12 +194,22 @@ const Step3 = () => {
                       <h4 className="text-2xl font-medium  uppercase mb-4">
                         Property Details
                       </h4>
-                      <input
-                        className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
-                        type="text"
-                        {...register("bhk")}
-                        placeholder="3 BHK / 2 BHK / 1 BHK "
-                      ></input>
+                      <div className="flex">
+                        <input
+                          className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                          type="text"
+                          {...register("bhk")}
+                          placeholder="3 BHK / 2 BHK / 1 BHK "
+                        ></input>
+                        <input
+                          className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                          type="number"
+                          min="1"
+                          {...register("balconies")}
+                          placeholder="Balconies"
+                          id="bal-cony"
+                        />
+                      </div>
 
                       <div className="flex">
                         <input
@@ -214,23 +219,18 @@ const Step3 = () => {
                           placeholder="Bedrooms"
                           id="bed-room"
                           required=""
+                          min="1"
                           aria-required="true"
                         />
                         <input
-                          className="border-1 h-11  px-2 text-lg w-64 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
                           type="number"
                           {...register("bathrooms")}
                           placeholder="Washrooms"
                           id="bath-room"
                           required=""
+                          min="1"
                           aria-required="true"
-                        />
-                        <input
-                          className="border-1 h-11  px-2 text-lg w-64 my-1 placeholder-gray-600"
-                          type="number"
-                          {...register("balconies")}
-                          placeholder="Balconies"
-                          id="bal-cony"
                         />
                       </div>
 
@@ -244,7 +244,6 @@ const Step3 = () => {
                         <select
                           className="border-1 h-11  px-2 text-lg w-40 my-1 mr-2 placeholder-gray-600"
                           {...register("carpet_area_type")}
-                          title="Sq-ft"
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
@@ -265,7 +264,6 @@ const Step3 = () => {
                         <select
                           className="border-1 h-11  px-2 text-lg w-40 my-1 mr-2 placeholder-gray-600"
                           {...register("built_up_area_type")}
-                          title="Sq-ft"
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
@@ -286,7 +284,6 @@ const Step3 = () => {
                         <select
                           className="border-1 h-11  px-2 text-lg w-40 my-1 mr-2 placeholder-gray-600"
                           {...register("super_built_up_area_type")}
-                          title="Sq-ft"
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
@@ -485,6 +482,7 @@ const Step3 = () => {
                           {...register("balconies")}
                           placeholder="Balconies"
                           id="bal-cony"
+                          min="1"
                         />
                       </div>
                       <div>
@@ -496,6 +494,7 @@ const Step3 = () => {
                           id="bed-room"
                           required=""
                           aria-required="true"
+                          min="1"
                         />
                         <input
                           className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
@@ -505,6 +504,7 @@ const Step3 = () => {
                           id="bath-room"
                           required=""
                           aria-required="true"
+                          min="1"
                         />
                       </div>
                       <div>
@@ -517,7 +517,6 @@ const Step3 = () => {
                         <select
                           className="border-1 h-11  px-2 text-lg w-52 mr-2 my-1 placeholder-gray-600"
                           {...register("carpet_area_type")}
-                          title="Sq-ft"
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
@@ -537,7 +536,6 @@ const Step3 = () => {
                         <select
                           className="border-1 h-11  px-2 text-lg w-52 mr-2 my-1 placeholder-gray-600"
                           {...register("built_up_area_type")}
-                          title="Sq-ft"
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
@@ -558,7 +556,6 @@ const Step3 = () => {
                         <select
                           className="border-1 h-11  px-2 text-lg w-52 mr-2 my-1 placeholder-gray-600"
                           {...register("super_built_up_area_type")}
-                          title="Sq-ft"
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
@@ -737,7 +734,7 @@ const Step3 = () => {
                         {/* <select
                           className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
                           id="builderType"
-                          title="Sq-ft"
+                         
                         >
                           <option selected="" disabled>
                             Developer / Builder
@@ -752,12 +749,14 @@ const Step3 = () => {
                           type="number"
                           {...register("bedrooms")}
                           placeholder="Bedrooms"
+                          min="1"
                         />
                         <input
                           className="border-1 h-11  px-2 text-lg w-64 mr-2 my-1 placeholder-gray-600"
                           type="number"
                           {...register("bathrooms")}
                           placeholder="Washrooms"
+                          min="1"
                         />
                         <input
                           className="border-1 h-11  px-2 text-lg w-64 mr-2 my-1 placeholder-gray-600"
@@ -765,6 +764,7 @@ const Step3 = () => {
                           {...register("balconies")}
                           placeholder="Balconies"
                           id="bal-cony"
+                          min="1"
                         />
                       </div>
                       <div>
@@ -777,7 +777,6 @@ const Step3 = () => {
                         <select
                           className="border-1 h-11  px-2 text-lg w-52 mr-2 my-1 placeholder-gray-600"
                           {...register("carpet_area_type")}
-                          title="Sq-ft"
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
@@ -797,7 +796,6 @@ const Step3 = () => {
                         <select
                           className="border-1 h-11  px-2 text-lg w-52 mr-2 my-1 placeholder-gray-600"
                           {...register("built_up_area_type")}
-                          title="Sq-ft"
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
@@ -817,7 +815,6 @@ const Step3 = () => {
                         <select
                           className="border-1 h-11  px-2 text-lg w-52 mr-2 my-1 placeholder-gray-600"
                           {...register("super_built_up_area_type")}
-                          title="Sq-ft"
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
@@ -1029,6 +1026,7 @@ const Step3 = () => {
                           id="bed-room"
                           required=""
                           aria-required="true"
+                          min="1"
                         />
                         <input
                           className="border-1 h-11  px-2 text-lg w-64 my-1 mr-2 placeholder-gray-600"
@@ -1037,6 +1035,7 @@ const Step3 = () => {
                           placeholder="Washrooms"
                           id="bath-room"
                           required=""
+                          min="1"
                           aria-required="true"
                         />
                         <input
@@ -1045,6 +1044,7 @@ const Step3 = () => {
                           {...register("balconies")}
                           placeholder="Balconies"
                           id="bal-cony"
+                          min="1"
                         />
                       </div>
                       <div>
@@ -1056,7 +1056,6 @@ const Step3 = () => {
                         ></input>
                         <select
                           className="border-1 h-11  px-2 text-lg w-52 mr-2 my-1 placeholder-gray-600"
-                          title="Sq-ft"
                           {...register("plot_area_type")}
                         >
                           <option>Sq-fts</option>
@@ -1077,7 +1076,6 @@ const Step3 = () => {
                         <select
                           className="border-1 h-11  px-2 text-lg w-52 mr-2 my-1 placeholder-gray-600"
                           {...register("carpet_area_type")}
-                          title="Sq-ft"
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
@@ -1097,7 +1095,6 @@ const Step3 = () => {
                         <select
                           className="border-1 h-11  px-2 text-lg w-52 mr-2 my-1 placeholder-gray-600"
                           {...register("built_up_area_type")}
-                          title="Sq-ft"
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
@@ -1117,7 +1114,6 @@ const Step3 = () => {
                         <select
                           className="border-1 h-11  px-2 text-lg w-52 mr-2 my-1 placeholder-gray-600"
                           {...register("super_built_up_area_type")}
-                          title="Sq-ft"
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
@@ -1311,7 +1307,6 @@ const Step3 = () => {
                         <select
                           {...register("carpet_area_type")}
                           id="carpet-type"
-                          title="Sq-ft"
                           className="border-1 h-11  px-2 text-lg w-52 my-1 mr-2 placeholder-gray-600"
                         >
                           <option>Sq-ft</option>
@@ -1331,7 +1326,6 @@ const Step3 = () => {
                         ></input>
                         <select
                           {...register("super_built_up_area_type")}
-                          title="Sq-ft"
                           className="border-1 h-11  px-2 text-lg w-52 my-1 mr-2 placeholder-gray-600"
                         >
                           <option>Sq-ft</option>
@@ -1543,7 +1537,7 @@ const Step3 = () => {
                           {...register("carpet_area")}
                           placeholder="Carpet Area"
                         />
-                        <select {...register("carpet_area_type")} title="Sq-ft">
+                        <select {...register("carpet_area_type")}>
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
@@ -1559,10 +1553,7 @@ const Step3 = () => {
                           placeholder="Super Built-up Area"
                           className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
                         ></input>
-                        <select
-                          {...register("super_built_up_area_type")}
-                          title="Sq-ft"
-                        >
+                        <select {...register("super_built_up_area_type")}>
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
@@ -1784,7 +1775,6 @@ const Step3 = () => {
                           <select
                             className="border-1 h-11  px-2 text-lg w-52 my-1 mr-2 placeholder-gray-600"
                             {...register("plot_area_type")}
-                            title="Sq-ft"
                           >
                             <option>Sq-ft</option>
                             <option>Sq-mt</option>
@@ -1810,7 +1800,6 @@ const Step3 = () => {
                           <select
                             className="border-1 h-11  px-2 text-lg w-40 my-1 mr-2 placeholder-gray-600"
                             {...register("length_width_type")}
-                            title="Sq-ft"
                           >
                             <option>feets</option>
                             <option>meters</option>
@@ -1829,7 +1818,6 @@ const Step3 = () => {
                         <select
                           className="border-1 h-11  px-2 text-lg w-52 my-1 mr-2 placeholder-gray-600"
                           {...register("carpet_area_type")}
-                          title="Sq-ft"
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
@@ -1849,7 +1837,6 @@ const Step3 = () => {
                         <select
                           className="border-1 h-11  px-2 text-lg w-52 my-1 mr-2 placeholder-gray-600"
                           {...register("super_built_up_area_type")}
-                          title="Sq-ft"
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
@@ -2046,7 +2033,6 @@ const Step3 = () => {
                           <select
                             className="border-1 h-11  px-2 text-lg w-52 my-1 mr-2 placeholder-gray-600"
                             {...register("plot_area_type")}
-                            title="Sq-ft"
                           >
                             <option>Sq-ft</option>
                             <option>Sq-mt</option>
@@ -2072,7 +2058,6 @@ const Step3 = () => {
                           <select
                             className="border-1 h-11  px-2 text-lg w-52 my-1 mr-2 placeholder-gray-600"
                             {...register("length_width_type")}
-                            title="Sq-ft"
                           >
                             <option>feets</option>
                             <option>meters</option>
@@ -2093,7 +2078,6 @@ const Step3 = () => {
                           <select
                             className="border-1 h-11  px-2 text-lg w-52 my-1 mr-2 placeholder-gray-600"
                             id="area-type"
-                            title="Sq-ft"
                           >
                             <option>Sq-ft</option>
                             <option>Sq-mt</option>
@@ -2119,7 +2103,6 @@ const Step3 = () => {
                           <select
                             className="border-1 h-11  px-2 text-lg w-52 my-1 mr-2 placeholder-gray-600"
                             id="lwtype"
-                            title="Sq-ft"
                           >
                             <option>feets</option>
                             <option>meters</option>
@@ -2138,7 +2121,6 @@ const Step3 = () => {
                         <select
                           className="border-1 h-11  px-2 text-lg w-52 my-1 mr-2 placeholder-gray-600"
                           id="carpet-type"
-                          title="Sq-ft"
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
@@ -2158,7 +2140,6 @@ const Step3 = () => {
                         <select
                           className="border-1 h-11  px-2 text-lg w-52 my-1 mr-2 placeholder-gray-600"
                           id="super-built-type"
-                          title="Sq-ft"
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>

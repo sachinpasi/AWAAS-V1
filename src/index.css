@@ -127,3 +127,7 @@ input[type="file"] {
   background: #2bd8b5;
   color: #fff;
 }
+
+.dropdown:hover > .dropdown-content {
+  display: block;
+}
