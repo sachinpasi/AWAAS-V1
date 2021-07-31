@@ -37,18 +37,18 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                to="/"
+                to="/investment-assist"
                 style={{
                   color: "#88909F",
                 }}
                 className="text-base "
               >
-                Investment
+                Investment Assist
               </Link>
             </li>
             <li>
               <Link
-                to="/"
+                to="/vastu"
                 style={{
                   color: "#88909F",
                 }}
@@ -59,7 +59,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                to="/"
+                to="/legal"
                 style={{
                   color: "#88909F",
                 }}
@@ -129,19 +129,19 @@ const Footer = () => {
             </button>
           </div>
 
-          <div className="w-full flex justify-between items-center my-20 mb-10">
+          <div className="w-full flex justify-between items-center my-20 mt-10 mb-10">
             <div
               style={{
                 width: "calc(100% / 3 - 1rem)",
                 background: "#32353A",
               }}
-              className="h-32 flex flex-col justify-center items-start overflow-visible relative"
+              className="h-24 flex flex-col justify-center items-start overflow-visible relative"
             >
               <div
                 style={{
                   background: "#4F525A",
                 }}
-                className="w-20 h-20 absolute overflow-visible -mt-4 ml-4 flex justify-center items-center -top-4"
+                className="w-20 h-20 absolute overflow-visible -mt-4 ml-4 flex justify-center items-center -top-1"
               >
                 <MdLocationOn
                   style={{
@@ -150,15 +150,15 @@ const Footer = () => {
                   className="text-4xl"
                 />
               </div>
-              <div className="w-full mt-8">
+              <div className="w-full flex justify-end items-start h-full ">
                 <p
                   style={{
                     color: "#88909F",
                   }}
-                  className="py-4 text-center w"
+                  className="py-4  w-3/4 text-left px-4 "
                 >
-                  Registered Office Sco No.6, Eldeco High Street,
-                  <br /> Sector-40, Panipat- 132103
+                  Registered Office Sco No.6, Eldeco High Street, Sector-40,
+                  Panipat- 132103
                 </p>
               </div>
             </div>
@@ -168,13 +168,13 @@ const Footer = () => {
                 width: "calc(100% / 3 - 1rem)",
                 background: "#32353A",
               }}
-              className="h-32 flex flex-col justify-center items-start overflow-visible relative"
+              className="h-24 flex flex-col justify-center items-start overflow-visible relative"
             >
               <div
                 style={{
                   background: "#4F525A",
                 }}
-                className="w-20 h-20 absolute overflow-visible -mt-4 ml-4 flex justify-center items-center -top-4"
+                className="w-20 h-20 absolute overflow-visible -mt-4 ml-4 flex justify-center items-center -top-1"
               >
                 <MdEmail
                   style={{
@@ -183,15 +183,24 @@ const Footer = () => {
                   className="text-4xl"
                 />
               </div>
-              <div className="w-full mt-8 justify-center items-center flex">
+              <div className="w-full flex flex-col justify-start items-end h-full ">
                 <a
                   href="mailto:assist@awaasonline.com"
                   style={{
                     color: "#88909F",
                   }}
-                  className="py-4"
+                  className="py-4  pb-2 w-3/4 text-left px-4 "
                 >
                   assist@awaasonline.com
+                </a>
+                <a
+                  href="mailto:assist@awaasonline.com"
+                  style={{
+                    color: "#88909F",
+                  }}
+                  className=" w-3/4 text-left px-4 "
+                >
+                  help@awaasonline.com
                 </a>
               </div>
             </div>
@@ -201,13 +210,13 @@ const Footer = () => {
                 width: "calc(100% / 3 - 1rem)",
                 background: "#32353A",
               }}
-              className="h-32 flex flex-col justify-center items-start overflow-visible relative"
+              className="h-24 flex flex-col justify-center items-start overflow-visible relative"
             >
               <div
                 style={{
                   background: "#4F525A",
                 }}
-                className="w-20 h-20 absolute overflow-visible -mt-4 ml-4 flex justify-center items-center -top-4"
+                className="w-20 h-20 absolute overflow-visible -mt-4 ml-4 flex justify-center items-center -top-1"
               >
                 <MdCall
                   style={{
@@ -216,13 +225,22 @@ const Footer = () => {
                   className="text-4xl"
                 />
               </div>
-              <div className="w-full mt-8 justify-center items-center flex">
+              <div className="w-full flex  flex-col justify-start items-end h-full ">
                 <a
                   href="tel:"
                   style={{
                     color: "#88909F",
                   }}
-                  className="py-4"
+                  className="py-4 pb-2  w-3/4 text-left px-4 "
+                >
+                  +91-999-639-8965
+                </a>
+                <a
+                  href="tel:"
+                  style={{
+                    color: "#88909F",
+                  }}
+                  className=" w-3/4 text-left px-4 "
                 >
                   +91-999-639-8965
                 </a>

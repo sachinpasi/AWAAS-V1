@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import HomeNav from "../Components/PagesComponents/Homepage/HomeNav";
 import Banner from "../Components/PagesComponents/Homepage/Banner";
@@ -14,7 +14,9 @@ import CookieBox from "../Components/Common/CookieBox";
 
 const Homepage = () => {
   const [isLoading, setisLoading] = useState(true);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <PreloaderStart isLoading={isLoading} />

@@ -56,7 +56,7 @@ const HomeNav = () => {
                 Icon={FaTwitter}
               />
               <SocialIcon
-                To="https://www.linkedin.com/in/awaasonline-panipat-5b5826208/"
+                To="https://www.linkedin.com/in/awaas-online-5b5826208/"
                 Icon={FaLinkedinIn}
               />
               <SocialIcon
