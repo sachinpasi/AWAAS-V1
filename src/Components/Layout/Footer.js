@@ -135,13 +135,13 @@ const Footer = () => {
                 width: "calc(100% / 3 - 1rem)",
                 background: "#32353A",
               }}
-              className="h-24 flex flex-col justify-center items-center overflow-visible"
+              className="h-32 flex flex-col justify-center items-start overflow-visible relative"
             >
               <div
                 style={{
                   background: "#4F525A",
                 }}
-                className="w-20 h-20 overflow-visible -mt-12 flex justify-center items-center"
+                className="w-20 h-20 absolute overflow-visible -mt-4 ml-4 flex justify-center items-center -top-4"
               >
                 <MdLocationOn
                   style={{
@@ -150,28 +150,31 @@ const Footer = () => {
                   className="text-4xl"
                 />
               </div>
-              <p
-                style={{
-                  color: "#88909F",
-                }}
-                className="py-4 text-center"
-              >
-                Registered Office Sco No.6, Eldeco High Street,
-                <br /> Sector-40, Panipat- 132103
-              </p>
+              <div className="w-full mt-8">
+                <p
+                  style={{
+                    color: "#88909F",
+                  }}
+                  className="py-4 text-center w"
+                >
+                  Registered Office Sco No.6, Eldeco High Street,
+                  <br /> Sector-40, Panipat- 132103
+                </p>
+              </div>
             </div>
+
             <div
               style={{
                 width: "calc(100% / 3 - 1rem)",
                 background: "#32353A",
               }}
-              className="h-24 flex flex-col justify-center items-center overflow-visible"
+              className="h-32 flex flex-col justify-center items-start overflow-visible relative"
             >
               <div
                 style={{
                   background: "#4F525A",
                 }}
-                className="w-20 h-20 overflow-visible -mt-12 flex justify-center items-center"
+                className="w-20 h-20 absolute overflow-visible -mt-4 ml-4 flex justify-center items-center -top-4"
               >
                 <MdEmail
                   style={{
@@ -180,28 +183,31 @@ const Footer = () => {
                   className="text-4xl"
                 />
               </div>
-              <a
-                href="mailto:assist@awaasonline.com"
-                style={{
-                  color: "#88909F",
-                }}
-                className="py-4"
-              >
-                assist@awaasonline.com
-              </a>
+              <div className="w-full mt-8 justify-center items-center flex">
+                <a
+                  href="mailto:assist@awaasonline.com"
+                  style={{
+                    color: "#88909F",
+                  }}
+                  className="py-4"
+                >
+                  assist@awaasonline.com
+                </a>
+              </div>
             </div>
+
             <div
               style={{
                 width: "calc(100% / 3 - 1rem)",
                 background: "#32353A",
               }}
-              className="h-24 flex flex-col justify-center items-center overflow-visible"
+              className="h-32 flex flex-col justify-center items-start overflow-visible relative"
             >
               <div
                 style={{
                   background: "#4F525A",
                 }}
-                className="w-20 h-20 overflow-visible -mt-12 flex justify-center items-center"
+                className="w-20 h-20 absolute overflow-visible -mt-4 ml-4 flex justify-center items-center -top-4"
               >
                 <MdCall
                   style={{
@@ -210,15 +216,17 @@ const Footer = () => {
                   className="text-4xl"
                 />
               </div>
-              <a
-                href="tel:"
-                style={{
-                  color: "#88909F",
-                }}
-                className="py-4"
-              >
-                +91-999-639-8965
-              </a>
+              <div className="w-full mt-8 justify-center items-center flex">
+                <a
+                  href="tel:"
+                  style={{
+                    color: "#88909F",
+                  }}
+                  className="py-4"
+                >
+                  +91-999-639-8965
+                </a>
+              </div>
             </div>
           </div>
         </div>

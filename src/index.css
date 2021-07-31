@@ -131,3 +131,7 @@ input[type="file"] {
 .dropdown:hover > .dropdown-content {
   display: block;
 }
+
+.w36 {
+  width: 128px !important;
+}

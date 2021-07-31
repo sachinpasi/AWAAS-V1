@@ -10,6 +10,7 @@ import Testimonial from "../Components/PagesComponents/Homepage/Testimonial";
 import Articles from "../Components/PagesComponents/Homepage/Articles";
 import Footer from "../Components/Layout/Footer";
 import PreloaderStart from "../Components/Preloader/PreloaderStart";
+import CookieBox from "../Components/Common/CookieBox";
 
 const Homepage = () => {
   const [isLoading, setisLoading] = useState(true);
@@ -26,6 +27,7 @@ const Homepage = () => {
       <Testimonial />
       <Articles />
       <Footer />
+      <CookieBox isLoading={isLoading} />
     </>
   );
 };
