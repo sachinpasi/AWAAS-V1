@@ -31,11 +31,12 @@ const Gallery = () => {
         >
           {Data?.library?.map((item) => (
             <SwiperSlide>
+              {console.log(item)}
               <img
                 style={{
                   maxHeight: "400px",
                 }}
-                src={item}
+                src={`https://codeiator.com/awaas/public/storage/property/images/${item}`}
                 alt=""
               />
             </SwiperSlide>

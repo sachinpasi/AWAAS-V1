@@ -35,7 +35,7 @@ const Gallery = () => {
                 style={{
                   maxHeight: "400px",
                 }}
-                src={item}
+                src={`https://codeiator.com/awaas/public/storage/property/images/${item}`}
                 alt=""
               />
             </SwiperSlide>

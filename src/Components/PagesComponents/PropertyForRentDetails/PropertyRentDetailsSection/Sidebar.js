@@ -31,7 +31,7 @@ const Sidebar = () => {
               background: "#3F74DB",
               border: "1px solid #598DF5",
             }}
-            className="w-full h-9 px-2 placeholder-extralightgray my-1"
+            className="w-full h-9 px-2 placeholder-extralightgray my-1 text-white"
             type="text"
             placeholder="Name"
           />
@@ -43,7 +43,7 @@ const Sidebar = () => {
               background: "#3F74DB",
               border: "1px solid #598DF5",
             }}
-            className="w-full h-9 px-2 placeholder-extralightgray my-1"
+            className="w-full h-9 px-2 placeholder-extralightgray my-1 text-white"
             type="text"
             placeholder="Email Address"
           />
@@ -55,7 +55,7 @@ const Sidebar = () => {
               background: "#3F74DB",
               border: "1px solid #598DF5",
             }}
-            className="w-full h-9 px-2 placeholder-extralightgray my-1"
+            className="w-full h-9 px-2 placeholder-extralightgray my-1 text-white"
             type="text"
             placeholder="Phone Number"
           />

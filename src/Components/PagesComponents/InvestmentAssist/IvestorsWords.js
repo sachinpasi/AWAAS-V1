@@ -8,12 +8,12 @@ const IvestorsWords = () => {
           What Our Investors Have To Say
         </p>
         <div className="w-full h-full grid-cols-3 grid gap-8 ">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          <Card Name="Akshay" Img="/assets/images/investmentassist/p1.jfif" />
+          <Card Name="Akhilesh" Img="/assets/images/investmentassist/p2.jfif" />
+          <Card Name="Udayan" Img="/assets/images/investmentassist/p3.jfif" />
+          <Card Name="Pratap" Img="/assets/images/investmentassist/p4.jfif" />
+          <Card Name="Shivansh" Img="/assets/images/investmentassist/p5.jfif" />
+          <Card Name="Tanaya" Img="/assets/images/investmentassist/p6.jfif" />
         </div>
       </div>
     </section>
@@ -22,7 +22,7 @@ const IvestorsWords = () => {
 
 export default IvestorsWords;
 
-const Card = () => (
+const Card = ({ Name, Img }) => (
   <div className="w-full h-400px bg-blue border-extralightgray border-1">
     <div
       style={{
@@ -35,13 +35,13 @@ const Card = () => (
           <div className="w-28 h-28 bg-black rounded-full overflow-hidden">
             <img
               className="w-28 h-28  object-cover rounded-full"
-              src="/assets/images/vastu/3.jfif"
+              src={Img}
               alt=""
             />
           </div>
           <div className="ml-4">
             <p className="text-xl font-medium text-darkgray leading-5 ">
-              Albert Dikosta
+              {Name}
             </p>
             <p className="text-base text-lightgray">CEO - Alfa Maters</p>
           </div>
