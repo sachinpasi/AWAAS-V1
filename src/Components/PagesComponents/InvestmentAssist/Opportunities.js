@@ -10,14 +10,14 @@ const Opportunities = () => {
             <div className="w-full h-3/5 ">
               <img
                 className="w-full h-full object-cover"
-                src="/assets/images/investmentassist/o1.jpeg"
+                src="https://codeiator.com/awaas/public/storage/projects/banner_img/banner_img_1627736707.3301.jpg"
                 alt=""
               />
             </div>
 
             <div className="w-full h-2/4 p-4 flex flex-col items-start">
               <p className="text-2xl font-medium text-darkgray">
-                Astrum La Regencia
+                Harmony Homes
               </p>
               <p className=" text-lightgray">Panipat - Sector 19</p>
               <div className="flex justify-between items-center w-full py-4">
@@ -40,16 +40,16 @@ const Opportunities = () => {
             <div className="w-full h-3/5 ">
               <img
                 className="w-full h-full object-cover"
-                src="/assets/images/investmentassist/o1.jpeg"
+                src="https://awaasonline.com/old/functions/projects/uploads/453761.png"
                 alt=""
               />
             </div>
 
             <div className="w-full h-2/4 p-4 flex flex-col items-start">
               <p className="text-2xl font-medium text-darkgray">
-                Astrum La Regencia
+                Eldeco Estate One
               </p>
-              <p className=" text-lightgray">Panipat - Sector 19</p>
+              <p className=" text-lightgray">Panipat - Sector 40</p>
               <div className="flex justify-between items-center w-full py-4">
                 <div className="border-r-1 w-1/3 border-blue flex flex-col items-center justify-center ">
                   <p className="text-blue font-medium text-lg ">9% p.a</p>
@@ -70,16 +70,16 @@ const Opportunities = () => {
             <div className="w-full h-3/5 ">
               <img
                 className="w-full h-full object-cover"
-                src="/assets/images/investmentassist/o1.jpeg"
+                src="https://codeiator.com/awaas/public/storage/projects/banner_img/banner_img_1627118646.png"
                 alt=""
               />
             </div>
 
             <div className="w-full h-2/4 p-4 flex flex-col items-start">
               <p className="text-2xl font-medium text-darkgray">
-                Astrum La Regencia
+                Connaught Estate
               </p>
-              <p className=" text-lightgray">Panipat - Sector 19</p>
+              <p className=" text-lightgray">Panipat - Sector 23</p>
               <div className="flex justify-between items-center w-full py-4">
                 <div className="border-r-1 w-1/3 border-blue flex flex-col items-center justify-center ">
                   <p className="text-blue font-medium text-lg ">9% p.a</p>

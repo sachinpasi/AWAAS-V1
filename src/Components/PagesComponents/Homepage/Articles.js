@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
+import moment from "moment";
 
 import Header from "../../Common/Header";
 import { useState } from "react";
@@ -22,6 +23,19 @@ const Articles = () => {
     FetchArticlesList();
   }, []);
 
+  const getDate = (assignDate) => {
+    if (assignDate === undefined) return "";
+    let date;
+    date = moment(assignDate).format("D");
+    return date;
+  };
+  const getMonthYear = (assignDate) => {
+    if (assignDate === undefined) return "";
+    let date;
+    date = moment(assignDate).format("MMM YYYY");
+    return date;
+  };
+
   return (
     <section className="w-full h-full bg-textbg py-10">
       <div className="customContainer">
@@ -41,8 +55,12 @@ const Articles = () => {
                   alt=""
                 />
                 <div className="absolute top-4 left-4  w-14 h-14 flex flex-col bg-blue justify-center items-center text-white">
-                  <p className="text-xl font-bold">02</p>
-                  <p className="text-xs font-bold">JUNE</p>
+                  <p className="text-xl font-bold">
+                    {getDate(item.created_at)}
+                  </p>
+                  <p className="text-xs font-bold">
+                    {getMonthYear(item.created_at)}
+                  </p>
                 </div>
               </div>
               <div

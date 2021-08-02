@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import { MdClose } from "react-icons/md";
 const CookieBox = ({ isLoading }) => {
   const [IsOpen, setIsOpen] = useState(false);
+  const HandleAcceptCookie = () => {
+    setIsOpen(false);
+    document.cookie = "awwas=AWAAS; max-age=2592000; path=/;";
+  };
 
   useEffect(() => {
     if (!isLoading) {
@@ -28,7 +32,7 @@ const CookieBox = ({ isLoading }) => {
             Policy.
           </p>
           <button
-            onClick={() => setIsOpen(false)}
+            onClick={HandleAcceptCookie}
             className="text-xl font-medium  bg-green text-white px-8 py-2 rounded"
           >
             Accept

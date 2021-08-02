@@ -33,7 +33,12 @@ const Banner = () => {
         className="w-full h-full relative flex justify-evenly items-center"
       >
         <div>
-          <p className="text-6xl text-white font-semibold capitalize ">
+          <p
+            style={{
+              textShadow: "rgb(0 0 0) 2px 3px 5px",
+            }}
+            className="text-6xl text-white font-semibold capitalize "
+          >
             Invest With Awaasonline
           </p>
         </div>

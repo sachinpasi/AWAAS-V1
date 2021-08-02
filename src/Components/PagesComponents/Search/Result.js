@@ -101,7 +101,7 @@ const Result = ({ PropertyFor }) => {
             className="bg-white h-64 w-full p-4 rounded-md shadow-md border-b-4 border-blue  my-4"
           >
             <div className="w-full  h-full flex">
-              {item.single_image === null ? (
+              {item.photos === null ? (
                 <img
                   className="h-full w-30percent object-cover rounded"
                   src="/assets/images/search/palceholder.jpg"
@@ -111,7 +111,7 @@ const Result = ({ PropertyFor }) => {
                 <img
                   className="h-full w-30percent object-cover rounded"
                   // src="/assets/images/search/1.jpg"
-                  src={`${item.single_image}`}
+                  src={`${JSON.parse(item?.photos)}`}
                   alt=""
                 />
               )}

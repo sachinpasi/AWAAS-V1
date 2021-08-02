@@ -73,9 +73,13 @@ const CurrentIntrestRate = () => {
                   <p className="text-xl font-medium text-darkgray">Tenure</p>
                 </div>
               </div>
-              <div className="flex justify-evenly py-4 pb-1 border-b-2 border-dashed">
+              <div className="flex justify-evenly py-2 pb-1 border-b-2 border-dashed">
                 <div className="w-1/4 flex flex-col justify-center items-center">
-                  <img src="/assets/images/homeloans/sbi.svg" alt="" />
+                  <img
+                    className="w-12 h-12 object-contain "
+                    src="/assets/images/homeloans/sbi.svg"
+                    alt=""
+                  />
                   <p className="font-medium py-1">SBI</p>
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
@@ -88,9 +92,13 @@ const CurrentIntrestRate = () => {
                   <p className="text-xl font-medium">0-30 Yrs</p>
                 </div>
               </div>
-              <div className="flex justify-evenly py-4 pb-1 border-b-2 border-dashed">
+              <div className="flex justify-evenly py-2 pb-1 border-b-2 border-dashed">
                 <div className="w-1/4 flex flex-col justify-center items-center">
-                  <img src="/assets/images/homeloans/sbi.svg" alt="" />
+                  <img
+                    className="w-12 h-12 object-contain "
+                    src="/assets/images/homeloans/pnb.jfif"
+                    alt=""
+                  />
                   <p className="font-medium py-1">PNB</p>
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
@@ -103,9 +111,13 @@ const CurrentIntrestRate = () => {
                   <p className="text-xl font-medium">0-30 Yrs</p>
                 </div>
               </div>
-              <div className="flex justify-evenly py-4 pb-1  border-b-2 border-dashed  ">
+              <div className="flex justify-evenly py-2 pb-1  border-b-2 border-dashed  ">
                 <div className="w-1/4 flex flex-col justify-center items-center">
-                  <img src="/assets/images/homeloans/hdfc.svg" alt="" />
+                  <img
+                    className="w-12 h-12 object-contain "
+                    src="/assets/images/homeloans/hdfc.svg"
+                    alt=""
+                  />
                   <p className="font-medium py-1">HDFC</p>
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
@@ -118,9 +130,13 @@ const CurrentIntrestRate = () => {
                   <p className="text-xl font-medium">3-30 Yrs</p>
                 </div>
               </div>
-              <div className="flex justify-evenly py-4 pb-1 border-b-2 border-dashed">
+              <div className="flex justify-evenly py-2 pb-1 border-b-2 border-dashed">
                 <div className="w-1/4 flex flex-col justify-center items-center">
-                  <img src="/assets/images/homeloans/icici.svg" alt="" />
+                  <img
+                    className="w-12 h-12 object-contain "
+                    src="/assets/images/homeloans/icici.svg"
+                    alt=""
+                  />
                   <p className="font-medium py-1">ICICI</p>
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
@@ -133,9 +149,13 @@ const CurrentIntrestRate = () => {
                   <p className="text-xl font-medium">3-30 Yrs</p>
                 </div>
               </div>
-              <div className="flex justify-evenly py-4 pb-1 border-b-2 border-dashed">
+              <div className="flex justify-evenly py-2 pb-1 border-b-2 border-dashed">
                 <div className="w-1/4 flex flex-col justify-center items-center">
-                  <img src="/assets/images/homeloans/icici.svg" alt="" />
+                  <img
+                    className="w-12 h-12 object-contain "
+                    src="/assets/images/homeloans/axis.jfif"
+                    alt=""
+                  />
                   <p className="font-medium py-1">AXIS</p>
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
@@ -148,9 +168,13 @@ const CurrentIntrestRate = () => {
                   <p className="text-xl font-medium">3-30 Yrs</p>
                 </div>
               </div>
-              <div className="flex justify-evenly py-4 pb-1 border-b-2 border-dashed">
+              <div className="flex justify-evenly py-2 pb-1 border-b-2 border-dashed">
                 <div className="w-1/4 flex flex-col justify-center items-center">
-                  <img src="/assets/images/homeloans/icici.svg" alt="" />
+                  <img
+                    className="w-12 h-12 object-contain "
+                    src="/assets/images/homeloans/iifl.jfif"
+                    alt=""
+                  />
                   <p className="font-medium py-1">IIFL</p>
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
@@ -167,12 +191,19 @@ const CurrentIntrestRate = () => {
           </div>
 
           <div className="w-30percent h-full pl-8 my-5  ">
-            <div className="w-full h-500px bg-white shadow-2xl rounded p-4 flex flex-col items-start justify-between sticky top-0 ">
+            <div className="w-full h-auto bg-white shadow-2xl rounded p-4 flex flex-col items-start justify-between sticky top-0 ">
               <div>
                 <p className="text-2xl text-darkgray mb-2">Contact Us</p>
                 <p className="text-xl font-medium">
                   Have any queries? We Love To Here From You
                 </p>
+                <div className="w-full h-full flex justify-center">
+                  <img
+                    className="h-40"
+                    src="/assets/images/homeloans/bg.jfif"
+                    alt=""
+                  />
+                </div>
                 <div className="my-4">
                   <p className="text-xl text-blue font-medium">Call Us</p>
                   <p className="text-xl text-darkgray">0755-98765432</p>
@@ -207,8 +238,8 @@ const CurrentIntrestRate = () => {
         </div>
 
         <div className="w-full flex justify-between mt-20  ">
-          <div className="w-70percent py-4">
-            <p className="text-3xl font-light py-4 pt-0">EMI Calculator</p>
+          <div className="w-70percent py-2">
+            <p className="text-3xl font-light py-2 pt-0">EMI Calculator</p>
             <div className="w-full border-t-2 flex flex-col">
               <div className="w-full h-20 flex flex-col items-center justify-center my-4">
                 <div className="w-full my-2  flex  justify-between items-center">
@@ -323,7 +354,7 @@ const CurrentIntrestRate = () => {
             className="w-3/12  flex flex-col justify-between items-center text-center rounded border-2 "
           >
             <div>
-              <p className="text-2xl  text-blue font-semibold py-4 border-b-1 border-gray-400 px-8">
+              <p className="text-2xl  text-blue font-semibold py-2 border-b-1 border-gray-400 px-8">
                 EMI Calculation
               </p>
             </div>

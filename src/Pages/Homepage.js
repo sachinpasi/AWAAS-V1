@@ -14,8 +14,16 @@ import CookieBox from "../Components/Common/CookieBox";
 
 const Homepage = () => {
   const [isLoading, setisLoading] = useState(true);
+  const [isCookieAggred, setisCookieAggred] = useState(false);
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
+    const x = document.cookie;
+
+    if (x) {
+      setisCookieAggred(true);
+    }
   }, []);
   return (
     <>
@@ -29,7 +37,7 @@ const Homepage = () => {
       <Testimonial />
       <Articles />
       <Footer />
-      <CookieBox isLoading={isLoading} />
+      {!isCookieAggred && <CookieBox isLoading={isLoading} />}
     </>
   );
 };

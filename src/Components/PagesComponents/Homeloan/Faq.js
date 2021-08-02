@@ -7,6 +7,7 @@ import {
   AccordionItemPanel,
 } from "react-accessible-accordion";
 import "./FaqStyles.css";
+import { AiOutlineQuestionCircle } from "react-icons/ai";
 
 const Faq = () => {
   return (
@@ -19,10 +20,13 @@ const Faq = () => {
           <AccordionItem>
             <AccordionItemHeading>
               <AccordionItemButton>
-                <p className="text-2xl font-medium text-darkgray">
-                  What is the difference between fixed rate and floating rate of
-                  interest?
-                </p>
+                <div className="flex items-center">
+                  <AiOutlineQuestionCircle className="text-2xl mr-2" />
+                  <p className="text-2xl font-medium text-darkgray">
+                    What is the difference between fixed rate and floating rate
+                    of interest?
+                  </p>
+                </div>
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
@@ -39,9 +43,12 @@ const Faq = () => {
           <AccordionItem>
             <AccordionItemHeading>
               <AccordionItemButton>
-                <p className="text-2xl font-medium text-darkgray">
-                  What is Pre-EMI?
-                </p>
+                <div className="flex items-center">
+                  <AiOutlineQuestionCircle className="text-2xl mr-2" />
+                  <p className="text-2xl font-medium text-darkgray">
+                    What is Pre-EMI?
+                  </p>
+                </div>
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
@@ -66,9 +73,12 @@ const Faq = () => {
           <AccordionItem>
             <AccordionItemHeading>
               <AccordionItemButton>
-                <p className="text-2xl font-medium text-darkgray">
-                  What are the eligibility criteria for a home loan?
-                </p>
+                <div className="flex items-center">
+                  <AiOutlineQuestionCircle className="text-2xl mr-2" />
+                  <p className="text-2xl font-medium text-darkgray">
+                    What are the eligibility criteria for a home loan?
+                  </p>
+                </div>
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
@@ -83,9 +93,12 @@ const Faq = () => {
           <AccordionItem>
             <AccordionItemHeading>
               <AccordionItemButton>
-                <p className="text-2xl font-medium text-darkgray">
-                  What are the types of home loan available?
-                </p>
+                <div className="flex items-center">
+                  <AiOutlineQuestionCircle className="text-2xl mr-2" />
+                  <p className="text-2xl font-medium text-darkgray">
+                    What are the types of home loan available?
+                  </p>
+                </div>
               </AccordionItemButton>
             </AccordionItemHeading>
 
