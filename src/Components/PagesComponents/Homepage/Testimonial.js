@@ -6,7 +6,7 @@ const Testimonial = () => {
     <section
       style={{
         background: "url(assets/images/homepage/testimonial/bg.png)",
-        height: "400px",
+        height: "450px",
       }}
       className="w-full h-full flex justify-end"
     >
@@ -17,9 +17,9 @@ const Testimonial = () => {
         className="w-full h-full flex justify-center items-center"
       >
         <div className="customContainer">
-          <p className="text-5xl font-light">Testimonials</p>
-          <OwlCarousel loop items={2}>
-            <div className="w-4/5  h-3/4 flex flex-col justify-center items-start">
+          <p className="text-5xl font-light my-4">Testimonials</p>
+          <OwlCarousel loop items={2} margin={30}>
+            <div className=" w-full bg-textbg px-6 h-3/4 flex flex-col justify-center items-start rounded-xl ">
               <p className="text-base h-48  italic leading-8 py-4">
                 We were first time home buyers in need of a house before our
                 apartment lease expired in a month. We found Awaasonline from a
@@ -27,7 +27,7 @@ const Testimonial = () => {
                 helping us make our own informative decisions is praiseworthy.
               </p>
 
-              <div className="flex justify-start items-center">
+              <div className="flex justify-start items-center pb-4">
                 <img
                   className="w36 h-32 object-cover rounded-full shadow-2xl mr-8 "
                   src="/assets/images/vastu/1.jfif"
@@ -39,7 +39,7 @@ const Testimonial = () => {
                 </div>
               </div>
             </div>{" "}
-            <div className="w-4/5  h-3/4 flex flex-col justify-center items-start">
+            <div className=" w-full bg-textbg px-6 h-3/4 flex flex-col justify-center items-start rounded-xl">
               <p className="text-base italic h-48 leading-8 py-4">
                 We moved from a different state to Panipat and Awaasonline did
                 an amazing job in helping us choose a neighborhood and the right
@@ -48,7 +48,7 @@ const Testimonial = () => {
                 our questions.
               </p>
 
-              <div className="flex justify-start items-center">
+              <div className="flex justify-start items-center pb-4">
                 <img
                   className="w36 h-32 object-cover rounded-full shadow-2xl mr-8 "
                   src="/assets/images/vastu/2.jfif"
@@ -60,7 +60,7 @@ const Testimonial = () => {
                 </div>
               </div>
             </div>{" "}
-            <div className="w-4/5  h-3/4 flex flex-col justify-center items-start">
+            <div className=" w-full bg-textbg px-6 h-3/4 flex flex-col justify-center items-start rounded-xl">
               <p className="text-base italic h-48 leading-8 py-4">
                 Awaasonline are ultimate real estate professionals. They were
                 well informed, patient and receptive. They were able to walk us
@@ -69,7 +69,7 @@ const Testimonial = () => {
                 recommend their services to anyone looking for a realtor.
               </p>
 
-              <div className="flex justify-start items-center">
+              <div className="flex justify-start items-center pb-4">
                 <img
                   className="w36 h-32 object-cover rounded-full shadow-2xl mr-8 "
                   src="/assets/images/vastu/3.jfif"
@@ -81,7 +81,7 @@ const Testimonial = () => {
                 </div>
               </div>
             </div>{" "}
-            <div className="w-4/5  h-3/4 flex flex-col justify-center items-start">
+            <div className=" w-full bg-textbg px-6 h-3/4 flex flex-col justify-center items-start rounded-xl">
               <p className="text-base italic h-48 leading-8 py-4">
                 Awaasonline has been helping me with my house purchase. I've
                 found their service excellent, they are professional, so
@@ -90,7 +90,7 @@ const Testimonial = () => {
                 buyers.
               </p>
 
-              <div className="flex justify-start items-center">
+              <div className="flex justify-start items-center pb-4">
                 <img
                   className="w36 h-32 object-cover rounded-full shadow-2xl mr-8 "
                   src="/assets/images/vastu/4.jfif"
@@ -102,7 +102,7 @@ const Testimonial = () => {
                 </div>
               </div>
             </div>{" "}
-            <div className="w-4/5  h-3/4 flex flex-col justify-center items-start">
+            <div className=" w-full bg-textbg px-6 h-3/4 flex flex-col justify-center items-start rounded-xl">
               <p className="text-base italic h-48 leading-8 py-4">
                 Awaasonline was a great realtor company with a great team. They
                 listened to our needs and found us a house in our budget in a
@@ -111,7 +111,7 @@ const Testimonial = () => {
                 quality.
               </p>
 
-              <div className="flex justify-start items-center">
+              <div className="flex justify-start items-center pb-4">
                 <img
                   className="w36 h-32 object-cover rounded-full shadow-2xl mr-8 "
                   src="/assets/images/vastu/1.jfif"

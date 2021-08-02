@@ -171,7 +171,7 @@ const CurrentIntrestRate = () => {
               <div>
                 <p className="text-2xl text-darkgray mb-2">Contact Us</p>
                 <p className="text-xl font-medium">
-                  Have any queries? we'd love to here from you
+                  Have any queries? We Love To Here From You
                 </p>
                 <div className="my-4">
                   <p className="text-xl text-blue font-medium">Call Us</p>

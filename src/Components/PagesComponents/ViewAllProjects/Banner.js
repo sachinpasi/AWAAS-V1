@@ -5,8 +5,9 @@ const Banner = () => {
     <section
       style={{
         background: "url(/assets/images/AllProjects/bg.jpg)",
+        height: "373px",
       }}
-      className="w-full h-350px"
+      className="w-full "
     >
       <div className="w-full h-full bg-black bg-opacity-50">
         <div className="customContainer h-full flex flex-col items-center justify-center">

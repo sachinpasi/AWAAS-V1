@@ -50,10 +50,13 @@ const SearchWidget = () => {
     }
   };
 
-  const options = LocalityList.map((_) => ({
-    name: _.name,
-    value: _.id,
-  }));
+  const options = LocalityList.sort()
+    .reverse()
+    .map((_) => ({
+      name: _.name,
+      value: _.id,
+    }));
+
   function fuzzySearch(options) {
     const fuse = new Fuse(options, {
       keys: ["name", "groupName", "items.name"],
@@ -138,10 +141,6 @@ const SearchWidget = () => {
     CurrentTab,
   ]);
 
-  function gfg_Run() {
-    document.getElementById("div").classList.remove("hover");
-  }
-
   return (
     <div className="customContainer h-full flex justify-center items-start flex-col relative ">
       <div className=" h-36 absolute -bottom-24 w-full bg-white rounded shadow-lg flex justify-center items-center flex-col">
@@ -176,134 +175,13 @@ const SearchWidget = () => {
               closeOnSelect
               onChange={(selected) => setLocality(selected)}
               options={options}
-              placeholder="Locality"
+              placeholder=" Locality / Area / Sector"
               filterOptions={fuzzySearch}
               search
             />
           </div>
           <div className="w-full h-14">
             <div className=" border-l-1 border-t-1 border-b-1 w-full h-full flex items-center justify-center outline-none ">
-              {/* <Dropdown
-                wrapperClassName="SelectWrapper"
-                buttonClassName="SelectButton"
-                menuClassName="Menu"
-                title={`${PropertyType}`}
-              >
-                <Dropdown.Item className="Item">
-                  Residential
-                  <Dropdown.Submenu position="right" className="Submenu">
-                    <Dropdown.Item
-                      onClick={() => {
-                        setPropertyType("land");
-                        setParentPropertyType("residential");
-                      }}
-                      className="Item"
-                    >
-                      Land/Plot
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      onClick={() => {
-                        setPropertyType("villa");
-                        setParentPropertyType("residential");
-                      }}
-                      className="Item"
-                    >
-                      Villa/House
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      onClick={() => {
-                        setPropertyType("flat");
-                        setParentPropertyType("residential");
-                      }}
-                      className="Item"
-                    >
-                      Flat/Apartment
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      onClick={() => {
-                        setPropertyType("floor");
-                        setParentPropertyType("residential");
-                      }}
-                      className="Item"
-                    >
-                      Floor
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      onClick={() => {
-                        setPropertyType("farmhouse");
-                        setParentPropertyType("residential");
-                      }}
-                      className="Item"
-                    >
-                      Farmhouse
-                    </Dropdown.Item>
-                  </Dropdown.Submenu>
-                </Dropdown.Item>
-                <Dropdown.Item className="Item">
-                  Commercial
-                  <Dropdown.Submenu position="right" className="Submenu">
-                    <Dropdown.Item
-                      onClick={() => {
-                        setPropertyType("land");
-                        setParentPropertyType("commercial");
-                      }}
-                      className="Item"
-                    >
-                      Land/Plot
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      onClick={() => {
-                        setPropertyType("shop");
-                        setParentPropertyType("commercial");
-                      }}
-                      className="Item"
-                    >
-                      Shop/Showroom
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      onClick={() => {
-                        setPropertyType("officespace");
-                        setParentPropertyType("commercial");
-                      }}
-                      className="Item"
-                    >
-                      Officespace
-                    </Dropdown.Item>
-                  </Dropdown.Submenu>
-                </Dropdown.Item>
-                <Dropdown.Item className="Item">
-                  Industrial
-                  <Dropdown.Submenu position="right" className="Submenu">
-                    <Dropdown.Item
-                      onClick={() => {
-                        setPropertyType("land");
-                        setParentPropertyType("industrial");
-                      }}
-                      className="Item"
-                    >
-                      Land/Plot
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      onClick={() => {
-                        setPropertyType("factory");
-                        setParentPropertyType("industrial");
-                      }}
-                      className="Item"
-                    >
-                      Factory/Builtup
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      onClick={() => {
-                        setPropertyType("shop");
-                        setParentPropertyType("industrial");
-                      }}
-                      className="Item"
-                    >
-                      Shop/Showroom
-                    </Dropdown.Item>
-                  </Dropdown.Submenu>
-                </Dropdown.Item>
-              </Dropdown> */}
               <div className="dropdown inline-block relative w-full h-full">
                 <button
                   onMouseEnter={() => setisAnyThingSelected(false)}
@@ -479,7 +357,6 @@ const SearchWidget = () => {
             </div>
           </div>
           <div className="w-full h-14 border-1 flex justify-center items-center px-4 ">
-            &#x20B9;
             {CurrentTab === "sell" ? (
               <Dropdown
                 wrapperClassName="SelectWrapper"
@@ -487,14 +364,14 @@ const SearchWidget = () => {
                 menuClassName="MenuBudegt"
                 title={
                   BudgetMin || BudgetMax
-                    ? `${BudgetMin} - ${BudgetMax}`
-                    : " Budget"
+                    ? `₹ ${BudgetMin} - ₹ ${BudgetMax}`
+                    : " Budget (in Ruppe)"
                 }
               >
                 <Dropdown.Item className="ItemBudget">
                   <div className="w-2/4 border-r-1">
                     <ul className="list-none m-0 p-0 text-center">
-                      Min
+                      Min (in Rupee)
                       <BudgetMinItem Value="1000000" title="10 Lacs" />
                       <BudgetMinItem Value="2000000" title="20 Lacs" />
                       <BudgetMinItem Value="3000000" title="30 Lacs" />
@@ -517,7 +394,7 @@ const SearchWidget = () => {
                   </div>
                   <div className="w-2/4">
                     <ul className="list-none m-0 p-0 text-center">
-                      Max
+                      Max (in Rupee)
                       <BudgetMaxItem Value="1500000" title="15 Lacs" />
                       <BudgetMaxItem Value="2500000" title="25 Lacs" />
                       <BudgetMaxItem Value="3500000" title="35 Lacs" />

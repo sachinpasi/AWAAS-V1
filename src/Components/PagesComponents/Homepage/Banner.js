@@ -118,7 +118,7 @@ const Banner = ({ setisLoading }) => {
                       </p>{" "}
                     </div>
                     <div className=" flex justify-start items-center  my-2 ">
-                      {item?.library.map((thumb, index) => (
+                      {item?.library.slice(0, 5).map((thumb, index) => (
                         <div
                           key={index}
                           onClick={() => setBannerURL(thumb)}

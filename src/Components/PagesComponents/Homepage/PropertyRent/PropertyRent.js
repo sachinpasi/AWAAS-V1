@@ -40,6 +40,7 @@ const PropertyRent = () => {
                   key={item.p_id}
                   className="w-full flex justify-between items-center h-72 my-4"
                 >
+                  {console.log(item)}
                   <div
                     style={{
                       width: "60%",

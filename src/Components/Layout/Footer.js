@@ -43,7 +43,7 @@ const Footer = () => {
                 }}
                 className="text-base "
               >
-                Investment Assist
+                Investment Assistance
               </Link>
             </li>
             <li>
@@ -87,7 +87,7 @@ const Footer = () => {
                 }}
                 className="text-base "
               >
-                News
+                Real Estate Updates
               </Link>
             </li>
             <li>
