@@ -371,7 +371,7 @@ const SearchWidget = () => {
                 <Dropdown.Item className="ItemBudget">
                   <div className="w-2/4 border-r-1">
                     <ul className="list-none m-0 p-0 text-center">
-                      Min (in Rupee)
+                      Min (in Rs)
                       <BudgetMinItem Value="1000000" title="10 Lacs" />
                       <BudgetMinItem Value="2000000" title="20 Lacs" />
                       <BudgetMinItem Value="3000000" title="30 Lacs" />

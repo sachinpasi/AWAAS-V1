@@ -213,10 +213,10 @@ const Filter = ({
                 <select
                   onChange={(e) => setBudgetMin(e.target.value)}
                   value={BudgetMin}
-                  className="w-2/4 mr-2 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-sm font-medium px-2"
+                  className="w-2/4 mr-2 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-xs font-medium px-2"
                 >
                   <option defaultChecked hidden value="">
-                    Min Budget
+                    Min Budget (in Rs)
                   </option>
                   <Option Value="2500" title="  2500" />
                   <Option Value="5000" title="  5000" />
@@ -244,10 +244,10 @@ const Filter = ({
                 <select
                   onChange={(e) => setBudgetMax(e.target.value)}
                   value={BudgetMax}
-                  className="w-2/4 ml-2 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-sm font-medium px-2"
+                  className="w-2/4 ml-2 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-xs font-medium px-2"
                 >
                   <option defaultChecked hidden value="">
-                    Max Budget
+                    Max Budget (in Rs)
                   </option>
                   <Option Value="5000" title=" 5000" />
                   <Option Value="10000" title=" 10000" />
@@ -278,10 +278,10 @@ const Filter = ({
                 <select
                   onChange={(e) => setBudgetMin(e.target.value)}
                   value={BudgetMin}
-                  className="w-2/4 mr-2 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-sm font-medium px-2"
+                  className="w-2/4 mr-0.5 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-xs font-medium px-1"
                 >
                   <option selected hidden value="100000000">
-                    Min Budget
+                    Min Budget (in Rs)
                   </option>
                   <Option Value="1000000" title=" 10 Lacs" />
                   <Option Value="2000000" title=" 20 Lacs" />
@@ -305,10 +305,10 @@ const Filter = ({
                 <select
                   onChange={(e) => setBudgetMax(e.target.value)}
                   value={BudgetMax}
-                  className="w-2/4 ml-2 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-sm font-medium px-2"
+                  className="w-2/4 ml-0.5 h-10 border-1 rounded-md border-widgetborder text-widgetborder text-xs font-medium px-1"
                 >
                   <option defaultChecked hidden value="">
-                    Max Budget
+                    Max Budget (in Rs)
                   </option>
                   <Option Value="1500000" title=" 15 Lacs" />
                   <Option Value="2500000" title=" 25 Lacs" />

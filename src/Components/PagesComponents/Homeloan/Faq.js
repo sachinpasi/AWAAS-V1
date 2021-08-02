@@ -21,7 +21,7 @@ const Faq = () => {
             <AccordionItemHeading>
               <AccordionItemButton>
                 <div className="flex items-center">
-                  <AiOutlineQuestionCircle className="text-2xl mr-2" />
+                  <AiOutlineQuestionCircle className="text-2xl mr-2 text-darkblue" />
                   <p className="text-2xl font-medium text-darkgray">
                     What is the difference between fixed rate and floating rate
                     of interest?
@@ -44,7 +44,7 @@ const Faq = () => {
             <AccordionItemHeading>
               <AccordionItemButton>
                 <div className="flex items-center">
-                  <AiOutlineQuestionCircle className="text-2xl mr-2" />
+                  <AiOutlineQuestionCircle className="text-2xl mr-2 text-darkblue" />
                   <p className="text-2xl font-medium text-darkgray">
                     What is Pre-EMI?
                   </p>
@@ -74,7 +74,7 @@ const Faq = () => {
             <AccordionItemHeading>
               <AccordionItemButton>
                 <div className="flex items-center">
-                  <AiOutlineQuestionCircle className="text-2xl mr-2" />
+                  <AiOutlineQuestionCircle className="text-2xl mr-2 text-darkblue" />
                   <p className="text-2xl font-medium text-darkgray">
                     What are the eligibility criteria for a home loan?
                   </p>
@@ -94,7 +94,7 @@ const Faq = () => {
             <AccordionItemHeading>
               <AccordionItemButton>
                 <div className="flex items-center">
-                  <AiOutlineQuestionCircle className="text-2xl mr-2" />
+                  <AiOutlineQuestionCircle className="text-2xl mr-2 text-darkblue" />
                   <p className="text-2xl font-medium text-darkgray">
                     What are the types of home loan available?
                   </p>

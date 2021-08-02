@@ -34,6 +34,16 @@ const Navbar = () => {
             Name="Awaas Assist"
             To="/awaas-assist"
           />
+          <NavItem
+            Active={loaction.pathname === "/vastu"}
+            Name="Vastu"
+            To="/vastu"
+          />
+          <NavItem
+            Active={loaction.pathname === "/legal"}
+            Name="Legal"
+            To="/legal"
+          />
           {user.isLoggedIn ? (
             <NavAuthItem To="/profile/overview" Name="Profile" />
           ) : (

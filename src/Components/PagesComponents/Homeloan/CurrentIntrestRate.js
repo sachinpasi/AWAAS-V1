@@ -191,11 +191,11 @@ const CurrentIntrestRate = () => {
           </div>
 
           <div className="w-30percent h-full pl-8 my-5  ">
-            <div className="w-full h-auto bg-white shadow-2xl rounded p-4 flex flex-col items-start justify-between sticky top-0 ">
+            <div className="w-full h-auto bg-white shadow-lg rounded p-4 flex flex-col items-start justify-between sticky top-0 ">
               <div>
                 <p className="text-2xl text-darkgray mb-2">Contact Us</p>
                 <p className="text-xl font-medium">
-                  Have any queries? We Love To Here From You
+                  Have any queries? We Would Love To Here From You
                 </p>
                 <div className="w-full h-full flex justify-center">
                   <img
@@ -204,15 +204,20 @@ const CurrentIntrestRate = () => {
                     alt=""
                   />
                 </div>
-                <div className="my-4">
+                <div className="my-2">
                   <p className="text-xl text-blue font-medium">Call Us</p>
-                  <p className="text-xl text-darkgray">0755-98765432</p>
+                  <a href="tel:9996398965" className="text-xl text-darkgray">
+                    +91-999-639-8965
+                  </a>
                 </div>
-                <div className="my-4">
+                <div className="my-2">
                   <p className="text-xl text-blue font-medium">Mail Us</p>
-                  <p className="text-xl text-darkgray">
-                    support@awasonline.com
-                  </p>
+                  <a
+                    href="mailto:homeloan@awasonline.com"
+                    className="text-xl text-darkgray"
+                  >
+                    homeloan@awasonline.com
+                  </a>
                 </div>
               </div>
               <div className="w-full text-center flex items-center justify-evenly text-2xl text-lightgray font-semibold uppercase">

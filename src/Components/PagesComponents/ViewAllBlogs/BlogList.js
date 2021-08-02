@@ -7,7 +7,7 @@ const BlogList = () => {
   const [ArticlesList, setArticlesList] = useState([]);
 
   const FetchArticlesList = async () => {
-    const res = await axios.get(`${API}/blogs/list`);
+    const res = await axios.get(`${API}/blogs/list/0`);
     setArticlesList(res.data.data);
     console.log(res.data.data);
   };
