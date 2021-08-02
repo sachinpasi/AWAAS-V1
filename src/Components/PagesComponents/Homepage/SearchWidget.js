@@ -365,7 +365,7 @@ const SearchWidget = () => {
                 title={
                   BudgetMin || BudgetMax
                     ? `₹ ${BudgetMin} - ₹ ${BudgetMax}`
-                    : " Budget (in Ruppe)"
+                    : " Budget (in Rs)"
                 }
               >
                 <Dropdown.Item className="ItemBudget">
@@ -394,7 +394,7 @@ const SearchWidget = () => {
                   </div>
                   <div className="w-2/4">
                     <ul className="list-none m-0 p-0 text-center">
-                      Max (in Rupee)
+                      Max (in Rs)
                       <BudgetMaxItem Value="1500000" title="15 Lacs" />
                       <BudgetMaxItem Value="2500000" title="25 Lacs" />
                       <BudgetMaxItem Value="3500000" title="35 Lacs" />
@@ -424,14 +424,14 @@ const SearchWidget = () => {
                 menuClassName="MenuBudegt"
                 title={
                   BudgetMin || BudgetMax
-                    ? `${BudgetMin} - ${BudgetMax}`
-                    : "Budget"
+                    ? `₹ ${BudgetMin} - ₹ ${BudgetMax}`
+                    : " Budget (in Rs)"
                 }
               >
                 <Dropdown.Item className="ItemBudget">
                   <div className="w-2/4 border-r-1">
                     <ul className="list-none m-0 p-0 text-center">
-                      Min
+                      Min (in Rs)
                       <BudgetMinItem Value="2500" title="2500" />
                       <BudgetMinItem Value="5000" title="5000" />
                       <BudgetMinItem Value="10000" title="10000" />
@@ -458,7 +458,7 @@ const SearchWidget = () => {
                   </div>
                   <div className="w-2/4">
                     <ul className="list-none m-0 p-0 text-center">
-                      Max
+                      Max (in Rs)
                       <BudgetMaxItem Value="5000" title="5000" />
                       <BudgetMaxItem Value="10000" title="10000" />
                       <BudgetMaxItem Value="20000" title="20000" />

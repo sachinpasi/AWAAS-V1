@@ -143,7 +143,6 @@ const Step3 = () => {
                       <select
                         {...register("length_width_type")}
                         className="border-1 h-11  px-2 text-lg w-52  my-1  placeholder-gray-600"
-                        id="plot-length-type"
                       >
                         <option>fts</option>
                         <option>yards</option>
@@ -163,9 +162,8 @@ const Step3 = () => {
                         placeholder="Width"
                       ></input>
                       <select
-                        {...register("length_width_type")}
+                        // {...register("length_width_type")}
                         className="border-1 h-11  px-2 text-lg w-52 my-1  placeholder-gray-600"
-                        id="plot-length-type"
                       >
                         <option>fts</option>
                         <option>yards</option>

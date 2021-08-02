@@ -117,7 +117,7 @@ const Step2 = () => {
                       aria-required="true"
                     >
                       <option selected hidden>
-                        Locality
+                        Locality / Area
                       </option>
                       {LocalityList.map((item) => (
                         <option
@@ -178,7 +178,7 @@ const Step2 = () => {
                       id="locality"
                     >
                       <option selected hidden>
-                        Locality
+                        Locality / Area
                       </option>
                       {LocalityList.map((item) => (
                         <option
@@ -234,7 +234,7 @@ const Step2 = () => {
                       id="locality"
                     >
                       <option selected hidden>
-                        Locality
+                        Locality / Area
                       </option>
                       {LocalityList.map((item) => (
                         <option
@@ -287,7 +287,7 @@ const Step2 = () => {
                     id="locality"
                   >
                     <option selected hidden>
-                      Locality
+                      Locality / Area
                     </option>
                     {LocalityList.map((item) => (
                       <option
@@ -333,7 +333,7 @@ const Step2 = () => {
                     id="locality"
                   >
                     <option selected hidden>
-                      Locality
+                      Locality / Area
                     </option>
                     {LocalityList.map((item) => (
                       <option
@@ -397,7 +397,7 @@ const Step2 = () => {
                     id="locality"
                   >
                     <option selected hidden>
-                      Locality
+                      Locality / Area
                     </option>
                     {LocalityList.map((item) => (
                       <option
@@ -463,7 +463,7 @@ const Step2 = () => {
                     id="locality"
                   >
                     <option selected hidden>
-                      Locality
+                      Locality / Area
                     </option>
                     {LocalityList.map((item) => (
                       <option
@@ -526,7 +526,7 @@ const Step2 = () => {
                     id="locality"
                   >
                     <option selected hidden>
-                      Locality
+                      Locality / Area
                     </option>
                     {LocalityList.map((item) => (
                       <option

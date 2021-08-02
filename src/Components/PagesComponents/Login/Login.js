@@ -228,7 +228,7 @@ const Login = ({ isLoginModalOpen, setisLoginModalOpen }) => {
                     className="w-full h-10 border-2 border-widgetborder px-4 "
                     type="text"
                     placeholder="Please Enter The Otp Sent To Your Mobile No"
-                    {...register("otp", { required: true, minLength: "4" })}
+                    {...register("otp", { required: true, minLength: "3" })}
                   />
 
                   {errors?.mobile?.type === "required" && (
