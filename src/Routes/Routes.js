@@ -23,6 +23,7 @@ import Legal from "../Pages/Legal";
 import PrivateRoutes from "./PrivateRoutes";
 import News from "../Pages/News";
 import NewsDetails from "../Pages/NewsDetails";
+import ApplyHomeLoan from "../Pages/ApplyHomeLoan";
 
 const Routes = () => {
   return (
@@ -64,6 +65,11 @@ const Routes = () => {
         <Route exact path="/verfiy-property/:id" component={VerifyProperty} />
 
         <PrivateRoutes exact path="/profile/overview" component={Profile} />
+        <PrivateRoutes
+          exact
+          path="/home-loans/apply"
+          component={ApplyHomeLoan}
+        />
       </Switch>
     </Router>
   );

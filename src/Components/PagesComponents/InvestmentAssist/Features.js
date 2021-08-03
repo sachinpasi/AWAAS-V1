@@ -11,7 +11,7 @@ const Features = () => {
           <div className="w-1/4 h-full">
             <img
               className="w-full h-2/3 object-cover"
-              src="/assets/images/investmentassist/1.png"
+              src="/assets/images/investmentassist/1.PNG"
               alt=""
             />
             <p className="text-xl font-medium text-darkgray text-center">
@@ -25,7 +25,7 @@ const Features = () => {
           <div className="w-1/4 h-full">
             <img
               className="w-full h-2/3 object-cover"
-              src="/assets/images/investmentassist/2.png"
+              src="/assets/images/investmentassist/2.PNG"
               alt=""
             />
             <p className="text-xl font-medium text-darkgray text-center">
@@ -39,7 +39,7 @@ const Features = () => {
           <div className="w-1/4 h-full">
             <img
               className="w-full h-2/3 object-cover"
-              src="/assets/images/investmentassist/3.png"
+              src="/assets/images/investmentassist/3.PNG"
               alt=""
             />
             <p className="text-xl font-medium text-darkgray text-center">

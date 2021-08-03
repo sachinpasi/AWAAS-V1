@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { API } from "../../../API";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   const [Name, setName] = useState("");
@@ -39,13 +40,16 @@ const Banner = () => {
               style={{
                 textShadow: "rgb(0 0 0) -7px 2px 20px",
               }}
-              className="text-3xl text-white my-6 "
+              className="text-3xl text-white my-8 "
             >
               Fill Loan Application Online now, and track Daily progress!
             </p>
-            <button className="text-lg text-white  font-medium bg-blue py-2 px-5">
+            <Link
+              to="/home-loans/apply"
+              className="text-lg text-white  font-medium bg-blue py-2 px-5"
+            >
               Apply for new Home Loan
-            </button>
+            </Link>
           </div>
           <div
             style={{
