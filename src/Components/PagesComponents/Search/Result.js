@@ -6,9 +6,11 @@ import queryString from "query-string";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectFilter } from "../../../Redux/_features/_FliterSlice";
+import Loader from "../../Preloader/Loader";
 
 const Result = ({ PropertyFor }) => {
   const [SearchResult, setSearchResult] = useState([]);
+  const [isLoading, setisLoading] = useState(false);
   const { search } = useLocation();
   const {
     parentProperty,
@@ -39,6 +41,7 @@ const Result = ({ PropertyFor }) => {
     //Save the cancel token for the current request
     cancelToken = axios.CancelToken.source();
     try {
+      setisLoading(true);
       const res = await axios.get(
         `${API}/property/search`,
         {
@@ -62,6 +65,9 @@ const Result = ({ PropertyFor }) => {
       );
       console.log(res);
       setSearchResult(res.data.data);
+      if (res.status === 200) {
+        setisLoading(false);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -88,6 +94,7 @@ const Result = ({ PropertyFor }) => {
   return (
     <div className="w-72percent  h-auto flex flex-col items-start  my-4">
       {/* <p className="text-sm text-widgetborder ">Home > Property in Panipat</p> */}
+      {isLoading && <Loader />}
       <p className="text-2xl text-darkgray my-2 leading-8 capitalize">
         {SearchResult?.length} results |{parentProperty} | {propertyType} for
         {property_for === "buy" && " sale"} in Panipat Above {mini_budget} with

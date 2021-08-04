@@ -24,6 +24,8 @@ import PrivateRoutes from "./PrivateRoutes";
 import News from "../Pages/News";
 import NewsDetails from "../Pages/NewsDetails";
 import ApplyHomeLoan from "../Pages/ApplyHomeLoan";
+import ProfileHomeLoan from "../Pages/Profile/ProfileHomeLoan";
+import ProfileHomeLoanDetails from "../Pages/Profile/ProfileHomeLoanDetails";
 
 const Routes = () => {
   return (
@@ -65,6 +67,16 @@ const Routes = () => {
         <Route exact path="/verfiy-property/:id" component={VerifyProperty} />
 
         <PrivateRoutes exact path="/profile/overview" component={Profile} />
+        <PrivateRoutes
+          exact
+          path="/profile/home-loan"
+          component={ProfileHomeLoan}
+        />
+        <PrivateRoutes
+          exact
+          path="/profile/home-loan/:id"
+          component={ProfileHomeLoanDetails}
+        />
         <PrivateRoutes
           exact
           path="/home-loans/apply"

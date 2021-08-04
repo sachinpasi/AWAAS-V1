@@ -42,6 +42,7 @@ module.exports = {
         "72percent": "72%",
         "30percent": "30%",
         "65percent": "65%",
+        500: "500px",
       },
       minHeight: {
         0: "0",

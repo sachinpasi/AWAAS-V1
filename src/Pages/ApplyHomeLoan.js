@@ -17,7 +17,13 @@ const ApplyHomeLoan = () => {
   const [TotalRequest, setTotalRequest] = useState(0);
   const [Response, setResponse] = useState([]);
   const [CoApplicantId, setCoApplicantId] = useState(null);
+  const [PanCard, setPanCard] = useState(null);
+  const [IdCard, setIdCard] = useState(null);
+  const [PanCardPrev, setPanCardPrev] = useState(null);
+  const [IdCardPrev, setIdCardPrev] = useState(null);
   const [isADDAPLICANTCLICKED, setisADDAPLICANTCLICKED] = useState(false);
+  const [isAdressHidden, setIsAdressHidden] = useState(false);
+  const [isApplicantAdressHidden, setisApplicantAdressHidden] = useState([]);
   const {
     register,
     handleSubmit,
@@ -26,6 +32,51 @@ const ApplyHomeLoan = () => {
   } = useForm();
 
   const history = useHistory();
+
+  const HandlePanCardChange = (e) => {
+    setPanCard(e.target.files[0]);
+    if (e.target.files) {
+      const fileArray = Array.from(e.target.files).map((file) =>
+        URL.createObjectURL(file)
+      );
+
+      console.log(fileArray);
+      setPanCardPrev(fileArray);
+      Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
+    }
+  };
+
+  const HandleIdCardChange = (e) => {
+    setIdCard(e.target.files[0]);
+    if (e.target.files) {
+      const fileArray = Array.from(e.target.files).map((file) =>
+        URL.createObjectURL(file)
+      );
+
+      console.log(fileArray);
+      setIdCardPrev(fileArray);
+      Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
+    }
+  };
+
+  console.log(isApplicantAdressHidden);
+
+  const AddAddressHidden = (index) => {
+    setisApplicantAdressHidden((prevIndexes) => [...prevIndexes, index]);
+  };
+  const RemoveAddressHidden = (index) => {
+    setisApplicantAdressHidden((prevIndexes) => [
+      ...prevIndexes.filter((item) => item !== index),
+    ]);
+  };
+
+  const HandleAddressHiddenChange = (index) => {
+    if (isApplicantAdressHidden.includes(index)) {
+      RemoveAddressHidden(index);
+    } else {
+      AddAddressHidden(index);
+    }
+  };
 
   const addField = () => {
     setFields((prevIndexes) => [...prevIndexes, FieldsCounter]);
@@ -114,8 +165,8 @@ const ApplyHomeLoan = () => {
 
     console.log(formData);
 
-    try {
-      const Upload = async () => {
+    const Upload = async () => {
+      try {
         const res = await axios.post(
           `${API}/store-home-loan-application`,
           formData,
@@ -131,13 +182,14 @@ const ApplyHomeLoan = () => {
 
           return toast.success("Home Loan Applied Sucessfully");
         }
-      };
-
-      Upload();
-    } catch (error) {
-      if (error.response.status !== 200) {
+      } catch (error) {
+        if (error.response.status !== 200) {
+          return toast.error("All Fields Are Mandatory");
+        }
       }
-    }
+    };
+
+    Upload();
   };
 
   const onADDAPPLICANTFirstSubmit = async (data) => {
@@ -188,8 +240,12 @@ const ApplyHomeLoan = () => {
     formData.append("mother_last_name", mother_last_name);
     formData.append("mobile", mobile);
     formData.append("residental_status", residental_status);
-    formData.append("pancard", pancard[0]);
-    formData.append("id_card", id_card[0]);
+    if (pancard) {
+      formData.append("pancard", pancard[0]);
+    }
+    if (id_card) {
+      formData.append("id_card", id_card[0]);
+    }
     formData.append("dob", getDOB(dob));
     formData.append("gender", gender);
     formData.append("category", category);
@@ -232,11 +288,13 @@ const ApplyHomeLoan = () => {
   };
 
   const onCopaplicantSubmit = async (data) => {
+    setResponse([]);
+    setTotalRequest(0);
     if (data.FIELD) {
       const ARRAY = data?.FIELD;
       ARRAY.forEach((item, index) => {
         console.log(item);
-        setTotalRequest(TotalRequest + ARRAY?.length);
+        setTotalRequest(ARRAY?.length);
         const {
           first_name,
           middle_name,
@@ -548,7 +606,7 @@ const ApplyHomeLoan = () => {
                   type="radio"
                   className="w-6 h-6 mr-4"
                   placeholder="Mobile Number"
-                  value="Resident of India"
+                  value="res"
                   {...register("residental_status")}
                 />
                 Resident of India
@@ -574,7 +632,7 @@ const ApplyHomeLoan = () => {
                 <input
                   id="Foregin National
 "
-                  value="Foregin National"
+                  value="foreign-national"
                   {...register("residental_status")}
                   type="radio"
                   className="w-6 h-6 mr-4"
@@ -734,33 +792,46 @@ const ApplyHomeLoan = () => {
             </div>
 
             <p className="text-xl font-medium my-4">Permanent Address -</p>
-
-            <div className="flex flex-col items-start w-full">
+            <div className="flex items-center mb-2">
               <input
-                type="text"
-                placeholder="Address Line One"
-                {...register("lineOnePermanentAddress")}
-                className="border-1 h-11  px-4 text-lg w-full my-2"
+                type="checkbox"
+                value={isAdressHidden}
+                onChange={() => setIsAdressHidden(!isAdressHidden)}
+                className="h-5 w-5"
               />
-              <input
-                type="text"
-                placeholder="Address Line Two"
-                className="border-1 h-11  px-4 text-lg w-full my-2"
-                {...register("lineTwoPermanentAddress")}
-              />
-              <input
-                type="text"
-                placeholder="City"
-                className="border-1 h-11  px-4 text-lg w-full my-2"
-                {...register("cityPermanentAddress")}
-              />
-              <input
-                type="number"
-                placeholder="PIN Code"
-                className="border-1 h-11  px-4 text-lg w-full my-2"
-                {...register("pinPermanentAddress")}
-              />
+              <p className="text-lg ml-4">
+                Is Permanent Address Same As Your Present Address ?
+              </p>
             </div>
+
+            {!isAdressHidden && (
+              <div className="flex flex-col items-start w-full">
+                <input
+                  type="text"
+                  placeholder="Address Line One"
+                  {...register("lineOnePermanentAddress")}
+                  className="border-1 h-11  px-4 text-lg w-full my-2"
+                />
+                <input
+                  type="text"
+                  placeholder="Address Line Two"
+                  className="border-1 h-11  px-4 text-lg w-full my-2"
+                  {...register("lineTwoPermanentAddress")}
+                />
+                <input
+                  type="text"
+                  placeholder="City"
+                  className="border-1 h-11  px-4 text-lg w-full my-2"
+                  {...register("cityPermanentAddress")}
+                />
+                <input
+                  type="number"
+                  placeholder="PIN Code"
+                  className="border-1 h-11  px-4 text-lg w-full my-2"
+                  {...register("pinPermanentAddress")}
+                />
+              </div>
+            )}
 
             <p className="text-xl font-medium my-4">Income -</p>
 
@@ -775,13 +846,13 @@ const ApplyHomeLoan = () => {
             <div className="flex w-full justify-between">
               <label className="customfileUpload bg-blue font-medium w-72 my-2">
                 Upload Pan Card
-                <input type="file" {...register("pancard")} />
+                <input type="file" onChange={HandlePanCardChange} />
               </label>
             </div>
             <div className="flex flex-col w-full  items-start">
               <label className="customfileUpload bg-blue font-medium w-72 my-2">
                 Upload ID Proof
-                <input type="file" {...register("id_card")} />
+                <input type="file" onChange={HandleIdCardChange} />
               </label>
               <p>* Adhaar Card / Driver's License / Voter's ID / Passport</p>
             </div>
@@ -811,6 +882,7 @@ const ApplyHomeLoan = () => {
           <form onSubmit={handleSubmit(onCopaplicantSubmit)}>
             {Fields.map((index, i) => {
               const fieldName = `FIELD[${index}]`;
+              const Sno = i + 1;
               return (
                 <fieldset
                   name={fieldName}
@@ -819,7 +891,7 @@ const ApplyHomeLoan = () => {
                   className="my-4 w-3/4"
                 >
                   <p className="text-2xl font-medium text-darkgray border-b-2 pb-4 border-blue">
-                    Co-Applicant Details [ {i + 1} ]
+                    Co-Applicant Details [ {Sno} ]
                   </p>
                   <div className="flex w-full justify-between">
                     <input
@@ -1021,7 +1093,7 @@ const ApplyHomeLoan = () => {
                         type="radio"
                         className="w-6 h-6 mr-4"
                         placeholder="Mobile Number"
-                        value="Resident of India"
+                        value="res"
                         {...register(`${fieldName}.residental_status`)}
                       />
                       Resident of India
@@ -1048,7 +1120,7 @@ const ApplyHomeLoan = () => {
                         id="Foregin National
 "
                         {...register(`${fieldName}.residental_status`)}
-                        value="Foregin National"
+                        value="foreign-national"
                         type="radio"
                         className="w-6 h-6 mr-4"
                       />
@@ -1209,33 +1281,45 @@ const ApplyHomeLoan = () => {
                   <p className="text-xl font-medium my-4">
                     Permanent Address -
                   </p>
-
-                  <div className="flex flex-col items-start w-full">
+                  <div className="flex items-center mb-2">
                     <input
-                      type="text"
-                      placeholder="Address Line One"
-                      {...register(`${fieldName}.lineOnePermanentAddress`)}
-                      className="border-1 h-11  px-4 text-lg w-full my-2"
+                      type="checkbox"
+                      defaultChecked={false}
+                      onChange={() => HandleAddressHiddenChange(Sno)}
+                      className="h-5 w-5"
                     />
-                    <input
-                      type="text"
-                      placeholder="Address Line Two"
-                      className="border-1 h-11  px-4 text-lg w-full my-2"
-                      {...register(`${fieldName}.lineTwoPermanentAddress`)}
-                    />
-                    <input
-                      type="text"
-                      placeholder="City"
-                      className="border-1 h-11  px-4 text-lg w-full my-2"
-                      {...register(`${fieldName}.cityPermanentAddress`)}
-                    />
-                    <input
-                      type="number"
-                      placeholder="PIN Code"
-                      className="border-1 h-11  px-4 text-lg w-full my-2"
-                      {...register(`${fieldName}.pinPermanentAddress`)}
-                    />
+                    <p className="text-lg ml-4">
+                      Is Permanent Address Same As Your Present Address ?
+                    </p>
                   </div>
+                  {!isApplicantAdressHidden.includes(Sno) && (
+                    <div className="flex flex-col items-start w-full">
+                      <input
+                        type="text"
+                        placeholder="Address Line One"
+                        {...register(`${fieldName}.lineOnePermanentAddress`)}
+                        className="border-1 h-11  px-4 text-lg w-full my-2"
+                      />
+                      <input
+                        type="text"
+                        placeholder="Address Line Two"
+                        className="border-1 h-11  px-4 text-lg w-full my-2"
+                        {...register(`${fieldName}.lineTwoPermanentAddress`)}
+                      />
+                      <input
+                        type="text"
+                        placeholder="City"
+                        className="border-1 h-11  px-4 text-lg w-full my-2"
+                        {...register(`${fieldName}.cityPermanentAddress`)}
+                      />
+                      <input
+                        type="number"
+                        placeholder="PIN Code"
+                        className="border-1 h-11  px-4 text-lg w-full my-2"
+                        {...register(`${fieldName}.pinPermanentAddress`)}
+                      />
+                    </div>
+                  )}
 
                   <p className="text-xl font-medium my-4">Income -</p>
 

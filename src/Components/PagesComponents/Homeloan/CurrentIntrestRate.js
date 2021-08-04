@@ -171,11 +171,11 @@ const CurrentIntrestRate = () => {
               <div className="flex justify-evenly py-2 pb-1 border-b-2 border-dashed">
                 <div className="w-1/4 flex flex-col justify-center items-center">
                   <img
-                    className="w-12 h-12 object-contain "
+                    className="w-16 h-16 object-contain "
                     src="/assets/images/homeloans/iifl.jfif"
                     alt=""
                   />
-                  <p className="font-medium py-1">IIFL</p>
+                  {/* <p className="font-medium py-1">IIFL</p> */}
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
                   <p className="text-xl font-medium">6.80%</p>
@@ -195,7 +195,7 @@ const CurrentIntrestRate = () => {
               <div>
                 <p className="text-2xl text-darkgray mb-2">Contact Us</p>
                 <p className="text-xl font-medium">
-                  Have any queries? We Would Love To Here From You
+                  Have any queries? We Would Love To Hear From You
                 </p>
                 <div className="w-full h-full flex justify-center">
                   <img
