@@ -18,6 +18,7 @@ const Banner = () => {
         style={{
           background: `url(${Data?.parent?.banner_image_path})  `,
           height: "27.5rem",
+          backgroundSize: "cover",
         }}
       >
         <div
@@ -72,11 +73,11 @@ const Banner = () => {
                     <a
                       className="flex justify-between items-center"
                       href={`${
-                        Data.parent?.brochure && Data.parent?.brochure[0].icon
+                        Data.parent?.brochure && Data.parent?.brochure[0]?.icon
                       }`}
                     >
                       {Data?.parent?.brochure &&
-                        Data?.parent?.brochure[0].title}
+                        Data?.parent?.brochure[0]?.title}
                       <FaDownload className="ml-4 " />
                     </a>
                   </Dropdown.Item>

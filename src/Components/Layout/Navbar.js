@@ -72,7 +72,7 @@ const NavItem = ({ Name, To, Active }) => (
 const NavAuthItem = ({ Name, To }) => (
   <Link
     className="w-auto bg-blue flex justify-center items-center py-1 px-6 rounded shadow-md ml-2 "
-    to="/"
+    to={To}
   >
     <FaUserCircle className="text-white text-lg" />
     <p className="text-white text-base pl-1 ">{Name}</p>

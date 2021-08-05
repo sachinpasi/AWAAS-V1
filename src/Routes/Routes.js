@@ -26,6 +26,8 @@ import NewsDetails from "../Pages/NewsDetails";
 import ApplyHomeLoan from "../Pages/ApplyHomeLoan";
 import ProfileHomeLoan from "../Pages/Profile/ProfileHomeLoan";
 import ProfileHomeLoanDetails from "../Pages/Profile/ProfileHomeLoanDetails";
+import ProfilePropertyListing from "../Pages/Profile/ProfilePropertyListing";
+import ProfileProjectListing from "../Pages/Profile/ProfileProjectListing";
 
 const Routes = () => {
   return (
@@ -76,6 +78,26 @@ const Routes = () => {
           exact
           path="/profile/home-loan/:id"
           component={ProfileHomeLoanDetails}
+        />
+        <PrivateRoutes
+          exact
+          path="/profile/property/listings"
+          component={ProfilePropertyListing}
+        />
+        <PrivateRoutes
+          exact
+          path="/profile/property/listings/:id"
+          component={VerifyProperty}
+        />
+        <PrivateRoutes
+          exact
+          path="/profile/projects/listings"
+          component={ProfileProjectListing}
+        />
+        <PrivateRoutes
+          exact
+          path="/profile/projects/listings/:id"
+          component={VerfiyProject}
         />
         <PrivateRoutes
           exact
