@@ -35,7 +35,7 @@ const Card = ({ Name, Image }) => (
         <img className="w-full h-full object-cover" src={Image} alt="" />
       </div>
       <div className="h-full w-full ml-4 ">
-        <p className="text-2xl font-medium text-darkgray">{Name}</p>
+        <p className="text-2xl font-medium text-yellow-600">{Name}</p>
         <div className="flex flex-col justify-between items-start ">
           <div className="flex items-center">
             <div className="w-10">
