@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { SiMarketo } from "react-icons/si";
 import { FaUserCircle, FaProjectDiagram } from "react-icons/fa";
-import {  RiBuilding2Line, RiLogoutCircleRLine } from "react-icons/ri";
+import { RiBuilding2Line, RiLogoutCircleRLine } from "react-icons/ri";
 import { MdMonetizationOn } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser, SIGNOUT } from "../../../Redux/_features/_userSlice";
@@ -53,15 +53,18 @@ const Sidebar = () => {
           To="/profile/property/listings"
           Icon={RiBuilding2Line}
         />
-        <SidebarItem
-          Active={
-            location.pathname === "/profile/projects/listings" ||
-            location.pathname === `/profile/projects/listings/${id}`
-          }
-          Name="Projects Listings"
-          To="/profile/projects/listings"
-          Icon={FaProjectDiagram}
-        />
+        {user.accountType === 0 && (
+          <SidebarItem
+            Active={
+              location.pathname === "/profile/projects/listings" ||
+              location.pathname === `/profile/projects/listings/${id}`
+            }
+            Name="Projects Listings"
+            To="/profile/projects/listings"
+            Icon={FaProjectDiagram}
+          />
+        )}
+
         <SidebarItem
           Name="Home Loan"
           Active={
