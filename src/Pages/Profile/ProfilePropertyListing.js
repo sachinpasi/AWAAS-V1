@@ -3,6 +3,7 @@ import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { API } from "../../API";
 import Layout from "../../Components/Layout/Layout";
 import Sidebar from "../../Components/PagesComponents/Profile/Sidebar";
@@ -11,6 +12,7 @@ import { selectUser } from "../../Redux/_features/_userSlice";
 
 const ProfilePropertyListing = () => {
   const [isLoading, setisLoading] = useState(false);
+
   const [PropertyList, setPropertyList] = useState([]);
   const user = useSelector(selectUser);
 
@@ -23,6 +25,17 @@ const ProfilePropertyListing = () => {
     if (res.status === 200) {
       setPropertyList(res.data.data);
       setisLoading(false);
+    }
+  };
+
+  const DeletePropertyById = async (id) => {
+    const res = await axios.get(`${API}/property/delete/${id}`, {
+      headers: { Authorization: `Bearer ${user.token}` },
+    });
+    console.log(res);
+    if (res.status === 200) {
+      FetchPropertyListing();
+      return toast.success("");
     }
   };
 
@@ -123,6 +136,14 @@ const ProfilePropertyListing = () => {
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             {getDate(item.created_at)}
+                          </td>
+                          <td className="pr-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                            <button
+                              onClick={() => DeletePropertyById(item.p_id)}
+                              className="text-white font-medium py-2 px-6 bg-red rounded"
+                            >
+                              Delete
+                            </button>
                           </td>
                           <td className="pr-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             <Link

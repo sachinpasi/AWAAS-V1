@@ -90,7 +90,7 @@ const HomeNav = () => {
                   style={{
                     textShadow: "2px 3px 5px #000",
                   }}
-                  className="hidden lg:visible text-white text-base pl-1 -mt-1"
+                  className="hidden lg:flex text-white text-base pl-1 -mt-1"
                 >
                   +91-999-639-8965
                 </p>
