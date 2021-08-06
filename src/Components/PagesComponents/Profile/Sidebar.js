@@ -38,11 +38,11 @@ const Sidebar = () => {
           To="/profile/overview"
           Icon={SiMarketo}
         />
-        <SidebarItem
+        {/* <SidebarItem
           Name="Account Settings"
           To="/profile/account"
           Icon={FaUserCircle}
-        />
+        /> */}
 
         <SidebarItem
           Name="Property Listings"

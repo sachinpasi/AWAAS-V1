@@ -39,9 +39,9 @@ const HomeNav = () => {
 
   return (
     <>
-      <nav className="w-full h-auto absolute z-10">
-        <div className="w-full h-11 border-b-1 border-navborder">
-          <div className="customContainer mx-auto   h-full flex justify-between items-center">
+      <nav className="w-full h-auto absolute  z-10">
+        <div className="w-full hidden lg:flex  p-4 lg:p-0 lg:h-11 border-b-1 border-navborder">
+          <div className="customContainer mx-auto   h-full flex-col lg:flex-row flex  justify-between items-center">
             <div className="w-auto h-full flex justify-center items-center">
               <SocialIcon
                 To="https://www.facebook.com/Awaasonline-111674134300495"
@@ -81,15 +81,16 @@ const HomeNav = () => {
                 </p>
               </a>
               <a
-                href="tel:"
-                className="flex justify-center items-center border-l-1 border-r-1 px-4 border-navborder h-full"
+                href="tel:999-639-8965"
+                className="flex justify-center items-center border-l-1 border-r-1 p-2 lg:py-0  lg:px-4 border-navborder h-full"
               >
                 <FaWhatsapp className="text-white text-2xl" />
+
                 <p
                   style={{
                     textShadow: "2px 3px 5px #000",
                   }}
-                  className="text-white text-base pl-1 -mt-1"
+                  className="hidden lg:visible text-white text-base pl-1 -mt-1"
                 >
                   +91-999-639-8965
                 </p>
@@ -98,7 +99,7 @@ const HomeNav = () => {
           </div>
         </div>
 
-        <div className="customContainer mx-auto py-2 h-full  flex justify-between items-center">
+        <div className="customContainer mx-auto py-2 h-full hidden  lg:flex justify-between items-center">
           <div className="w-auto h-auto">
             <img className="w-44" src="/assets/images/logo/logo.svg" alt="" />
           </div>
@@ -152,6 +153,8 @@ const HomeNav = () => {
             )}
           </div>
         </div>
+
+        <div className="w-full flex"></div>
       </nav>
       <Login
         isLoginModalOpen={isLoginModalOpen}

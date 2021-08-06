@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 import { selectProjectDetails } from "../../../Redux/_features/_ProjectDetailsSlice";
 import "./Banner.css";
 import { useEffect } from "react";
-import Loader from "../../Common/Loader";
 
 const Banner = () => {
   const { Data } = useSelector(selectProjectDetails);
