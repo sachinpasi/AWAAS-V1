@@ -31,10 +31,14 @@ module.exports = {
         "90percent": "90%",
         "95percent": "95%",
         "70vh": "70vh",
+        "50vh": "50vh",
         "500px": "500px",
+        "550px": "550px",
         "450px": "450px",
         "400px": "400px",
         "350px": "350px",
+        "300px": "300px",
+        "280px": "280px",
         "58percent": "58%",
       },
       width: {
@@ -42,7 +46,10 @@ module.exports = {
         "72percent": "72%",
         "30percent": "30%",
         "65percent": "65%",
+        "90vw": "90vw",
+        "80vw": "80vw",
         500: "500px",
+        600: "600px",
       },
       minHeight: {
         0: "0",
@@ -62,5 +69,8 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require("@tailwindcss/line-clamp")],
+  plugins: [
+    require("@tailwindcss/line-clamp"),
+    require("tailwind-scrollbar-hide"),
+  ],
 };

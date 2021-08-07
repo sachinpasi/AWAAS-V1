@@ -12,9 +12,39 @@ import { selectUser } from "../../Redux/_features/_userSlice";
 
 const ProfilePropertyListing = () => {
   const [isLoading, setisLoading] = useState(false);
+  const [isDeleteModalOpen, setisDeleteModalOpen] = useState(null);
 
   const [PropertyList, setPropertyList] = useState([]);
   const user = useSelector(selectUser);
+
+  const DeleteModal = () => (
+    <>
+      <div
+        onClick={() => setisDeleteModalOpen(null)}
+        className="bg-black bg-opacity-50 fixed w-full h-screen top-0 bottom-0 right-0 left-0 z-50 r"
+      ></div>
+
+      <div className="fixed z-50 top-2/4 left-2/4 -translate-x-2/4 transform -translate-y-2/4 w-500 h-60 bg-white rounded-2xl shadow-2xl flex flex-col justify-center items-center ">
+        <div>
+          <p className="text-darkgray font-semibold text-4xl">Are You Sure ?</p>
+        </div>
+        <div className="flex justify-between items-center mt-8 ">
+          <button
+            onClick={() => DeletePropertyById(isDeleteModalOpen)}
+            className="px-8 w-40 py-2 bg-red rounded-3xl text-white font-medium text-xl mx-2"
+          >
+            Confirm
+          </button>{" "}
+          <button
+            onClick={() => setisDeleteModalOpen(null)}
+            className="px-8 w-40 py-2 bg-gray-400 rounded-3xl text-white font-medium text-xl mx-2"
+          >
+            Discard
+          </button>
+        </div>
+      </div>
+    </>
+  );
 
   const FetchPropertyListing = async () => {
     setisLoading(true);
@@ -35,7 +65,8 @@ const ProfilePropertyListing = () => {
     console.log(res);
     if (res.status === 200) {
       FetchPropertyListing();
-      return toast.success("");
+      setisDeleteModalOpen(false);
+      return toast.success("Property Deleted Sucessfully");
     }
   };
 
@@ -51,6 +82,7 @@ const ProfilePropertyListing = () => {
   };
   return (
     <Layout>
+      {isDeleteModalOpen && <DeleteModal />}
       <main className="w-full min-h-screen bg-white relative flex  justify-between ">
         <Sidebar />
         {isLoading && <Loader />}
@@ -139,7 +171,7 @@ const ProfilePropertyListing = () => {
                           </td>
                           <td className="pr-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             <button
-                              onClick={() => DeletePropertyById(item.p_id)}
+                              onClick={() => setisDeleteModalOpen(item.p_id)}
                               className="text-white font-medium py-2 px-6 bg-red rounded"
                             >
                               Delete

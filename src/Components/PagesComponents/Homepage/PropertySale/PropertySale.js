@@ -31,9 +31,10 @@ const PropertySale = () => {
 
   return (
     <section className="w-full h-full  bg-textbg py-4 ">
-      <div className="customContainer ">
+      <div className="hidden w-80vw mx-auto lg:grid ">
         <Header Title="Properties for sale" hidden />
-        <div className="w-full h-450px grid grid-cols-4 gap-4 my-4">
+
+        <div className=" w-full h-450px grid grid-cols-4 gap-4 my-4">
           {PropertyList.length !== 0 ? (
             <>
               {PropertyList.map((item) => (
@@ -82,6 +83,70 @@ const PropertySale = () => {
             <p>Loading...</p>
           )}
         </div>
+
+        <div className="flex justify-end w-full py-4">
+          <Link
+            to="/search?property_for=sell"
+            className="text-xl font-medium hover:underline text-blue px-8 py-2"
+          >
+            View More...
+          </Link>
+        </div>
+      </div>
+
+      <div className="w-90vw mx-auto lg:hidden ">
+        <Header Title="Properties for sale" />
+
+        <div className=" w-full h-450px  my-4">
+          {PropertyList.length !== 0 ? (
+            <OwlCarousel loop items={1} nav={true}>
+              {PropertyList.map((item) => (
+                <div
+                  key={item.p_id}
+                  className="w-full flex flex-col justify-between items-center h-450px my-4"
+                >
+                  {console.log(item)}
+                  <div className="w-full h-2/4 relative ">
+                    {item?.photos && (
+                      <img
+                        className="w-full h-full object-cover"
+                        src={JSON.parse(item.photos)[0]}
+                        alt=""
+                      />
+                    )}
+                  </div>
+                  <div className="w-full h-2/4 bg-white flex-col flex justify-center items-start p-4">
+                    <p
+                      style={{
+                        borderBottom: "1px solid #7070702E",
+                      }}
+                      className="text-xl font-semibold py-2 w-full capitalize"
+                    >
+                      {item.bedroom && item.bedroom} {item.bedroom && "BHK"}{" "}
+                      {item.property_type} For Sale
+                    </p>
+                    <p className="text-sm font-medium py-2 capitalize">
+                      {item.city} : {item.locality_name}
+                    </p>
+                    <p className="text-2xl font-semibold text-blue py-2">
+                      {" "}
+                      &#8377; {item.total_price}
+                    </p>
+                    <Link
+                      className="flex justify-center items-center w-36 font-medium tracking-tight  px-5 py-1.5 my-2 text-white bg-blue"
+                      to={`/property/${item.property_for}/${item.p_id}`}
+                    >
+                      View Details
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </OwlCarousel>
+          ) : (
+            <p>Loading...</p>
+          )}
+        </div>
+
         <div className="flex justify-end w-full py-4">
           <Link
             to="/search?property_for=sell"

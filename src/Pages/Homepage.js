@@ -32,7 +32,6 @@ const Homepage = () => {
       <Banner setisLoading={setisLoading} />
       <Projects Title="Projects In Panipat" />
       <PropertySale />
-      {/* <Ad /> */}
       <PropertyRent />
       <Testimonial />
       <Articles />

@@ -136,6 +136,10 @@ input[type="file"] {
   width: 128px !important;
 }
 
+.w96px {
+  width: 96px !important;
+}
+
 @keyframes loader {
   0%,
   10%,
@@ -206,4 +210,8 @@ input[type="file"] {
 .loader span:nth-child(4) {
   bottom: 0;
   right: 0;
+}
+
+.Toastify__toast--success {
+  background-color: #2bd8b5 !important;
 }

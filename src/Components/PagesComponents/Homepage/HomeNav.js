@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import {
   FaFacebookF,
   FaInstagram,
@@ -8,17 +8,37 @@ import {
   FaWhatsapp,
   FaUserCircle,
   FaLinkedinIn,
+  FaUserAlt,
+  FaProjectDiagram,
 } from "react-icons/fa";
-import { HiMail } from "react-icons/hi";
+import { ImHammer2 } from "react-icons/im";
+import {
+  HiMail,
+  HiMenu,
+  HiMenuAlt1,
+  HiMenuAlt2,
+  HiOutlineHome,
+  HiUser,
+} from "react-icons/hi";
 import Login from "../../PagesComponents/Login/Login";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser, SIGNOUT } from "../../../Redux/_features/_userSlice";
+import { RiBankLine, RiBuilding2Line } from "react-icons/ri";
+import {
+  MdAssistantPhoto,
+  MdClose,
+  MdExplore,
+  MdMonetizationOn,
+} from "react-icons/md";
 
 const HomeNav = () => {
   const [isLoginModalOpen, setisLoginModalOpen] = useState(false);
   const user = useSelector(selectUser);
+  const [isNavOpen, setisNavOpen] = useState(false);
 
   const history = useHistory();
+  const location = useLocation();
+
   const dispatch = useDispatch();
 
   const HandlePostProperty = () => {
@@ -36,6 +56,19 @@ const HomeNav = () => {
       setisLoginModalOpen(true);
     }
   };
+
+  const MobileNavItem = ({ Name, To, Active, Icon }) => (
+    <Link
+      onClick={() => setisNavOpen(false)}
+      to={To}
+      className={`flex items-end  py-2 px-5 w-full my-1 rounded-full ${
+        Active ? "bg-gray-500 text-white" : ""
+      }`}
+    >
+      <Icon className="text-3xl mr-3" />
+      <p className="text-xl font-medium">{Name}</p>
+    </Link>
+  );
 
   return (
     <>
@@ -153,8 +186,82 @@ const HomeNav = () => {
             )}
           </div>
         </div>
-
-        <div className="w-full flex"></div>
+        <div className="lg:hidden w-full fixed z-50 flex justify-between items-center bg-white  shadow-md  ">
+          <div className="py-4 pl-4">
+            <img className="w-44" src="/assets/images/logo/logo2.svg" alt="" />
+          </div>
+          <div
+            onClick={() => setisNavOpen(!isNavOpen)}
+            className="fixed z-50 right-4 top-4"
+          >
+            {isNavOpen ? (
+              <MdClose className="text-4xl text-darkgray" />
+            ) : (
+              <HiMenu className="text-4xl text-darkgray" />
+            )}
+          </div>
+        </div>
+        <div
+          style={{
+            transition: "all 0.3s ease",
+          }}
+          className={` lg:hidden fixed bg-white border-b-4 border-green  z-0 h-screen w-full flex justify-center items-center pt-20 ${
+            isNavOpen ? "top-0" : "-top-full pb-20"
+          }`}
+        >
+          <div className=" w-11/12 h-90percent flex-col flex   items-center">
+            <MobileNavItem
+              Icon={HiOutlineHome}
+              Name="Home"
+              Active={location.pathname === "/"}
+              To="/"
+            />
+            {/* <MobileNavItem
+              Icon={HiUser}
+              Name="Profile"
+              To="/profile/overview"
+            /> */}
+            <MobileNavItem
+              Icon={RiBuilding2Line}
+              Name="Post Property "
+              To="/post-property"
+            />
+            <MobileNavItem
+              Icon={FaProjectDiagram}
+              Name="Post Project "
+              To="/post-project"
+            />
+            <MobileNavItem
+              Icon={MdMonetizationOn}
+              Name="Home Loan "
+              To="/home-loan"
+            />{" "}
+            <MobileNavItem
+              Icon={RiBankLine}
+              Name="Investment Assistance"
+              To="/investment-assist"
+            />{" "}
+            <MobileNavItem Icon={MdExplore} Name="Vastu" To="/vastu" />{" "}
+            <MobileNavItem Icon={ImHammer2} Name="Legal" To="/legal" />
+            <div className="flex w-full justify-center  py-2 px-4 my-3 ">
+              {user.isLoggedIn ? (
+                <Link
+                  to="/profile/overview"
+                  className="w-full h-12 bg-blue font-medium text-2xl rounded-full flex justify-center items-center text-white"
+                >
+                  Profile
+                </Link>
+              ) : (
+                <button
+                  onClick={() => setisLoginModalOpen(true)}
+                  className="w-full h-12 bg-blue font-medium text-2xl rounded-full text-white"
+                >
+                  Log in
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
       </nav>
       <Login
         isLoginModalOpen={isLoginModalOpen}

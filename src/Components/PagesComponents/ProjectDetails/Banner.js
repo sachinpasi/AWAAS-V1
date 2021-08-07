@@ -15,22 +15,22 @@ const Banner = () => {
     <>
       <section
         style={{
-          background: `url(${Data?.parent?.banner_image_path})  `,
-          height: "27.5rem",
+          backgroundImage: `url(${Data?.parent?.banner_image_path})  `,
         }}
+        className="lg:h-450px h-350px bg-center bg-cover    "
       >
         <div
           style={{
             background: "rgba(0,0,0,0.2)",
           }}
-          className="w-full h-full"
+          className="w-full h-full  "
         >
-          <div className=" relative customContainer h-full flex flex-col justify-end items-start text-5xl text-white">
+          <div className=" relative lg:w-80vw w-90vw mx-auto h-full flex flex-col justify-end items-start text-white">
             <p
               style={{
                 textShadow: "2px 3px 5px #000",
               }}
-              className="text-white text-5xl tracking-tight"
+              className="text-white lg:text-5xl text-4xl tracking-tight"
             >
               {Data?.parent?.title}
             </p>
@@ -48,7 +48,7 @@ const Banner = () => {
               )}
             </div>
             <nav
-              className="flex items-center justify-start h-20 w-full bg-white shadow-lg absolute -bottom-10
+              className="flex  overflow-scroll lg:overflow-hidden scrollbar-hide items-center justify-start h-20 w-full bg-white shadow-lg absolute -bottom-10
            rounded"
             >
               <NavItemLink To="#overview" Name="Overview" />
@@ -85,6 +85,13 @@ const Banner = () => {
           </div>
         </div>
       </section>
+
+      {/* <section
+        style={{
+          backgroundImage: `url(${Data?.parent?.banner_image_path})  `,
+        }}
+        className=" lg:hidden h-350px bg-center "
+      ></section> */}
     </>
   );
 };
@@ -93,12 +100,16 @@ export default Banner;
 
 const NavItemLink = ({ Name, To }) => (
   <a href={To} className="mx-6">
-    <p className="text-lg text-darkgray font-medium cursor-pointer">{Name}</p>
+    <p className="text-lg text-darkgray font-medium cursor-pointer whitespace-nowrap">
+      {Name}
+    </p>
   </a>
 );
 
 const NavItem = ({ Name, To }) => (
   <div className="mx-6">
-    <p className="text-lg text-darkgray font-medium cursor-pointer">{Name}</p>
+    <p className="text-lg text-darkgray font-medium cursor-pointer whitespace-nowrap">
+      {Name}
+    </p>
   </div>
 );

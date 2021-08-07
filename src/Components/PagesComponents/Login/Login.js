@@ -111,11 +111,11 @@ const Login = ({ isLoginModalOpen, setisLoginModalOpen }) => {
         style={{
           transition: "all 0.3s linear",
         }}
-        className={`w-3/5 h-500px bg-white rounded-lg flex justify-center z-50  overflow-hidden   shadow-2xl left-2/4 right-2/4 top-2/4 bottom-2/4 transform -translate-x-2/4 -translate-y-2/4 fixed  ${
+        className={`w-11/12 lg:w-3/5 lg:h-500px  h-550px bg-white lg:rounded-lg rounded-2xl flex flex-col-reverse lg:flex-row justify-center z-50  overflow-hidden   shadow-2xl left-2/4 right-2/4 top-2/4 bottom-2/4 transform -translate-x-2/4 -translate-y-2/4 fixed  ${
           isLoginModalOpen ? "top-auto opacity-100" : "-top-full opacity-0"
         }`}
       >
-        <div className="p-8 w-2/5 relative h-full flex flex-col justify-center items-start ">
+        <div className="p-8 lg:w-2/5 w-full relative lg:h-full h-4/5 flex flex-col justify-center items-start ">
           {isSignupActive ? (
             <>
               <p className="absolute top-0 left-0 w-full  text-center text-blue font-bold text-3xl py-4">
@@ -274,10 +274,10 @@ const Login = ({ isLoginModalOpen, setisLoginModalOpen }) => {
           )}
         </div>
 
-        <div className="w-3/5 h-full relative">
+        <div className="lg:w-3/5 w-full  lg:h-full h-1/5 relative">
           <div
             onClick={() => setisLoginModalOpen(false)}
-            className="absolute right-0 top-0 z-50 w-8 h-8 flex justify-center items-center rounded-full font-medium text-2xl leading-none cursor-pointer"
+            className="absolute right-2 top-2 z-50 w-8 h-8 flex justify-center items-center rounded-full font-medium text-2xl leading-none cursor-pointer"
           >
             <AiOutlineClose className="text-white" />
           </div>
