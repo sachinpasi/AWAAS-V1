@@ -46,9 +46,9 @@ const ProjectDetails = () => {
   return (
     <Layout>
       <Banner />
-      {isLoading && <Loader />}
+      {/* {isLoading && <Loader />} */}
       <ProjectDetailsSection />
-      <Projects Title="Similar Project In Panipat" />
+      {/* <Projects Title="Similar Project In Panipat" /> */}
     </Layout>
   );
 };

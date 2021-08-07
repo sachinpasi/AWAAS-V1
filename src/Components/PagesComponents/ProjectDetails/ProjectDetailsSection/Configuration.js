@@ -101,7 +101,7 @@ const Configuration = () => {
         ))}
       </div>
       <div className="w-full h-full flex justify-end items-center py-4">
-        <button className="bg-blue px-8 py-3 rounded text-white font-medium text-lg">
+        <button className="bg-blue lg:px-8 px-4 py-3 rounded text-white font-medium lg:text-lg text-base">
           Contact To Developer
         </button>
       </div>

@@ -41,19 +41,19 @@ const ProjectNav = () => {
   }, [ActiveParentTab, ActiveChildTab]);
   return (
     <div className="w-full h-32 border-1 border-projectsborder rounded px-4">
-      <div className="flex justify-start items-center w-full h-3/5 border-b-1 py-4">
+      <div className="flex justify-start items-center overflow-x-scroll scrollbar-hide w-full h-3/5 border-b-1 lg:py-4">
         {Data.parent_child?.map((item, index) => (
           <div
             key={index}
             onClick={() => setActiveParentTab(`${item.title}[${index}]`)}
-            className={`px-7 py-2 ${
+            className={`px-7 lg:py-2 py-1.5 ${
               ActiveParentTab === `${item.title}[${index}]`
                 ? "bg-blue"
                 : "bg-extralightgray"
             } rounded-full cursor-pointer mr-4`}
           >
             <p
-              className={`text-lg font-medium text-center ${
+              className={`lg:text-lg text-base font-medium text-center ${
                 ActiveParentTab === `${item.title}[${index}]`
                   ? "text-white"
                   : "text-darkgray"
@@ -64,7 +64,7 @@ const ProjectNav = () => {
           </div>
         ))}
       </div>
-      <div className="w-full h-2/5 flex items-center justify-start">
+      <div className="w-full h-2/5 flex items-center justify-start overflow-x-scroll scrollbar-hide">
         {Data?.parent_child?.map((item, index) => (
           <Fragment key={index}>
             {ActiveParentTab === `${item.title}[${index}]` &&
@@ -81,7 +81,7 @@ const ProjectNav = () => {
                   }`}
                 >
                   <p
-                    className={`text-base font-medium capitalize  px-2  ${
+                    className={`lg:text-base text-sm font-medium capitalize  px-2  ${
                       ActiveChildTab === `${childItem.new_name}[${index}]`
                         ? "text-blue"
                         : "text-darkgray"

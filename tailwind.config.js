@@ -43,8 +43,10 @@ module.exports = {
       },
       width: {
         "70percent": "70%",
+        "69percent": "69%",
         "72percent": "72%",
         "30percent": "30%",
+        "29percent": "29%",
         "65percent": "65%",
         "90vw": "90vw",
         "80vw": "80vw",
