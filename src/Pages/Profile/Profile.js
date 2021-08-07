@@ -5,7 +5,12 @@ import Sidebar from "../../Components/PagesComponents/Profile/Sidebar";
 const Profile = () => {
   return (
     <Layout>
-      <main className="w-full min-h-screen bg-white relative flex items-center justify-between ">
+      <main className=" hidden w-full min-h-screen bg-white relative lg:flex items-center justify-between ">
+        <Sidebar />
+        <div className="w-4/5 h-full p-8 -mt-28"></div>
+      </main>
+
+      <main className=" lg:hidden w-full min-h-screen bg-white relative  items-center justify-between pt-16 pb-12 ">
         <Sidebar />
         <div className="w-4/5 h-full p-8 -mt-28"></div>
       </main>

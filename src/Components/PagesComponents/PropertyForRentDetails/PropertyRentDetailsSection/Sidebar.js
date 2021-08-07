@@ -5,7 +5,7 @@ import { selectPropertyRentDetails } from "../../../../Redux/_features/_Property
 const Sidebar = () => {
   const { Data } = useSelector(selectPropertyRentDetails);
   return (
-    <div className="w-full bg-blue rounded p-4 sticky top-5 py-8 ">
+    <div className="w-full bg-blue rounded p-4 sticky top-5 py-8 mt-4 lg:mt-0 ">
       <div
         style={{
           borderBottom: "1px solid #2F5FBE",

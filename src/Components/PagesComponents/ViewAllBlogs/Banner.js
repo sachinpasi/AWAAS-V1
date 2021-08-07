@@ -4,10 +4,9 @@ const Banner = () => {
   return (
     <section
       style={{
-        background: "url(/assets/images/articles/bg.jpg)",
-        backgroundPosition: "center",
+        backgroundImage: "url(/assets/images/articles/bg.jfif)",
       }}
-      className="w-full h-350px "
+      className="w-full h-350px bg-no-repeat bg-cover bg-center "
     >
       <div className="w-full h-full bg-black bg-opacity-50">
         <div className="customContainer h-full flex flex-col items-center justify-center">

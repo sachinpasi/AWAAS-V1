@@ -86,13 +86,13 @@ const ProfilePropertyListing = () => {
       <main className="w-full min-h-screen bg-white relative flex  justify-between ">
         <Sidebar />
         {isLoading && <Loader />}
-        <div className="w-4/5 h-full p-8 ">
+        <div className="lg:w-4/5 w-full h-full p-8 pt-36 lg:pt-8 ">
           <div>
             <p className="text-3xl w-80 border-b-2  border-green pb-4">
               Your Property Listings
             </p>
           </div>
-          <div className="flex flex-col">
+          <div className="hidden flex flex-col">
             <div className=" my-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                 <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -113,7 +113,7 @@ const ProfilePropertyListing = () => {
                         </th>
                         <th
                           scope="col"
-                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
                         >
                           Sell / Rent
                         </th>
@@ -192,6 +192,21 @@ const ProfilePropertyListing = () => {
                 </div>
               </div>
             </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 w-full justify-center items-center my-4">
+            {PropertyList.map((item) => (
+              <div className="w-full bg-green h-40 rounded-2xl flex justify-between items-center p-4">
+                {console.log(item)}
+                <div className="w-3/12 bg-blue h-full rounded-2xl overflow-hidden ">
+                  <img
+                    className="w-full h-full object-center object-cover"
+                    src={JSON.parse(item?.photos)[0]}
+                    alt=""
+                  />
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </main>

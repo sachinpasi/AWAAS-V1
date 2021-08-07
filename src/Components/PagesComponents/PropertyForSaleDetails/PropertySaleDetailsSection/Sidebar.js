@@ -5,7 +5,7 @@ import { selectProjectDetails } from "../../../../Redux/_features/_ProjectDetail
 const Sidebar = () => {
   const { Data } = useSelector(selectProjectDetails);
   return (
-    <div className="w-full bg-blue rounded p-4 sticky top-5 py-8 ">
+    <div className="w-full bg-blue rounded p-4 sticky top-5 py-8 mt-4 lg:mt-0 ">
       <div
         style={{
           borderBottom: "1px solid #2F5FBE",

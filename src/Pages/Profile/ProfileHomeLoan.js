@@ -42,9 +42,9 @@ const ProfileHomeLoan = () => {
       <main className="w-full min-h-screen bg-white relative flex  justify-between ">
         <Sidebar />
         {isLoading && <Loader />}
-        <div className="w-4/5 h-full p-8 ">
+        <div className="lg:w-4/5 w-full h-full p-8 pt-36 lg:pt-8 ">
           <div>
-            <p className="text-3xl w-96 border-b-2  border-green pb-4">
+            <p className="text-3xl lg:w-96 w-full border-b-2  border-green pb-4">
               Your Home Loan Application
             </p>
           </div>

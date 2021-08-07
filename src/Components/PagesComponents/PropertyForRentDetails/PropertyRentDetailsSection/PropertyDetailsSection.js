@@ -11,8 +11,8 @@ import Amenities from "./Amenities";
 const PropertyDetailsSection = () => {
   return (
     <section className="w-full h-full flex justify-between my-24">
-      <div className=" customContainer h-full flex justify-between ">
-        <div style={{ width: "69%" }} className=" h-full ">
+      <div className=" w-90vw lg:w-80vw mx-auto h-full flex lg:flex-row flex-col justify-between ">
+        <div className=" h-full lg:w-69percent w-full ">
           <PriceSection />
           <Gallery />
 
@@ -20,12 +20,7 @@ const PropertyDetailsSection = () => {
           <Amenities />
           <PropertyDescription />
         </div>
-        <div
-          style={{
-            width: "29%",
-          }}
-          className="w-3/12 h-auto  relative"
-        >
+        <div className="lg:w-29percent w-full  h-auto  relative">
           <Sidebar />
         </div>
       </div>

@@ -22,19 +22,19 @@ const Banner = () => {
         }}
         className="w-full h-full"
       >
-        <div className="  relative customContainer w-full h-full flex flex-col items-start justify-center">
+        <div className=" relative lg:w-80vw w-90vw mx-auto h-full flex flex-col items-start justify-center">
           <p
             style={{
               textShadow: "2px 3px 5px #000",
             }}
-            className="text-5xl text-white tracking-tight capitalize "
+            className="text-white lg:text-5xl text-4xl tracking-tight font-medium uppercase"
           >
             {Data?.title}
           </p>
           <div className="flex justify-center items-center py-4 ">
             <div className="flex justify-center items-center">
               <MdLocationOn className="text-blue text-3xl font-medium" />
-              <p className="text-white text-lg font-medium">
+              <p className="text-white lg:text-lg text-base font-medium whitespace-nowrap">
                 {Data?.locality_name}, {Data?.city}
               </p>{" "}
             </div>
@@ -45,8 +45,8 @@ const Banner = () => {
             {/* )} */}
           </div>
           <nav
-            className="flex items-center justify-start h-20 w-full bg-white shadow-lg absolute -bottom-10
-           rounded"
+            className=" flex items-center overflow-x-scroll scrollbar-hide justify-start h-20 w-full bg-white shadow-lg absolute lg:-bottom-10
+           rounded top-full mt-4 lg:mt-0"
           >
             <NavItemLink To="#configuration" Name="Configuration" />
             <NavItemLink To="#description" Name="Description" />
@@ -64,7 +64,9 @@ export default Banner;
 
 const NavItemLink = ({ Name, To }) => (
   <a href={To} className="mx-6">
-    <p className="text-lg text-darkgray font-medium cursor-pointer">{Name}</p>
+    <p className="text-lg text-darkgray font-medium cursor-pointer whitespace-nowrap">
+      {Name}
+    </p>
   </a>
 );
 

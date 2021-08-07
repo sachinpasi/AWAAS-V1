@@ -92,7 +92,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      <nav className="w-full h-auto absolute  z-10">
+      <nav className="w-full h-auto absolute  z-50">
         <div className="lg:hidden w-full fixed z-50 flex justify-between items-center bg-white  shadow-md  ">
           <div className="py-4 pl-4">
             <img className="w-44" src="/assets/images/logo/logo2.svg" alt="" />

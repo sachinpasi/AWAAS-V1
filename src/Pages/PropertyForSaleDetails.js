@@ -1,7 +1,9 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+
+import Loader from "../Components/Preloader/Loader";
 
 import { API } from "../API";
 import {
@@ -16,8 +18,10 @@ import PropertySale from "../Components/PagesComponents/Homepage/PropertySale/Pr
 const PropertyForSaleDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const [isLoading, setisLoading] = useState(false);
 
   const FetchData = async () => {
+    setisLoading(true);
     const res = await axios.get(`${API}/property/id/${id}`);
     console.log(res.data.data);
     if (res.status === 200) {
@@ -26,6 +30,7 @@ const PropertyForSaleDetails = () => {
           Data: res.data.data,
         })
       );
+      setisLoading(false);
     }
   };
   useEffect(() => {
@@ -38,6 +43,7 @@ const PropertyForSaleDetails = () => {
 
   return (
     <Layout>
+      {isLoading && <Loader />}
       <Banner />
       <PropertySaleSection />
       <PropertySale />

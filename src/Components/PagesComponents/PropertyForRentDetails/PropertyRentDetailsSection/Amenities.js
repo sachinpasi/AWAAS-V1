@@ -21,21 +21,20 @@ const Amenities = () => {
       <div className="w-full border-b-1 border-projectsborder py-4 ">
         <p className="text-3xl text-darkgray ">Amenities</p>
       </div>
-      <div className=" py-4 flex  flex-wrap">
+      <div className=" py-4 lg:flex  flex-wrap grid-cols-2 grid  ">
         {AmenitiesList?.map((item, index) => (
           <div
             key={index}
-            style={{
-              width: "calc(100% / 4 )",
-            }}
-            className="flex justify-center my-4 items-center flex-col cursor-pointer"
+            className="flex lg:w-1/4 w-full justify-center my-4 items-center flex-col cursor-pointer"
           >
             <img
-              className="object-contain w-1/5 h-auto"
+              className="object-contain lg:w-1/5 w-2/6 h-auto"
               src={item.icon}
               alt=""
             />
-            <p className="text-lg capitalize my-2 ">{item.name}</p>
+            <p className="lg:text-lg text-sm capitalize my-2 whitespace-nowrap ">
+              {item.name}
+            </p>
           </div>
         ))}{" "}
       </div>

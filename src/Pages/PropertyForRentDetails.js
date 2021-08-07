@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { API } from "../API";
@@ -11,12 +11,15 @@ import {
 } from "../Redux/_features/_PropertyRentDetailsSlice";
 import PropertyRent from "../Components/PagesComponents/Homepage/PropertyRent/PropertyRent";
 import PropertyRentSection from "../Components/PagesComponents/PropertyForRentDetails/PropertyRentDetailsSection/PropertyDetailsSection";
+import Loader from "../Components/Preloader/Loader";
 
 const PropertyForRentDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const [isLoading, setisLoading] = useState(false);
 
   const FetchData = async () => {
+    setisLoading(true);
     const res = await axios.get(`${API}/property/id/${id}`);
     console.log(res.data.data);
     if (res.status === 200) {
@@ -25,6 +28,7 @@ const PropertyForRentDetails = () => {
           Data: res.data.data,
         })
       );
+      setisLoading(false);
     }
   };
   useEffect(() => {
@@ -36,6 +40,7 @@ const PropertyForRentDetails = () => {
   }, [id]);
   return (
     <Layout>
+      {isLoading && <Loader />}
       <Banner />
       <PropertyRentSection />
       <PropertyRent />
