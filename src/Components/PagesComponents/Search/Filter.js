@@ -197,7 +197,7 @@ const Filter = ({
   );
 
   return (
-    <div className="w-3/12 relative ">
+    <div className="hidden lg:block w-3/12 relative ">
       <div
         className={`w-full sticky -top-96 h-auto bg-white my-4 rounded shadow-xl  `}
       >

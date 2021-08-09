@@ -34,7 +34,7 @@ const Search = () => {
         PropertyType={PropertyType}
       />
       <main className="bg-textbg pt-28">
-        <div className="customContainer flex h-full justify-between  ">
+        <div className="lg:w-80vw w-90vw mx-auto flex h-full justify-between  ">
           <Filter
             setParentPropertyType={setParentPropertyType}
             ParentPropertyType={ParentPropertyType}

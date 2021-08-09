@@ -92,7 +92,7 @@ const Result = ({ PropertyFor }) => {
     locality_id,
   ]);
   return (
-    <div className="w-72percent  h-auto flex flex-col items-start  my-4">
+    <div className="lg:w-72percent w-full  h-auto flex flex-col items-start  my-4">
       {/* <p className="text-sm text-widgetborder ">Home > Property in Panipat</p> */}
       {isLoading && <Loader />}
       <p className="text-2xl text-darkgray my-2 leading-8 capitalize">
@@ -105,7 +105,7 @@ const Result = ({ PropertyFor }) => {
           <div
             //
             key={index}
-            className="bg-white h-64 w-full p-4 rounded-md shadow-md border-b-4 border-blue  my-4"
+            className="bg-white lg:h-64 w-full ;g:p-4 p-2 rounded-md shadow-md border-b-4 border-blue  my-4"
           >
             <div className="w-full  h-full flex">
               {item.photos === null ? (
@@ -123,21 +123,24 @@ const Result = ({ PropertyFor }) => {
                 />
               )}
 
-              <div className="ml-4 w-70percent flex flex-col ">
-                <div className="w-full my-2 flex flex-col items-start border-b-1 border-dashed border-navborder pb-2">
-                  <p className="text-base  text-widgetborder capitalize ">
+              <div className="lg:ml-4 ml-2 w-70percent flex flex-col ">
+                <div className="w-full lg:my-2 my-1 flex flex-col items-start border-b-1 border-dashed border-navborder lg:pb-2">
+                  <p className="lg:text-base text-sm  text-widgetborder capitalize ">
                     {item?.city}
                   </p>
-                  <p className="text-2xl py-1  font-medium text-darkgray capitalize">
+                  <p className="lg:text-2xl text-xl lg:py-1  font-medium text-darkgray capitalize">
                     {item?.title}
                   </p>
-                  <div className="flex my-1 justify-between w-3/4">
+                  <div className="flex my-1 flex-wrap justify-between w-full lg:w-3/4">
                     {item?.configuration.map((item, index) => (
-                      <div key={index} className="flex flex-col">
-                        <p className="text-sm text-blue capitalize">
+                      <div key={index} className="flex flex-col  lg:w-auto ">
+                        <p className="lg:text-sm text-xs text-blue capitalize">
                           {item?.title}
                         </p>
-                        <p className="font-medium text-lg capitalize">
+                        <p
+                          className="font-medium lg:text-lg text-sm
+                         capitalize"
+                        >
                           {item?.title === "price" && <span>&#8377; </span>}
                           {item?.val}
                         </p>
@@ -145,18 +148,18 @@ const Result = ({ PropertyFor }) => {
                     ))}
                   </div>
 
-                  <p className=" line-clamp-1 capitalize w-11/12 text-widgetborder">
+                  <p className=" line-clamp-1 text-sm lg:text-base capitalize w-11/12 text-widgetborder">
                     {item?.description}
                   </p>
                 </div>
                 <div className="flex h-full justify-between items-center w-full">
-                  <p className="text-base text-blue font-medium capitalize">
-                    Posted On - {item?.date}
+                  <p className="lg:text-base text-xs text-blue font-medium capitalize flex flex-col">
+                    <p>Posted On -</p> {item?.date}
                   </p>
 
                   <Link
                     to={`property/${item.property_for}/${item.p_id}`}
-                    className="bg-green rounded px-4 py-2 font-medium text-white"
+                    className="bg-green rounded px-4 py-2 font-medium lg:text-base text-sm text-white"
                   >
                     View Property
                   </Link>

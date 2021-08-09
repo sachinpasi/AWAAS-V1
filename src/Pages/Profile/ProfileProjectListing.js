@@ -33,6 +33,7 @@ const ProfileProjectListing = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     FetchProjectListing();
   }, []);
 

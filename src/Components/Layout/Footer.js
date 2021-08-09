@@ -186,7 +186,7 @@ const Footer = () => {
             Subscribe to our Newsletter
           </p>
 
-          <div className="flex justify-between flex-col lg:flex-row items-center lg:h-10 w-full lg:3/4">
+          <div className="flex justify-between flex-col lg:flex-row items-center lg:h-10 w-full lg:w-2/4">
             <input
               style={{
                 background: "#4F525A",

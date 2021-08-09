@@ -35,6 +35,7 @@ const ProfileHomeLoan = () => {
 
   useEffect(() => {
     FetchHomeLoanList();
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -48,7 +49,7 @@ const ProfileHomeLoan = () => {
               Your Home Loan Application
             </p>
           </div>
-          <div className="flex flex-col">
+          <div className="hidden  flex-col">
             <div className=" my-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                 <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -129,7 +130,7 @@ const ProfileHomeLoan = () => {
                               to={`/profile/home-loan/${item.id}`}
                               className="text-white font-medium py-2 px-6 bg-green rounded"
                             >
-                              View Details
+                              Track Progress
                             </Link>
                           </td>
                         </tr>
@@ -139,6 +140,59 @@ const ProfileHomeLoan = () => {
                 </div>
               </div>
             </div>
+          </div>
+
+          <div className="w-full grid my-4">
+            {HomeLoanList.map((item) => (
+              <div
+                key={item.id}
+                className="w-full bg-white lg:h-28 my-2 rounded-xl shadow-lg lg:p-4 p-6 lg:px-8 flex flex-col lg:flex-row lg:items-center lg:justify-between items-start"
+              >
+                <div className=" flex-col flex lg:items-center my-1">
+                  <p className="uppercase text-sm font-medium ">
+                    Application Id
+                  </p>
+                  <p className="whitespace-nowrap text-sm text-gray-500">
+                    {item.id}
+                  </p>
+                </div>
+                <div className="flex-col flex lg:items-center my-1">
+                  <p className="uppercase text-sm font-medium">
+                    Applicant Name
+                  </p>
+                  <p className="text-base text-gray-500">{item.name}</p>
+                </div>
+
+                <div className="flex-col flex lg:items-center my-1">
+                  <p className="uppercase text-sm font-medium ">Status</p>
+                  <span className=" inline-flex text-sm leading-5 font-semibold capitalize rounded-full bg-green-100 text-gray-500">
+                    {item.status}
+                  </span>
+                </div>
+                <div className="flex-col flex lg:items-center my-1">
+                  <p className="uppercase text-sm font-medium">Applied On</p>
+                  <td className="whitespace-nowrap text-sm text-gray-500">
+                    {getDate(item.created_at)}
+                  </td>
+                </div>
+                <div className=" lg:hidden flex-col flex h-10 bg-green mt-4 ">
+                  <Link
+                    to={`/profile/home-loan/${item.id}`}
+                    className=" font-medium py-2 px-6 bg-white border-green border-1 text-green rounded hover:bg-green hover:text-white transform transition-colors"
+                  >
+                    Track Progress
+                  </Link>
+                </div>
+                <div className="  hidden lg:flex text-sm font-medium">
+                  <Link
+                    to={`/profile/home-loan/${item.id}`}
+                    className=" font-medium py-2 px-6 bg-white border-green border-1 text-green rounded hover:bg-green hover:text-white transform transition-colors"
+                  >
+                    Track Progress
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </main>
