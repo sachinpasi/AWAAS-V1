@@ -33,7 +33,7 @@ const Search = () => {
         setPropertyType={setPropertyType}
         PropertyType={PropertyType}
       />
-      <main className="bg-textbg pt-28">
+      <main className="bg-textbg lg:pt-28 pt-20">
         <div className="lg:w-80vw w-90vw mx-auto flex h-full justify-between  ">
           <Filter
             setParentPropertyType={setParentPropertyType}
@@ -42,6 +42,8 @@ const Search = () => {
             PropertyFor={PropertyFor}
             setPropertyType={setPropertyType}
             PropertyType={PropertyType}
+            setPropertyFor={setPropertyFor}
+            setLocality={setLocality}
           />
           <Result />
         </div>

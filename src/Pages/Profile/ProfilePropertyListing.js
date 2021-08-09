@@ -202,7 +202,6 @@ const ProfilePropertyListing = () => {
               const Photo = JSON.parse(item?.photos)[0];
               return (
                 <div className="w-full bg-white shadow-lg lg:h-40 h-44 rounded-2xl flex justify-between items-center p-3">
-                  {console.log(item)}
                   <div className="w-3/12  h-full rounded-2xl overflow-hidden ">
                     {Photo ? (
                       <img

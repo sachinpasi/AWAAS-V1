@@ -105,7 +105,7 @@ const Result = ({ PropertyFor }) => {
           <div
             //
             key={index}
-            className="bg-white lg:h-64 w-full ;g:p-4 p-2 rounded-md shadow-md border-b-4 border-blue  my-4"
+            className="bg-white lg:h-64 w-full lg:p-4 p-2 rounded-md shadow-md border-b-4 border-blue  my-4"
           >
             <div className="w-full  h-full flex">
               {item.photos === null ? (
@@ -148,18 +148,18 @@ const Result = ({ PropertyFor }) => {
                     ))}
                   </div>
 
-                  <p className=" line-clamp-1 text-sm lg:text-base capitalize w-11/12 text-widgetborder">
+                  <p className=" line-clamp-1 text-xs mb-2 lg:text-base  capitalize w-11/12 text-widgetborder">
                     {item?.description}
                   </p>
                 </div>
                 <div className="flex h-full justify-between items-center w-full">
-                  <p className="lg:text-base text-xs text-blue font-medium capitalize flex flex-col">
-                    <p>Posted On -</p> {item?.date}
+                  <p className="lg:text-base text-xs text-blue font-medium capitalize flex flex-col lg:flex-row">
+                    <p>Posted On - </p> {item?.date}
                   </p>
 
                   <Link
                     to={`property/${item.property_for}/${item.p_id}`}
-                    className="bg-green rounded px-4 py-2 font-medium lg:text-base text-sm text-white"
+                    className="bg-green rounded lg:px-4 px-3 lg:py-2 py-1 font-medium lg:text-base text-sm text-white"
                   >
                     View Property
                   </Link>

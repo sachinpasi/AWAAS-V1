@@ -846,13 +846,13 @@ const ApplyHomeLoan = () => {
             <div className="flex w-full justify-between">
               <label className="customfileUpload bg-blue font-medium w-72 my-2">
                 Upload Pan Card
-                <input type="file" onChange={HandlePanCardChange} />
+                <input type="file" {...register("pancard")} />
               </label>
             </div>
             <div className="flex flex-col w-full  items-start">
               <label className="customfileUpload bg-blue font-medium w-72 my-2">
                 Upload ID Proof
-                <input type="file" onChange={HandleIdCardChange} />
+                <input type="file" {...register("id_card")} />
               </label>
               <p>* Adhaar Card / Driver's License / Voter's ID / Passport</p>
             </div>
@@ -883,6 +883,8 @@ const ApplyHomeLoan = () => {
             {Fields.map((index, i) => {
               const fieldName = `FIELD[${index}]`;
               const Sno = i + 1;
+
+              console.log(index, i);
               return (
                 <fieldset
                   name={fieldName}
@@ -1355,16 +1357,18 @@ const ApplyHomeLoan = () => {
                   <div className="w-full flex flex-col items-end ">
                     <div
                       onClick={removeField(i)}
-                      className="bg-red cursor-pointer text-white flex justify-center items-center font-medium text-xl py-2 w-72 my-4"
+                      className="border-1 border-red cursor-pointer text-red flex justify-center items-center uppercase font-medium text-xl py-2 w-72 my-4"
                     >
-                      Remove Field
+                      Remove APPLICANT
                     </div>
-                    <div
-                      onClick={addField}
-                      className="bg-blue cursor-pointer text-white flex justify-center items-center font-medium text-xl py-2 w-72 my-4"
-                    >
-                      ADD APPLICANT +
-                    </div>
+                    {Fields.length < 2 && (
+                      <div
+                        onClick={addField}
+                        className="bg-blue cursor-pointer text-white flex justify-center items-center font-medium text-xl py-2 w-72 my-4"
+                      >
+                        ADD APPLICANT +
+                      </div>
+                    )}
                   </div>
                 </fieldset>
               );
