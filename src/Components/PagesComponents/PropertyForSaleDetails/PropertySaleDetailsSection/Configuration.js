@@ -13,7 +13,7 @@ const Configuration = () => {
         <p className="text-3xl text-darkgray ">Configuration</p>
       </div>
 
-      <div className="w-full h-full grid lg:grid-cols-3  gap-6 my-4 ">
+      <div className="w-full h-full grid grid-cols-2 lg:grid-cols-3  lg:gap-6 gap-2 my-4 ">
         {Data?.configuration?.slice(0, 5).map((item, index) => (
           <div
             key={index}

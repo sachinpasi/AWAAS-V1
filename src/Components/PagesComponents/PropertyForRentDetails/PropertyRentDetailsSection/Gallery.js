@@ -15,9 +15,9 @@ const Gallery = () => {
   return (
     <div
       id="gallery"
-      className="w-full h-full border-1 border-projectsborder rounded px-4 my-4"
+      className="w-full h-full border-1 border-projectsborder rounded lg:px-4 my-4"
     >
-      <div className="w-full border-b-1 border-projectsborder py-4 ">
+      <div className="w-full border-b-1 border-projectsborder py-4 px-2 lg:px-0 ">
         <p className="text-3xl text-darkgray ">Project Gallery</p>
       </div>
       <div className="py-4">

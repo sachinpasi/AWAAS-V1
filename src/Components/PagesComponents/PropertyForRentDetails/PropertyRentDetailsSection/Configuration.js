@@ -13,7 +13,7 @@ const Configuration = () => {
         <p className="text-3xl text-darkgray ">Configuration</p>
       </div>
 
-      <div className="w-full h-full grid lg:grid-cols-3  gap-6 my-4 ">
+      <div className="w-full h-full grid lg:grid-cols-3 grid-cols-2  lg:gap-6 gap-2 my-4 ">
         {Data?.configuration?.slice(0, 5).map((item, index) => (
           <div
             key={index}
@@ -22,8 +22,12 @@ const Configuration = () => {
             }}
             className="w-full h-24 border-1 border-projectsborder rounded shadow-xl cursor-pointer  flex flex-col justify-center items-center"
           >
-            <p className="text-base text-white uppercase">{item?.title}</p>
-            <p className="text-2xl font-medium text-white ">{item?.value}</p>
+            <p className="lg:text-base text-sm text-white uppercase text-center">
+              {item?.title}
+            </p>
+            <p className="text-2xl font-medium text-white capitalize">
+              {item?.value}
+            </p>
           </div>
         ))}
       </div>

@@ -75,6 +75,7 @@ const Result = ({ PropertyFor }) => {
 
   useEffect(() => {
     FetchQuery();
+    window.scrollTo(0, 0);
     // eslint-disable-next-line
   }, [
     Filter,
@@ -92,7 +93,7 @@ const Result = ({ PropertyFor }) => {
     locality_id,
   ]);
   return (
-    <div className="lg:w-72percent w-full  h-auto flex flex-col items-start  my-4">
+    <div className="lg:w-72percent w-full min-h-screen  h-auto flex flex-col items-start  my-4">
       {/* <p className="text-sm text-widgetborder ">Home > Property in Panipat</p> */}
       {isLoading && <Loader />}
       <p className="text-2xl text-darkgray my-2 leading-8 capitalize">

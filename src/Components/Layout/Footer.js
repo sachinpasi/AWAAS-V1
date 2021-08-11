@@ -101,6 +101,17 @@ const Footer = () => {
                 Blogs
               </Link>
             </li>
+            <li>
+              <Link
+                to="/feedback"
+                style={{
+                  color: "#88909F",
+                }}
+                className="text-base "
+              >
+                Feedback
+              </Link>
+            </li>
           </ul>
 
           <ul className="lg:hidden flex flex-col justify-between items-start w-11/12">
@@ -179,6 +190,17 @@ const Footer = () => {
                 className="text-xl "
               >
                 Blogs
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/feedback"
+                style={{
+                  color: "#88909F",
+                }}
+                className="text-xl "
+              >
+                Feedback
               </Link>
             </li>
           </ul>

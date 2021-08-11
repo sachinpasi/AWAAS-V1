@@ -69,9 +69,9 @@ const Step1 = () => {
   ]);
 
   return (
-    <div className="w-full h-full flex justify-between ">
+    <div className="w-full h-full flex lg:flex-row flex-col justify-between ">
       <SideImage />
-      <div className="w-65percent flex flex-col items-start justify-between border-1  min-h-70vh h-full p-8 py-6">
+      <div className="lg:w-65percent w-full flex flex-col items-start justify-between border-1  min-h-70vh h-full lg:p-8 p-4 py-6">
         <div className="w-full h-full flex flex-col items-start justify-start">
           <p className="text-2xl font-medium">I Am Looking To</p>
           <div className="my-8 flex justify-between items-center border-b-2 pb-4">
@@ -113,14 +113,14 @@ const Step1 = () => {
             </div>
           </div>
           <p className="text-2xl font-medium">Type of property?</p>
-          <div className="my-8 flex justify-between items-center border-b-2 pb-4">
+          <div className="lg:my-8 my-2 flex flex-wrap lg:justify-between items-center border-b-2 pb-4">
             <div
               onClick={() => setSelectedParent_Property("residential")}
-              className={`px-7 py-2 ${
+              className={`px-4 py-2 ${
                 SelectedParent_Property === "residential"
                   ? "bg-blue"
                   : "bg-littlelightgray"
-              }  rounded-full cursor-pointer mr-4`}
+              }  rounded-full cursor-pointer mr-4 my-3`}
             >
               <p
                 className={`text-base font-medium text-center ${
@@ -134,7 +134,7 @@ const Step1 = () => {
             </div>
             <div
               onClick={() => setSelectedParent_Property("commercial")}
-              className={`px-7 py-2 ${
+              className={`px-4 py-2 ${
                 SelectedParent_Property === "commercial"
                   ? "bg-blue"
                   : "bg-littlelightgray"
@@ -152,7 +152,7 @@ const Step1 = () => {
             </div>
             <div
               onClick={() => setSelectedParent_Property("industrial")}
-              className={`px-7 py-2 ${
+              className={`px-4 py-2 ${
                 SelectedParent_Property === "industrial"
                   ? "bg-blue"
                   : "bg-littlelightgray"
@@ -170,10 +170,10 @@ const Step1 = () => {
             </div>
           </div>
           {SelectedParent_Property === "residential" && (
-            <div className=" flex  items-center flex-wrap ">
+            <div className=" flex  items-center flex-wrap my-4 ">
               <div
                 onClick={() => setSelectedProperty_Type("land")}
-                className={`px-7 py-2 ${
+                className={`px-6 py-2 ${
                   SelectedProperty_Type === "land"
                     ? "bg-blue"
                     : "bg-littlelightgray"
@@ -191,7 +191,7 @@ const Step1 = () => {
               </div>
               <div
                 onClick={() => setSelectedProperty_Type("flat")}
-                className={`px-7 py-2 ${
+                className={`px-6 py-2 ${
                   SelectedProperty_Type === "flat"
                     ? "bg-blue"
                     : "bg-littlelightgray"
@@ -209,7 +209,7 @@ const Step1 = () => {
               </div>
               <div
                 onClick={() => setSelectedProperty_Type("villa")}
-                className={`px-7 py-2 ${
+                className={`px-6 py-2 ${
                   SelectedProperty_Type === "villa"
                     ? "bg-blue"
                     : "bg-littlelightgray"
@@ -245,7 +245,7 @@ const Step1 = () => {
               </div> */}
               <div
                 onClick={() => setSelectedProperty_Type("floor")}
-                className={`px-7 py-2 ${
+                className={`px-6 py-2 ${
                   SelectedProperty_Type === "floor"
                     ? "bg-blue"
                     : "bg-littlelightgray"
@@ -263,7 +263,7 @@ const Step1 = () => {
               </div>{" "}
               <div
                 onClick={() => setSelectedProperty_Type("farmhouse")}
-                className={`px-7 py-2 ${
+                className={`px-6 py-2 ${
                   SelectedProperty_Type === "farmhouse"
                     ? "bg-blue"
                     : "bg-littlelightgray"
@@ -283,10 +283,10 @@ const Step1 = () => {
           )}
 
           {SelectedParent_Property === "commercial" && (
-            <div className=" flex  items-center flex-wrap ">
+            <div className=" flex  items-center flex-wrap my-4 ">
               <div
                 onClick={() => setSelectedProperty_Type("land")}
-                className={`px-7 py-2 ${
+                className={`px-6 py-2 ${
                   SelectedProperty_Type === "land"
                     ? "bg-blue"
                     : "bg-littlelightgray"
@@ -304,7 +304,7 @@ const Step1 = () => {
               </div>{" "}
               <div
                 onClick={() => setSelectedProperty_Type("shop")}
-                className={`px-7 py-2 ${
+                className={`px-6 py-2 ${
                   SelectedProperty_Type === "shop"
                     ? "bg-blue"
                     : "bg-littlelightgray"
@@ -322,7 +322,7 @@ const Step1 = () => {
               </div>{" "}
               <div
                 onClick={() => setSelectedProperty_Type("office")}
-                className={`px-7 py-2 ${
+                className={`px-6 py-2 ${
                   SelectedProperty_Type === "office"
                     ? "bg-blue"
                     : "bg-littlelightgray"
@@ -342,10 +342,10 @@ const Step1 = () => {
           )}
 
           {SelectedParent_Property === "industrial" && (
-            <div className=" flex  items-center flex-wrap ">
+            <div className=" flex  items-center flex-wrap my-4 ">
               <div
                 onClick={() => setSelectedProperty_Type("land")}
-                className={`px-7 py-2 ${
+                className={`px-6 py-2 ${
                   SelectedProperty_Type === "land"
                     ? "bg-blue"
                     : "bg-littlelightgray"
@@ -363,7 +363,7 @@ const Step1 = () => {
               </div>
               <div
                 onClick={() => setSelectedProperty_Type("factory")}
-                className={`px-7 py-2 ${
+                className={`px-6 py-2 ${
                   SelectedProperty_Type === "factory"
                     ? "bg-blue"
                     : "bg-littlelightgray"
@@ -381,7 +381,7 @@ const Step1 = () => {
               </div>
               <div
                 onClick={() => setSelectedProperty_Type("warehouse")}
-                className={`px-7 py-2 ${
+                className={`px-6 py-2 ${
                   SelectedProperty_Type === "warehouse"
                     ? "bg-blue"
                     : "bg-littlelightgray"
@@ -401,10 +401,10 @@ const Step1 = () => {
           )}
         </div>
 
-        <div className="flex justify-end w-full items-end h-full">
+        <div className="flex justify-end w-full items-end h-full my-4 lg:my-0">
           <button
             onClick={HandleStep1Submit}
-            className="bg-blue py-2 px-8 text-white font-medium text-xl tracking-tight"
+            className="bg-blue py-2 px-8 text-white font-medium text-xl tracking-tight w-full lg:w-auto rounded-full lg:rounded-none"
           >
             Continue
           </button>

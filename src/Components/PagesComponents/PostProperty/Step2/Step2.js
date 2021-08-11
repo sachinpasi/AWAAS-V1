@@ -76,23 +76,23 @@ const Step2 = () => {
       <SideImage />
       <form
         onSubmit={handleSubmit(HandleStep2Submit)}
-        className="w-65percent flex flex-col items-start justify-between border-1  min-h-70vh h-full p-8 py-6"
+        className="lg:w-65percent w-full flex flex-col items-start justify-between border-1  min-h-70vh h-full lg:p-8  py-6"
       >
         <div className="w-full h-full flex flex-col items-start justify-start">
           <Nav />
 
           {CurrentStep === 2 && (
-            <div className="py-6 w-full h-full flex flex-col justify-between">
+            <div className="py-6 w-full h-full flex flex-col justify-between px-4">
               {PostProperty?.Property_Type === "land" && (
                 <>
-                  <div className="flex justify-center items-start flex-col ">
+                  <div className="flex justify-center lg:items-start items-center flex-col ">
                     <h4 className="text-2xl font-medium  uppercase mb-4">
                       {" "}
                       Location Details
                     </h4>
 
                     <input
-                      className="border-1 h-11  px-2 text-lg w-72 my-1"
+                      className="border-1 h-11  px-2 text-lg w-72 my-1 "
                       type="text"
                       placeholder="City"
                       defaultValue="Panipat"
@@ -142,7 +142,7 @@ const Step2 = () => {
               )}
               {PostProperty?.Property_Type === "flat" && (
                 <>
-                  <div className="flex justify-center items-start flex-col ">
+                  <div className="flex justify-center lg:items-start items-center flex-col ">
                     <h4 className="text-2xl font-medium  uppercase mb-4">
                       {" "}
                       Location Details
@@ -203,7 +203,7 @@ const Step2 = () => {
 
               {PostProperty?.Property_Type === "villa" && (
                 <>
-                  <div className="flex justify-center items-start flex-col ">
+                  <div className="flex justify-center lg:items-start items-center flex-col ">
                     <h4 className="text-2xl font-medium  uppercase mb-4">
                       {" "}
                       Location Details
@@ -251,7 +251,7 @@ const Step2 = () => {
               )}
 
               {PostProperty?.Property_Type === "farmhouse" && (
-                <div className="flex justify-center items-start flex-col">
+                <div className="flex justify-center lg:items-start items-center flex-col ">
                   <h4 className="text-2xl font-medium  uppercase mb-4">
                     {" "}
                     Location Details
@@ -302,7 +302,7 @@ const Step2 = () => {
                 </div>
               )}
               {PostProperty?.Property_Type === "floor" && (
-                <div className="flex justify-center items-start flex-col">
+                <div className="flex justify-center lg:items-start items-center flex-col ">
                   <h4 className="text-2xl font-medium  uppercase mb-4">
                     {" "}
                     Location Details
@@ -357,7 +357,7 @@ const Step2 = () => {
               )}
 
               {PostProperty?.Property_Type === "office" && (
-                <div className="flex justify-center items-start flex-col">
+                <div className="flex justify-center lg:items-start items-center flex-col ">
                   <h4 className="text-2xl font-medium  uppercase mb-4">
                     {" "}
                     Location Details
@@ -420,7 +420,7 @@ const Step2 = () => {
               )}
 
               {PostProperty?.Property_Type === "shop" && (
-                <div className="flex justify-center items-start flex-col">
+                <div className="flex justify-center lg:items-start items-center flex-col ">
                   <h4 className="text-2xl font-medium  uppercase mb-4">
                     {" "}
                     Location Details
@@ -489,7 +489,7 @@ const Step2 = () => {
 
               {(PostProperty?.Property_Type === "factory" ||
                 PostProperty?.Property_Type === "warehouse") && (
-                <div className="flex justify-center items-start flex-col">
+                <div className="flex justify-center lg:items-start items-center flex-col ">
                   <h4 className="text-2xl font-medium  uppercase mb-4">
                     {" "}
                     Location Details
@@ -543,16 +543,16 @@ const Step2 = () => {
             </div>
           )}
         </div>
-        <div className="w-full   flex justify-end items-end">
+        <div className="w-full   flex flex-col lg:flex-row justify-end lg:items-end items-center px-4 lg:px-0">
           <button
             onClick={HandlePrevious}
-            className="w-44 h-12 bg-blue text-xl font-medium text-white"
+            className="lg:w-44 w-full h-12 bg-blue text-xl font-medium text-white my-2 rounded-full"
           >
             Previous
           </button>
           <button
             type="submit"
-            className="w-44  h-12 bg-blue text-xl font-medium text-white ml-2"
+            className="lg:w-44 w-full h-12 bg-blue text-xl font-medium text-white my-2 rounded-full"
           >
             Next
           </button>

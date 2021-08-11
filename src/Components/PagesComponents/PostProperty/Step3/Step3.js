@@ -71,7 +71,7 @@ const Step3 = () => {
       <SideImage />
       <form
         onSubmit={handleSubmit(HandleStep3Submit)}
-        className="w-65percent flex flex-col items-start justify-between border-1  min-h-70vh h-full p-8 py-6"
+        className="lg:w-65percent w-full flex flex-col items-start justify-between border-1  min-h-70vh h-full lg:p-8  py-6"
       >
         <div className="w-full h-full flex flex-col items-start justify-start">
           <Nav />
@@ -79,7 +79,7 @@ const Step3 = () => {
             <div className="py-6 w-full h-full flex flex-col justify-between">
               {PostProperty?.Property_Type === "land" && (
                 <>
-                  <div className="flex justify-center items-start flex-col ">
+                  <div className="flex justify-center lg:items-start items-center flex-col ">
                     <h4 className="text-2xl font-medium  uppercase mb-4">
                       Area Details
                     </h4>

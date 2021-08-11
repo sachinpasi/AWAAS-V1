@@ -28,6 +28,7 @@ import ProfileHomeLoan from "../Pages/Profile/ProfileHomeLoan";
 import ProfileHomeLoanDetails from "../Pages/Profile/ProfileHomeLoanDetails";
 import ProfilePropertyListing from "../Pages/Profile/ProfilePropertyListing";
 import ProfileProjectListing from "../Pages/Profile/ProfileProjectListing";
+import Feedback from "../Pages/Feedback";
 
 const Routes = () => {
   return (
@@ -39,6 +40,7 @@ const Routes = () => {
         <Route exact path="/news/:id" component={NewsDetails} />
         <Route exact path="/search" component={Search} />
         <Route exact path="/search/projects" component={ViewAllProjects} />
+        <Route exact path="/feedback" component={Feedback} />
 
         <Route exact path="/home-loans" component={Homeloan} />
         <Route exact path="/about-us" component={Aboutus} />

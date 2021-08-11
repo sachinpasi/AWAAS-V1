@@ -200,6 +200,7 @@ const Filter = ({
     params.delete("furnished_status");
 
     history.push({ pathname: "/search", search: params.toString() });
+    setisFilterOpen(!isFilterOpen);
   };
 
   const Option = ({ Value, title }) => (
@@ -241,214 +242,493 @@ const Filter = ({
   return (
     <>
       <div
+        onClick={() => setisFilterOpen(!isFilterOpen)}
+        className={`w-full h-full fixed bg-black bg-opacity-30 left-0 right-0 top-0 bottom-0  ${
+          isFilterOpen ? "" : "hidden"
+        }`}
+      ></div>
+      <div
         style={{
-          transition: "ease-in-out 0.3s all",
+          transition: "ease-in-out 0.2s all",
         }}
-        className={`w-full h-full fixed bg-textbg left-0 right-0  z-30  px-4 py-20 ${
+        className={` w-full h-4/5 fixed bg-white left-0 right-0  z-30  px-4 overflow-y-scroll  ${
           isFilterOpen ? "bottom-0" : "-bottom-full"
         } `}
       >
-        <div className=" h-full w-full  flex flex-col items-start">
-          <input
-            defaultValue="Panipat"
-            disabled
-            className=" w-2/4 h-10 border-1 border-widgetborder rounded  cursor-not-allowed my-0.5  bg-white text-base text-darkgray  px-4"
-          ></input>
-          <select
-            value={PropertyFor}
-            onChange={(e) => setPropertyFor(e.target.value)}
-            className=" h-10 w-2/4 mr-2 border-1 border-widgetborder rounded  text-base px-2 my-0.5"
+        <div className="w-full flex justify-between items-center px-4 py-2 border-b-1">
+          <div
+            onClick={HandleResetFilter}
+            className="capitalize py-1 px-4   text-darkgray font-medium  text-sm flex justify-center items-center"
           >
-            <option value="sell">Buy</option>
-            <option value="rent">Rent</option>
-          </select>
-          <div className="dropdown bg-white rounded inline-block  relative my-0.5 w-2/4">
-            <button
-              onMouseEnter={() => setisAnyThingSelected(false)}
-              // onClick={() => setisAnyThingSelected(false)}
-              className="w-full  text-darkgray py-2 px-4 rounded justify-between inline-flex items-center border-1 border-widgetborder "
-            >
-              <span className="capitalize">
-                {PropertyType ? PropertyType : "Property Type"}
-              </span>
-              <BsChevronDown />
-            </button>
+            Reset
+          </div>
+          <div className="capitalize py-1 px-4  hidden  text-darkgray font-medium  text-sm flex justify-center items-center">
+            Apply
+          </div>
+        </div>
+        <div className="w-full h-20"></div>
+        <div className=" h-full w-full  flex flex-col items-start  ">
+          <div className="w-full flex justify-between items-center my-1">
+            <input
+              defaultValue="Panipat"
+              disabled
+              className=" w-2/4 h-10 border-1  border-widgetborder rounded-full  cursor-not-allowed my-0.5  bg-white text-base text-darkgray  px-4"
+            ></input>
+          </div>
+          <div className="w-full flex justify-between items-center my-1">
+            <div className="dropdown bg-white border-1  border-widgetborder rounded-full inline-block  relative w-7/12 h-10">
+              <button
+                onMouseEnter={() => setisAnyThingSelected(false)}
+                // onClick={() => setisAnyThingSelected(false)}
+                className="w-full h-full text-darkgray py-2 px-4 rounded justify-between inline-flex items-center"
+              >
+                <span className="capitalize">
+                  {PropertyType ? PropertyType : "Property Type"}
+                </span>
+                <BsChevronDown />
+              </button>
 
-            <ul
-              id="div"
-              className={`${
-                isAnyThingSelected ? "" : "dropdown-content"
-              }   hidden absolute z-20 w-full  text-darkgray  shadow-xl rounded-lg `}
+              <ul
+                id="div"
+                className={`${
+                  isAnyThingSelected ? "" : "dropdown-content"
+                }   hidden absolute z-20 w-full  text-darkgray  shadow-xl rounded-lg `}
+              >
+                <li className="dropdown w-full rounded-t-lg">
+                  <div className="rounded-t-lg cursor-pointer hover:bg-textbg w-full bg-white  py-2 px-4 block whitespace-no-wrap">
+                    Residential
+                  </div>
+                  <ul className="dropdown-content rounded-lg hidden absolute z-10 w-40 shadow-xl  text-darkgray left-full  -mt-10">
+                    <li>
+                      <div
+                        onClick={() => {
+                          setPropertyType("land");
+                          setParentPropertyType("residential");
+                          setisAnyThingSelected(true);
+                        }}
+                        className="bg-white rounded-t-lg cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                      >
+                        Land / Plot
+                      </div>
+                    </li>
+                    <li>
+                      <div
+                        onClick={() => {
+                          setPropertyType("villa");
+                          setParentPropertyType("residential");
+                          setisAnyThingSelected(true);
+                        }}
+                        className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                      >
+                        Villa / House
+                      </div>
+                    </li>
+                    <li>
+                      <div
+                        onClick={() => {
+                          setPropertyType("flat");
+                          setParentPropertyType("residential");
+                          setisAnyThingSelected(true);
+                        }}
+                        className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                      >
+                        Flat / Apartment
+                      </div>
+                    </li>
+                    <li>
+                      <div
+                        onClick={() => {
+                          setPropertyType("floor");
+                          setParentPropertyType("residential");
+                          setisAnyThingSelected(true);
+                        }}
+                        className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                      >
+                        Floor
+                      </div>
+                    </li>
+                    <li>
+                      <div
+                        onClick={() => {
+                          setPropertyType("farmhouse");
+                          setParentPropertyType("residential");
+                          setisAnyThingSelected(true);
+                        }}
+                        className="bg-white rounded-b-lg cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                      >
+                        Farmhouse
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+                <li className="dropdown w-full">
+                  <div className=" cursor-pointer hover:bg-textbg w-full bg-white  py-2 px-4 block whitespace-no-wrap">
+                    Commercial
+                  </div>
+                  <ul className="dropdown-content rounded-lg overflow-hidden hidden absolute w-40 shadow-xl  text-darkgray left-full  -mt-10">
+                    <li>
+                      <div
+                        onClick={() => {
+                          setPropertyType("land");
+                          setisAnyThingSelected(true);
+                          setParentPropertyType("commercial");
+                        }}
+                        className="bg-white  cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                      >
+                        Land / Plot
+                      </div>
+                    </li>
+                    <li>
+                      <div
+                        onClick={() => {
+                          setPropertyType("shop");
+                          setParentPropertyType("commercial");
+                          setisAnyThingSelected(true);
+                        }}
+                        className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                      >
+                        Shop / Showroom
+                      </div>
+                    </li>
+                    <li>
+                      <div
+                        onClick={() => {
+                          setPropertyType("officespace");
+                          setParentPropertyType("commercial");
+                          setisAnyThingSelected(true);
+                        }}
+                        className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                      >
+                        Officespace
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+                <li className="dropdown w-full rounded-b-lg">
+                  <div className=" cursor-pointer rounded-b-lg hover:bg-textbg w-full bg-white  py-2 px-4 block whitespace-no-wrap">
+                    Industrial
+                  </div>
+                  <ul className="dropdown-content rounded-lg   overflow-hidden hidden absolute w-40 shadow-xl  text-darkgray left-full  -mt-10">
+                    <li>
+                      <div
+                        onClick={() => {
+                          setPropertyType("land");
+                          setParentPropertyType("industrial");
+                          setisAnyThingSelected(true);
+                        }}
+                        className="bg-white  cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                      >
+                        Land / Plot
+                      </div>
+                    </li>
+                    <li>
+                      <div
+                        onClick={() => {
+                          setPropertyType("factory");
+                          setParentPropertyType("industrial");
+                          setisAnyThingSelected(true);
+                        }}
+                        className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                      >
+                        Factory / Builtup
+                      </div>
+                    </li>
+                    <li>
+                      <div
+                        onClick={() => {
+                          setPropertyType("shop");
+                          setParentPropertyType("industrial");
+                          setisAnyThingSelected(true);
+                        }}
+                        className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
+                      >
+                        Shop / Showroom
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <select
+              value={PropertyFor}
+              onChange={(e) => setPropertyFor(e.target.value)}
+              className="w-5/12 ml-4  h-10   text-base rounded-full px-2 border-widgetborder border-1"
             >
-              <li className="dropdown w-full rounded-t-lg">
-                <div className="rounded-t-lg cursor-pointer hover:bg-textbg w-full bg-white  py-2 px-4 block whitespace-no-wrap">
-                  Residential
-                </div>
-                <ul className="dropdown-content rounded-lg hidden absolute z-10 w-40 shadow-xl  text-darkgray left-full  -mt-10">
-                  <li>
-                    <div
-                      onClick={() => {
-                        setPropertyType("land");
-                        setParentPropertyType("residential");
-                        setisAnyThingSelected(true);
-                      }}
-                      className="bg-white rounded-t-lg cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
-                    >
-                      Land / Plot
-                    </div>
-                  </li>
-                  <li>
-                    <div
-                      onClick={() => {
-                        setPropertyType("villa");
-                        setParentPropertyType("residential");
-                        setisAnyThingSelected(true);
-                      }}
-                      className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
-                    >
-                      Villa / House
-                    </div>
-                  </li>
-                  <li>
-                    <div
-                      onClick={() => {
-                        setPropertyType("flat");
-                        setParentPropertyType("residential");
-                        setisAnyThingSelected(true);
-                      }}
-                      className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
-                    >
-                      Flat / Apartment
-                    </div>
-                  </li>
-                  <li>
-                    <div
-                      onClick={() => {
-                        setPropertyType("floor");
-                        setParentPropertyType("residential");
-                        setisAnyThingSelected(true);
-                      }}
-                      className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
-                    >
-                      Floor
-                    </div>
-                  </li>
-                  <li>
-                    <div
-                      onClick={() => {
-                        setPropertyType("farmhouse");
-                        setParentPropertyType("residential");
-                        setisAnyThingSelected(true);
-                      }}
-                      className="bg-white rounded-b-lg cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
-                    >
-                      Farmhouse
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              <li className="dropdown w-full">
-                <div className=" cursor-pointer hover:bg-textbg w-full bg-white  py-2 px-4 block whitespace-no-wrap">
-                  Commercial
-                </div>
-                <ul className="dropdown-content rounded-lg overflow-hidden hidden absolute w-40 shadow-xl  text-darkgray left-full  -mt-10">
-                  <li>
-                    <div
-                      onClick={() => {
-                        setPropertyType("land");
-                        setisAnyThingSelected(true);
-                        setParentPropertyType("commercial");
-                      }}
-                      className="bg-white  cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
-                    >
-                      Land / Plot
-                    </div>
-                  </li>
-                  <li>
-                    <div
-                      onClick={() => {
-                        setPropertyType("shop");
-                        setParentPropertyType("commercial");
-                        setisAnyThingSelected(true);
-                      }}
-                      className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
-                    >
-                      Shop / Showroom
-                    </div>
-                  </li>
-                  <li>
-                    <div
-                      onClick={() => {
-                        setPropertyType("officespace");
-                        setParentPropertyType("commercial");
-                        setisAnyThingSelected(true);
-                      }}
-                      className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
-                    >
-                      Officespace
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              <li className="dropdown w-full rounded-b-lg">
-                <div className=" cursor-pointer rounded-b-lg hover:bg-textbg w-full bg-white  py-2 px-4 block whitespace-no-wrap">
-                  Industrial
-                </div>
-                <ul className="dropdown-content rounded-lg   overflow-hidden hidden absolute w-40 shadow-xl  text-darkgray left-full  -mt-10">
-                  <li>
-                    <div
-                      onClick={() => {
-                        setPropertyType("land");
-                        setParentPropertyType("industrial");
-                        setisAnyThingSelected(true);
-                      }}
-                      className="bg-white  cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
-                    >
-                      Land / Plot
-                    </div>
-                  </li>
-                  <li>
-                    <div
-                      onClick={() => {
-                        setPropertyType("factory");
-                        setParentPropertyType("industrial");
-                        setisAnyThingSelected(true);
-                      }}
-                      className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
-                    >
-                      Factory / Builtup
-                    </div>
-                  </li>
-                  <li>
-                    <div
-                      onClick={() => {
-                        setPropertyType("shop");
-                        setParentPropertyType("industrial");
-                        setisAnyThingSelected(true);
-                      }}
-                      className="bg-white cursor-pointer hover:bg-textbg py-2 px-4 block whitespace-no-wrap"
-                    >
-                      Shop / Showroom
-                    </div>
-                  </li>
-                </ul>
-              </li>
-            </ul>
+              <option value="sell">Buy</option>
+              <option value="rent">Rent</option>
+            </select>
+          </div>
+          <div className="w-full flex justify-center items-center my-1">
+            <div className=" w-full  flex border-1  border-widgetborder rounded-full h-10  items-center  ">
+              <SelectSearch
+                closeOnSelect
+                onChange={(selected) => setLocality(selected)}
+                options={options}
+                placeholder="Search For Locality / Area / Sector"
+                filterOptions={fuzzySearch}
+                search
+              />
+            </div>
+          </div>
+          <div className="w-full flex justify-between items-center my-1 pb-2 ">
+            {PropertyFor === "rent" ? (
+              <div className="flex w-full justify-between ">
+                <select
+                  onChange={(e) => setBudgetMin(e.target.value)}
+                  value={BudgetMin}
+                  className="w-2/4 mr-2 text-darkgray h-10 border-1 rounded-full border-widgetborder  text-sm font-normal px-1"
+                >
+                  <option defaultChecked hidden value="">
+                    Min Budget (in Rs)
+                  </option>
+                  <Option Value="2500" title="  2500" />
+                  <Option Value="5000" title="  5000" />
+                  <Option Value="10000" title="  10000" />
+                  <Option Value="20000" title="  20000" />
+                  <Option Value="30000" title="  30000" />
+                  <Option Value="40000" title="  40000" />
+                  <Option Value="50000" title=" 50000" />
+                  <Option Value="60000" title=" 60000" />
+                  <Option Value="70000" title=" 70000" />
+                  <Option Value="80000" title=" 80000" />
+                  <Option Value="90000" title=" 90000" />
+                  <Option Value="100000" title=" 1 Lac" />
+                  <Option Value="120000" title=" 1.2 Lac" />
+                  <Option Value="140000" title=" 1.4 Lac" />
+                  <Option Value="160000" title=" 1.6 Lac" />
+                  <Option Value="180000" title=" 1.8 Lac" />
+                  <Option Value="200000" title=" 2 Lac" />
+                  <Option Value="250000" title=" 2.5 Lac" />
+                  <Option Value="300000" title=" 3 Lac" />
+                  <Option Value="350000" title=" 3.5 Lac" />
+                  <Option Value="400000" title=" 4 Lac" />
+                  <Option Value="500000" title=" 5 Lac" />
+                </select>
+                <select
+                  onChange={(e) => setBudgetMax(e.target.value)}
+                  value={BudgetMax}
+                  className="w-2/4 ml-2 text-darkgray h-10 border-1 rounded-full border-widgetborder  text-sm font-normal px-1"
+                >
+                  <option defaultChecked hidden value="">
+                    Max Budget (in Rs)
+                  </option>
+                  <Option Value="5000" title=" 5000" />
+                  <Option Value="10000" title=" 10000" />
+                  <Option Value="20000" title=" 20000" />
+                  <Option Value="30000" title=" 30000" />
+                  <Option Value="40000" title=" 40000" />
+                  <Option Value="50000" title=" 50000" />
+                  <Option Value="60000" title=" 60000" />
+                  <Option Value="70000" title=" 70000" />
+                  <Option Value="80000" title=" 80000" />
+                  <Option Value="90000" title=" 90000" />
+                  <Option Value="100000" title=" 1 Lac" />
+                  <Option Value="120000" title=" 1.2 Lac" />
+                  <Option Value="140000" title=" 1.4 Lac" />
+                  <Option Value="160000" title=" 1.6 Lac" />
+                  <Option Value="180000" title=" 1.8 Lac" />
+                  <Option Value="200000" title=" 2 Lac" />
+                  <Option Value="250000" title=" 2.5 Lac" />
+                  <Option Value="300000" title=" 3 Lac" />
+                  <Option Value="350000" title=" 3.5 Lac" />
+                  <Option Value="400000" title=" 4 Lac" />
+                  <Option Value="500000" title=" 5 Lac" />
+                  <Option Value="600000" title=" 6 Lac" />
+                </select>
+              </div>
+            ) : (
+              <div className="flex w-full justify-between items-center ">
+                <select
+                  onChange={(e) => setBudgetMin(e.target.value)}
+                  value={BudgetMin}
+                  className="w-2/4 mr-2 text-darkgray h-10 border-1 rounded-full border-widgetborder  text-sm font-normal px-2"
+                >
+                  <option selected hidden value="100000000">
+                    Min Budget (in Rs)
+                  </option>
+                  <Option Value="1000000" title=" 10 Lacs" />
+                  <Option Value="2000000" title=" 20 Lacs" />
+                  <Option Value="3000000" title=" 30 Lacs" />
+                  <Option Value="4000000" title=" 40 Lacs" />
+                  <Option Value="5000000" title=" 50 Lacs" />
+                  <Option Value="6000000" title=" 60 Lacs" />
+                  <Option Value="7000000" title=" 70 Lacs" />
+                  <Option Value="8000000" title=" 80 Lacs" />
+                  <Option Value="9000000" title=" 90 Lacs" />
+                  <Option Value="10000000" title=" 1 Cr" />
+                  <Option Value="15000000" title=" 1.5 Cr" />
+                  <Option Value="20000000" title=" 2 Cr" />
+                  <Option Value="30000000" title=" 3 Cr" />
+                  <Option Value="40000000" title=" 4 Cr" />
+                  <Option Value="50000000" title=" 5 Cr" />
+                  <Option Value="60000000" title=" 6 Cr" />
+                  <Option Value="70000000" title=" 7 Cr" />
+                  <Option Value="80000000" title=" 8 Cr" />
+                </select>
+                <select
+                  onChange={(e) => setBudgetMax(e.target.value)}
+                  value={BudgetMax}
+                  className="w-2/4 ml-2 px-2 text-darkgray h-10 border-1 rounded-full border-widgetborder  text-sm font-normal "
+                >
+                  <option defaultChecked hidden value="">
+                    Max Budget (in Rs)
+                  </option>
+                  <Option Value="1500000" title=" 15 Lacs" />
+                  <Option Value="2500000" title=" 25 Lacs" />
+                  <Option Value="3500000" title=" 35 Lacs" />
+                  <Option Value="4500000" title=" 45 Lacs" />
+                  <Option Value="5500000" title=" 55 Lacs" />
+                  <Option Value="6500000" title=" 65 Lacs" />
+                  <Option Value="7500000" title=" 75 Lacs" />
+                  <Option Value="8500000" title=" 85 Lacs" />
+                  <Option Value="9500000" title=" 95 Lacs" />
+                  <Option Value="15000000" title=" 1.5 Cr" />
+                  <Option Value="25000000" title=" 2.5 Cr" />
+                  <Option Value="35000000" title=" 3.5 Cr" />
+                  <Option Value="45000000" title=" 4.5 Cr" />
+                  <Option Value="55000000" title=" 5.5 Cr" />
+                  <Option Value="65000000" title=" 6.5 Cr" />
+                  <Option Value="75000000" title=" 7.5 Cr" />
+                  <Option Value="85000000" title=" 8.5 Cr" />
+                  <Option Value="90000000" title=" 9 Cr" />
+                </select>
+              </div>
+            )}
           </div>
 
-          <div className=" w-full my-0.5  flex  justify-between items-center border-1 border-widgetborder rounded bg-white px-4 h-10 ">
-            <SelectSearch
-              closeOnSelect
-              onChange={(selected) => setLocality(selected)}
-              options={options}
-              placeholder="Search For Locality / Area / Sector"
-              filterOptions={fuzzySearch}
-              search
-            />
+          <div className="w-full flex  flex-wrap items-center  border-t-1 py-1">
+            <div
+              onClick={() => setNoOfBedroom(1)}
+              className={`${
+                NoOfBedroom === 1
+                  ? "bg-blue border-blue text-white"
+                  : "border-widgetborder text-widgetborder"
+              }  mr-2  cursor-pointer flex justify-center items-center h-10 border-1 rounded-full  my-1   text-sm font-medium px-4`}
+            >
+              <p>+ 1BHK</p>
+            </div>
+            <div
+              onClick={() => setNoOfBedroom(2)}
+              className={`${
+                NoOfBedroom === 2
+                  ? "bg-blue border-blue text-white"
+                  : "border-widgetborder text-widgetborder"
+              }  mr-2  cursor-pointer flex justify-center items-center h-10 border-1 rounded-full my-1   text-sm font-medium px-4`}
+            >
+              <p>+ 2BHK</p>
+            </div>
+            <div
+              onClick={() => setNoOfBedroom(3)}
+              className={`${
+                NoOfBedroom === 3
+                  ? "bg-blue border-blue text-white"
+                  : "border-widgetborder text-widgetborder"
+              } mr-2  cursor-pointer flex justify-center items-center h-10 border-1 rounded-full  my-1  text-sm font-medium px-4`}
+            >
+              <p>+ 3BHK</p>
+            </div>
+            <div
+              onClick={() => setNoOfBedroom(4)}
+              className={`${
+                NoOfBedroom === 4
+                  ? "bg-blue border-blue text-white"
+                  : "border-widgetborder text-widgetborder"
+              } mr-2  cursor-pointer flex justify-center items-center h-10 border-1 rounded-full my-1   text-sm font-medium px-4`}
+            >
+              <p>+ 4BHK</p>
+            </div>
+            <div
+              onClick={() => setNoOfBedroom(5)}
+              className={`${
+                NoOfBedroom === 5
+                  ? "bg-blue border-blue text-white"
+                  : "border-widgetborder text-widgetborder"
+              } mr-2  cursor-pointer flex justify-center items-center h-10 border-1 rounded-full my-1  text-sm font-medium px-4`}
+            >
+              <p>+ 5BHK</p>
+            </div>
+          </div>
+          <div className="w-full flex items-start flex-col border-t-1 border-b-1 py-2 ">
+            <div className="flex items-center justify-between w-full my-2 ">
+              <div className=" text-darkgray font-medium ">
+                Verfied Properties
+              </div>
+              <label for="toogleA" className="flex items-center cursor-pointer">
+                <div className="relative">
+                  <input
+                    value={isVerified}
+                    checked={isVerified}
+                    onChange={() => setisVerified(!isVerified)}
+                    id="toogleA"
+                    type="checkbox"
+                    className="sr-only"
+                  />
+
+                  <div className="w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
+
+                  <div className="dot absolute w-6 h-6 bg-white rounded-full shadow -left-1 -top-1 transition"></div>
+                </div>
+              </label>
+            </div>
+            <div className="flex items-center justify-between w-full my-2">
+              <div className=" text-darkgray font-medium ">
+                Properties with Photos
+              </div>
+              <label for="toogleB" className="flex items-center cursor-pointer">
+                <div className="relative">
+                  <input
+                    value={iswithPhoto}
+                    checked={iswithPhoto}
+                    onChange={() => setiswithPhoto(!iswithPhoto)}
+                    id="toogleB"
+                    type="checkbox"
+                    className="sr-only"
+                  />
+
+                  <div className="w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
+
+                  <div className="dot absolute w-6 h-6 bg-white rounded-full shadow -left-1 -top-1 transition"></div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div className="w-full flex flex-wrap py-4">
+            <div
+              onClick={() => setFurnishedStatus("Un-Furnished")}
+              className={` ${
+                FurnishedStatus === "Un-Furnished"
+                  ? "bg-blue text-white"
+                  : "border-widgetborder text-widgetborder"
+              } mr-2 my-1 cursor-pointer flex justify-center items-center h-10 border-1 rounded-full  text-sm font-medium px-2  w-full`}
+            >
+              <p> + Unfurnished</p>
+            </div>
+            <div
+              onClick={() => setFurnishedStatus("Semi-Furnished")}
+              className={` ${
+                FurnishedStatus === "Semi-Furnished"
+                  ? "bg-blue text-white"
+                  : "border-widgetborder text-widgetborder"
+              } mr-2 my-1 cursor-pointer flex justify-center items-center h-10 border-1 rounded-full  text-sm font-medium px-2  w-full`}
+            >
+              <p> + Semifurnished</p>
+            </div>
+            <div
+              onClick={() => setFurnishedStatus("Furnished")}
+              className={` ${
+                FurnishedStatus === "Furnished"
+                  ? "bg-blue text-white"
+                  : "border-widgetborder text-widgetborder"
+              } mr-2 my-1 cursor-pointer flex justify-center items-center h-10 border-1 rounded-full  text-sm font-medium px-2  w-full`}
+            >
+              <p> + Furnished</p>
+            </div>
           </div>
         </div>
       </div>
-      <div className="fixed w-full h-16 bg-white bottom-0 left-0 right-0 border-t-1 z-40">
+
+      <div className="fixed lg:hidden w-full h-16 bg-white bottom-0 left-0 right-0 border-t-1 z-40">
         <div className="w-11/12 mx-auto flex items-center h-full">
           <div
             onClick={() => setisFilterOpen(!isFilterOpen)}

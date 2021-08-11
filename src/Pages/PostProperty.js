@@ -28,7 +28,7 @@ const PostProperty = () => {
 
   return (
     <Layout>
-      <main className="customContainer min-h-70vh h-full flex justify-center items-start py-12">
+      <main className="lg:w-80vw w-90vw mx-auto lg:min-h-70vh min-h-screen h-full flex justify-center items-start py-12 pt-20 lg:pt-12">
         {CurrentStep === 1 && <Step1 />}
         {CurrentStep === 2 && <Step2 />}
         {CurrentStep === 3 && <Step3 />}

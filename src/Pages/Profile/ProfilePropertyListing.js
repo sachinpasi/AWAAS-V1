@@ -25,7 +25,7 @@ const ProfilePropertyListing = () => {
         className="bg-black bg-opacity-50 fixed w-full h-screen top-0 bottom-0 right-0 left-0 z-50 r"
       ></div>
 
-      <div className="fixed z-50 top-2/4 left-2/4 -translate-x-2/4 transform -translate-y-2/4 llg:w-500 w-90vw lg:h-60 h-80 bg-white rounded-2xl shadow-2xl flex flex-col justify-center items-center ">
+      <div className="fixed z-50 top-2/4 left-2/4 -translate-x-2/4 transform -translate-y-2/4 lg:w-500 w-90vw lg:h-60 h-80 bg-white rounded-2xl shadow-2xl flex flex-col justify-center items-center ">
         <div>
           <p className="text-darkgray font-semibold text-4xl">Are You Sure ?</p>
         </div>
@@ -95,107 +95,6 @@ const ProfilePropertyListing = () => {
               Your Property Listings
             </p>
           </div>
-          {/* <div className="hidden flex flex-col">
-            <div className=" my-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
-              <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                  <table className="min-w-full divide-y divide-gray-200">
-                    <thead className="bg-gray-50">
-                      <tr>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                        >
-                          Property Id
-                        </th>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                        >
-                          Property Title
-                        </th>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
-                        >
-                          Sell / Rent
-                        </th>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                        >
-                          Locality - City
-                        </th>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                        >
-                          Posted On
-                        </th>
-                        <th scope="col" className="relative px-6 py-3">
-                          <span className="sr-only">Edit</span>
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className="bg-white divide-y divide-gray-200">
-                      {PropertyList.map((item) => (
-                        <tr key={item.id}>
-                          <td className="px-6 py-4 whitespace-nowrap  ">
-                            <div className="flex items-center ">
-                              <div className="">
-                                <div className="text-sm font-medium text-gray-900  ">
-                                  {item.p_id}
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap ">
-                            <div className="flex items-center">
-                              <div className="">
-                                <div className="text-sm font-medium capitalize text-gray-900">
-                                  {item.bedroom && item.bedroom}{" "}
-                                  {item.bedroom && "BHK"} {item.property_type}
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap ">
-                            <div className="text-sm text-gray-900 uppercase">
-                              {item.property_for}
-                            </div>
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <span className="px-2 inline-flex text-xs leading-5 font-semibold capitalize rounded-full bg-green-100 text-gray-800">
-                              {item.locality_name} - {item.city}
-                            </span>
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            {getDate(item.created_at)}
-                          </td>
-                          <td className="pr-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <button
-                              onClick={() => setisDeleteModalOpen(item.p_id)}
-                              className="text-white font-medium py-2 px-6 bg-red rounded"
-                            >
-                              Delete
-                            </button>
-                          </td>
-                          <td className="pr-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <Link
-                              to={`/profile/property/listings/${item.p_id}`}
-                              className="text-white font-medium py-2 px-6 bg-green rounded"
-                            >
-                              View Details
-                            </Link>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div> */}
 
           <div className="grid lg:grid-cols-2 gap-4 w-full justify-center items-center my-4">
             {PropertyList.map((item) => {
