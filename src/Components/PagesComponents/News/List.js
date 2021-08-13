@@ -58,7 +58,7 @@ const List = () => {
             {ArticlesList.map((item) => (
               <Link
                 to={`/news/${item.bid}`}
-                className="w-full flex justify-between items-center h-28 bg-white shadow-sm my-2"
+                className="w-full flex justify-between items-center lg:h-28 h-36 bg-white shadow-sm my-2"
               >
                 <div className="h-full w-28 bg-extralightgray flex flex-col py-4  relative">
                   <div className="w-full h-3/4 flex justify-center items-center text-blue font-bold text-4xl">
@@ -70,7 +70,7 @@ const List = () => {
                 </div>
 
                 <div className="w-11/12 p-4 flex flex-col items-start text-darkgray">
-                  <p className="text-2xl font-medium text-darkgray py-2">
+                  <p className="lg:text-2xl text-xl font-medium text-darkgray py-2">
                     {item.title}
                   </p>
                   <p className="text-darkgray line-clamp-1">
