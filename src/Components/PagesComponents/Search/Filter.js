@@ -76,6 +76,117 @@ const Filter = ({
 
   useEffect(() => {
     const params = new URLSearchParams();
+    if (window.outerWidth >= 1024) {
+      if (PropertyFor) {
+        if (PropertyFor) {
+          params.append("property_for", PropertyFor);
+        } else {
+          params.delete("property_for");
+        }
+      } else {
+        if (property_for) {
+          params.append("property_for", property_for);
+        } else {
+          params.delete("property_for");
+        }
+      }
+      if (Locality) {
+        if (Locality) {
+          params.append("locality_id", Locality);
+        } else {
+          params.delete("locality_id");
+        }
+      } else {
+        if (locality_id) {
+          params.append("locality_id", locality_id);
+        } else {
+          params.delete("locality_id");
+        }
+      }
+
+      if (PropertyType) {
+        if (PropertyType) {
+          params.append("property_type", PropertyType);
+        } else {
+          params.delete("property_type");
+        }
+      } else {
+        if (property_type) {
+          params.append("property_type", property_type);
+        } else {
+          params.delete("property_type");
+        }
+      }
+
+      // if (mini_budget) {
+      //   params.append("mini_budget", mini_budget);
+      // } else {
+      //   params.delete("mini_budget");
+      // }
+
+      if (BudgetMin) {
+        params.append("mini_budget", BudgetMin);
+      } else {
+        params.delete("mini_budget");
+      }
+      if (BudgetMax) {
+        params.append("max_budget", BudgetMax);
+      } else {
+        params.delete("max_budget");
+      }
+
+      if (NoOfBedroom) {
+        params.append("bedroom", NoOfBedroom);
+      } else {
+        params.delete("bedroom");
+      }
+      if (ParentPropertyType) {
+        params.append("parent_type", ParentPropertyType);
+      } else {
+        params.delete("parent_type");
+      }
+
+      if (isVerified) {
+        params.append("awaas_verify", isVerified);
+      } else {
+        params.delete("awaas_verify");
+      }
+      if (iswithPhoto) {
+        params.append("photos", iswithPhoto);
+      } else {
+        params.delete("photos");
+      }
+      if (FurnishedStatus) {
+        params.append("furnished_status", FurnishedStatus);
+      } else {
+        params.delete("furnished_status");
+      }
+
+      setPARAMS(params.toString());
+      history.push({ pathname: "/search", search: params.toString() });
+    }
+  }, [
+    mini_budget,
+    BudgetMin,
+    property_for,
+    BudgetMax,
+    property_type,
+    parent_type,
+    locality_id,
+    NoOfBedroom,
+    isVerified,
+    iswithPhoto,
+    FurnishedStatus,
+    ParentPropertyType,
+    PropertyFor,
+    history,
+    Locality,
+    PropertyType,
+  ]);
+
+  const HandleApplyFilter = () => {
+    setisFilterOpen(!isFilterOpen);
+    const params = new URLSearchParams();
     if (PropertyFor) {
       if (PropertyFor) {
         params.append("property_for", PropertyFor);
@@ -163,24 +274,7 @@ const Filter = ({
 
     setPARAMS(params.toString());
     history.push({ pathname: "/search", search: params.toString() });
-  }, [
-    mini_budget,
-    BudgetMin,
-    property_for,
-    BudgetMax,
-    property_type,
-    parent_type,
-    locality_id,
-    NoOfBedroom,
-    isVerified,
-    iswithPhoto,
-    FurnishedStatus,
-    ParentPropertyType,
-    PropertyFor,
-    history,
-    Locality,
-    PropertyType,
-  ]);
+  };
 
   const HandleResetFilter = () => {
     setNoOfBedroom(null);
@@ -262,12 +356,15 @@ const Filter = ({
           >
             Reset
           </div>
-          <div className="capitalize py-1 px-4  hidden  text-darkgray font-medium  text-sm flex justify-center items-center">
+          <div
+            onClick={HandleApplyFilter}
+            className="capitalize py-1 px-4    text-darkgray font-medium  text-sm flex justify-center items-center"
+          >
             Apply
           </div>
         </div>
-        <div className="w-full h-20"></div>
-        <div className=" h-full w-full  flex flex-col items-start  ">
+        {/* <div className="w-full h-20"></div> */}
+        <div className=" h-full w-full  flex flex-col items-start mt-10 ">
           <div className="w-full flex justify-between items-center my-1">
             <input
               defaultValue="Panipat"

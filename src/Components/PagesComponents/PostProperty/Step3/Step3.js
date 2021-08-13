@@ -71,21 +71,21 @@ const Step3 = () => {
       <SideImage />
       <form
         onSubmit={handleSubmit(HandleStep3Submit)}
-        className="lg:w-65percent w-full flex flex-col items-start justify-between border-1  min-h-70vh h-full lg:p-8  py-6"
+        className="lg:w-65percent w-full flex flex-col items-start justify-between border-1  lg:min-h-70vh h-full lg:p-8  py-6"
       >
         <div className="w-full h-full flex flex-col items-start justify-start">
           <Nav />
           {CurrentStep === 3 && (
-            <div className="py-6 w-full h-full flex flex-col justify-between">
+            <div className="py-6 w-full h-full flex flex-col justify-between ">
               {PostProperty?.Property_Type === "land" && (
                 <>
-                  <div className="flex justify-center lg:items-start items-center flex-col ">
+                  <div className="flex justify-center lg:items-start  flex-col px-2 lg:px-0 ">
                     <h4 className="text-2xl font-medium  uppercase mb-4">
                       Area Details
                     </h4>
-                    <div className="flex">
+                    <div className="flex w-full">
                       <input
-                        className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 my-1 placeholder-gray-600"
                         type="text"
                         {...register("plot_area")}
                         placeholder="Plot Area"
@@ -94,7 +94,7 @@ const Step3 = () => {
                       ></input>
                       <select
                         {...register("plot_area_type")}
-                        className="border-1 h-11  px-2 text-lg w-52 my-1 mx-2 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-52 w-2/5 my-1 mx-2 placeholder-gray-600"
                         id="plot-area-type"
                       >
                         <option>sq-fts</option>
@@ -107,10 +107,10 @@ const Step3 = () => {
                       </select>
                     </div>
 
-                    <div className="flex">
+                    <div className="flex w-full">
                       <select
                         {...register("road_connectivity")}
-                        className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 my-1 placeholder-gray-600"
                         id="road-connectivity"
                         title="Road Connectivity"
                       >
@@ -125,7 +125,7 @@ const Step3 = () => {
                       </select>
                       <select
                         {...register("length_width_type")}
-                        className="border-1 h-11  px-2 text-lg w-52  my-1  placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-52 w-2/5 my-1 mx-2 placeholder-gray-600"
                         id="plot-length-type"
                       >
                         <option>mtrs</option>
@@ -135,14 +135,14 @@ const Step3 = () => {
                     <div className="flex">
                       <input
                         {...register("length")}
-                        className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 my-1 placeholder-gray-600"
                         type="text"
                         id="plot-length"
                         placeholder="Length"
                       ></input>
                       <select
                         {...register("length_width_type")}
-                        className="border-1 h-11  px-2 text-lg w-52  my-1  placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-52 w-2/5 my-1 mx-2 placeholder-gray-600"
                       >
                         <option>fts</option>
                         <option>yards</option>
@@ -156,14 +156,14 @@ const Step3 = () => {
                     <div className="flex">
                       <input
                         {...register("width")}
-                        className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 my-1 placeholder-gray-600"
                         type="text"
                         id="plot-breadth"
                         placeholder="Width"
                       ></input>
                       <select
                         // {...register("length_width_type")}
-                        className="border-1 h-11  px-2 text-lg w-52 my-1  placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-52 w-2/5 my-1 mx-2 placeholder-gray-600"
                       >
                         <option>fts</option>
                         <option>yards</option>
@@ -175,7 +175,7 @@ const Step3 = () => {
                       </select>
                     </div>
                     <input
-                      className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                      className="border-1 h-11  px-2 text-lg w-72  my-1 placeholder-gray-600"
                       type="text"
                       {...register("total_floor")}
                       id="totalFloors"
@@ -188,19 +188,19 @@ const Step3 = () => {
               {PostProperty?.Property_Type === "flat" && (
                 <div>
                   <>
-                    <div className="flex justify-center items-start flex-col ">
+                    <div className="flex justify-center items-start flex-col px-2 lg:px-0 ">
                       <h4 className="text-2xl font-medium  uppercase mb-4">
                         Property Details
                       </h4>
-                      <div className="flex">
+                      <div className="flex w-full flex-col lg:flex-row">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1 placeholder-gray-600"
                           type="text"
                           {...register("bhk")}
                           placeholder="3 BHK / 2 BHK / 1 BHK "
                         ></input>
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1 placeholder-gray-600"
                           type="number"
                           min="1"
                           {...register("balconies")}
@@ -209,9 +209,9 @@ const Step3 = () => {
                         />
                       </div>
 
-                      <div className="flex">
+                      <div className="flex w-full flex-col lg:flex-row">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1 placeholder-gray-600"
                           type="number"
                           {...register("bedrooms")}
                           placeholder="Bedrooms"
@@ -221,7 +221,7 @@ const Step3 = () => {
                           aria-required="true"
                         />
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1 placeholder-gray-600"
                           type="number"
                           {...register("bathrooms")}
                           placeholder="Washrooms"
@@ -232,15 +232,15 @@ const Step3 = () => {
                         />
                       </div>
 
-                      <div className="flex">
+                      <div className="flex w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 my-1 placeholder-gray-600"
                           type="text"
                           {...register("carpet_area")}
                           placeholder="Carpet Area"
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 my-1 placeholder-gray-600 ml-2 lg:ml-0"
                           {...register("carpet_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -252,15 +252,15 @@ const Step3 = () => {
                         </select>
                       </div>
 
-                      <div className="flex">
+                      <div className="flex w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 my-1 placeholder-gray-600"
                           type="text"
                           {...register("built_up_area")}
                           placeholder="Built-up Area"
                         ></input>
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 my-1 placeholder-gray-600 ml-2 lg:ml-0"
                           {...register("built_up_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -272,15 +272,15 @@ const Step3 = () => {
                         </select>
                       </div>
 
-                      <div className="flex">
+                      <div className="flex w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 my-1 placeholder-gray-600"
                           type="text"
                           {...register("super_built_up_area")}
                           placeholder="Super Built-up Area"
                         ></input>
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 my-1 placeholder-gray-600 ml-2 lg:ml-0"
                           {...register("super_built_up_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -293,7 +293,7 @@ const Step3 = () => {
                       </div>
 
                       <select
-                        className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1 placeholder-gray-600 "
                         {...register("furnished")}
                         title="Furnishing Status"
                       >
@@ -303,7 +303,7 @@ const Step3 = () => {
                       </select>
 
                       <input
-                        className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1 placeholder-gray-600 "
                         type="text"
                         {...register("total_floor")}
                         placeholder="Basement + Stilt + No. of Floors"
@@ -311,14 +311,14 @@ const Step3 = () => {
                       ></input>
 
                       <input
-                        className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1 placeholder-gray-600 "
                         type="text"
                         {...register("floor_no")}
                         placeholder="Property Floor No."
                         id="floorNo"
                       ></input>
                     </div>
-                    <div>
+                    <div className="px-2 lg:px-0">
                       <p className="text-xl my-2">Possession </p>
                       <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
                         <input
@@ -462,20 +462,20 @@ const Step3 = () => {
               {PostProperty?.Property_Type === "villa" && (
                 <div>
                   <>
-                    <div className="flex justify-center items-start flex-col ">
+                    <div className="flex justify-center items-start flex-col px-2 lg:px-0 ">
                       <h4 className="text-2xl font-medium  uppercase mb-4">
                         Property Details
                       </h4>
                       <div>
                         <select
-                          className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full mr-2 my-1 placeholder-gray-600"
                           {...register("house_type")}
                         >
                           <option>Independent House</option>
                           <option>Villa</option>
                         </select>
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full mr-2 my-1 placeholder-gray-600"
                           type="number"
                           {...register("balconies")}
                           placeholder="Balconies"
@@ -485,7 +485,7 @@ const Step3 = () => {
                       </div>
                       <div>
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full mr-2 my-1 placeholder-gray-600"
                           type="number"
                           {...register("bedrooms")}
                           placeholder="Bedrooms"
@@ -495,7 +495,7 @@ const Step3 = () => {
                           min="1"
                         />
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full mr-2 my-1 placeholder-gray-600"
                           type="number"
                           {...register("bathrooms")}
                           placeholder="Washrooms"
@@ -505,15 +505,15 @@ const Step3 = () => {
                           min="1"
                         />
                       </div>
-                      <div>
+                      <div className="flex w-full ">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           {...register("carpet_area")}
                           placeholder="Carpet Area"
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-52 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
                           {...register("carpet_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -524,15 +524,15 @@ const Step3 = () => {
                           <option>bigha</option>
                         </select>
                       </div>
-                      <div>
+                      <div className="flex w-full ">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           {...register("built_up_area")}
                           placeholder="Built-up Area"
                         ></input>
                         <select
-                          className="border-1 h-11  px-2 text-lg w-52 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
                           {...register("built_up_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -543,16 +543,16 @@ const Step3 = () => {
                           <option>bigha</option>
                         </select>
                       </div>
-                      <div>
+                      <div className="flex w-full ">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           {...register("super_built_up_area")}
                           placeholder="Super Built-up Area"
                         ></input>
 
                         <select
-                          className="border-1 h-11  px-2 text-lg w-52 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
                           {...register("super_built_up_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -565,7 +565,7 @@ const Step3 = () => {
                       </div>
 
                       <select
-                        className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full mr-2 my-1 placeholder-gray-600"
                         {...register("furnished")}
                         title="Furnishing Status"
                       >
@@ -575,14 +575,14 @@ const Step3 = () => {
                       </select>
 
                       <select
-                        className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full mr-2 my-1 placeholder-gray-600"
                         {...register("simplex_duplex")}
                       >
                         <option value="simplex">Simplex</option>
                         <option value="duplex">Duplex</option>
                       </select>
                     </div>
-                    <div>
+                    <div className="mx-2 lg:mx-0">
                       <p className="text-xl my-2">Possession </p>
                       <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
                         <input
@@ -724,7 +724,7 @@ const Step3 = () => {
               {PostProperty?.Property_Type === "floor" && (
                 <div>
                   <>
-                    <div className="flex justify-center items-start flex-col ">
+                    <div className="flex justify-center items-start flex-col mx-2 lg:mx-0 ">
                       <h4 className="text-2xl font-medium  uppercase mb-4">
                         Property Details
                       </h4>
@@ -743,21 +743,21 @@ const Step3 = () => {
                       </div>
                       <div>
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                           type="number"
                           {...register("bedrooms")}
                           placeholder="Bedrooms"
                           min="1"
                         />
                         <input
-                          className="border-1 h-11  px-2 text-lg w-64 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                           type="number"
                           {...register("bathrooms")}
                           placeholder="Washrooms"
                           min="1"
                         />
                         <input
-                          className="border-1 h-11  px-2 text-lg w-64 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                           type="number"
                           {...register("balconies")}
                           placeholder="Balconies"
@@ -765,15 +765,15 @@ const Step3 = () => {
                           min="1"
                         />
                       </div>
-                      <div>
+                      <div className="flex w-full ">
                         <input
                           type="text"
                           {...register("carpet_area")}
                           placeholder="Carpet Area"
-                          className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-52 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
                           {...register("carpet_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -784,15 +784,15 @@ const Step3 = () => {
                           <option>bigha</option>
                         </select>
                       </div>
-                      <div>
+                      <div className="flex w-full ">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           {...register("built_up_area")}
                           placeholder="Built-up Area"
                         ></input>
                         <select
-                          className="border-1 h-11  px-2 text-lg w-52 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
                           {...register("built_up_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -803,15 +803,15 @@ const Step3 = () => {
                           <option>bigha</option>
                         </select>
                       </div>
-                      <div>
+                      <div className="flex w-full ">
                         <input
                           type="text"
                           {...register("super_built_up_area")}
                           placeholder="Super Built-up Area"
-                          className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
                         ></input>
                         <select
-                          className="border-1 h-11  px-2 text-lg w-52 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
                           {...register("super_built_up_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -822,9 +822,9 @@ const Step3 = () => {
                           <option>bigha</option>
                         </select>
                       </div>
-                      <div>
+                      <div className="w-full">
                         <select
-                          className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                           {...register("furnished")}
                           title="Furnishing Status"
                         >
@@ -833,18 +833,18 @@ const Step3 = () => {
                           <option>Un-Furnished</option>
                         </select>
                       </div>
-                      <div>
+                      <div className="w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                           type="text"
                           {...register("total_floor")}
                           placeholder="Basement + Stilt + No. of Floors"
                           id="totalFloors"
                         ></input>
                       </div>
-                      <div>
+                      <div className="w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                           type="text"
                           {...register("floor_no")}
                           placeholder="Property Floor No."
@@ -852,13 +852,13 @@ const Step3 = () => {
                         ></input>
                       </div>
                     </div>
-                    <div>
+                    <div className="px-2 lg:px-0">
                       <p className="text-xl my-2">Possession </p>
                       <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
                         <input
                           className=" w-5 h-5 "
                           type="radio"
-                          {...register("bedrooms")}
+                          // {...register("bedrooms")}
                           {...register("possession")}
                           value="Under Construction"
                           onClick={(e) =>
@@ -1006,7 +1006,7 @@ const Step3 = () => {
                             color: "#999999",
                             cursor: "not-allowed",
                           }}
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                           name="propertyname"
                           type="text"
                           placeholder="City"
@@ -1017,7 +1017,7 @@ const Step3 = () => {
                       </div>
                       <div className="flex">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                           type="number"
                           {...register("bedrooms")}
                           placeholder="Bedrooms"
@@ -1027,7 +1027,7 @@ const Step3 = () => {
                           min="1"
                         />
                         <input
-                          className="border-1 h-11  px-2 text-lg w-64 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                           type="number"
                           {...register("bathrooms")}
                           placeholder="Washrooms"
@@ -1037,7 +1037,7 @@ const Step3 = () => {
                           aria-required="true"
                         />
                         <input
-                          className="border-1 h-11  px-2 text-lg w-64 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                           type="number"
                           {...register("balconies")}
                           placeholder="Balconies"
@@ -1050,10 +1050,10 @@ const Step3 = () => {
                           type="text"
                           {...register("plot_area")}
                           placeholder="Total Plot Area"
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                         ></input>
                         <select
-                          className="border-1 h-11  px-2 text-lg w-52 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                           {...register("plot_area_type")}
                         >
                           <option>Sq-fts</option>
@@ -1069,10 +1069,10 @@ const Step3 = () => {
                           type="text"
                           {...register("carpet_area")}
                           placeholder="Carpet Area"
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-52 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                           {...register("carpet_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -1088,10 +1088,10 @@ const Step3 = () => {
                           type="text"
                           {...register("built_up_area")}
                           placeholder="Built-up Area"
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                         ></input>
                         <select
-                          className="border-1 h-11  px-2 text-lg w-52 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                           {...register("built_up_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -1107,10 +1107,10 @@ const Step3 = () => {
                           type="text"
                           {...register("super_built_up_area")}
                           placeholder="Super Built-up Area"
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                         ></input>
                         <select
-                          className="border-1 h-11  px-2 text-lg w-52 mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                           {...register("super_built_up_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -1125,7 +1125,7 @@ const Step3 = () => {
                         <select
                           {...register("furnished")}
                           title="Furnishing Status"
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                         >
                           <option>Furnished</option>
                           <option>Semi-Furnished</option>
@@ -1275,13 +1275,13 @@ const Step3 = () => {
               {PostProperty?.Property_Type === "office" && (
                 <div>
                   <>
-                    <div className="flex justify-center items-start flex-col ">
+                    <div className="flex justify-center items-start flex-col mx-2 lg:mx-0 ">
                       <h4 className="text-2xl font-medium  uppercase mb-4">
                         Property Details
                       </h4>
-                      <div>
+                      <div className="w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                           style={{
                             background: "#EEEEEE",
                             color: "#999999",
@@ -1294,9 +1294,9 @@ const Step3 = () => {
                         ></input>
                       </div>
 
-                      <div>
+                      <div className="w-full flex">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           id="carpet-area"
                           placeholder="Carpet Area"
@@ -1305,7 +1305,7 @@ const Step3 = () => {
                         <select
                           {...register("carpet_area_type")}
                           id="carpet-type"
-                          className="border-1 h-11  px-2 text-lg w-52 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
@@ -1315,16 +1315,16 @@ const Step3 = () => {
                           <option>bigha</option>
                         </select>
                       </div>
-                      <div>
+                      <div className="w-full flex">
                         <input
                           type="text"
                           {...register("super_built_up_area")}
                           placeholder="Super Built-up Area"
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
                         ></input>
                         <select
                           {...register("super_built_up_area_type")}
-                          className="border-1 h-11  px-2 text-lg w-52 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
@@ -1334,9 +1334,9 @@ const Step3 = () => {
                           <option>bigha</option>
                         </select>
                       </div>
-                      <div>
+                      <div className="w-full">
                         <select
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                           {...register("furnished")}
                           title="Furnishing Status"
                         >
@@ -1374,13 +1374,13 @@ const Step3 = () => {
                         </div>
                       </div>
                       <input
-                        className="border-1 h-11  px-2 text-lg w-96 my-1 mr-2 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                         type="text"
                         {...register("total_floor")}
                         placeholder="Atrium Floor / Ground Floor / Floor No."
                       ></input>
                     </div>
-                    <div>
+                    <div className="mx-2">
                       <p className="text-xl my-2">Availability Status </p>
                       <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
                         <input
@@ -1522,20 +1522,23 @@ const Step3 = () => {
               {PostProperty?.Property_Type === "shop" && (
                 <div>
                   <>
-                    <div className="flex justify-center items-start flex-col ">
+                    <div className="flex justify-center items-start flex-col mx-2 lg:mx-0 ">
                       <h4 className="text-2xl font-medium  uppercase mb-4">
                         Property Details
                       </h4>
                       <div></div>
 
-                      <div>
+                      <div className="flex w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           {...register("carpet_area")}
                           placeholder="Carpet Area"
                         />
-                        <select {...register("carpet_area_type")}>
+                        <select
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
+                          {...register("carpet_area_type")}
+                        >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
@@ -1544,14 +1547,17 @@ const Step3 = () => {
                           <option>bigha</option>
                         </select>
                       </div>
-                      <div>
+                      <div className="flex w-full">
                         <input
                           type="text"
                           {...register("super_built_up_area")}
                           placeholder="Super Built-up Area"
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
                         ></input>
-                        <select {...register("super_built_up_area_type")}>
+                        <select
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
+                          {...register("super_built_up_area_type")}
+                        >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
@@ -1560,9 +1566,9 @@ const Step3 = () => {
                           <option>bigha</option>
                         </select>
                       </div>
-                      <div>
+                      <div className="w-full">
                         <select
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                           {...register("furnished")}
                           title="Furnishing Status"
                         >
@@ -1599,13 +1605,13 @@ const Step3 = () => {
                         </div>
                       </div>
                       <input
-                        className="border-1 h-11  px-2 text-lg w-96 my-1 mr-2 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                         type="text"
                         {...register("floor_no")}
                         placeholder="Basement / Ground Floor / Floor No."
                       ></input>
                     </div>
-                    <div>
+                    <div className="mx-2">
                       <p className="text-xl my-2">Availability Status </p>
                       <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
                         <input
@@ -1747,31 +1753,31 @@ const Step3 = () => {
               {PostProperty?.Property_Type === "factory" && (
                 <div>
                   <>
-                    <div className="flex justify-center items-start flex-col ">
+                    <div className="flex justify-center items-start flex-col mx-2 lg:mx-0 ">
                       <h4 className="text-2xl font-medium  uppercase mb-4">
                         Property Details
                       </h4>
                       <div></div>
 
-                      <div>
+                      <div className="w-full">
                         <div>
                           <select
-                            className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                             {...register("house_type")}
                           >
                             <option>Factory</option>
                             <option>Builtup</option>
                           </select>
                         </div>
-                        <div>
+                        <div className="w-full flex">
                           <input
-                            className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-3/4 mr-2 my-1 placeholder-gray-600"
                             type="text"
                             {...register("plot_area")}
                             placeholder="Total Plot Area"
                           ></input>
                           <select
-                            className="border-1 h-11  px-2 text-lg w-52 my-1 mr-2 placeholder-gray-600"
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
                             {...register("plot_area_type")}
                           >
                             <option>Sq-ft</option>
@@ -1782,21 +1788,21 @@ const Step3 = () => {
                             <option>bigha</option>
                           </select>
                         </div>
-                        <div className="flex">
+                        <div className="flex ">
                           <input
-                            className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 mr-2 my-1 placeholder-gray-600"
                             type="text"
                             {...register("length")}
                             placeholder="Length"
                           ></input>
                           <input
-                            className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 mr-2 my-1 placeholder-gray-600"
                             type="text"
                             {...register("width")}
                             placeholder="Width"
                           ></input>
                           <select
-                            className="border-1 h-11  px-2 text-lg w-40 my-1 mr-2 placeholder-gray-600"
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
                             {...register("length_width_type")}
                           >
                             <option>feets</option>
@@ -1807,33 +1813,35 @@ const Step3 = () => {
                             <option>bigha</option>
                           </select>
                         </div>
-                        <input
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
-                          type="text"
-                          {...register("carpet_area")}
-                          placeholder="Carpet Area"
-                        />
-                        <select
-                          className="border-1 h-11  px-2 text-lg w-52 my-1 mr-2 placeholder-gray-600"
-                          {...register("carpet_area_type")}
-                        >
-                          <option>Sq-ft</option>
-                          <option>Sq-mt</option>
-                          <option>Sq-yards</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                          <option>bigha</option>
-                        </select>
+                        <div className="w-full flex">
+                          <input
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
+                            type="text"
+                            {...register("carpet_area")}
+                            placeholder="Carpet Area"
+                          />
+                          <select
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
+                            {...register("carpet_area_type")}
+                          >
+                            <option>Sq-ft</option>
+                            <option>Sq-mt</option>
+                            <option>Sq-yards</option>
+                            <option>acres</option>
+                            <option>hectares</option>
+                            <option>bigha</option>
+                          </select>
+                        </div>
                       </div>
-                      <div>
+                      <div className="w-full flex">
                         <input
                           type="text"
                           {...register("super_built_up_area")}
                           placeholder="Super Built-up Area"
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
                         ></input>
                         <select
-                          className="border-1 h-11  px-2 text-lg w-52 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
                           {...register("super_built_up_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -1846,7 +1854,7 @@ const Step3 = () => {
                       </div>
 
                       <input
-                        className="border-1 h-11  px-2 text-lg w-96 my-1 mr-2 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                         type="text"
                         name=""
                         {...register("floor_no")}
@@ -1862,7 +1870,7 @@ const Step3 = () => {
                         <option>Un-Furnished</option>
                       </select>
                     </div>
-                    <div>
+                    <div className="w-full mx-2">
                       <p className="text-xl my-2">Availability Status </p>
                       <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
                         <input
@@ -2004,7 +2012,7 @@ const Step3 = () => {
               {PostProperty?.Property_Type === "warehouse" && (
                 <div>
                   <>
-                    <div className="flex justify-center items-start flex-col ">
+                    <div className="flex justify-center items-start flex-col mx-2 lg:mx-0 ">
                       <h4 className="text-2xl font-medium  uppercase mb-4">
                         Property Details
                       </h4>
@@ -2013,7 +2021,7 @@ const Step3 = () => {
                       <div>
                         <div>
                           <select
-                            className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                             {...register("house_type")}
                             aria-invalid="false"
                           >
@@ -2021,15 +2029,15 @@ const Step3 = () => {
                             <option>Godown</option>
                           </select>
                         </div>
-                        <div>
+                        <div className="flex">
                           <input
-                            className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
                             type="text"
                             {...register("plot_area")}
                             placeholder="Total Plot Area"
                           ></input>
                           <select
-                            className="border-1 h-11  px-2 text-lg w-52 my-1 mr-2 placeholder-gray-600"
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
                             {...register("plot_area_type")}
                           >
                             <option>Sq-ft</option>
@@ -2040,21 +2048,21 @@ const Step3 = () => {
                             <option>bigha</option>
                           </select>
                         </div>
-                        <div>
+                        <div className="flex">
                           <input
-                            className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-1/3 mr-2 my-1 placeholder-gray-600"
                             type="text"
                             {...register("length")}
                             placeholder="Length"
                           ></input>
                           <input
-                            className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-1/3 mr-2 my-1 placeholder-gray-600"
                             type="text"
                             {...register("width")}
                             placeholder="Width"
                           ></input>
                           <select
-                            className="border-1 h-11  px-2 text-lg w-52 my-1 mr-2 placeholder-gray-600"
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-1/3 lg:mr-2 my-1 placeholder-gray-600"
                             {...register("length_width_type")}
                           >
                             <option>feets</option>
@@ -2066,15 +2074,15 @@ const Step3 = () => {
                           </select>
                         </div>
 
-                        <div>
+                        <div className="w-full flex">
                           <input
-                            className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
                             type="text"
                             {...register("plot_area")}
                             placeholder="Total Plot Area"
                           ></input>
                           <select
-                            className="border-1 h-11  px-2 text-lg w-52 my-1 mr-2 placeholder-gray-600"
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
                             id="area-type"
                           >
                             <option>Sq-ft</option>
@@ -2085,21 +2093,21 @@ const Step3 = () => {
                             <option>bigha</option>
                           </select>
                         </div>
-                        <div>
+                        <div className="w-full flex">
                           <input
-                            className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-1/3 mr-2 my-1 placeholder-gray-600"
                             type="text"
                             id="lengthArea"
                             placeholder="Length"
                           ></input>
                           <input
-                            className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-1/3 mr-2 my-1 placeholder-gray-600"
                             type="text"
                             id="widthArea"
                             placeholder="Width"
                           ></input>
                           <select
-                            className="border-1 h-11  px-2 text-lg w-52 my-1 mr-2 placeholder-gray-600"
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-1/3 lg:mr-2 my-1 placeholder-gray-600"
                             id="lwtype"
                           >
                             <option>feets</option>
@@ -2110,33 +2118,36 @@ const Step3 = () => {
                             <option>bigha</option>
                           </select>
                         </div>
-                        <input
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
-                          type="text"
-                          id="carpet-area"
-                          placeholder="Carpet Area"
-                        />
-                        <select
-                          className="border-1 h-11  px-2 text-lg w-52 my-1 mr-2 placeholder-gray-600"
-                          id="carpet-type"
-                        >
-                          <option>Sq-ft</option>
-                          <option>Sq-mt</option>
-                          <option>Sq-yards</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                          <option>bigha</option>
-                        </select>
+
+                        <div className="w-full flex">
+                          <input
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
+                            type="text"
+                            id="carpet-area"
+                            placeholder="Carpet Area"
+                          />
+                          <select
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
+                            id="carpet-type"
+                          >
+                            <option>Sq-ft</option>
+                            <option>Sq-mt</option>
+                            <option>Sq-yards</option>
+                            <option>acres</option>
+                            <option>hectares</option>
+                            <option>bigha</option>
+                          </select>
+                        </div>
                       </div>
-                      <div>
+                      <div className="w-full flex">
                         <input
                           type="text"
                           id="super-built-area"
                           placeholder="Super Built-up Area"
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 lg:mr-2 my-1 placeholder-gray-600"
                         ></input>
                         <select
-                          className="border-1 h-11  px-2 text-lg w-52 my-1 mr-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
                           id="super-built-type"
                         >
                           <option>Sq-ft</option>
@@ -2149,14 +2160,14 @@ const Step3 = () => {
                       </div>
 
                       <input
-                        className="border-1 h-11  px-2 text-lg w-96 my-1 mr-2 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                         type="text"
                         name=""
                         id="totalFloors"
                         placeholder="Basement / Ground Floor / Floor No."
                       ></input>
                     </div>
-                    <div>
+                    <div className="mx-2">
                       <p className="text-xl my-2">Availability Status </p>
                       <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
                         <input
@@ -2265,7 +2276,7 @@ const Step3 = () => {
                       )}
                     </div>
 
-                    <div>
+                    <div className="mx-2">
                       <p className="text-xl my-2">Purchase Type</p>
                       <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
                         <input
@@ -2300,16 +2311,16 @@ const Step3 = () => {
           )}
         </div>
 
-        <div className="w-full   flex justify-end items-end">
+        <div className="w-full   flex lg:flex-row flex-col  lg:justify-end justify-center lg:items-end items-center px-2 lg:px-0">
           <button
             onClick={HandlePrevious}
-            className="w-44 h-12 bg-blue text-xl font-medium text-white"
+            className="lg:w-44 w-full  h-12 bg-blue text-xl font-medium text-white rounded-full lg:rounded-none my-1 lg:my-0"
           >
             Previous
           </button>
           <button
             type="submit"
-            className="w-44  h-12 bg-blue text-xl font-medium text-white ml-2"
+            className="lg:w-44 w-full  h-12 bg-blue text-xl font-medium text-white lg:ml-2 rounded-full lg:rounded-none my-1 lg:my-0"
           >
             Next
           </button>

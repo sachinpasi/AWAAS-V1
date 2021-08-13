@@ -97,12 +97,12 @@ const Step4 = () => {
       <SideImage />
       <form
         onSubmit={handleSubmit(HandleStep4Submit)}
-        className="w-65percent flex flex-col items-start justify-between border-1  min-h-70vh h-full p-8 py-6"
+        className="lg:w-65percent w-full flex flex-col items-start justify-between border-1  min-h-70vh h-full lg:p-8  py-6"
       >
         <div className="w-full h-full flex flex-col items-start justify-start">
           <Nav />
           {CurrentStep === 4 && (
-            <div className="py-6 w-full h-full flex flex-col justify-between">
+            <div className="py-6 w-full h-full flex flex-col justify-between px-2 lg:px-0">
               {PostProperty?.Property_Type === "land" &&
                 PostProperty?.Property_For === "rent" && (
                   <>
@@ -110,21 +110,22 @@ const Step4 = () => {
                       <h4 className="text-2xl font-medium  uppercase mb-4">
                         Price Details
                       </h4>
-                      <div className="flex justify-start items-center">
-                        <p className="mr-4">&#8377;</p>
+                      <div className="flex flex-wrap justify-start items-center">
+                        <div className="flex items-center  ">
+                          <p className="mr-4">&#8377;</p>
 
-                        <input
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                          type="text"
-                          {...register("expected_rent")}
-                          placeholder="Expected Rent"
-                          value={TotalAmount}
-                          onChange={(e) => setTotalAmount(e.target.value)}
-                          onKeyUp={ConvertToWord}
-                          required=""
-                          aria-required="true"
-                        ></input>
-
+                          <input
+                            className="border-1 h-11   px-2 text-lg w-72 my-1 placeholder-gray-600"
+                            type="text"
+                            {...register("expected_rent")}
+                            placeholder="Expected Rent"
+                            value={TotalAmount}
+                            onChange={(e) => setTotalAmount(e.target.value)}
+                            onKeyUp={ConvertToWord}
+                            required=""
+                            aria-required="true"
+                          ></input>
+                        </div>
                         <span className="ml-4">{ConvertedTotalAmount}</span>
                       </div>{" "}
                       <div className="flex justify-start items-center">
@@ -146,31 +147,33 @@ const Step4 = () => {
                         </span>
                       </div>{" "}
                       <div className="flex justify-start items-center">
-                        <p className="mr-4">&#8377;</p>
+                        <div className="flex items-center">
+                          <p className="mr-4">&#8377;</p>
 
-                        <input
-                          className="border-1 h-11  px-2 text-lg w-48 my-1 mr-2 placeholder-gray-600"
-                          type="text"
-                          {...register("price_per_feet")}
-                          placeholder="Price / sq. ft / sq. yard / sq. mtr"
-                          value={PricePerSpace}
-                          onChange={(e) => setPricePerSpace(e.target.value)}
-                          onKeyUp={ConvertToWord}
-                        />
-                        <select
-                          // {...register("length_width_type")}
-                          className="border-1 h-11  mx-2  px-2 text-lg w-20  my-1  placeholder-gray-600"
-                          id="plot-length-type"
-                          title="Sq-ft"
-                        >
-                          <option>fts</option>
-                          <option>yards</option>
-                          <option>mts</option>
-                          <option>Marla</option>
-                          <option>bighas</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                        </select>
+                          <input
+                            className="border-1 h-11  px-2 text-lg w-48 my-1 mr-2 placeholder-gray-600"
+                            type="text"
+                            {...register("price_per_feet")}
+                            placeholder="Price / sq. ft / sq. yard / sq. mtr"
+                            value={PricePerSpace}
+                            onChange={(e) => setPricePerSpace(e.target.value)}
+                            onKeyUp={ConvertToWord}
+                          />
+                          <select
+                            // {...register("length_width_type")}
+                            className="border-1 h-11  mx-2  px-2 text-lg w-20  my-1  placeholder-gray-600"
+                            id="plot-length-type"
+                            title="Sq-ft"
+                          >
+                            <option>fts</option>
+                            <option>yards</option>
+                            <option>mts</option>
+                            <option>Marla</option>
+                            <option>bighas</option>
+                            <option>acres</option>
+                            <option>hectares</option>
+                          </select>
+                        </div>
                         <span className="ml-4">
                           {ConvertedTotalAmountPricePerSpace}
                         </span>
@@ -186,63 +189,71 @@ const Step4 = () => {
                       <h4 className="text-2xl font-medium  uppercase mb-4">
                         Price Details
                       </h4>
-                      <div className="flex justify-start items-center">
+                      <div className="flex justify-start items-center ">
                         <p className="mr-4">&#8377;</p>
-                        <input
-                          className="border-1 h-11  px-2 text-lg w-72  my-1 placeholder-gray-600"
-                          type="text"
-                          {...register("total_price")}
-                          placeholder="Asking Price"
-                          value={TotalAmount}
-                          onChange={(e) => setTotalAmount(e.target.value)}
-                          onKeyUp={ConvertToWord}
-                          required=""
-                        />
+                        <div className="flex flex-col lg:flex-row">
+                          <input
+                            className="border-1 h-11  px-2 text-lg w-72  my-1 placeholder-gray-600"
+                            type="text"
+                            {...register("total_price")}
+                            placeholder="Asking Price"
+                            value={TotalAmount}
+                            onChange={(e) => setTotalAmount(e.target.value)}
+                            onKeyUp={ConvertToWord}
+                            required=""
+                          />
 
-                        <span className="ml-4">{ConvertedTotalAmount}</span>
+                          <span className="ml-4 text-sm lg:text-base">
+                            {ConvertedTotalAmount}
+                          </span>
+                        </div>
                       </div>{" "}
                       <div className="flex justify-start items-center">
                         <p className="mr-4">&#8377;</p>
-                        <input
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                          type="text"
-                          {...register("advanced_amount")}
-                          placeholder="Booking / Advance amount"
-                          value={AdvanceAmount}
-                          onChange={(e) => setAdvanceAmount(e.target.value)}
-                          onKeyUp={ConvertToWord}
-                          required=""
-                          aria-required="true"
-                        />
-                        <span className="ml-4">
-                          {ConvertedTotalAmountAdvanceAmount}
-                        </span>
+                        <div className="flex flex-col lg:flex-row">
+                          <input
+                            className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                            type="text"
+                            {...register("advanced_amount")}
+                            placeholder="Booking / Advance amount"
+                            value={AdvanceAmount}
+                            onChange={(e) => setAdvanceAmount(e.target.value)}
+                            onKeyUp={ConvertToWord}
+                            required=""
+                            aria-required="true"
+                          />
+                          <span className="ml-4">
+                            {ConvertedTotalAmountAdvanceAmount}
+                          </span>
+                        </div>
                       </div>{" "}
-                      <div className="flex justify-start items-center">
-                        <p className="mr-4">&#8377;</p>
-                        <input
-                          className="border-1 h-11  px-2 text-lg w-48 my-1 mr-2 placeholder-gray-600"
-                          type="text"
-                          {...register("price_per_feet")}
-                          placeholder="Price / sq. ft / sq. yard / sq. mtr"
-                          value={PricePerSpace}
-                          onChange={(e) => setPricePerSpace(e.target.value)}
-                          onKeyUp={ConvertToWord}
-                        />
-                        <select
-                          // {...register("length_width_type")}
-                          className="border-1 h-11  mx-2  px-2 text-lg w-20  my-1  placeholder-gray-600"
-                          id="plot-length-type"
-                          title="Sq-ft"
-                        >
-                          <option>fts</option>
-                          <option>yards</option>
-                          <option>mts</option>
-                          <option>Marla</option>
-                          <option>bighas</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                        </select>
+                      <div className="flex flex-wrap justify-start items-center ">
+                        <div className="flex items-center ">
+                          <p className="mr-4">&#8377;</p>
+                          <input
+                            className="border-1 h-11  px-2 text-lg w-48 my-1 mr-2 placeholder-gray-600"
+                            type="text"
+                            {...register("price_per_feet")}
+                            placeholder="Price / sq. ft / sq. yard / sq. mtr"
+                            value={PricePerSpace}
+                            onChange={(e) => setPricePerSpace(e.target.value)}
+                            onKeyUp={ConvertToWord}
+                          />
+                          <select
+                            // {...register("length_width_type")}
+                            className="border-1 h-11  mx-2  px-2 text-lg w-20  my-1  placeholder-gray-600"
+                            id="plot-length-type"
+                            title="Sq-ft"
+                          >
+                            <option>fts</option>
+                            <option>yards</option>
+                            <option>mts</option>
+                            <option>Marla</option>
+                            <option>bighas</option>
+                            <option>acres</option>
+                            <option>hectares</option>
+                          </select>
+                        </div>
                         <span className="ml-4">
                           {ConvertedTotalAmountPricePerSpace}
                         </span>
@@ -265,62 +276,69 @@ const Step4 = () => {
                         Price Details
                       </h4>
                       <div className="flex justify-start items-center">
-                        <p className="mr-4">&#8377;</p>
-                        <input
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                          type="text"
-                          {...register("total_price")}
-                          placeholder="Asking Price"
-                          value={TotalAmount}
-                          onChange={(e) => setTotalAmount(e.target.value)}
-                          onKeyUp={ConvertToWord}
-                          required=""
-                        />
+                        <div className="flex ">
+                          <p className="mr-4">&#8377;</p>
+                          <input
+                            className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                            type="text"
+                            {...register("total_price")}
+                            placeholder="Asking Price"
+                            value={TotalAmount}
+                            onChange={(e) => setTotalAmount(e.target.value)}
+                            onKeyUp={ConvertToWord}
+                            required=""
+                          />
 
-                        <span className="ml-4">{ConvertedTotalAmount}</span>
+                          <span className="ml-4">{ConvertedTotalAmount}</span>
+                        </div>
                       </div>{" "}
                       <div className="flex justify-start items-center">
                         <p className="mr-4">&#8377;</p>
-                        <input
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                          type="text"
-                          {...register("advanced_amount")}
-                          placeholder="Booking / Advance amount"
-                          value={AdvanceAmount}
-                          onChange={(e) => setAdvanceAmount(e.target.value)}
-                          onKeyUp={ConvertToWord}
-                          required=""
-                          aria-required="true"
-                        />
-                        <span className="ml-4">
-                          {ConvertedTotalAmountAdvanceAmount}
-                        </span>
+                        <div className="flex flex-col lg:flex-row">
+                          <input
+                            className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                            type="text"
+                            {...register("advanced_amount")}
+                            placeholder="Booking / Advance amount"
+                            value={AdvanceAmount}
+                            onChange={(e) => setAdvanceAmount(e.target.value)}
+                            onKeyUp={ConvertToWord}
+                            required=""
+                            aria-required="true"
+                          />
+                          <span className="ml-4">
+                            {ConvertedTotalAmountAdvanceAmount}
+                          </span>
+                        </div>
                       </div>{" "}
-                      <div className="flex justify-start items-center">
-                        <p className="mr-4">&#8377;</p>
-                        <input
-                          className="border-1 h-11  px-2 text-lg w-48 my-1 mr-2 placeholder-gray-600"
-                          type="text"
-                          {...register("price_per_feet")}
-                          placeholder="Price / sq. ft / sq. yard / sq. mtr"
-                          value={PricePerSpace}
-                          onChange={(e) => setPricePerSpace(e.target.value)}
-                          onKeyUp={ConvertToWord}
-                        />
-                        <select
-                          // {...register("length_width_type")}
-                          className="border-1 h-11  mx-2  px-2 text-lg w-20  my-1  placeholder-gray-600"
-                          id="plot-length-type"
-                          title="Sq-ft"
-                        >
-                          <option>fts</option>
-                          <option>yards</option>
-                          <option>mts</option>
-                          <option>Marla</option>
-                          <option>bighas</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                        </select>
+                      <div className="flex flex-wrap justify-start items-center">
+                        <div className="flex items-center ">
+                          <p className="mr-4">&#8377;</p>
+
+                          <input
+                            className="border-1 h-11  px-2 text-lg w-48 my-1 mr-2 placeholder-gray-600"
+                            type="text"
+                            {...register("price_per_feet")}
+                            placeholder="Price / sq. ft / sq. yard / sq. mtr"
+                            value={PricePerSpace}
+                            onChange={(e) => setPricePerSpace(e.target.value)}
+                            onKeyUp={ConvertToWord}
+                          />
+                          <select
+                            // {...register("length_width_type")}
+                            className="border-1 h-11  mx-2  px-2 text-lg w-20  my-1  placeholder-gray-600"
+                            id="plot-length-type"
+                            title="Sq-ft"
+                          >
+                            <option>fts</option>
+                            <option>yards</option>
+                            <option>mts</option>
+                            <option>Marla</option>
+                            <option>bighas</option>
+                            <option>acres</option>
+                            <option>hectares</option>
+                          </select>
+                        </div>
                         <span className="ml-4">
                           {ConvertedTotalAmountPricePerSpace}
                         </span>

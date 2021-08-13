@@ -144,15 +144,15 @@ const Step5 = () => {
   return (
     <div className="w-full h-full flex justify-between">
       <SideImage />
-      <div className="w-65percent flex flex-col items-start justify-between border-1  min-h-70vh h-full p-8 py-6">
+      <div className="lg:w-65percent w-full flex flex-col items-start justify-between border-1  min-h-70vh h-full lg:p-8 py-6">
         <div className="w-full h-full flex flex-col items-start justify-start">
           <Nav />
-          <div className="py-6 w-full h-full flex flex-col justify-between">
+          <div className="py-6 w-full h-full flex flex-col justify-between px-2 lg:px-0">
             <div className="flex justify-center items-start flex-col ">
               <h4 className="text-2xl font-medium  uppercase mb-4">
                 Amenities
               </h4>
-              <div className="w-full  grid grid-cols-4 gap-1">
+              <div className="w-full  grid lg:grid-cols-4 grid-cols-2 gap-1">
                 {Amenities.map((item, index) => (
                   <div
                     key={item.id}
@@ -168,13 +168,15 @@ const Step5 = () => {
                       src={`https://codeiator.com/uploads/${item.icon}`}
                       alt=""
                     />
-                    <p className="font-medium capitalize">{item.name}</p>
+                    <p className="font-medium capitalize text-sm lg:text-base">
+                      {item.name}
+                    </p>
                   </div>
                 ))}
               </div>
             </div>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col px-2 lg:px-0">
             <div class="flex w-full  items-center justify-start bg-grey-lighter">
               <label class="w-48 flex justify-center items-center px-2 py-4  mt-4 rounded-lg shadow-lg tracking-wide uppercase border border-2 cursor-pointer bg-textbg text-darkgray">
                 <svg
@@ -217,23 +219,23 @@ const Step5 = () => {
             )}
             <button
               onClick={HandleImageUpload}
-              className="w-48  h-12 bg-blue text-xl font-medium text-white  my-2"
+              className=" lg:w-48  w-full rounded-full lg:rounded-none h-12 bg-blue text-xl font-medium text-white  my-2"
             >
               Upload
             </button>
           </div>
         </div>
-        <div className="w-full   flex justify-end items-end">
+        <div className="w-full flex-col lg:flex-row    flex justify-end items-end px-2  lg:px-0">
           <button
             onClick={HandlePrevious}
-            className="w-44 h-12 bg-blue text-xl font-medium text-white"
+            className="lg:w-44 w-full my-1 lg:my-0 rounded-full lg:rounded-none h-12 bg-blue text-xl font-medium text-white"
           >
             Previous
           </button>
           <button
             disabled={isUploading === true}
             onClick={HandleAmenitiesUpload}
-            className={`w-44  h-12 ${
+            className={`lg:w-44 w-full my-1 lg:my-0 rounded-full lg:rounded-none h-12 ${
               isUploading ? "bg-gray-500" : "bg-blue"
             }  text-xl font-medium text-white ml-2`}
           >

@@ -62,11 +62,11 @@ const Step6 = () => {
       <SideImage />
       <form
         onSubmit={handleSubmit(HandleStep6Submit)}
-        className="w-65percent flex flex-col items-start justify-between border-1  min-h-70vh h-full p-8 py-6"
+        className="lg:w-65percent w-full flex flex-col items-start justify-between border-1  lg:min-h-70vh  h-full lg:p-8 py-6"
       >
         <div className="w-full h-full flex flex-col items-start justify-start">
           <Nav />
-          <div className="py-6 w-full h-full flex flex-col justify-between">
+          <div className="py-6 w-full h-full flex flex-col justify-between px-2 lg:px-0">
             <div className="flex justify-center items-start flex-col ">
               <h4 className="text-2xl font-medium  uppercase mb-4">
                 About Property
@@ -92,16 +92,16 @@ const Step6 = () => {
             </div>
           </div>
         </div>
-        <div className="w-full   flex justify-end items-end">
+        <div className="w-full   flex lg:flex-row flex-col  lg:justify-end justify-center lg:items-end items-center px-2 lg:px-0">
           <button
             onClick={HandlePrevious}
-            className="w-44 h-12 bg-blue text-xl font-medium text-white"
+            className="lg:w-44 w-full  h-12 bg-blue text-xl font-medium text-white rounded-full lg:rounded-none my-1 lg:my-0"
           >
             Previous
           </button>
           <button
             type="submit"
-            className="w-44  h-12 bg-blue text-xl font-medium text-white ml-2"
+            className="lg:w-44 w-full  h-12 bg-blue text-xl font-medium text-white lg:ml-2 rounded-full lg:rounded-none my-1 lg:my-0"
           >
             Post
           </button>
