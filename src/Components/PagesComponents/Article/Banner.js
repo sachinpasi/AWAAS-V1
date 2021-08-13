@@ -21,8 +21,8 @@ const Banner = ({ ArticleData }) => {
         }}
         className="w-full h-full"
       >
-        <div className="customContainer flex flex-col items-start justify-center h-full">
-          <p className="text-5xl font-semibold text-white w-2/4">
+        <div className="lg:w-80vw w-90vw mx-auto pt-8 flex flex-col lg:items-start items-center justify-center h-full">
+          <p className="lg:text-5xl text-2xl font-semibold text-white lg:w-2/4">
             {ArticleData?.title}
           </p>
           <p className="text-white my-2 text-lg">

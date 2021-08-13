@@ -15,7 +15,7 @@ const Recommended = () => {
     FetchBlogs();
   }, []);
   return (
-    <div className="w-30percent ml-8 flex flex-col items-start">
+    <div className="lg:w-30percent w-full lg:ml-8 flex flex-col items-start">
       <p className="text-2xl font-medium py-4">Recommended Blogs</p>
       {BlogList.map((item) => (
         <div

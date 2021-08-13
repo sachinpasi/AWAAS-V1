@@ -5,7 +5,7 @@ const Header = ({ Title, hidden }) => {
   return (
     <div className="w-full flex flex-col justify-between items-start ">
       <div className="w-full flex justify-between items-center border-b-1 border-gray-300 py-4">
-        <p className="uppercase text-3xl font-semibold">{Title}</p>
+        <p className="uppercase lg:text-3xl text-xl font-semibold">{Title}</p>
         <div
           className={`${hidden && "hidden"}  flex items-center justify-center`}
         >

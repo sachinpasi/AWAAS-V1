@@ -22,14 +22,11 @@ const ProjectList = () => {
   }, []);
   return (
     <div className="w-full h-full py-8 ">
-      <div className="customContainer grid grid-cols-2 gap-10">
+      <div className="lg:w-80vw w-90vw mx-auto grid lg:grid-cols-2 grid-cols-1 gap-10">
         {ProjectList.map((item) => (
           <div
             key={item.id}
-            style={{
-              height: "496px",
-            }}
-            className="w-full h-400px flex flex-col justify-between items-center"
+            className="w-full lg:h-500px  flex flex-col justify-between items-center"
           >
             <div className="relative w-full h-72">
               <img
@@ -50,18 +47,18 @@ const ProjectList = () => {
                 />
               </div>
             </div>
-            <div className="w-full h-52 bg-textbg">
+            <div className="w-full lg:h-52 bg-textbg">
               <div className="relative p-4 ">
                 <div
                   style={{
                     borderBottom: "1px solid #7070702E",
                   }}
-                  className="flex justify-between items-center  pb-2"
+                  className="flex flex-col lg:flex-row justify-between lg:items-center  pb-2"
                 >
                   <div className="flex flex-col items-start">
                     <p
                       style={{ lineHeight: "22px" }}
-                      className="text-2xl font-semibold "
+                      className="text-2xl font-semibold whitespace-nowrap"
                     >
                       {item.title}
                     </p>
@@ -83,11 +80,11 @@ const ProjectList = () => {
                     {item.description}
                   </p>
                   <div className="flex items-center justify-between w-full py-2 ">
-                    <p className="text-sm text-darkgray pt-2 tracking-tight">
+                    <p className="lg:text-sm text-xs text-darkgray pt-2 tracking-tight ">
                       Marketed By {item.developerName}
                     </p>
                     <Link
-                      className="bg-blue py-2 px-8 text-white font-medium tracking-tight"
+                      className="bg-blue py-2 px-8 text-white font-medium tracking-tight whitespace-nowrap mt-2 lg:mt-0"
                       to={`/projects/${item.id}`}
                     >
                       View Details

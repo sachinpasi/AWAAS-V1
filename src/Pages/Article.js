@@ -49,10 +49,10 @@ const Article = () => {
   return (
     <Layout>
       <Banner ArticleData={ArticleData} />
-      <div className=" h-full bg-textbg">
-        <div className=" customContainer flex justify-between items-start ">
+      <div className="  h-full bg-textbg">
+        <div className=" lg:w-80vw w-90vw mx-auto flex flex-col lg:flex-row justify-between items-start ">
           <Data ArticleData={ArticleData} />
-          <div className="w-2/6  ml-8  flex flex-col items-start my-8">
+          <div className="lg:w-2/6 w-full  lg:ml-8  flex flex-col items-start my-8">
             <p className="text-2xl font-semibold mb-4">
               Recent Real Estate Updates
             </p>

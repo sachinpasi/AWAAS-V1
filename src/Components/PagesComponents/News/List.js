@@ -33,7 +33,7 @@ const List = () => {
 
   return (
     <section className="w-full h-full  bg-textbg">
-      <div className="customContainer  ">
+      <div className="lg:w-80vw w-90vw mx-auto  ">
         <nav className="text-black font-medium py-8" aria-label="Breadcrumb">
           <ol className="list-none p-0 inline-flex">
             <li className="flex items-center">
@@ -53,8 +53,8 @@ const List = () => {
             </li>
           </ol>
         </nav>
-        <div className="flex justify-between items-start">
-          <div className="w-70percent h-full flex flex-col justify-evenly items-center pb-8">
+        <div className="flex flex-col lg:flex-row  justify-between items-start">
+          <div className="lg:w-70percent w-full h-full flex flex-col justify-evenly items-center pb-8">
             {ArticlesList.map((item) => (
               <Link
                 to={`/news/${item.bid}`}

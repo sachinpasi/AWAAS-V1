@@ -7,11 +7,11 @@ const Banner = () => {
         background: "url(/assets/images/news/bg.jpg)",
         backgroundSize: "cover",
       }}
-      className="w-full h-350px   "
+      className="w-full lg:h-350px h-280px   "
     >
       <div className="w-full h-full bg-black bg-opacity-50">
-        <div className="customContainer h-full flex flex-col items-center justify-center">
-          <p className="text-6xl font-semibold text-white tracking-tight">
+        <div className="lg:w-80vw w-90vw mx-auto h-full flex flex-col items-center justify-center">
+          <p className="lg:text-6xl text-2xl font-semibold text-white tracking-tight">
             Panipat Real Estate Updates
           </p>
 

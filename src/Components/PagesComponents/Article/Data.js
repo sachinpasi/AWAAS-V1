@@ -20,7 +20,7 @@ const Data = ({ ArticleData }) => {
   }, []);
 
   return (
-    <div className="w-65percent flex flex-col">
+    <div className="lg:w-65percent w-full flex flex-col">
       <div className="w-full bg-white rounded-lg shadow-lg  p-6 flex flex-col items-start my-8">
         <div className="w-full border-b-2 border-dashed flex justify-end items-center pb-6">
           <p className="mx-2 text-lg text-widgetborder">Share</p>
@@ -40,7 +40,7 @@ const Data = ({ ArticleData }) => {
         </div>
       </div>
       <p className="text-3xl font-medium">Recommened Blogs</p>
-      <div className="w-full grid gap-4 grid-cols-3 h-auto my-8">
+      <div className="w-full grid gap-4 lg:grid-cols-3 grid-cols-1 h-auto my-8">
         {ArticlesList.slice(0, 3).map((item) => (
           <div
             key={item.bid}

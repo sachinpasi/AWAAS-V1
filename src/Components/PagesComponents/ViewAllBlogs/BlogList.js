@@ -17,7 +17,7 @@ const BlogList = () => {
   }, []);
   return (
     <div className="w-full h-full py-8 ">
-      <div className="customContainer grid grid-cols-2 gap-10">
+      <div className="lg:w-80vw w-90vw mx-auto grid lg:grid-cols-2 grid-cols-1 gap-10">
         {ArticlesList.map((item) => (
           <div
             key={item.id}
@@ -40,7 +40,7 @@ const BlogList = () => {
                 className="w-full h-full absolute top-0"
               ></div>
             </div>
-            <div className="w-full h-44 bg-textbg">
+            <div className="w-full lg:h-44 bg-textbg">
               <div className="relative p-5 ">
                 <div
                   style={{

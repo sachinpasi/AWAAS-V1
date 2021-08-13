@@ -132,24 +132,38 @@ const Navbar = () => {
               Icon={RiBuilding2Line}
               Name="Post Property "
               To="/post-property"
+              Active={location.pathname === "/post-property"}
             />
             <MobileNavItem
               Icon={FaProjectDiagram}
               Name="Post Project "
               To="/post-project"
+              Active={location.pathname === "/post-project"}
             />
             <MobileNavItem
               Icon={MdMonetizationOn}
               Name="Home Loan "
               To="/home-loan"
+              Active={location.pathname === "/home-loan"}
             />{" "}
             <MobileNavItem
               Icon={RiBankLine}
               Name="Investment Assistance"
               To="/investment-assist"
+              Active={location.pathname === "/investment-assist"}
             />{" "}
-            <MobileNavItem Icon={MdExplore} Name="Vastu" To="/vastu" />{" "}
-            <MobileNavItem Icon={ImHammer2} Name="Legal" To="/legal" />
+            <MobileNavItem
+              Icon={MdExplore}
+              Name="Vastu"
+              To="/vastu"
+              Active={location.pathname === "/vastu"}
+            />{" "}
+            <MobileNavItem
+              Icon={ImHammer2}
+              Name="Legal"
+              To="/legal"
+              Active={location.pathname === "/legal"}
+            />
             <div className="flex w-full justify-center  py-2 px-4 my-3 ">
               {user.isLoggedIn ? (
                 <Link
