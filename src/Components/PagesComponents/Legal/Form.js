@@ -23,26 +23,26 @@ const Form = () => {
   };
   return (
     <div className="w-full h-full bg-textbg">
-      <div className="customContainer flex flex-col justify-center items-center py-10">
-        <p className="text-4xl font-medium text-darkgray capitalize">
+      <div className="w-90vw lg:w-80vw mx-auto flex flex-col justify-center items-center py-10">
+        <p className="lg:text-4xl text-2xl font-medium text-darkgray capitalize">
           Get Free Advice on your Legal Services requirement
         </p>
-        <p className="text-xl text-darkgray py-4">
+        <p className="lg:text-xl text-base text-darkgray py-4">
           Send your query now & let us respond within 24 hrs.
         </p>
         <form
           onSubmit={handleSubmit(HandleFormSubmit)}
-          className="w-full h-12 grid grid-cols-5 gap-4 my-4"
+          className="w-full  grid lg:grid-cols-5 grid-cols-1 gap-4 my-4"
         >
           <input
             type="text"
-            className="w-full border-1 border-widgetborder h-full col-span-2 px-4"
+            className="w-full border-1 border-widgetborder h-12 lg:col-span-2 px-4"
             placeholder="Name"
             {...register("name", { required: true })}
           />
           <input
             type="text"
-            className="w-full border-widgetborder border-1 h-full col-span-2 px-4"
+            className="w-full border-widgetborder border-1 h-12 lg:col-span-2 px-4"
             placeholder="Mobile Number"
             {...register("phone", {
               required: true,
@@ -52,7 +52,7 @@ const Form = () => {
           />
           <button
             type="submit"
-            className="w-full h-full bg-green text-white font-medium text-lg"
+            className="w-full h-12 bg-green text-white font-medium text-lg "
           >
             Get Advice
           </button>

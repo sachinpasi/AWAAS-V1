@@ -1,17 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Layout from "../Components/Layout/Layout";
 import Banner from "../Components/PagesComponents/AwaasAssist/Banner";
+import ContactForm from "../Components/PagesComponents/AwaasAssist/ContactForm";
 import Faq from "../Components/PagesComponents/AwaasAssist/Faq";
-import FeatureSection from "../Components/PagesComponents/AwaasAssist/FeatureSection";
-const AwaasAssist = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+import InvestmnetAssist from "../Components/PagesComponents/AwaasAssist/InvestmnetAssist";
 
+const AwaasAssist = () => {
   return (
     <Layout>
       <Banner />
-      <FeatureSection />
+      <InvestmnetAssist />
+      <ContactForm />
       <Faq />
     </Layout>
   );

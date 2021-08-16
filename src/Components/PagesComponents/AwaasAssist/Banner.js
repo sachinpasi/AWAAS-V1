@@ -1,39 +1,99 @@
 import React from "react";
+import { TiTick } from "react-icons/ti";
 
 const Banner = () => {
   return (
-    <section
+    <div
       style={{
-        background: "url(/assets/images/investmentassist/bg.png)",
-        height: "50vh",
-        backgroundSize: "cover",
+        backgroundImage: "url(/assets/images/contact/banner.jpeg)",
       }}
-      className="w-full "
+      className="w-full h-550px bg-cover bg-center"
     >
-      <div
-        style={{
-          background: "rgba(0,0,0,0.2)",
-        }}
-        className="w-full h-full relative flex justify-center items-center flex-col"
-      >
-        <p
-          style={{
-            textShadow: "2px 3px 5px #000",
-          }}
-          className="text-5xl text-white py-2"
-        >
-          Welcome to Awaas Assist
-        </p>
-        <p
-          style={{
-            textShadow: "2px 3px 5px #000",
-          }}
-          className="text-lg text-white"
-        >
-          We are here to take care of your needs.
-        </p>
+      <div className="w-full h-full bg-black bg-opacity-30">
+        <div className="w-90vw lg:w-80vw mx-auto flex flex-col items-start justify-center h-full">
+          <p
+            style={{
+              textShadow: "2px 3px 5px #000",
+            }}
+            className="text-6xl font-medium text-white"
+          >
+            Awaas Assist
+          </p>
+          <div className="flex-col flex items-start w-full my-8">
+            <div className="flex justify-start items-center w-2/4">
+              <div className="w-1/12">
+                <TiTick className="text-green text-3xl" />
+              </div>
+              <p
+                style={{
+                  textShadow: "2px 3px 5px #000",
+                }}
+                className="w-10/12 text-xl  text-white capitalize"
+              >
+                24 x 7 Multi Channel Support
+              </p>
+            </div>
+            <div className="flex justify-start items-center w-2/4">
+              <div className="w-1/12">
+                <TiTick className="text-green text-3xl" />
+              </div>
+              <p
+                style={{
+                  textShadow: "2px 3px 5px #000",
+                }}
+                className="w-10/12 text-xl  text-white capitalize"
+              >
+                Get Mail And Call Support By Trained Professionals
+              </p>
+            </div>
+            <div className="flex justify-start items-center w-2/4">
+              <div className="w-1/12">
+                <TiTick className="text-green text-3xl" />
+              </div>
+
+              <p
+                style={{
+                  textShadow: "2px 3px 5px #000",
+                }}
+                className="w-10/12 text-xl  text-white capitalize"
+              >
+                Special Instant Call Back Support
+              </p>
+            </div>
+            <div className="flex justify-start items-center w-2/4">
+              <div className="w-1/12">
+                <TiTick className="text-green text-3xl" />
+              </div>
+              <p
+                style={{
+                  textShadow: "2px 3px 5px #000",
+                }}
+                className="w-10/12 text-xl  text-white capitalize"
+              >
+                Flexible timings to meets your routine
+              </p>
+            </div>
+            <div className="flex justify-start items-center w-2/4">
+              <div className="w-1/12">
+                <TiTick className="text-green text-3xl" />
+              </div>
+              <p
+                style={{
+                  textShadow: "2px 3px 5px #000",
+                }}
+                className="w-10/12 text-xl  text-white capitalize"
+              >
+                Special real estate mentoring
+              </p>
+            </div>
+          </div>
+
+          <button className="px-8 py-2 bg-green text-darkgray text-xl font-medium ml-2  uppercase">
+            Know More
+          </button>
+        </div>
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -16,24 +16,24 @@ const Banner = () => {
         }}
         className=" h-full relative flex justify-center items-start flex-col text-white"
       >
-        <div className="customContainer">
-          <p className="text-4xl font-medium mb-4 w-2/4">
+        <div className="lg:w-80vw w-90vw mx-auto pt-10">
+          <p className="lg:text-4xl text-2xl font-medium mb-4 lg:w-2/4 w-full">
             A Fraudulent Property Deal could cost you your Life's Savings
           </p>
-          <div className="flex items-center text-lg py-1">
-            <TiTick className="text-6xl text-green" />
-            <div className="px-2">
-              <p className="text-xl text-white font-medium ">
+          <div className="flex items-center text-lg py-1 lg:w-2/4 ">
+            <TiTick className="text-6xl text-green w-1/5" />
+            <div className="px-2 w-4/5">
+              <p className="lg:text-xl text-lg text-white font-medium ">
                 Consult the best legal experts
               </p>
-              <p className="text-sm text-white capitalize">
+              <p className="lg:text-sm text-xs text-white capitalize">
                 before you buy a property
               </p>
             </div>
           </div>
-          <div className="flex items-center text-lg py-1">
-            <TiTick className="text-6xl text-green" />
-            <div className="px-2">
+          <div className="flex items-center text-lg py-1 lg:w-2/4">
+            <TiTick className="text-6xl text-green w-1/5" />
+            <div className="px-2 w-4/5">
               <p className="text-xl text-white font-medium ">
                 Get end-to-end assistance
               </p>
@@ -42,9 +42,9 @@ const Banner = () => {
               </p>
             </div>
           </div>
-          <div className="flex items-center text-lg py-1">
-            <TiTick className="text-6xl text-green" />
-            <div className="px-2">
+          <div className="flex items-center text-lg py-1 lg:w-2/4">
+            <TiTick className="text-6xl text-green w-1/5" />
+            <div className="px-2 w-4/5">
               <p className="text-xl text-white font-medium ">
                 Ensure safety of your investment
               </p>

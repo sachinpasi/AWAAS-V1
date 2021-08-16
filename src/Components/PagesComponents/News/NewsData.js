@@ -35,7 +35,7 @@ const NewsData = ({ ArticleData }) => {
 
   return (
     <section className="w-full h-full  bg-textbg">
-      <div className="customContainer">
+      <div className="lg:w-80vw w-90vw mx-auto">
         <nav className="text-black font-medium py-8" aria-label="Breadcrumb">
           <ol className="list-none p-0 inline-flex">
             <li className="flex items-center">
@@ -65,8 +65,8 @@ const NewsData = ({ ArticleData }) => {
             </li>
           </ol>
         </nav>
-        <div className="w-full flex justify-between py-8">
-          <div className="w-70percent h-full bg-white pb-8 shadow-sm">
+        <div className="w-full flex flex-col lg:flex-row justify-between py-8">
+          <div className="lg:w-70percent w-full h-full bg-white pb-8 shadow-sm">
             <div className="w-full h-full flex flex-col justify-evenly items-center pb-8">
               <div className="w-full flex justify-between items-center h-28 bg-white shadow-sm ">
                 <div className="h-full w-28 bg-extralightgray flex flex-col py-4  relative">
@@ -79,18 +79,18 @@ const NewsData = ({ ArticleData }) => {
                 </div>
 
                 <div className="w-11/12 p-4 flex flex-col items-start text-darkgray">
-                  <p className="text-3xl font-medium text-darkgray py-2">
+                  <p className="lg:text-3xl text-2xl font-medium text-darkgray py-2">
                     {ArticleData?.title}
                   </p>
                 </div>
               </div>
             </div>
-            <div className="py-8 px-12">
+            <div className="py-8 lg:px-12 px-8">
               <p>{ArticleData?.description}</p>
               {ReactHtmlParser(ArticleData?.content)}
             </div>
           </div>
-          <div className="w-2/6  ml-8  flex flex-col items-start my-8">
+          <div className="lg:w-2/6 w-full  lg:ml-8  flex flex-col items-start my-8">
             <p className="text-2xl font-semibold mb-4">
               Recent Real Estate Updates
             </p>

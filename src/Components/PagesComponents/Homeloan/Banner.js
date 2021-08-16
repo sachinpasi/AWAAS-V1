@@ -44,50 +44,44 @@ const Banner = () => {
       <section
         style={{
           background: "url(/assets/images/homeloans/bannerbg.png)",
-          height: "50vh",
           overflowY: "visible",
           backgroundPosition: "center",
         }}
-        className=" bg-center"
+        className=" bg-center lg:h-50vh h-screen"
       >
         <div
-          style={{ background: "rgba(0,0,0,0.2yygg)" }}
+          style={{ background: "rgba(0,0,0,0.2)" }}
           className="w-full h-full "
         >
-          <div className="customContainer flex justify-between items-center h-full">
-            <div className="w-2/4 flex-col flex items-start">
+          <div className="lg:w-80vw w-90vw mx-auto flex flex-col lg:flex-row justify-between items-center h-full">
+            <div className="lg:w-2/4 w-full flex-col flex items-start pt-16">
               <p
                 style={{
                   textShadow: "rgb(0 0 0) -7px 2px 20px",
                 }}
-                className="text-3xl text-white my-8 "
+                className="lg:text-3xl text-2xl text-white my-8 "
               >
                 Fill Loan Application Online now, and track Daily progress!
               </p>
               <Link
                 to="/home-loans/apply"
-                className="text-lg text-white  text-center font-medium bg-blue py-2 px-5 w-64"
+                className="text-lg text-white  text-center font-medium bg-blue py-2 px-5 lg:w-64 w-full"
               >
                 Apply for new Home Loan
               </Link>
               <div
                 onClick={HandleTrackApplication}
-                className="text-lg text-blue text-center  font-medium bg-white cursor-pointer py-2 px-5 w-64 my-2"
+                className="text-lg text-blue text-center  font-medium bg-white cursor-pointer py-2 px-5 lg:w-64 w-full my-2"
               >
                 Track Your Application
               </div>
             </div>
-            <div
-              style={{
-                width: "30%",
-              }}
-              className=" h-full flex justify-end"
-            >
+            <div className="lg:w-30percent w-full h-full flex justify-end">
               <div
                 style={{
                   background: " rgb(9 27 92 / 62%)",
                 }}
-                className="rounded shadow-lg mt-14 w-4/5 h-full  text-white flex flex-col justify-between items-start px-6"
+                className="rounded shadow-lg mt-14 lg:w-4/5 w-full lg:h-full h-5/6  text-white flex flex-col justify-between items-start px-6"
               >
                 <p className="text-2xl tracking-tight border-b-1 py-2 w-full text-white">
                   Apply for loan

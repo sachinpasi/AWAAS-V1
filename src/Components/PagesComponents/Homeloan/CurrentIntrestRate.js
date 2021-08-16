@@ -48,29 +48,33 @@ const CurrentIntrestRate = () => {
 
   return (
     <section className="w-full h-full">
-      <div className="customContainer py-20 h-full">
+      <div className="lg:w-80vw w-90vw mx-auto lg:py-20 py-10 h-full">
         <p className="text-4xl font-light text-darkgray py-2">
           Current Interest Rates Of Banks
         </p>
-        <div className="w-full flex justify-between items-start  h-full">
-          <div className="w-70percent h-full my-5">
+        <div className="w-full flex flex-col lg:flex-row justify-between items-start  h-full">
+          <div className="lg:w-70percent w-full h-full my-5">
             <div className="border-b-1 border-r-1 border-l-1 rounded mb-4">
               <div className="w-full bg-littlelightgray flex justify-evenly py-5">
                 <div className="w-1/4 flex justify-center items-center">
-                  <p className="text-xl font-medium text-darkgray">Bank Name</p>
+                  <p className="lg:text-xl font-medium text-darkgray text-center">
+                    Bank Name
+                  </p>
                 </div>{" "}
                 <div className="w-1/4 flex justify-center items-center">
-                  <p className="text-xl font-medium text-darkgray">
+                  <p className="lg:text-xl font-medium text-darkgray text-center">
                     Rate of interest
                   </p>
                 </div>{" "}
                 <div className="w-1/4 flex justify-center items-center">
-                  <p className="text-xl font-medium text-darkgray">
+                  <p className="lg:text-xl font-medium text-darkgray text-center">
                     Processing Fee
                   </p>
                 </div>{" "}
                 <div className="w-1/4 flex justify-center items-center">
-                  <p className="text-xl font-medium text-darkgray">Tenure</p>
+                  <p className="lg:text-xl font-medium text-darkgray text-center">
+                    Tenure
+                  </p>
                 </div>
               </div>
               <div className="flex justify-evenly py-2 pb-1 border-b-2 border-dashed">
@@ -83,13 +87,13 @@ const CurrentIntrestRate = () => {
                   <p className="font-medium py-1">SBI</p>
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
-                  <p className="text-xl font-medium">6.90%</p>
+                  <p className="lg:text-xl font-medium">6.90%</p>
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
-                  <p className="text-xl font-medium">5000/-</p>
+                  <p className="lg:text-xl font-medium">5000/-</p>
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
-                  <p className="text-xl font-medium">0-30 Yrs</p>
+                  <p className="lg:text-xl font-medium">0-30 Yrs</p>
                 </div>
               </div>
               <div className="flex justify-evenly py-2 pb-1 border-b-2 border-dashed">
@@ -102,13 +106,13 @@ const CurrentIntrestRate = () => {
                   <p className="font-medium py-1">PNB</p>
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
-                  <p className="text-xl font-medium">6.90%</p>
+                  <p className="lg:text-xl font-medium">6.90%</p>
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
-                  <p className="text-xl font-medium">5000/-</p>
+                  <p className="lg:text-xl font-medium">5000/-</p>
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
-                  <p className="text-xl font-medium">0-30 Yrs</p>
+                  <p className="lg:text-xl font-medium">0-30 Yrs</p>
                 </div>
               </div>
               <div className="flex justify-evenly py-2 pb-1  border-b-2 border-dashed  ">
@@ -121,13 +125,13 @@ const CurrentIntrestRate = () => {
                   <p className="font-medium py-1">HDFC</p>
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
-                  <p className="text-xl font-medium">6.80%</p>
+                  <p className="lg:text-xl font-medium">6.80%</p>
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
-                  <p className="text-xl font-medium">15000/-</p>
+                  <p className="lg:text-xl font-medium">15000/-</p>
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
-                  <p className="text-xl font-medium">3-30 Yrs</p>
+                  <p className="lg:text-xl font-medium">3-30 Yrs</p>
                 </div>
               </div>
               <div className="flex justify-evenly py-2 pb-1 border-b-2 border-dashed">
@@ -140,13 +144,13 @@ const CurrentIntrestRate = () => {
                   <p className="font-medium py-1">ICICI</p>
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
-                  <p className="text-xl font-medium">6.80%</p>
+                  <p className="lg:text-xl font-medium">6.80%</p>
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
-                  <p className="text-xl font-medium">10000/-</p>
+                  <p className="lg:text-xl font-medium">10000/-</p>
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
-                  <p className="text-xl font-medium">3-30 Yrs</p>
+                  <p className="lg:text-xl font-medium">3-30 Yrs</p>
                 </div>
               </div>
               <div className="flex justify-evenly py-2 pb-1 border-b-2 border-dashed">
@@ -159,13 +163,13 @@ const CurrentIntrestRate = () => {
                   <p className="font-medium py-1">AXIS</p>
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
-                  <p className="text-xl font-medium">6.80%</p>
+                  <p className="lg:text-xl font-medium">6.80%</p>
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
-                  <p className="text-xl font-medium">10000/-</p>
+                  <p className="lg:text-xl font-medium">10000/-</p>
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
-                  <p className="text-xl font-medium">3-30 Yrs</p>
+                  <p className="lg:text-xl font-medium">3-30 Yrs</p>
                 </div>
               </div>
               <div className="flex justify-evenly py-2 pb-1 border-b-2 border-dashed">
@@ -178,19 +182,19 @@ const CurrentIntrestRate = () => {
                   {/* <p className="font-medium py-1">IIFL</p> */}
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
-                  <p className="text-xl font-medium">6.80%</p>
+                  <p className="lg:text-xl font-medium">6.80%</p>
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
-                  <p className="text-xl font-medium">10000/-</p>
+                  <p className="lg:text-xl font-medium">10000/-</p>
                 </div>
                 <div className="w-1/4 flex flex-col justify-center items-center">
-                  <p className="text-xl font-medium">3-30 Yrs</p>
+                  <p className="lg:text-xl font-medium">3-30 Yrs</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="w-30percent h-full pl-8 my-5  ">
+          <div className="lg:w-30percent w-full h-full lg:pl-8 my-5  ">
             <div className="w-full h-auto bg-white shadow-lg rounded p-4 flex flex-col items-start justify-between sticky top-0 ">
               <div>
                 <p className="text-2xl text-darkgray mb-2">Contact Us</p>
@@ -242,19 +246,19 @@ const CurrentIntrestRate = () => {
           </div>
         </div>
 
-        <div className="w-full flex justify-between mt-20  ">
-          <div className="w-70percent py-2">
+        <div className="w-full flex flex-col lg:flex-row justify-between mt-20  ">
+          <div className="lg:w-70percent w-full py-2">
             <p className="text-3xl font-light py-2 pt-0">EMI Calculator</p>
             <div className="w-full border-t-2 flex flex-col">
               <div className="w-full h-20 flex flex-col items-center justify-center my-4">
                 <div className="w-full my-2  flex  justify-between items-center">
                   <p className="text-base">
-                    <span className="font-medium text-lg">
+                    <span className="font-medium lg:text-lg">
                       Home Loan Amount
                     </span>{" "}
                     - In Lakhs
                   </p>
-                  <p className="text-lg font-medium text-blue">
+                  <p className="lg:text-lg text-base font-medium text-blue">
                     Rs. {HomeLoanAmount} Lakhs
                   </p>
                 </div>
@@ -286,11 +290,11 @@ const CurrentIntrestRate = () => {
               <div className="w-full h-20 flex flex-col items-center justify-center my-4">
                 <div className="w-full my-2  flex  justify-between items-center">
                   <p className="text-base">
-                    <span className="font-medium text-lg">
+                    <span className="font-medium lg:text-lg">
                       Rate of Interest
                     </span>{" "}
                   </p>
-                  <p className="text-lg font-medium text-blue">
+                  <p className="lg:text-lg font-medium text-blue">
                     {RateOfIntrest} %
                   </p>
                 </div>
@@ -320,9 +324,9 @@ const CurrentIntrestRate = () => {
               <div className="w-full h-20 flex flex-col items-center justify-center my-4">
                 <div className="w-full my-2  flex  justify-between items-center">
                   <p className="text-base">
-                    <span className="font-medium text-lg">Loan Tenure</span>{" "}
+                    <span className="font-medium lg:text-lg">Loan Tenure</span>{" "}
                   </p>
-                  <p className="text-lg font-medium text-blue">
+                  <p className="lg:text-lg font-medium text-blue">
                     {LoanTenure} YEARS
                   </p>
                 </div>
@@ -356,7 +360,7 @@ const CurrentIntrestRate = () => {
                 // background: "#598DF5",
               }
             }
-            className="w-3/12  flex flex-col justify-between items-center text-center rounded border-2 "
+            className="lg:w-3/12 w-full  flex flex-col justify-between items-center text-center rounded border-2 "
           >
             <div>
               <p className="text-2xl  text-blue font-semibold py-2 border-b-1 border-gray-400 px-8">

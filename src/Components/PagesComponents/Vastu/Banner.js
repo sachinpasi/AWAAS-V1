@@ -16,20 +16,24 @@ const Banner = () => {
         }}
         className=" h-full relative flex justify-center items-start flex-col text-white"
       >
-        <div className="customContainer">
-          <p className="text-5xl mb-4">Vastu Consultant</p>
-          <p className="flex items-center text-lg py-0.5">
-            <TiTick className="text-3xl text-green" />
-            Verified & experienced Consultants
-          </p>
-          <p className="flex items-center text-lg py-0.5">
-            <TiTick className="text-3xl text-green" />
-            On-site & Telephonic Consultations in your preferred language
-          </p>
-          <p className="flex items-center text-lg py-0.5">
-            <TiTick className="text-3xl text-green" />
-            View Sample Reports & Videos to pick the Best Consultant
-          </p>
+        <div className="w-90vw lg:w-80vw mx-auto">
+          <p className="lg:text-5xl text-3xl mb-4">Vastu Consultant</p>
+          <div className="flex items-center lg:text-lg py-0.5">
+            <TiTick className="text-3xl text-green w-1/5" />
+            <p className="w-4/5">Verified & experienced Consultants</p>
+          </div>
+          <div className="flex items-center lg:text-lg py-0.5">
+            <TiTick className="text-3xl text-green w-1/5" />
+            <p className="w-4/5">
+              On-site & Telephonic Consultations in your preferred language
+            </p>
+          </div>
+          <div className="flex items-center lg:text-lg py-0.5">
+            <TiTick className="text-3xl text-green w-1/5" />
+            <p className="w-4/5">
+              View Sample Reports & Videos to pick the Best Consultant
+            </p>
+          </div>
         </div>
       </div>
     </section>

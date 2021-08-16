@@ -15,14 +15,14 @@ const Faq = () => {
       <p className="text-4xl text-center font-light my-6">
         Frequently Asked Questions
       </p>
-      <div className="customContainer py-4">
+      <div className="lg:w-80vw w-90vw mx-auto py-4">
         <Accordion>
           <AccordionItem>
             <AccordionItemHeading>
               <AccordionItemButton>
-                <div className="flex items-center">
-                  <AiOutlineQuestionCircle className="text-2xl mr-2 text-darkblue" />
-                  <p className="text-2xl font-medium text-darkgray">
+                <div className="flex items-center w-full">
+                  <AiOutlineQuestionCircle className="text-2xl mr-2 text-darkblue w-1/12" />
+                  <p className="lg:text-2xl text-lg font-medium text-darkgray w-11/12 leading-6 ">
                     What is the difference between fixed rate and floating rate
                     of interest?
                   </p>
@@ -44,8 +44,8 @@ const Faq = () => {
             <AccordionItemHeading>
               <AccordionItemButton>
                 <div className="flex items-center">
-                  <AiOutlineQuestionCircle className="text-2xl mr-2 text-darkblue" />
-                  <p className="text-2xl font-medium text-darkgray">
+                  <AiOutlineQuestionCircle className="text-2xl mr-2 text-darkblue w-1/12" />
+                  <p className="lg:text-2xl text-lg font-medium text-darkgray w-11/12 leading-6 ">
                     What is Pre-EMI?
                   </p>
                 </div>
@@ -74,8 +74,8 @@ const Faq = () => {
             <AccordionItemHeading>
               <AccordionItemButton>
                 <div className="flex items-center">
-                  <AiOutlineQuestionCircle className="text-2xl mr-2 text-darkblue" />
-                  <p className="text-2xl font-medium text-darkgray">
+                  <AiOutlineQuestionCircle className="text-2xl mr-2 text-darkblue w-1/12" />
+                  <p className="lg:text-2xl text-lg font-medium text-darkgray w-11/12 leading-6 ">
                     What are the eligibility criteria for a home loan?
                   </p>
                 </div>
@@ -94,8 +94,8 @@ const Faq = () => {
             <AccordionItemHeading>
               <AccordionItemButton>
                 <div className="flex items-center">
-                  <AiOutlineQuestionCircle className="text-2xl mr-2 text-darkblue" />
-                  <p className="text-2xl font-medium text-darkgray">
+                  <AiOutlineQuestionCircle className="text-2xl mr-2 text-darkblue w-1/12" />
+                  <p className="lg:text-2xl text-lg font-medium text-darkgray w-11/12 leading-6 ">
                     What are the types of home loan available?
                   </p>
                 </div>

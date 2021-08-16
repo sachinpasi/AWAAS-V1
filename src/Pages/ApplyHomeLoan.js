@@ -400,92 +400,95 @@ const ApplyHomeLoan = () => {
 
   return (
     <Layout>
-      <main className="customContainer min-h-70vh h-full flex justify-center items-start py-12">
+      <main className="lg:w-80vw w-90vw mx-auto min-h-70vh h-full flex justify-center items-start py-12 pt-20 lg:pt-0">
         <div className="w-full h-full flex flex-col items-start">
-          <p className="text-4xl font-medium text-darkgray border-b-2 pb-4 border-blue">
+          <p className="lg:text-4xl text-2xl font-medium text-darkgray border-b-2 pb-4 border-blue">
             Home Loan Application
           </p>
 
-          <form onSubmit={handleSubmit(onFirstSubmit)} className="my-4 w-3/4">
-            <div className="flex w-full justify-between">
+          <form
+            onSubmit={handleSubmit(onFirstSubmit)}
+            className="my-4 lg:w-3/4 w-full"
+          >
+            <div className="flex w-full flex-col lg:flex-row justify-between">
               <input
                 type="text"
                 placeholder="First Name"
-                className="border-1 h-11  px-4 text-lg w-72 my-2"
+                className="border-1 h-11  px-4 text-lg lg:w-72 w-full lg:my-2 my-1"
                 {...register("first_name")}
               />
               <input
                 type="text"
                 placeholder="Middle Name"
-                className="border-1 h-11  px-4 text-lg w-72 my-2"
+                className="border-1 h-11  px-4 text-lg lg:w-72 w-full lg:my-2 my-1"
                 {...register("middle_name")}
               />
               <input
                 type="text"
                 placeholder="Last Name"
-                className="border-1 h-11  px-4 text-lg w-72 my-2"
+                className="border-1 h-11  px-4 text-lg lg:w-72 w-full lg:my-2 my-1"
                 {...register("last_name")}
               />
             </div>
-            <div className="flex w-full justify-between">
+            <div className="flex w-full flex-col lg:flex-row justify-between">
               <input
                 type="text"
                 placeholder="Father's First Name"
-                className="border-1 h-11  px-4 text-lg w-72 my-1"
+                className="border-1 h-11  px-4 text-lg lg:w-72 w-full lg:my-2 my-1"
                 {...register("father_first_name")}
               />
               <input
                 type="text"
                 placeholder="Father's Middle Name"
-                className="border-1 h-11  px-4 text-lg w-72 my-1"
+                className="border-1 h-11  px-4 text-lg lg:w-72 w-full lg:my-2 my-1"
                 {...register("father_middle_name")}
               />
               <input
                 type="text"
                 placeholder="Father's Last Name"
-                className="border-1 h-11  px-4 text-lg w-72 my-1"
+                className="border-1 h-11  px-4 text-lg lg:w-72 w-full lg:my-2 my-1"
                 {...register("father_last_name")}
               />
             </div>
-            <div className="flex w-full justify-between">
+            <div className="flex w-full flex-col lg:flex-row justify-between">
               <input
                 type="text"
                 placeholder="Mother's First Name"
-                className="border-1  h-11  px-4 text-lg w-72 my-2"
+                className="border-1 h-11  px-4 text-lg lg:w-72 w-full lg:my-2 my-1"
                 {...register("mother_first_name")}
               />
               <input
                 type="text"
                 placeholder="Mother's Middle Name"
-                className="border-1 h-11  px-4 text-lg w-72 my-2"
+                className="border-1 h-11  px-4 text-lg lg:w-72 w-full lg:my-2 my-1"
                 {...register("mother_middle_name")}
               />
               <input
                 type="text"
                 placeholder="Mother's Last Name"
-                className="border-1 h-11  px-4 text-lg w-72 my-2"
+                className="border-1 h-11  px-4 text-lg lg:w-72 w-full lg:my-2 my-1"
                 {...register("mother_last_name")}
               />
             </div>
 
-            <div className="flex w-full justify-between">
+            <div className="flex w-full flex-col lg:flex-row justify-between">
               <input
                 type="tel"
                 placeholder="Mobile Number"
-                className="border-1  h-11  px-4 text-lg w-72 my-2"
+                className="border-1 h-11  px-4 text-lg lg:w-72 w-full lg:my-2 my-1"
                 {...register("mobile")}
               />
               <input
-                className="border-1  h-11  px-4 text-lg w-72 my-2 uppercase"
+                className="border-1 h-11  px-4 text-lg lg:w-72 w-full lg:my-2 my-1"
                 type="date"
                 {...register("dob")}
               />
               <div className="  h-11  px-4 text-lg w-72 my-2 uppercase" />
             </div>
             <p className="text-xl font-medium my-4">Gender -</p>
-            <div className="flex w-full justify-between">
+            <div className="flex w-full lg:flex-row flex-col justify-between">
               <label
-                className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                 htmlFor="Male"
               >
                 <input
@@ -498,7 +501,7 @@ const ApplyHomeLoan = () => {
                 Male
               </label>
               <label
-                className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                 htmlFor="F"
               >
                 <input
@@ -511,7 +514,7 @@ const ApplyHomeLoan = () => {
                 Female
               </label>
               <label
-                className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                 htmlFor="Other"
               >
                 <input
@@ -527,7 +530,7 @@ const ApplyHomeLoan = () => {
             <p className="text-xl font-medium my-4">Category -</p>
             <div className="flex w-full flex-wrap justify-between">
               <label
-                className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                 htmlFor="General"
               >
                 <input
@@ -541,7 +544,7 @@ const ApplyHomeLoan = () => {
                 General
               </label>
               <label
-                className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                 htmlFor="SC"
               >
                 <input
@@ -554,7 +557,7 @@ const ApplyHomeLoan = () => {
                 SC
               </label>
               <label
-                className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                 htmlFor="ST"
               >
                 <input
@@ -580,7 +583,7 @@ const ApplyHomeLoan = () => {
                 OBC
               </label>
               <label
-                className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                 htmlFor="Minority"
               >
                 <input
@@ -596,9 +599,9 @@ const ApplyHomeLoan = () => {
             </div>
             <p className="text-xl font-medium my-4">Resident -</p>
 
-            <div className="flex w-full justify-between">
+            <div className="flex w-full flex-col lg:flex-row justify-between">
               <label
-                className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                 htmlFor="Resident of India"
               >
                 <input
@@ -612,7 +615,7 @@ const ApplyHomeLoan = () => {
                 Resident of India
               </label>
               <label
-                className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                 htmlFor="NRI"
               >
                 <input
@@ -625,7 +628,7 @@ const ApplyHomeLoan = () => {
                 NRI
               </label>
               <label
-                className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                 htmlFor="Foregin National
 "
               >
@@ -643,7 +646,7 @@ const ApplyHomeLoan = () => {
             <p className="text-xl font-medium my-4">Qualification -</p>
             <div className="flex w-full flex-wrap justify-between">
               <label
-                className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                 htmlFor="Matriculate"
               >
                 <input
@@ -657,7 +660,7 @@ const ApplyHomeLoan = () => {
                 Matriculate
               </label>
               <label
-                className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                 htmlFor="Undergraduate"
               >
                 <input
@@ -670,7 +673,7 @@ const ApplyHomeLoan = () => {
                 Undergraduate
               </label>
               <label
-                className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                 htmlFor="Graduate"
               >
                 <input
@@ -683,7 +686,7 @@ const ApplyHomeLoan = () => {
                 Graduate
               </label>{" "}
               <label
-                className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                 htmlFor="Postgraduate"
               >
                 <input
@@ -696,7 +699,7 @@ const ApplyHomeLoan = () => {
                 Postgraduate
               </label>
               <label
-                className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                 htmlFor="Other"
               >
                 <input
@@ -711,9 +714,9 @@ const ApplyHomeLoan = () => {
               <label className="  h-11  px-4 text-lg w-72 my-2 flex  items-center "></label>
             </div>
             <p className="text-xl font-medium my-4">Marital Status -</p>
-            <div className="flex w-full justify-between">
+            <div className="flex w-full lg:flex-row flex-col justify-between">
               <label
-                className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                 htmlFor="Single"
               >
                 <input
@@ -727,7 +730,7 @@ const ApplyHomeLoan = () => {
                 Single
               </label>
               <label
-                className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                 htmlFor="Married"
               >
                 <input
@@ -740,7 +743,7 @@ const ApplyHomeLoan = () => {
                 Married
               </label>
               <label
-                className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                 htmlFor="Other"
               >
                 <input
@@ -757,7 +760,7 @@ const ApplyHomeLoan = () => {
               <input
                 type="text"
                 placeholder="Spouse Name"
-                className="border-1 h-11  px-4 text-lg w-72 my-2"
+                className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                 {...register("spouseName")}
               />
             </div>
@@ -768,25 +771,25 @@ const ApplyHomeLoan = () => {
               <input
                 type="text"
                 placeholder="Address Line One"
-                className="border-1 h-11  px-4 text-lg w-full my-2"
+                className="border-1 h-11  px-4 text-lg w-full lg:my-2 my-1"
                 {...register("lineOnePresentAddress")}
               />
               <input
                 type="text"
                 placeholder="Address Line Two"
-                className="border-1 h-11  px-4 text-lg w-full my-2"
+                className="border-1 h-11  px-4 text-lg w-full lg:my-2 my-1"
                 {...register("lineTwoPresentAddress")}
               />
               <input
                 type="text"
                 placeholder="City"
-                className="border-1 h-11  px-4 text-lg w-full my-2"
+                className="border-1 h-11  px-4 text-lg w-full lg:my-2 my-1"
                 {...register("cityPresentAddress")}
               />
               <input
                 type="number"
                 placeholder="PIN Code"
-                className="border-1 h-11  px-4 text-lg w-full my-2"
+                className="border-1 h-11  px-4 text-lg w-full lg:my-2 my-1"
                 {...register("pinPresentAddress")}
               />
             </div>
@@ -810,24 +813,24 @@ const ApplyHomeLoan = () => {
                   type="text"
                   placeholder="Address Line One"
                   {...register("lineOnePermanentAddress")}
-                  className="border-1 h-11  px-4 text-lg w-full my-2"
+                  className="border-1 h-11  px-4 text-lg w-full lg:my-2 my-1"
                 />
                 <input
                   type="text"
                   placeholder="Address Line Two"
-                  className="border-1 h-11  px-4 text-lg w-full my-2"
+                  className="border-1 h-11  px-4 text-lg w-full lg:my-2 my-1"
                   {...register("lineTwoPermanentAddress")}
                 />
                 <input
                   type="text"
                   placeholder="City"
-                  className="border-1 h-11  px-4 text-lg w-full my-2"
+                  className="border-1 h-11  px-4 text-lg w-full lg:my-2 my-1"
                   {...register("cityPermanentAddress")}
                 />
                 <input
                   type="number"
                   placeholder="PIN Code"
-                  className="border-1 h-11  px-4 text-lg w-full my-2"
+                  className="border-1 h-11  px-4 text-lg w-full lg:my-2 my-1"
                   {...register("pinPermanentAddress")}
                 />
               </div>
@@ -844,25 +847,47 @@ const ApplyHomeLoan = () => {
               />
             </div>
             <div className="flex w-full justify-between">
-              <label className="customfileUpload bg-blue font-medium w-72 my-2">
-                Upload Pan Card
-                <input type="file" {...register("pancard")} />
-              </label>
+              <div class="flex w-full  items-center justify-start bg-grey-lighter">
+                <label class="w-56 flex justify-center items-center px-2 py-3  mt-4 rounded-lg shadow-lg tracking-wide uppercase border border-2 cursor-pointer bg-textbg text-darkgray">
+                  <svg
+                    class="w-8 h-8 mr-2"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                  </svg>
+                  <span class=" text-base leading-normal">Select Pan Card</span>
+                  <input type="file" {...register("pancard")}></input>
+                </label>
+              </div>
             </div>
             <div className="flex flex-col w-full  items-start">
-              <label className="customfileUpload bg-blue font-medium w-72 my-2">
-                Upload ID Proof
-                <input type="file" {...register("id_card")} />
-              </label>
-              <p>* Adhaar Card / Driver's License / Voter's ID / Passport</p>
+              <div class="flex w-full  items-center justify-start bg-grey-lighter">
+                <label class=" w-56 flex justify-center items-center px-2 py-3  mt-4 rounded-lg shadow-lg tracking-wide uppercase border border-2 cursor-pointer bg-textbg text-darkgray">
+                  <svg
+                    class="w-8 h-8 mr-2"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                  </svg>
+                  <span class=" text-base leading-normal">Select ID Proof</span>
+                  <input type="file" {...register("id_card")}></input>
+                </label>
+              </div>
+              <p className="my-4">
+                * Adhaar Card / Driver's License / Voter's ID / Passport
+              </p>
             </div>
 
-            <div className="w-full flex justify-end">
+            <div className="w-full flex lg:justify-end justify-center">
               {Fields.length === 0 && (
                 <>
                   <div
                     onClick={handleSubmit(onADDAPPLICANTFirstSubmit)}
-                    className="bg-blue text-white flex justify-center cursor-pointer items-center font-medium text-xl py-2 w-72 my-8"
+                    className="bg-blue text-white flex justify-center cursor-pointer items-center font-medium text-xl py-2 w-72 rounded-full lg:rounded-none my-8"
                   >
                     ADD APPLICANT +
                   </div>
@@ -872,7 +897,7 @@ const ApplyHomeLoan = () => {
             {Fields.length === 0 && (
               <button
                 type="submit"
-                className="bg-blue text-white font-medium text-xl py-2 w-72 my-12"
+                className="bg-blue text-white flex justify-center cursor-pointer items-center font-medium text-xl py-2 lg:w-72 w-full rounded-full lg:rounded-none my-12"
               >
                 Sumbit Application
               </button>
@@ -890,91 +915,91 @@ const ApplyHomeLoan = () => {
                   name={fieldName}
                   key={fieldName}
                   id={fieldName}
-                  className="my-4 w-3/4"
+                  className="my-4 lg:w-3/4 w-full"
                 >
                   <p className="text-2xl font-medium text-darkgray border-b-2 pb-4 border-blue">
                     Co-Applicant Details [ {Sno} ]
                   </p>
-                  <div className="flex w-full justify-between">
+                  <div className="flex w-full justify-between flex-col lg:flex-row">
                     <input
                       type="text"
                       placeholder="First Name"
-                      className="border-1 h-11  px-4 text-lg w-72 my-2"
+                      className="border-1 h-11  px-4 text-lg lg:w-72 w-full lg:my-2 my-1"
                       {...register(`${fieldName}.first_name`)}
                     />
                     <input
                       type="text"
                       placeholder="Middle Name"
-                      className="border-1 h-11  px-4 text-lg w-72 my-2"
+                      className="border-1 h-11  px-4 text-lg lg:w-72 w-full lg:my-2 my-1"
                       {...register(`${fieldName}.middle_name`)}
                     />
                     <input
                       type="text"
                       placeholder="Last Name"
-                      className="border-1 h-11  px-4 text-lg w-72 my-2"
+                      className="border-1 h-11  px-4 text-lg lg:w-72 w-full lg:my-2 my-1"
                       {...register(`${fieldName}.last_name`)}
                     />
                   </div>
-                  <div className="flex w-full justify-between">
+                  <div className="flex w-full justify-between flex-col lg:flex-row">
                     <input
                       type="text"
                       placeholder="Father's First Name"
-                      className="border-1 h-11  px-4 text-lg w-72 my-1"
+                      className="border-1 h-11  px-4 text-lg lg:w-72 w-full lg:my-2 my-1"
                       {...register(`${fieldName}.father_first_name`)}
                     />
                     <input
                       type="text"
                       placeholder="Father's Middle Name"
-                      className="border-1 h-11  px-4 text-lg w-72 my-1"
+                      className="border-1 h-11  px-4 text-lg lg:w-72 w-full lg:my-2 my-1"
                       {...register(`${fieldName}.father_middle_name`)}
                     />
                     <input
                       type="text"
                       placeholder="Father's Last Name"
-                      className="border-1 h-11  px-4 text-lg w-72 my-1"
+                      className="border-1 h-11  px-4 text-lg lg:w-72 w-full lg:my-2 my-1"
                       {...register("father_last_name")}
                       {...register(`${fieldName}.father_last_name`)}
                     />
                   </div>
-                  <div className="flex w-full justify-between">
+                  <div className="flex w-full justify-between flex-col lg:flex-row">
                     <input
                       type="text"
                       placeholder="Mother's First Name"
-                      className="border-1  h-11  px-4 text-lg w-72 my-2"
+                      className="border-1 h-11  px-4 text-lg lg:w-72 w-full lg:my-2 my-1"
                       {...register(`${fieldName}.mother_first_name`)}
                     />
                     <input
                       type="text"
                       placeholder="Mother's Middle Name"
-                      className="border-1 h-11  px-4 text-lg w-72 my-2"
+                      className="border-1 h-11  px-4 text-lg lg:w-72 w-full lg:my-2 my-1"
                       {...register(`${fieldName}.mother_middle_name`)}
                     />
                     <input
                       type="text"
                       placeholder="Mother's Last Name"
-                      className="border-1 h-11  px-4 text-lg w-72 my-2"
+                      className="border-1 h-11  px-4 text-lg lg:w-72 w-full lg:my-2 my-1"
                       {...register(`${fieldName}.mother_last_name`)}
                     />
                   </div>
 
-                  <div className="flex w-full justify-between">
+                  <div className="flex w-full justify-between flex-col lg:flex-row">
                     <input
                       type="tel"
                       placeholder="Mobile Number"
-                      className="border-1  h-11  px-4 text-lg w-72 my-2"
+                      className="border-1 h-11  px-4 text-lg lg:w-72 w-full lg:my-2 my-1"
                       {...register(`${fieldName}.mobile`)}
                     />
                     <input
-                      className="border-1  h-11  px-4 text-lg w-72 my-2 uppercase"
+                      className="border-1 h-11  px-4 text-lg lg:w-72 w-full lg:my-2 my-1"
                       type="date"
                       {...register(`${fieldName}.dob`)}
                     />
                     <div className="  h-11  px-4 text-lg w-72 my-2 uppercase" />
                   </div>
                   <p className="text-xl font-medium my-4">Gender -</p>
-                  <div className="flex w-full justify-between">
+                  <div className="flex w-full justify-between flex-col lg:flex-row">
                     <label
-                      className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                      className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                       htmlFor="Male"
                     >
                       <input
@@ -987,7 +1012,7 @@ const ApplyHomeLoan = () => {
                       Male
                     </label>
                     <label
-                      className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                      className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                       htmlFor="F"
                     >
                       <input
@@ -1000,7 +1025,7 @@ const ApplyHomeLoan = () => {
                       Female
                     </label>
                     <label
-                      className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                      className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                       htmlFor="Other"
                     >
                       <input
@@ -1014,9 +1039,9 @@ const ApplyHomeLoan = () => {
                     </label>
                   </div>
                   <p className="text-xl font-medium my-4">Category -</p>
-                  <div className="flex w-full flex-wrap justify-between">
+                  <div className="flex w-full justify-between flex-col lg:flex-row">
                     <label
-                      className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                      className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                       htmlFor="General"
                     >
                       <input
@@ -1030,7 +1055,7 @@ const ApplyHomeLoan = () => {
                       General
                     </label>
                     <label
-                      className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                      className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                       htmlFor="SC"
                     >
                       <input
@@ -1043,7 +1068,7 @@ const ApplyHomeLoan = () => {
                       SC
                     </label>
                     <label
-                      className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                      className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                       htmlFor="ST"
                     >
                       <input
@@ -1056,7 +1081,7 @@ const ApplyHomeLoan = () => {
                       ST
                     </label>{" "}
                     <label
-                      className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                      className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                       htmlFor="OBC"
                     >
                       <input
@@ -1069,7 +1094,7 @@ const ApplyHomeLoan = () => {
                       OBC
                     </label>
                     <label
-                      className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                      className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                       htmlFor="Minority"
                     >
                       <input
@@ -1085,9 +1110,9 @@ const ApplyHomeLoan = () => {
                   </div>
                   <p className="text-xl font-medium my-4">Resident -</p>
 
-                  <div className="flex w-full justify-between">
+                  <div className="flex w-full lg:flex-row flex-col justify-between">
                     <label
-                      className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                      className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                       htmlFor="Resident of India"
                     >
                       <input
@@ -1101,7 +1126,7 @@ const ApplyHomeLoan = () => {
                       Resident of India
                     </label>
                     <label
-                      className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                      className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                       htmlFor="NRI"
                     >
                       <input
@@ -1114,7 +1139,7 @@ const ApplyHomeLoan = () => {
                       NRI
                     </label>
                     <label
-                      className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                      className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                       htmlFor="Foregin National
 "
                     >
@@ -1130,9 +1155,9 @@ const ApplyHomeLoan = () => {
                     </label>
                   </div>
                   <p className="text-xl font-medium my-4">Qualification -</p>
-                  <div className="flex w-full flex-wrap justify-between">
+                  <div className="flex w-full flex-col lg:flex-row  flex-wrap justify-between">
                     <label
-                      className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                      className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                       htmlFor="Matriculate"
                     >
                       <input
@@ -1146,7 +1171,7 @@ const ApplyHomeLoan = () => {
                       Matriculate
                     </label>
                     <label
-                      className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                      className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                       htmlFor="Undergraduate"
                     >
                       <input
@@ -1159,7 +1184,7 @@ const ApplyHomeLoan = () => {
                       Undergraduate
                     </label>
                     <label
-                      className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                      className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                       htmlFor="Graduate"
                     >
                       <input
@@ -1172,7 +1197,7 @@ const ApplyHomeLoan = () => {
                       Graduate
                     </label>{" "}
                     <label
-                      className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                      className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                       htmlFor="Postgraduate"
                     >
                       <input
@@ -1185,7 +1210,7 @@ const ApplyHomeLoan = () => {
                       Postgraduate
                     </label>
                     <label
-                      className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                      className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                       htmlFor="Other"
                     >
                       <input
@@ -1200,9 +1225,9 @@ const ApplyHomeLoan = () => {
                     <label className="  h-11  px-4 text-lg w-72 my-2 flex  items-center "></label>
                   </div>
                   <p className="text-xl font-medium my-4">Marital Status -</p>
-                  <div className="flex w-full justify-between">
+                  <div className="flex w-full flex-col lg:flex-row justify-between">
                     <label
-                      className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                      className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                       htmlFor="Single"
                     >
                       <input
@@ -1216,7 +1241,7 @@ const ApplyHomeLoan = () => {
                       Single
                     </label>
                     <label
-                      className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                      className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                       htmlFor="Married"
                     >
                       <input
@@ -1229,7 +1254,7 @@ const ApplyHomeLoan = () => {
                       Married
                     </label>
                     <label
-                      className="border-1  h-11  px-4 text-lg w-72 my-2 flex  items-center cursor-pointer"
+                      className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                       htmlFor="Other"
                     >
                       <input
@@ -1246,7 +1271,7 @@ const ApplyHomeLoan = () => {
                     <input
                       type="text"
                       placeholder="Spouse Name"
-                      className="border-1 h-11  px-4 text-lg w-72 my-2"
+                      className="border-1  h-11  px-4 text-lg w-72 lg:my-2 my-1 flex  items-center cursor-pointer"
                       {...register(`${fieldName}.spouseName`)}
                     />
                   </div>
@@ -1257,25 +1282,25 @@ const ApplyHomeLoan = () => {
                     <input
                       type="text"
                       placeholder="Address Line One"
-                      className="border-1 h-11  px-4 text-lg w-full my-2"
+                      className="border-1 h-11  px-4 text-lg w-full lg:my-2 my-1"
                       {...register(`${fieldName}.lineOnePresentAddress`)}
                     />
                     <input
                       type="text"
                       placeholder="Address Line Two"
-                      className="border-1 h-11  px-4 text-lg w-full my-2"
+                      className="border-1 h-11  px-4 text-lg w-full lg:my-2 my-1"
                       {...register(`${fieldName}.lineTwoPresentAddress`)}
                     />
                     <input
                       type="text"
                       placeholder="City"
-                      className="border-1 h-11  px-4 text-lg w-full my-2"
+                      className="border-1 h-11  px-4 text-lg w-full lg:my-2 my-1"
                       {...register(`${fieldName}.cityPresentAddress`)}
                     />
                     <input
                       type="number"
                       placeholder="PIN Code"
-                      className="border-1 h-11  px-4 text-lg w-full my-2"
+                      className="border-1 h-11  px-4 text-lg w-full lg:my-2 my-1"
                       {...register(`${fieldName}.pinPresentAddress`)}
                     />
                   </div>
@@ -1300,24 +1325,24 @@ const ApplyHomeLoan = () => {
                         type="text"
                         placeholder="Address Line One"
                         {...register(`${fieldName}.lineOnePermanentAddress`)}
-                        className="border-1 h-11  px-4 text-lg w-full my-2"
+                        className="border-1 h-11  px-4 text-lg w-full lg:my-2 my-1"
                       />
                       <input
                         type="text"
                         placeholder="Address Line Two"
-                        className="border-1 h-11  px-4 text-lg w-full my-2"
+                        className="border-1 h-11  px-4 text-lg w-full lg:my-2 my-1"
                         {...register(`${fieldName}.lineTwoPermanentAddress`)}
                       />
                       <input
                         type="text"
                         placeholder="City"
-                        className="border-1 h-11  px-4 text-lg w-full my-2"
+                        className="border-1 h-11  px-4 text-lg w-full lg:my-2 my-1"
                         {...register(`${fieldName}.cityPermanentAddress`)}
                       />
                       <input
                         type="number"
                         placeholder="PIN Code"
-                        className="border-1 h-11  px-4 text-lg w-full my-2"
+                        className="border-1 h-11  px-4 text-lg w-full lg:my-2 my-1"
                         {...register(`${fieldName}.pinPermanentAddress`)}
                       />
                     </div>
@@ -1334,37 +1359,59 @@ const ApplyHomeLoan = () => {
                     />
                   </div>
                   <div className="flex w-full justify-between">
-                    <label className="customfileUpload bg-blue font-medium w-72 my-2">
-                      Upload Pan Card
-                      <input
-                        type="file"
-                        {...register(`${fieldName}.pancard`)}
-                      />
-                    </label>
+                    <div class="flex w-full  items-center justify-start bg-grey-lighter">
+                      <label class="w-56 flex justify-center items-center px-2 py-3  mt-4 rounded-lg shadow-lg tracking-wide uppercase border border-2 cursor-pointer bg-textbg text-darkgray">
+                        <svg
+                          class="w-8 h-8 mr-2"
+                          fill="currentColor"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                        </svg>
+                        <span class=" text-base leading-normal">
+                          Select Pan Card
+                        </span>
+                        <input
+                          type="file"
+                          {...register(`${fieldName}.pancard`)}
+                        ></input>
+                      </label>
+                    </div>
                   </div>
                   <div className="flex flex-col w-full  items-start">
-                    <label className="customfileUpload bg-blue font-medium w-72 my-2">
-                      Upload ID Proof
+                    <label class="w-56 flex justify-center items-center px-2 py-3  mt-4 rounded-lg shadow-lg tracking-wide uppercase border border-2 cursor-pointer bg-textbg text-darkgray">
+                      <svg
+                        class="w-8 h-8 mr-2"
+                        fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                      </svg>
+                      <span class=" text-base leading-normal">
+                        Select ID Proof
+                      </span>
                       <input
                         type="file"
                         {...register(`${fieldName}.id_card`)}
-                      />
+                      ></input>
                     </label>
-                    <p>
+                    <p className="my-4">
                       * Adhaar Card / Driver's License / Voter's ID / Passport
                     </p>
                   </div>
-                  <div className="w-full flex flex-col items-end ">
+                  <div className="w-full flex flex-col lg:items-end items-center ">
                     <div
                       onClick={removeField(i)}
-                      className="border-1 border-red cursor-pointer text-red flex justify-center items-center uppercase font-medium text-xl py-2 w-72 my-4"
+                      className="border-1 border-red cursor-pointer text-red flex justify-center items-center uppercase font-medium text-xl py-2 w-72  my-4 rounded-full lg:rounded-none"
                     >
                       Remove APPLICANT
                     </div>
                     {Fields.length < 2 && (
                       <div
                         onClick={addField}
-                        className="bg-blue cursor-pointer text-white flex justify-center items-center font-medium text-xl py-2 w-72 my-4"
+                        className="bg-blue cursor-pointer text-white flex justify-center items-center font-medium text-xl py-2 w-72  rounded-full lg:rounded-none my-4"
                       >
                         ADD APPLICANT +
                       </div>
@@ -1376,7 +1423,7 @@ const ApplyHomeLoan = () => {
             {Fields.length !== 0 && (
               <button
                 type="submit"
-                className="bg-blue text-white font-medium text-xl py-2 w-72 my-12"
+                className="bg-blue text-white font-medium text-xl py-2 lg:w-72 w-full rounded-full lg:rounded-none my-12"
               >
                 Sumbit Application
               </button>

@@ -143,8 +143,8 @@ const Navbar = () => {
             <MobileNavItem
               Icon={MdMonetizationOn}
               Name="Home Loan "
-              To="/home-loan"
-              Active={location.pathname === "/home-loan"}
+              To="/home-loans"
+              Active={location.pathname === "/home-loans"}
             />{" "}
             <MobileNavItem
               Icon={RiBankLine}
