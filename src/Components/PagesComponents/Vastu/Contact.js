@@ -20,35 +20,36 @@ const Contact = () => {
   };
 
   return (
-    <section className="bg-textbg w-full h-80 pb-12 relative">
+    <section className="bg-textbg w-full lg:h-80 h-500px pb-12 relative">
       <div className="absolute -top-10 left-2/4  transform -translate-x-2/4 ">
-        <div className="customContainer px-7 h-64   bg-white shadow-lg rounded flex flex-col justify-between ">
-          <div className="w-full h-2/4 flex flex-col justify-center items-center border-b-2  border-yellow-600">
-            <p className="text-3xl text-darkgray w-2/4 text-center capitalize">
-              Want to get on site/off site Vastu consultancy from the best consultants
+        <div className="lg:w-80vw w-90vw mx-auto px-7 lg:h-64    bg-white shadow-lg rounded flex flex-col justify-between ">
+          <div className="w-full h-2/4 flex flex-col justify-center py-8 lg:py-0 items-center border-b-2  border-yellow-600">
+            <p className="lg:text-3xl text-xl text-darkgray lg:w-2/4 text-center capitalize">
+              Want to get on site/off site Vastu consultancy from the best
+              consultants
             </p>
           </div>
-          <div className="w-full h-2/4 flex flex-col justify-center items-center ">
-            <p className="text-3xl font-medium text-yellow-600 w-2/4 text-center capitalize">
+          <div className="w-full h-2/4 flex flex-col justify-center items-center py-8 lg:py-0 ">
+            <p className="lg:text-3xl text-2xl font-medium text-yellow-600 lg:w-2/4 text-center capitalize">
               Get vaastu consultancy
             </p>
-            <div className="flex justify-between items-center w-full mt-3">
+            <div className="flex flex-col lg:flex-row justify-between items-center w-full mt-3">
               <input
-                className="w-1/4 h-11 px-4 border-1 rounded-sm placeholder-darkgray border-lightblue "
+                className="lg:w-1/4 w-full h-11 px-4 my-1 border-1 rounded-sm placeholder-darkgray border-lightblue "
                 type="text"
                 value={Name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Name"
               />
               <input
-                className="w-1/4 h-11 px-4 border-1 rounded-sm placeholder-darkgray border-lightblue "
+                className="lg:w-1/4 w-full h-11 px-4 my-1 border-1 rounded-sm placeholder-darkgray border-lightblue "
                 type="text"
                 placeholder="Phone Number"
                 value={Phone}
                 onChange={(e) => setPhone(e.target.value)}
               />
               <input
-                className="w-1/4 h-11 px-4 border-1 rounded-sm placeholder-darkgray border-lightblue "
+                className="lg:w-1/4 w-full h-11 my-1 px-4 border-1 rounded-sm placeholder-darkgray border-lightblue "
                 type="text"
                 placeholder="Email Address"
                 value={Email}
@@ -56,7 +57,7 @@ const Contact = () => {
               />
               <button
                 onClick={HandleSubmit}
-                className="w-1/5 h-11 rounded-sm bg-blue text-white font-medium "
+                className="lg:w-1/4 w-full my-1 h-11 rounded-sm bg-blue text-white font-medium "
               >
                 Get Advice
               </button>

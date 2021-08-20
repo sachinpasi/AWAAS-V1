@@ -9,8 +9,10 @@ import {
 const Faq = () => {
   return (
     <section className="w-full h-full bg-textbg">
-      <div className="customContainer flex flex-col">
-        <p className="text-5xl text-center my-4">Frequently Asked Questions</p>
+      <div className="lg:w-80vw w-90vw mx-auto flex flex-col">
+        <p className="lg:text-5xl text-3xl text-center my-4">
+          Frequently Asked Questions
+        </p>
 
         <Accordion preExpanded="string[1]" className="border-none">
           <AccordionItem uuid="1" className="my-4">

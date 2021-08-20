@@ -25,7 +25,7 @@ const PostProject = () => {
 
   return (
     <Layout>
-      <main className="customContainer min-h-screen flex  justify-center items-start py-12">
+      <main className="lg:w-80vw w-90vw mx-auto min-h-screen flex  justify-center items-start py-12">
         {CurrentStep === 1 && <Step1 />}
         {CurrentStep === 2 && <Step2 />}
         {CurrentStep === 3 && <Step3 />}

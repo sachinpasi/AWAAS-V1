@@ -24,25 +24,25 @@ const Banner = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
-      className="w-full h-450px "
+      className="w-full lg:h-450px h-550px "
     >
       <div
         style={{
           background: "rgba(0,0,0,0.2)",
         }}
-        className="w-full h-full relative flex justify-evenly items-center"
+        className="w-full h-full relative flex flex-col lg:flex-row justify-evenly items-center"
       >
         <div>
           <p
             style={{
               textShadow: "rgb(0 0 0) 2px 3px 5px",
             }}
-            className="text-6xl text-white font-semibold capitalize "
+            className="lg:text-6xl text-3xl  pt-20  text-white font-semibold capitalize "
           >
             Invest With Awaasonline
           </p>
         </div>
-        <div className="w-1/5 h-80 rounded-lg  bg-white shadow-xl  flex flex-col justify-center items-center px-8 ">
+        <div className="lg:w-1/5 w-90vw mx-auto h-80 rounded-lg  bg-white shadow-xl  flex flex-col justify-center items-center px-8 ">
           <div className="flex justify-center items-center flex-col border-b-2 border-dashed w-full py-2">
             <p className="text-lg text-darkgray">
               Get investment advice from our experienced advisers

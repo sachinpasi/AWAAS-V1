@@ -3,10 +3,12 @@ import React from "react";
 const Opportunities = () => {
   return (
     <section className="w-full h-full bg-textbg ">
-      <div className="customContainer flex flex-col items-start">
-        <p className="text-4xl font-medium py-8">Investment Opportunities</p>
-        <div className="w-full h-450px grid grid-cols-3 gap-6 ">
-          <div className="w-full h-full bg-white shadow-xl ">
+      <div className="lg:w-80vw w-90vw mx-auto flex flex-col items-start">
+        <p className="lg:text-4xl text-2xl font-medium py-8">
+          Investment Opportunities
+        </p>
+        <div className="w-full lg:h-450px grid lg:grid-cols-3 grid-cols-1 gap-6 ">
+          <div className="w-full h-450px bg-white shadow-xl ">
             <div className="w-full h-3/5 ">
               <img
                 className="w-full h-full object-cover"
@@ -36,7 +38,7 @@ const Opportunities = () => {
               </div>
             </div>
           </div>
-          <div className="w-full h-full bg-white shadow-xl ">
+          <div className="w-full h-450px bg-white shadow-xl ">
             <div className="w-full h-3/5 ">
               <img
                 className="w-full h-full object-cover"
@@ -66,7 +68,7 @@ const Opportunities = () => {
               </div>
             </div>
           </div>
-          <div className="w-full h-full bg-white shadow-xl ">
+          <div className="w-full h-450px bg-white shadow-xl ">
             <div className="w-full h-3/5 ">
               <img
                 className="w-full h-full object-cover"

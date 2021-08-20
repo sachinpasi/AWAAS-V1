@@ -4,13 +4,8 @@ const HowItWorks = () => {
   return (
     <section className="w-full h-full bg-textbg flex flex-col justify-center items-center pt-32 ">
       <p className="text-5xl text-darkgray font-medium">How it works?</p>
-      <div className=" flex justify-between items-center h-72">
-        <div
-          style={{
-            width: "calc(100% / 3 - 1rem)",
-          }}
-          className=" h-28 relative border-2 border-lightblue rounded flex flex-col justify-end items-center"
-        >
+      <div className=" lg:w-80vw w-90vw mx-auto grid lg:grid-cols-3 gap-8 lg:h-72 my-12 lg:my-0">
+        <div className=" w-full h-28 relative border-2 border-lightblue rounded flex flex-col justify-end items-center">
           <div className="absolute -top-1/4 w-16 h-16 bg-blue rounded-full flex justify-center items-center">
             <img
               className="w-2/4 object-contain "
@@ -21,13 +16,8 @@ const HowItWorks = () => {
           <p className="text-center text-lg leading-5 pb-4 px-5">
             Share your contact details in the above form.
           </p>
-        </div>{" "}
-        <div
-          style={{
-            width: "calc(100% / 3 - 1rem)",
-          }}
-          className=" h-28 relative border-2 border-lightblue rounded flex flex-col justify-end items-center"
-        >
+        </div>
+        <div className="w-full h-28 relative border-2 border-lightblue rounded flex flex-col justify-end items-center">
           <div className="absolute -top-1/4 w-16 h-16 bg-blue rounded-full flex justify-center items-center">
             <img
               className="w-2/4 object-contain "
@@ -38,13 +28,8 @@ const HowItWorks = () => {
           <p className="text-center text-lg leading-5 pb-4 px-5">
             Our executive will call you and guide you.
           </p>
-        </div>{" "}
-        <div
-          style={{
-            width: "calc(100% / 3 - 1rem)",
-          }}
-          className=" h-28 relative border-2 border-lightblue rounded flex flex-col justify-end items-center"
-        >
+        </div>
+        <div className="w-full h-28 relative border-2 border-lightblue rounded flex flex-col justify-end items-center">
           <div className="absolute -top-1/4 w-16 h-16 bg-blue rounded-full flex justify-center items-center">
             <img
               className="w-2/4 object-contain "

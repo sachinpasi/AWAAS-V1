@@ -4,13 +4,8 @@ const HowItWorks = () => {
   return (
     <section className="w-full h-full bg-textbg flex flex-col justify-center items-center  py-10 ">
       <p className="text-5xl text-darkgray font-medium">How it works?</p>
-      <div className=" flex justify-between items-center h-72">
-        <div
-          style={{
-            width: "calc(100% / 3 - 1rem)",
-          }}
-          className=" h-28 relative border-2 border-lightblue rounded flex flex-col justify-end items-center"
-        >
+      <div className=" w-90vw mx-auto lg:w-80vw grid lg:grid-cols-3 gap-8  my-12">
+        <div className=" w-full h-28 relative border-2 border-lightblue rounded flex flex-col justify-end items-center">
           <div className="absolute -top-1/4 w-16 h-16 bg-blue rounded-full flex justify-center items-center">
             <img
               className="w-2/4 object-contain "
@@ -22,12 +17,7 @@ const HowItWorks = () => {
             Share your contact details in the above form.
           </p>
         </div>{" "}
-        <div
-          style={{
-            width: "calc(100% / 3 - 1rem)",
-          }}
-          className=" h-28 relative border-2 border-lightblue rounded flex flex-col justify-end items-center"
-        >
+        <div className=" w-full h-28 relative border-2 border-lightblue rounded flex flex-col justify-end items-center">
           <div className="absolute -top-1/4 w-16 h-16 bg-blue rounded-full flex justify-center items-center">
             <img
               className="w-2/4 object-contain "
@@ -39,12 +29,7 @@ const HowItWorks = () => {
             Our executive will call you to fix a meeting.
           </p>
         </div>{" "}
-        <div
-          style={{
-            width: "calc(100% / 3 - 1rem)",
-          }}
-          className=" h-28 relative border-2 border-lightblue rounded flex flex-col justify-end items-center"
-        >
+        <div className=" w-full h-28 relative border-2 border-lightblue rounded flex flex-col justify-end items-center">
           <div className="absolute -top-1/4 w-16 h-16 bg-blue rounded-full flex justify-center items-center">
             <img
               className="w-2/4 object-contain "

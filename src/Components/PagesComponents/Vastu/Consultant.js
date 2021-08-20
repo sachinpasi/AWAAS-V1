@@ -3,19 +3,19 @@ import React, { useState } from "react";
 const Consultant = () => {
   return (
     <section className="w-full bg-textbg">
-      <div className="customContainer flex flex-col">
-        <div className="w-full flex justify-between items-center border-b-2  border-navborder">
+      <div className="lg:w-80vw  mx-auto w-90vw flex flex-col">
+        <div className="w-full flex flex-col lg:flex-row justify-between items-center border-b-2  border-navborder">
           <p className="text-4xl my-2 text-darkgray">Vastu Consultant</p>
-          <div>
-            <select className="w-60 border-2 border-extralightgray text-center h-11 px-2 mx-2">
+          <div className="flex w-full lg:w-auto justify-between my-2 lg:my-0">
+            <select className="w-60 border-2 border-extralightgray text-center h-11 px-2 lg:mx-2">
               <option value="">Consultancy Type</option>
             </select>
-            <select className="w-20 border-2 border-extralightgray text-center h-11 px-2 ml-2">
+            <select className="w-20 border-2 border-extralightgray text-center h-11 px-2 lg:ml-2">
               <option value="">City</option>
             </select>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-6 my-4">
+        <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 my-4">
           <Card Name="Ananya" Image="/assets/images/vastu/1.jfif" />
           <Card Name="Diya" Image="/assets/images/vastu/2.jfif" />
           <Card Name="Ishaan" Image="/assets/images/vastu/3.jfif" />
@@ -29,17 +29,22 @@ const Consultant = () => {
 export default Consultant;
 
 const Card = ({ Name, Image }) => (
-  <div className="h-96 bg-white flex flex-col p-4  shadow-md">
+  <div className="h-96 bg-white flex flex-col lg:p-4 p-2  shadow-md">
     <div className="h-2/4 w-full border-b-2 border-gray-200 border-dashed flex items-center  ">
       <div className="w-40 h-40 ">
         <img className="w-full h-full object-cover" src={Image} alt="" />
       </div>
-      <div className="h-full w-full ml-4 ">
+      <div className="h-full w-full lg:ml-4 ml-2 ">
         <p className="text-2xl font-medium text-yellow-600">{Name}</p>
         <div className="flex flex-col justify-between items-start ">
           <div className="flex items-center">
             <div className="w-10">
-              <svg width="20.828" height="17.043" viewBox="0 0 20.828 17.043">
+              <svg
+                className="w-10"
+                width="20.828"
+                height="17.043"
+                viewBox="0 0 20.828 17.043"
+              >
                 <path
                   id="Path_14"
                   data-name="Path 14"
@@ -60,6 +65,7 @@ const Card = ({ Name, Image }) => (
                 width="20.828"
                 height="17.043"
                 viewBox="0 0 20.828 17.043"
+                className="w-10"
               >
                 <path
                   id="Path_14"
@@ -81,6 +87,7 @@ const Card = ({ Name, Image }) => (
                 width="27.122"
                 height="18.72"
                 viewBox="0 0 27.122 18.72"
+                className="w-10"
               >
                 <path
                   id="Path_15"
@@ -97,7 +104,7 @@ const Card = ({ Name, Image }) => (
             </p>{" "}
           </div>
         </div>
-        <div className="w-full flex justify-between items-center h-10 my-2">
+        <div className="w-full flex justify-between items-center h-10 lg:my-2 my-1">
           <div className="border-1 cursor-pointer border-blue h-full w-2/4 mx-2 rounded px-2 flex justify-center items-center">
             <svg
               id="pie-chart"
@@ -113,7 +120,9 @@ const Card = ({ Name, Image }) => (
                 fill-rule="evenodd"
               />
             </svg>
-            <p className="text-sm text-blue font-medium ml-1">Sample Report</p>
+            <p className="lg:text-sm text-xs text-blue font-medium ml-1">
+              Sample Report
+            </p>
           </div>
 
           <div className="border-1 cursor-pointer border-green h-full w-2/4 mx-2 rounded px-2 flex justify-center items-center">
@@ -127,7 +136,9 @@ const Card = ({ Name, Image }) => (
               />
             </svg>
 
-            <p className="text-sm text-green font-medium ml-1">Watch Videos</p>
+            <p className="lg:text-sm text-xs text-green font-medium ml-1">
+              Watch Videos
+            </p>
           </div>
         </div>
       </div>

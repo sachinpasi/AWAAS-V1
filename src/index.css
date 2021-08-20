@@ -46,10 +46,11 @@ input {
   overflow: hidden;
   cursor: pointer;
   text-align: center;
-  color: #fff;
+  color: #292929;
 
-  height: 40px;
+  height: 50px;
   font-size: 18px;
+  font-weight: 400;
   line-height: 16px;
   display: flex;
   justify-content: center;

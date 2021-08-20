@@ -3,11 +3,11 @@ import React from "react";
 const IvestorsWords = () => {
   return (
     <section className="w-full h-full bg-textbg ">
-      <div className="customContainer flex flex-col items-start">
-        <p className="text-4xl font-medium py-8">
+      <div className="lg:w-80vw w-90vw mx-auto flex flex-col items-start">
+        <p className="lg:text-4xl text-2xl font-medium py-8">
           What Our Investors Have To Say
         </p>
-        <div className="w-full h-full grid-cols-3 grid gap-8 ">
+        <div className="w-full h-full lg:grid-cols-3 grid gap-8 ">
           <Card Name="Akshay" Img="/assets/images/investmentassist/p1.jfif" />
           <Card Name="Akhilesh" Img="/assets/images/investmentassist/p2.jfif" />
           <Card Name="Udayan" Img="/assets/images/investmentassist/p3.jfif" />
@@ -23,7 +23,7 @@ const IvestorsWords = () => {
 export default IvestorsWords;
 
 const Card = ({ Name, Img }) => (
-  <div className="w-full h-400px bg-blue border-extralightgray border-1">
+  <div className="w-full h-450px bg-blue border-extralightgray border-1">
     <div
       style={{
         borderRadius: "15rem 0 0 0 ",
@@ -55,7 +55,7 @@ const Card = ({ Name, Img }) => (
             Arquitectonica, a leading architectural firm in the United States.
           </p>
         </div>
-        <div>
+        <div className="pt-4">
           <p className="text-green font-medium text-xl">Invested In</p>
           <p className="text-base text-darkgray">Astrum La Regencia </p>
         </div>

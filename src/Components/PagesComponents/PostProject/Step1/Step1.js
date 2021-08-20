@@ -140,38 +140,38 @@ const Step1 = () => {
       onSubmit={handleSubmit(HandleStep1Submit)}
       className="w-full h-full flex flex-col items-center "
     >
-      <div className="w-full flex flex-col items-start justify-between border-1  p-8 py-6">
+      <div className="w-full flex flex-col items-start justify-between border-1  lg:p-8 p-2 py-6 mt-12 lg:mt-0">
         <div className="w-full h-full flex flex-col items-start justify-start relative">
           <p className="text-3xl font-medium uppercase">Project Details</p>
           <div className="flex justify-between w-full">
-            <div className="w-3/4 flex justify-between">
-              <div className="flex flex-col items-start my-4">
+            <div className="lg:w-3/4 w-full flex flex-col lg:flex-row justify-between">
+              <div className="flex flex-col items-start my-4 w-full">
                 <input
-                  className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                  className="border-1 h-11  px-2 text-lg lg:w-80 w-full my-1 placeholder-gray-600"
                   type="text"
                   defaultValue="Panipat"
                   disabled
                 />
                 <input
-                  className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                  className="border-1 h-11  px-2 text-lg lg:w-80 w-full my-1 placeholder-gray-600"
                   placeholder="Project Title"
                   type="text"
                   {...register("projectTitle")}
                 />
                 <input
-                  className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                  className="border-1 h-11  px-2 text-lg lg:w-80 w-full my-1 placeholder-gray-600"
                   placeholder="Developer Title"
                   type="text"
                   {...register("developerName")}
                 />
                 <input
-                  className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                  className="border-1 h-11  px-2 text-lg lg:w-80 w-full my-1 placeholder-gray-600"
                   placeholder="RERA Number"
                   type="text"
                   {...register("rera")}
                 />
                 <input
-                  className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                  className="border-1 h-11  px-2 text-lg lg:w-80 w-full my-1 placeholder-gray-600"
                   placeholder="Locality / Area"
                   type="text"
                   {...register("projectLocality")}
@@ -279,19 +279,27 @@ const Step1 = () => {
                   )}
                 </div>
               </div>
-              <div className="flex flex-col items-start my-4">
+              <div className="flex flex-col items-start my-4 w-full">
                 <textarea
-                  className="border-1 h-28 py-2  px-2 text-lg w-96 my-1 mb-3 placeholder-gray-600"
+                  className="border-1 h-28 py-2  px-2 text-lg lg:w-96 w-full my-1 mb-3 placeholder-gray-600"
                   placeholder="About The Project"
                   {...register("description")}
                 />
                 <textarea
-                  className="border-1 h-28 py-2  px-2 text-lg w-96 my-1 mt-3 placeholder-gray-600"
+                  className="border-1 h-28 py-2  px-2 text-lg lg:w-96 w-full my-1 mt-3 placeholder-gray-600"
                   placeholder="Developer Description"
                   {...register("aboutDeveloper")}
                 />
                 <div className="flex justify-end my-2 w-full">
-                  <label className="customfileUpload bg-blue font-medium w-60">
+                  <label className="customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
+                    <svg
+                      class="w-8 h-8 mr-2"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                    </svg>
                     Choose Banner Image
                     <input
                       onChange={HandleBannerImgChange}
@@ -301,7 +309,15 @@ const Step1 = () => {
                   </label>
                 </div>
                 <div className="flex justify-end my-2 w-full ">
-                  <label className="customfileUpload bg-blue font-medium w-60">
+                  <label className="customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
+                    <svg
+                      class="w-8 h-8 mr-2"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                    </svg>
                     Choose Project Logo
                     <input
                       onChange={HandleProjectLogoChange}
@@ -311,7 +327,15 @@ const Step1 = () => {
                   </label>
                 </div>
                 <div className="flex justify-end my-2 w-full">
-                  <label className="customfileUpload bg-blue font-medium w-60">
+                  <label className="customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
+                    <svg
+                      class="w-8 h-8 mr-2"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                    </svg>
                     Choose Developer Logo
                     <input
                       onChange={HandleDeveloperLogoChange}
@@ -322,7 +346,7 @@ const Step1 = () => {
                 </div>
               </div>
             </div>
-            <div className="w-1/5 flex flex-col items-start">
+            <div className="hidden lg:flex w-1/5 flex-col items-start">
               {BannerImg && (
                 <div className="my-2">
                   <p className="text-lg">Project Logo Preview</p>
@@ -352,7 +376,7 @@ const Step1 = () => {
           </div>
           <div className="w-full flex my-4">
             <button
-              className="bg-blue text-white flex justify-center items-center  h-10 font-medium text-lg w-60 "
+              className="bg-blue text-white flex justify-center items-center  h-10 font-medium text-lg lg:w-60 w-full rounded-full lg:rounded-none "
               type="submit"
             >
               Next
