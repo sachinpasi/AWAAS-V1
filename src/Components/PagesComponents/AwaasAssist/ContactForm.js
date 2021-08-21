@@ -10,8 +10,8 @@ import { Link } from "react-router-dom";
 const ContactForm = () => {
   return (
     <div className="w-full h-full py-10">
-      <div className="lg:w-80vw w-90vw mx-auto flex justify-between items-center ">
-        <div className="w-5/12">
+      <div className="lg:w-80vw w-90vw mx-auto flex flex-col lg:flex-row justify-between items-center ">
+        <div className="lg:w-5/12 w-full">
           <p className="uppercase text-lightgray text-xl font-medium">
             Contact Us
           </p>
@@ -48,7 +48,7 @@ const ContactForm = () => {
             </div>
           </div>
         </div>
-        <div className="w-2/5 flex-col flex">
+        <div className="lg:w-2/5 w-full flex-col flex">
           <input
             type="email"
             className="w-full border-2 border-blue px-4 h-12"

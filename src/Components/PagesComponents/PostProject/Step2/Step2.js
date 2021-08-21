@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { MdDelete } from "react-icons/md";
 import { API } from "../../../../API";
 import { selectPostProjectId } from "../../../../Redux/_features/_PostProjectSlice";
 import { SET_CURRENT_STEP } from "../../../../Redux/_features/_PostProjectStepSlice";
@@ -87,17 +88,20 @@ const Step2 = () => {
 
   return (
     <div className="w-full h-full flex flex-col items-center ">
-      <div className="w-full flex flex-col items-start justify-between border-1  p-8 py-6">
+      <div className="w-full flex flex-col items-start justify-between border-1 pt-10  lg:p-8 p-2 py-6">
         <div id="brochure" className="w-full my-4 border-t-2 pt-4 relative ">
-          <p className="text-3xl font-medium uppercase pb-4">
+          <p className="lg:text-3xl text-2xl font-medium uppercase pb-4">
             Broucher Details
           </p>
 
           {Brochure.map((x, i) => (
-            <div key={i} className={`w-full flex justify-between`}>
-              <div className="w-3/4 flex justify-between">
+            <div
+              key={i}
+              className={`w-full flex flex-col lg:flex-row justify-between`}
+            >
+              <div className="lg:w-3/4 w-full flex flex-col lg:flex-row justify-between">
                 <input
-                  className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                  className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                   type="text"
                   name="title"
                   placeholder="Brochure Title"
@@ -105,12 +109,20 @@ const Step2 = () => {
                   onChange={(e) => HandleChange(e, i)}
                 />
                 <div
-                  className={`flex w-96  ${
+                  className={`flex lg:w-96 w-full  ${
                     Brochure.length === 1 ? "justify-end" : "justify-between"
                   } items-center my-2`}
                 >
-                  <label className="customfileUpload bg-blue font-medium w-60">
-                    Choose Brochure File
+                  <label className="customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
+                    <svg
+                      class="w-8 h-8 mr-2"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                    </svg>
+                    Upload Brochure File
                     <input
                       value={i.file}
                       onChange={(e) => HandleDocumentChange(e, i)}
@@ -118,27 +130,44 @@ const Step2 = () => {
                       name="file"
                     />
                   </label>
+                  {/* <label className="customfileUpload bg-blue font-medium lg:w-60">
+                    Choose Brochure File
+                    <input
+                      value={i.file}
+                      onChange={(e) => HandleDocumentChange(e, i)}
+                      type="file"
+                      name="file"
+                    />
+                  </label> */}
                   {Brochure.length !== 1 && (
-                    <button
-                      className="bg-blue text-white flex justify-center items-center px-8 h-10 font-medium text-lg "
-                      onClick={() => handleRemoveClick(i)}
-                    >
-                      Remove
-                    </button>
+                    <>
+                      <div
+                        className=" lg:hidden bg-red text-white flex justify-center items-center px-3 h-10 rounded-full font-medium text-lg ml-4 "
+                        onClick={() => handleRemoveClick(i)}
+                      >
+                        <MdDelete />
+                      </div>
+                      <button
+                        className=" hidden border-1 border-red text-red lg:flex justify-center items-center px-8 h-10 font-medium text-lg "
+                        onClick={() => handleRemoveClick(i)}
+                      >
+                        Remove
+                      </button>
+                    </>
                   )}
                 </div>
               </div>
 
-              <div className="w-1/4 flex justify-center items-center">
+              <div className=" lg:w-1/4 w-full flex justify-center items-center">
                 {x.file && <p>{x?.file?.name} is selected</p>}
               </div>
             </div>
           ))}
 
-          <div className="w-3/4 flex flex-col justify-end items-end ">
+          <div className="lg:w-3/4 w-full flex flex-col justify-end items-end ">
             <button
               onClick={handleAddClick}
-              className="bg-blue text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg w-60 "
+              className="bg-blue text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-60 w-full rounded-full lg:rounded-none "
             >
               + Add More Brochure
             </button>
@@ -150,7 +179,7 @@ const Step2 = () => {
                 Brochure[0].file === null || Brochure[0].title === ""
                   ? "bg-gray-500 cursor-not-allowed"
                   : "bg-blue"
-              }  text-white flex justify-center items-center  h-10 font-medium text-lg w-60`}
+              }  text-white flex justify-center items-center mb-8  h-10 font-medium text-lg lg:w-60 w-full rounded-full lg:rounded-none`}
             >
               Upload Brochure
             </button>
@@ -173,7 +202,7 @@ const Step2 = () => {
               disabled={isUploaded !== true}
               className={` ${
                 isUploaded ? "bg-blue" : "bg-gray-500"
-              } text-white flex justify-center items-center  h-10 font-medium text-lg w-60`}
+              } text-white flex justify-center items-center  h-10 font-medium text-lg lg:w-60 w-full lg:rounded-none rounded-full`}
             >
               Next
             </button>

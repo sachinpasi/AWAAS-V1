@@ -6,6 +6,7 @@ import { selectUser } from "../../Redux/_features/_userSlice";
 import { MdClose, MdExplore, MdMonetizationOn } from "react-icons/md";
 import { HiMenu, HiOutlineHome } from "react-icons/hi";
 import { RiBankLine, RiBuilding2Line } from "react-icons/ri";
+import { BiHelpCircle } from "react-icons/bi";
 import { ImHammer2 } from "react-icons/im";
 import Login from "../PagesComponents/Login/Login";
 const Navbar = () => {
@@ -145,6 +146,12 @@ const Navbar = () => {
               Name="Home Loan "
               To="/home-loans"
               Active={location.pathname === "/home-loans"}
+            />
+            <MobileNavItem
+              Icon={BiHelpCircle}
+              Name="Awaas Assist"
+              To="/awaas-assist"
+              Active={location.pathname === "/awaas-assist"}
             />{" "}
             <MobileNavItem
               Icon={RiBankLine}

@@ -9,14 +9,14 @@ import {
 const Faq = () => {
   return (
     <section className="w-full h-full bg-textbg">
-      <div className="customContainer flex flex-col">
+      <div className="w-90vw lg:w-80vw mx-auto flex flex-col">
         <p className="text-5xl text-center my-4">Frequently Asked Questions</p>
 
         <Accordion preExpanded="string[1]" className="border-none">
           <AccordionItem uuid="1" className="my-4">
             <AccordionItemHeading>
               <AccordionItemButton>
-                <p className="text-2xl font-medium text-darkgray">
+                <p className="lg:text-2xl text-xl font-medium text-darkgray">
                   How to post/list/sell property on awaasonline.com ?
                 </p>
               </AccordionItemButton>
@@ -51,7 +51,7 @@ const Faq = () => {
           <AccordionItem className="my-4">
             <AccordionItemHeading>
               <AccordionItemButton>
-                <p className="text-2xl font-medium text-darkgray">
+                <p className="lg:text-2xl text-xl font-medium text-darkgray">
                   I can't see or search for my posted property on the website.
                 </p>
               </AccordionItemButton>
@@ -72,7 +72,7 @@ To help you see the review status, we have provided the status option in the Pro
           <AccordionItem className="my-4">
             <AccordionItemHeading>
               <AccordionItemButton>
-                <p className="text-2xl font-medium text-darkgray">
+                <p className="lg:text-2xl text-xl font-medium text-darkgray">
                   How can i remove / delete my property from awaasonline.com ?
                 </p>
               </AccordionItemButton>
@@ -91,7 +91,7 @@ To help you remove your property, we have provided the Delete Listing option in 
           <AccordionItem className="my-4">
             <AccordionItemHeading>
               <AccordionItemButton>
-                <p className="text-2xl font-medium text-darkgray">
+                <p className="lg:text-2xl text-xl font-medium text-darkgray">
                   Pop-up ads / other ads are appearing on the website.
                 </p>
               </AccordionItemButton>

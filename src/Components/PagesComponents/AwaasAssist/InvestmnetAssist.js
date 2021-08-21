@@ -6,13 +6,15 @@ const InvestmnetAssist = () => {
     <div className="w-full h-full bg-textbg py-10">
       <div className=" w-90vw mx-auto flex-col flex justify-between items-center ">
         <div className="w-full flex-col flex items-center justify-between ">
-          <p className="text-6xl text-blue font-semibold">Instant Assistance</p>
-          <p className="text-xl text-lightgray py-5 capitalize">
+          <p className="lg:text-6xl text-3xl text-blue font-semibold">
+            Instant Assistance
+          </p>
+          <p className="lg:text-xl text-lg text-center text-lightgray py-5 capitalize">
             just fill in your contact no and get instant call-back within
             minutes from our support representatives
           </p>
         </div>
-        <div className="w-full h-full py-4 grid grid-cols-4 gap-8 my-10">
+        <div className="w-full h-full py-4 grid lg:grid-cols-4 grid-cols-1 lg:gap-8 gap-20 my-10">
           <div
             style={{
               background: "linear-gradient(#4d81e8, #28d8b5)",

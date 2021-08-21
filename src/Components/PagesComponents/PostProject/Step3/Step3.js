@@ -67,10 +67,10 @@ const Step3 = () => {
 
   return (
     <div className="w-full h-full flex flex-col items-center ">
-      <div className="w-full flex flex-col items-start justify-between border-1  p-8 py-6">
+      <div className="w-full flex flex-col items-start justify-between border-1  lg:p-8 p-2 py-6">
         <div className="w-full my-4 border-t-2 pt-4 relative ">
           <p className="text-3xl font-medium uppercase pb-4">Amenities</p>
-          <div className="w-full  grid grid-cols-4 gap-1 my-4">
+          <div className="w-full  grid lg:grid-cols-4 grid-cols-2 gap-1 my-4">
             {Amenities.map((item, index) => (
               <div
                 key={item.id}
@@ -86,7 +86,9 @@ const Step3 = () => {
                   src={`https://codeiator.com/uploads/${item.icon}`}
                   alt=""
                 />
-                <p className="font-medium capitalize">{item.name}</p>
+                <p className="font-medium capitalize text-center">
+                  {item.name}
+                </p>
               </div>
             ))}
           </div>

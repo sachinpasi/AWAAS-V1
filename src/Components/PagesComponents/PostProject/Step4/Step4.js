@@ -608,7 +608,7 @@ const Step4 = () => {
       <header
         className={`${
           isNavOpen ? "visible" : "hidden"
-        } w-full fixed bg-white h-20 z-40 top-0 flex justify-center items-center shadow transition-all`}
+        } hidden w-full fixed bg-white h-20 z-40 top-0 flex justify-center items-center shadow transition-all`}
       >
         <div className="flex my-1   ">
           <div
@@ -693,88 +693,119 @@ const Step4 = () => {
       </header>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full min flex flex-col items-center "
+        className="w-full min flex flex-col items-center pt-12 lg:pt-0 "
       >
-        <div className="w-full flex flex-col items-start justify-between border-1  p-8 py-6">
+        <div className="w-full flex flex-col items-start justify-between border-1  lg:p-8 p-2 py-6">
           <div className="w-full  relative ">
-            <div className="grid grid-cols-3 gap-4 border-b-2 pb-4 ">
+            <div className="grid lg:grid-cols-3 grid-cols-2 lg:gap-8 gap-4 border-b-2 pb-4 ">
               <div
                 onClick={() => {
                   setAddFlat(true);
                   addFlatField();
                 }}
-                className={`px-7 py-4 bg-blue  rounded-full cursor-pointer transform transition-transform hover:scale-95 `}
+                style={{
+                  backgroundImage: "url(/assets/images/postproject/flat.jpg)",
+                }}
+                className={`h-60 bg-cover bg-center  cursor-pointer lg:p-8 p-4  `}
               >
-                <p
-                  className={`text-xl font-medium text-center  text-white uppercase`}
-                >
-                  ADD FLAT
-                </p>
+                <div className="w-full h-full flex justify-center items-center bg-black bg-opacity-50 transform transition-transform hover:scale-105 ">
+                  <p
+                    className={`lg:text-3xl text-2xl font-semibold text-center  text-white uppercase`}
+                  >
+                    + FLAT
+                  </p>
+                </div>
               </div>{" "}
               <div
                 onClick={() => {
                   setAddVilla(true);
                   addVillaField();
                 }}
-                className={`px-7 py-4 bg-blue  rounded-full cursor-pointer transform transition-transform hover:scale-95 `}
+                style={{
+                  backgroundImage: "url(/assets/images/postproject/villa.jpg)",
+                }}
+                className={`h-60 bg-cover bg-center  cursor-pointer lg:p-8 p-4  `}
               >
-                <p
-                  className={`text-xl font-medium text-center  text-white uppercase`}
-                >
-                  ADD VILLA
-                </p>
+                <div className="w-full h-full flex justify-center items-center bg-black bg-opacity-30 transform transition-transform hover:scale-105 ">
+                  <p
+                    className={`lg:text-3xl text-2xl font-semibold text-center  text-white uppercase`}
+                  >
+                    + VILLA
+                  </p>
+                </div>
               </div>{" "}
               <div
                 onClick={() => {
                   setAddSco(true);
                   addScoField();
                 }}
-                className={`px-7 py-4 bg-blue  rounded-full cursor-pointer transform transition-transform hover:scale-95 `}
+                style={{
+                  backgroundImage: "url(/assets/images/postproject/sco.jpg)",
+                }}
+                className={`h-60 bg-cover bg-center  cursor-pointer lg:p-8 p-4  `}
               >
-                <p
-                  className={`text-xl font-medium text-center  text-white uppercase`}
-                >
-                  ADD SCO
-                </p>
+                <div className="w-full h-full flex justify-center items-center bg-black bg-opacity-50 transform transition-transform hover:scale-105 ">
+                  <p
+                    className={`lg:text-3xl text-2xl font-semibold text-center  text-white uppercase`}
+                  >
+                    + SCO
+                  </p>
+                </div>
               </div>{" "}
               <div
                 onClick={() => {
                   setAddPlot(true);
                   addPlotField();
                 }}
-                className={`px-7 py-4 bg-blue  rounded-full cursor-pointer transform transition-transform hover:scale-95 `}
+                style={{
+                  backgroundImage: "url(/assets/images/postproject/plot.jpg)",
+                }}
+                className={`h-60 bg-cover bg-center  cursor-pointer lg:p-8 p-4  `}
               >
-                <p
-                  className={`text-xl font-medium text-center  text-white uppercase`}
-                >
-                  ADD LAND / PLOT
-                </p>
+                <div className="w-full h-full flex justify-center items-center bg-black bg-opacity-50 transform transition-transform hover:scale-105 ">
+                  <p
+                    className={`lg:text-3xl text-2xl font-semibold text-center  text-white uppercase`}
+                  >
+                    + LAND / PLOT
+                  </p>
+                </div>
               </div>{" "}
               <div
                 onClick={() => {
                   setAddCommercial(true);
                   addCommercialField();
                 }}
-                className={`px-7 py-4 bg-blue  rounded-full cursor-pointer transform transition-transform hover:scale-95 `}
+                style={{
+                  backgroundImage:
+                    "url(/assets/images/postproject/commercial.jpg)",
+                }}
+                className={`h-60 bg-cover bg-center  cursor-pointer lg:p-8 p-4  `}
               >
-                <p
-                  className={`text-xl font-medium text-center  text-white uppercase`}
-                >
-                  ADD COMMERCIAL
-                </p>
+                <div className="w-full h-full flex justify-center items-center bg-black bg-opacity-30 transform transition-transform hover:scale-105 ">
+                  <p
+                    className={`lg:text-3xl text-2xl font-semibold text-center  text-white uppercase`}
+                  >
+                    + Commercial
+                  </p>
+                </div>
               </div>
               <div
                 onClick={() => {
                   setAddOffice(true);
                   addOfficeField();
                 }}
-                className={`px-7 py-4 bg-blue  rounded-full cursor-pointer transform transition-transform hover:scale-95 `}
+                style={{
+                  backgroundImage: "url(/assets/images/postproject/mall.jpg)",
+                }}
+                className={`h-60 bg-cover bg-center  cursor-pointer lg:p-8 p-4  `}
               >
-                <p
-                  className={`text-xl font-medium text-center  text-white uppercase`}
-                >
-                  ADD MALL / OFFICE
-                </p>
+                <div className="w-full h-full flex justify-center items-center bg-black bg-opacity-50 transform transition-transform hover:scale-105 ">
+                  <p
+                    className={`lg:text-3xl  text-2xl font-semibold text-center  text-white uppercase`}
+                  >
+                    + MALL / OFFICE
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -787,40 +818,40 @@ const Step4 = () => {
                       name={fieldName}
                       key={fieldName}
                       id={fieldName}
-                      className="w-3/4 my-4  flex flex-col items-start border-b-2 relative"
+                      className="lg:w-3/4 w-full  my-4  flex flex-col items-start border-b-2 relative"
                     >
-                      <div className="absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
+                      <div className="lg:absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
                         {`Flat No `}
                         <div className="bg-blue text-white w-12 h-12 flex justify-center items-center rounded-full">
                           {i + 1}
                           {console.log(index)}
                         </div>
                       </div>
-                      <h4 className="text-2xl font-medium  uppercase mb-4">
+                      <h4 className="lg:text-2xl text-lg font-medium  uppercase mb-4">
                         {" "}
                         Flat / APARTMENT / FLOOR DETAILS
                       </h4>
                       <input
-                        className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full  my-1 placeholder-gray-600"
                         type="text"
                         placeholder="Flat / Apartment / Floor Title"
                         {...register(`${fieldName}.flatTitle`)}
                       />{" "}
                       <input
-                        className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                         type="text"
                         placeholder="Flat / Apartment / Floor Name"
                         {...register(`${fieldName}.flatName`)}
                       />
-                      <div className="flex">
+                      <div className="flex ">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Plot Area"
                           {...register(`${fieldName}.flatArea`)}
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-2/5  my-1 placeholder-gray-600"
                           {...register(`${fieldName}.flatAreaUnit`)}
                           title="sq-ft"
                         >
@@ -834,13 +865,13 @@ const Step4 = () => {
                       </div>
                       <div className=" flex">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Carpet Area"
                           {...register(`${fieldName}.flatCarpetArea`)}
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-2/5  my-1 placeholder-gray-600"
                           {...register(`${fieldName}.flatCarpetAreaUnit`)}
                           title="sq-ft"
                         >
@@ -851,13 +882,13 @@ const Step4 = () => {
                       </div>
                       <div className=" flex">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Built Up Area"
                           {...register(`${fieldName}.flatBuiltUpArea`)}
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-2/5  my-1 placeholder-gray-600"
                           id="builtup-area-type"
                           title="sq-ft"
                           {...register(`${fieldName}.flatBuiltUpAreaUnit`)}
@@ -869,13 +900,13 @@ const Step4 = () => {
                       </div>
                       <div className=" flex">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Super Built Up Area"
                           {...register(`${fieldName}.flatSuperBuiltUpArea`)}
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-2/5  my-1 placeholder-gray-600"
                           id="super-builtup-area-type"
                           title="sq-ft"
                           {...register(`${fieldName}.flatSuperBuiltUpAreaUnit`)}
@@ -887,13 +918,13 @@ const Step4 = () => {
                       </div>
                       <div className=" flex">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Price Per"
                           {...register(`${fieldName}.flatPrice`)}
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-2/5  my-1 placeholder-gray-600"
                           id="price-per-area-type"
                           title="sq-ft"
                           {...register(`${fieldName}.flatPriceUnit`)}
@@ -904,36 +935,53 @@ const Step4 = () => {
                         </select>
                       </div>
                       <input
-                        className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                         type="text"
                         placeholder="Total Price"
                         {...register(`${fieldName}.flatTotalPrice`)}
                       />
-                      <div className="flex">
+                      <div className="flex flex-col lg:flex-row w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Minimum Price"
                           {...register(`${fieldName}.flatMinimunPrice`)}
                         />
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 ml-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 lg:ml-2 placeholder-gray-600"
                           type="text"
                           placeholder="Maximum Price"
                           {...register(`${fieldName}.flatMaximumPrice`)}
                         />
                       </div>
-                      <div className="my-4 flex flex-col">
-                        <label className="customfileUpload bg-blue font-medium w-72 my-2">
-                          Choose Flat / Floor Plan
+                      <div className="my-4 flex flex-col w-full">
+                        <label className="customfileUpload my-4  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
+                          <svg
+                            class="w-8 h-8 mr-2"
+                            fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                          </svg>
+                          Upload Flat / Floor Plan
                           <input
-                            multiple
                             {...register(`${fieldName}.flatFloorPlan[]`)}
                             type="file"
+                            name="file"
                           />
                         </label>
-                        <label className="customfileUpload bg-blue font-medium w-72 my-2">
-                          Choose Flat / Floor Images
+
+                        <label className="customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
+                          <svg
+                            class="w-8 h-8 mr-2"
+                            fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                          </svg>
+                          Upload Flat / Floor Images
                           <input
                             multiple
                             {...register(`${fieldName}.flatImages[]`)}
@@ -941,16 +989,16 @@ const Step4 = () => {
                           />
                         </label>
                       </div>
-                      <div className="w-full flex flex-col  items-end my-2">
+                      <div className=" flex flex-col  lg:items-end my-2 w-full">
                         <div
                           onClick={removeFlatField(index)}
-                          className="bg-red text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg w-52 "
+                          className="bg-red text-white flex justify-center items-center h-10 mb-2 font-medium text-lg lg:w-52 w-full rounded-full lg:rounded-none "
                         >
                           Remove
                         </div>
                         <div
                           onClick={addFlatField}
-                          className="bg-blue text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg w-52 "
+                          className="bg-blue text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-52 w-full rounded-full lg:rounded-none  "
                         >
                           Add Another Flat
                         </div>
@@ -969,33 +1017,33 @@ const Step4 = () => {
                     <fieldset
                       name={fieldName}
                       key={fieldName}
-                      className="w-3/4 my-4  flex flex-col items-start border-b-2 relative"
+                      className="lg:w-3/4 w-full my-4  flex flex-col items-start border-b-2 relative"
                     >
-                      <div className="absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
+                      <div className="lg:absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
                         {`VILLA No `}
                         <div className="bg-blue text-white w-12 h-12 flex justify-center items-center rounded-full">
                           {index + 1}
                         </div>
                       </div>
-                      <h4 className="text-2xl font-medium  uppercase mb-4">
+                      <h4 className="lg:text-2xl text-lg font-medium  uppercase mb-4">
                         {" "}
                         VILLA DETAILS
                       </h4>
                       <input
-                        className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                         type="text"
                         placeholder="VILLA Title"
                         {...register(`${fieldName}.villaTitle`)}
                       />{" "}
                       <div>
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full  my-1 placeholder-gray-600"
                           type="text"
                           placeholder="VILLA Type / Name"
                           {...register(`${fieldName}.villaName`)}
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-full my-1 lg:mx-2 placeholder-gray-600"
                           id="price-per-area-type"
                           title="sq-ft"
                           {...register(`${fieldName}.villaType`)}
@@ -1006,13 +1054,13 @@ const Step4 = () => {
                       </div>
                       <div className=" flex">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Carpet Area"
                           {...register(`${fieldName}.villaCarpetArea`)}
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1 lg:mx-2 placeholder-gray-600"
                           {...register(`${fieldName}.villaCarpetAreaUnit`)}
                           title="sq-ft"
                         >
@@ -1023,13 +1071,13 @@ const Step4 = () => {
                       </div>
                       <div className=" flex">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Built Up Area"
                           {...register(`${fieldName}.villaBuiltUpArea`)}
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1 lg:mx-2 placeholder-gray-600"
                           id="builtup-area-type"
                           title="sq-ft"
                           {...register(`${fieldName}.villaBuiltUpAreaUnit`)}
@@ -1041,13 +1089,13 @@ const Step4 = () => {
                       </div>
                       <div className=" flex">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Super Built Up Area"
                           {...register(`${fieldName}.villaSuperBuiltUpArea`)}
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1 lg:mx-2 placeholder-gray-600"
                           id="super-builtup-area-type"
                           title="sq-ft"
                           {...register(
@@ -1061,13 +1109,13 @@ const Step4 = () => {
                       </div>
                       <div className=" flex">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Price Per"
                           {...register(`${fieldName}.villaPrice`)}
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1 lg:mx-2 placeholder-gray-600"
                           id="price-per-area-type"
                           title="sq-ft"
                           {...register(`${fieldName}.villaPriceUnit`)}
@@ -1078,36 +1126,53 @@ const Step4 = () => {
                         </select>
                       </div>
                       <input
-                        className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                         type="text"
                         placeholder="Total Price"
                         {...register(`${fieldName}.villaTotalPrice`)}
                       />
-                      <div className="flex">
+                      <div className="flex flex-col lg:flex-row w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Minimum Price"
                           {...register(`${fieldName}.villaMinimunPrice`)}
                         />
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 ml-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 lg:ml-2 placeholder-gray-600"
                           type="text"
                           placeholder="Maximum Price"
                           {...register(`${fieldName}.villaMaximumPrice`)}
                         />
                       </div>
-                      <div className="my-4 flex flex-col">
-                        <label className="customfileUpload bg-blue font-medium w-72 my-2">
-                          Choose Villa / Floor Plan
+                      <div className="my-4 flex flex-col w-full">
+                        <label className="customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
+                          <svg
+                            class="w-8 h-8 mr-2"
+                            fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                          </svg>
+                          Upload Villa / Floor Plan
                           <input
                             multiple
                             {...register(`${fieldName}.villaFloorPlan[]`)}
                             type="file"
                           />
                         </label>
-                        <label className="customfileUpload bg-blue font-medium w-72 my-2">
-                          Choose Vill Images
+
+                        <label className="customfileUpload my-4  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
+                          <svg
+                            class="w-8 h-8 mr-2"
+                            fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                          </svg>
+                          Upload Vill Images
                           <input
                             multiple
                             {...register(`${fieldName}.villaImages[]`)}
@@ -1118,13 +1183,13 @@ const Step4 = () => {
                       <div className="w-full flex flex-col  items-end my-2">
                         <div
                           onClick={removeVillaField(index)}
-                          className="bg-red text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg w-52 "
+                          className="bg-red text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-52 w-full rounded-full lg:rounded-none "
                         >
                           Remove
                         </div>
                         <div
                           onClick={addVillaField}
-                          className="bg-blue text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg w-52 "
+                          className="bg-blue text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-52 w-full rounded-full lg:rounded-none "
                         >
                           Add Another Villa
                         </div>
@@ -1143,41 +1208,41 @@ const Step4 = () => {
                     <fieldset
                       name={fieldName}
                       key={fieldName}
-                      className="w-3/4 my-4  flex flex-col items-start border-b-2 relative"
+                      className="lg:w-3/4 w-full my-4  flex flex-col items-start border-b-2 relative"
                     >
-                      <div className="absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
+                      <div className="lg:absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
                         {`SCO No `}
                         <div className="bg-blue text-white w-12 h-12 flex justify-center items-center rounded-full">
                           {index + 1}
                         </div>
                       </div>
-                      <h4 className="text-2xl font-medium  uppercase mb-4">
+                      <h4 className="lg:text-2xl text-lg font-medium  uppercase mb-4">
                         {" "}
                         SCO (SHOP CUM OFFICE) DETAILS
                       </h4>
                       <input
-                        className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                         type="text"
                         placeholder="SCO Title"
                         {...register(`${fieldName}.Title`)}
                       />{" "}
-                      <div>
+                      <div className="w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                           type="text"
                           placeholder="SCO Type / Name"
                           {...register(`${fieldName}.Name`)}
                         />
                       </div>
-                      <div className=" flex">
+                      <div className=" flex w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Carpet Area"
                           {...register(`${fieldName}.CarpetArea`)}
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1 lg:mx-2 placeholder-gray-600"
                           {...register(`${fieldName}.CarpetAreaUnit`)}
                           title="sq-ft"
                         >
@@ -1186,15 +1251,15 @@ const Step4 = () => {
                           <option>Sq-yards</option>
                         </select>
                       </div>
-                      <div className=" flex">
+                      <div className=" flex w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Built Up Area"
                           {...register(`${fieldName}.BuiltUpArea`)}
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5  my-1 lg:mx-2 placeholder-gray-600"
                           id="builtup-area-type"
                           title="sq-ft"
                           {...register(`${fieldName}.BuiltUpAreaUnit`)}
@@ -1204,15 +1269,15 @@ const Step4 = () => {
                           <option>Sq-yards</option>
                         </select>
                       </div>
-                      <div className=" flex">
+                      <div className=" flex w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Super Built Up Area"
                           {...register(`${fieldName}.SuperBuiltUpArea`)}
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg w-2/5 lg:w-40  my-1 lg:mx-2 placeholder-gray-600"
                           id="super-builtup-area-type"
                           title="sq-ft"
                           {...register(`${fieldName}.SuperBuiltUpAreaUnit`)}
@@ -1223,19 +1288,21 @@ const Step4 = () => {
                         </select>
                       </div>
                       <input
-                        className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full mr-2 my-1 placeholder-gray-600"
                         placeholder="Floor No"
                         type="number"
                         {...register(`${fieldName}.floor_no`)}
                       />
                       <input
-                        className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full  my-1 placeholder-gray-600"
                         placeholder="Total Floors"
                         type="number"
                         {...register(`${fieldName}.total_floor`)}
                       />
                       <div className="flex items-center my-2">
-                        <p className="text-xl mr-8">Basemenent Included</p>
+                        <p className="text-xl lg:mr-8 mr-4">
+                          Basemenent Included
+                        </p>
                         <div className="flex items-center">
                           <input
                             className="w-5 h-5"
@@ -1255,15 +1322,15 @@ const Step4 = () => {
                           <p className="text-xl pl-2">No</p>
                         </div>
                       </div>
-                      <div className=" flex">
+                      <div className=" flex w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Price Per"
                           {...register(`${fieldName}.Price`)}
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5  my-1 mx-2 placeholder-gray-600"
                           id="PriceUnit"
                           title="sq-ft"
                           {...register(`${fieldName}.PriceUnit`)}
@@ -1274,36 +1341,53 @@ const Step4 = () => {
                         </select>
                       </div>
                       <input
-                        className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                         type="text"
                         placeholder="Total Price"
                         {...register(`${fieldName}.TotalPrice`)}
                       />
                       <div className="flex">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-2/4 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Minimum Price"
                           {...register(`${fieldName}.MinimunPrice`)}
                         />
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 ml-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-2/4 my-1 ml-2 placeholder-gray-600"
                           type="text"
                           placeholder="Maximum Price"
                           {...register(`${fieldName}.MaximumPrice`)}
                         />
                       </div>
-                      <div className="my-4 flex flex-col">
-                        <label className="customfileUpload bg-blue font-medium w-72 my-2">
-                          Choose SCO / Floor Plan
+                      <div className="my-4 flex flex-col w-full">
+                        <label className="customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
+                          <svg
+                            class="w-8 h-8 mr-2"
+                            fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                          </svg>
+                          Upload SCO / Floor Plan
                           <input
                             multiple
                             {...register(`${fieldName}.FloorPlan[]`)}
                             type="file"
                           />
                         </label>
-                        <label className="customfileUpload bg-blue font-medium w-72 my-2">
-                          Choose SCO Images
+
+                        <label className="customfileUpload my-4  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
+                          <svg
+                            class="w-8 h-8 mr-2"
+                            fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                          </svg>
+                          Upload SCO Images
                           <input
                             multiple
                             {...register(`${fieldName}.Images[]`)}
@@ -1314,13 +1398,13 @@ const Step4 = () => {
                       <div className="w-full flex flex-col  items-end my-2">
                         <div
                           onClick={removeScoField(index)}
-                          className="bg-red text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg w-52 "
+                          className="bg-red text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-52 w-full rounded-full lg:rounded-none "
                         >
                           Remove
                         </div>
                         <div
                           onClick={addScoField}
-                          className="bg-blue text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg w-52 "
+                          className="bg-blue text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-52 w-full rounded-full lg:rounded-none "
                         >
                           Add Another SCO
                         </div>
@@ -1339,27 +1423,27 @@ const Step4 = () => {
                     <fieldset
                       name={fieldName}
                       key={fieldName}
-                      className="w-3/4 my-4  flex flex-col items-start border-b-2  relative"
+                      className="lg:w-3/4 w-full my-4  flex flex-col items-start border-b-2  relative"
                     >
-                      <div className="absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
+                      <div className="lg:absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
                         {`PLOT No `}
                         <div className="bg-blue text-white w-12 h-12 flex justify-center items-center rounded-full">
                           {index + 1}
                         </div>
                       </div>
-                      <h4 className="text-2xl font-medium  uppercase mb-4">
+                      <h4 className="lg:text-2xl text-lg font-medium  uppercase mb-4">
                         {" "}
                         PLOT / LAND DETAILS
                       </h4>
                       <input
-                        className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                         type="text"
                         placeholder="PLOT Title"
                         {...register(`${fieldName}.Title`)}
                       />{" "}
-                      <div>
+                      <div className="w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                           type="text"
                           placeholder="PLOT Type / Name"
                           {...register(`${fieldName}.ProjectTitle`)}
@@ -1382,21 +1466,21 @@ const Step4 = () => {
                           <option>Sq-yards</option>
                         </select>
                       </div> */}
-                      <div className="flex">
+                      <div className="flex flex-col lg:flex-row w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Length"
                           {...register(`${fieldName}.Length`)}
                         />{" "}
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600 ml-2"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600 lg:ml-2"
                           type="text"
                           placeholder="Width"
                           {...register(`${fieldName}.Width`)}
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-full my-1 lg:mx-2 placeholder-gray-600"
                           {...register(`${fieldName}.LengthwidthUnit`)}
                           title="sq-ft"
                         >
@@ -1406,20 +1490,20 @@ const Step4 = () => {
                         </select>
                       </div>
                       <input
-                        className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600 "
+                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600 "
                         type="text"
                         placeholder="Mention Various Plot Sizes  (By Commas) "
                         {...register(`${fieldName}.Name`)}
                       />
                       <div className=" flex">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Price Per"
                           {...register(`${fieldName}.Price`)}
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1 lg:mx-2 placeholder-gray-600"
                           id="price-per-area-type"
                           title="sq-ft"
                           {...register(`${fieldName}.PriceUnit`)}
@@ -1430,28 +1514,36 @@ const Step4 = () => {
                         </select>
                       </div>
                       <input
-                        className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                         type="text"
                         placeholder="Total Price"
                         {...register(`${fieldName}.TotalPrice`)}
                       />
-                      <div className="flex">
+                      <div className="flex flex-col lg:flex-row w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Minimum Price"
                           {...register(`${fieldName}.MinimunPrice`)}
                         />
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 ml-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 lg:full  lg:ml-2 placeholder-gray-600"
                           type="text"
                           placeholder="Maximum Price"
                           {...register(`${fieldName}.MaximumPrice`)}
                         />
                       </div>
-                      <div className="my-4 flex flex-col">
-                        <label className="customfileUpload bg-blue font-medium w-72 my-2">
-                          Choose Plot Images
+                      <div className="my-4 flex flex-col w-full">
+                        <label className="customfileUpload my-4  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
+                          <svg
+                            class="w-8 h-8 mr-2"
+                            fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                          </svg>
+                          Upload Plot Images
                           <input
                             multiple
                             {...register(`${fieldName}.Images[]`)}
@@ -1462,13 +1554,13 @@ const Step4 = () => {
                       <div className="w-full flex flex-col  items-end my-2">
                         <div
                           onClick={removePlotField(index)}
-                          className="bg-red text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg w-52 "
+                          className="bg-red text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-52 w-full rounded-full lg:rounded-none "
                         >
                           Remove
                         </div>
                         <div
                           onClick={addPlotField}
-                          className="bg-blue text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg w-52 "
+                          className="bg-blue text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-52 w-full rounded-full lg:rounded-none  "
                         >
                           Add Another Plot
                         </div>
@@ -1487,27 +1579,27 @@ const Step4 = () => {
                     <fieldset
                       name={fieldName}
                       key={fieldName}
-                      className="w-3/4 my-4  flex flex-col items-start border-b-2  relative"
+                      className="lg:w-3/4 w-full my-4  flex flex-col items-start border-b-2  relative"
                     >
-                      <div className="absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
-                        {`COMMERCIAL No `}
+                      <div className="lg:absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
+                        {`COMMERCIAL NO `}
                         <div className="bg-blue text-white w-12 h-12 flex justify-center items-center rounded-full">
                           {index + 1}
                         </div>
                       </div>
-                      <h4 className="text-2xl font-medium  uppercase mb-4">
+                      <h4 className="lg:text-2xl text-lg font-medium  uppercase mb-4">
                         {" "}
-                        Commercial SCO Plot / Land Details
+                        Commercial Plot / Land Details
                       </h4>
                       <input
-                        className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                         type="text"
                         placeholder="SCO / Commercial Project Title"
                         {...register(`${fieldName}.ProjectTitle`)}
                       />{" "}
-                      <div>
+                      <div className="w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                           type="text"
                           placeholder="SCO / Commercial Plot Title"
                           {...register(`${fieldName}.Title`)}
@@ -1533,21 +1625,21 @@ const Step4 = () => {
                           <option>bigha</option>
                         </select>
                       </div> */}
-                      <div className="flex">
+                      <div className="flex w-full flex-col lg:flex-row">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Length"
                           {...register(`${fieldName}.Length`)}
                         />{" "}
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600 ml-2"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600 lg:ml-2"
                           type="text"
                           placeholder="Width"
                           {...register(`${fieldName}.Width`)}
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-full my-1 lg:mx-2 placeholder-gray-600"
                           {...register(`${fieldName}.LengthwidthUnit`)}
                           title="sq-ft"
                         >
@@ -1557,20 +1649,20 @@ const Step4 = () => {
                         </select>
                       </div>
                       <input
-                        className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600 "
+                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600 "
                         type="text"
                         placeholder="Mention Various Plot Sizes  (By Commas) "
                         {...register(`${fieldName}.PlotSize`)}
                       />
                       <div className=" flex">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Price Per"
                           {...register(`${fieldName}.Price`)}
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1 lg:mx-2 placeholder-gray-600"
                           id="price-per-area-type"
                           title="sq-ft"
                           {...register(`${fieldName}.PriceUnit`)}
@@ -1581,27 +1673,27 @@ const Step4 = () => {
                         </select>
                       </div>
                       <input
-                        className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                         type="text"
                         placeholder="Total Price"
                         {...register(`${fieldName}.TotalPrice`)}
                       />
                       <div className="flex">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Minimum Price"
                           {...register(`${fieldName}.MinimunPrice`)}
                         />
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 ml-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 ml-2 placeholder-gray-600"
                           type="text"
                           placeholder="Maximum Price"
                           {...register(`${fieldName}.MaximumPrice`)}
                         />
                       </div>
                       <input
-                        className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                         type="text"
                         placeholder="Total Floors"
                         {...register(`${fieldName}.TotalFloor`)}
@@ -1627,9 +1719,17 @@ const Step4 = () => {
                           <p className="text-xl pl-2">No</p>
                         </div>
                       </div>
-                      <div className="my-4 flex flex-col">
-                        <label className="customfileUpload bg-blue font-medium w-72 my-2">
-                          Choose Plot Images
+                      <div className="my-4 flex flex-col w-full">
+                        <label className="customfileUpload my-4  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
+                          <svg
+                            class="w-8 h-8 mr-2"
+                            fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                          </svg>
+                          Upload Plot Images
                           <input
                             multiple
                             {...register(`${fieldName}.Images[]`)}
@@ -1640,13 +1740,13 @@ const Step4 = () => {
                       <div className="w-full flex flex-col  items-end my-2">
                         <div
                           onClick={removeCommercialField(index)}
-                          className="bg-red text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg w-52 "
+                          className="bg-red text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-52 w-full rounded-full lg:rounded-none "
                         >
                           Remove
                         </div>
                         <div
                           onClick={addCommercialField}
-                          className="bg-blue text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg w-60 "
+                          className="bg-blue text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-60 w-full rounded-full lg:rounded-none "
                         >
                           Add Another Commercial
                         </div>
@@ -1665,27 +1765,27 @@ const Step4 = () => {
                     <fieldset
                       name={fieldName}
                       key={fieldName}
-                      className="w-3/4 my-4  flex flex-col items-start border-b-2  relative"
+                      className="lg:w-3/4 w-full my-4  flex flex-col items-start border-b-2  relative"
                     >
-                      <div className="absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
+                      <div className="lg:absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
                         {`OFFICE No `}
                         <div className="bg-blue text-white w-12 h-12 flex justify-center items-center rounded-full">
                           {index + 1}
                         </div>
                       </div>
-                      <h4 className="text-2xl font-medium  uppercase mb-4">
+                      <h4 className="lg:text-2xl text-lg font-medium  uppercase mb-4">
                         {" "}
                         MALL / OFFICE SPACE DETAILS
                       </h4>
                       <input
-                        className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                         type="text"
                         placeholder="Mall / Office Project Title"
                         {...register(`${fieldName}.ProjectTitle`)}
                       />{" "}
-                      <div>
+                      <div className="w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Mall / Office Plot Title"
                           {...register(`${fieldName}.Title`)}
@@ -1711,21 +1811,21 @@ const Step4 = () => {
                           <option>bigha</option>
                         </select>
                       </div> */}
-                      <div className="flex">
+                      <div className="flex flex-col lg:flex-row w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Length"
                           {...register(`${fieldName}.Length`)}
                         />{" "}
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600 ml-2"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600 lg:ml-2"
                           type="text"
                           placeholder="Width"
                           {...register(`${fieldName}.Width`)}
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 lg:mx-2 placeholder-gray-600"
                           {...register(`${fieldName}.LengthwidthUnit`)}
                           title="sq-ft"
                         >
@@ -1737,15 +1837,15 @@ const Step4 = () => {
                           <option>bigha</option>
                         </select>
                       </div>
-                      <div className=" flex">
+                      <div className=" flex w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Carpet Area"
                           {...register(`${fieldName}.CarpetArea`)}
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1 lg:mx-2 placeholder-gray-600"
                           {...register(`${fieldName}.CarpetAreaUnit`)}
                           title="sq-ft"
                         >
@@ -1754,15 +1854,15 @@ const Step4 = () => {
                           <option>Sq-yards</option>
                         </select>
                       </div>
-                      <div className=" flex">
+                      <div className=" flex w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Built Up Area"
                           {...register(`${fieldName}.BuiltUpArea`)}
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1 lg:mx-2 placeholder-gray-600"
                           id="builtup-area-type"
                           title="sq-ft"
                           {...register(`${fieldName}.BuiltUpAreaUnit`)}
@@ -1772,15 +1872,15 @@ const Step4 = () => {
                           <option>Sq-yards</option>
                         </select>
                       </div>
-                      <div className=" flex">
+                      <div className=" flex w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Super Built Up Area"
                           {...register(`${fieldName}.SuperBuiltUpArea`)}
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5  my-1 lg:mx-2 placeholder-gray-600"
                           id="super-builtup-area-type"
                           title="sq-ft"
                           {...register(`${fieldName}.SuperBuiltUpAreaUnit`)}
@@ -1796,15 +1896,15 @@ const Step4 = () => {
                         placeholder="Mention Various Plot Sizes  (By Commas) "
                         {...register(`${fieldName}.Name`)}
                       /> */}
-                      <div className=" flex">
+                      <div className=" flex w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Price Per"
                           {...register(`${fieldName}.Price`)}
                         />
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1 lg:mx-2 placeholder-gray-600"
                           id="price-per-area-type"
                           title="sq-ft"
                           {...register(`${fieldName}.PriceUnit`)}
@@ -1815,27 +1915,27 @@ const Step4 = () => {
                         </select>
                       </div>
                       <input
-                        className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                         type="text"
                         placeholder="Total Price"
                         {...register(`${fieldName}.TotalPrice`)}
                       />
-                      <div className="flex">
+                      <div className="flex w-full">
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-2/4 mr-2 my-1 placeholder-gray-600"
                           type="text"
                           placeholder="Minimum Price"
                           {...register(`${fieldName}.MinimunPrice`)}
                         />
                         <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 ml-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-2/4 my-1 lg:ml-2 placeholder-gray-600"
                           type="text"
                           placeholder="Maximum Price"
                           {...register(`${fieldName}.MaximumPrice`)}
                         />
                       </div>
                       <input
-                        className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
                         type="text"
                         placeholder="No Of  Floors"
                         {...register(`${fieldName}.TotalFloor`)}
@@ -1861,9 +1961,17 @@ const Step4 = () => {
                           <p className="text-xl pl-2">No</p>
                         </div>
                       </div>
-                      <div className="my-4 flex flex-col">
-                        <label className="customfileUpload bg-blue font-medium w-72 my-2">
-                          Choose Mall / Office Images
+                      <div className="my-4 flex flex-col w-full">
+                        <label className="customfileUpload my-4  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
+                          <svg
+                            class="w-8 h-8 mr-2"
+                            fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                          </svg>
+                          Upload Mall / Office Images
                           <input
                             multiple
                             {...register(`${fieldName}.Images[]`)}
@@ -1874,13 +1982,13 @@ const Step4 = () => {
                       <div className="w-full flex flex-col  items-end my-2">
                         <div
                           onClick={removeOfficeField(index)}
-                          className="bg-red text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg w-52 "
+                          className="bg-red text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-52 w-full rounded-full lg:rounded-none "
                         >
                           Remove
                         </div>
                         <div
                           onClick={addOfficeField}
-                          className="bg-blue text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg w-60 "
+                          className="bg-blue text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-60 w-full rounded-full lg:rounded-none "
                         >
                           Add Another Office
                         </div>
@@ -1892,11 +2000,11 @@ const Step4 = () => {
             )}
 
             <div className="w-full flex flex-col items-end mt-8">
-              <div className="bg-blue text-white flex justify-center items-center  h-10 my-2 font-medium text-lg w-52 ">
+              <div className="bg-blue text-white flex justify-center items-center  h-10 my-2 font-medium text-lg lg:w-52 w-full rounded-full lg:rounded-none  ">
                 Previous
               </div>
               <button
-                className="bg-blue text-white flex justify-center items-center  h-10 my-2 font-medium text-lg w-52 "
+                className="bg-blue text-white flex justify-center items-center  h-10 my-2 font-medium text-lg lg:w-52 w-full rounded-full lg:rounded-none  "
                 type="submit"
                 onClick={ResetEveryThing}
               >

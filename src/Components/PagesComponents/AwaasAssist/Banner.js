@@ -10,17 +10,17 @@ const Banner = () => {
       className="w-full h-550px bg-cover bg-center"
     >
       <div className="w-full h-full bg-black bg-opacity-30">
-        <div className="w-90vw lg:w-80vw mx-auto flex flex-col items-start justify-center h-full">
+        <div className="w-90vw lg:w-80vw mx-auto flex flex-col items-start justify-center h-full pt-10">
           <p
             style={{
               textShadow: "2px 3px 5px #000",
             }}
-            className="text-6xl font-medium text-white"
+            className="lg:text-6xl text-4xl font-medium text-white"
           >
             Awaas Assist
           </p>
           <div className="flex-col flex items-start w-full my-8">
-            <div className="flex justify-start items-center w-2/4">
+            <div className="flex justify-start items-center lg:w-2/4 w-full">
               <div className="w-1/12">
                 <TiTick className="text-green text-3xl" />
               </div>
@@ -33,7 +33,7 @@ const Banner = () => {
                 24 x 7 Multi Channel Support
               </p>
             </div>
-            <div className="flex justify-start items-center w-2/4">
+            <div className="flex justify-start items-center lg:w-2/4 w-full">
               <div className="w-1/12">
                 <TiTick className="text-green text-3xl" />
               </div>
@@ -46,7 +46,7 @@ const Banner = () => {
                 Get Mail And Call Support By Trained Professionals
               </p>
             </div>
-            <div className="flex justify-start items-center w-2/4">
+            <div className="flex justify-start items-center lg:w-2/4 w-full">
               <div className="w-1/12">
                 <TiTick className="text-green text-3xl" />
               </div>
@@ -60,7 +60,7 @@ const Banner = () => {
                 Special Instant Call Back Support
               </p>
             </div>
-            <div className="flex justify-start items-center w-2/4">
+            <div className="flex justify-start items-center lg:w-2/4 w-full">
               <div className="w-1/12">
                 <TiTick className="text-green text-3xl" />
               </div>
@@ -73,7 +73,7 @@ const Banner = () => {
                 Flexible timings to meets your routine
               </p>
             </div>
-            <div className="flex justify-start items-center w-2/4">
+            <div className="flex justify-start items-center lg:w-2/4 w-full">
               <div className="w-1/12">
                 <TiTick className="text-green text-3xl" />
               </div>
