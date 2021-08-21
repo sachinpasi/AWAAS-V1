@@ -546,13 +546,13 @@ const Step2 = () => {
         <div className="w-full   flex flex-col lg:flex-row justify-end lg:items-end items-center px-4 lg:px-0">
           <button
             onClick={HandlePrevious}
-            className="lg:w-44 w-full h-12 bg-blue text-xl font-medium text-white my-2 rounded-full"
+            className="lg:w-44 w-full h-12 bg-blue text-xl font-medium text-white my-2 rounded-full lg:rounded-none lg:mx-2"
           >
             Previous
           </button>
           <button
             type="submit"
-            className="lg:w-44 w-full h-12 bg-blue text-xl font-medium text-white my-2 rounded-full"
+            className="lg:w-44 w-full h-12 bg-blue text-xl font-medium text-white my-2 rounded-full lg:rounded-none "
           >
             Next
           </button>
