@@ -30,9 +30,11 @@ const Nav = () => {
   return (
     <>
       <nav className="text-black font-medium  mb-4" aria-label="Breadcrumb">
-        <ol className="list-none p-0 inline-flex">
-          <li className="flex items-center">
-            <Link to="/">Home</Link>
+        <ol className="list-none p-0 inline-flex lg:text-base text-xs px-2">
+          <li className="flex items-center  ">
+            <Link className="text-center" to="/">
+              Home
+            </Link>
             <svg
               className="fill-current w-3 h-3 mx-3"
               xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +44,7 @@ const Nav = () => {
             </svg>
           </li>
           <li className="flex items-center">
-            <Link className="text-gray-500" to="/post-property">
+            <Link className="text-gray-500 text-center" to="/post-property">
               Post Property
             </Link>
             <svg
@@ -54,7 +56,10 @@ const Nav = () => {
             </svg>
           </li>
           <li className="flex items-center">
-            <p className="text-gray-500 capitalize" to="/post-property">
+            <p
+              className="text-gray-500 capitalize text-center"
+              to="/post-property"
+            >
               {PostProperty?.Parent_Property} {PostProperty?.Property_Type} For{" "}
               {PostProperty?.Property_For}
             </p>
