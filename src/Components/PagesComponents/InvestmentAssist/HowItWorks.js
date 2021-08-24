@@ -4,7 +4,7 @@ const HowItWorks = () => {
   return (
     <section className="w-full h-full bg-textbg flex flex-col justify-center items-center pt-32 ">
       <p className="text-5xl text-darkgray font-medium">How it works?</p>
-      <div className=" lg:w-80vw w-90vw mx-auto grid lg:grid-cols-3 gap-8 lg:h-72 my-12 lg:my-0">
+      <div className=" lg:w-80vw w-90vw mx-auto grid lg:grid-cols-3 gap-8 lg:h-52 my-12 lg:my-0  lg:mt-14">
         <div className=" w-full h-28 relative border-2 border-lightblue rounded flex flex-col justify-end items-center">
           <div className="absolute -top-1/4 w-16 h-16 bg-blue rounded-full flex justify-center items-center">
             <img

@@ -10,8 +10,8 @@ import Sidebar from "./Sidebar";
 const ProjectDetailsSection = () => {
   return (
     <section className="w-full h-full flex justify-between my-24">
-      <div className=" customContainer h-full flex justify-between ">
-        <div style={{ width: "69%" }} className=" h-full ">
+      <div className=" lg:w-80vw w-90vw mx-auto h-full flex lg:flex-row flex-col justify-between ">
+        <div className=" h-full lg:w-69percent w-full ">
           <ProjectNav />
           <Configuration />
           <Gallery />
@@ -19,12 +19,7 @@ const ProjectDetailsSection = () => {
           <ProjectOverview />
           <AboutDeveloper />
         </div>
-        <div
-          style={{
-            width: "29%",
-          }}
-          className="w-3/12 h-auto relative"
-        >
+        <div className="lg:w-29percent w-full h-auto relative mt-8 lg:mt-0">
           <Sidebar />
         </div>
       </div>

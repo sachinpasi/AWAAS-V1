@@ -17,15 +17,16 @@ const ProjectNav = () => {
 
   useEffect(() => {
     if (Data?.parent_child) {
-      setActiveParentTab(Data?.parent_child[0]?.title);
-      setActiveChildTab(Data?.parent_child[0]?.child[0]?.new_name);
+      setActiveParentTab(`${Data.parent_child[0]?.title}[0]`);
+      setActiveChildTab(`${Data?.parent_child[0]?.child[0]?.new_name}[0]`);
     }
   }, [Data]);
 
   useEffect(() => {
-    Data.parent_child?.map((item) => {
-      if (ActiveParentTab === item.title) {
-        setActiveChildTab(item.child[0]?.new_name);
+    Data.parent_child?.map((item, index) => {
+      console.log(item);
+      if (ActiveParentTab === `${item.title}[${index}]`) {
+        setActiveChildTab(`${item.child[0]?.new_name}[0]`);
       }
     });
   }, [ActiveParentTab]);
@@ -40,18 +41,22 @@ const ProjectNav = () => {
   }, [ActiveParentTab, ActiveChildTab]);
   return (
     <div className="w-full h-32 border-1 border-projectsborder rounded px-4">
-      <div className="flex justify-start items-center w-full h-3/5 border-b-1 py-4">
+      <div className="flex justify-start items-center overflow-x-scroll scrollbar-hide w-full h-3/5 border-b-1 lg:py-4">
         {Data.parent_child?.map((item, index) => (
           <div
             key={index}
-            onClick={() => setActiveParentTab(item.title)}
-            className={`px-7 py-2 ${
-              ActiveParentTab === item.title ? "bg-blue" : "bg-extralightgray"
+            onClick={() => setActiveParentTab(`${item.title}[${index}]`)}
+            className={`px-7 lg:py-2 py-1.5 ${
+              ActiveParentTab === `${item.title}[${index}]`
+                ? "bg-blue"
+                : "bg-extralightgray"
             } rounded-full cursor-pointer mr-4`}
           >
             <p
-              className={`text-lg font-medium text-center ${
-                ActiveParentTab === item.title ? "text-white" : "text-darkgray"
+              className={`lg:text-lg text-base font-medium text-center ${
+                ActiveParentTab === `${item.title}[${index}]`
+                  ? "text-white"
+                  : "text-darkgray"
               } `}
             >
               {item.title}
@@ -59,23 +64,25 @@ const ProjectNav = () => {
           </div>
         ))}
       </div>
-      <div className="w-full h-2/5 flex items-center justify-start">
+      <div className="w-full h-2/5 flex items-center justify-start overflow-x-scroll scrollbar-hide">
         {Data?.parent_child?.map((item, index) => (
           <Fragment key={index}>
-            {ActiveParentTab === item.title &&
+            {ActiveParentTab === `${item.title}[${index}]` &&
               item?.child.map((childItem, index) => (
                 <div
                   key={index}
-                  onClick={() => setActiveChildTab(childItem.new_name)}
+                  onClick={() =>
+                    setActiveChildTab(`${childItem.new_name}[${index}]`)
+                  }
                   className={` cursor-pointer flex justify-center items-center mr-4  h-full  ${
-                    ActiveChildTab === childItem.new_name
+                    ActiveChildTab === `${childItem.new_name}[${index}]`
                       ? "border-blue border-b-2"
                       : ""
                   }`}
                 >
                   <p
-                    className={`text-base font-medium capitalize  px-2  ${
-                      ActiveChildTab === childItem.new_name
+                    className={`lg:text-base text-sm font-medium capitalize  px-2  ${
+                      ActiveChildTab === `${childItem.new_name}[${index}]`
                         ? "text-blue"
                         : "text-darkgray"
                     } `}
