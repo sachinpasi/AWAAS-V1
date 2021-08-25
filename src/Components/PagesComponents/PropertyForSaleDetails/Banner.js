@@ -49,7 +49,8 @@ const Banner = () => {
   };
   useEffect(() => {
     CheckBookmark();
-  }, [isClicked]);
+  }, [isClicked, Data]);
+
   return (
     <section
       style={{
@@ -68,7 +69,7 @@ const Banner = () => {
             style={{
               textShadow: "2px 3px 5px #000",
             }}
-            className="text-white lg:text-5xl text-4xl tracking-tight font-medium uppercase"
+            className="text-white lg:text-5xl text-4xl tracking-tight font-medium capitalize"
           >
             {Data?.title}
           </p>

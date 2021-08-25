@@ -8,9 +8,10 @@ import {
   FaWhatsapp,
   FaUserCircle,
   FaLinkedinIn,
-  FaUserAlt,
   FaProjectDiagram,
 } from "react-icons/fa";
+import { BsBookmarkFill } from "react-icons/bs";
+import { GrClose } from "react-icons/gr";
 import { ImHammer2 } from "react-icons/im";
 import {
   HiMail,
@@ -30,11 +31,16 @@ import {
   MdExplore,
   MdMonetizationOn,
 } from "react-icons/md";
+import axios from "axios";
+import { API } from "../../../API";
+import { useEffect } from "react";
 
 const HomeNav = () => {
   const [isLoginModalOpen, setisLoginModalOpen] = useState(false);
   const user = useSelector(selectUser);
   const [isNavOpen, setisNavOpen] = useState(false);
+  const [isSideOpen, setisSideOpen] = useState(false);
+  const [BookmarkList, setBookmarkList] = useState([]);
 
   const history = useHistory();
   const location = useLocation();
@@ -69,6 +75,18 @@ const HomeNav = () => {
       <p className="text-xl font-medium">{Name}</p>
     </Link>
   );
+
+  const FetchBookmarkList = async () => {
+    const res = await axios.get(`${API}/bookmark-list`, {
+      headers: { Authorization: `Bearer ${user.token}` },
+    });
+    console.log(res.data);
+    setBookmarkList(res.data.data);
+  };
+
+  useEffect(() => {
+    FetchBookmarkList();
+  }, []);
 
   return (
     <>
@@ -128,6 +146,67 @@ const HomeNav = () => {
                   +91-999-639-8965
                 </p>
               </a>
+              <div className="flex justify-center items-center">
+                <HiMenu
+                  onClick={() => setisSideOpen(!isSideOpen)}
+                  style={{
+                    textShadow: "2px 3px 5px #000",
+                  }}
+                  className="absolute right-6 text-2xl text-white cursor-pointer "
+                />
+
+                <div
+                  style={{
+                    transition: "0.3s ease all",
+                  }}
+                  onClick={() => setisSideOpen(!isSideOpen)}
+                  className={` ${
+                    isSideOpen ? "" : "hidden"
+                  } w-full h-screen bg-black bg-opacity-50 fixed left-0 bottom-0 top-0 right-0`}
+                ></div>
+                <div
+                  style={{
+                    transition: "0.3s ease all",
+                  }}
+                  className={`${
+                    isSideOpen ? "right-0" : "-right-full"
+                  } w-80 h-screen bg-white fixed  bottom-0 top-0 p-4`}
+                >
+                  <GrClose
+                    onClick={() => setisSideOpen(!isSideOpen)}
+                    style={{
+                      textShadow: "2px 3px 5px #000",
+                    }}
+                    className="text-2xl text-white cursor-pointer float-right "
+                  />
+
+                  <div className="w-11/12 mx-auto h-full mt-8">
+                    <div className="flex items-center border-b-2 pb-2">
+                      <BsBookmarkFill className="text-2xl mt-1 mr-3.5 text-green" />
+                      <p className="text-2xl">Bookmark</p>
+                    </div>
+                    <div className="w-full h-full">
+                      {/* {BookmarkList?.map((item) => (
+                        <div>{console.log(item)}</div>
+                      ))} */}
+                      {console.log(BookmarkList)}
+                      {BookmarkList.map((item, index) => (
+                        <Link
+                          to=""
+                          className="text-blue cursor-pointer flex items-center my-2 border-b-2  pb-2"
+                        >
+                          <img
+                            src={item.single_image}
+                            className="w-12 h-12 mr-2 object-cover rounded-lg"
+                            alt=""
+                          />
+                          <p className="capitalize text-lg ">{item.title}</p>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
