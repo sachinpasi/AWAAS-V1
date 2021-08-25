@@ -5,29 +5,104 @@ import { API } from "../../../API";
 
 const BlogList = () => {
   const [ArticlesList, setArticlesList] = useState([]);
+  const [selectedCategory, setselectedCategory] = useState();
 
   const FetchArticlesList = async () => {
-    const res = await axios.get(`${API}/blogs/list/0`);
-    setArticlesList(res.data.data);
-    console.log(res.data.data);
+    if (selectedCategory !== undefined) {
+      const res = await axios.get(
+        `${API}/blogs/list?category=${selectedCategory}`
+      );
+      setArticlesList(res.data.data);
+    } else {
+      const res = await axios.get(`${API}/blogs/list`);
+      setArticlesList(res.data.data);
+    }
   };
 
   useEffect(() => {
     FetchArticlesList();
-  }, []);
+  }, [selectedCategory]);
   return (
     <div className="w-full h-full py-8 ">
-      <div className="lg:w-80vw w-90vw mx-auto grid lg:grid-cols-2 grid-cols-1 gap-10">
+      <div className="lg:w-80vw w-90vw mx-auto mb-8">
+        <div className="flex  items-center">
+          <div
+            onClick={() => setselectedCategory(1)}
+            className={` ${
+              selectedCategory === 1
+                ? "bg-green border-green"
+                : "bg-white border-lightgray"
+            }  px-5 py-1  rounded-full border-1 cursor-pointer mr-4 `}
+          >
+            <p
+              className={`${
+                selectedCategory === 1 ? "text-white" : " text-black"
+              } text-lg`}
+            >
+              News
+            </p>
+          </div>
+          <div
+            onClick={() => setselectedCategory(2)}
+            className={` ${
+              selectedCategory === 2
+                ? "bg-green border-green"
+                : "bg-white border-lightgray"
+            }  px-5 py-1  rounded-full border-1 cursor-pointer mr-4 `}
+          >
+            <p
+              className={`${
+                selectedCategory === 2 ? "text-white" : " text-black"
+              } text-lg`}
+            >
+              Investment
+            </p>
+          </div>
+          <div
+            onClick={() => setselectedCategory(3)}
+            className={` ${
+              selectedCategory === 3
+                ? "bg-green border-green"
+                : "bg-white border-lightgray"
+            }  px-5 py-1  rounded-full border-1 cursor-pointer mr-4 `}
+          >
+            <p
+              className={`${
+                selectedCategory === 3 ? "text-white" : " text-black"
+              } text-lg`}
+            >
+              Homeloan
+            </p>
+          </div>
+          <div
+            onClick={() => setselectedCategory(4)}
+            className={` ${
+              selectedCategory === 4
+                ? "bg-green border-green"
+                : "bg-white border-lightgray"
+            }  px-5 py-1  rounded-full border-1 cursor-pointer mr-4 `}
+          >
+            <p
+              className={`${
+                selectedCategory === 4 ? "text-white" : " text-black"
+              } text-lg`}
+            >
+              Vastu
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="lg:w-80vw w-90vw mx-auto grid lg:grid-cols-3 grid-cols-1 gap-10">
         {ArticlesList.map((item) => (
           <div
             key={item.id}
             style={{
-              height: "464px",
+              height: "384px",
             }}
             className="w-full h-400px flex flex-col justify-between items-center"
           >
             {console.log(item)}
-            <div className="relative w-full h-72">
+            <div className="relative w-full h-52">
               <img
                 className="w-full h-full object-cover"
                 src={item?.img}
@@ -41,7 +116,7 @@ const BlogList = () => {
               ></div>
             </div>
             <div className="w-full lg:h-44 bg-textbg">
-              <div className="relative p-5 ">
+              <div className="relative p-5 h-full ">
                 <div
                   style={{
                     borderBottom: "1px solid #7070702E",

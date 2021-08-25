@@ -3,7 +3,7 @@ import { HiMail, HiPhone } from "react-icons/hi";
 
 const InvestmnetAssist = () => {
   return (
-    <div className="w-full h-full bg-textbg py-10">
+    <div id="instant-assistance" className="w-full h-full bg-textbg py-10">
       <div className=" w-90vw mx-auto flex-col flex justify-between items-center ">
         <div className="w-full flex-col flex items-center justify-between ">
           <p className="lg:text-6xl text-3xl text-blue font-semibold">

@@ -88,9 +88,12 @@ const Banner = () => {
             </div>
           </div>
 
-          <button className="px-8 py-2 bg-green text-darkgray text-lg font-medium ml-2  uppercase">
+          <a
+            href="#instant-assistance"
+            className="px-8 py-2 bg-green text-darkgray text-lg font-medium ml-2  uppercase"
+          >
             Get Assistance
-          </button>
+          </a>
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ import Sidebar from "../../Components/PagesComponents/Profile/Sidebar";
 import { BsBookmarksFill } from "react-icons/bs";
 import { MdHelp } from "react-icons/md";
 import { FaUserAlt, FaUserCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   useEffect(() => {
@@ -36,7 +37,10 @@ const Profile = () => {
                 </p>
               </div>
             </div>
-            <div className="w-1/3 h-48 border-1 border-lightblue mx-4 rounded-3xl flex flex-col justify-center items-center p-8 cursor-pointer hover:shadow-lg transform transition-shadow">
+            <a
+              href="/awaas-assist#instant-assistance"
+              className="w-1/3 h-48 border-1 border-lightblue mx-4 rounded-3xl flex flex-col justify-center items-center p-8 cursor-pointer hover:shadow-lg transform transition-shadow"
+            >
               <div className="w-full">
                 <MdHelp className="text-6xl text-darkgray" />
               </div>
@@ -45,7 +49,7 @@ const Profile = () => {
                   Help
                 </p>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </main>

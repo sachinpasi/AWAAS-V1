@@ -4,6 +4,7 @@ import Banner from "../Components/PagesComponents/Homeloan/Banner";
 import CurrentIntrestRate from "../Components/PagesComponents/Homeloan/CurrentIntrestRate";
 import Faq from "../Components/PagesComponents/Homeloan/Faq";
 import HowItWorks from "../Components/PagesComponents/Homeloan/HowItWorks";
+import RecommendedBlogs from "../Components/PagesComponents/Homeloan/RecommendedBlogs";
 
 const Homeloan = () => {
   useEffect(() => {
@@ -15,6 +16,7 @@ const Homeloan = () => {
       <Banner />
       <CurrentIntrestRate />
       <HowItWorks />
+      <RecommendedBlogs />
       <Faq />
     </Layout>
   );
