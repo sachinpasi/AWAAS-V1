@@ -95,7 +95,7 @@ const Banner = () => {
                     value={Name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Name"
-                    className="w-full h-11 border-1 rounded px-2"
+                    className="w-full h-11 border-1 rounded px-2 text-darkgray"
                   />
                 </div>{" "}
                 <div className="w-full">
@@ -107,7 +107,7 @@ const Banner = () => {
                     value={Phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="Phone Number"
-                    className="w-full h-11 border-1 rounded px-2"
+                    className="w-full h-11 border-1 rounded px-2 text-darkgray"
                   />
                 </div>
                 <div className="w-full">
@@ -119,7 +119,7 @@ const Banner = () => {
                     value={Amount}
                     onChange={(e) => setAmount(e.target.value)}
                     placeholder="Amount"
-                    className="w-full h-11 border-1 rounded px-2"
+                    className="w-full h-11 border-1 rounded px-2 text-darkgray"
                   />
                 </div>
                 <button
