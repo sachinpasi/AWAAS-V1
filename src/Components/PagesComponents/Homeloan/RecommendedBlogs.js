@@ -17,6 +17,9 @@ const RecommendedBlogs = () => {
   }, []);
   return (
     <div className="w-full h-full">
+      <p className="text-4xl font-light my-5 text-center capitalize">
+        Read our blogs related to homeloans{" "}
+      </p>
       <div className="lg:w-80vw w-90vw mx-auto grid lg:grid-cols-3 grid-cols-1 gap-10 py-8">
         {ArticlesList.splice(0, 3).map((item) => (
           <div
