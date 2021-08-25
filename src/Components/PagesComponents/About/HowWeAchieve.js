@@ -8,9 +8,9 @@ const HowWeAchieve = () => {
           How We Achieve It ?
         </p>
         <div className="grid-cols-3 grid gap-10 w-10/12 mx-auto pb-10 pt-4">
-          <div className="w-full h-450px bg-white rounded-3xl p-5 flex flex-col justify-between items-center shadow-sm">
+          <div className="w-full h-450px bg-white rounded-3xl p-5 flex flex-col  items-center shadow-sm">
             <img
-              className="w-full h-3/5 object-contain"
+              className="w-full h-60 object-contain"
               src="/assets/images/about/how1.jpg"
               alt=""
             />
@@ -25,9 +25,9 @@ const HowWeAchieve = () => {
             </div>
           </div>
 
-          <div className="w-full h-450px bg-white rounded-3xl p-5 flex flex-col justify-between items-center shadow-sm">
+          <div className="w-full h-450px bg-white rounded-3xl p-5 flex flex-col  items-center shadow-sm">
             <img
-              className="w-full h-3/5 object-contain"
+              className="w-full h-60 object-contain"
               src="/assets/images/about/how2.jpg"
               alt=""
             />
@@ -42,9 +42,9 @@ const HowWeAchieve = () => {
             </div>
           </div>
 
-          <div className="w-full h-450px bg-white rounded-3xl p-5 flex flex-col justify-between items-center shadow-sm">
+          <div className="w-full h-450px bg-white rounded-3xl p-5 flex flex-col  items-center shadow-sm">
             <img
-              className="w-full h-3/5 object-contain"
+              className="w-full h-60 object-contain"
               src="/assets/images/about/how3.jpg"
               alt=""
             />

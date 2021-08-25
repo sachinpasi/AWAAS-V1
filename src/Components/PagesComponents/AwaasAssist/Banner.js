@@ -28,7 +28,7 @@ const Banner = () => {
                 style={{
                   textShadow: "2px 3px 5px #000",
                 }}
-                className="w-10/12 text-xl  text-white capitalize"
+                className="w-10/12 text-lg  text-white capitalize"
               >
                 24 x 7 Multi Channel Support
               </p>
@@ -41,7 +41,7 @@ const Banner = () => {
                 style={{
                   textShadow: "2px 3px 5px #000",
                 }}
-                className="w-10/12 text-xl  text-white capitalize"
+                className="w-10/12 text-lg  text-white capitalize"
               >
                 Get Mail And Call Support By Trained Professionals
               </p>
@@ -55,7 +55,7 @@ const Banner = () => {
                 style={{
                   textShadow: "2px 3px 5px #000",
                 }}
-                className="w-10/12 text-xl  text-white capitalize"
+                className="w-10/12 text-lg  text-white capitalize"
               >
                 Special Instant Call Back Support
               </p>
@@ -68,7 +68,7 @@ const Banner = () => {
                 style={{
                   textShadow: "2px 3px 5px #000",
                 }}
-                className="w-10/12 text-xl  text-white capitalize"
+                className="w-10/12 text-lg  text-white capitalize"
               >
                 Flexible timings to meets your routine
               </p>
@@ -81,15 +81,15 @@ const Banner = () => {
                 style={{
                   textShadow: "2px 3px 5px #000",
                 }}
-                className="w-10/12 text-xl  text-white capitalize"
+                className="w-10/12 text-lg  text-white capitalize"
               >
                 Special real estate mentoring
               </p>
             </div>
           </div>
 
-          <button className="px-8 py-2 bg-green text-darkgray text-xl font-medium ml-2  uppercase">
-            Know More
+          <button className="px-8 py-2 bg-green text-darkgray text-lg font-medium ml-2  uppercase">
+            Get Assistance
           </button>
         </div>
       </div>

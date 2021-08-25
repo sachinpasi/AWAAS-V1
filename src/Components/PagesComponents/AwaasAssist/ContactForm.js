@@ -33,18 +33,18 @@ const ContactForm = () => {
               Connect With Us :
             </p>
             <div className="grid grid-cols-4 gap-2 my-4 w-40">
-              <Link to="/">
+              <a href="https://www.facebook.com/Awaasonline-111674134300495">
                 <FaFacebookF className="text-2xl text-green" />
-              </Link>
-              <Link to="/">
+              </a>
+              <a href="https://twitter.com/awaasonline">
                 <FaTwitter className="text-2xl text-green" />
-              </Link>
-              <Link to="/">
+              </a>
+              <a href="https://www.instagram.com/awaasonline/">
                 <FaInstagram className="text-2xl text-green" />
-              </Link>
-              <Link to="/">
+              </a>
+              <a href="https://www.linkedin.com/in/awaas-online-5b5826208/">
                 <FaLinkedinIn className="text-2xl text-green" />
-              </Link>
+              </a>
             </div>
           </div>
         </div>

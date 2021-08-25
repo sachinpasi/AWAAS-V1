@@ -21,7 +21,7 @@ const Director = () => {
           <div className="flex justify-center ">
             <div className="w-52 h-52 rounded-full border-8 border-yellow-300 bg-white relative ">
               <img
-                src="/assets/images/about/director.jfif"
+                src="/assets/images/about/avatar.PNG"
                 className="object-cover object-center w-full h-full rounded-full"
                 alt=""
               />

@@ -41,10 +41,12 @@ const SearchNav = ({
     }
   };
 
-  const options = LocalityList.map((_) => ({
-    name: _.name,
-    value: _.id,
-  }));
+  const options = LocalityList.sort()
+    .reverse()
+    .map((_) => ({
+      name: _.name,
+      value: _.id,
+    }));
 
   function fuzzySearch(options) {
     const fuse = new Fuse(options, {
