@@ -7,7 +7,9 @@ import Features from "../Components/PagesComponents/InvestmentAssist/Features";
 import HowItWorks from "../Components/PagesComponents/InvestmentAssist/HowItWorks";
 import IvestorsWords from "../Components/PagesComponents/InvestmentAssist/IvestorsWords";
 import Opportunities from "../Components/PagesComponents/InvestmentAssist/Opportunities";
+import RecommendedBlogs from "../Components/PagesComponents/InvestmentAssist/RecommendedBlogs";
 import Loader from "../Components/Preloader/Loader";
+
 const InvestmentAssist = () => {
   const [isLoading, setisLoading] = useState(true);
 
@@ -25,6 +27,7 @@ const InvestmentAssist = () => {
       <Opportunities />
       <IvestorsWords />
       <HowItWorks />
+      <RecommendedBlogs />
       <Faq />
       <Call />
     </Layout>

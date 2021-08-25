@@ -5,6 +5,7 @@ import Consultant from "../Components/PagesComponents/Vastu/Consultant";
 import Contact from "../Components/PagesComponents/Vastu/Contact";
 import HowItWorks from "../Components/PagesComponents/Vastu/HowItWorks";
 import Loader from "../Components/Preloader/Loader";
+import RecommendedBlogs from "../Components/PagesComponents/Vastu/RecommendedBlogs";
 
 const Vastu = () => {
   const [isLoading, setisLoading] = useState(true);
@@ -22,6 +23,7 @@ const Vastu = () => {
       <Contact />
       <Consultant />
       <HowItWorks />
+      <RecommendedBlogs />
     </Layout>
   );
 };
