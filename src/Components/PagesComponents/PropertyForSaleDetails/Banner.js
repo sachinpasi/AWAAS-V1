@@ -1,14 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import { MdLocationOn } from "react-icons/md";
 
-import { FaDownload } from "react-icons/fa";
+import { BsHeartFill, BsHeart } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { selectPropertySaleDetails } from "../../../Redux/_features/_PropertySaleDetailsSlice";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
+import axios from "axios";
+import { API } from "../../../API";
+import { selectUser } from "../../../Redux/_features/_userSlice";
 
 const Banner = () => {
   const { Data } = useSelector(selectPropertySaleDetails);
-  console.log(Data);
+  const [isBookmarked, setisBookmarked] = useState(false);
+  const [isClicked, setisClicked] = useState(false);
 
+  const user = useSelector(selectUser);
+
+  const HandleBookmark = async () => {
+    const res = await axios.post(
+      `${API}/bookmark`,
+      {
+        property_id: Data?.id,
+      },
+      {
+        headers: { Authorization: `Bearer ${user.token}` },
+      }
+    );
+    setisClicked(!isClicked);
+    if (res.status === 200) {
+      return toast.success(res.data?.message);
+    }
+  };
+
+  const CheckBookmark = async () => {
+    try {
+      const res = await axios.get(
+        `${API}/check-bookmark?property_id=${Data?.id}`,
+        {
+          headers: { Authorization: `Bearer ${user.token}` },
+        }
+      );
+
+      setisBookmarked(res?.data?.return);
+    } catch (error) {
+      setisBookmarked(error.response?.data?.return);
+    }
+  };
+  useEffect(() => {
+    CheckBookmark();
+  }, [isClicked]);
   return (
     <section
       style={{
@@ -53,6 +94,13 @@ const Banner = () => {
             <NavItemLink To="#amenities" Name="Amenities" />
             <NavItemLink To="#gallery" Name="Gallery" />
             <NavItemLink To="#get_callback" Name="Get Callback" />
+            <div onClick={HandleBookmark} className="mx-6 cursor-pointer">
+              {isBookmarked ? (
+                <BsHeartFill className="text-red text-2xl" />
+              ) : (
+                <BsHeart className="text-red text-2xl" />
+              )}
+            </div>
           </nav>
         </div>
       </div>

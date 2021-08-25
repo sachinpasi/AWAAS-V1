@@ -6,9 +6,12 @@ import axios from "axios";
 import { API } from "../API";
 import { Link, useParams } from "react-router-dom";
 import moment from "moment";
+import Loader from "../Components/Preloader/Loader";
+
 const Article = () => {
   const [ArticleData, setArticleData] = useState();
   const [ArticlesList, setArticlesList] = useState([]);
+  const [isLoading, setisLoading] = useState(true);
 
   const { id } = useParams();
 
@@ -45,10 +48,14 @@ const Article = () => {
   useEffect(() => {
     FetchData();
     window.scrollTo(0, 0);
+    setTimeout(() => {
+      setisLoading(false);
+    }, [1000]);
   }, [id]);
   return (
     <Layout>
       <Banner ArticleData={ArticleData} />
+      {isLoading && <Loader />}
       <div className="  h-full bg-textbg">
         <div className=" lg:w-80vw w-90vw mx-auto flex flex-col lg:flex-row justify-between items-start ">
           <Data ArticleData={ArticleData} />

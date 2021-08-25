@@ -6,12 +6,15 @@ module.exports = {
       1: "1px",
       2: "2px",
       4: "4px",
+      8: "8px",
     },
     extend: {
       colors: {
         darkblue: "#5486EB",
         blue: "#4D81E8",
         lightblue: "#B8D0FF",
+        littlelightblue: "#dbe7ff",
+        extralightblue: "#F0F5FF",
         extradarkblue: "#0f4e91",
         darkgray: "#292929",
         lightgray: "#808080",

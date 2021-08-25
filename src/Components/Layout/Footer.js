@@ -24,7 +24,7 @@ const Footer = () => {
           </p>
 
           <ul className="lg:flex hidden  justify-evenly flex-wrap lg:flex-nowrap items-center lg:w-3/4 py-4">
-            {/* <li>
+            <li>
               <Link
                 to="/about-us"
                 style={{
@@ -34,7 +34,7 @@ const Footer = () => {
               >
                 About Us
               </Link>
-            </li> */}
+            </li>
             <li>
               <Link
                 to="/investment-assist"
