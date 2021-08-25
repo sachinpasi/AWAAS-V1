@@ -16,32 +16,34 @@ const Profile = () => {
         <Sidebar />
         <div className="w-4/5 h-full p-8 mt-4">
           <div className="w-full flex justify-between items-center">
-            <div className="w-1/3 h-48 bg-lightblue mx-4 rounded-3xl flex flex-col justify-center items-center p-8 cursor-pointer hover:shadow-lg transform transition-shadow">
+            <div className="w-1/3 h-48 border-1 border-lightblue mx-4 rounded-3xl flex flex-col justify-center items-center p-8 cursor-pointer hover:shadow-lg transform transition-shadow">
               <div className="w-full">
-                <FaUserCircle className="text-6xl text-white" />
+                <FaUserCircle className="text-6xl text-darkgray" />
               </div>
               <div className="w-full flex-col flex items-start">
-                <p className="text-3xl font-medium text-white py-2  ">
+                <p className="text-3xl font-medium text-darkgray py-2  ">
                   Account
                 </p>
               </div>
             </div>
-            <div className="w-1/3 h-48 bg-lightblue mx-4 rounded-3xl flex flex-col justify-center items-center p-8 cursor-pointer hover:shadow-lg transform transition-shadow">
+            <div className="w-1/3 h-48 border-1 border-lightblue mx-4 rounded-3xl flex flex-col justify-center items-center p-8 cursor-pointer hover:shadow-lg transform transition-shadow">
               <div className="w-full">
-                <BsBookmarksFill className="text-6xl text-white" />
+                <BsBookmarksFill className="text-6xl text-darkgray" />
               </div>
               <div className="w-full flex-col flex items-start">
-                <p className="text-3xl font-medium text-white py-2  ">
+                <p className="text-3xl font-medium text-darkgray py-2  ">
                   Bookmark
                 </p>
               </div>
             </div>
-            <div className="w-1/3 h-48 bg-lightblue mx-4 rounded-3xl flex flex-col justify-center items-center p-8 cursor-pointer hover:shadow-lg transform transition-shadow">
+            <div className="w-1/3 h-48 border-1 border-lightblue mx-4 rounded-3xl flex flex-col justify-center items-center p-8 cursor-pointer hover:shadow-lg transform transition-shadow">
               <div className="w-full">
-                <MdHelp className="text-6xl text-white" />
+                <MdHelp className="text-6xl text-darkgray" />
               </div>
               <div className="w-full flex-col flex items-start">
-                <p className="text-3xl font-medium text-white py-2  ">Help</p>
+                <p className="text-3xl font-medium text-darkgray py-2  ">
+                  Help
+                </p>
               </div>
             </div>
           </div>

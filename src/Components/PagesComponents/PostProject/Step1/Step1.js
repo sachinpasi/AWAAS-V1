@@ -290,7 +290,7 @@ const Step1 = () => {
                   placeholder="Developer Description"
                   {...register("aboutDeveloper")}
                 />
-                <div className="flex justify-end my-2 w-full">
+                <div className="flex justify-start my-2 w-full">
                   <label className="customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
                     <svg
                       class="w-8 h-8 mr-2"
@@ -308,7 +308,7 @@ const Step1 = () => {
                     />
                   </label>
                 </div>
-                <div className="flex justify-end my-2 w-full ">
+                <div className="flex justify-start my-2 w-full ">
                   <label className="customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
                     <svg
                       class="w-8 h-8 mr-2"
@@ -326,7 +326,7 @@ const Step1 = () => {
                     />
                   </label>
                 </div>
-                <div className="flex justify-end my-2 w-full">
+                <div className="flex justify-start my-2 w-full">
                   <label className="customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
                     <svg
                       class="w-8 h-8 mr-2"
