@@ -186,13 +186,10 @@ const HomeNav = () => {
                       <p className="text-2xl">Bookmark</p>
                     </div>
                     <div className="w-full h-full">
-                      {/* {BookmarkList?.map((item) => (
-                        <div>{console.log(item)}</div>
-                      ))} */}
-                      {console.log(BookmarkList)}
                       {BookmarkList.map((item, index) => (
                         <Link
-                          to=""
+                          key={index}
+                          to={`/property/${item.property_for}/${item.property_id}`}
                           className="text-blue cursor-pointer flex items-center my-2 border-b-2  pb-2"
                         >
                           <img

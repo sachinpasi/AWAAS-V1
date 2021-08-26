@@ -1,9 +1,31 @@
+import axios from "axios";
 import React from "react";
+import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
-import { selectProjectDetails } from "../../../../Redux/_features/_ProjectDetailsSlice";
+import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import { API } from "../../../../API";
+import { selectPropertyRentDetails } from "../../../../Redux/_features/_PropertyRentDetailsSlice";
 
 const Sidebar = () => {
-  const { Data } = useSelector(selectProjectDetails);
+  const { Data } = useSelector(selectPropertyRentDetails);
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+
+  const { id } = useParams();
+  const onSubmit = async (data) => {
+    const res = await axios.post(`${API}/leads/store-potential`, {
+      ...data,
+      id: id,
+    });
+    console.log(res.data);
+    if (res.status === 200) {
+      return toast.success("We Will Contact You Soon");
+    }
+  };
   return (
     <div className="w-full bg-blue rounded p-4 sticky top-5 py-8 mt-4 lg:mt-0 ">
       <div
@@ -23,7 +45,10 @@ const Sidebar = () => {
         </p>
       </div>
 
-      <div className="flex justify-center items-start flex-col py-2">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex justify-center items-start flex-col py-2"
+      >
         <div className="flex-col flex justify-center items-start w-full my-1">
           <p className="text-white">Name</p>
           <input
@@ -34,6 +59,7 @@ const Sidebar = () => {
             className="w-full h-9 px-2 placeholder-extralightgray my-1 text-white"
             type="text"
             placeholder="Name"
+            {...register("name", { required: true })}
           />
         </div>
         <div className="flex-col flex justify-center items-start w-full my-1">
@@ -46,6 +72,7 @@ const Sidebar = () => {
             className="w-full h-9 px-2 placeholder-extralightgray my-1 text-white"
             type="text"
             placeholder="Email Address"
+            {...register("email", { required: true })}
           />
         </div>
         <div className="flex-col flex justify-center items-start w-full my-1">
@@ -58,7 +85,13 @@ const Sidebar = () => {
             className="w-full h-9 px-2 placeholder-extralightgray my-1 text-white"
             type="text"
             placeholder="Phone Number"
+            {...register("phone", { required: true })}
           />
+          {(errors?.mobile?.type === "required" ||
+            errors?.name?.type === "required" ||
+            errors?.email?.type === "required") && (
+            <span className=" py-1 text-red">* All Fields Are required</span>
+          )}
         </div>
 
         <button className="w-full my-4 h-12 bg-white rounded text-lg font-medium text-blue">
@@ -71,7 +104,7 @@ const Sidebar = () => {
             and <span className="text-white font-medium">Privacy Policy</span>
           </p>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

@@ -1,7 +1,99 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { HiMail, HiPhone } from "react-icons/hi";
+import { toast } from "react-toastify";
+import { API } from "../../../API";
 
 const InvestmnetAssist = () => {
+  const [phone, setphone] = useState("");
+  const [phone2, setphone2] = useState("");
+  const [phone3, setphone3] = useState("");
+  const [phone4, setphone4] = useState("");
+
+  const HandleLoan = async (id) => {
+    try {
+      if (phone.length === 10) {
+        const res = await axios.post(`${API}/store-support`, {
+          phone: phone,
+          category: id,
+        });
+
+        if (res.status === 200) {
+          return toast.success("You Will Get Call Back Soon");
+        }
+      } else {
+        return toast.error("Please Enter Correct Phone Number");
+      }
+    } catch (error) {
+      if (error.response.status !== 200) {
+        return toast.error("Please Enter Phone Number");
+      }
+    }
+  };
+
+  const Handleinvest = async (id) => {
+    try {
+      if (phone2.length === 10) {
+        const res = await axios.post(`${API}/store-support`, {
+          phone: phone,
+          category: id,
+        });
+
+        if (res.status === 200) {
+          return toast.success("You Will Get Call Back Soon");
+        }
+      } else {
+        return toast.error("Please Enter Correct Phone Number");
+      }
+    } catch (error) {
+      if (error.response.status !== 200) {
+        return toast.error("Please Enter Phone Number");
+      }
+    }
+  };
+
+  const HandleVastu = async (id) => {
+    try {
+      if (phone3.length === 10) {
+        const res = await axios.post(`${API}/store-support`, {
+          phone: phone,
+          category: id,
+        });
+
+        if (res.status === 200) {
+          return toast.success("You Will Get Call Back Soon");
+        }
+      } else {
+        return toast.error("Please Enter Correct Phone Number");
+      }
+    } catch (error) {
+      if (error.response.status !== 200) {
+        return toast.error("Please Enter Phone Number");
+      }
+    }
+  };
+
+  const HandleLegal = async (id) => {
+    try {
+      if (phone4.length === 10) {
+        const res = await axios.post(`${API}/store-support`, {
+          phone: phone,
+          category: id,
+        });
+
+        if (res.status === 200) {
+          return toast.success("You Will Get Call Back Soon");
+        }
+      } else {
+        return toast.error("Please Enter Correct Phone Number");
+      }
+    } catch (error) {
+      if (error.response.status !== 200) {
+        return toast.error("Please Enter Phone Number");
+      }
+    }
+  };
+
   return (
     <div id="instant-assistance" className="w-full h-full bg-textbg py-10">
       <div className=" w-90vw mx-auto flex-col flex justify-between items-center ">
@@ -54,8 +146,13 @@ const InvestmnetAssist = () => {
                 type="tel"
                 className="bg-white h-12 w-full px-4"
                 placeholder="Phone No."
+                value={phone}
+                onChange={(e) => setphone(e.target.value)}
               />
-              <button className="text-white bg-extradarkblue font-medium text-xl w-10/12 h-12 mt-5">
+              <button
+                onClick={() => HandleLoan("h")}
+                className="text-white bg-extradarkblue font-medium text-xl w-10/12 h-12 mt-5"
+              >
                 GET CALLBACK
               </button>
             </div>
@@ -79,7 +176,7 @@ const InvestmnetAssist = () => {
                 href="mailto:invest@awaasonline.com"
                 className="text-white text-lg tracking-wider"
               >
-                loans@awaasonline.com
+                invest@awaasonline.com
               </a>
               <div className="flex items-center justify-center">
                 <div className="bg-white p-1 rounded-full mr-2">
@@ -99,8 +196,14 @@ const InvestmnetAssist = () => {
                 type="tel"
                 className="bg-white h-12 w-full px-4"
                 placeholder="Phone No."
+                value={phone2}
+                required
+                onChange={(e) => setphone2(e.target.value)}
               />
-              <button className="text-white bg-extradarkblue font-medium text-xl w-10/12 h-12 mt-5">
+              <button
+                onClick={() => Handleinvest("i")}
+                className="text-white bg-extradarkblue font-medium text-xl w-10/12 h-12 mt-5"
+              >
                 GET CALLBACK
               </button>
             </div>
@@ -145,8 +248,14 @@ const InvestmnetAssist = () => {
                 type="tel"
                 className="bg-white h-12 w-full px-4"
                 placeholder="Phone No."
+                value={phone3}
+                required
+                onChange={(e) => setphone3(e.target.value)}
               />
-              <button className="text-white bg-extradarkblue font-medium text-xl w-10/12 h-12 mt-5">
+              <button
+                onClick={() => HandleVastu("v")}
+                className="text-white bg-extradarkblue font-medium text-xl w-10/12 h-12 mt-5"
+              >
                 GET CALLBACK
               </button>
             </div>
@@ -191,8 +300,14 @@ const InvestmnetAssist = () => {
                 type="tel"
                 className="bg-white h-12 w-full px-4"
                 placeholder="Phone No."
+                value={phone4}
+                required
+                onChange={(e) => setphone4(e.target.value)}
               />
-              <button className="text-white bg-extradarkblue font-medium text-xl w-10/12 h-12 mt-5">
+              <button
+                onClick={() => HandleLegal("l")}
+                className="text-white bg-extradarkblue font-medium text-xl w-10/12 h-12 mt-5"
+              >
                 GET CALLBACK
               </button>
             </div>

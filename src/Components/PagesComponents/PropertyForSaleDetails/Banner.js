@@ -10,7 +10,7 @@ import axios from "axios";
 import { API } from "../../../API";
 import { selectUser } from "../../../Redux/_features/_userSlice";
 
-const Banner = () => {
+const Banner = ({ setisBookmarkChanged }) => {
   const { Data } = useSelector(selectPropertySaleDetails);
   const [isBookmarked, setisBookmarked] = useState(false);
   const [isClicked, setisClicked] = useState(false);
@@ -29,6 +29,7 @@ const Banner = () => {
     );
     setisClicked(!isClicked);
     if (res.status === 200) {
+      setisBookmarkChanged(true);
       return toast.success(res.data?.message);
     }
   };

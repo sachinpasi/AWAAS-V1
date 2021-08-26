@@ -19,6 +19,7 @@ const PropertyForSaleDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const [isLoading, setisLoading] = useState(false);
+  const [isBookmarkChanged, setisBookmarkChanged] = useState(false);
 
   const FetchData = async () => {
     setisLoading(true);
@@ -42,9 +43,9 @@ const PropertyForSaleDetails = () => {
   }, [id]);
 
   return (
-    <Layout>
+    <Layout isBookmarkChanged={isBookmarkChanged}>
       {isLoading && <Loader />}
-      <Banner />
+      <Banner setisBookmarkChanged={setisBookmarkChanged} />
       <PropertySaleSection />
       <PropertySale />
     </Layout>

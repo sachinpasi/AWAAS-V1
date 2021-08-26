@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { FaProjectDiagram, FaUserCircle } from "react-icons/fa";
 import { useSelector } from "react-redux";
@@ -9,13 +9,19 @@ import { RiBankLine, RiBuilding2Line } from "react-icons/ri";
 import { BiHelpCircle } from "react-icons/bi";
 import { ImHammer2 } from "react-icons/im";
 import Login from "../PagesComponents/Login/Login";
-const Navbar = () => {
+import axios from "axios";
+import { API } from "../../API";
+import { BsBookmarkFill } from "react-icons/bs";
+import { GrClose } from "react-icons/gr";
+const Navbar = ({ isBookmarkChanged }) => {
   const loaction = useLocation();
   const location = useLocation();
   const history = useHistory();
   const user = useSelector(selectUser);
   const [isNavOpen, setisNavOpen] = useState(false);
   const [isLoginModalOpen, setisLoginModalOpen] = useState(false);
+  const [isSideOpen, setisSideOpen] = useState(false);
+  const [BookmarkList, setBookmarkList] = useState([]);
 
   const MobileNavItem = ({ Name, To, Active, Icon }) => (
     <Link
@@ -46,6 +52,18 @@ const Navbar = () => {
     }
   };
 
+  const FetchBookmarkList = async () => {
+    const res = await axios.get(`${API}/bookmark-list`, {
+      headers: { Authorization: `Bearer ${user.token}` },
+    });
+    console.log(res.data);
+    setBookmarkList(res.data.data);
+  };
+
+  useEffect(() => {
+    FetchBookmarkList();
+  }, [isBookmarkChanged]);
+
   return (
     <>
       <nav className="w-full hidden h-14 lg:flex justify-center items-center border-b-2 border-darkblue ">
@@ -53,42 +71,102 @@ const Navbar = () => {
           <Link to="/" className="w-44">
             <img src="/assets/images/logo/logo2.svg" alt="" />
           </Link>
-          <div className="w-auto h-full flex justify-center items-center">
-            <NavItem
-              To="/post-property"
-              Active={loaction.pathname === "/post-property"}
-              Name="Post Property Free"
-            />
-            <NavItem
-              Active={loaction.pathname === "/home-loans"}
-              Name="Home Loan"
-              To="/home-loans"
-            />
-            <NavItem
-              Active={loaction.pathname === "/investment-assist"}
-              Name="Investment Assistance"
-              To="/investment-assist"
-            />
-            <NavItem
-              Active={loaction.pathname === "/awaas-assist"}
-              Name="Awaas Assist"
-              To="/awaas-assist"
-            />
-            <NavItem
-              Active={loaction.pathname === "/vastu"}
-              Name="Vastu"
-              To="/vastu"
-            />
-            <NavItem
-              Active={loaction.pathname === "/legal"}
-              Name="Legal"
-              To="/legal"
-            />
-            {user.isLoggedIn ? (
-              <NavAuthItem To="/profile/overview" Name="Profile" />
-            ) : (
-              <NavAuthItem To="/" Name="Login" />
-            )}
+          <div className="flex items-center justify-between">
+            <div className="w-auto h-full flex justify-center items-center mr-12">
+              <NavItem
+                To="/post-property"
+                Active={loaction.pathname === "/post-property"}
+                Name="Post Property Free"
+              />
+              <NavItem
+                Active={loaction.pathname === "/home-loans"}
+                Name="Home Loan"
+                To="/home-loans"
+              />
+              <NavItem
+                Active={loaction.pathname === "/investment-assist"}
+                Name="Investment Assistance"
+                To="/investment-assist"
+              />
+              <NavItem
+                Active={loaction.pathname === "/awaas-assist"}
+                Name="Awaas Assist"
+                To="/awaas-assist"
+              />
+              <NavItem
+                Active={loaction.pathname === "/vastu"}
+                Name="Vastu"
+                To="/vastu"
+              />
+              <NavItem
+                Active={loaction.pathname === "/legal"}
+                Name="Legal"
+                To="/legal"
+              />
+              {user.isLoggedIn ? (
+                <NavAuthItem To="/profile/overview" Name="Profile" />
+              ) : (
+                <NavAuthItem To="/" Name="Login" />
+              )}
+            </div>
+            <div className="flex justify-center items-center">
+              <HiMenu
+                onClick={() => setisSideOpen(!isSideOpen)}
+                style={{
+                  textShadow: "2px 3px 5px #000",
+                }}
+                className="absolute right-6 text-3xl text-darkgray cursor-pointer "
+              />
+
+              <div
+                style={{
+                  transition: "0.3s ease all",
+                }}
+                onClick={() => setisSideOpen(!isSideOpen)}
+                className={` ${
+                  isSideOpen ? "" : "hidden"
+                } w-full h-screen bg-black bg-opacity-50 z-40 fixed left-0 bottom-0 top-0 right-0`}
+              ></div>
+              <div
+                style={{
+                  transition: "0.3s ease all",
+                }}
+                className={`${
+                  isSideOpen ? "right-0" : "-right-full"
+                } w-80 h-screen bg-white fixed z-50  bottom-0 top-0 p-4`}
+              >
+                <GrClose
+                  onClick={() => setisSideOpen(!isSideOpen)}
+                  style={{
+                    textShadow: "2px 3px 5px #000",
+                  }}
+                  className="text-2xl text-white cursor-pointer float-right "
+                />
+
+                <div className="w-11/12 mx-auto h-full mt-8">
+                  <div className="flex items-center border-b-2 pb-2">
+                    <BsBookmarkFill className="text-2xl mt-1 mr-3.5 text-green" />
+                    <p className="text-2xl">Bookmark</p>
+                  </div>
+                  <div className="w-full h-full">
+                    {BookmarkList.map((item, index) => (
+                      <Link
+                        key={index}
+                        to={`/property/${item.property_for}/${item.property_id}`}
+                        className="text-blue cursor-pointer flex items-center my-2 border-b-2  pb-2"
+                      >
+                        <img
+                          src={item.single_image}
+                          className="w-12 h-12 mr-2 object-cover rounded-lg"
+                          alt=""
+                        />
+                        <p className="capitalize text-lg ">{item.title}</p>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </nav>

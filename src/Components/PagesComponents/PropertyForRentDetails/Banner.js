@@ -50,7 +50,7 @@ const Banner = () => {
   };
   useEffect(() => {
     CheckBookmark();
-  }, [isClicked]);
+  }, [isClicked, Data]);
 
   return (
     <section
