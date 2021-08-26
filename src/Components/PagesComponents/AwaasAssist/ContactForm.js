@@ -1,4 +1,6 @@
+import axios from "axios";
 import React from "react";
+import { useForm } from "react-hook-form";
 import {
   FaFacebookF,
   FaInstagram,
@@ -6,8 +8,25 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { API } from "../../../API";
 
 const ContactForm = () => {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+
+  const onSubmit = async (data) => {
+    const res = await axios.post(`${API}/store-contact-us`, {
+      ...data,
+    });
+    if (res.status === 200) {
+      return toast.success("We Will Contact You Soon");
+    }
+  };
+
   return (
     <div className="w-full h-full py-10">
       <div className="lg:w-80vw w-90vw mx-auto flex flex-col lg:flex-row justify-between items-center ">
@@ -48,22 +67,62 @@ const ContactForm = () => {
             </div>
           </div>
         </div>
-        <div className="lg:w-2/5 w-full flex-col flex">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="lg:w-2/5 w-full flex-col flex"
+        >
+          <div className="w-full flex justify-between items-center my-2">
+            <input
+              type="text"
+              className="w-full border-2 border-blue px-4 h-12 mr-2"
+              placeholder="Name"
+              {...register("name", { required: true })}
+            />{" "}
+            <select
+              type="email"
+              {...register("category", { required: true })}
+              className="w-full border-2 border-blue px-4 h-12 ml-2"
+              placeholder="Category"
+            >
+              <option defaultChecked hidden value="">
+                Category
+              </option>
+              <option value="g">Genral Query</option>
+              <option value="v">Vastu Support</option>
+              <option value="i">Investment Support</option>
+              <option value="l">Legal Support</option>
+              <option value="h">Home Loan</option>
+              <option value="h">Homeloan Support</option>
+              <option value="t">Technical Support</option>
+            </select>
+          </div>
           <input
             type="email"
             className="w-full border-2 border-blue px-4 h-12"
             placeholder="Email"
+            {...register("email", { required: true })}
           />
           <textarea
             name=""
             id=""
-            className="w-full border-2 border-blue px-4 h-40 my-8 py-2 "
+            className="w-full border-2 border-blue px-4 h-40 my-4 mt-2 pt-2 "
             placeholder="Message"
+            {...register("description", { required: true })}
           ></textarea>
-          <button className="px-8 py-2 bg-blue text-white uppercase text-xl font-medium w-32">
+
+          {(errors?.category?.type === "required" ||
+            errors?.description?.type === "required" ||
+            errors?.name?.type === "required" ||
+            errors?.email?.type === "required") && (
+            <span className=" py-2 text-red">* All Fields Are required</span>
+          )}
+          <button
+            type="submit"
+            className="px-8 py-2 bg-blue text-white uppercase text-xl font-medium w-32"
+          >
             SEND
           </button>
-        </div>
+        </form>
       </div>
     </div>
   );

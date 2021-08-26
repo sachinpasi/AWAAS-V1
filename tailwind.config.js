@@ -26,6 +26,7 @@ module.exports = {
         projectsborder: "#E9E9E9",
         opacitygray: "rgba(192,192,192,0.8)",
         red: "#FF0000",
+        lightred: "#FF9999",
         green: "#2BD8B5",
 
         textbg: "#F8F8F8",
