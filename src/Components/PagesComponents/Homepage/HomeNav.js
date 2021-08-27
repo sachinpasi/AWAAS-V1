@@ -48,6 +48,7 @@ const HomeNav = () => {
   const dispatch = useDispatch();
 
   const HandlePostProperty = () => {
+    setisNavOpen(false);
     if (user.isLoggedIn) {
       history.push("/post-property");
     } else {
@@ -56,6 +57,7 @@ const HomeNav = () => {
   };
 
   const HandlePostProject = () => {
+    setisNavOpen(false);
     if (user.isLoggedIn) {
       history.push("/post-project");
     } else {
@@ -74,6 +76,17 @@ const HomeNav = () => {
       <Icon className="text-3xl mr-3" />
       <p className="text-xl font-medium">{Name}</p>
     </Link>
+  );
+  const MobileNavItemButton = ({ Name, To, Active, Icon, OnClick }) => (
+    <div
+      onClick={OnClick}
+      className={`flex items-end  py-2 px-5 w-full my-1 rounded-full ${
+        Active ? "bg-gray-500 text-white" : ""
+      }`}
+    >
+      <Icon className="text-3xl mr-3" />
+      <p className="text-xl font-medium">{Name}</p>
+    </div>
   );
 
   const FetchBookmarkList = async () => {
@@ -297,15 +310,15 @@ const HomeNav = () => {
               Name="Profile"
               To="/profile/overview"
             /> */}
-            <MobileNavItem
+            <MobileNavItemButton
+              OnClick={HandlePostProperty}
               Icon={RiBuilding2Line}
               Name="Post Property "
-              To="/post-property"
             />
-            <MobileNavItem
+            <MobileNavItemButton
               Icon={FaProjectDiagram}
               Name="Post Project "
-              To="/post-project"
+              OnClick={HandlePostProject}
             />
             <MobileNavItem
               Icon={MdMonetizationOn}

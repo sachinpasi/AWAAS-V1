@@ -64,8 +64,8 @@ const Routes = () => {
           component={PropertyForRentDetails}
         />
 
-        <Route exact path="/post-property" component={PostProperty} />
-        <Route exact path="/post-project" component={PostProject} />
+        <PrivateRoutes exact path="/post-property" component={PostProperty} />
+        <PrivateRoutes exact path="/post-project" component={PostProject} />
 
         <Route exact path="/verfiy-project/:id" component={VerfiyProject} />
         <Route exact path="/verfiy-property/:id" component={VerifyProperty} />

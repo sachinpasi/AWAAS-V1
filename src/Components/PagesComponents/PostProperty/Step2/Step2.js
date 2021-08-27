@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { API } from "../../../../API";
+import Fuse from "fuse.js";
 import {
   selectPostProperty,
   selectPostPropertyId,
@@ -15,6 +16,8 @@ import { selectUser } from "../../../../Redux/_features/_userSlice";
 
 import Nav from "../Nav";
 import SideImage from "../SideImage";
+import SelectSearch from "react-select-search";
+import "react-select-search/style.css";
 
 const Step2 = () => {
   const CurrentStep = useSelector(selectCurrentStep);
@@ -29,6 +32,7 @@ const Step2 = () => {
     register,
     formState: { errors },
     handleSubmit,
+    control,
   } = useForm();
 
   const HandleNext = () => {
@@ -65,6 +69,28 @@ const Step2 = () => {
       setLocalityList(res.data.data);
     }
   };
+
+  const options = LocalityList.sort()
+    .reverse()
+    .map((_) => ({
+      name: _.name,
+      value: _.id,
+    }));
+
+  function fuzzySearch(options) {
+    const fuse = new Fuse(options, {
+      keys: ["name", "groupName", "items.name"],
+      threshold: 0.3,
+    });
+
+    return (value) => {
+      if (!value.length) {
+        return options;
+      }
+
+      return fuse.search(value);
+    };
+  }
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -107,28 +133,21 @@ const Step2 = () => {
                       id="apart"
                     />
 
-                    <select
-                      {...register("locality_id", { required: true })}
-                      className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                      type="text"
-                      placeholder="Locality"
-                      id="locality"
-                      required=""
-                      aria-required="true"
-                    >
-                      <option selected hidden>
-                        Locality / Area
-                      </option>
-                      {LocalityList.map((item) => (
-                        <option
-                          key={item.id}
-                          className="capitalize"
-                          value={item.id}
-                        >
-                          {item.name}
-                        </option>
-                      ))}
-                    </select>
+                    <div className="border-1 h-11  text-lg w-72 my-1 placeholder-gray-600">
+                      <Controller
+                        control={control}
+                        name="locality_id"
+                        render={({ field: { onChange } }) => (
+                          <SelectSearch
+                            options={options}
+                            placeholder="Locality / Area / Sector"
+                            filterOptions={fuzzySearch}
+                            search
+                            onChange={(selected) => onChange(selected)}
+                          />
+                        )}
+                      />
+                    </div>
 
                     <input
                       {...register("plot_no", { required: true })}
@@ -168,28 +187,21 @@ const Step2 = () => {
                       id="apart"
                     />
 
-                    <select
-                      {...register("locality_id", {
-                        required: true,
-                      })}
-                      className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                      type="text"
-                      placeholder="Locality"
-                      id="locality"
-                    >
-                      <option selected hidden>
-                        Locality / Area
-                      </option>
-                      {LocalityList.map((item) => (
-                        <option
-                          key={item.id}
-                          className="capitalize"
-                          value={item.id}
-                        >
-                          {item.name}
-                        </option>
-                      ))}
-                    </select>
+                    <div className="border-1 h-11  text-lg w-72 my-1 placeholder-gray-600">
+                      <Controller
+                        control={control}
+                        name="locality_id"
+                        render={({ field: { onChange } }) => (
+                          <SelectSearch
+                            options={options}
+                            placeholder="Locality / Area / Sector"
+                            filterOptions={fuzzySearch}
+                            search
+                            onChange={(selected) => onChange(selected)}
+                          />
+                        )}
+                      />
+                    </div>
                     <input
                       // {...register("project_name", { required: true })}
                       className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
@@ -226,26 +238,21 @@ const Step2 = () => {
                       id="apart"
                     />
 
-                    <select
-                      {...register("locality_id")}
-                      className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                      type="text"
-                      placeholder="Locality"
-                      id="locality"
-                    >
-                      <option selected hidden>
-                        Locality / Area
-                      </option>
-                      {LocalityList.map((item) => (
-                        <option
-                          key={item.id}
-                          className="capitalize"
-                          value={item.id}
-                        >
-                          {item.name}
-                        </option>
-                      ))}
-                    </select>
+                    <div className="border-1 h-11  text-lg w-72 my-1 placeholder-gray-600">
+                      <Controller
+                        control={control}
+                        name="locality_id"
+                        render={({ field: { onChange } }) => (
+                          <SelectSearch
+                            options={options}
+                            placeholder="Locality / Area / Sector"
+                            filterOptions={fuzzySearch}
+                            search
+                            onChange={(selected) => onChange(selected)}
+                          />
+                        )}
+                      />
+                    </div>
                   </div>
                 </>
               )}
@@ -277,28 +284,21 @@ const Step2 = () => {
                     id="apart"
                   />
 
-                  <select
-                    {...register("locality_id", {
-                      required: true,
-                    })}
-                    className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                    type="text"
-                    placeholder="Locality"
-                    id="locality"
-                  >
-                    <option selected hidden>
-                      Locality / Area
-                    </option>
-                    {LocalityList.map((item) => (
-                      <option
-                        key={item.id}
-                        className="capitalize"
-                        value={item.id}
-                      >
-                        {item.name}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="border-1 h-11  text-lg w-72 my-1 placeholder-gray-600">
+                    <Controller
+                      control={control}
+                      name="locality_id"
+                      render={({ field: { onChange } }) => (
+                        <SelectSearch
+                          options={options}
+                          placeholder="Locality / Area / Sector"
+                          filterOptions={fuzzySearch}
+                          search
+                          onChange={(selected) => onChange(selected)}
+                        />
+                      )}
+                    />
+                  </div>
                 </div>
               )}
               {PostProperty?.Property_Type === "floor" && (
@@ -325,26 +325,21 @@ const Step2 = () => {
                     id="apart"
                   />
 
-                  <select
-                    {...register("locality_id")}
-                    className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                    type="text"
-                    placeholder="Locality"
-                    id="locality"
-                  >
-                    <option selected hidden>
-                      Locality / Area
-                    </option>
-                    {LocalityList.map((item) => (
-                      <option
-                        key={item.id}
-                        className="capitalize"
-                        value={item.id}
-                      >
-                        {item.name}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="border-1 h-11  text-lg w-72 my-1 placeholder-gray-600">
+                    <Controller
+                      control={control}
+                      name="locality_id"
+                      render={({ field: { onChange } }) => (
+                        <SelectSearch
+                          options={options}
+                          placeholder="Locality / Area / Sector"
+                          filterOptions={fuzzySearch}
+                          search
+                          onChange={(selected) => onChange(selected)}
+                        />
+                      )}
+                    />
+                  </div>
 
                   <input
                     {...register("unit_no")}
@@ -389,26 +384,21 @@ const Step2 = () => {
                     id="apart"
                   />
 
-                  <select
-                    {...register("locality_id")}
-                    className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                    type="text"
-                    placeholder="Locality"
-                    id="locality"
-                  >
-                    <option selected hidden>
-                      Locality / Area
-                    </option>
-                    {LocalityList.map((item) => (
-                      <option
-                        key={item.id}
-                        className="capitalize"
-                        value={item.id}
-                      >
-                        {item.name}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="border-1 h-11  text-lg w-72 my-1 placeholder-gray-600">
+                    <Controller
+                      control={control}
+                      name="locality_id"
+                      render={({ field: { onChange } }) => (
+                        <SelectSearch
+                          options={options}
+                          placeholder="Locality / Area / Sector"
+                          filterOptions={fuzzySearch}
+                          search
+                          onChange={(selected) => onChange(selected)}
+                        />
+                      )}
+                    />
+                  </div>
                   <input
                     className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
                     {...register("unit_no")}
@@ -453,28 +443,21 @@ const Step2 = () => {
                     id="apart"
                   />
 
-                  <select
-                    {...register("locality_id", {
-                      required: true,
-                    })}
-                    className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                    type="text"
-                    placeholder="Locality"
-                    id="locality"
-                  >
-                    <option selected hidden>
-                      Locality / Area
-                    </option>
-                    {LocalityList.map((item) => (
-                      <option
-                        key={item.id}
-                        className="capitalize"
-                        value={item.id}
-                      >
-                        {item.name}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="border-1 h-11  text-lg w-72 my-1 placeholder-gray-600">
+                    <Controller
+                      control={control}
+                      name="locality_id"
+                      render={({ field: { onChange } }) => (
+                        <SelectSearch
+                          options={options}
+                          placeholder="Locality / Area / Sector"
+                          filterOptions={fuzzySearch}
+                          search
+                          onChange={(selected) => onChange(selected)}
+                        />
+                      )}
+                    />
+                  </div>
                   <input
                     className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
                     {...register("shop_no", {
@@ -516,28 +499,21 @@ const Step2 = () => {
                     required=""
                   />
 
-                  <select
-                    {...register("locality_id", {
-                      required: true,
-                    })}
-                    className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                    type="text"
-                    placeholder="Locality"
-                    id="locality"
-                  >
-                    <option selected hidden>
-                      Locality / Area
-                    </option>
-                    {LocalityList.map((item) => (
-                      <option
-                        key={item.id}
-                        className="capitalize"
-                        value={item.id}
-                      >
-                        {item.name}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="border-1 h-11  text-lg w-72 my-1 placeholder-gray-600">
+                    <Controller
+                      control={control}
+                      name="locality_id"
+                      render={({ field: { onChange } }) => (
+                        <SelectSearch
+                          options={options}
+                          placeholder="Locality / Area / Sector"
+                          filterOptions={fuzzySearch}
+                          search
+                          onChange={(selected) => onChange(selected)}
+                        />
+                      )}
+                    />
+                  </div>
                 </div>
               )}
             </div>

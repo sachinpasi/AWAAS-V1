@@ -155,7 +155,10 @@ const MobileSearchWidget = () => {
           onClick={() => setCurrentTab("rent")}
         />
 
-        <WidgetNav Name="Sell / List" onClick={HandlePostProperty} />
+        <WidgetNav
+          Name="Projects"
+          onClick={() => history.push("/search/projects")}
+        />
       </div>
       <div className="w-full h-full flex-col flex">
         <div className="w-full h-12 my-0.5">
