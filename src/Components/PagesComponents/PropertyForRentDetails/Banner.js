@@ -82,9 +82,12 @@ const Banner = () => {
               </p>{" "}
             </div>
             {/* {Data?.parent?.rera && ( */}
-            <div className="mx-4">
-              <img src="/assets/images/propertysale/rera.svg" alt="" />
-            </div>
+            {Data?.validated === 1 && (
+              <div className="mx-4">
+                <img src="/assets/images/propertysale/rera.svg" alt="" />
+              </div>
+            )}
+
             {/* )} */}
           </div>
           <nav

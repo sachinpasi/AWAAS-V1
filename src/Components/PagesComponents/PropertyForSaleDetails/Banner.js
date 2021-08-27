@@ -81,11 +81,11 @@ const Banner = ({ setisBookmarkChanged }) => {
                 {Data?.locality_name}, {Data?.city}
               </p>{" "}
             </div>
-            {/* {Data?.parent?.rera && ( */}
-            <div className="mx-4">
-              <img src="/assets/images/propertysale/rera.svg" alt="" />
-            </div>
-            {/* )} */}
+            {Data?.validated === 1 && (
+              <div className="mx-4">
+                <img src="/assets/images/propertysale/rera.svg" alt="" />
+              </div>
+            )}
           </div>
           <nav
             className=" flex items-center overflow-x-scroll scrollbar-hide justify-start h-20 w-full bg-white shadow-lg absolute lg:-bottom-10
