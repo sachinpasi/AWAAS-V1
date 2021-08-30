@@ -1148,13 +1148,13 @@ const Step3 = () => {
                           <option>Semi-Furnished</option>
                           <option>Un-Furnished</option>
                         </select>
-                        <select
+                        {/* <select
                           {...register("house_type")}
                           className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                         >
                           <option>Independent House</option>
-                          <option>Villa </option>
-                        </select>
+                          <option value="v">Villa </option>
+                        </select> */}
                       </div>
                     </div>
                     <div>

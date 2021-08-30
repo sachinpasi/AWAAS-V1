@@ -20,6 +20,7 @@ const Step4 = () => {
   const [TotalAmount, setTotalAmount] = useState();
   const [AdvanceAmount, setAdvanceAmount] = useState();
   const [PricePerSpace, setPricePerSpace] = useState();
+
   const [ConvertedTotalAmount, setConvertedTotalAmountTotalAmount] = useState();
   const [
     ConvertedTotalAmountAdvanceAmount,
@@ -305,6 +306,7 @@ const Step4 = () => {
                 )}
 
               {(PostProperty.Property_Type === "floor" ||
+                PostProperty.Property_Type === "farmhouse" ||
                 PostProperty.Property_Type === "villa" ||
                 PostProperty.Property_Type === "flat" ||
                 PostProperty.Property_Type === "office" ||
@@ -386,6 +388,7 @@ const Step4 = () => {
                 )}
 
               {(PostProperty.Property_Type === "floor" ||
+                PostProperty.Property_Type === "farmhouse" ||
                 PostProperty.Property_Type === "villa" ||
                 PostProperty.Property_Type === "flat" ||
                 PostProperty.Property_Type === "office" ||

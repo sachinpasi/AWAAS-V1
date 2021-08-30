@@ -139,6 +139,21 @@ const Step2 = () => {
                       id="apart"
                     />
 
+                    {/* <div class="outline relative border-2 focus-within:border-blue-500">
+                      <input
+                        type="text"
+                        name="username"
+                        placeholder=" "
+                        class="block p-4 w-full text-lg appearance-none focus:outline-none bg-transparent"
+                      />
+                      <label
+                        for="username"
+                        class="absolute top-0 text-lg bg-white p-4 -z-1 duration-300 origin-0"
+                      >
+                        Username
+                      </label>
+                    </div> */}
+
                     <div
                       className={`border-1 h-11  text-lg w-72 my-1 placeholder-gray-600 ${
                         errors?.locality_id?.type === "required" && "border-red"
