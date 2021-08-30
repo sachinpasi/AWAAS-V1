@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { API } from "../../../../API";
 import {
@@ -40,6 +40,7 @@ const Step3 = () => {
     register,
     formState: { errors },
     handleSubmit,
+    control,
   } = useForm();
 
   const HandleStep3Submit = async (data) => {
@@ -85,13 +86,17 @@ const Step3 = () => {
                     </h4>
                     <div className="flex w-full">
                       <input
-                        className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 my-1 placeholder-gray-600"
+                        className={`border-1 h-11  px-2 text-lg lg:w-72 w-3/5 my-1 placeholder-gray-600 ${
+                          errors?.plot_area?.type === "required" &&
+                          "border-red  "
+                        }`}
                         type="text"
-                        {...register("plot_area")}
+                        {...register("plot_area", { required: true })}
                         placeholder="Plot Area"
                         required=""
                         aria-required="true"
                       ></input>
+
                       <select
                         {...register("plot_area_type")}
                         className="border-1 h-11  px-2 text-lg lg:w-52 w-2/5 my-1 mx-2 placeholder-gray-600"
@@ -108,79 +113,113 @@ const Step3 = () => {
                     </div>
 
                     <div className="flex w-full">
-                      <select
-                        {...register("road_connectivity")}
-                        className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 my-1 placeholder-gray-600"
-                        id="road-connectivity"
-                        title="Road Connectivity"
+                      <div
+                        className={`border-1 h-11   text-lg lg:w-72 w-2/5 my-1 mr-2 placeholder-gray-600 ${
+                          errors?.road_connectivity?.type === "required" &&
+                          "border-red  "
+                        }`}
                       >
-                        <option selected hidden>
-                          Road Connectivity
-                        </option>
-                        <option value="9">09</option>
-                        <option value="12">12</option>
-                        <option value="18">18</option>
-                        <option value="24">24</option>
-                        <option value="60">60</option>
-                      </select>
+                        <Controller
+                          control={control}
+                          {...register("road_connectivity", {
+                            required: true,
+                          })}
+                          render={({ field: { onChange } }) => (
+                            <select
+                              className=" h-10 px-2  text-lg lg:w-full w-2/5  placeholder-gray-600"
+                              onChange={(e) => onChange(e.target.value)}
+                            >
+                              <option selected hidden>
+                                Road Connectivity
+                              </option>
+                              <option value="9">09</option>
+                              <option value="12">12</option>
+                              <option value="18">18</option>
+                              <option value="24">24</option>
+                              <option value="60">60</option>
+                            </select>
+                          )}
+                        />
+                      </div>
+
                       <select
-                        {...register("length_width_type")}
-                        className="border-1 h-11  px-2 text-lg lg:w-52 w-2/5 my-1 mx-2 placeholder-gray-600"
+                        // {...register("length_width_type")}
+                        className="border-1 h-11  px-2 text-lg lg:w-52 w-2/5 my-1  placeholder-gray-600"
                         id="plot-length-type"
                       >
-                        <option>mtrs</option>
+                        <option value="mts">mtrs</option>
                       </select>
                     </div>
 
                     <div className="flex">
                       <input
-                        {...register("length")}
-                        className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 my-1 placeholder-gray-600"
+                        {...register("length", {
+                          required: true,
+                        })}
+                        className={`border-1 h-11  px-2 text-lg lg:w-72 w-3/5 my-1 placeholder-gray-600 ${
+                          errors?.length?.type === "required" && "border-red  "
+                        }`}
                         type="text"
                         id="plot-length"
                         placeholder="Length"
                       ></input>
                       <select
                         {...register("length_width_type")}
+                        id="length_width_type"
                         className="border-1 h-11  px-2 text-lg lg:w-52 w-2/5 my-1 mx-2 placeholder-gray-600"
                       >
-                        <option>fts</option>
-                        <option>yards</option>
-                        <option>mts</option>
-                        <option>Marla</option>
-                        <option>bighas</option>
-                        <option>acres</option>
-                        <option>hectares</option>
+                        <option value="fts">fts</option>
+                        <option value="yards">yards</option>
+                        <option value="mts">mtrs</option>
                       </select>
                     </div>
                     <div className="flex">
                       <input
-                        {...register("width")}
-                        className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 my-1 placeholder-gray-600"
+                        {...register("width", {
+                          required: true,
+                        })}
+                        className={`border-1 h-11  px-2 text-lg lg:w-72 w-3/5 my-1 placeholder-gray-600 ${
+                          errors?.width?.type === "required" && "border-red  "
+                        }`}
                         type="text"
                         id="plot-breadth"
                         placeholder="Width"
                       ></input>
                       <select
                         // {...register("length_width_type")}
+                        id="length_width_type"
                         className="border-1 h-11  px-2 text-lg lg:w-52 w-2/5 my-1 mx-2 placeholder-gray-600"
                       >
-                        <option>fts</option>
-                        <option>yards</option>
-                        <option>mts</option>
-                        <option>Marla</option>
-                        <option>bighas</option>
-                        <option>acres</option>
-                        <option>hectares</option>
+                        <option value="fts">fts</option>
+                        <option value="yards">yards</option>
+                        <option value="mts">mtrs</option>
                       </select>
                     </div>
                     <input
-                      className="border-1 h-11  px-2 text-lg w-72  my-1 placeholder-gray-600"
+                      className={`border-1 h-11  px-2 text-lg lg:w-72 w-3/5 my-1 placeholder-gray-600 ${
+                        errors?.total_floor?.type === "required" &&
+                        "border-red  "
+                      }`}
                       type="text"
-                      {...register("total_floor")}
+                      {...register("total_floor", {
+                        required: true,
+                      })}
                       id="totalFloors"
                       placeholder="Basement + Floors Allowed"
                     ></input>
+                    <div className="">
+                      {(errors?.plot_area?.type === "required" ||
+                        errors?.road_connectivity?.type === "required" ||
+                        errors?.length?.type === "required" ||
+                        errors?.width?.type === "required" ||
+                        errors?.total_floor?.type === "required" ||
+                        errors?.plot_area_type?.type === "required" ||
+                        errors?.plot_no?.type === "required") && (
+                        <p className="text-red mx-1 text-sm ">
+                          * Please fill all the fields.
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </>
               )}
@@ -246,9 +285,6 @@ const Step3 = () => {
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                          <option>bigha</option>
                         </select>
                       </div>
 
@@ -266,9 +302,6 @@ const Step3 = () => {
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                          <option>bigha</option>
                         </select>
                       </div>
 
@@ -286,9 +319,6 @@ const Step3 = () => {
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                          <option>bigha</option>
                         </select>
                       </div>
 
@@ -466,6 +496,12 @@ const Step3 = () => {
                       <h4 className="text-2xl font-medium  uppercase mb-4">
                         Property Details
                       </h4>
+                      <input
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1 placeholder-gray-600"
+                        type="text"
+                        {...register("bhk")}
+                        placeholder="3 BHK / 2 BHK / 1 BHK "
+                      ></input>
                       <div>
                         <select
                           className="border-1 h-11  px-2 text-lg lg:w-72 w-full mr-2 my-1 placeholder-gray-600"
@@ -519,9 +555,6 @@ const Step3 = () => {
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                          <option>bigha</option>
                         </select>
                       </div>
                       <div className="flex w-full ">
@@ -538,9 +571,6 @@ const Step3 = () => {
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                          <option>bigha</option>
                         </select>
                       </div>
                       <div className="flex w-full ">
@@ -558,9 +588,6 @@ const Step3 = () => {
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                          <option>bigha</option>
                         </select>
                       </div>
 
@@ -744,6 +771,12 @@ const Step3 = () => {
                       <div>
                         <input
                           className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
+                          type="text"
+                          {...register("bhk")}
+                          placeholder="3 BHK / 2 BHK / 1 BHK "
+                        ></input>
+                        <input
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                           type="number"
                           {...register("bedrooms")}
                           placeholder="Bedrooms"
@@ -779,9 +812,6 @@ const Step3 = () => {
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                          <option>bigha</option>
                         </select>
                       </div>
                       <div className="flex w-full ">
@@ -798,9 +828,6 @@ const Step3 = () => {
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                          <option>bigha</option>
                         </select>
                       </div>
                       <div className="flex w-full ">
@@ -817,9 +844,6 @@ const Step3 = () => {
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                          <option>bigha</option>
                         </select>
                       </div>
                       <div className="w-full">
@@ -1059,9 +1083,10 @@ const Step3 = () => {
                           <option>Sq-fts</option>
                           <option>Sq-mts</option>
                           <option>Sq-yards</option>
+                          <option>Marla</option>
+                          <option>bighas</option>
                           <option>acres</option>
                           <option>hectares</option>
-                          <option>bigha</option>
                         </select>
                       </div>
                       <div>
@@ -1078,9 +1103,6 @@ const Step3 = () => {
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                          <option>bigha</option>
                         </select>
                       </div>
                       <div>
@@ -1097,9 +1119,6 @@ const Step3 = () => {
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                          <option>bigha</option>
                         </select>
                       </div>
                       <div>
@@ -1116,9 +1135,6 @@ const Step3 = () => {
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                          <option>bigha</option>
                         </select>
                       </div>
                       <div>
@@ -1310,9 +1326,6 @@ const Step3 = () => {
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                          <option>bigha</option>
                         </select>
                       </div>
                       <div className="w-full flex">
@@ -1329,9 +1342,6 @@ const Step3 = () => {
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                          <option>bigha</option>
                         </select>
                       </div>
                       <div className="w-full">
@@ -1542,9 +1552,6 @@ const Step3 = () => {
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                          <option>bigha</option>
                         </select>
                       </div>
                       <div className="flex w-full">
@@ -1561,9 +1568,6 @@ const Step3 = () => {
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                          <option>bigha</option>
                         </select>
                       </div>
                       <div className="w-full">
@@ -1783,9 +1787,10 @@ const Step3 = () => {
                             <option>Sq-ft</option>
                             <option>Sq-mt</option>
                             <option>Sq-yards</option>
+                            <option>Marla</option>
+                            <option>bighas</option>
                             <option>acres</option>
                             <option>hectares</option>
-                            <option>bigha</option>
                           </select>
                         </div>
                         <div className="flex ">
@@ -1808,9 +1813,6 @@ const Step3 = () => {
                             <option>feets</option>
                             <option>meters</option>
                             <option>yards</option>
-                            <option>acres</option>
-                            <option>hectares</option>
-                            <option>bigha</option>
                           </select>
                         </div>
                         <div className="w-full flex">
@@ -1827,9 +1829,6 @@ const Step3 = () => {
                             <option>Sq-ft</option>
                             <option>Sq-mt</option>
                             <option>Sq-yards</option>
-                            <option>acres</option>
-                            <option>hectares</option>
-                            <option>bigha</option>
                           </select>
                         </div>
                       </div>
@@ -1847,9 +1846,6 @@ const Step3 = () => {
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                          <option>bigha</option>
                         </select>
                       </div>
 
@@ -2043,9 +2039,6 @@ const Step3 = () => {
                             <option>Sq-ft</option>
                             <option>Sq-mt</option>
                             <option>Sq-yards</option>
-                            <option>acres</option>
-                            <option>hectares</option>
-                            <option>bigha</option>
                           </select>
                         </div>
                         <div className="flex">
@@ -2068,9 +2061,6 @@ const Step3 = () => {
                             <option>feets</option>
                             <option>meters</option>
                             <option>yards</option>
-                            <option>acres</option>
-                            <option>hectares</option>
-                            <option>bigha</option>
                           </select>
                         </div>
 
@@ -2088,9 +2078,6 @@ const Step3 = () => {
                             <option>Sq-ft</option>
                             <option>Sq-mt</option>
                             <option>Sq-yards</option>
-                            <option>acres</option>
-                            <option>hectares</option>
-                            <option>bigha</option>
                           </select>
                         </div>
                         <div className="w-full flex">
@@ -2113,9 +2100,6 @@ const Step3 = () => {
                             <option>feets</option>
                             <option>meters</option>
                             <option>yards</option>
-                            <option>acres</option>
-                            <option>hectares</option>
-                            <option>bigha</option>
                           </select>
                         </div>
 
@@ -2133,9 +2117,6 @@ const Step3 = () => {
                             <option>Sq-ft</option>
                             <option>Sq-mt</option>
                             <option>Sq-yards</option>
-                            <option>acres</option>
-                            <option>hectares</option>
-                            <option>bigha</option>
                           </select>
                         </div>
                       </div>
@@ -2153,9 +2134,6 @@ const Step3 = () => {
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                          <option>bigha</option>
                         </select>
                       </div>
 
