@@ -120,7 +120,15 @@ const ProfilePropertyListing = () => {
                     <div className="flex flex-col lg:flex-row justify-between lg:items-center">
                       <div className=" flex-col flex text-gray-900">
                         <p className="text-base lg:text-lg font-medium uppercase flex items-center">
-                          {item.bedroom && item.bedroom} {item.bedroom && "BHK"}{" "}
+                          {" "}
+                          {(item.property_type === "flat" ||
+                            item.property_type === "floor" ||
+                            item.property_type === "villa") && (
+                            <>
+                              {item.bedroom && item.bedroom}{" "}
+                              {item.bedroom && "BHK"}
+                            </>
+                          )}
                           {item.property_type} for {item.property_for}
                           {item?.validated ? (
                             <svg

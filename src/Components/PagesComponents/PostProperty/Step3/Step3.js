@@ -234,7 +234,7 @@ const Step3 = () => {
                       </h4>
                       <div className="flex w-full flex-col lg:flex-row">
                         <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1 placeholder-gray-600 uppercase "
                           type="text"
                           {...register("bhk")}
                           placeholder="3 BHK / 2 BHK / 1 BHK "
@@ -498,7 +498,7 @@ const Step3 = () => {
                         Property Details
                       </h4>
                       <input
-                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1 placeholder-gray-600 uppercase"
                         type="text"
                         {...register("bhk")}
                         placeholder="3 BHK / 2 BHK / 1 BHK "
@@ -771,7 +771,7 @@ const Step3 = () => {
                       </div>
                       <div>
                         <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600 uppercase"
                           type="text"
                           {...register("bhk")}
                           placeholder="3 BHK / 2 BHK / 1 BHK "

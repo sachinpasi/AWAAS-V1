@@ -67,6 +67,7 @@
   "devDependencies": {
     "autoprefixer": "^9.8.6",
     "postcss": "^7.0.36",
+    "tailwind-float-label": "^2.0.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.4"
   }
 }
