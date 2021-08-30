@@ -1025,7 +1025,7 @@ const Step3 = () => {
                       </h4>
 
                       <div>
-                        <input
+                        {/* <input
                           style={{
                             background: "#EEEEEE",
                             color: "#999999",
@@ -1038,9 +1038,9 @@ const Step3 = () => {
                           id="city"
                           value="Farmhouse"
                           disabled
-                        />
+                        /> */}
                       </div>
-                      <div className="flex">
+                      <div className="flex flex-wrap">
                         <input
                           className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                           type="number"
@@ -1147,6 +1147,13 @@ const Step3 = () => {
                           <option>Furnished</option>
                           <option>Semi-Furnished</option>
                           <option>Un-Furnished</option>
+                        </select>
+                        <select
+                          {...register("house_type")}
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
+                        >
+                          <option>Independent House</option>
+                          <option>Villa </option>
                         </select>
                       </div>
                     </div>

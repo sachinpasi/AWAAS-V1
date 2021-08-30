@@ -91,6 +91,9 @@ const Step2 = () => {
       return fuse.search(value);
     };
   }
+
+  console.log(errors);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -328,16 +331,19 @@ const Step2 = () => {
                       required: true,
                     })}
                     className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                    name=""
                     type="text"
                     placeholder="Colony / Society"
                     id="apart"
                   />
 
-                  <div className="border-1 h-11  text-lg w-72 my-1 placeholder-gray-600">
+                  <div
+                    className={`border-1 h-11  text-lg w-72 my-1 placeholder-gray-600 ${
+                      errors?.locality_id?.type === "required" && "border-red"
+                    }`}
+                  >
                     <Controller
                       control={control}
-                      name="locality_id"
+                      {...register("locality_id", { required: true })}
                       render={({ field: { onChange } }) => (
                         <SelectSearch
                           options={options}
@@ -407,6 +413,7 @@ const Step2 = () => {
                     placeholder="Unit No."
                     id="houseNo"
                   ></input>
+
                   <div className="">
                     {(errors?.locality_id?.type === "required" ||
                       errors?.project_name?.type === "required" ||
