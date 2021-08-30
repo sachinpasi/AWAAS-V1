@@ -25,19 +25,19 @@ const Banner = ({ setisLoading }) => {
 
   const FetchData = async () => {
     const res = await axios.get(`${API}/projects/ads-list`);
-    console.log(res.data.data);
+
     if (res.status === 200) {
       setData(res.data.data);
       setisLoading(false);
     }
   };
 
-  console.log(BannerURL);
-
   useEffect(() => {
     FetchData();
 
     window.scrollTo(0, 0);
+
+    //eslint-disable-next-line
   }, []);
 
   return (
@@ -84,7 +84,7 @@ const Banner = ({ setisLoading }) => {
                       }}
                       className="object-cover h-full w-full"
                       src={BannerURL}
-                      alt=""
+                      alt="banner_img"
                     />
                   ) : (
                     <img
@@ -93,7 +93,7 @@ const Banner = ({ setisLoading }) => {
                       }}
                       className="object-cover h-full w-full"
                       src={item.banner_image_path}
-                      alt=""
+                      alt="banner_img"
                     />
                   )}
 
@@ -109,24 +109,24 @@ const Banner = ({ setisLoading }) => {
                       }}
                       className="absolute left-32 text-white z-10 flex flex-col justify-center items-start"
                     >
-                      <p
+                      <h1
                         style={{
                           textShadow: "2px 3px 5px #000",
                         }}
                         className="text-5xl  font-medium   "
                       >
                         {item.title}
-                      </p>
+                      </h1>
                       <div className="flex justify-start items-center py-4">
                         <MdLocationOn className="text-blue text-3xl font-medium" />
-                        <p
+                        <h3
                           style={{
                             textShadow: "2px 3px 5px #000",
                           }}
                           className="text-white text-lg font-medium"
                         >
                           {item?.locality}, {item?.city}
-                        </p>{" "}
+                        </h3>{" "}
                       </div>
                       <div className=" flex justify-start items-center  my-2 ">
                         {item?.library.slice(0, 5).map((thumb, index) => (
@@ -136,13 +136,11 @@ const Banner = ({ setisLoading }) => {
                             className="mx-1 w-36 border-4 rounded-sm border-white shadow-2xl cursor-pointer
                       "
                           >
-                            {/* {console.log(thumb)} */}
-                            {/* {thumb} */}
                             <img
                               className="object-cover h-20 w-auto  "
                               key={index}
                               src={thumb}
-                              alt=""
+                              alt="thumb"
                             />
                           </div>
                         ))}
@@ -150,7 +148,7 @@ const Banner = ({ setisLoading }) => {
                     </div>
                     <div className="w-full h-full flex justify-end items-end  ">
                       <Link
-                        className="border-4 border-white  text-white bg-blue text-xl font-medium rounded  px-8 py-3  mb-32 mr-20"
+                        className="border-2 border-white  text-white bg-blue text-xl font-medium rounded  px-8 py-3  mb-32 mr-20"
                         to={`/projects/${item?.id}`}
                       >
                         View Details
@@ -189,21 +187,21 @@ const Banner = ({ setisLoading }) => {
                 className="w-full h-full  flex flex-col items-start "
               >
                 <div className="w-90vw mx-auto h-auto  flex-col flex justify-center items-start">
-                  <p className="text-darkgray text-3xl font-medium">
+                  <h1 className="text-darkgray text-3xl font-medium">
                     {item.title}
-                  </p>
+                  </h1>
                   <div className="flex justify-start items-center py-1">
                     <MdLocationOn className="text-blue text-2xl font-medium" />
-                    <p className="text-darkgray text-lg font-medium">
+                    <h4 className="text-darkgray text-lg font-medium">
                       {item?.locality}, {item?.city}
-                    </p>
+                    </h4>
                   </div>
                 </div>
                 <div className="w-full h-280px my-2">
                   {MobileBannerURL ? (
-                    <img src={MobileBannerURL} alt="" />
+                    <img src={MobileBannerURL} alt="banner_img" />
                   ) : (
-                    <img src={item.banner_image_path} alt="" />
+                    <img src={item.banner_image_path} alt="banner_img" />
                   )}
                 </div>
                 <div className=" w-90vw mx-auto flex justify-start flex-wrap items-center ">
@@ -211,14 +209,13 @@ const Banner = ({ setisLoading }) => {
                     <div
                       key={index}
                       onClick={() => setMobileBannerURL(thumb)}
-                      className="m-1 h-16 w-1/4  rounded-sm   cursor-pointer
-                      "
+                      className="m-1 h-16 w-1/4 rounded-sm cursor-pointer"
                     >
                       <img
                         className="object-cover w-auto border-2 "
                         key={index}
                         src={thumb}
-                        alt=""
+                        alt="thumb"
                       />
                     </div>
                   ))}

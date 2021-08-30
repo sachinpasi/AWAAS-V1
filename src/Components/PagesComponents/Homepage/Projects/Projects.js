@@ -19,8 +19,6 @@ const Projects = ({ Title }) => {
     }
   };
 
-  console.log(ProjectList);
-
   useEffect(() => {
     FetchProjectList();
   }, []);
@@ -45,7 +43,7 @@ const Projects = ({ Title }) => {
                     <img
                       className="w-full h-full object-cover"
                       src={item?.banner_image_path}
-                      alt=""
+                      alt="banner_img"
                     />
                     <div
                       style={{
@@ -56,7 +54,7 @@ const Projects = ({ Title }) => {
                     <div className="w-40 absolute top-4 left-4 ">
                       <img
                         src="/assets/images/homepage/projects/approved.svg"
-                        alt=""
+                        alt="approved"
                       />
                     </div>
                   </Link>
@@ -68,12 +66,12 @@ const Projects = ({ Title }) => {
                         }}
                         className="flex flex-col justify-between items-start  pb-2"
                       >
-                        <p
+                        <h3
                           style={{ lineHeight: "22px" }}
                           className="text-xl font-semibold "
                         >
                           {item.title}
-                        </p>
+                        </h3>
                         <p
                           style={{ lineHeight: "22px" }}
                           className="text-base text-lightgray"
@@ -83,9 +81,9 @@ const Projects = ({ Title }) => {
                       </div>
 
                       <div className="flex flex-col justify-between items-start">
-                        <p className="text-base font-medium capitalize text-darkgray py-2">
+                        <h4 className="text-base font-medium capitalize text-darkgray py-2">
                           {item.city} : {item.locality}
-                        </p>
+                        </h4>
 
                         <Link
                           className="bg-blue py-1 px-4 text-white font-medium tracking-tight"
@@ -94,9 +92,9 @@ const Projects = ({ Title }) => {
                           View Details
                         </Link>
 
-                        <p className="text-sm text-darkgray pt-2 tracking-tight">
+                        <span className="text-sm text-darkgray pt-2 tracking-tight">
                           Marketed By {item.developerName}
-                        </p>
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -123,7 +121,7 @@ const Projects = ({ Title }) => {
                     <img
                       className="w-full h-full object-cover"
                       src={item?.banner_image_path}
-                      alt=""
+                      alt="banner_img"
                     />
                     <div
                       style={{
@@ -134,7 +132,7 @@ const Projects = ({ Title }) => {
                     <div className="w-40 absolute top-4 left-4 ">
                       <img
                         src="/assets/images/homepage/projects/approved.svg"
-                        alt=""
+                        alt="approved"
                       />
                     </div>
                   </Link>
@@ -146,12 +144,12 @@ const Projects = ({ Title }) => {
                         }}
                         className="flex flex-col justify-between items-start  pb-2"
                       >
-                        <p
+                        <h3
                           style={{ lineHeight: "22px" }}
                           className="text-xl font-semibold "
                         >
                           {item.title}
-                        </p>
+                        </h3>
                         <p
                           style={{ lineHeight: "22px" }}
                           className="text-base text-lightgray"
@@ -161,9 +159,9 @@ const Projects = ({ Title }) => {
                       </div>
 
                       <div className="flex flex-col justify-between items-start">
-                        <p className="text-base font-medium capitalize text-darkgray py-2">
+                        <h4 className="text-base font-medium capitalize text-darkgray py-2">
                           {item.city} : {item.locality}
-                        </p>
+                        </h4>
 
                         <Link
                           className="bg-blue py-1 px-4 text-white font-medium tracking-tight"
@@ -172,9 +170,9 @@ const Projects = ({ Title }) => {
                           View Details
                         </Link>
 
-                        <p className="text-sm text-darkgray pt-2 tracking-tight">
+                        <span className="text-sm text-darkgray pt-2 tracking-tight">
                           Marketed By {item.developerName}
-                        </p>
+                        </span>
                       </div>
                     </div>
                   </div>

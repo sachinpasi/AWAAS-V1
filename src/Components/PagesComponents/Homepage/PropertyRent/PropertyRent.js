@@ -20,10 +20,10 @@ const PropertyRent = () => {
     }
   };
 
-  const GetImgUrl = (str) => {
-    var list = str.split(",");
-    return list;
-  };
+  // const GetImgUrl = (str) => {
+  //   var list = str.split(",");
+  //   return list;
+  // };
 
   useEffect(() => {
     FetchPropertyList();
@@ -40,7 +40,7 @@ const PropertyRent = () => {
                   key={item.p_id}
                   className="w-full flex justify-between items-center h-72 my-4"
                 >
-                  {console.log(item)}
+                  {/* {console.log(item)} */}
                   <div
                     style={{
                       width: "60%",
@@ -50,7 +50,7 @@ const PropertyRent = () => {
                     <img
                       className="w-full h-full object-cover"
                       src={item?.photos && JSON.parse(item?.photos)[0]}
-                      alt=""
+                      alt="banner_img"
                     />
                   </div>
                   <div
@@ -59,7 +59,7 @@ const PropertyRent = () => {
                     }}
                     className="w-2/4 h-3/4 bg-white flex-col flex justify-center items-start p-4"
                   >
-                    <p
+                    <h3
                       style={{
                         borderBottom: "1px solid #7070702E",
                       }}
@@ -67,14 +67,14 @@ const PropertyRent = () => {
                     >
                       {item.bedroom && item.bedroom} {item.bedroom && "BHK"}{" "}
                       {item.property_type} For Rent
-                    </p>
-                    <p className="text-sm font-medium py-2 capitalize">
+                    </h3>
+                    <h4 className="text-sm font-medium py-2 capitalize">
                       At {item.locality_name}, {item.city}
-                    </p>
-                    <p className="text-2xl font-semibold text-blue py-2">
+                    </h4>
+                    <h5 className="text-2xl font-semibold text-blue py-2">
                       {" "}
                       &#8377; {item.expected_rent}
-                    </p>
+                    </h5>
                     <Link
                       className="flex justify-center items-center w-36 font-medium tracking-tight  px-5 py-1.5 my-2 text-white bg-blue"
                       to={`/property/${item.property_for}/${item.p_id}`}
@@ -109,16 +109,15 @@ const PropertyRent = () => {
                   key={item.p_id}
                   className="w-full flex flex-col justify-between items-center my-4"
                 >
-                  {console.log(item)}
                   <div className="w-full relative h-60 ">
                     <img
                       className="w-full h-full object-cover"
                       src={item?.photos && JSON.parse(item?.photos)[0]}
-                      alt=""
+                      alt="banner_img"
                     />
                   </div>
                   <div className="w-full h-2/4 bg-white flex-col flex justify-center items-start p-4">
-                    <p
+                    <h3
                       style={{
                         borderBottom: "1px solid #7070702E",
                       }}
@@ -126,14 +125,14 @@ const PropertyRent = () => {
                     >
                       {item.bedroom && item.bedroom} {item.bedroom && "BHK"}{" "}
                       {item.property_type} For Rent
-                    </p>
-                    <p className="text-sm font-medium py-2 capitalize">
+                    </h3>
+                    <h4 className="text-sm font-medium py-2 capitalize">
                       At {item.locality_name}, {item.city}
-                    </p>
-                    <p className="text-2xl font-semibold text-blue py-2">
+                    </h4>
+                    <h5 className="text-2xl font-semibold text-blue py-2">
                       {" "}
                       &#8377; {item.expected_rent}
-                    </p>
+                    </h5>
                     <Link
                       className="flex justify-center items-center w-36 font-medium tracking-tight  px-5 py-1.5 my-2 text-white bg-blue"
                       to={`/property/${item.property_for}/${item.p_id}`}

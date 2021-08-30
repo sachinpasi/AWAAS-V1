@@ -16,9 +16,6 @@ const Search = () => {
 
   const [Locality, setLocality] = useState();
 
-  console.log(PropertyType);
-
-  console.log(property_for);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

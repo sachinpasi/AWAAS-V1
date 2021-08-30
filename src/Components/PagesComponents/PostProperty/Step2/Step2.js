@@ -127,16 +127,23 @@ const Step2 = () => {
 
                     <input
                       {...register("project_name", { required: true })}
-                      className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                      className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
+                        errors?.project_name?.type === "required" &&
+                        "border-red  "
+                      }`}
                       type="text"
                       placeholder="Colony / Society"
                       id="apart"
                     />
 
-                    <div className="border-1 h-11  text-lg w-72 my-1 placeholder-gray-600">
+                    <div
+                      className={`border-1 h-11  text-lg w-72 my-1 placeholder-gray-600 ${
+                        errors?.locality_id?.type === "required" && "border-red"
+                      }`}
+                    >
                       <Controller
                         control={control}
-                        name="locality_id"
+                        {...register("locality_id", { required: true })}
                         render={({ field: { onChange } }) => (
                           <SelectSearch
                             options={options}
@@ -151,11 +158,22 @@ const Step2 = () => {
 
                     <input
                       {...register("plot_no", { required: true })}
-                      className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                      className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
+                        errors?.plot_no?.type === "required" && "border-red  "
+                      }`}
                       type="text"
                       placeholder="Plot No."
                       id="plotNo"
                     />
+                  </div>
+                  <div className="">
+                    {(errors?.locality_id?.type === "required" ||
+                      errors?.project_name?.type === "required" ||
+                      errors?.plot_no?.type === "required") && (
+                      <p className="text-red mx-1 text-sm ">
+                        * Please fill all the fields.
+                      </p>
+                    )}
                   </div>
                 </>
               )}
@@ -181,16 +199,23 @@ const Step2 = () => {
 
                     <input
                       {...register("project_name", { required: true })}
-                      className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                      className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
+                        errors?.project_name?.type === "required" &&
+                        "border-red  "
+                      }`}
                       type="text"
                       placeholder="Colony / Society"
                       id="apart"
                     />
 
-                    <div className="border-1 h-11  text-lg w-72 my-1 placeholder-gray-600">
+                    <div
+                      className={`border-1 h-11  text-lg w-72 my-1 placeholder-gray-600 ${
+                        errors?.locality_id?.type === "required" && "border-red"
+                      }`}
+                    >
                       <Controller
                         control={control}
-                        name="locality_id"
+                        {...register("locality_id", { required: true })}
                         render={({ field: { onChange } }) => (
                           <SelectSearch
                             options={options}
@@ -209,6 +234,15 @@ const Step2 = () => {
                       placeholder="Unit No"
                       id="apart"
                     />
+                  </div>
+                  <div className="">
+                    {(errors?.locality_id?.type === "required" ||
+                      errors?.project_name?.type === "required" ||
+                      errors?.plot_no?.type === "required") && (
+                      <p className="text-red mx-1 text-sm ">
+                        * Please fill all the fields.
+                      </p>
+                    )}
                   </div>
                 </>
               )}
@@ -231,17 +265,24 @@ const Step2 = () => {
                     />
 
                     <input
-                      {...register("project_name")}
-                      className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                      {...register("project_name", { required: true })}
+                      className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
+                        errors?.project_name?.type === "required" &&
+                        "border-red  "
+                      }`}
                       type="text"
                       placeholder="Colony / Society"
                       id="apart"
                     />
 
-                    <div className="border-1 h-11  text-lg w-72 my-1 placeholder-gray-600">
+                    <div
+                      className={`border-1 h-11  text-lg w-72 my-1 placeholder-gray-600 ${
+                        errors?.locality_id?.type === "required" && "border-red"
+                      }`}
+                    >
                       <Controller
                         control={control}
-                        name="locality_id"
+                        {...register("locality_id", { required: true })}
                         render={({ field: { onChange } }) => (
                           <SelectSearch
                             options={options}
@@ -252,6 +293,15 @@ const Step2 = () => {
                           />
                         )}
                       />
+                    </div>
+                    <div className="">
+                      {(errors?.locality_id?.type === "required" ||
+                        errors?.project_name?.type === "required" ||
+                        errors?.plot_no?.type === "required") && (
+                        <p className="text-red mx-1 text-sm ">
+                          * Please fill all the fields.
+                        </p>
+                      )}
                     </div>
                   </div>
                 </>
@@ -318,17 +368,24 @@ const Step2 = () => {
                   />
 
                   <input
-                    {...register("project_name")}
-                    className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                    {...register("project_name", { required: true })}
+                    className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
+                      errors?.project_name?.type === "required" &&
+                      "border-red  "
+                    }`}
                     type="text"
                     placeholder="Colony / Society"
                     id="apart"
                   />
 
-                  <div className="border-1 h-11  text-lg w-72 my-1 placeholder-gray-600">
+                  <div
+                    className={`border-1 h-11  text-lg w-72 my-1 placeholder-gray-600 ${
+                      errors?.locality_id?.type === "required" && "border-red"
+                    }`}
+                  >
                     <Controller
                       control={control}
-                      name="locality_id"
+                      {...register("locality_id", { required: true })}
                       render={({ field: { onChange } }) => (
                         <SelectSearch
                           options={options}
@@ -342,12 +399,23 @@ const Step2 = () => {
                   </div>
 
                   <input
-                    {...register("unit_no")}
-                    className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                    {...register("unit_no", { required: true })}
+                    className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
+                      errors?.unit_no?.type === "required" && "border-red  "
+                    }`}
                     type="text"
                     placeholder="Unit No."
                     id="houseNo"
                   ></input>
+                  <div className="">
+                    {(errors?.locality_id?.type === "required" ||
+                      errors?.project_name?.type === "required" ||
+                      errors?.unit_no?.type === "required") && (
+                      <p className="text-red mx-1 text-sm ">
+                        * Please fill all the fields.
+                      </p>
+                    )}
+                  </div>
                 </div>
               )}
 
@@ -369,25 +437,34 @@ const Step2 = () => {
                   />
 
                   <input
-                    className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                    {...register("project_name")}
+                    {...register("project_name", { required: true })}
+                    className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
+                      errors?.project_name?.type === "required" &&
+                      "border-red  "
+                    }`}
                     type="text"
                     placeholder="Colony / Society"
                     id="apart"
                   />
 
                   <input
-                    className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                    {...register("project")}
+                    className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
+                      errors?.project?.type === "required" && "border-red  "
+                    }`}
+                    {...register("project", { required: true })}
                     type="text"
                     placeholder="Project / Township / Mall"
                     id="apart"
                   />
 
-                  <div className="border-1 h-11  text-lg w-72 my-1 placeholder-gray-600">
+                  <div
+                    className={`border-1 h-11  text-lg w-72 my-1 placeholder-gray-600 ${
+                      errors?.locality_id?.type === "required" && "border-red"
+                    }`}
+                  >
                     <Controller
                       control={control}
-                      name="locality_id"
+                      {...register("locality_id", { required: true })}
                       render={({ field: { onChange } }) => (
                         <SelectSearch
                           options={options}
@@ -399,13 +476,26 @@ const Step2 = () => {
                       )}
                     />
                   </div>
+
                   <input
-                    className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                    {...register("unit_no")}
+                    {...register("unit_no", { required: true })}
+                    className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
+                      errors?.unit_no?.type === "required" && "border-red  "
+                    }`}
                     type="text"
                     placeholder="Unit No."
                     id="houseNo"
                   ></input>
+
+                  <div className="">
+                    {(errors?.locality_id?.type === "required" ||
+                      errors?.project_name?.type === "required" ||
+                      errors?.unit_no?.type === "required") && (
+                      <p className="text-red mx-1 text-sm ">
+                        * Please fill all the fields.
+                      </p>
+                    )}
+                  </div>
                 </div>
               )}
 
@@ -426,27 +516,35 @@ const Step2 = () => {
                   />
 
                   <input
-                    className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                    {...register("project_name", {
-                      required: true,
-                    })}
+                    {...register("project_name", { required: true })}
+                    className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
+                      errors?.project_name?.type === "required" &&
+                      "border-red  "
+                    }`}
                     type="text"
                     placeholder="Colony / Society"
                     id="apart"
                   />
 
                   <input
-                    className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                    {...register("project")}
+                    {...register("project", { required: true })}
+                    className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
+                      errors?.project_name?.type === "required" &&
+                      "border-red  "
+                    }`}
                     type="text"
                     placeholder="Project / Township / Mall"
                     id="apart"
                   />
 
-                  <div className="border-1 h-11  text-lg w-72 my-1 placeholder-gray-600">
+                  <div
+                    className={`border-1 h-11  text-lg w-72 my-1 placeholder-gray-600 ${
+                      errors?.locality_id?.type === "required" && "border-red"
+                    }`}
+                  >
                     <Controller
                       control={control}
-                      name="locality_id"
+                      {...register("locality_id", { required: true })}
                       render={({ field: { onChange } }) => (
                         <SelectSearch
                           options={options}
@@ -459,14 +557,23 @@ const Step2 = () => {
                     />
                   </div>
                   <input
-                    className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                    {...register("shop_no", {
-                      required: true,
-                    })}
+                    {...register("plot_no", { required: true })}
+                    className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
+                      errors?.plot_no?.type === "required" && "border-red  "
+                    }`}
                     type="text"
-                    placeholder="Shop No."
-                    id="houseNo"
+                    placeholder="Plot No."
+                    id="plotNo"
                   />
+                  <div className="">
+                    {(errors?.locality_id?.type === "required" ||
+                      errors?.project_name?.type === "required" ||
+                      errors?.plot_no?.type === "required") && (
+                      <p className="text-red mx-1 text-sm ">
+                        * Please fill all the fields.
+                      </p>
+                    )}
+                  </div>
                 </div>
               )}
 
@@ -489,20 +596,25 @@ const Step2 = () => {
                   />
 
                   <input
-                    className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                    {...register("project_name", {
-                      required: true,
-                    })}
+                    {...register("project_name", { required: true })}
+                    className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
+                      errors?.project_name?.type === "required" &&
+                      "border-red  "
+                    }`}
                     type="text"
                     placeholder="Project /  SEZ / Industrial Area"
                     id="project"
                     required=""
                   />
 
-                  <div className="border-1 h-11  text-lg w-72 my-1 placeholder-gray-600">
+                  <div
+                    className={`border-1 h-11  text-lg w-72 my-1 placeholder-gray-600 ${
+                      errors?.locality_id?.type === "required" && "border-red"
+                    }`}
+                  >
                     <Controller
                       control={control}
-                      name="locality_id"
+                      {...register("locality_id", { required: true })}
                       render={({ field: { onChange } }) => (
                         <SelectSearch
                           options={options}
@@ -513,6 +625,15 @@ const Step2 = () => {
                         />
                       )}
                     />
+                  </div>
+                  <div className="">
+                    {(errors?.locality_id?.type === "required" ||
+                      errors?.project_name?.type === "required" ||
+                      errors?.plot_no?.type === "required") && (
+                      <p className="text-red mx-1 text-sm ">
+                        * Please fill all the fields.
+                      </p>
+                    )}
                   </div>
                 </div>
               )}
@@ -528,7 +649,7 @@ const Step2 = () => {
           </button>
           <button
             type="submit"
-            className="lg:w-44 w-full h-12 bg-blue text-xl font-medium text-white my-2 rounded-full lg:rounded-none "
+            className="lg:w-44 w-full h-12 bg-blue text-xl font-medium text-white my-2 rounded-full lg:rounded-none hover:bg-extradarkblue "
           >
             Next
           </button>

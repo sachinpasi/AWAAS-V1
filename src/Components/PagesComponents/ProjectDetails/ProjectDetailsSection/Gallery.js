@@ -18,7 +18,7 @@ const Gallery = () => {
       className="w-full h-full border-1 border-projectsborder rounded px-4 my-4"
     >
       <div className="w-full border-b-1 border-projectsborder py-4 ">
-        <p className="text-3xl text-darkgray ">Project Gallery</p>
+        <h2 className="text-3xl text-darkgray ">Project Gallery</h2>
       </div>
       <div className="py-4">
         <Swiper
@@ -29,7 +29,7 @@ const Gallery = () => {
           }}
           navigation={true}
         >
-          {console.log(Data)}
+          {/* {console.log(Data)} */}
           {Data?.library?.map((item, index) => (
             <SwiperSlide key={index}>
               <img

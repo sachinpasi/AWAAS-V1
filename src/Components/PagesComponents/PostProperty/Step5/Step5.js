@@ -233,10 +233,10 @@ const Step5 = () => {
             Previous
           </button>
           <button
-            disabled={isUploading === true}
+            disabled={isUploading === true || isUploaded === false}
             onClick={HandleAmenitiesUpload}
             className={`lg:w-44 w-full my-1 lg:my-0 rounded-full lg:rounded-none h-12 ${
-              isUploading ? "bg-gray-500" : "bg-blue"
+              isUploading || isUploaded === false ? "bg-gray-500" : "bg-blue"
             }  text-xl font-medium text-white ml-2`}
           >
             Next

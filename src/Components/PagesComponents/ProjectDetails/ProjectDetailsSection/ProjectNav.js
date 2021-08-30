@@ -13,7 +13,7 @@ const ProjectNav = () => {
   const dispatch = useDispatch();
   const { Data } = useSelector(selectProjectDetails);
 
-  console.log(ActiveParentTab, ActiveChildTab);
+  // console.log(ActiveParentTab, ActiveChildTab);
 
   useEffect(() => {
     if (Data?.parent_child) {
@@ -23,12 +23,13 @@ const ProjectNav = () => {
   }, [Data]);
 
   useEffect(() => {
-    Data.parent_child?.map((item, index) => {
-      console.log(item);
+    Data.parent_child?.forEach((item, index) => {
+      // console.log(item);
       if (ActiveParentTab === `${item.title}[${index}]`) {
         setActiveChildTab(`${item.child[0]?.new_name}[0]`);
       }
     });
+    // eslint-disable-next-line
   }, [ActiveParentTab]);
 
   useEffect(() => {
@@ -38,6 +39,7 @@ const ProjectNav = () => {
         ActiveChildTab: ActiveChildTab,
       })
     );
+    // eslint-disable-next-line
   }, [ActiveParentTab, ActiveChildTab]);
   return (
     <div className="w-full h-32 border-1 border-projectsborder rounded px-4">
@@ -52,15 +54,15 @@ const ProjectNav = () => {
                 : "bg-extralightgray"
             } rounded-full cursor-pointer mr-4`}
           >
-            <p
-              className={`lg:text-lg text-base font-medium text-center ${
+            <h4
+              className={`lg:text-lg text-base font-medium text-center capitalize ${
                 ActiveParentTab === `${item.title}[${index}]`
                   ? "text-white"
                   : "text-darkgray"
               } `}
             >
               {item.title}
-            </p>
+            </h4>
           </div>
         ))}
       </div>
@@ -80,7 +82,7 @@ const ProjectNav = () => {
                       : ""
                   }`}
                 >
-                  <p
+                  <h5
                     className={`lg:text-base text-sm font-medium capitalize  px-2  ${
                       ActiveChildTab === `${childItem.new_name}[${index}]`
                         ? "text-blue"
@@ -88,7 +90,7 @@ const ProjectNav = () => {
                     } `}
                   >
                     {childItem.new_name}
-                  </p>
+                  </h5>
                 </div>
               ))}
           </Fragment>

@@ -148,6 +148,7 @@ const Step3 = () => {
                         id="plot-length-type"
                       >
                         <option value="mts">mtrs</option>
+                        <option value="ft">ft</option>
                       </select>
                     </div>
 

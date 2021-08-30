@@ -515,6 +515,6 @@ const NavItem = ({ Name, Active, onClick }) => (
       Active ? `bg-blue shadow-xl` : `bg-lightblue`
     }`}
   >
-    <p className="text-white text-lg uppercase font-medium">{Name}</p>
+    <h4 className="text-white text-lg uppercase font-medium">{Name}</h4>
   </div>
 );

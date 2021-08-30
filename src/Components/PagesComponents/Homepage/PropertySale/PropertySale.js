@@ -42,18 +42,17 @@ const PropertySale = () => {
                   key={item.p_id}
                   className="w-full flex flex-col justify-between items-center h-450px my-4"
                 >
-                  {console.log(item)}
                   <div className="w-full h-2/4 relative ">
                     {item?.photos && (
                       <img
                         className="w-full h-full object-cover"
                         src={JSON.parse(item.photos)[0]}
-                        alt=""
+                        alt="banner_img"
                       />
                     )}
                   </div>
                   <div className="w-full h-2/4 bg-white flex-col flex justify-center items-start p-4">
-                    <p
+                    <h3
                       style={{
                         borderBottom: "1px solid #7070702E",
                       }}
@@ -61,14 +60,14 @@ const PropertySale = () => {
                     >
                       {item.bedroom && item.bedroom} {item.bedroom && "BHK"}{" "}
                       {item.property_type} For Sale
-                    </p>
-                    <p className="text-sm font-medium py-2 capitalize">
+                    </h3>
+                    <h3 className="text-sm font-medium py-2 capitalize">
                       {item.city} : {item.locality_name}
-                    </p>
-                    <p className="text-2xl font-semibold text-blue py-2">
+                    </h3>
+                    <h4 className="text-2xl font-semibold text-blue py-2">
                       {" "}
                       &#8377; {item.total_price}
-                    </p>
+                    </h4>
                     <Link
                       className="flex justify-center items-center w-36 font-medium tracking-tight  px-5 py-1.5 my-2 text-white bg-blue"
                       to={`/property/${item.property_for}/${item.p_id}`}
@@ -105,18 +104,17 @@ const PropertySale = () => {
                   key={item.p_id}
                   className="w-full flex flex-col justify-between items-center h-450px my-4"
                 >
-                  {console.log(item)}
                   <div className="w-full h-2/4 relative ">
                     {item?.photos && (
                       <img
                         className="w-full h-full object-cover"
                         src={JSON.parse(item.photos)[0]}
-                        alt=""
+                        alt="banner_img"
                       />
                     )}
                   </div>
                   <div className="w-full h-2/4 bg-white flex-col flex justify-center items-start p-4">
-                    <p
+                    <h3
                       style={{
                         borderBottom: "1px solid #7070702E",
                       }}
@@ -124,14 +122,14 @@ const PropertySale = () => {
                     >
                       {item.bedroom && item.bedroom} {item.bedroom && "BHK"}{" "}
                       {item.property_type} For Sale
-                    </p>
-                    <p className="text-sm font-medium py-2 capitalize">
+                    </h3>
+                    <h4 className="text-sm font-medium py-2 capitalize">
                       {item.city} : {item.locality_name}
-                    </p>
-                    <p className="text-2xl font-semibold text-blue py-2">
+                    </h4>
+                    <h5 className="text-2xl font-semibold text-blue py-2">
                       {" "}
                       &#8377; {item.total_price}
-                    </p>
+                    </h5>
                     <Link
                       className="flex justify-center items-center w-36 font-medium tracking-tight  px-5 py-1.5 my-2 text-white bg-blue"
                       to={`/property/${item.property_for}/${item.p_id}`}

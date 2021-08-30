@@ -26,24 +26,27 @@ const Banner = () => {
           className="w-full h-full  "
         >
           <div className=" relative lg:w-80vw w-90vw mx-auto h-full flex flex-col justify-end items-start text-white">
-            <p
+            <h1
               style={{
                 textShadow: "2px 3px 5px #000",
               }}
-              className="text-white lg:text-5xl text-4xl tracking-tight font-medium"
+              className="text-white lg:text-6xl text-4xl tracking-tight font-medium"
             >
               {Data?.parent?.title}
-            </p>
+            </h1>
             <div className="flex justify-center items-center lg:py-4 py-2 mb-16">
               <div className="flex justify-center items-center">
                 <MdLocationOn className="text-blue text-3xl font-medium" />
-                <p className="text-white lg:text-lg text-base font-medium whitespace-nowrap">
+                <h4 className="text-white lg:text-lg text-base font-medium whitespace-nowrap">
                   {Data?.parent?.locality}, {Data?.parent?.city}
-                </p>{" "}
+                </h4>{" "}
               </div>
               {Data?.parent?.rera && (
                 <div className="mx-4">
-                  <img src="/assets/images/projectdetails/rera.svg" alt="" />
+                  <img
+                    src="/assets/images/projectdetails/rera.svg"
+                    alt="rera"
+                  />
                 </div>
               )}
             </div>

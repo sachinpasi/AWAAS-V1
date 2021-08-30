@@ -48,7 +48,7 @@ const Step6 = () => {
     if (res.status === 200) {
       console.log(res.data);
       setTimeout(() => {
-        history.push("/");
+        history.push("/profile/property/listings");
       }, 2000);
       return toast.success("Property Added Sucessfully");
     }

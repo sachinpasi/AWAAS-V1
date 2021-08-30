@@ -45,7 +45,7 @@ const HomeNav = () => {
   const history = useHistory();
   const location = useLocation();
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const HandlePostProperty = () => {
     setisNavOpen(false);
@@ -93,12 +93,13 @@ const HomeNav = () => {
     const res = await axios.get(`${API}/bookmark-list`, {
       headers: { Authorization: `Bearer ${user.token}` },
     });
-    console.log(res.data);
+
     setBookmarkList(res.data.data);
   };
 
   useEffect(() => {
     FetchBookmarkList();
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -365,7 +366,6 @@ export default HomeNav;
 const SocialIcon = ({ Icon, Br, To }) => (
   <a
     href={To}
-    target="_blank"
     className={`w-11 h-full flex justify-center items-center border-l-1 border-navborder ${
       Br && "border-r-1"
     } `}

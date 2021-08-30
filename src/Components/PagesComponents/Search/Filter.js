@@ -29,6 +29,7 @@ const Filter = ({
   const [isVerified, setisVerified] = useState(false);
   const [iswithPhoto, setiswithPhoto] = useState(false);
   const [FurnishedStatus, setFurnishedStatus] = useState();
+  // eslint-disable-next-line
   const [PARAMS, setPARAMS] = useState();
   const [isFilterOpen, setisFilterOpen] = useState(false);
   const [isAnyThingSelected, setisAnyThingSelected] = useState(false);
@@ -66,12 +67,14 @@ const Filter = ({
     if (property_type) {
       setPropertyType(property_type);
     }
+    // eslint-disable-next-line
   }, [property_type]);
 
   useEffect(() => {
     if (parent_type) {
       setParentPropertyType(parent_type);
     }
+    // eslint-disable-next-line
   }, [parent_type]);
 
   useEffect(() => {
@@ -337,7 +340,7 @@ const Filter = ({
     <>
       <div
         onClick={() => setisFilterOpen(!isFilterOpen)}
-        className={`w-full h-full fixed bg-black bg-opacity-30 left-0 right-0 top-0 bottom-0  ${
+        className={`w-full h-full fixed bg-black bg-opacity-30 left-0 right-0 top-0 bottom-0 lg:hidden  ${
           isFilterOpen ? "" : "hidden"
         }`}
       ></div>
@@ -345,7 +348,7 @@ const Filter = ({
         style={{
           transition: "ease-in-out 0.2s all",
         }}
-        className={` w-full h-4/5 fixed bg-white left-0 right-0  z-30  px-4 overflow-y-scroll  ${
+        className={` lg:hidden w-full h-4/5 fixed bg-white left-0 right-0  z-30  px-4 overflow-y-scroll  ${
           isFilterOpen ? "bottom-0" : "-bottom-full"
         } `}
       >
@@ -1131,30 +1134,40 @@ const Filter = ({
 
             <div className="flex justify-between py-4  items-center  border-b-2 w-full border-dashed">
               <p className="text-xl font-medium">Verified properties</p>
-              <label className="switch">
-                <input
-                  value={isVerified}
-                  checked={isVerified}
-                  onChange={() => setisVerified(!isVerified)}
-                  type="checkbox"
-                />
-                <div>
-                  <span></span>
+              <label for="toogleA" className="flex items-center cursor-pointer">
+                <div className="relative">
+                  <input
+                    value={isVerified}
+                    checked={isVerified}
+                    onChange={() => setisVerified(!isVerified)}
+                    id="toogleA"
+                    type="checkbox"
+                    className="sr-only"
+                  />
+
+                  <div className="w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
+
+                  <div className="dot absolute w-6 h-6 bg-white rounded-full shadow -left-1 -top-1 transition"></div>
                 </div>
               </label>
             </div>
 
             <div className="flex justify-between py-4  items-center  border-b-2 w-full border-dashed">
               <p className="text-xl font-medium">Properties with Photos</p>
-              <label className="switch">
-                <input
-                  value={iswithPhoto}
-                  checked={iswithPhoto}
-                  onChange={() => setiswithPhoto(!iswithPhoto)}
-                  type="checkbox"
-                />
-                <div>
-                  <span></span>
+              <label for="toogleB" className="flex items-center cursor-pointer">
+                <div className="relative">
+                  <input
+                    value={iswithPhoto}
+                    checked={iswithPhoto}
+                    onChange={() => setiswithPhoto(!iswithPhoto)}
+                    id="toogleB"
+                    type="checkbox"
+                    className="sr-only"
+                  />
+
+                  <div className="w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
+
+                  <div className="dot absolute w-6 h-6 bg-white rounded-full shadow -left-1 -top-1 transition"></div>
                 </div>
               </label>
             </div>

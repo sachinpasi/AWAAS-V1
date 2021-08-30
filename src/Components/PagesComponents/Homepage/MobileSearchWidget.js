@@ -75,24 +75,24 @@ const MobileSearchWidget = () => {
     FetchLocality();
   }, []);
 
-  const user = useSelector(selectUser);
-  const dispatch = useDispatch();
+  // const user = useSelector(selectUser);
+  // const dispatch = useDispatch();
 
-  const HandlePostProperty = () => {
-    if (user.isLoggedIn) {
-      history.push("/post-property");
-    } else {
-      dispatch(
-        SET_LOGIN_MODAL_OPEN({
-          isLoginModalOpen: true,
-        })
-      );
-    }
-  };
+  // const HandlePostProperty = () => {
+  //   if (user.isLoggedIn) {
+  //     history.push("/post-property");
+  //   } else {
+  //     dispatch(
+  //       SET_LOGIN_MODAL_OPEN({
+  //         isLoginModalOpen: true,
+  //       })
+  //     );
+  //   }
+  // };
 
-  const HandleProject = () => {
-    history.push("/search/projects");
-  };
+  // const HandleProject = () => {
+  //   history.push("/search/projects");
+  // };
 
   const HandleSearch = () => {
     history.push({ pathname: "/search", search: PARAMS });

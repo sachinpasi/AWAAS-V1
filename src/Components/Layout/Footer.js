@@ -14,7 +14,7 @@ const Footer = () => {
     >
       <div className="w-90vw lg:w-80vw mx-auto pt-10">
         <div className="flex flex-col justify-center items-center">
-          <img src="/assets/images/logo/logo.svg" alt="" />
+          <img src="/assets/images/logo/logo.svg" alt="logo" />
 
           <p className="text-xs text-white text-center w-11/12 lg:w-2/4 py-4">
             Awaasonline dreams and commits towards making buying, selling and

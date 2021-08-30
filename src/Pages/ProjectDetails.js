@@ -24,7 +24,7 @@ const ProjectDetails = () => {
   const FetchData = async () => {
     setisLoading(true);
     const res = await axios.get(`${API}/projects/id/${id}`);
-    console.log(res.data.data);
+    // console.log(res.data.data);
 
     if (res.status === 200) {
       dispatch(
@@ -42,6 +42,7 @@ const ProjectDetails = () => {
     return () => {
       dispatch(REMOVE_PROJECT_DETAILS());
     };
+    // eslint-disable-next-line
   }, [id]);
   return (
     <Layout>

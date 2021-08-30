@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+// import { Redirect, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AiOutlineClose } from "react-icons/ai";
 
-import { LOGIN, selectUser } from "../../../Redux/_features/_userSlice";
+import { LOGIN } from "../../../Redux/_features/_userSlice";
 import { API } from "../../../API";
 
 const Login = ({ isLoginModalOpen, setisLoginModalOpen }) => {
@@ -15,8 +15,8 @@ const Login = ({ isLoginModalOpen, setisLoginModalOpen }) => {
   const [isOtpSent, setisOtpSent] = useState(false);
 
   const dispatch = useDispatch();
-  const history = useHistory();
-  const user = useSelector(selectUser);
+  // const history = useHistory();
+  // const user = useSelector(selectUser);
 
   const {
     register,
@@ -25,11 +25,11 @@ const Login = ({ isLoginModalOpen, setisLoginModalOpen }) => {
   } = useForm();
 
   const onMobileNoSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     setMobileNo(data.mobile);
     try {
       const res = await axios.post(`${API}/users/login?mobile=${data.mobile}`);
-      console.log(res.data);
+      // console.log(res.data);
       if (res.status === 200) {
         setisOtpSent(true);
         return toast.success(`OTP Sent To ${data.mobile} `);
@@ -49,7 +49,7 @@ const Login = ({ isLoginModalOpen, setisLoginModalOpen }) => {
       mobile: MobileNo,
       otp,
     });
-    console.log(res);
+    // console.log(res);
     if (res.status === 200) {
       dispatch(
         LOGIN({
@@ -75,7 +75,7 @@ const Login = ({ isLoginModalOpen, setisLoginModalOpen }) => {
         email: email,
         account_type: 1,
       });
-      console.log(res);
+      // console.log(res);
       if (res.status === 200) {
         return toast.success("Signup Successfully!");
       }
@@ -115,34 +115,34 @@ const Login = ({ isLoginModalOpen, setisLoginModalOpen }) => {
         <div className="p-8 lg:w-2/5 w-full relative lg:h-full h-4/5 flex flex-col justify-center items-start ">
           {isSignupActive ? (
             <>
-              <p className="absolute top-0 left-0 w-full  text-center text-blue font-bold text-3xl py-4">
+              <h4 className="absolute top-0 left-0 w-full  text-center text-blue font-bold text-3xl py-4">
                 Signup
-              </p>
+              </h4>
               <form
                 onSubmit={handleSubmit(onResisterSubmit)}
                 className=" w-full relative  flex flex-col justify-center items-start"
               >
-                <p className="mx-1 my-0.5 text-lg font-medium uppercase ">
+                <h6 className="mx-1 my-0.5 text-lg font-medium uppercase ">
                   Mobile Number
-                </p>
+                </h6>
                 <input
                   className="w-full h-10 border-2 border-navborder px-4 mb-1 "
                   type="text"
                   placeholder="+91"
                   {...register("mobile", { required: true, minLength: 10 })}
                 />{" "}
-                <p className="mx-1 my-0.5 text-lg font-medium uppercase ">
+                <h6 className="mx-1 my-0.5 text-lg font-medium uppercase ">
                   Name
-                </p>
+                </h6>
                 <input
                   className="w-full h-10 border-2 border-navborder px-4 mb-1 "
                   type="text"
                   placeholder=""
                   {...register("name", { required: true, minLength: 3 })}
                 />{" "}
-                <p className="mx-1 my-0.5 text-lg font-medium uppercase ">
+                <h6 className="mx-1 my-0.5 text-lg font-medium uppercase ">
                   Email
-                </p>
+                </h6>
                 <input
                   className="w-full h-10 border-2 border-navborder px-4 mb-1 "
                   type="email"
@@ -172,16 +172,16 @@ const Login = ({ isLoginModalOpen, setisLoginModalOpen }) => {
             </>
           ) : (
             <>
-              <p className="absolute top-0 left-0 w-full  text-center text-blue font-bold text-3xl py-4">
+              <h4 className="absolute top-0 left-0 w-full  text-center text-blue font-bold text-3xl py-4">
                 Login
-              </p>
+              </h4>
               <form
                 onSubmit={handleSubmit(onMobileNoSubmit)}
                 className=" w-full relative  flex flex-col justify-center items-start"
               >
-                <p className="mx-1 my-0.5 text-lg font-medium uppercase ">
+                <h5 className="mx-1 my-0.5 text-lg font-medium uppercase ">
                   Mobile Number
-                </p>
+                </h5>
                 <input
                   disabled={isOtpSent}
                   className="w-full h-10 border-2 border-navborder px-4 "
@@ -215,9 +215,9 @@ const Login = ({ isLoginModalOpen, setisLoginModalOpen }) => {
                   onSubmit={handleSubmit(onOtpSubmit)}
                   className="w-full relative  flex flex-col justify-center items-start mt-4"
                 >
-                  <p className="mx-1 my-0.5 text-lg font-medium uppercase ">
+                  <h6 className="mx-1 my-0.5 text-lg font-medium uppercase ">
                     OTP
-                  </p>
+                  </h6>
                   <input
                     style={{
                       border: "1px solid #bbb",
@@ -281,7 +281,7 @@ const Login = ({ isLoginModalOpen, setisLoginModalOpen }) => {
           <img
             className="w-full h-full object-cover"
             src="/assets/images/login/bg.jfif"
-            alt=""
+            alt="login_bg"
           />
           <div
             style={{
@@ -289,7 +289,7 @@ const Login = ({ isLoginModalOpen, setisLoginModalOpen }) => {
             }}
             className="absolute w-full h-full top-0 flex justify-center items-center"
           >
-            <img src="/assets/images/logo/logo.svg" alt="" />
+            <img src="/assets/images/logo/logo.svg" alt="logo" />
           </div>
         </div>
       </div>

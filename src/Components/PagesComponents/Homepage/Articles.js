@@ -16,7 +16,6 @@ const Articles = () => {
   const FetchArticlesList = async () => {
     const res = await axios.get(`${API}/blogs/list`);
     setArticlesList(res.data.data);
-    console.log(res.data.data);
   };
 
   useEffect(() => {
@@ -52,32 +51,32 @@ const Articles = () => {
                 <img
                   className="object-cover w-full h-full"
                   src={item.img}
-                  alt=""
+                  alt="banner_img"
                 />
                 <div className="absolute top-4 left-4  w-14 h-14 flex flex-col bg-blue justify-center items-center text-white">
-                  <p className="text-xl font-bold">
+                  <h6 className="text-xl font-bold">
                     {getDate(item.created_at)}
-                  </p>
-                  <p className="text-xs font-bold">
+                  </h6>
+                  <h6 className="text-xs font-bold">
                     {getMonthYear(item.created_at)}
-                  </p>
+                  </h6>
                 </div>
               </div>
               <div
                 style={{ height: "200px" }}
                 className="w-11/12 mx-auto  flex flex-col items-start justify-between px-4 py-1 bg-white"
               >
-                <p
+                <span
                   style={{
                     borderBottom: "1px solid #7070702E",
                   }}
                   className="py-1 w-full text-lg text-darkgray "
                 >
                   By<span className="text-blue pl-1">admin</span>
-                </p>
-                <p className="text-xl tracking-tight font-semibold py-2 ">
+                </span>
+                <h3 className="text-xl tracking-tight font-semibold py-2 ">
                   {item.title}
-                </p>
+                </h3>
                 <p className="text-xs text-darkgray  line-clamp-4">
                   {item.description}
                 </p>
@@ -118,32 +117,32 @@ const Articles = () => {
                     <img
                       className="object-cover w-full h-full"
                       src={item.img}
-                      alt=""
+                      alt="banner_img"
                     />
                     <div className="absolute top-4 left-4  w-14 h-14 flex flex-col bg-blue justify-center items-center text-white">
-                      <p className="text-xl font-bold">
+                      <h6 className="text-xl font-bold">
                         {getDate(item.created_at)}
-                      </p>
-                      <p className="text-xs font-bold">
+                      </h6>
+                      <h6 className="text-xs font-bold">
                         {getMonthYear(item.created_at)}
-                      </p>
+                      </h6>
                     </div>
                   </div>
                   <div
                     style={{ height: "200px" }}
                     className="w-11/12 mx-auto  flex flex-col items-start justify-between px-4 py-1 bg-white"
                   >
-                    <p
+                    <span
                       style={{
                         borderBottom: "1px solid #7070702E",
                       }}
                       className="py-1 w-full text-lg text-darkgray "
                     >
                       By<span className="text-blue pl-1">admin</span>
-                    </p>
-                    <p className="text-xl tracking-tight font-semibold py-2 ">
+                    </span>
+                    <h3 className="text-xl tracking-tight font-semibold py-2 ">
                       {item.title}
-                    </p>
+                    </h3>
                     <p className="text-xs text-darkgray  line-clamp-4">
                       {item.description}
                     </p>

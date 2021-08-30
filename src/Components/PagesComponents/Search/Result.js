@@ -16,7 +16,7 @@ const Result = ({ PropertyFor }) => {
     parentProperty,
     propertyType,
     property_for,
-    locality,
+    // locality,
     parent_type,
     bedroom,
     property_type,
@@ -63,13 +63,13 @@ const Result = ({ PropertyFor }) => {
         },
         { cancelToken: cancelToken.token }
       );
-      console.log(res);
+      // console.log(res);
       setSearchResult(res.data.data);
       if (res.status === 200) {
         setisLoading(false);
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -126,18 +126,18 @@ const Result = ({ PropertyFor }) => {
 
               <div className="lg:ml-4 ml-2 w-70percent flex flex-col ">
                 <div className="w-full lg:my-2 my-1 flex flex-col items-start border-b-1 border-dashed border-navborder lg:pb-2">
-                  <p className="lg:text-base text-sm  text-widgetborder capitalize ">
+                  <h5 className="lg:text-base text-sm  text-widgetborder capitalize ">
                     {item?.city}
-                  </p>
-                  <p className="lg:text-2xl text-xl lg:py-1  font-medium text-darkgray capitalize">
+                  </h5>
+                  <h3 className="lg:text-2xl text-xl lg:py-1  font-medium text-darkgray capitalize">
                     {item?.title}
-                  </p>
+                  </h3>
                   <div className="flex my-1 flex-wrap justify-between w-full lg:w-3/4">
                     {item?.configuration.map((item, index) => (
                       <div key={index} className="flex flex-col  lg:w-auto ">
-                        <p className="lg:text-sm text-xs text-blue capitalize">
+                        <h5 className="lg:text-sm text-xs text-blue capitalize">
                           {item?.title}
-                        </p>
+                        </h5>
                         <p
                           className="font-medium lg:text-lg text-sm
                          capitalize"
@@ -149,13 +149,13 @@ const Result = ({ PropertyFor }) => {
                     ))}
                   </div>
 
-                  <p className=" line-clamp-1 text-xs mb-2 lg:text-base  capitalize w-11/12 text-widgetborder">
+                  <span className=" line-clamp-1 text-xs mb-2 lg:text-base  capitalize w-11/12 text-widgetborder">
                     {item?.description}
-                  </p>
+                  </span>
                 </div>
                 <div className="flex h-full justify-between items-center w-full">
                   <p className="lg:text-base text-xs text-blue font-medium capitalize flex flex-col lg:flex-row">
-                    <p>Posted On - </p> {item?.date}
+                    <span>Posted On - </span> {item?.date}
                   </p>
 
                   <Link

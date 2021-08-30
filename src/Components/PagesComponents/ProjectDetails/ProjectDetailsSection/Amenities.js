@@ -4,7 +4,7 @@ import { selectProjectDetails } from "../../../../Redux/_features/_ProjectDetail
 
 const Amenities = () => {
   const { Data } = useSelector(selectProjectDetails);
-  console.log(Data?.parent?.amenities);
+  // console.log(Data?.parent?.amenities);
   const [AmenitiesList, setAmenitiesList] = useState([]);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const Amenities = () => {
   return (
     <div className="w-full h-full border-1 border-projectsborder rounded px-4 my-4">
       <div className="w-full border-b-1 border-projectsborder py-4 ">
-        <p className="text-3xl text-darkgray ">Amenities</p>
+        <h2 className="text-3xl text-darkgray ">Amenities</h2>
       </div>
       <div className=" py-4 lg:flex  flex-wrap grid-cols-2 grid  ">
         {AmenitiesList?.map((item, index) => (
@@ -27,7 +27,7 @@ const Amenities = () => {
             <img
               className="object-contain lg:w-1/5 w-2/6 h-auto"
               src={item?.icon}
-              alt=""
+              alt={item?.name}
             />
             <p className="lg:text-lg text-sm capitalize my-2 whitespace-nowrap ">
               {item?.name}

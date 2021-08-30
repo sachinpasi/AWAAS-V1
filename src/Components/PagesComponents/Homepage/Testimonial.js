@@ -17,7 +17,7 @@ const Testimonial = () => {
         className="w-full h-full flex justify-center items-center"
       >
         <div className="w-80vw mx-auto hidden lg:grid grid-cols-1">
-          <p className="text-5xl font-light my-4">Testimonials</p>
+          <h2 className="text-5xl font-light my-4">Testimonials</h2>
           <OwlCarousel loop items={2} margin={30}>
             <div className=" w-full bg-textbg px-6 h-3/4 flex flex-col justify-center items-start rounded-xl ">
               <p className="text-base h-48  italic leading-8 py-4">
@@ -31,11 +31,11 @@ const Testimonial = () => {
                 <img
                   className="w36 h-32 object-cover rounded-full shadow-2xl mr-8 "
                   src="/assets/images/vastu/1.jfif"
-                  alt=""
+                  alt="customer"
                 />
                 <div className="-mt-4">
-                  <p className="text-base">Product manager</p>
-                  <p className="text-sm italic">Happy Customer</p>
+                  <h6 className="text-base">Product manager</h6>
+                  <h6 className="text-sm italic">Happy Customer</h6>
                 </div>
               </div>
             </div>{" "}
@@ -52,11 +52,11 @@ const Testimonial = () => {
                 <img
                   className="w36 h-32 object-cover rounded-full shadow-2xl mr-8 "
                   src="/assets/images/vastu/2.jfif"
-                  alt=""
+                  alt="customer"
                 />
                 <div className="-mt-4">
-                  <p className="text-base">Product manager</p>
-                  <p className="text-sm italic">Happy Customer</p>
+                  <h6 className="text-base">Product manager</h6>
+                  <h6 className="text-sm italic">Happy Customer</h6>
                 </div>
               </div>
             </div>{" "}
@@ -72,12 +72,12 @@ const Testimonial = () => {
               <div className="flex justify-start items-center pb-4">
                 <img
                   className="w36 h-32 object-cover rounded-full shadow-2xl mr-8 "
-                  src="/assets/images/vastu/3.jfif"
-                  alt=""
+                  src="/assets/images/vastu/2.jfif"
+                  alt="customer"
                 />
                 <div className="-mt-4">
-                  <p className="text-base">Product manager</p>
-                  <p className="text-sm italic">Happy Customer</p>
+                  <h6 className="text-base">Product manager</h6>
+                  <h6 className="text-sm italic">Happy Customer</h6>
                 </div>
               </div>
             </div>{" "}
@@ -93,12 +93,12 @@ const Testimonial = () => {
               <div className="flex justify-start items-center pb-4">
                 <img
                   className="w36 h-32 object-cover rounded-full shadow-2xl mr-8 "
-                  src="/assets/images/vastu/4.jfif"
-                  alt=""
+                  src="/assets/images/vastu/2.jfif"
+                  alt="customer"
                 />
                 <div className="-mt-4">
-                  <p className="text-base">Product manager</p>
-                  <p className="text-sm italic">Happy Customer</p>
+                  <h6 className="text-base">Product manager</h6>
+                  <h6 className="text-sm italic">Happy Customer</h6>
                 </div>
               </div>
             </div>{" "}
@@ -114,12 +114,12 @@ const Testimonial = () => {
               <div className="flex justify-start items-center pb-4">
                 <img
                   className="w36 h-32 object-cover rounded-full shadow-2xl mr-8 "
-                  src="/assets/images/vastu/1.jfif"
-                  alt=""
+                  src="/assets/images/vastu/2.jfif"
+                  alt="customer"
                 />
                 <div className="-mt-4">
-                  <p className="text-base">Product manager</p>
-                  <p className="text-sm italic">Happy Customer</p>
+                  <h6 className="text-base">Product manager</h6>
+                  <h6 className="text-sm italic">Happy Customer</h6>
                 </div>
               </div>
             </div>{" "}
@@ -141,11 +141,11 @@ const Testimonial = () => {
                 <img
                   className="w96px h-24 object-cover rounded-full shadow-2xl mr-4 "
                   src="/assets/images/vastu/1.jfif"
-                  alt=""
+                  alt="customer"
                 />
                 <div className="-mt-4">
-                  <p className="text-base">Product manager</p>
-                  <p className="text-sm italic">Happy Customer</p>
+                  <h6 className="text-base">Product manager</h6>
+                  <h6 className="text-sm italic">Happy Customer</h6>
                 </div>
               </div>
             </div>{" "}
@@ -162,11 +162,11 @@ const Testimonial = () => {
                 <img
                   className="w96px h-24 object-cover rounded-full shadow-2xl mr-4 "
                   src="/assets/images/vastu/2.jfif"
-                  alt=""
+                  alt="customer"
                 />
                 <div className="-mt-4">
-                  <p className="text-base">Product manager</p>
-                  <p className="text-sm italic">Happy Customer</p>
+                  <h6 className="text-base">Product manager</h6>
+                  <h6 className="text-sm italic">Happy Customer</h6>
                 </div>
               </div>
             </div>{" "}
@@ -183,11 +183,11 @@ const Testimonial = () => {
                 <img
                   className="w96px h-24 object-cover rounded-full shadow-2xl mr-4 "
                   src="/assets/images/vastu/3.jfif"
-                  alt=""
+                  alt="customer"
                 />
                 <div className="-mt-4">
-                  <p className="text-base">Product manager</p>
-                  <p className="text-sm italic">Happy Customer</p>
+                  <h6 className="text-base">Product manager</h6>
+                  <h6 className="text-sm italic">Happy Customer</h6>
                 </div>
               </div>
             </div>{" "}
@@ -204,11 +204,11 @@ const Testimonial = () => {
                 <img
                   className="w96px h-24 object-cover rounded-full shadow-2xl mr-4 "
                   src="/assets/images/vastu/4.jfif"
-                  alt=""
+                  alt="customer"
                 />
                 <div className="-mt-4">
-                  <p className="text-base">Product manager</p>
-                  <p className="text-sm italic">Happy Customer</p>
+                  <h6 className="text-base">Product manager</h6>
+                  <h6 className="text-sm italic">Happy Customer</h6>
                 </div>
               </div>
             </div>{" "}
@@ -225,11 +225,11 @@ const Testimonial = () => {
                 <img
                   className="w96px h-24 object-cover rounded-full shadow-2xl mr-4 "
                   src="/assets/images/vastu/1.jfif"
-                  alt=""
+                  alt="customer"
                 />
                 <div className="-mt-4">
-                  <p className="text-base">Product manager</p>
-                  <p className="text-sm italic">Happy Customer</p>
+                  <h6 className="text-base">Product manager</h6>
+                  <h6 className="text-sm italic">Happy Customer</h6>
                 </div>
               </div>
             </div>{" "}

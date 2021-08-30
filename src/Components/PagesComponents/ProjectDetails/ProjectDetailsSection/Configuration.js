@@ -16,17 +16,19 @@ const Configuration = () => {
             src={`https://codeiator.com/${
               JSON.parse(childItem.floor_plan_image)[0]
             }`}
-            alt=""
+            alt="floorplan"
           />
         );
       case "plot":
-        return <img src={childItem.plot_images_path[0]} alt="" />;
+        return <img src={childItem.plot_images_path[0]} alt="floorplan" />;
 
       case "flat":
         if (childItem.flat_floor_images.length !== 0) {
-          return <img src={childItem.flat_floor_images_path[0]} alt="" />;
+          return (
+            <img src={childItem.flat_floor_images_path[0]} alt="floorplan" />
+          );
         }
-
+      // eslint-disable-next-line
       default:
         return null;
     }
@@ -38,14 +40,14 @@ const Configuration = () => {
       className="w-full h-full border-1 border-projectsborder rounded px-4 my-4"
     >
       <div className="w-full border-b-1 border-projectsborder py-4 ">
-        <p className="text-3xl text-darkgray ">Configuration</p>
+        <h2 className="text-3xl text-darkgray ">Configuration</h2>
       </div>
       <div className="flex justify-start items-center py-4">
         {Data !== undefined && (
           <>
             {Data?.parent_child?.map((parentChild, index) => (
               <Fragment key={index}>
-                {console.log(parentChild)}
+                {/* {console.log(parentChild)} */}
                 {CurrentTab.ActiveParentTab ===
                   `${parentChild.title}[${index}]` &&
                   parentChild?.child?.map((childItem, index) => (
@@ -60,15 +62,15 @@ const Configuration = () => {
                             >
                               <img
                                 src="/assets/images/projectdetails/plotarea.svg"
-                                alt=""
+                                alt="plotarea"
                               />
                               <div className=" mx-5 flex justify-center items-start flex-col">
-                                <p className="text-sm text-lightgray leading-5">
+                                <h5 className="text-sm text-lightgray leading-5">
                                   {item?.title}
-                                </p>
-                                <p className="text-lg font-medium text-darkgray leading-5">
+                                </h5>
+                                <h6 className="text-lg font-medium text-darkgray leading-5">
                                   {item?.value}
-                                </p>
+                                </h6>
                               </div>
                             </div>
                           ))}{" "}
@@ -90,7 +92,7 @@ const Configuration = () => {
                   {CurrentTab.ActiveChildTab ===
                     `${childItem.new_name}[${index}]` && (
                     <>
-                      {console.log("Selected Child --", childItem)}
+                      {/* {console.log("Selected Child --", childItem)} */}
 
                       <ImageHandler childItem={childItem} />
                     </>
@@ -102,7 +104,7 @@ const Configuration = () => {
       </div>
       <div className="w-full h-full flex justify-end items-center py-4">
         <button className="bg-blue lg:px-8 px-4 py-3 rounded text-white font-medium lg:text-lg text-base">
-          Contact To Developer
+          Contact Developer
         </button>
       </div>
     </div>

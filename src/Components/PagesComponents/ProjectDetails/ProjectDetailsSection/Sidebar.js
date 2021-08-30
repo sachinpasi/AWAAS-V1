@@ -21,7 +21,7 @@ const Sidebar = () => {
       ...data,
       id: id,
     });
-    console.log(res.data);
+    // console.log(res.data);
     if (res.status === 200) {
       return toast.success("We Will Contact You Soon");
     }
@@ -42,7 +42,7 @@ const Sidebar = () => {
             <img
               className="h-full object-contain bg-white p-1"
               src={Data?.parent?.developerlogo_path}
-              alt=""
+              alt="developer_logo"
             />
           </div>
           <div>

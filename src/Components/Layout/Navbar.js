@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaProjectDiagram, FaUserCircle } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../Redux/_features/_userSlice";
@@ -16,8 +16,8 @@ import { GrClose } from "react-icons/gr";
 const Navbar = ({ isBookmarkChanged }) => {
   const loaction = useLocation();
   const location = useLocation();
-  const history = useHistory();
-  const user = useSelector(selectUser);
+  // const history = useHistory();
+  const User = useSelector(selectUser);
   const [isNavOpen, setisNavOpen] = useState(false);
   const [isLoginModalOpen, setisLoginModalOpen] = useState(false);
   const [isSideOpen, setisSideOpen] = useState(false);
@@ -36,25 +36,29 @@ const Navbar = ({ isBookmarkChanged }) => {
     </Link>
   );
 
-  const HandlePostProperty = () => {
-    if (user.isLoggedIn) {
-      history.push("/post-property");
-    } else {
-      setisLoginModalOpen(true);
-    }
-  };
+  // const HandlePostProperty = () => {
+  //   if (user.isLoggedIn) {
+  //     history.push("/post-property");
+  //   } else {
+  //     setisLoginModalOpen(true);
+  //   }
+  // };
 
-  const HandlePostProject = () => {
-    if (user.isLoggedIn) {
-      history.push("/post-project");
-    } else {
-      setisLoginModalOpen(true);
-    }
+  // const HandlePostProject = () => {
+  //   if (user.isLoggedIn) {
+  //     history.push("/post-project");
+  //   } else {
+  //     setisLoginModalOpen(true);
+  //   }
+  // };
+
+  const HandleLogin = () => {
+    setisLoginModalOpen(true);
   };
 
   const FetchBookmarkList = async () => {
     const res = await axios.get(`${API}/bookmark-list`, {
-      headers: { Authorization: `Bearer ${user.token}` },
+      headers: { Authorization: `Bearer ${User.token}` },
     });
     console.log(res.data);
     setBookmarkList(res.data.data);
@@ -62,14 +66,16 @@ const Navbar = ({ isBookmarkChanged }) => {
 
   useEffect(() => {
     FetchBookmarkList();
-  }, [isBookmarkChanged]);
+    console.log("called");
+    // eslint-disable-next-line
+  }, [User, isBookmarkChanged, isSideOpen]);
 
   return (
     <>
       <nav className="w-full hidden h-14 lg:flex justify-center items-center border-b-2 border-darkblue ">
         <div className=" w-full mx-6 flex justify-between items-center h-full">
           <Link to="/" className="w-44">
-            <img src="/assets/images/logo/logo2.svg" alt="" />
+            <img src="/assets/images/logo/logo2.svg" alt="logo" />
           </Link>
           <div className="flex items-center justify-between">
             <div className="w-auto h-full flex justify-center items-center mr-12">
@@ -103,10 +109,16 @@ const Navbar = ({ isBookmarkChanged }) => {
                 Name="Legal"
                 To="/legal"
               />
-              {user.isLoggedIn ? (
+              {User.isLoggedIn ? (
                 <NavAuthItem To="/profile/overview" Name="Profile" />
               ) : (
-                <NavAuthItem To="/" Name="Login" />
+                <div
+                  onClick={HandleLogin}
+                  className="w-auto bg-blue flex justify-center items-center py-1 px-6 rounded shadow-md ml-2 cursor-pointer "
+                >
+                  <FaUserCircle className="text-white text-lg" />
+                  <p className="text-white text-base pl-1 ">Login</p>
+                </div>
               )}
             </div>
             <div className="flex justify-center items-center">
@@ -148,22 +160,30 @@ const Navbar = ({ isBookmarkChanged }) => {
                     <BsBookmarkFill className="text-2xl mt-1 mr-3.5 text-green" />
                     <p className="text-2xl">Bookmark</p>
                   </div>
-                  <div className="w-full h-full">
-                    {BookmarkList.map((item, index) => (
-                      <Link
-                        key={index}
-                        to={`/property/${item.property_for}/${item.property_id}`}
-                        className="text-blue cursor-pointer flex items-center my-2 border-b-2  pb-2"
-                      >
-                        <img
-                          src={item.single_image}
-                          className="w-12 h-12 mr-2 object-cover rounded-lg"
-                          alt=""
-                        />
-                        <p className="capitalize text-lg ">{item.title}</p>
-                      </Link>
-                    ))}
-                  </div>
+                  {User.isLoggedIn ? (
+                    <div className="w-full">
+                      {BookmarkList.map((item, index) => (
+                        <Link
+                          key={index}
+                          to={`/property/${item.property_for}/${item.property_id}`}
+                          className="text-blue cursor-pointer flex items-center my-2 border-b-2  pb-2"
+                        >
+                          <img
+                            src={item.single_image}
+                            className="w-12 h-12 mr-2 object-cover rounded-lg"
+                            alt=""
+                          />
+                          <p className="capitalize text-lg ">{item.title}</p>
+                        </Link>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="w-full flex justify-center items-center">
+                      <p className="text-2xl font-medium bg-green w-full text-center py-2 my-4 text-white">
+                        Please Login First
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -171,10 +191,16 @@ const Navbar = ({ isBookmarkChanged }) => {
         </div>
       </nav>
 
+      {/* MOBILE------ */}
+
       <nav className="w-full h-auto absolute  z-50">
         <div className="lg:hidden w-full fixed z-50 flex justify-between items-center bg-white  shadow-md  ">
           <div className="py-4 pl-4">
-            <img className="w-44" src="/assets/images/logo/logo2.svg" alt="" />
+            <img
+              className="w-44"
+              src="/assets/images/logo/logo2.svg"
+              alt="logo"
+            />
           </div>
           <div
             onClick={() => setisNavOpen(!isNavOpen)}
@@ -250,7 +276,7 @@ const Navbar = ({ isBookmarkChanged }) => {
               Active={location.pathname === "/legal"}
             />
             <div className="flex w-full justify-center  py-2 px-4 my-3 ">
-              {user.isLoggedIn ? (
+              {User.isLoggedIn ? (
                 <Link
                   to="/profile/overview"
                   className="w-full h-12 bg-blue font-medium text-2xl rounded-full flex justify-center items-center text-white"
