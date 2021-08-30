@@ -127,32 +127,25 @@ const Step2 = () => {
                       defaultValue="Panipat"
                       disabled
                     />
-
-                    <input
-                      {...register("project_name", { required: true })}
-                      className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
-                        errors?.project_name?.type === "required" &&
-                        "border-red  "
-                      }`}
-                      type="text"
-                      placeholder="Colony / Society"
-                      id="apart"
-                    />
-
-                    {/* <div class="outline relative border-2 focus-within:border-blue-500">
+                    <div className="outline relative h-11 border-1 w-72 focus-within:border-blue-500 my-1">
                       <input
+                        {...register("project_name", { required: true })}
+                        className={`block p-4 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                          errors?.project_name?.type === "required" &&
+                          "border-red  "
+                        }`}
                         type="text"
-                        name="username"
+                        name="project_name"
                         placeholder=" "
-                        class="block p-4 w-full text-lg appearance-none focus:outline-none bg-transparent"
+                        id="apart"
                       />
                       <label
-                        for="username"
-                        class="absolute top-0 text-lg bg-white p-4 -z-1 duration-300 origin-0"
+                        for="project_name"
+                        className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
                       >
-                        Username
+                        Colony / Society
                       </label>
-                    </div> */}
+                    </div>
 
                     <div
                       className={`border-1 h-11  text-lg w-72 my-1 placeholder-gray-600 ${
@@ -173,16 +166,23 @@ const Step2 = () => {
                         )}
                       />
                     </div>
-
-                    <input
-                      {...register("plot_no", { required: true })}
-                      className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
-                        errors?.plot_no?.type === "required" && "border-red  "
-                      }`}
-                      type="text"
-                      placeholder="Plot No."
-                      id="plotNo"
-                    />
+                    <div className="outline relative h-11 border-1 w-72 focus-within:border-blue-500 my-1">
+                      <input
+                        {...register("plot_no", { required: true })}
+                        className={`block p-4 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                          errors?.plot_no?.type === "required" && "border-red  "
+                        }`}
+                        type="text"
+                        placeholder=" "
+                        id="plotNo"
+                      />
+                      <label
+                        for="project_name"
+                        className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                      >
+                        Colony / Society
+                      </label>
+                    </div>
                   </div>
                   <div className="">
                     {(errors?.locality_id?.type === "required" ||

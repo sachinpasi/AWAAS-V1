@@ -9,6 +9,12 @@ module.exports = {
       8: "8px",
     },
     extend: {
+      transformOrigin: {
+        0: "0%",
+      },
+      zIndex: {
+        "-1": "-1",
+      },
       colors: {
         darkblue: "#5486EB",
         blue: "#4D81E8",
@@ -74,7 +80,7 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: { borderColor: ["responsive", "hover", "focus", "focus-within"] },
   },
   plugins: [
     require("@tailwindcss/line-clamp"),
