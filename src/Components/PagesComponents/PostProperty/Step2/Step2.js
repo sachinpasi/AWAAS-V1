@@ -180,7 +180,7 @@ const Step2 = () => {
                         for="project_name"
                         className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
                       >
-                        Colony / Society
+                        Plot No
                       </label>
                     </div>
                   </div>
