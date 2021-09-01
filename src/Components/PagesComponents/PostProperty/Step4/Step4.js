@@ -104,7 +104,7 @@ const Step4 = () => {
           <Nav />
           {CurrentStep === 4 && (
             <div className="py-6 w-full h-full flex flex-col justify-between px-2 lg:px-0">
-              {PostProperty?.Property_Type === "land" &&
+              {/* {PostProperty?.Property_Type === "land" &&
                 PostProperty?.Property_For === "rent" && (
                   <>
                     <div className="flex justify-center items-start flex-col ">
@@ -303,9 +303,10 @@ const Step4 = () => {
                       </div>
                     </div>
                   </>
-                )}
+                )} */}
 
               {(PostProperty.Property_Type === "floor" ||
+                PostProperty.Property_Type === "land" ||
                 PostProperty.Property_Type === "farmhouse" ||
                 PostProperty.Property_Type === "villa" ||
                 PostProperty.Property_Type === "flat" ||
@@ -322,16 +323,26 @@ const Step4 = () => {
                       <div className="flex justify-start items-center">
                         <div className="flex items-center ">
                           <p className="mr-4">&#8377;</p>
-                          <input
-                            className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                            type="text"
-                            {...register("total_price")}
-                            placeholder="Asking Price"
-                            value={TotalAmount}
-                            onChange={(e) => setTotalAmount(e.target.value)}
-                            onKeyUp={ConvertToWord}
-                            required=""
-                          />
+                          <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                            <input
+                              className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                                errors?.total_price?.type === "required" &&
+                                "border-red"
+                              }`}
+                              type="text"
+                              {...register("total_price", { required: true })}
+                              placeholder=" "
+                              value={TotalAmount}
+                              onChange={(e) => setTotalAmount(e.target.value)}
+                              onKeyUp={ConvertToWord}
+                            />
+                            <label
+                              for="project_name"
+                              className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                            >
+                              Asking Price
+                            </label>
+                          </div>
 
                           <span className="ml-4">{ConvertedTotalAmount}</span>
                         </div>
@@ -339,17 +350,29 @@ const Step4 = () => {
                       <div className="flex justify-start items-center">
                         <p className="mr-4">&#8377;</p>
                         <div className="flex flex-col lg:flex-row">
-                          <input
-                            className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                            type="text"
-                            {...register("advanced_amount")}
-                            placeholder="Booking / Advance amount"
-                            value={AdvanceAmount}
-                            onChange={(e) => setAdvanceAmount(e.target.value)}
-                            onKeyUp={ConvertToWord}
-                            required=""
-                            aria-required="true"
-                          />
+                          <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                            <input
+                              className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                                errors?.advanced_amount?.type === "required" &&
+                                "border-red"
+                              }`}
+                              type="text"
+                              {...register("advanced_amount", {
+                                required: true,
+                              })}
+                              placeholder=" "
+                              value={AdvanceAmount}
+                              onChange={(e) => setAdvanceAmount(e.target.value)}
+                              onKeyUp={ConvertToWord}
+                            />
+                            <label
+                              for="project_name"
+                              className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                            >
+                              Booking / Advance amount
+                            </label>
+                          </div>
+
                           <span className="ml-4">
                             {ConvertedTotalAmountAdvanceAmount}
                           </span>
@@ -358,16 +381,29 @@ const Step4 = () => {
                       <div className="flex flex-wrap justify-start items-center">
                         <div className="flex items-center ">
                           <p className="mr-4">&#8377;</p>
+                          <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                            <input
+                              className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                                errors?.price_per_feet?.type === "required" &&
+                                "border-red"
+                              }`}
+                              type="text"
+                              {...register("price_per_feet", {
+                                required: true,
+                              })}
+                              placeholder=" "
+                              value={PricePerSpace}
+                              onChange={(e) => setPricePerSpace(e.target.value)}
+                              onKeyUp={ConvertToWord}
+                            />
+                            <label
+                              for="project_name"
+                              className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                            >
+                              Price / sq. ft / sq. yard / sq. mtr
+                            </label>
+                          </div>
 
-                          <input
-                            className="border-1 h-11  px-2 text-lg w-48 my-1 mr-2 placeholder-gray-600"
-                            type="text"
-                            {...register("price_per_feet")}
-                            placeholder="Price / sq. ft / sq. yard / sq. mtr"
-                            value={PricePerSpace}
-                            onChange={(e) => setPricePerSpace(e.target.value)}
-                            onKeyUp={ConvertToWord}
-                          />
                           <select
                             // {...register("length_width_type")}
                             className="border-1 h-11 ml-2   px-2 text-lg w-20  my-1  placeholder-gray-600"
@@ -388,6 +424,7 @@ const Step4 = () => {
                 )}
 
               {(PostProperty.Property_Type === "floor" ||
+                PostProperty.Property_Type === "land" ||
                 PostProperty.Property_Type === "farmhouse" ||
                 PostProperty.Property_Type === "villa" ||
                 PostProperty.Property_Type === "flat" ||
@@ -403,51 +440,82 @@ const Step4 = () => {
                       </h4>
                       <div className="flex justify-start items-center">
                         <p className="mr-4">&#8377;</p>
-
-                        <input
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                          type="text"
-                          {...register("expected_rent")}
-                          placeholder="Expected Rent"
-                          value={TotalAmount}
-                          onChange={(e) => setTotalAmount(e.target.value)}
-                          onKeyUp={ConvertToWord}
-                          required=""
-                          aria-required="true"
-                        ></input>
+                        <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.expected_rent?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            {...register("expected_rent", { required: true })}
+                            placeholder=" "
+                            value={TotalAmount}
+                            onChange={(e) => setTotalAmount(e.target.value)}
+                            onKeyUp={ConvertToWord}
+                          />
+                          <label
+                            for="project_name"
+                            className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Expected Rent
+                          </label>
+                        </div>
 
                         <span className="ml-4">{ConvertedTotalAmount}</span>
                       </div>{" "}
                       <div className="flex justify-start items-center">
                         <p className="mr-4">&#8377;</p>
 
-                        <input
-                          className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                          type="text"
-                          {...register("security_deposit")}
-                          placeholder="Security Deposit"
-                          value={AdvanceAmount}
-                          onChange={(e) => setAdvanceAmount(e.target.value)}
-                          onKeyUp={ConvertToWord}
-                          required=""
-                          aria-required="true"
-                        ></input>
+                        <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.security_deposit?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            {...register("security_deposit", {
+                              required: true,
+                            })}
+                            placeholder=" "
+                            value={AdvanceAmount}
+                            onChange={(e) => setAdvanceAmount(e.target.value)}
+                            onKeyUp={ConvertToWord}
+                          />
+                          <label
+                            for="project_name"
+                            className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Security Deposit
+                          </label>
+                        </div>
+
                         <span className="ml-4">
                           {ConvertedTotalAmountAdvanceAmount}
                         </span>
                       </div>{" "}
                       <div className="flex justify-start items-center">
                         <p className="mr-4">&#8377;</p>
+                        <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.price_per_feet?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            {...register("price_per_feet", { required: true })}
+                            placeholder=" "
+                            value={PricePerSpace}
+                            onChange={(e) => setPricePerSpace(e.target.value)}
+                            onKeyUp={ConvertToWord}
+                          />
+                          <label
+                            for="project_name"
+                            className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Rent / sq. ft / sq. yard / sq. mtr
+                          </label>
+                        </div>
 
-                        <input
-                          className="border-1 h-11  px-2 text-lg w-48 my-1 mr-2 placeholder-gray-600"
-                          type="text"
-                          {...register("price_per_feet")}
-                          placeholder="Rent / sq. ft / sq. yard / sq. mtr"
-                          value={PricePerSpace}
-                          onChange={(e) => setPricePerSpace(e.target.value)}
-                          onKeyUp={ConvertToWord}
-                        />
                         <select
                           // {...register("length_width_type")}
                           className="border-1 h-11 ml-2    px-2 text-lg w-20  my-1  placeholder-gray-600"
@@ -468,11 +536,11 @@ const Step4 = () => {
                         <input
                           className="border-1 h-11  px-2 text-lg w-48 my-1 mr-2 placeholder-gray-600"
                           type="text"
-                          {...register("price_per_feet")}
+                          // {...register("price_per_feet", { required: true })}
                           placeholder="Monthly Maintenance / sq. ft / sq. yard / sq. mtr  "
-                          value={PricePerSpace}
-                          onChange={(e) => setPricePerSpace(e.target.value)}
-                          onKeyUp={ConvertToWord}
+                          // value={PricePerSpace}
+                          // onChange={(e) => setPricePerSpace(e.target.value)}
+                          // onKeyUp={ConvertToWord}
                         />
                         <select
                           // {...register("length_width_type")}
@@ -485,7 +553,7 @@ const Step4 = () => {
                           <option value="mts">mtrs</option>
                         </select>
                         <span className="ml-4">
-                          {ConvertedTotalAmountPricePerSpace}
+                          {/* {ConvertedTotalAmountPricePerSpace} */}
                         </span>
                       </div>
                     </div>

@@ -85,21 +85,27 @@ const Step3 = () => {
                       Area Details
                     </h4>
                     <div className="flex w-full">
-                      <input
-                        className={`border-1 h-11  px-2 text-lg lg:w-72 w-3/5 my-1 placeholder-gray-600 ${
-                          errors?.plot_area?.type === "required" &&
-                          "border-red  "
-                        }`}
-                        type="text"
-                        {...register("plot_area", { required: true })}
-                        placeholder="Plot Area"
-                        required=""
-                        aria-required="true"
-                      ></input>
+                      <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.plot_area?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          {...register("plot_area", { required: true })}
+                          placeholder=" "
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Plot Area
+                        </label>
+                      </div>
 
                       <select
                         {...register("plot_area_type")}
-                        className="border-1 h-11  px-2 text-lg lg:w-52 w-2/5 my-1 mx-2 placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-52 w-2/5 my-1.5 mx-2 placeholder-gray-600"
                         id="plot-area-type"
                       >
                         <option>sq-fts</option>
@@ -114,7 +120,7 @@ const Step3 = () => {
 
                     <div className="flex w-full">
                       <div
-                        className={`border-1 h-11   text-lg lg:w-72 w-2/5 my-1 mr-2 placeholder-gray-600 ${
+                        className={`border-1 h-11   text-lg lg:w-72 w-2/5 my-1.5 mr-2 placeholder-gray-600 ${
                           errors?.road_connectivity?.type === "required" &&
                           "border-red  "
                         }`}
@@ -144,7 +150,7 @@ const Step3 = () => {
 
                       <select
                         // {...register("length_width_type")}
-                        className="border-1 h-11  px-2 text-lg lg:w-52 w-2/5 my-1  placeholder-gray-600"
+                        className="border-1 h-11  px-2 text-lg lg:w-52 w-2/5 my-1.5  placeholder-gray-600"
                         id="plot-length-type"
                       >
                         <option value="mts">mtrs</option>
@@ -153,17 +159,26 @@ const Step3 = () => {
                     </div>
 
                     <div className="flex">
-                      <input
-                        {...register("length", {
-                          required: true,
-                        })}
-                        className={`border-1 h-11  px-2 text-lg lg:w-72 w-3/5 my-1 placeholder-gray-600 ${
-                          errors?.length?.type === "required" && "border-red  "
-                        }`}
-                        type="text"
-                        id="plot-length"
-                        placeholder="Length"
-                      ></input>
+                      <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                        <input
+                          {...register("length", {
+                            required: true,
+                          })}
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.length?.type === "required" && "border-red"
+                          }`}
+                          type="text"
+                          id="plot-length"
+                          placeholder=" "
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Length
+                        </label>
+                      </div>
+
                       <select
                         {...register("length_width_type")}
                         id="length_width_type"
@@ -175,17 +190,26 @@ const Step3 = () => {
                       </select>
                     </div>
                     <div className="flex">
-                      <input
-                        {...register("width", {
-                          required: true,
-                        })}
-                        className={`border-1 h-11  px-2 text-lg lg:w-72 w-3/5 my-1 placeholder-gray-600 ${
-                          errors?.width?.type === "required" && "border-red  "
-                        }`}
-                        type="text"
-                        id="plot-breadth"
-                        placeholder="Width"
-                      ></input>
+                      <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                        <input
+                          {...register("width", {
+                            required: true,
+                          })}
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.width?.type === "required" && "border-red"
+                          }`}
+                          type="text"
+                          id="plot-breadth"
+                          placeholder=" "
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Width
+                        </label>
+                      </div>
+
                       <select
                         // {...register("length_width_type")}
                         id="length_width_type"
@@ -196,18 +220,25 @@ const Step3 = () => {
                         <option value="mts">mtrs</option>
                       </select>
                     </div>
-                    <input
-                      className={`border-1 h-11  px-2 text-lg lg:w-72 w-3/5 my-1 placeholder-gray-600 ${
-                        errors?.total_floor?.type === "required" &&
-                        "border-red  "
-                      }`}
-                      type="text"
-                      {...register("total_floor", {
-                        required: true,
-                      })}
-                      id="totalFloors"
-                      placeholder="Basement + Floors Allowed"
-                    ></input>
+
+                    <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                      <input
+                        className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                          errors?.total_floor?.type === "required" &&
+                          "border-red"
+                        }`}
+                        type="text"
+                        {...register("total_floor", { required: true })}
+                        placeholder=" "
+                      ></input>
+                      <label
+                        for=""
+                        className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                      >
+                        Basement + Floors Allowed
+                      </label>
+                    </div>
+
                     <div className="">
                       {(errors?.plot_area?.type === "required" ||
                         errors?.road_connectivity?.type === "required" ||
@@ -233,54 +264,107 @@ const Step3 = () => {
                         Property Details
                       </h4>
                       <div className="flex w-full flex-col lg:flex-row">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1 placeholder-gray-600 uppercase "
-                          type="text"
-                          {...register("bhk")}
-                          placeholder="3 BHK / 2 BHK / 1 BHK "
-                        ></input>
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1 placeholder-gray-600"
-                          type="number"
-                          min="1"
-                          {...register("balconies")}
-                          placeholder="Balconies"
-                          id="bal-cony"
-                        />
+                        <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.bhk?.type === "required" && "border-red"
+                            }`}
+                            type="text"
+                            {...register("bhk", { required: true })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            3 BHK / 2 BHK / 1 BHK
+                          </label>
+                        </div>
+
+                        <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 lg:ml-2">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.balconies?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="number"
+                            min="1"
+                            {...register("balconies", { required: true })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Balconies
+                          </label>
+                        </div>
                       </div>
 
                       <div className="flex w-full flex-col lg:flex-row">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1 placeholder-gray-600"
-                          type="number"
-                          {...register("bedrooms")}
-                          placeholder="Bedrooms"
-                          id="bed-room"
-                          required=""
-                          min="1"
-                          aria-required="true"
-                        />
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1 placeholder-gray-600"
-                          type="number"
-                          {...register("bathrooms")}
-                          placeholder="Washrooms"
-                          id="bath-room"
-                          required=""
-                          min="1"
-                          aria-required="true"
-                        />
+                        <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.bedrooms?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="number"
+                            min="1"
+                            {...register("bedrooms", { required: true })}
+                            placeholder=" "
+                            id="bed-room"
+                            required=""
+                            aria-required="true"
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Bedrooms
+                          </label>
+                        </div>
+
+                        <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 lg:ml-2">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.bathrooms?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="number"
+                            min="1"
+                            {...register("bathrooms", { required: true })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Washrooms
+                          </label>
+                        </div>
                       </div>
 
                       <div className="flex w-full">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 my-1 placeholder-gray-600"
-                          type="text"
-                          {...register("carpet_area")}
-                          placeholder="Carpet Area"
-                        />
+                        <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.carpet_area?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            {...register("carpet_area", { required: true })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Carpet Area
+                          </label>
+                        </div>
+
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 my-1 placeholder-gray-600 ml-2 lg:ml-0"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 my-1.5 placeholder-gray-600 ml-2 "
                           {...register("carpet_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -290,14 +374,26 @@ const Step3 = () => {
                       </div>
 
                       <div className="flex w-full">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 my-1 placeholder-gray-600"
-                          type="text"
-                          {...register("built_up_area")}
-                          placeholder="Built-up Area"
-                        ></input>
+                        <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 mr-2 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.built_up_area?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            {...register("built_up_area", { required: true })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Built-up Area
+                          </label>
+                        </div>
+
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 my-1 placeholder-gray-600 ml-2 lg:ml-0"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 my-1.5 placeholder-gray-600 ml-2 lg:ml-0"
                           {...register("built_up_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -307,14 +403,28 @@ const Step3 = () => {
                       </div>
 
                       <div className="flex w-full">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 my-1 placeholder-gray-600"
-                          type="text"
-                          {...register("super_built_up_area")}
-                          placeholder="Super Built-up Area"
-                        ></input>
+                        <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 mr-2 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.super_built_up_area?.type ===
+                                "required" && "border-red"
+                            }`}
+                            type="text"
+                            {...register("super_built_up_area", {
+                              required: true,
+                            })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Super Built-up Area
+                          </label>
+                        </div>
+
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 my-1 placeholder-gray-600 ml-2 lg:ml-0"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 my-1.5 placeholder-gray-600 ml-2 lg:ml-0"
                           {...register("super_built_up_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -324,7 +434,7 @@ const Step3 = () => {
                       </div>
 
                       <select
-                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1 placeholder-gray-600 "
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1.5 placeholder-gray-600 "
                         {...register("furnished")}
                         title="Furnishing Status"
                       >
@@ -333,29 +443,59 @@ const Step3 = () => {
                         <option>Un-Furnished</option>
                       </select>
 
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1 placeholder-gray-600 "
-                        type="text"
-                        {...register("total_floor")}
-                        placeholder="Basement + Stilt + No. of Floors"
-                        id="totalFloors"
-                      ></input>
+                      <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 mr-2 ">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                            errors?.total_floor?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          {...register("total_floor")}
+                          placeholder=" "
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Basement + Stilt + No. of Floors
+                        </label>
+                      </div>
 
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1 placeholder-gray-600 "
-                        type="text"
-                        {...register("floor_no")}
-                        placeholder="Property Floor No."
-                        id="floorNo"
-                      ></input>
+                      <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 mr-2 ">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                            errors?.floor_no?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          {...register("floor_no", {
+                            required: true,
+                          })}
+                          placeholder=" "
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Property Floor No.
+                        </label>
+                      </div>
                     </div>
-                    <div className="px-2 lg:px-0">
+                    <div className="px-2 lg:px-0 ">
                       <p className="text-xl my-2">Possession </p>
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                      <label
+                        for="underConstruction"
+                        className={` px-2 py-2 border-1 w-72 flex  cursor-pointerjustify-start items-center my-2  ${
+                          errors?.possession?.type === "required" &&
+                          "border-red"
+                        } `}
+                      >
                         <input
                           className=" w-5 h-5 "
                           type="radio"
-                          {...register("possession")}
+                          {...register("possession", {
+                            required: true,
+                          })}
                           id="underConstruction"
                           value="Under Construction"
                           onClick={(e) =>
@@ -368,12 +508,20 @@ const Step3 = () => {
                           {" "}
                           Under Construction
                         </span>
-                      </div>
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                      </label>
+                      <label
+                        for="Ready to move"
+                        className={` px-2 py-2 border-1 w-72 flex justify-start cursor-pointer items-center my-2  ${
+                          errors?.possession?.type === "required" &&
+                          "border-red"
+                        } `}
+                      >
                         <input
                           className=" w-5 h-5 "
                           type="radio"
-                          {...register("possession")}
+                          {...register("possession", {
+                            required: true,
+                          })}
                           value="Ready to move"
                           onClick={(e) =>
                             setPossessionState({
@@ -384,7 +532,8 @@ const Step3 = () => {
                         <span className="text-lg ml-4 text-gray-600">
                           Ready To Move
                         </span>
-                      </div>
+                      </label>
+
                       {PossessionState.UnderConstruction && (
                         <div className="flex flex-col">
                           <label className="text-xl my-2 mr-4">
@@ -497,60 +646,111 @@ const Step3 = () => {
                       <h4 className="text-2xl font-medium  uppercase mb-4">
                         Property Details
                       </h4>
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1 placeholder-gray-600 uppercase"
-                        type="text"
-                        {...register("bhk")}
-                        placeholder="3 BHK / 2 BHK / 1 BHK "
-                      ></input>
-                      <div>
+                      <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg uppercase appearance-none focus:outline-none bg-transparent ${
+                            errors?.bhk?.type === "required" && "border-red"
+                          }`}
+                          type="text"
+                          {...register("bhk", { required: true })}
+                          placeholder=" "
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          3 BHK / 2 BHK / 1 BHK
+                        </label>
+                      </div>
+                      <div className="flex flex-wrap">
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full mr-2 my-1.5 placeholder-gray-600"
                           {...register("house_type")}
                         >
                           <option>Independent House</option>
                           <option>Villa</option>
                         </select>
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full mr-2 my-1 placeholder-gray-600"
-                          type="number"
-                          {...register("balconies")}
-                          placeholder="Balconies"
-                          id="bal-cony"
-                          min="1"
-                        />
+                        <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.balconies?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="number"
+                            min="1"
+                            {...register("balconies", { required: true })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Balconies
+                          </label>
+                        </div>
                       </div>
-                      <div>
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full mr-2 my-1 placeholder-gray-600"
-                          type="number"
-                          {...register("bedrooms")}
-                          placeholder="Bedrooms"
-                          id="bed-room"
-                          required=""
-                          aria-required="true"
-                          min="1"
-                        />
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full mr-2 my-1 placeholder-gray-600"
-                          type="number"
-                          {...register("bathrooms")}
-                          placeholder="Washrooms"
-                          id="bath-room"
-                          required=""
-                          aria-required="true"
-                          min="1"
-                        />
+                      <div className="flex flex-wrap">
+                        <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.bedrooms?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="number"
+                            min="1"
+                            {...register("bedrooms", { required: true })}
+                            placeholder=" "
+                            id="bed-room"
+                            required=""
+                            aria-required="true"
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Bedrooms
+                          </label>
+                        </div>
+
+                        <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 lg:ml-2">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.bathrooms?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="number"
+                            min="1"
+                            {...register("bathrooms", { required: true })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Washrooms
+                          </label>
+                        </div>
                       </div>
                       <div className="flex w-full ">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
-                          type="text"
-                          {...register("carpet_area")}
-                          placeholder="Carpet Area"
-                        />
+                        <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 lg:mr-2 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.carpet_area?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            {...register("carpet_area", { required: true })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Carpet Area
+                          </label>
+                        </div>
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
                           {...register("carpet_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -559,14 +759,25 @@ const Step3 = () => {
                         </select>
                       </div>
                       <div className="flex w-full ">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
-                          type="text"
-                          {...register("built_up_area")}
-                          placeholder="Built-up Area"
-                        ></input>
+                        <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 mr-2 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.built_up_area?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            {...register("built_up_area", { required: true })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Built-up Area
+                          </label>
+                        </div>
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
                           {...register("built_up_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -575,15 +786,28 @@ const Step3 = () => {
                         </select>
                       </div>
                       <div className="flex w-full ">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
-                          type="text"
-                          {...register("super_built_up_area")}
-                          placeholder="Super Built-up Area"
-                        ></input>
+                        <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 mr-2 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.super_built_up_area?.type ===
+                                "required" && "border-red"
+                            }`}
+                            type="text"
+                            {...register("super_built_up_area", {
+                              required: true,
+                            })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Super Built-up Area
+                          </label>
+                        </div>
 
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
                           {...register("super_built_up_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -612,11 +836,20 @@ const Step3 = () => {
                     </div>
                     <div className="mx-2 lg:mx-0">
                       <p className="text-xl my-2">Possession </p>
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                      <label
+                        for="underConstruction"
+                        className={` px-2 py-2 border-1 w-72 flex  cursor-pointer justify-start items-center my-2  ${
+                          errors?.possession?.type === "required" &&
+                          "border-red"
+                        } `}
+                      >
                         <input
                           className=" w-5 h-5 "
                           type="radio"
-                          {...register("possession")}
+                          {...register("possession", {
+                            required: true,
+                          })}
+                          id="underConstruction"
                           value="Under Construction"
                           onClick={(e) =>
                             setPossessionState({
@@ -628,13 +861,22 @@ const Step3 = () => {
                           {" "}
                           Under Construction
                         </span>
-                      </div>
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                      </label>
+                      <label
+                        for="Ready to move"
+                        className={` px-2 py-2 border-1 w-72 flex justify-start cursor-pointer items-center my-2  ${
+                          errors?.possession?.type === "required" &&
+                          "border-red"
+                        } `}
+                      >
                         <input
                           className=" w-5 h-5 "
                           type="radio"
-                          {...register("possession")}
+                          {...register("possession", {
+                            required: true,
+                          })}
                           value="Ready to move"
+                          id="Ready to move"
                           onClick={(e) =>
                             setPossessionState({
                               ReadyToMove: "Ready To Move",
@@ -644,7 +886,8 @@ const Step3 = () => {
                         <span className="text-lg ml-4 text-gray-600">
                           Ready To Move
                         </span>
-                      </div>
+                      </label>
+
                       {PossessionState.UnderConstruction && (
                         <div className="flex flex-col">
                           <label className="text-xl my-2 mr-4">
@@ -770,44 +1013,103 @@ const Step3 = () => {
                         </select> */}
                       </div>
                       <div>
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600 uppercase"
-                          type="text"
-                          {...register("bhk")}
-                          placeholder="3 BHK / 2 BHK / 1 BHK "
-                        ></input>
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
-                          type="number"
-                          {...register("bedrooms")}
-                          placeholder="Bedrooms"
-                          min="1"
-                        />
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
-                          type="number"
-                          {...register("bathrooms")}
-                          placeholder="Washrooms"
-                          min="1"
-                        />
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
-                          type="number"
-                          {...register("balconies")}
-                          placeholder="Balconies"
-                          id="bal-cony"
-                          min="1"
-                        />
+                        <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.bhk?.type === "required" && "border-red"
+                            }`}
+                            type="text"
+                            {...register("bhk", { required: true })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            3 BHK / 2 BHK / 1 BHK
+                          </label>
+                        </div>
+                        <div className="flex flex-wrap">
+                          <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 ">
+                            <input
+                              className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                                errors?.bedrooms?.type === "required" &&
+                                "border-red"
+                              }`}
+                              type="number"
+                              min="1"
+                              {...register("bedrooms", { required: true })}
+                              placeholder=" "
+                              id="bed-room"
+                              required=""
+                              aria-required="true"
+                            ></input>
+                            <label
+                              for=""
+                              className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                            >
+                              Bedrooms
+                            </label>
+                          </div>
+                          <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 lg:ml-2">
+                            <input
+                              className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                                errors?.bathrooms?.type === "required" &&
+                                "border-red"
+                              }`}
+                              type="number"
+                              min="1"
+                              {...register("bathrooms", { required: true })}
+                              placeholder=" "
+                            ></input>
+                            <label
+                              for=""
+                              className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                            >
+                              Washrooms
+                            </label>
+                          </div>
+                        </div>
+
+                        <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.balconies?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="number"
+                            min="1"
+                            {...register("balconies", { required: true })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Balconies
+                          </label>
+                        </div>
                       </div>
                       <div className="flex w-full ">
-                        <input
-                          type="text"
-                          {...register("carpet_area")}
-                          placeholder="Carpet Area"
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
-                        />
+                        <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 lg:mr-2 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.carpet_area?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            {...register("carpet_area", { required: true })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Carpet Area
+                          </label>
+                        </div>
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
                           {...register("carpet_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -816,14 +1118,25 @@ const Step3 = () => {
                         </select>
                       </div>
                       <div className="flex w-full ">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
-                          type="text"
-                          {...register("built_up_area")}
-                          placeholder="Built-up Area"
-                        ></input>
+                        <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 mr-2 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.built_up_area?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            {...register("built_up_area", { required: true })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Built-up Area
+                          </label>
+                        </div>
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
                           {...register("built_up_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -832,14 +1145,28 @@ const Step3 = () => {
                         </select>
                       </div>
                       <div className="flex w-full ">
-                        <input
-                          type="text"
-                          {...register("super_built_up_area")}
-                          placeholder="Super Built-up Area"
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
-                        ></input>
+                        <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 mr-2 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.super_built_up_area?.type ===
+                                "required" && "border-red"
+                            }`}
+                            type="text"
+                            {...register("super_built_up_area", {
+                              required: true,
+                            })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Super Built-up Area
+                          </label>
+                        </div>
+
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
                           {...register("super_built_up_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -847,6 +1174,7 @@ const Step3 = () => {
                           <option>Sq-yards</option>
                         </select>
                       </div>
+
                       <div className="w-full">
                         <select
                           className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
@@ -859,32 +1187,62 @@ const Step3 = () => {
                         </select>
                       </div>
                       <div className="w-full">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
-                          type="text"
-                          {...register("total_floor")}
-                          placeholder="Basement + Stilt + No. of Floors"
-                          id="totalFloors"
-                        ></input>
+                        <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.total_floor?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            {...register("total_floor")}
+                            placeholder=" "
+                            id="totalFloors"
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Basement + Stilt + No. of Floors
+                          </label>
+                        </div>
                       </div>
                       <div className="w-full">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
-                          type="text"
-                          {...register("floor_no")}
-                          placeholder="Property Floor No."
-                          id="floorNo"
-                        ></input>
+                        <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.floor_no?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            {...register("floor_no", { required: true })}
+                            placeholder=" "
+                            id="totalFloors"
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Property Floor No.
+                          </label>
+                        </div>
                       </div>
                     </div>
                     <div className="px-2 lg:px-0">
                       <p className="text-xl my-2">Possession </p>
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                      <label
+                        for="underConstruction"
+                        className={` px-2 py-2 border-1 w-72 flex  cursor-pointerjustify-start items-center my-2  ${
+                          errors?.possession?.type === "required" &&
+                          "border-red"
+                        } `}
+                      >
                         <input
                           className=" w-5 h-5 "
                           type="radio"
-                          // {...register("bedrooms")}
-                          {...register("possession")}
+                          {...register("possession", {
+                            required: true,
+                          })}
+                          id="underConstruction"
                           value="Under Construction"
                           onClick={(e) =>
                             setPossessionState({
@@ -896,13 +1254,22 @@ const Step3 = () => {
                           {" "}
                           Under Construction
                         </span>
-                      </div>
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                      </label>
+                      <label
+                        for="Ready to move"
+                        className={` px-2 py-2 border-1 w-72 flex justify-start cursor-pointer items-center my-2  ${
+                          errors?.possession?.type === "required" &&
+                          "border-red"
+                        } `}
+                      >
                         <input
                           className=" w-5 h-5 "
                           type="radio"
-                          {...register("possession")}
+                          {...register("possession", {
+                            required: true,
+                          })}
                           value="Ready to move"
+                          id="Ready to move"
                           onClick={(e) =>
                             setPossessionState({
                               ReadyToMove: "Ready To Move",
@@ -912,7 +1279,8 @@ const Step3 = () => {
                         <span className="text-lg ml-4 text-gray-600">
                           Ready To Move
                         </span>
-                      </div>
+                      </label>
+
                       {PossessionState.UnderConstruction && (
                         <div className="flex flex-col">
                           <label className="text-xl my-2 mr-4">
@@ -1041,42 +1409,84 @@ const Step3 = () => {
                         /> */}
                       </div>
                       <div className="flex flex-wrap">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
-                          type="number"
-                          {...register("bedrooms")}
-                          placeholder="Bedrooms"
-                          id="bed-room"
-                          required=""
-                          aria-required="true"
-                          min="1"
-                        />
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
-                          type="number"
-                          {...register("bathrooms")}
-                          placeholder="Washrooms"
-                          id="bath-room"
-                          required=""
-                          min="1"
-                          aria-required="true"
-                        />
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
-                          type="number"
-                          {...register("balconies")}
-                          placeholder="Balconies"
-                          id="bal-cony"
-                          min="1"
-                        />
+                        <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.bedrooms?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="number"
+                            min="1"
+                            {...register("bedrooms", { required: true })}
+                            placeholder=" "
+                            id="bed-room"
+                            required=""
+                            aria-required="true"
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Bedrooms
+                          </label>
+                        </div>
+
+                        <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 lg:ml-2">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.bathrooms?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="number"
+                            min="1"
+                            {...register("bathrooms", { required: true })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Washrooms
+                          </label>
+                        </div>
+                        <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.balconies?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="number"
+                            min="1"
+                            {...register("balconies", { required: true })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Balconies
+                          </label>
+                        </div>
                       </div>
-                      <div>
-                        <input
-                          type="text"
-                          {...register("plot_area")}
-                          placeholder="Total Plot Area"
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
-                        ></input>
+                      <div className="flex w-full ">
+                        <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 lg:mr-2 ">
+                          <input
+                            type="text"
+                            {...register("plot_area", { required: true })}
+                            placeholder=" "
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.plot_area?.type === "required" &&
+                              "border-red"
+                            }`}
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Total Plot Area
+                          </label>
+                        </div>
+
                         <select
                           className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
                           {...register("plot_area_type")}
@@ -1090,15 +1500,26 @@ const Step3 = () => {
                           <option>hectares</option>
                         </select>
                       </div>
-                      <div>
-                        <input
-                          type="text"
-                          {...register("carpet_area")}
-                          placeholder="Carpet Area"
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
-                        />
+                      <div className="flex w-full ">
+                        <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 lg:mr-2 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.carpet_area?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            {...register("carpet_area", { required: true })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Carpet Area
+                          </label>
+                        </div>
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
                           {...register("carpet_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -1106,15 +1527,26 @@ const Step3 = () => {
                           <option>Sq-yards</option>
                         </select>
                       </div>
-                      <div>
-                        <input
-                          type="text"
-                          {...register("built_up_area")}
-                          placeholder="Built-up Area"
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
-                        ></input>
+                      <div className="flex w-full ">
+                        <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 mr-2 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.built_up_area?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            {...register("built_up_area", { required: true })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Built-up Area
+                          </label>
+                        </div>
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
                           {...register("built_up_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -1122,15 +1554,29 @@ const Step3 = () => {
                           <option>Sq-yards</option>
                         </select>
                       </div>
-                      <div>
-                        <input
-                          type="text"
-                          {...register("super_built_up_area")}
-                          placeholder="Super Built-up Area"
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
-                        ></input>
+                      <div className="flex w-full ">
+                        <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 mr-2 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.super_built_up_area?.type ===
+                                "required" && "border-red"
+                            }`}
+                            type="text"
+                            {...register("super_built_up_area", {
+                              required: true,
+                            })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Super Built-up Area
+                          </label>
+                        </div>
+
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
                           {...register("super_built_up_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -1138,6 +1584,7 @@ const Step3 = () => {
                           <option>Sq-yards</option>
                         </select>
                       </div>
+
                       <div>
                         <select
                           {...register("furnished")}
@@ -1159,11 +1606,20 @@ const Step3 = () => {
                     </div>
                     <div>
                       <p className="text-xl my-2">Possession </p>
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                      <label
+                        for="underConstruction"
+                        className={` px-2 py-2 border-1 w-72 flex  cursor-pointerjustify-start items-center my-2  ${
+                          errors?.possession?.type === "required" &&
+                          "border-red"
+                        } `}
+                      >
                         <input
                           className=" w-5 h-5 "
                           type="radio"
-                          {...register("possession")}
+                          {...register("possession", {
+                            required: true,
+                          })}
+                          id="underConstruction"
                           value="Under Construction"
                           onClick={(e) =>
                             setPossessionState({
@@ -1175,13 +1631,22 @@ const Step3 = () => {
                           {" "}
                           Under Construction
                         </span>
-                      </div>
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                      </label>
+                      <label
+                        for="Ready to move"
+                        className={` px-2 py-2 border-1 w-72 flex justify-start cursor-pointer items-center my-2  ${
+                          errors?.possession?.type === "required" &&
+                          "border-red"
+                        } `}
+                      >
                         <input
                           className=" w-5 h-5 "
                           type="radio"
-                          {...register("possession")}
+                          {...register("possession", {
+                            required: true,
+                          })}
                           value="Ready to move"
+                          id="Ready to move"
                           onClick={(e) =>
                             setPossessionState({
                               ReadyToMove: "Ready To Move",
@@ -1191,7 +1656,8 @@ const Step3 = () => {
                         <span className="text-lg ml-4 text-gray-600">
                           Ready To Move
                         </span>
-                      </div>
+                      </label>
+
                       {PossessionState.UnderConstruction && (
                         <div className="flex flex-col">
                           <label className="text-xl my-2 mr-4">
@@ -1318,40 +1784,64 @@ const Step3 = () => {
                         ></input>
                       </div>
 
-                      <div className="w-full flex">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
-                          type="text"
-                          id="carpet-area"
-                          placeholder="Carpet Area"
-                          {...register("carpet_area")}
-                        />
+                      <div className="flex w-full ">
+                        <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 lg:mr-2 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.carpet_area?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            {...register("carpet_area", { required: true })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Carpet Area
+                          </label>
+                        </div>
                         <select
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
                           {...register("carpet_area_type")}
-                          id="carpet-type"
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
                         </select>
                       </div>
-                      <div className="w-full flex">
-                        <input
-                          type="text"
-                          {...register("super_built_up_area")}
-                          placeholder="Super Built-up Area"
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
-                        ></input>
+                      <div className="flex w-full ">
+                        <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 mr-2 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.super_built_up_area?.type ===
+                                "required" && "border-red"
+                            }`}
+                            type="text"
+                            {...register("super_built_up_area", {
+                              required: true,
+                            })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Super Built-up Area
+                          </label>
+                        </div>
+
                         <select
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
                           {...register("super_built_up_area_type")}
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
                         </select>
                       </div>
+
                       <div className="w-full">
                         <select
                           className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
@@ -1366,45 +1856,81 @@ const Step3 = () => {
 
                       <div>
                         <p className="text-xl my-2">Washrooms</p>
-                        <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                        <label
+                          for="private"
+                          className={` px-2 py-2 border-1 w-72 flex  cursor-pointer justify-start items-center my-2  ${
+                            errors?.bathrooms?.type === "required" &&
+                            "border-red"
+                          } `}
+                        >
                           <input
                             className=" w-5 h-5 "
                             type="radio"
                             value="Private Washroom"
-                            {...register("bathrooms")}
+                            id="private"
+                            {...register("bathrooms", { required: true })}
                           />
                           <span className="text-lg ml-4 text-gray-600">
                             {" "}
                             Private Washroom
                           </span>
-                        </div>
-                        <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                        </label>
+                        <label
+                          for="shared"
+                          className={` px-2 py-2 border-1 w-72 flex  cursor-pointer justify-start items-center my-2  ${
+                            errors?.bathrooms?.type === "required" &&
+                            "border-red"
+                          } `}
+                        >
                           <input
                             className=" w-5 h-5 "
                             type="radio"
-                            {...register("bathrooms")}
-                            id="shared"
                             value="Shared Washroom"
+                            id="shared"
+                            {...register("bathrooms", { required: true })}
                           />
                           <span className="text-lg ml-4 text-gray-600">
                             Shared Washroom
                           </span>
-                        </div>
+                        </label>
                       </div>
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
-                        type="text"
-                        {...register("total_floor")}
-                        placeholder="Atrium Floor / Ground Floor / Floor No."
-                      ></input>
+
+                      <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 ">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                            errors?.total_floor?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="number"
+                          min="1"
+                          {...register("total_floor", { required: true })}
+                          placeholder=" "
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Total Floors
+                        </label>
+                      </div>
                     </div>
+
                     <div className="mx-2">
                       <p className="text-xl my-2">Availability Status </p>
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                      <label
+                        for="underConstruction"
+                        className={` px-2 py-2 border-1 w-72 flex  cursor-pointer justify-start items-center my-2  ${
+                          errors?.possession?.type === "required" &&
+                          "border-red"
+                        } `}
+                      >
                         <input
                           className=" w-5 h-5 "
                           type="radio"
-                          {...register("possession")}
+                          {...register("possession", {
+                            required: true,
+                          })}
+                          id="underConstruction"
                           value="Under Construction"
                           onClick={(e) =>
                             setPossessionState({
@@ -1416,13 +1942,22 @@ const Step3 = () => {
                           {" "}
                           Under Construction
                         </span>
-                      </div>
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                      </label>
+                      <label
+                        for="Ready to move"
+                        className={` px-2 py-2 border-1 w-72 flex justify-start cursor-pointer items-center my-2  ${
+                          errors?.possession?.type === "required" &&
+                          "border-red"
+                        } `}
+                      >
                         <input
                           className=" w-5 h-5 "
                           type="radio"
-                          {...register("possession")}
+                          {...register("possession", {
+                            required: true,
+                          })}
                           value="Ready to move"
+                          id="Ready to move"
                           onClick={(e) =>
                             setPossessionState({
                               ReadyToMove: "Ready To Move",
@@ -1432,7 +1967,8 @@ const Step3 = () => {
                         <span className="text-lg ml-4 text-gray-600">
                           Ready To Move
                         </span>
-                      </div>
+                      </label>
+
                       {PossessionState.UnderConstruction && (
                         <div className="flex flex-col">
                           <label className="text-xl my-2 mr-4">
@@ -1546,15 +2082,26 @@ const Step3 = () => {
                       </h4>
                       <div></div>
 
-                      <div className="flex w-full">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
-                          type="text"
-                          {...register("carpet_area")}
-                          placeholder="Carpet Area"
-                        />
+                      <div className="flex w-full ">
+                        <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 lg:mr-2 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.carpet_area?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            {...register("carpet_area", { required: true })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Carpet Area
+                          </label>
+                        </div>
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
                           {...register("carpet_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -1562,15 +2109,29 @@ const Step3 = () => {
                           <option>Sq-yards</option>
                         </select>
                       </div>
-                      <div className="flex w-full">
-                        <input
-                          type="text"
-                          {...register("super_built_up_area")}
-                          placeholder="Super Built-up Area"
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
-                        ></input>
+                      <div className="flex w-full ">
+                        <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 mr-2 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.super_built_up_area?.type ===
+                                "required" && "border-red"
+                            }`}
+                            type="text"
+                            {...register("super_built_up_area", {
+                              required: true,
+                            })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Super Built-up Area
+                          </label>
+                        </div>
+
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
                           {...register("super_built_up_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -1578,6 +2139,7 @@ const Step3 = () => {
                           <option>Sq-yards</option>
                         </select>
                       </div>
+
                       <div className="w-full">
                         <select
                           className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
@@ -1592,44 +2154,80 @@ const Step3 = () => {
 
                       <div>
                         <p className="text-xl my-2">Washrooms</p>
-                        <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                        <label
+                          for="private"
+                          className={` px-2 py-2 border-1 w-72 flex  cursor-pointer justify-start items-center my-2  ${
+                            errors?.bathrooms?.type === "required" &&
+                            "border-red"
+                          } `}
+                        >
                           <input
                             className=" w-5 h-5 "
                             type="radio"
                             value="Private Washroom"
-                            {...register("bathrooms")}
+                            id="private"
+                            {...register("bathrooms", { required: true })}
                           />
                           <span className="text-lg ml-4 text-gray-600">
                             {" "}
                             Private Washroom
                           </span>
-                        </div>
-                        <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                        </label>
+                        <label
+                          for="shared"
+                          className={` px-2 py-2 border-1 w-72 flex  cursor-pointer justify-start items-center my-2  ${
+                            errors?.bathrooms?.type === "required" &&
+                            "border-red"
+                          } `}
+                        >
                           <input
                             className=" w-5 h-5 "
                             type="radio"
                             value="Shared Washroom"
-                            {...register("bathrooms")}
+                            id="shared"
+                            {...register("bathrooms", { required: true })}
                           />
                           <span className="text-lg ml-4 text-gray-600">
                             Shared Washroom
                           </span>
-                        </div>
+                        </label>
                       </div>
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
-                        type="text"
-                        {...register("floor_no")}
-                        placeholder="Basement / Ground Floor / Floor No."
-                      ></input>
+
+                      <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 ">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                            errors?.floor_no?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="number"
+                          min="1"
+                          {...register("floor_no", { required: true })}
+                          placeholder=" "
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Basement / Floor No.
+                        </label>
+                      </div>
                     </div>
                     <div className="mx-2">
                       <p className="text-xl my-2">Availability Status </p>
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                      <label
+                        for="underConstruction"
+                        className={` px-2 py-2 border-1 w-72 flex  cursor-pointer justify-start items-center my-2  ${
+                          errors?.possession?.type === "required" &&
+                          "border-red"
+                        } `}
+                      >
                         <input
                           className=" w-5 h-5 "
                           type="radio"
-                          {...register("possession")}
+                          {...register("possession", {
+                            required: true,
+                          })}
+                          id="underConstruction"
                           value="Under Construction"
                           onClick={(e) =>
                             setPossessionState({
@@ -1641,13 +2239,22 @@ const Step3 = () => {
                           {" "}
                           Under Construction
                         </span>
-                      </div>
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                      </label>
+                      <label
+                        for="Ready to move"
+                        className={` px-2 py-2 border-1 w-72 flex justify-start cursor-pointer items-center my-2  ${
+                          errors?.possession?.type === "required" &&
+                          "border-red"
+                        } `}
+                      >
                         <input
                           className=" w-5 h-5 "
                           type="radio"
-                          {...register("possession")}
+                          {...register("possession", {
+                            required: true,
+                          })}
                           value="Ready to move"
+                          id="Ready to move"
                           onClick={(e) =>
                             setPossessionState({
                               ReadyToMove: "Ready To Move",
@@ -1657,7 +2264,8 @@ const Step3 = () => {
                         <span className="text-lg ml-4 text-gray-600">
                           Ready To Move
                         </span>
-                      </div>
+                      </label>
+
                       {PossessionState.UnderConstruction && (
                         <div className="flex flex-col">
                           <label className="text-xl my-2 mr-4">
@@ -1774,7 +2382,7 @@ const Step3 = () => {
                       <div className="w-full">
                         <div>
                           <select
-                            className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1.5 placeholder-gray-600"
                             {...register("house_type")}
                           >
                             <option>Factory</option>
@@ -1782,40 +2390,72 @@ const Step3 = () => {
                           </select>
                         </div>
                         <div className="w-full flex">
-                          <input
-                            className="border-1 h-11  px-2 text-lg lg:w-72 w-3/4 mr-2 my-1 placeholder-gray-600"
-                            type="text"
-                            {...register("plot_area")}
-                            placeholder="Total Plot Area"
-                          ></input>
+                          <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 lg:mr-2 ">
+                            <input
+                              className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                                errors?.plot_area?.type === "required" &&
+                                "border-red"
+                              }`}
+                              type="text"
+                              {...register("plot_area", { required: true })}
+                              placeholder=" "
+                            ></input>
+                            <label
+                              for=""
+                              className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                            >
+                              Total Plot Area
+                            </label>
+                          </div>
+
                           <select
-                            className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
                             {...register("plot_area_type")}
                           >
                             <option>Sq-ft</option>
                             <option>Sq-mt</option>
                             <option>Sq-yards</option>
-                            <option>Marla</option>
-                            <option>bighas</option>
-                            <option>acres</option>
-                            <option>hectares</option>
                           </select>
                         </div>
                         <div className="flex ">
-                          <input
-                            className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 mr-2 my-1 placeholder-gray-600"
-                            type="text"
-                            {...register("length")}
-                            placeholder="Length"
-                          ></input>
-                          <input
-                            className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 mr-2 my-1 placeholder-gray-600"
-                            type="text"
-                            {...register("width")}
-                            placeholder="Width"
-                          ></input>
+                          <div className="outline relative h-11  lg:w-72 w-2/5 focus-within:border-blue-500 my-1.5 lg:mr-2 ">
+                            <input
+                              className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                                errors?.length?.type === "required" &&
+                                "border-red"
+                              }`}
+                              type="text"
+                              {...register("length", { required: true })}
+                              placeholder=" "
+                            ></input>
+                            <label
+                              for=""
+                              className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                            >
+                              Length
+                            </label>
+                          </div>
+
+                          <div className="outline relative h-11  lg:w-72 w-2/5 focus-within:border-blue-500 my-1.5 lg:mr-2 ">
+                            <input
+                              className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                                errors?.width?.type === "required" &&
+                                "border-red"
+                              }`}
+                              type="text"
+                              {...register("width", { required: true })}
+                              placeholder=" "
+                            ></input>
+                            <label
+                              for=""
+                              className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                            >
+                              Width
+                            </label>
+                          </div>
+
                           <select
-                            className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
                             {...register("length_width_type")}
                           >
                             <option>feets</option>
@@ -1823,15 +2463,26 @@ const Step3 = () => {
                             <option>yards</option>
                           </select>
                         </div>
-                        <div className="w-full flex">
-                          <input
-                            className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
-                            type="text"
-                            {...register("carpet_area")}
-                            placeholder="Carpet Area"
-                          />
+                        <div className="flex w-full ">
+                          <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 lg:mr-2 ">
+                            <input
+                              className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                                errors?.carpet_area?.type === "required" &&
+                                "border-red"
+                              }`}
+                              type="text"
+                              {...register("carpet_area", { required: true })}
+                              placeholder=" "
+                            ></input>
+                            <label
+                              for=""
+                              className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                            >
+                              Carpet Area
+                            </label>
+                          </div>
                           <select
-                            className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
                             {...register("carpet_area_type")}
                           >
                             <option>Sq-ft</option>
@@ -1840,15 +2491,29 @@ const Step3 = () => {
                           </select>
                         </div>
                       </div>
-                      <div className="w-full flex">
-                        <input
-                          type="text"
-                          {...register("super_built_up_area")}
-                          placeholder="Super Built-up Area"
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
-                        ></input>
+                      <div className="flex w-full ">
+                        <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 mr-2 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.super_built_up_area?.type ===
+                                "required" && "border-red"
+                            }`}
+                            type="text"
+                            {...register("super_built_up_area", {
+                              required: true,
+                            })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Super Built-up Area
+                          </label>
+                        </div>
+
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
                           {...register("super_built_up_area_type")}
                         >
                           <option>Sq-ft</option>
@@ -1857,13 +2522,24 @@ const Step3 = () => {
                         </select>
                       </div>
 
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
-                        type="text"
-                        name=""
-                        {...register("floor_no")}
-                        placeholder="Basement / Ground Floor / Floor No."
-                      ></input>
+                      <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 ">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                            errors?.floor_no?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="number"
+                          min="1"
+                          {...register("floor_no", { required: true })}
+                          placeholder=" "
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Basement / Floor No.
+                        </label>
+                      </div>
                       <select
                         className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
                         {...register("furnished")}
@@ -1876,11 +2552,20 @@ const Step3 = () => {
                     </div>
                     <div className="w-full mx-2">
                       <p className="text-xl my-2">Availability Status </p>
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                      <label
+                        for="underConstruction"
+                        className={` px-2 py-2 border-1 w-72 flex  cursor-pointer justify-start items-center my-2  ${
+                          errors?.possession?.type === "required" &&
+                          "border-red"
+                        } `}
+                      >
                         <input
                           className=" w-5 h-5 "
                           type="radio"
-                          {...register("possession")}
+                          {...register("possession", {
+                            required: true,
+                          })}
+                          id="underConstruction"
                           value="Under Construction"
                           onClick={(e) =>
                             setPossessionState({
@@ -1892,13 +2577,22 @@ const Step3 = () => {
                           {" "}
                           Under Construction
                         </span>
-                      </div>
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                      </label>
+                      <label
+                        for="Ready to move"
+                        className={` px-2 py-2 border-1 w-72 flex justify-start cursor-pointer items-center my-2  ${
+                          errors?.possession?.type === "required" &&
+                          "border-red"
+                        } `}
+                      >
                         <input
                           className=" w-5 h-5 "
                           type="radio"
-                          {...register("possession")}
+                          {...register("possession", {
+                            required: true,
+                          })}
                           value="Ready to move"
+                          id="Ready to move"
                           onClick={(e) =>
                             setPossessionState({
                               ReadyToMove: "Ready To Move",
@@ -1908,7 +2602,8 @@ const Step3 = () => {
                         <span className="text-lg ml-4 text-gray-600">
                           Ready To Move
                         </span>
-                      </div>
+                      </label>
+
                       {PossessionState.UnderConstruction && (
                         <div className="flex flex-col">
                           <label className="text-xl my-2 mr-4">
@@ -2033,15 +2728,27 @@ const Step3 = () => {
                             <option>Godown</option>
                           </select>
                         </div>
-                        <div className="flex">
-                          <input
-                            className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
-                            type="text"
-                            {...register("plot_area")}
-                            placeholder="Total Plot Area"
-                          ></input>
+                        <div className="w-full flex">
+                          <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 lg:mr-2 ">
+                            <input
+                              className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                                errors?.plot_area?.type === "required" &&
+                                "border-red"
+                              }`}
+                              type="text"
+                              {...register("plot_area", { required: true })}
+                              placeholder=" "
+                            ></input>
+                            <label
+                              for=""
+                              className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                            >
+                              Total Plot Area
+                            </label>
+                          </div>
+
                           <select
-                            className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
                             {...register("plot_area_type")}
                           >
                             <option>Sq-ft</option>
@@ -2049,21 +2756,45 @@ const Step3 = () => {
                             <option>Sq-yards</option>
                           </select>
                         </div>
-                        <div className="flex">
-                          <input
-                            className="border-1 h-11  px-2 text-lg lg:w-72 w-1/3 mr-2 my-1 placeholder-gray-600"
-                            type="text"
-                            {...register("length")}
-                            placeholder="Length"
-                          ></input>
-                          <input
-                            className="border-1 h-11  px-2 text-lg lg:w-72 w-1/3 mr-2 my-1 placeholder-gray-600"
-                            type="text"
-                            {...register("width")}
-                            placeholder="Width"
-                          ></input>
+                        <div className="flex w-full ">
+                          <div className="outline relative h-11  lg:w-52 w-2/5 focus-within:border-blue-500 my-1.5 lg:mr-2 ">
+                            <input
+                              className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                                errors?.length?.type === "required" &&
+                                "border-red"
+                              }`}
+                              type="text"
+                              {...register("length", { required: true })}
+                              placeholder=" "
+                            ></input>
+                            <label
+                              for=""
+                              className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                            >
+                              Length
+                            </label>
+                          </div>
+
+                          <div className="outline relative h-11  lg:w-52 w-2/5 focus-within:border-blue-500 my-1.5 lg:mr-2 ">
+                            <input
+                              className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                                errors?.width?.type === "required" &&
+                                "border-red"
+                              }`}
+                              type="text"
+                              {...register("width", { required: true })}
+                              placeholder=" "
+                            ></input>
+                            <label
+                              for=""
+                              className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                            >
+                              Width
+                            </label>
+                          </div>
+
                           <select
-                            className="border-1 h-11  px-2 text-lg lg:w-72 w-1/3 lg:mr-2 my-1 placeholder-gray-600"
+                            className="border-1 h-11  px-2 text-lg lg:w-52 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
                             {...register("length_width_type")}
                           >
                             <option>feets</option>
@@ -2072,55 +2803,27 @@ const Step3 = () => {
                           </select>
                         </div>
 
-                        <div className="w-full flex">
-                          <input
-                            className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
-                            type="text"
-                            {...register("plot_area")}
-                            placeholder="Total Plot Area"
-                          ></input>
+                        <div className="flex w-full ">
+                          <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 lg:mr-2 ">
+                            <input
+                              className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                                errors?.carpet_area?.type === "required" &&
+                                "border-red"
+                              }`}
+                              type="text"
+                              {...register("carpet_area", { required: true })}
+                              placeholder=" "
+                            ></input>
+                            <label
+                              for=""
+                              className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                            >
+                              Carpet Area
+                            </label>
+                          </div>
                           <select
-                            className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
-                            id="area-type"
-                          >
-                            <option>Sq-ft</option>
-                            <option>Sq-mt</option>
-                            <option>Sq-yards</option>
-                          </select>
-                        </div>
-                        <div className="w-full flex">
-                          <input
-                            className="border-1 h-11  px-2 text-lg lg:w-72 w-1/3 mr-2 my-1 placeholder-gray-600"
-                            type="text"
-                            id="lengthArea"
-                            placeholder="Length"
-                          ></input>
-                          <input
-                            className="border-1 h-11  px-2 text-lg lg:w-72 w-1/3 mr-2 my-1 placeholder-gray-600"
-                            type="text"
-                            id="widthArea"
-                            placeholder="Width"
-                          ></input>
-                          <select
-                            className="border-1 h-11  px-2 text-lg lg:w-72 w-1/3 lg:mr-2 my-1 placeholder-gray-600"
-                            id="lwtype"
-                          >
-                            <option>feets</option>
-                            <option>meters</option>
-                            <option>yards</option>
-                          </select>
-                        </div>
-
-                        <div className="w-full flex">
-                          <input
-                            className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 mr-2 my-1 placeholder-gray-600"
-                            type="text"
-                            id="carpet-area"
-                            placeholder="Carpet Area"
-                          />
-                          <select
-                            className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
-                            id="carpet-type"
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
+                            {...register("carpet_area_type")}
                           >
                             <option>Sq-ft</option>
                             <option>Sq-mt</option>
@@ -2128,38 +2831,80 @@ const Step3 = () => {
                           </select>
                         </div>
                       </div>
-                      <div className="w-full flex">
-                        <input
-                          type="text"
-                          id="super-built-area"
-                          placeholder="Super Built-up Area"
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-3/5 lg:mr-2 my-1 placeholder-gray-600"
-                        ></input>
+                      <div className="flex-wrap flex">
+                        <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 mr-2 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.super_built_up_area?.type ===
+                                "required" && "border-red"
+                            }`}
+                            type="text"
+                            {...register("super_built_up_area", {
+                              required: true,
+                            })}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Super Built-up Area
+                          </label>
+                        </div>
+
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1 placeholder-gray-600"
-                          id="super-built-type"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
+                          {...register("super_built_up_area_type")}
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
                         </select>
                       </div>
-
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
-                        type="text"
-                        name=""
-                        id="totalFloors"
-                        placeholder="Basement / Ground Floor / Floor No."
-                      ></input>
                     </div>
+
+                    <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 ">
+                      <input
+                        className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                          errors?.floor_no?.type === "required" && "border-red"
+                        }`}
+                        type="number"
+                        min="1"
+                        {...register("floor_no", { required: true })}
+                        placeholder=" "
+                      ></input>
+                      <label
+                        for=""
+                        className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                      >
+                        Basement / Floor No.
+                      </label>
+                    </div>
+                    <select
+                      className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
+                      {...register("furnished")}
+                      title="Furnishing Status"
+                    >
+                      <option>Furnished</option>
+                      <option>Semi-Furnished</option>
+                      <option>Un-Furnished</option>
+                    </select>
+
                     <div className="mx-2">
                       <p className="text-xl my-2">Availability Status </p>
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                      <label
+                        for="underConstruction"
+                        className={` px-2 py-2 border-1 w-72 flex  cursor-pointer justify-start items-center my-2  ${
+                          errors?.possession?.type === "required" &&
+                          "border-red"
+                        } `}
+                      >
                         <input
                           className=" w-5 h-5 "
                           type="radio"
-                          name="possession"
+                          {...register("possession", {
+                            required: true,
+                          })}
                           id="underConstruction"
                           value="Under Construction"
                           onClick={(e) =>
@@ -2172,14 +2917,22 @@ const Step3 = () => {
                           {" "}
                           Under Construction
                         </span>
-                      </div>
-                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                      </label>
+                      <label
+                        for="Ready to move"
+                        className={` px-2 py-2 border-1 w-72 flex justify-start cursor-pointer items-center my-2  ${
+                          errors?.possession?.type === "required" &&
+                          "border-red"
+                        } `}
+                      >
                         <input
                           className=" w-5 h-5 "
                           type="radio"
-                          name="possession"
-                          id="readyToMove"
+                          {...register("possession", {
+                            required: true,
+                          })}
                           value="Ready to move"
+                          id="Ready to move"
                           onClick={(e) =>
                             setPossessionState({
                               ReadyToMove: "Ready To Move",
@@ -2189,7 +2942,8 @@ const Step3 = () => {
                         <span className="text-lg ml-4 text-gray-600">
                           Ready To Move
                         </span>
-                      </div>
+                      </label>
+
                       {PossessionState.UnderConstruction && (
                         <div className="flex flex-col">
                           <label className="text-xl my-2 mr-4">
@@ -2262,7 +3016,7 @@ const Step3 = () => {
                       )}
                     </div>
 
-                    <div className="mx-2">
+                    {/* <div className="mx-2">
                       <p className="text-xl my-2">Purchase Type</p>
                       <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
                         <input
@@ -2289,7 +3043,7 @@ const Step3 = () => {
                           Resale
                         </span>
                       </div>
-                    </div>
+                    </div> */}
                   </>
                 </div>
               )}

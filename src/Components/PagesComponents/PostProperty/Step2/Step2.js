@@ -44,7 +44,7 @@ const Step2 = () => {
   };
 
   const HandleStep2Submit = async (data) => {
-    console.log(data);
+    // console.log(data);
     const res = await axios.post(
       `${API}/property/store-location`,
       {
@@ -92,7 +92,7 @@ const Step2 = () => {
     };
   }
 
-  console.log(errors);
+  // console.log(errors);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -121,23 +121,22 @@ const Step2 = () => {
                     </h4>
 
                     <input
-                      className="border-1 h-11  px-2 text-lg w-72 my-1 "
+                      className="border-1 h-11  px-2 text-lg w-72 my-1.5 "
                       type="text"
                       placeholder="City"
                       defaultValue="Panipat"
                       disabled
                     />
-                    <div className="outline relative h-11 border-1 w-72 focus-within:border-blue-500 my-1">
+                    <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
                       <input
                         {...register("project_name", { required: true })}
-                        className={`block p-4 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                        className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
                           errors?.project_name?.type === "required" &&
-                          "border-red  "
+                          "border-red"
                         }`}
                         type="text"
                         name="project_name"
                         placeholder=" "
-                        id="apart"
                       />
                       <label
                         for="project_name"
@@ -146,31 +145,41 @@ const Step2 = () => {
                         Colony / Society
                       </label>
                     </div>
-
-                    <div
-                      className={`border-1 h-11  text-lg w-72 my-1 placeholder-gray-600 ${
-                        errors?.locality_id?.type === "required" && "border-red"
-                      }`}
-                    >
-                      <Controller
-                        control={control}
-                        {...register("locality_id", { required: true })}
-                        render={({ field: { onChange } }) => (
-                          <SelectSearch
-                            options={options}
-                            placeholder="Locality / Area / Sector"
-                            filterOptions={fuzzySearch}
-                            search
-                            onChange={(selected) => onChange(selected)}
-                          />
-                        )}
-                      />
+                    <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 ">
+                      <div
+                        className={`border-1 h-11  text-lg w-full  placeholder-gray-600   ${
+                          errors?.locality_id?.type === "required" &&
+                          "border-red"
+                        }`}
+                      >
+                        <Controller
+                          name="locality_id"
+                          control={control}
+                          {...register("locality_id", { required: true })}
+                          render={({ field: { onChange } }) => (
+                            <SelectSearch
+                              options={options}
+                              placeholder="Locality / Area / Sector "
+                              filterOptions={fuzzySearch}
+                              search
+                              onChange={(selected) => onChange(selected)}
+                            />
+                          )}
+                        />
+                      </div>
+                      <label
+                        for="locality_id"
+                        className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                      >
+                        Locality / Area / Sector
+                      </label>
                     </div>
-                    <div className="outline relative h-11 border-1 w-72 focus-within:border-blue-500 my-1">
+
+                    <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
                       <input
                         {...register("plot_no", { required: true })}
-                        className={`block p-4 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
-                          errors?.plot_no?.type === "required" && "border-red  "
+                        className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                          errors?.plot_no?.type === "required" && "border-red"
                         }`}
                         type="text"
                         placeholder=" "
@@ -207,7 +216,7 @@ const Step2 = () => {
                       {...register("city", {
                         required: true,
                       })}
-                      className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                      className="border-1 h-11  px-2 text-lg w-72 my-1.5 placeholder-gray-600"
                       type="text"
                       placeholder="City"
                       id="city"
@@ -215,43 +224,73 @@ const Step2 = () => {
                       disabled
                     />
 
-                    <input
-                      {...register("project_name", { required: true })}
-                      className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
-                        errors?.project_name?.type === "required" &&
-                        "border-red  "
-                      }`}
-                      type="text"
-                      placeholder="Colony / Society"
-                      id="apart"
-                    />
-
-                    <div
-                      className={`border-1 h-11  text-lg w-72 my-1 placeholder-gray-600 ${
-                        errors?.locality_id?.type === "required" && "border-red"
-                      }`}
-                    >
-                      <Controller
-                        control={control}
-                        {...register("locality_id", { required: true })}
-                        render={({ field: { onChange } }) => (
-                          <SelectSearch
-                            options={options}
-                            placeholder="Locality / Area / Sector"
-                            filterOptions={fuzzySearch}
-                            search
-                            onChange={(selected) => onChange(selected)}
-                          />
-                        )}
+                    <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                      <input
+                        {...register("project_name", { required: true })}
+                        className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                          errors?.project_name?.type === "required" &&
+                          "border-red  "
+                        }`}
+                        type="text"
+                        name="project_name"
+                        placeholder=" "
+                        id="apart"
                       />
+                      <label
+                        for="project_name"
+                        className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                      >
+                        Colony / Society
+                      </label>
                     </div>
-                    <input
-                      // {...register("project_name", { required: true })}
-                      className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                      type="text"
-                      placeholder="Unit No"
-                      id="apart"
-                    />
+
+                    <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 ">
+                      <div
+                        className={`border-1 h-11  text-lg w-full  placeholder-gray-600   ${
+                          errors?.locality_id?.type === "required" &&
+                          "border-red"
+                        }`}
+                      >
+                        <Controller
+                          name="locality_id"
+                          control={control}
+                          {...register("locality_id", { required: true })}
+                          render={({ field: { onChange } }) => (
+                            <SelectSearch
+                              options={options}
+                              placeholder="Locality / Area / Sector "
+                              filterOptions={fuzzySearch}
+                              search
+                              onChange={(selected) => onChange(selected)}
+                            />
+                          )}
+                        />
+                      </div>
+                      <label
+                        for="locality_id"
+                        className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                      >
+                        Locality / Area / Sector
+                      </label>
+                    </div>
+
+                    <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                      <input
+                        // {...register("plot_no", { required: true })}
+                        className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                          errors?.plot_no?.type === "required" && "border-red  "
+                        }`}
+                        type="text"
+                        placeholder=" "
+                        id="plotNo"
+                      />
+                      <label
+                        for="project_name"
+                        className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                      >
+                        Unit No
+                      </label>
+                    </div>
                   </div>
                   <div className="">
                     {(errors?.locality_id?.type === "required" ||
@@ -274,7 +313,7 @@ const Step2 = () => {
                     </h4>
 
                     <input
-                      className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                      className="border-1 h-11  px-2 text-lg w-72 my-1.5 placeholder-gray-600"
                       type="text"
                       placeholder="City"
                       id="city"
@@ -282,36 +321,55 @@ const Step2 = () => {
                       disabled
                     />
 
-                    <input
-                      {...register("project_name", { required: true })}
-                      className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
-                        errors?.project_name?.type === "required" &&
-                        "border-red  "
-                      }`}
-                      type="text"
-                      placeholder="Colony / Society"
-                      id="apart"
-                    />
-
-                    <div
-                      className={`border-1 h-11  text-lg w-72 my-1 placeholder-gray-600 ${
-                        errors?.locality_id?.type === "required" && "border-red"
-                      }`}
-                    >
-                      <Controller
-                        control={control}
-                        {...register("locality_id", { required: true })}
-                        render={({ field: { onChange } }) => (
-                          <SelectSearch
-                            options={options}
-                            placeholder="Locality / Area / Sector"
-                            filterOptions={fuzzySearch}
-                            search
-                            onChange={(selected) => onChange(selected)}
-                          />
-                        )}
+                    <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                      <input
+                        {...register("project_name", { required: true })}
+                        className={`block p-4 w-full border-1 h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                          errors?.project_name?.type === "required" &&
+                          "border-red  "
+                        }`}
+                        type="text"
+                        name="project_name"
+                        placeholder=" "
+                        id="apart"
                       />
+                      <label
+                        for="project_name"
+                        className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                      >
+                        Colony / Society
+                      </label>
                     </div>
+                    <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 ">
+                      <div
+                        className={`border-1 h-11  text-lg w-full  placeholder-gray-600   ${
+                          errors?.locality_id?.type === "required" &&
+                          "border-red"
+                        }`}
+                      >
+                        <Controller
+                          name="locality_id"
+                          control={control}
+                          {...register("locality_id", { required: true })}
+                          render={({ field: { onChange } }) => (
+                            <SelectSearch
+                              options={options}
+                              placeholder="Locality / Area / Sector "
+                              filterOptions={fuzzySearch}
+                              search
+                              onChange={(selected) => onChange(selected)}
+                            />
+                          )}
+                        />
+                      </div>
+                      <label
+                        for="locality_id"
+                        className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                      >
+                        Locality / Area / Sector
+                      </label>
+                    </div>
+
                     <div className="">
                       {(errors?.locality_id?.type === "required" ||
                         errors?.project_name?.type === "required" ||
@@ -333,7 +391,7 @@ const Step2 = () => {
                   </h4>
 
                   <input
-                    className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                    className="border-1 h-11  px-2 text-lg w-72 my-1.5 placeholder-gray-600"
                     type="text"
                     placeholder="City"
                     id="city"
@@ -341,34 +399,52 @@ const Step2 = () => {
                     disabled=""
                   />
 
-                  <input
-                    {...register("project_name", {
-                      required: true,
-                    })}
-                    className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
-                    type="text"
-                    placeholder="Colony / Society"
-                    id="apart"
-                  />
-
-                  <div
-                    className={`border-1 h-11  text-lg w-72 my-1 placeholder-gray-600 ${
-                      errors?.locality_id?.type === "required" && "border-red"
-                    }`}
-                  >
-                    <Controller
-                      control={control}
-                      {...register("locality_id", { required: true })}
-                      render={({ field: { onChange } }) => (
-                        <SelectSearch
-                          options={options}
-                          placeholder="Locality / Area / Sector"
-                          filterOptions={fuzzySearch}
-                          search
-                          onChange={(selected) => onChange(selected)}
-                        />
-                      )}
+                  <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                    <input
+                      {...register("project_name", { required: true })}
+                      className={`block p-4 w-full border-1 h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                        errors?.project_name?.type === "required" &&
+                        "border-red  "
+                      }`}
+                      type="text"
+                      name="project_name"
+                      placeholder=" "
+                      id="apart"
                     />
+                    <label
+                      for="project_name"
+                      className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                    >
+                      Colony / Society
+                    </label>
+                  </div>
+                  <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 ">
+                    <div
+                      className={`border-1 h-11  text-lg w-full  placeholder-gray-600   ${
+                        errors?.locality_id?.type === "required" && "border-red"
+                      }`}
+                    >
+                      <Controller
+                        name="locality_id"
+                        control={control}
+                        {...register("locality_id", { required: true })}
+                        render={({ field: { onChange } }) => (
+                          <SelectSearch
+                            options={options}
+                            placeholder="Locality / Area / Sector "
+                            filterOptions={fuzzySearch}
+                            search
+                            onChange={(selected) => onChange(selected)}
+                          />
+                        )}
+                      />
+                    </div>
+                    <label
+                      for="locality_id"
+                      className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                    >
+                      Locality / Area / Sector
+                    </label>
                   </div>
                 </div>
               )}
@@ -388,46 +464,71 @@ const Step2 = () => {
                     disabled=""
                   />
 
-                  <input
-                    {...register("project_name", { required: true })}
-                    className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
-                      errors?.project_name?.type === "required" &&
-                      "border-red  "
-                    }`}
-                    type="text"
-                    placeholder="Colony / Society"
-                    id="apart"
-                  />
-
-                  <div
-                    className={`border-1 h-11  text-lg w-72 my-1 placeholder-gray-600 ${
-                      errors?.locality_id?.type === "required" && "border-red"
-                    }`}
-                  >
-                    <Controller
-                      control={control}
-                      {...register("locality_id", { required: true })}
-                      render={({ field: { onChange } }) => (
-                        <SelectSearch
-                          options={options}
-                          placeholder="Locality / Area / Sector"
-                          filterOptions={fuzzySearch}
-                          search
-                          onChange={(selected) => onChange(selected)}
-                        />
-                      )}
+                  <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                    <input
+                      {...register("project_name", { required: true })}
+                      className={`block p-4 w-full border-1 h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                        errors?.project_name?.type === "required" &&
+                        "border-red  "
+                      }`}
+                      type="text"
+                      name="project_name"
+                      placeholder=" "
+                      id="apart"
                     />
+                    <label
+                      for="project_name"
+                      className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                    >
+                      Colony / Society
+                    </label>
+                  </div>
+                  <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 ">
+                    <div
+                      className={`border-1 h-11  text-lg w-full  placeholder-gray-600   ${
+                        errors?.locality_id?.type === "required" && "border-red"
+                      }`}
+                    >
+                      <Controller
+                        name="locality_id"
+                        control={control}
+                        {...register("locality_id", { required: true })}
+                        render={({ field: { onChange } }) => (
+                          <SelectSearch
+                            options={options}
+                            placeholder="Locality / Area / Sector "
+                            filterOptions={fuzzySearch}
+                            search
+                            onChange={(selected) => onChange(selected)}
+                          />
+                        )}
+                      />
+                    </div>
+                    <label
+                      for="locality_id"
+                      className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                    >
+                      Locality / Area / Sector
+                    </label>
                   </div>
 
-                  <input
-                    {...register("unit_no", { required: true })}
-                    className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
-                      errors?.unit_no?.type === "required" && "border-red  "
-                    }`}
-                    type="text"
-                    placeholder="Unit No."
-                    id="houseNo"
-                  ></input>
+                  <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                    <input
+                      {...register("unit_no", { required: true })}
+                      className={`block p-4 w-full border-1 h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                        errors?.unit_no?.type === "required" && "border-red  "
+                      }`}
+                      type="text"
+                      placeholder=" "
+                      name="unit_no"
+                    ></input>
+                    <label
+                      for="unit_no"
+                      className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                    >
+                      Unit No
+                    </label>
+                  </div>
 
                   <div className="">
                     {(errors?.locality_id?.type === "required" ||
@@ -449,35 +550,52 @@ const Step2 = () => {
                   </h4>
 
                   <input
-                    className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                    className="border-1 h-11  px-2 text-lg w-72 my-1.5 placeholder-gray-600"
                     name="propertyname"
                     type="text"
                     placeholder="City"
                     id="city"
                     value="Panipat"
-                    disabled=""
+                    disabled
                   />
 
-                  <input
-                    {...register("project_name", { required: true })}
-                    className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
-                      errors?.project_name?.type === "required" &&
-                      "border-red  "
-                    }`}
-                    type="text"
-                    placeholder="Colony / Society"
-                    id="apart"
-                  />
+                  <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                    <input
+                      {...register("project_name", { required: true })}
+                      className={`block p-4 w-full border-1 h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                        errors?.project_name?.type === "required" &&
+                        "border-red  "
+                      }`}
+                      type="text"
+                      name="project_name"
+                      placeholder=" "
+                      id="apart"
+                    />
+                    <label
+                      for="project_name"
+                      className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                    >
+                      Colony / Society
+                    </label>
+                  </div>
 
-                  <input
-                    className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
-                      errors?.project?.type === "required" && "border-red  "
-                    }`}
-                    {...register("project", { required: true })}
-                    type="text"
-                    placeholder="Project / Township / Mall"
-                    id="apart"
-                  />
+                  <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                    <input
+                      className={`block p-4 w-full border-1 h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                        errors?.project?.type === "required" && "border-red  "
+                      }`}
+                      {...register("project", { required: true })}
+                      type="text"
+                      placeholder=" "
+                      id="apart"
+                    />
+                    <label
+                      for="project"
+                      className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                    >
+                      Project / Township / Mall
+                    </label>
+                  </div>
 
                   <div
                     className={`border-1 h-11  text-lg w-72 my-1 placeholder-gray-600 ${
@@ -499,15 +617,23 @@ const Step2 = () => {
                     />
                   </div>
 
-                  <input
-                    {...register("unit_no", { required: true })}
-                    className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
-                      errors?.unit_no?.type === "required" && "border-red  "
-                    }`}
-                    type="text"
-                    placeholder="Unit No."
-                    id="houseNo"
-                  ></input>
+                  <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                    <input
+                      {...register("unit_no", { required: true })}
+                      className={`block p-4 w-full border-1 h-11 text-lg appearance-none focus:outline-none bg-transparent  ${
+                        errors?.unit_no?.type === "required" && "border-red  "
+                      }`}
+                      type="text"
+                      placeholder=" "
+                      id="houseNo"
+                    ></input>
+                    <label
+                      for="Unit No"
+                      className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                    >
+                      Unit No
+                    </label>
+                  </div>
 
                   <div className="">
                     {(errors?.locality_id?.type === "required" ||
@@ -529,35 +655,50 @@ const Step2 = () => {
                   </h4>
 
                   <input
-                    className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                    className="border-1 h-11  px-2 text-lg w-72 my-1.5 placeholder-gray-600"
                     type="text"
                     placeholder="City"
                     id="city"
                     value="Panipat"
-                    disabled=""
+                    disabled
                   />
 
-                  <input
-                    {...register("project_name", { required: true })}
-                    className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
-                      errors?.project_name?.type === "required" &&
-                      "border-red  "
-                    }`}
-                    type="text"
-                    placeholder="Colony / Society"
-                    id="apart"
-                  />
+                  <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                    <input
+                      {...register("project_name", { required: true })}
+                      className={`block border-1 p-4 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                        errors?.project_name?.type === "required" &&
+                        "border-red  "
+                      }`}
+                      type="text"
+                      placeholder=" "
+                      id="apart"
+                    />
+                    <label
+                      for="project_name"
+                      className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                    >
+                      Colony / Society
+                    </label>
+                  </div>
 
-                  <input
-                    {...register("project", { required: true })}
-                    className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
-                      errors?.project_name?.type === "required" &&
-                      "border-red  "
-                    }`}
-                    type="text"
-                    placeholder="Project / Township / Mall"
-                    id="apart"
-                  />
+                  <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                    <input
+                      {...register("project", { required: true })}
+                      className={`block p-4 w-full border-1 h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                        errors?.project?.type === "required" && "border-red  "
+                      }`}
+                      type="text"
+                      placeholder=" "
+                      id="apart"
+                    />
+                    <label
+                      for="project"
+                      className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                    >
+                      Project / Township / Mall
+                    </label>
+                  </div>
 
                   <div
                     className={`border-1 h-11  text-lg w-72 my-1 placeholder-gray-600 ${
@@ -578,15 +719,25 @@ const Step2 = () => {
                       )}
                     />
                   </div>
-                  <input
-                    {...register("plot_no", { required: true })}
-                    className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
-                      errors?.plot_no?.type === "required" && "border-red  "
-                    }`}
-                    type="text"
-                    placeholder="Plot No."
-                    id="plotNo"
-                  />
+
+                  <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                    <input
+                      {...register("shop_no", { required: true })}
+                      className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                        errors?.shop_no?.type === "required" && "border-red  "
+                      }`}
+                      type="text"
+                      placeholder=" "
+                      id="plotNo"
+                    />
+                    <label
+                      for="project_name"
+                      className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                    >
+                      Shop No
+                    </label>
+                  </div>
+
                   <div className="">
                     {(errors?.locality_id?.type === "required" ||
                       errors?.project_name?.type === "required" ||
@@ -608,7 +759,7 @@ const Step2 = () => {
                   </h4>
 
                   <input
-                    className="border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600"
+                    className="border-1 h-11  px-2 text-lg w-72 my-1.5 placeholder-gray-600"
                     name="propertyname"
                     type="text"
                     placeholder="City"
@@ -616,18 +767,24 @@ const Step2 = () => {
                     value="Panipat"
                     disabled=""
                   />
-
-                  <input
-                    {...register("project_name", { required: true })}
-                    className={`border-1 h-11  px-2 text-lg w-72 my-1 placeholder-gray-600 ${
-                      errors?.project_name?.type === "required" &&
-                      "border-red  "
-                    }`}
-                    type="text"
-                    placeholder="Project /  SEZ / Industrial Area"
-                    id="project"
-                    required=""
-                  />
+                  <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                    <input
+                      {...register("project_name", { required: true })}
+                      className={`block p-4 w-full border-1 h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                        errors?.project_name?.type === "required" &&
+                        "border-red  "
+                      }`}
+                      type="text"
+                      placeholder=" "
+                      id="project"
+                    />
+                    <label
+                      for="project_name"
+                      className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                    >
+                      Project / SEZ / Industrial Area
+                    </label>
+                  </div>
 
                   <div
                     className={`border-1 h-11  text-lg w-72 my-1 placeholder-gray-600 ${
