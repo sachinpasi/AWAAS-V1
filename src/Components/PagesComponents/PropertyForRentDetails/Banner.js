@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { MdLocationOn } from "react-icons/md";
+import { MdLocationOn, MdModeEdit } from "react-icons/md";
 
 import { FaDownload } from "react-icons/fa";
 import { useSelector } from "react-redux";
@@ -9,14 +9,25 @@ import axios from "axios";
 import { API } from "../../../API";
 import { toast } from "react-toastify";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
+import BannerModal from "../../Verfiy/Property/BannerModal";
+import { useHistory, useParams } from "react-router";
 
-const Banner = () => {
+const Banner = ({
+  setisBookmarkChanged,
+  isEditClicked,
+  setisEditClicked,
+  setisAnyThingUpdated,
+  isAnyThingUpdated,
+}) => {
   const { Data } = useSelector(selectPropertyRentDetails);
-  console.log(Data);
+
   const [isBookmarked, setisBookmarked] = useState(false);
   const [isClicked, setisClicked] = useState(false);
+  const [isEditOpen, setisEditOpen] = useState(false);
 
   const user = useSelector(selectUser);
+  const { location } = useHistory();
+  const { id } = useParams();
 
   const HandleBookmark = async () => {
     const res = await axios.post(
@@ -63,8 +74,15 @@ const Banner = () => {
         style={{
           background: "rgba(0,0,0,0.2)",
         }}
-        className="w-full h-full"
+        className="w-full h-full relative"
       >
+        <BannerModal
+          setisAnyThingUpdated={setisAnyThingUpdated}
+          setisEditOpen={setisEditOpen}
+          isEditOpen={isEditOpen}
+          Property_For={Data?.property_for}
+          isAnyThingUpdated={isAnyThingUpdated}
+        />
         <div className=" relative lg:w-80vw w-90vw mx-auto h-full flex flex-col items-start justify-center">
           <p
             style={{
@@ -90,6 +108,15 @@ const Banner = () => {
 
             {/* )} */}
           </div>
+          {location.pathname === `/profile/property/listings/${id}` && (
+            <div
+              onClick={() => setisEditOpen(!isEditOpen)}
+              className="absolute right-0 bg-green text-white font-semibold text-lg px-4 py-1 shadow-2xl cursor-pointer flex items-center transform rounded-full hover:scale-95 transition-transform"
+            >
+              <MdModeEdit className="text-2xl mr-0.5 -mb-0.5" />
+              <p>Edit Location</p>
+            </div>
+          )}
           <nav
             className=" flex items-center overflow-x-scroll scrollbar-hide justify-start h-20 w-full bg-white shadow-lg absolute lg:-bottom-10
            rounded top-full mt-4 lg:mt-0"

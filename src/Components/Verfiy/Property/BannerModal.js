@@ -6,15 +6,31 @@ import { MdClose } from "react-icons/md";
 import { useSelector } from "react-redux";
 import SelectSearch from "react-select-search";
 import { API } from "../../../API";
+import { selectPropertyRentDetails } from "../../../Redux/_features/_PropertyRentDetailsSlice";
 import { selectPropertySaleDetails } from "../../../Redux/_features/_PropertySaleDetailsSlice";
 import { selectUser } from "../../../Redux/_features/_userSlice";
 
-const BannerModal = ({ isEditOpen, setisEditOpen, setisAnyThingUpdated }) => {
+const BannerModal = ({
+  isEditOpen,
+  setisEditOpen,
+  setisAnyThingUpdated,
+  Property_For,
+  isAnyThingUpdated,
+}) => {
   const [LocalityList, setLocalityList] = useState([]);
+  const [Data, setData] = useState([]);
 
-  const { Data } = useSelector(selectPropertySaleDetails);
+  const SellData = useSelector(selectPropertySaleDetails);
+  const RentData = useSelector(selectPropertyRentDetails);
   const user = useSelector(selectUser);
-
+  useEffect(() => {
+    if (Property_For === "rent") {
+      setData(RentData?.Data);
+    }
+    if (Property_For === "sell") {
+      setData(SellData?.Data);
+    }
+  }, [SellData, RentData, Property_For]);
   const {
     register,
     formState: { errors },
@@ -61,7 +77,7 @@ const BannerModal = ({ isEditOpen, setisEditOpen, setisAnyThingUpdated }) => {
     );
     console.log(res.data);
     if (res.status === 200) {
-      setisAnyThingUpdated(true);
+      setisAnyThingUpdated(!isAnyThingUpdated);
       setisEditOpen(false);
     }
   };

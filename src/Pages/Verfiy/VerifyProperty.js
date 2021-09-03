@@ -4,7 +4,8 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { API } from "../../API";
 import Layout from "../../Components/Layout/Layout";
-import Banner from "../../Components/PagesComponents/PropertyForSaleDetails/Banner";
+import BannerRent from "../../Components/PagesComponents/PropertyForRentDetails/Banner";
+import BannerSell from "../../Components/PagesComponents/PropertyForSaleDetails/Banner";
 import PropertySaleSection from "../../Components/PagesComponents/PropertyForSaleDetails/PropertySaleDetailsSection/PropertyDetailsSection";
 import PropertyRentSection from "../../Components/PagesComponents/PropertyForRentDetails/PropertyRentDetailsSection/PropertyDetailsSection";
 
@@ -51,12 +52,31 @@ const VerifyProperty = () => {
   }, [id, isAnyThingUpdated, dispatch]);
   return (
     <Layout>
-      <Banner setisAnyThingUpdated={setisAnyThingUpdated} />
       {Data?.property_for === "rent" && (
-        <PropertyRentSection setisAnyThingUpdated={setisAnyThingUpdated} />
+        <BannerRent
+          setisAnyThingUpdated={setisAnyThingUpdated}
+          isAnyThingUpdated={isAnyThingUpdated}
+        />
+      )}
+
+      {Data?.property_for === "sell" && (
+        <BannerSell
+          setisAnyThingUpdated={setisAnyThingUpdated}
+          isAnyThingUpdated={isAnyThingUpdated}
+        />
+      )}
+
+      {Data?.property_for === "rent" && (
+        <PropertyRentSection
+          setisAnyThingUpdated={setisAnyThingUpdated}
+          isAnyThingUpdated={isAnyThingUpdated}
+        />
       )}
       {Data?.property_for === "sell" && (
-        <PropertySaleSection setisAnyThingUpdated={setisAnyThingUpdated} />
+        <PropertySaleSection
+          setisAnyThingUpdated={setisAnyThingUpdated}
+          isAnyThingUpdated={isAnyThingUpdated}
+        />
       )}
     </Layout>
   );

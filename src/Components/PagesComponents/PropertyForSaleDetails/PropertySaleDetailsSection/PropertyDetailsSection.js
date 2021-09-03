@@ -8,14 +8,26 @@ import Configuration from "./Configuration";
 import PropertyDescription from "./PropertyDescription";
 import Amenities from "./Amenities";
 
-const PropertyDetailsSection = ({ setisAnyThingUpdated }) => {
+const PropertyDetailsSection = ({
+  setisAnyThingUpdated,
+  isAnyThingUpdated,
+}) => {
   return (
     <section className="w-full h-full flex justify-between my-24">
       <div className=" w-90vw lg:w-80vw mx-auto h-full flex lg:flex-row flex-col justify-between ">
         <div className=" h-full lg:w-69percent w-full ">
-          <PriceSection setisAnyThingUpdated={setisAnyThingUpdated} />
-          <Gallery />
-          <Configuration />
+          <PriceSection
+            setisAnyThingUpdated={setisAnyThingUpdated}
+            isAnyThingUpdated={isAnyThingUpdated}
+          />
+          <Gallery
+            setisAnyThingUpdated={setisAnyThingUpdated}
+            isAnyThingUpdated={isAnyThingUpdated}
+          />
+          <Configuration
+            setisAnyThingUpdated={setisAnyThingUpdated}
+            isAnyThingUpdated={isAnyThingUpdated}
+          />
           <Amenities />
           <PropertyDescription />
         </div>

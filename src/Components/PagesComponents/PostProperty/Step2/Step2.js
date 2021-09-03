@@ -167,12 +167,12 @@ const Step2 = () => {
                           )}
                         />
                       </div>
-                      <label
+                      {/* <label
                         for="locality_id"
                         className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
                       >
                         Locality / Area / Sector
-                      </label>
+                      </label> */}
                     </div>
 
                     <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
@@ -266,12 +266,12 @@ const Step2 = () => {
                           )}
                         />
                       </div>
-                      <label
+                      {/* <label
                         for="locality_id"
                         className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
                       >
                         Locality / Area / Sector
-                      </label>
+                      </label> */}
                     </div>
 
                     <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
@@ -362,12 +362,12 @@ const Step2 = () => {
                           )}
                         />
                       </div>
-                      <label
+                      {/* <label
                         for="locality_id"
                         className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
                       >
                         Locality / Area / Sector
-                      </label>
+                      </label> */}
                     </div>
 
                     <div className="">
@@ -439,12 +439,12 @@ const Step2 = () => {
                         )}
                       />
                     </div>
-                    <label
+                    {/* <label
                       for="locality_id"
                       className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
                     >
                       Locality / Area / Sector
-                    </label>
+                    </label> */}
                   </div>
                 </div>
               )}
@@ -504,12 +504,12 @@ const Step2 = () => {
                         )}
                       />
                     </div>
-                    <label
+                    {/* <label
                       for="locality_id"
                       className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
                     >
                       Locality / Area / Sector
-                    </label>
+                    </label> */}
                   </div>
 
                   <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">

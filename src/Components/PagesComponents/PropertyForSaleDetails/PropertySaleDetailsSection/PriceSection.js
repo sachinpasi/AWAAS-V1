@@ -11,7 +11,7 @@ import { MdModeEdit } from "react-icons/md";
 import { useLocation } from "react-router-dom";
 import PricingModal from "../../../Verfiy/Property/PricingModal";
 
-const PriceSection = ({ setisAnyThingUpdated }) => {
+const PriceSection = ({ setisAnyThingUpdated, isAnyThingUpdated }) => {
   const { Data } = useSelector(selectPropertySaleDetails);
   const [isPricingEditOpen, setisPricingEditOpen] = useState(false);
   const location = useLocation();
@@ -48,6 +48,8 @@ const PriceSection = ({ setisAnyThingUpdated }) => {
         isPricingEditOpen={isPricingEditOpen}
         setisPricingEditOpen={setisPricingEditOpen}
         setisAnyThingUpdated={setisAnyThingUpdated}
+        isAnyThingUpdated={isAnyThingUpdated}
+        Property_For={Data?.property_for}
       />
       <div className="lg:w-2/4 w-full flex justify-start items-center lg:mx-4 mx-2 my-5">
         <div>

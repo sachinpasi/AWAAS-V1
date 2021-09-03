@@ -14,9 +14,8 @@ import BannerModal from "../../Verfiy/Property/BannerModal";
 
 const Banner = ({
   setisBookmarkChanged,
-  isEditClicked,
-  setisEditClicked,
   setisAnyThingUpdated,
+  isAnyThingUpdated,
 }) => {
   const { Data } = useSelector(selectPropertySaleDetails);
   const [isBookmarked, setisBookmarked] = useState(false);
@@ -82,6 +81,8 @@ const Banner = ({
           setisAnyThingUpdated={setisAnyThingUpdated}
           setisEditOpen={setisEditOpen}
           isEditOpen={isEditOpen}
+          Property_For={Data?.property_for}
+          isAnyThingUpdated={isAnyThingUpdated}
         />
 
         <div className="  relative lg:w-80vw w-90vw mx-auto h-full flex flex-col items-start justify-center">

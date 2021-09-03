@@ -1,9 +1,10 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { MdClose } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { API } from "../../../API";
+import { selectPropertyRentDetails } from "../../../Redux/_features/_PropertyRentDetailsSlice";
 
 import { selectPropertySaleDetails } from "../../../Redux/_features/_PropertySaleDetailsSlice";
 import { selectUser } from "../../../Redux/_features/_userSlice";
@@ -13,12 +14,26 @@ const PricingModal = ({
   isPricingEditOpen,
   setisPricingEditOpen,
   setisAnyThingUpdated,
+  Property_For,
+  isAnyThingUpdated,
 }) => {
-  const { Data } = useSelector(selectPropertySaleDetails);
   const user = useSelector(selectUser);
   const [TotalAmount, setTotalAmount] = useState();
   const [AdvanceAmount, setAdvanceAmount] = useState();
   const [PricePerSpace, setPricePerSpace] = useState();
+  const [Data, setData] = useState([]);
+
+  const SellData = useSelector(selectPropertySaleDetails);
+  const RentData = useSelector(selectPropertyRentDetails);
+
+  useEffect(() => {
+    if (Property_For === "rent") {
+      setData(RentData?.Data);
+    }
+    if (Property_For === "sell") {
+      setData(SellData?.Data);
+    }
+  }, [SellData, RentData, Property_For]);
 
   const [ConvertedTotalAmount, setConvertedTotalAmountTotalAmount] = useState();
   const [
@@ -66,7 +81,7 @@ const PricingModal = ({
     );
     console.log(res.data);
     if (res.status === 200) {
-      setisAnyThingUpdated(true);
+      setisAnyThingUpdated(!isAnyThingUpdated);
       setisPricingEditOpen(false);
     }
   };
@@ -208,6 +223,141 @@ const PricingModal = ({
                       </div>
                       <span className="ml-4">
                         {ConvertedTotalAmountPricePerSpace}
+                      </span>
+                    </div>
+                  </div>
+                </>
+              )}
+
+            {(Data.property_type === "floor" ||
+              Data.property_type === "land" ||
+              Data?.property_type === "farmhouse" ||
+              Data.property_type === "villa" ||
+              Data.property_type === "flat" ||
+              Data.property_type === "office" ||
+              Data.property_type === "shop" ||
+              Data.property_type === "factory" ||
+              Data.property_type === "warehouse") &&
+              Data?.property_for === "rent" && (
+                <>
+                  <div className="flex justify-center items-start flex-col ">
+                    <div className="flex justify-start items-center">
+                      <p className="mr-4">&#8377;</p>
+                      <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.expected_rent?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          {...register("expected_rent")}
+                          placeholder=" "
+                          value={TotalAmount}
+                          onChange={(e) => setTotalAmount(e.target.value)}
+                          onKeyUp={ConvertToWord}
+                          defaultValue={Data?.expected_rent}
+                        />
+                        <label
+                          for="project_name"
+                          className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Expected Rent
+                        </label>
+                      </div>
+
+                      <span className="ml-4">{ConvertedTotalAmount}</span>
+                    </div>{" "}
+                    <div className="flex justify-start items-center">
+                      <p className="mr-4">&#8377;</p>
+
+                      <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.security_deposit?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          {...register("security_deposit")}
+                          placeholder=" "
+                          value={AdvanceAmount}
+                          onChange={(e) => setAdvanceAmount(e.target.value)}
+                          onKeyUp={ConvertToWord}
+                          defaultValue={Data?.security_amount}
+                        />
+                        <label
+                          for="project_name"
+                          className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Security Deposit
+                        </label>
+                      </div>
+
+                      <span className="ml-4">
+                        {ConvertedTotalAmountAdvanceAmount}
+                      </span>
+                    </div>{" "}
+                    <div className="flex justify-start items-center">
+                      <p className="mr-4">&#8377;</p>
+                      <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.price_per_feet?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          {...register("price_per_feet")}
+                          placeholder=" "
+                          value={PricePerSpace}
+                          onChange={(e) => setPricePerSpace(e.target.value)}
+                          onKeyUp={ConvertToWord}
+                          defaultValue={Data?.rent_per_feet}
+                        />
+                        <label
+                          for="project_name"
+                          className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Rent / sq. ft / sq. yard / sq. mtr
+                        </label>
+                      </div>
+
+                      <select
+                        // {...register("length_width_type")}
+                        className="border-1 h-11 ml-2    px-2 text-lg w-40  my-1  placeholder-gray-600"
+                        id="plot-length-type"
+                        title="Sq-ft"
+                      >
+                        <option>fts</option>
+                        <option>yards</option>
+                        <option>mtrs</option>
+                      </select>
+                      <span className="ml-4">
+                        {ConvertedTotalAmountPricePerSpace}
+                      </span>
+                    </div>
+                    <div className="flex justify-start items-center">
+                      <p className="mr-4">&#8377;</p>
+
+                      <input
+                        className="border-1 h-11  px-2 text-lg w-72 my-1  placeholder-gray-600"
+                        type="text"
+                        // {...register("price_per_feet", { required: true })}
+                        placeholder="Monthly Maintenance / sq. ft / sq. yard / sq. mtr  "
+                        // value={PricePerSpace}
+                        // onChange={(e) => setPricePerSpace(e.target.value)}
+                        // onKeyUp={ConvertToWord}
+                      />
+                      <select
+                        // {...register("length_width_type")}
+                        className="border-1 h-11  mx-2 ml-2   text-lg w-40  my-1  placeholder-gray-600"
+                        id="plot-length-type"
+                        title="Sq-ft"
+                      >
+                        <option>fts</option>
+                        <option>yards</option>
+                        <option value="mts">mtrs</option>
+                      </select>
+                      <span className="ml-4">
+                        {/* {ConvertedTotalAmountPricePerSpace} */}
                       </span>
                     </div>
                   </div>
