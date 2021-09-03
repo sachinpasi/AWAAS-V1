@@ -13,14 +13,12 @@ import {
   SET_PROPERTY_SALE_DETAILS,
 } from "../../Redux/_features/_PropertySaleDetailsSlice";
 import { SET_PROPERTY_RENT_DETAILS } from "../../Redux/_features/_PropertyRentDetailsSlice";
-import { useForm } from "react-hook-form";
 
 const VerifyProperty = () => {
   const [Data, setData] = useState();
+  const [isAnyThingUpdated, setisAnyThingUpdated] = useState(false);
   const { id } = useParams();
   const dispatch = useDispatch();
-  const [isEditClicked, setisEditClicked] = useState(false);
-  const [isAnyThingUpdated, setisAnyThingUpdated] = useState(false);
 
   const FetchData = async () => {
     const res = await axios.get(`${API}/property/id/${id}/0`);
@@ -53,22 +51,12 @@ const VerifyProperty = () => {
   }, [id, isAnyThingUpdated, dispatch]);
   return (
     <Layout>
-      <Banner
-        isEditClicked={isEditClicked}
-        setisEditClicked={setisEditClicked}
-        setisAnyThingUpdated={setisAnyThingUpdated}
-      />
+      <Banner setisAnyThingUpdated={setisAnyThingUpdated} />
       {Data?.property_for === "rent" && (
-        <PropertyRentSection
-          isEditClicked={isEditClicked}
-          setisEditClicked={setisEditClicked}
-        />
+        <PropertyRentSection setisAnyThingUpdated={setisAnyThingUpdated} />
       )}
       {Data?.property_for === "sell" && (
-        <PropertySaleSection
-          isEditClicked={isEditClicked}
-          setisEditClicked={setisEditClicked}
-        />
+        <PropertySaleSection setisAnyThingUpdated={setisAnyThingUpdated} />
       )}
     </Layout>
   );

@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     scale: {
       70: "0.70",
+      95: "0.95",
     },
     borderWidth: {
       1: "1px",
@@ -66,6 +67,7 @@ module.exports = {
         "80vw": "80vw",
         500: "500px",
         600: "600px",
+        1000: "1000px",
       },
       minHeight: {
         0: "0",

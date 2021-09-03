@@ -13,10 +13,7 @@ const PropertyDetailsSection = ({ isEditClicked, setisEditClicked }) => {
     <section className="w-full h-full flex justify-between my-24">
       <div className=" w-90vw lg:w-80vw mx-auto h-full flex lg:flex-row flex-col justify-between ">
         <div className=" h-full lg:w-69percent w-full ">
-          <PriceSection
-            isEditClicked={isEditClicked}
-            setisEditClicked={setisEditClicked}
-          />
+          <PriceSection />
           <Gallery />
 
           <Configuration />
