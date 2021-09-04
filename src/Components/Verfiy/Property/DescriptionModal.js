@@ -1,7 +1,9 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { MdClose } from "react-icons/md";
 import { useSelector } from "react-redux";
+import { API } from "../../../API";
 import { selectPropertyRentDetails } from "../../../Redux/_features/_PropertyRentDetailsSlice";
 import { selectPropertySaleDetails } from "../../../Redux/_features/_PropertySaleDetailsSlice";
 import { selectUser } from "../../../Redux/_features/_userSlice";
@@ -35,6 +37,21 @@ const DescriptionModal = ({
     control,
   } = useForm();
 
+  const HandleDescriptionEdit = async (data) => {
+    const res = await axios.post(
+      `${API}/property/edit`,
+      { ...data, id: Data?.p_id },
+      {
+        headers: { Authorization: `Bearer ${user.token}` },
+      }
+    );
+    console.log(res.data);
+    if (res.status === 200) {
+      setisAnyThingUpdated(!isAnyThingUpdated);
+      setisDescriptionEditOpen(false);
+    }
+  };
+
   return (
     <>
       <div
@@ -54,6 +71,36 @@ const DescriptionModal = ({
         >
           <MdClose className="text-4xl font-semibold text-white   " />
         </div>
+        <form
+          onSubmit={handleSubmit(HandleDescriptionEdit)}
+          className="w-full h-full flex justify-between flex-col "
+        >
+          <h4 className="text-2xl font-medium  uppercase mb-5">
+            Update Property Description
+          </h4>
+
+          <div className="w-full h-full flex flex-col">
+            <label>
+              <textarea
+                className="border-1 h-52 py-2 px-2 text-lg w-full my-1 placeholder-gray-600"
+                id="description"
+                {...register("description")}
+                required=""
+                placeholder="Property description"
+                aria-required="true"
+                defaultValue={Data?.description}
+              ></textarea>
+            </label>
+          </div>
+          <div className="flex justify-end items-end ">
+            <button
+              type="submit"
+              className="bg-blue text-white font-medium py-2 px-6 rounded-full text-lg"
+            >
+              Apply Changes
+            </button>
+          </div>
+        </form>
       </div>
     </>
   );

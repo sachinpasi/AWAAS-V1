@@ -30,8 +30,11 @@ const PropertyDescription = ({ setisAnyThingUpdated, isAnyThingUpdated }) => {
         )}
 
         <DescriptionModal
+          setisAnyThingUpdated={setisAnyThingUpdated}
+          isAnyThingUpdated={isAnyThingUpdated}
+          Property_For={Data?.property_for}
           isDescriptionEditOpen={isDescriptionEditOpen}
-          setisAnyThingUpdated={setisDescriptionEditOpen}
+          setisDescriptionEditOpen={setisDescriptionEditOpen}
         />
       </div>
       <div className="py-4">

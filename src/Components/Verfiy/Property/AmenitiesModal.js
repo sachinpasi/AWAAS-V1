@@ -17,8 +17,8 @@ const AmenitiesModal = ({
 }) => {
   const [Data, setData] = useState([]);
   const [SelectedAmenities, setSelectedAmenities] = useState([]);
-  const location = useLocation();
-  const { id } = useParams();
+  // const location = useLocation();
+  // const { id } = useParams();
   const user = useSelector(selectUser);
   const SellData = useSelector(selectPropertySaleDetails);
   const RentData = useSelector(selectPropertyRentDetails);
@@ -33,11 +33,27 @@ const AmenitiesModal = ({
     if (SelectedAmenities.includes(newItem)) {
       const NewList = SelectedAmenities.filter((item) => item !== newItem);
       setSelectedAmenities(NewList);
+      console.log("removed");
     } else {
       setSelectedAmenities((SelectedAmenities) => [
         ...SelectedAmenities,
         newItem,
       ]);
+      console.log("added");
+    }
+  };
+
+  const AddToAmenities = (newItem) => {
+    if (SelectedAmenities.includes(newItem)) {
+      // const NewList = SelectedAmenities.filter((item) => item !== newItem);
+      // setSelectedAmenities(NewList);
+      // console.log("removed");
+    } else {
+      setSelectedAmenities((SelectedAmenities) => [
+        ...SelectedAmenities,
+        newItem,
+      ]);
+      console.log("added");
     }
   };
 
@@ -45,12 +61,11 @@ const AmenitiesModal = ({
     return SelectedAmenities.includes(id);
   };
 
-  const CheckAlreadySelectedAmenities = (GivenName) => {
-    if (Data?.amenities?.find(({ name }) => name === GivenName) !== undefined)
-      return true;
-    else return false;
-  };
-  console.log(CheckAlreadySelectedAmenities("Gymnasium"));
+  // const CheckAlreadySelectedAmenities = (GivenName) => {
+  //   if (Data?.amenities?.find(({ name }) => name === GivenName) !== undefined)
+  //     return true;
+  //   else return false;
+  // };
 
   useEffect(() => {
     FetchAmenities();
@@ -65,12 +80,28 @@ const AmenitiesModal = ({
     }
   }, [SellData, RentData, Property_For]);
 
-  // console.log(Data?.amenities);
+  console.log("Total", Amenities);
+  console.log("selected", SelectedAmenities);
+
+  const HandleAmenitiesEdit = async () => {
+    const res = await axios.post(
+      `${API}/property/edit-amenities`,
+      { amenitie_id: SelectedAmenities, id: Data?.id },
+      {
+        headers: { Authorization: `Bearer ${user.token}` },
+      }
+    );
+    console.log(res.data);
+    if (res.status === 200) {
+      setisAnyThingUpdated(!isAnyThingUpdated);
+      setisAmenitiesEditOpen(false);
+    }
+  };
 
   useEffect(() => {
     if (Data) {
       Data?.amenities?.forEach((item) => {
-        console.log(item);
+        AddToAmenities(item.id);
       });
     }
   }, [Data]);
@@ -120,6 +151,14 @@ const AmenitiesModal = ({
               </div>
             ))}
           </div>
+        </div>
+        <div className="flex justify-end items-end -mt-10">
+          <button
+            onClick={HandleAmenitiesEdit}
+            className="bg-blue text-white font-medium py-2 px-6 rounded-full text-lg"
+          >
+            Apply Changes
+          </button>
         </div>
       </div>
     </>

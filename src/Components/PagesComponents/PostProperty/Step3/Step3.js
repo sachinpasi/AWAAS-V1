@@ -2436,6 +2436,16 @@ const Step3 = () => {
                             </label>
                           </div>
 
+                          <select
+                            className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
+                            {...register("length_width_type")}
+                          >
+                            <option>feets</option>
+                            <option>meters</option>
+                            <option>yards</option>
+                          </select>
+                        </div>
+                        <div className="flex">
                           <div className="outline relative h-11  lg:w-72 w-2/5 focus-within:border-blue-500 my-1.5 lg:mr-2 ">
                             <input
                               className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
@@ -2453,10 +2463,9 @@ const Step3 = () => {
                               Width
                             </label>
                           </div>
-
                           <select
                             className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
-                            {...register("length_width_type")}
+                            // {...register("length_width_type")}
                           >
                             <option>feets</option>
                             <option>meters</option>

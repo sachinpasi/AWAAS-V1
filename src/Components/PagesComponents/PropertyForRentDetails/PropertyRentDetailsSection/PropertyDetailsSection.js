@@ -20,11 +20,22 @@ const PropertyDetailsSection = ({
             setisAnyThingUpdated={setisAnyThingUpdated}
             isAnyThingUpdated={isAnyThingUpdated}
           />
-          <Gallery />
-
-          <Configuration />
-          <Amenities />
-          <PropertyDescription />
+          <Gallery
+            setisAnyThingUpdated={setisAnyThingUpdated}
+            isAnyThingUpdated={isAnyThingUpdated}
+          />
+          <Configuration
+            setisAnyThingUpdated={setisAnyThingUpdated}
+            isAnyThingUpdated={isAnyThingUpdated}
+          />
+          <Amenities
+            setisAnyThingUpdated={setisAnyThingUpdated}
+            isAnyThingUpdated={isAnyThingUpdated}
+          />
+          <PropertyDescription
+            setisAnyThingUpdated={setisAnyThingUpdated}
+            isAnyThingUpdated={isAnyThingUpdated}
+          />
         </div>
         <div className="lg:w-29percent w-full  h-auto  relative">
           <Sidebar />
