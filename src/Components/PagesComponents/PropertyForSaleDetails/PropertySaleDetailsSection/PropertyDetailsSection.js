@@ -32,7 +32,10 @@ const PropertyDetailsSection = ({
             setisAnyThingUpdated={setisAnyThingUpdated}
             isAnyThingUpdated={isAnyThingUpdated}
           />
-          <PropertyDescription />
+          <PropertyDescription
+            setisAnyThingUpdated={setisAnyThingUpdated}
+            isAnyThingUpdated={isAnyThingUpdated}
+          />
         </div>
         <div className="lg:w-29percent w-full  h-auto  relative">
           <Sidebar />

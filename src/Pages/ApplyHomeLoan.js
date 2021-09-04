@@ -538,7 +538,7 @@ const ApplyHomeLoan = () => {
                   type="radio"
                   className="w-6 h-6 mr-4"
                   placeholder="General"
-                  value="general"
+                  value="General"
                   {...register("category")}
                 />
                 General
