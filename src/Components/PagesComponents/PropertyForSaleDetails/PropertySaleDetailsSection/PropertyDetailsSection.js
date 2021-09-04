@@ -28,7 +28,10 @@ const PropertyDetailsSection = ({
             setisAnyThingUpdated={setisAnyThingUpdated}
             isAnyThingUpdated={isAnyThingUpdated}
           />
-          <Amenities />
+          <Amenities
+            setisAnyThingUpdated={setisAnyThingUpdated}
+            isAnyThingUpdated={isAnyThingUpdated}
+          />
           <PropertyDescription />
         </div>
         <div className="lg:w-29percent w-full  h-auto  relative">

@@ -645,13 +645,10 @@ const ConfigurationModal = ({
               </div>
             )}
 
-            {Data?.Property_Type === "floor" && (
+            {Data?.property_type === "floor" && (
               <div>
-                <>
+                <div className="flex">
                   <div className="flex justify-center items-start flex-col mx-2 lg:mx-0 ">
-                    <h4 className="text-2xl font-medium  uppercase mb-4">
-                      Property Details
-                    </h4>
                     <div>
                       {/* <select
                           className="border-1 h-11  px-2 text-lg w-72 mr-2 my-1 placeholder-gray-600"
@@ -666,22 +663,45 @@ const ConfigurationModal = ({
                         </select> */}
                     </div>
                     <div>
-                      <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
-                        <input
-                          className={`block p-4 border-1 w-full h-11 text-lg uppercase appearance-none focus:outline-none bg-transparent ${
-                            errors?.bhk?.type === "required" && "border-red"
-                          }`}
-                          type="text"
-                          {...register("bhk")}
-                          placeholder=" "
-                        ></input>
-                        <label
-                          for=""
-                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
-                        >
-                          3 BHK / 2 BHK / 1 BHK
-                        </label>
+                      <div className="flex">
+                        <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 lg:mr-2">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.bhk?.type === "required" && "border-red"
+                            }`}
+                            type="text"
+                            {...register("bhk")}
+                            placeholder=" "
+                            defaultValue={Data?.bhk}
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            3 BHK / 2 BHK / 1 BHK
+                          </label>
+                        </div>
+                        <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 ">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.balconies?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="number"
+                            min="1"
+                            {...register("balconies")}
+                            defaultValue={Data?.balconies}
+                            placeholder=" "
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Balconies
+                          </label>
+                        </div>
                       </div>
+
                       <div className="flex flex-wrap">
                         <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 ">
                           <input
@@ -691,7 +711,8 @@ const ConfigurationModal = ({
                             }`}
                             type="number"
                             min="1"
-                            {...register("bedrooms", { required: true })}
+                            {...register("bedroom")}
+                            defaultValue={Data?.bedroom}
                             placeholder=" "
                             id="bed-room"
                             required=""
@@ -712,8 +733,9 @@ const ConfigurationModal = ({
                             }`}
                             type="number"
                             min="1"
-                            {...register("bathrooms", { required: true })}
+                            {...register("bathrooms")}
                             placeholder=" "
+                            defaultValue={Data?.bathroom}
                           ></input>
                           <label
                             for=""
@@ -722,25 +744,6 @@ const ConfigurationModal = ({
                             Washrooms
                           </label>
                         </div>
-                      </div>
-
-                      <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 ">
-                        <input
-                          className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
-                            errors?.balconies?.type === "required" &&
-                            "border-red"
-                          }`}
-                          type="number"
-                          min="1"
-                          {...register("balconies", { required: true })}
-                          placeholder=" "
-                        ></input>
-                        <label
-                          for=""
-                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
-                        >
-                          Balconies
-                        </label>
                       </div>
                     </div>
                     <div className="flex w-full ">
@@ -751,7 +754,8 @@ const ConfigurationModal = ({
                             "border-red"
                           }`}
                           type="text"
-                          {...register("carpet_area", { required: true })}
+                          {...register("carpet_area")}
+                          defaultValue={Data?.carpet_area}
                           placeholder=" "
                         ></input>
                         <label
@@ -764,6 +768,7 @@ const ConfigurationModal = ({
                       <select
                         className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
                         {...register("carpet_area_type")}
+                        defaultValue={Data?.carpet_area_type}
                       >
                         <option>Sq-ft</option>
                         <option>Sq-mt</option>
@@ -778,7 +783,8 @@ const ConfigurationModal = ({
                             "border-red"
                           }`}
                           type="text"
-                          {...register("built_up_area", { required: true })}
+                          {...register("built_up_area")}
+                          defaultValue={Data?.built_up}
                           placeholder=" "
                         ></input>
                         <label
@@ -791,6 +797,7 @@ const ConfigurationModal = ({
                       <select
                         className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
                         {...register("built_up_area_type")}
+                        defaultValue={Data?.built_up_area_type}
                       >
                         <option>Sq-ft</option>
                         <option>Sq-mt</option>
@@ -805,9 +812,8 @@ const ConfigurationModal = ({
                             "border-red"
                           }`}
                           type="text"
-                          {...register("super_built_up_area", {
-                            required: true,
-                          })}
+                          {...register("super_built_up_area")}
+                          defaultValue={Data?.super_built_up}
                           placeholder=" "
                         ></input>
                         <label
@@ -821,6 +827,7 @@ const ConfigurationModal = ({
                       <select
                         className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
                         {...register("super_built_up_area_type")}
+                        defaultValue={Data?.super_built_up_area_type}
                       >
                         <option>Sq-ft</option>
                         <option>Sq-mt</option>
@@ -828,35 +835,39 @@ const ConfigurationModal = ({
                       </select>
                     </div>
 
-                    <div className="w-full">
-                      <select
-                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
-                        {...register("furnished")}
-                        title="Furnishing Status"
-                      >
-                        <option>Furnished</option>
-                        <option>Semi-Furnished</option>
-                        <option>Un-Furnished</option>
-                      </select>
-                    </div>
-                    <div className="w-full">
-                      <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
-                        <input
-                          className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
-                            errors?.total_floor?.type === "required" &&
-                            "border-red"
-                          }`}
-                          type="text"
-                          {...register("total_floor")}
-                          placeholder=" "
-                          id="totalFloors"
-                        ></input>
-                        <label
-                          for=""
-                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                    <div className="flex">
+                      <div className="w-full">
+                        <select
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
+                          {...register("furnished_status")}
+                          title="Furnishing Status"
+                          defaultValue={Data?.furnished_status}
                         >
-                          Basement + Stilt + No. of Floors
-                        </label>
+                          <option>Furnished</option>
+                          <option>Semi-Furnished</option>
+                          <option>Un-Furnished</option>
+                        </select>
+                      </div>
+                      <div className="w-full">
+                        <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                              errors?.total_floor?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            {...register("total_floors")}
+                            placeholder=" "
+                            defaultValue={Data?.total_floors}
+                            id="totalFloors"
+                          ></input>
+                          <label
+                            for=""
+                            className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                          >
+                            Basement + Stilt + No. of Floors
+                          </label>
+                        </div>
                       </div>
                     </div>
                     <div className="w-full">
@@ -867,8 +878,9 @@ const ConfigurationModal = ({
                             "border-red"
                           }`}
                           type="text"
-                          {...register("floor_no", { required: true })}
+                          {...register("floor_no")}
                           placeholder=" "
+                          defaultValue={Data?.floor_no}
                           id="totalFloors"
                         ></input>
                         <label
@@ -891,11 +903,12 @@ const ConfigurationModal = ({
                       <input
                         className=" w-5 h-5 "
                         type="radio"
-                        {...register("possession", {
-                          required: true,
-                        })}
+                        {...register("possession")}
                         id="underConstruction"
                         value="Under Construction"
+                        defaultChecked={
+                          Data?.possession === "Under Construction"
+                        }
                         onClick={(e) =>
                           setPossessionState({
                             UnderConstruction: "Under Construction",
@@ -916,11 +929,9 @@ const ConfigurationModal = ({
                       <input
                         className=" w-5 h-5 "
                         type="radio"
-                        {...register("possession", {
-                          required: true,
-                        })}
+                        {...register("possession")}
                         value="Ready to move"
-                        id="Ready to move"
+                        defaultChecked={Data?.possession === "Ready to move"}
                         onClick={(e) =>
                           setPossessionState({
                             ReadyToMove: "Ready To Move",
@@ -932,14 +943,18 @@ const ConfigurationModal = ({
                       </span>
                     </label>
 
-                    {PossessionState.UnderConstruction && (
+                    {((Data?.possession === "Under Construction" &&
+                      !PossessionState.ReadyToMove) ||
+                      PossessionState.UnderConstruction) && (
                       <div className="flex flex-col">
                         <label className="text-xl my-2 mr-4">
                           Possession By
                         </label>
                         <select
                           className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          id="possessionByMonth"
                           {...register("possession_month")}
+                          defaultValue={Data?.possession_month}
                         >
                           <option selected="" disabled>
                             Month
@@ -961,6 +976,7 @@ const ConfigurationModal = ({
                         <select
                           className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
                           {...register("possession_year")}
+                          defaultValue={Data?.possession_year}
                         >
                           <option selected="" disabled>
                             Year
@@ -978,7 +994,8 @@ const ConfigurationModal = ({
                       </div>
                     )}
 
-                    {PossessionState.ReadyToMove && (
+                    {(Data?.possession === "Ready to move" ||
+                      PossessionState.ReadyToMove) && (
                       <div
                         div
                         className="flex flex-col"
@@ -990,6 +1007,8 @@ const ConfigurationModal = ({
                         <select
                           className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
                           {...register("age_of_construction")}
+                          aria-invalid="false"
+                          defaultValue={Data?.age_of_construction}
                         >
                           <option>New Construction</option>
                           <option>Less than 5 years old</option>
@@ -1031,7 +1050,1373 @@ const ConfigurationModal = ({
                       </div>
                     </div>
                   )}
-                </>
+                </div>
+              </div>
+            )}
+
+            {Data?.property_type === "villa" && (
+              <div>
+                <div className="flex">
+                  <div className="flex justify-center items-start flex-col px-2 lg:px-0 ">
+                    <div className="flex">
+                      <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 lg:mr-2">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg uppercase appearance-none focus:outline-none bg-transparent ${
+                            errors?.bhk?.type === "required" && "border-red"
+                          }`}
+                          type="text"
+                          {...register("bhk")}
+                          placeholder=" "
+                          defaultValue={Data?.bhk}
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          3 BHK / 2 BHK / 1 BHK
+                        </label>
+                      </div>
+                      <select
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full mr-2 my-1 placeholder-gray-600"
+                        {...register("simplex_duplex")}
+                        defaultValue={Data?.simplex_duplex}
+                      >
+                        <option value="simplex">Simplex</option>
+                        <option value="duplex">Duplex</option>
+                      </select>
+                    </div>
+
+                    <div className="flex flex-wrap">
+                      <select
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full mr-2 my-1.5 placeholder-gray-600"
+                        {...register("house_type")}
+                        defaultValue={Data?.house_type}
+                      >
+                        <option>Independent House</option>
+                        <option>Villa</option>
+                      </select>
+                      <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 ">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                            errors?.balconies?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="number"
+                          min="1"
+                          {...register("balconies")}
+                          defaultValue={Data?.balconies}
+                          placeholder=" "
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Balconies
+                        </label>
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap">
+                      <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 ">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                            errors?.bedrooms?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="number"
+                          min="1"
+                          {...register("bedroom")}
+                          defaultValue={Data?.bedroom}
+                          placeholder=" "
+                          id="bed-room"
+                          required=""
+                          aria-required="true"
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Bedrooms
+                        </label>
+                      </div>
+
+                      <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 lg:ml-2">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                            errors?.bathrooms?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="number"
+                          min="1"
+                          {...register("bathrooms")}
+                          defaultValue={Data?.bathroom}
+                          placeholder=" "
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Washrooms
+                        </label>
+                      </div>
+                    </div>
+                    <div className="flex w-full ">
+                      <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 lg:mr-2 ">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                            errors?.carpet_area?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          {...register("carpet_area")}
+                          defaultValue={Data?.carpet_area}
+                          placeholder=" "
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Carpet Area
+                        </label>
+                      </div>
+                      <select
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
+                        {...register("carpet_area_type")}
+                        defaultValue={Data?.carpet_area_type}
+                      >
+                        <option>Sq-ft</option>
+                        <option>Sq-mt</option>
+                        <option>Sq-yards</option>
+                      </select>
+                    </div>
+                    <div className="flex w-full ">
+                      <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 mr-2 ">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                            errors?.built_up_area?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          {...register("built_up_area")}
+                          defaultValue={Data?.built_up}
+                          placeholder=" "
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Built-up Area
+                        </label>
+                      </div>
+                      <select
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
+                        {...register("built_up_area_type")}
+                        defaultValue={Data?.built_up_area_type}
+                      >
+                        <option>Sq-ft</option>
+                        <option>Sq-mt</option>
+                        <option>Sq-yards</option>
+                      </select>
+                    </div>
+                    <div className="flex w-full ">
+                      <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 mr-2 ">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                            errors?.super_built_up_area?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          {...register("super_built_up_area")}
+                          defaultValue={Data?.super_built_up}
+                          placeholder=" "
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Super Built-up Area
+                        </label>
+                      </div>
+
+                      <select
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
+                        {...register("super_built_up_area_type")}
+                        defaultValue={Data?.super_built_up_area_type}
+                      >
+                        <option>Sq-ft</option>
+                        <option>Sq-mt</option>
+                        <option>Sq-yards</option>
+                      </select>
+                    </div>
+
+                    <select
+                      className="border-1 h-11  px-2 text-lg lg:w-72 w-full mr-2 my-1 placeholder-gray-600"
+                      {...register("furnished_status")}
+                      title="Furnishing Status"
+                      defaultValue={Data?.furnished_status}
+                    >
+                      <option>Furnished</option>
+                      <option>Semi-Furnished</option>
+                      <option>Un-Furnished</option>
+                    </select>
+                  </div>
+                  <div className="px-2 lg:px-0">
+                    <p className="text-xl my-2">Possession </p>
+                    <label
+                      for="underConstruction"
+                      className={` px-2 py-2 border-1 w-72 flex  cursor-pointerjustify-start items-center my-2  ${
+                        errors?.possession?.type === "required" && "border-red"
+                      } `}
+                    >
+                      <input
+                        className=" w-5 h-5 "
+                        type="radio"
+                        {...register("possession")}
+                        id="underConstruction"
+                        value="Under Construction"
+                        defaultChecked={
+                          Data?.possession === "Under Construction"
+                        }
+                        onClick={(e) =>
+                          setPossessionState({
+                            UnderConstruction: "Under Construction",
+                          })
+                        }
+                      ></input>
+                      <span className="text-lg ml-4 text-gray-600">
+                        {" "}
+                        Under Construction
+                      </span>
+                    </label>
+                    <label
+                      for="Ready to move"
+                      className={` px-2 py-2 border-1 w-72 flex justify-start cursor-pointer items-center my-2  ${
+                        errors?.possession?.type === "required" && "border-red"
+                      } `}
+                    >
+                      <input
+                        className=" w-5 h-5 "
+                        type="radio"
+                        {...register("possession")}
+                        value="Ready to move"
+                        defaultChecked={Data?.possession === "Ready to move"}
+                        onClick={(e) =>
+                          setPossessionState({
+                            ReadyToMove: "Ready To Move",
+                          })
+                        }
+                      ></input>
+                      <span className="text-lg ml-4 text-gray-600">
+                        Ready To Move
+                      </span>
+                    </label>
+
+                    {((Data?.possession === "Under Construction" &&
+                      !PossessionState.ReadyToMove) ||
+                      PossessionState.UnderConstruction) && (
+                      <div className="flex flex-col">
+                        <label className="text-xl my-2 mr-4">
+                          Possession By
+                        </label>
+                        <select
+                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          id="possessionByMonth"
+                          {...register("possession_month")}
+                          defaultValue={Data?.possession_month}
+                        >
+                          <option selected="" disabled>
+                            Month
+                          </option>
+                          <option>January</option>
+                          <option>February</option>
+                          <option>March</option>
+                          <option>April</option>
+                          <option>May</option>
+                          <option>June</option>
+                          <option>July</option>
+                          <option>August</option>
+                          <option>September</option>
+                          <option>October</option>
+                          <option>November</option>
+                          <option>December</option>
+                        </select>
+
+                        <select
+                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          {...register("possession_year")}
+                          defaultValue={Data?.possession_year}
+                        >
+                          <option selected="" disabled>
+                            Year
+                          </option>
+                          <option>2021</option>
+                          <option>2022</option>
+                          <option>2023</option>
+                          <option>2024</option>
+                          <option>2025</option>
+                          <option>2027</option>
+                          <option>2028</option>
+                          <option>2029</option>
+                          <option>2030</option>
+                        </select>
+                      </div>
+                    )}
+
+                    {(Data?.possession === "Ready to move" ||
+                      PossessionState.ReadyToMove) && (
+                      <div
+                        div
+                        className="flex flex-col"
+                        id="possessionDetails2"
+                      >
+                        <label className="text-xl my-2 mr-4">
+                          Age of Construction
+                        </label>
+                        <select
+                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          {...register("age_of_construction")}
+                          aria-invalid="false"
+                          defaultValue={Data?.age_of_construction}
+                        >
+                          <option>New Construction</option>
+                          <option>Less than 5 years old</option>
+                          <option>5 to 10 years old</option>
+                          <option>10 to 15 years old</option>
+                          <option>15 to 20 years old</option>
+                          <option>20 to 25 years old</option>
+                          <option>25 to 30 years old</option>
+                        </select>
+                      </div>
+                    )}
+                  </div>
+
+                  {Data?.PProperty_For === "sell" && (
+                    <div>
+                      <p className="text-xl my-2">Purchase Type</p>
+                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                        <input
+                          className=" w-5 h-5 "
+                          type="radio"
+                          {...register("purchase_type")}
+                          value="New Booking"
+                        />
+                        <span className="text-lg ml-4 text-gray-600">
+                          New Booking
+                        </span>
+                      </div>
+
+                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                        <input
+                          className=" w-5 h-5 "
+                          type="radio"
+                          {...register("purchase_type")}
+                          value="Resale"
+                        />
+                        <span className="text-lg ml-4 text-gray-600">
+                          Resale
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {Data?.property_type === "farmhouse" && (
+              <div>
+                <div className="flex">
+                  <div className="flex justify-center items-start flex-col ">
+                    <div>
+                      {/* <input
+                          style={{
+                            background: "#EEEEEE",
+                            color: "#999999",
+                            cursor: "not-allowed",
+                          }}
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
+                          name="propertyname"
+                          type="text"
+                          placeholder="City"
+                          id="city"
+                          value="Farmhouse"
+                          disabled
+                        /> */}
+                    </div>
+                    <div className="flex ">
+                      <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 ">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                            errors?.bedrooms?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="number"
+                          min="1"
+                          {...register("bedroom")}
+                          defaultValue={Data?.bedroom}
+                          placeholder=" "
+                          id="bed-room"
+                          required=""
+                          aria-required="true"
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Bedrooms
+                        </label>
+                      </div>
+
+                      <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 lg:ml-2">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                            errors?.bathrooms?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="number"
+                          min="1"
+                          {...register("bathroom")}
+                          defaultValue={Data?.bathroom}
+                          placeholder=" "
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Washrooms
+                        </label>
+                      </div>
+                    </div>
+                    <div className="flex">
+                      <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 lg:mr-2 ">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                            errors?.balconies?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="number"
+                          min="1"
+                          {...register("balconies")}
+                          defaultValue={Data?.balconies}
+                          placeholder=" "
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Balconies
+                        </label>
+                      </div>
+                      <div>
+                        <select
+                          {...register("furnished_status")}
+                          defaultValue={Data?.furnished_status}
+                          title="Furnishing Status"
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
+                        >
+                          <option>Furnished</option>
+                          <option>Semi-Furnished</option>
+                          <option>Un-Furnished</option>
+                        </select>
+                        {/* <select
+                          {...register("house_type")}
+                          className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
+                        >
+                          <option>Independent House</option>
+                          <option value="v">Villa </option>
+                        </select> */}
+                      </div>
+                    </div>
+                    <div className="flex  ">
+                      <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 lg:mr-2 ">
+                        <input
+                          type="text"
+                          {...register("plot_area")}
+                          defaultValue={Data?.plot_area}
+                          placeholder=" "
+                          className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                            errors?.plot_area?.type === "required" &&
+                            "border-red"
+                          }`}
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Total Plot Area
+                        </label>
+                      </div>
+
+                      <select
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
+                        {...register("plot_area_type")}
+                        defaultValue={Data?.plot_area_type}
+                      >
+                        <option>Sq-fts</option>
+                        <option>Sq-mts</option>
+                        <option>Sq-yards</option>
+                      </select>
+                    </div>
+                    <div className="flex  ">
+                      <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 lg:mr-2 ">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                            errors?.carpet_area?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          {...register("carpet_area")}
+                          defaultValue={Data?.carpet_area}
+                          placeholder=" "
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Carpet Area
+                        </label>
+                      </div>
+                      <select
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
+                        {...register("carpet_area_type")}
+                        defaultValue={Data?.carpet_area_type}
+                      >
+                        <option>Sq-ft</option>
+                        <option>Sq-mt</option>
+                        <option>Sq-yards</option>
+                      </select>
+                    </div>
+                    <div className="flex  ">
+                      <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 mr-2 ">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                            errors?.built_up_area?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          {...register("built_up")}
+                          defaultValue={Data?.built_up}
+                          placeholder=" "
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Built-up Area
+                        </label>
+                      </div>
+                      <select
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
+                        {...register("built_up_area_type")}
+                        defaultValue={Data?.built_up_area_type}
+                      >
+                        <option>Sq-ft</option>
+                        <option>Sq-mt</option>
+                        <option>Sq-yards</option>
+                      </select>
+                    </div>
+                    <div className="flex  ">
+                      <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 mr-2 ">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                            errors?.super_built_up_area?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          {...register("super_built_up")}
+                          defaultValue={Data?.super_built_up}
+                          placeholder=" "
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Super Built-up Area
+                        </label>
+                      </div>
+
+                      <select
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
+                        {...register("super_built_up_area_type")}
+                        defaultValue={Data?.super_built_up_area_type}
+                      >
+                        <option>Sq-ft</option>
+                        <option>Sq-mt</option>
+                        <option>Sq-yards</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="px-2 lg:px-0">
+                    <p className="text-xl my-2">Possession </p>
+                    <label
+                      for="underConstruction"
+                      className={` px-2 py-2 border-1 w-72 flex  cursor-pointerjustify-start items-center my-2  ${
+                        errors?.possession?.type === "required" && "border-red"
+                      } `}
+                    >
+                      <input
+                        className=" w-5 h-5 "
+                        type="radio"
+                        {...register("possession")}
+                        id="underConstruction"
+                        value="Under Construction"
+                        defaultChecked={
+                          Data?.possession === "Under Construction"
+                        }
+                        onClick={(e) =>
+                          setPossessionState({
+                            UnderConstruction: "Under Construction",
+                          })
+                        }
+                      ></input>
+                      <span className="text-lg ml-4 text-gray-600">
+                        {" "}
+                        Under Construction
+                      </span>
+                    </label>
+                    <label
+                      for="Ready to move"
+                      className={` px-2 py-2 border-1 w-72 flex justify-start cursor-pointer items-center my-2  ${
+                        errors?.possession?.type === "required" && "border-red"
+                      } `}
+                    >
+                      <input
+                        className=" w-5 h-5 "
+                        type="radio"
+                        {...register("possession")}
+                        value="Ready to move"
+                        defaultChecked={Data?.possession === "Ready to move"}
+                        onClick={(e) =>
+                          setPossessionState({
+                            ReadyToMove: "Ready To Move",
+                          })
+                        }
+                      ></input>
+                      <span className="text-lg ml-4 text-gray-600">
+                        Ready To Move
+                      </span>
+                    </label>
+
+                    {((Data?.possession === "Under Construction" &&
+                      !PossessionState.ReadyToMove) ||
+                      PossessionState.UnderConstruction) && (
+                      <div className="flex flex-col">
+                        <label className="text-xl my-2 mr-4">
+                          Possession By
+                        </label>
+                        <select
+                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          id="possessionByMonth"
+                          {...register("possession_month")}
+                          defaultValue={Data?.possession_month}
+                        >
+                          <option selected="" disabled>
+                            Month
+                          </option>
+                          <option>January</option>
+                          <option>February</option>
+                          <option>March</option>
+                          <option>April</option>
+                          <option>May</option>
+                          <option>June</option>
+                          <option>July</option>
+                          <option>August</option>
+                          <option>September</option>
+                          <option>October</option>
+                          <option>November</option>
+                          <option>December</option>
+                        </select>
+
+                        <select
+                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          {...register("possession_year")}
+                          defaultValue={Data?.possession_year}
+                        >
+                          <option selected="" disabled>
+                            Year
+                          </option>
+                          <option>2021</option>
+                          <option>2022</option>
+                          <option>2023</option>
+                          <option>2024</option>
+                          <option>2025</option>
+                          <option>2027</option>
+                          <option>2028</option>
+                          <option>2029</option>
+                          <option>2030</option>
+                        </select>
+                      </div>
+                    )}
+
+                    {(Data?.possession === "Ready to move" ||
+                      PossessionState.ReadyToMove) && (
+                      <div
+                        div
+                        className="flex flex-col"
+                        id="possessionDetails2"
+                      >
+                        <label className="text-xl my-2 mr-4">
+                          Age of Construction
+                        </label>
+                        <select
+                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          {...register("age_of_construction")}
+                          aria-invalid="false"
+                          defaultValue={Data?.age_of_construction}
+                        >
+                          <option>New Construction</option>
+                          <option>Less than 5 years old</option>
+                          <option>5 to 10 years old</option>
+                          <option>10 to 15 years old</option>
+                          <option>15 to 20 years old</option>
+                          <option>20 to 25 years old</option>
+                          <option>25 to 30 years old</option>
+                        </select>
+                      </div>
+                    )}
+                  </div>
+
+                  {Data?.PProperty_For === "sell" && (
+                    <div>
+                      <p className="text-xl my-2">Purchase Type</p>
+                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                        <input
+                          className=" w-5 h-5 "
+                          type="radio"
+                          {...register("purchase_type")}
+                          value="New Booking"
+                        />
+                        <span className="text-lg ml-4 text-gray-600">
+                          New Booking
+                        </span>
+                      </div>
+
+                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                        <input
+                          className=" w-5 h-5 "
+                          type="radio"
+                          {...register("purchase_type")}
+                          value="Resale"
+                        />
+                        <span className="text-lg ml-4 text-gray-600">
+                          Resale
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {Data?.property_type === "office" && (
+              <div>
+                <div className="flex">
+                  <div className="flex justify-center items-start flex-col mx-2 lg:mx-0 ">
+                    {/* <div className="w-full">
+                      <input
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
+                        style={{
+                          background: "#EEEEEE",
+                          color: "#999999",
+                          cursor: "not-allowed",
+                        }}
+                        type="text"
+                        name=""
+                        placeholder="Office Space"
+                        disabled
+                      ></input>
+                    </div> */}
+
+                    <div className="flex w-full ">
+                      <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 lg:mr-2 ">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                            errors?.carpet_area?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          {...register("carpet_area")}
+                          defaultValue={Data?.carpet_area}
+                          placeholder=" "
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Carpet Area
+                        </label>
+                      </div>
+                      <select
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
+                        {...register("carpet_area_type")}
+                        defaultValue={Data?.carpet_area_type}
+                      >
+                        <option>Sq-ft</option>
+                        <option>Sq-mt</option>
+                        <option>Sq-yards</option>
+                      </select>
+                    </div>
+                    <div className="flex w-full ">
+                      <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 mr-2 ">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                            errors?.super_built_up_area?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          {...register("super_built_up")}
+                          defaultValue={Data?.super_built_up}
+                          placeholder=" "
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Super Built-up Area
+                        </label>
+                      </div>
+
+                      <select
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
+                        {...register("super_built_up_area_type")}
+                        defaultValue={Data?.super_built_up_area_type}
+                      >
+                        <option>Sq-ft</option>
+                        <option>Sq-mt</option>
+                        <option>Sq-yards</option>
+                      </select>
+                    </div>
+
+                    <div className="w-full">
+                      <select
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
+                        {...register("furnished_status")}
+                        title="Furnishing Status"
+                        defaultValue={Data?.furnished_status}
+                      >
+                        <option>Furnished</option>
+                        <option>Semi-Furnished</option>
+                        <option>Un-Furnished</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <p className="text-xl my-2">Washrooms</p>
+                      <label
+                        for="private"
+                        className={` px-2 py-2 border-1 w-72 flex  cursor-pointer justify-start items-center my-2  ${
+                          errors?.bathrooms?.type === "required" && "border-red"
+                        } `}
+                      >
+                        <input
+                          className=" w-5 h-5 "
+                          type="radio"
+                          value="Private Washroom"
+                          defaultChecked={Data?.bathroom === "Private Washroom"}
+                          id="private"
+                          {...register("bathroom")}
+                        />
+                        <span className="text-lg ml-4 text-gray-600">
+                          {" "}
+                          Private Washroom
+                        </span>
+                      </label>
+                      <label
+                        for="shared"
+                        className={` px-2 py-2 border-1 w-72 flex  cursor-pointer justify-start items-center my-2  ${
+                          errors?.bathrooms?.type === "required" && "border-red"
+                        } `}
+                      >
+                        <input
+                          className=" w-5 h-5 "
+                          type="radio"
+                          value="Shared Washroom"
+                          defaultChecked={Data?.bathroom === "Shared Washroom"}
+                          id="shared"
+                          {...register("bathroom")}
+                        />
+                        <span className="text-lg ml-4 text-gray-600">
+                          Shared Washroom
+                        </span>
+                      </label>
+                    </div>
+
+                    <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 ">
+                      <input
+                        className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                          errors?.total_floor?.type === "required" &&
+                          "border-red"
+                        }`}
+                        type="number"
+                        min="1"
+                        {...register("total_floors")}
+                        defaultValue={Data?.total_floors}
+                        placeholder=" "
+                      ></input>
+                      <label
+                        for=""
+                        className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                      >
+                        Total Floors
+                      </label>
+                    </div>
+                  </div>
+
+                  <div className="px-2 lg:px-0">
+                    <p className="text-xl my-2">Possession </p>
+                    <label
+                      for="underConstruction"
+                      className={` px-2 py-2 border-1 w-72 flex  cursor-pointerjustify-start items-center my-2  ${
+                        errors?.possession?.type === "required" && "border-red"
+                      } `}
+                    >
+                      <input
+                        className=" w-5 h-5 "
+                        type="radio"
+                        {...register("possession")}
+                        id="underConstruction"
+                        value="Under Construction"
+                        defaultChecked={
+                          Data?.possession === "Under Construction"
+                        }
+                        onClick={(e) =>
+                          setPossessionState({
+                            UnderConstruction: "Under Construction",
+                          })
+                        }
+                      ></input>
+                      <span className="text-lg ml-4 text-gray-600">
+                        {" "}
+                        Under Construction
+                      </span>
+                    </label>
+                    <label
+                      for="Ready to move"
+                      className={` px-2 py-2 border-1 w-72 flex justify-start cursor-pointer items-center my-2  ${
+                        errors?.possession?.type === "required" && "border-red"
+                      } `}
+                    >
+                      <input
+                        className=" w-5 h-5 "
+                        type="radio"
+                        {...register("possession")}
+                        value="Ready to move"
+                        defaultChecked={Data?.possession === "Ready to move"}
+                        onClick={(e) =>
+                          setPossessionState({
+                            ReadyToMove: "Ready To Move",
+                          })
+                        }
+                      ></input>
+                      <span className="text-lg ml-4 text-gray-600">
+                        Ready To Move
+                      </span>
+                    </label>
+
+                    {((Data?.possession === "Under Construction" &&
+                      !PossessionState.ReadyToMove) ||
+                      PossessionState.UnderConstruction) && (
+                      <div className="flex flex-col">
+                        <label className="text-xl my-2 mr-4">
+                          Possession By
+                        </label>
+                        <select
+                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          id="possessionByMonth"
+                          {...register("possession_month")}
+                          defaultValue={Data?.possession_month}
+                        >
+                          <option selected="" disabled>
+                            Month
+                          </option>
+                          <option>January</option>
+                          <option>February</option>
+                          <option>March</option>
+                          <option>April</option>
+                          <option>May</option>
+                          <option>June</option>
+                          <option>July</option>
+                          <option>August</option>
+                          <option>September</option>
+                          <option>October</option>
+                          <option>November</option>
+                          <option>December</option>
+                        </select>
+
+                        <select
+                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          {...register("possession_year")}
+                          defaultValue={Data?.possession_year}
+                        >
+                          <option selected="" disabled>
+                            Year
+                          </option>
+                          <option>2021</option>
+                          <option>2022</option>
+                          <option>2023</option>
+                          <option>2024</option>
+                          <option>2025</option>
+                          <option>2027</option>
+                          <option>2028</option>
+                          <option>2029</option>
+                          <option>2030</option>
+                        </select>
+                      </div>
+                    )}
+
+                    {(Data?.possession === "Ready to move" ||
+                      PossessionState.ReadyToMove) && (
+                      <div
+                        div
+                        className="flex flex-col"
+                        id="possessionDetails2"
+                      >
+                        <label className="text-xl my-2 mr-4">
+                          Age of Construction
+                        </label>
+                        <select
+                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          {...register("age_of_construction")}
+                          aria-invalid="false"
+                          defaultValue={Data?.age_of_construction}
+                        >
+                          <option>New Construction</option>
+                          <option>Less than 5 years old</option>
+                          <option>5 to 10 years old</option>
+                          <option>10 to 15 years old</option>
+                          <option>15 to 20 years old</option>
+                          <option>20 to 25 years old</option>
+                          <option>25 to 30 years old</option>
+                        </select>
+                      </div>
+                    )}
+                  </div>
+
+                  {Data?.PProperty_For === "sell" && (
+                    <div>
+                      <p className="text-xl my-2">Purchase Type</p>
+                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                        <input
+                          className=" w-5 h-5 "
+                          type="radio"
+                          {...register("purchase_type")}
+                          value="New Booking"
+                        />
+                        <span className="text-lg ml-4 text-gray-600">
+                          New Booking
+                        </span>
+                      </div>
+
+                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                        <input
+                          className=" w-5 h-5 "
+                          type="radio"
+                          {...register("purchase_type")}
+                          value="Resale"
+                        />
+                        <span className="text-lg ml-4 text-gray-600">
+                          Resale
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {Data?.property_type === "shop" && (
+              <div>
+                <div className="flex">
+                  <div className="flex justify-center items-start flex-col mx-2 lg:mx-0 ">
+                    <div className="flex w-full ">
+                      <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 lg:mr-2 ">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                            errors?.carpet_area?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          {...register("carpet_area")}
+                          defaultValue={Data?.carpet_area}
+                          placeholder=" "
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Carpet Area
+                        </label>
+                      </div>
+                      <select
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
+                        {...register("carpet_area_type")}
+                        defaultValue={Data?.carpet_area_type}
+                      >
+                        <option>Sq-ft</option>
+                        <option>Sq-mt</option>
+                        <option>Sq-yards</option>
+                      </select>
+                    </div>
+                    <div className="flex w-full ">
+                      <div className="outline relative h-11  lg:w-72 w-3/5 focus-within:border-blue-500 my-1.5 mr-2 ">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                            errors?.super_built_up_area?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          {...register("super_built_up")}
+                          defaultValue={Data?.super_built_up}
+                          placeholder=" "
+                        ></input>
+                        <label
+                          for=""
+                          className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                        >
+                          Super Built-up Area
+                        </label>
+                      </div>
+
+                      <select
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-2/5 lg:mr-2 my-1.5 placeholder-gray-600"
+                        {...register("super_built_up_area_type")}
+                        defaultValue={Data?.super_built_up_area_type}
+                      >
+                        <option>Sq-ft</option>
+                        <option>Sq-mt</option>
+                        <option>Sq-yards</option>
+                      </select>
+                    </div>
+
+                    <div className="w-full">
+                      <select
+                        className="border-1 h-11  px-2 text-lg lg:w-72 w-full lg:mr-2 my-1 placeholder-gray-600"
+                        {...register("furnished_status")}
+                        title="Furnishing Status"
+                        defaultValue={Data?.furnished_status}
+                      >
+                        <option>Furnished</option>
+                        <option>Semi-Furnished</option>
+                        <option>Un-Furnished</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <p className="text-xl my-2">Washrooms</p>
+                      <label
+                        for="private"
+                        className={` px-2 py-2 border-1 w-72 flex  cursor-pointer justify-start items-center my-2  ${
+                          errors?.bathrooms?.type === "required" && "border-red"
+                        } `}
+                      >
+                        <input
+                          className=" w-5 h-5 "
+                          type="radio"
+                          value="Private Washroom"
+                          id="private"
+                          defaultChecked={Data?.bathroom === "Private Washroom"}
+                          {...register("bathroom")}
+                        />
+                        <span className="text-lg ml-4 text-gray-600">
+                          {" "}
+                          Private Washroom
+                        </span>
+                      </label>
+                      <label
+                        for="shared"
+                        className={` px-2 py-2 border-1 w-72 flex  cursor-pointer justify-start items-center my-2  ${
+                          errors?.bathrooms?.type === "required" && "border-red"
+                        } `}
+                      >
+                        <input
+                          className=" w-5 h-5 "
+                          type="radio"
+                          value="Shared Washroom"
+                          defaultChecked={Data?.bathroom === "Shared Washroom"}
+                          {...register("bathroom")}
+                        />
+                        <span className="text-lg ml-4 text-gray-600">
+                          Shared Washroom
+                        </span>
+                      </label>
+                    </div>
+
+                    <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5 ">
+                      <input
+                        className={`block p-4 border-1 w-full h-11 text-lg  uppercase appearance-none focus:outline-none bg-transparent ${
+                          errors?.floor_no?.type === "required" && "border-red"
+                        }`}
+                        type="number"
+                        min="1"
+                        {...register("total_floors")}
+                        defaultValue={Data?.total_floors}
+                        placeholder=" "
+                      ></input>
+                      <label
+                        for=""
+                        className="absolute top-0 text-lg bg-white px-3 py-1.5 -z-1 duration-300 origin-0"
+                      >
+                        Basement / Floor No.
+                      </label>
+                    </div>
+                  </div>
+                  <div className="px-2 lg:px-0 mt-4">
+                    <p className="text-xl my-2">Possession </p>
+                    <label
+                      for="underConstruction"
+                      className={` px-2 py-2 border-1 w-72  flex  cursor-pointerjustify-start items-center my-2  ${
+                        errors?.possession?.type === "required" && "border-red"
+                      } `}
+                    >
+                      <input
+                        className=" w-5 h-5 "
+                        type="radio"
+                        {...register("possession")}
+                        id="underConstruction"
+                        value="Under Construction"
+                        defaultChecked={
+                          Data?.possession === "Under Construction"
+                        }
+                        onClick={(e) =>
+                          setPossessionState({
+                            UnderConstruction: "Under Construction",
+                          })
+                        }
+                      ></input>
+                      <span className="text-lg ml-4 text-gray-600">
+                        {" "}
+                        Under Construction
+                      </span>
+                    </label>
+                    <label
+                      for="Ready to move"
+                      className={` px-2 py-2 border-1 w-72 flex justify-start cursor-pointer items-center my-2  ${
+                        errors?.possession?.type === "required" && "border-red"
+                      } `}
+                    >
+                      <input
+                        className=" w-5 h-5 "
+                        type="radio"
+                        {...register("possession")}
+                        value="Ready to move"
+                        defaultChecked={Data?.possession === "Ready to move"}
+                        onClick={(e) =>
+                          setPossessionState({
+                            ReadyToMove: "Ready To Move",
+                          })
+                        }
+                      ></input>
+                      <span className="text-lg ml-4 text-gray-600">
+                        Ready To Move
+                      </span>
+                    </label>
+
+                    {((Data?.possession === "Under Construction" &&
+                      !PossessionState.ReadyToMove) ||
+                      PossessionState.UnderConstruction) && (
+                      <div className="flex flex-col">
+                        <label className="text-xl my-2 mr-4">
+                          Possession By
+                        </label>
+                        <select
+                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          id="possessionByMonth"
+                          {...register("possession_month")}
+                          defaultValue={Data?.possession_month}
+                        >
+                          <option selected="" disabled>
+                            Month
+                          </option>
+                          <option>January</option>
+                          <option>February</option>
+                          <option>March</option>
+                          <option>April</option>
+                          <option>May</option>
+                          <option>June</option>
+                          <option>July</option>
+                          <option>August</option>
+                          <option>September</option>
+                          <option>October</option>
+                          <option>November</option>
+                          <option>December</option>
+                        </select>
+
+                        <select
+                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          {...register("possession_year")}
+                          defaultValue={Data?.possession_year}
+                        >
+                          <option selected="" disabled>
+                            Year
+                          </option>
+                          <option>2021</option>
+                          <option>2022</option>
+                          <option>2023</option>
+                          <option>2024</option>
+                          <option>2025</option>
+                          <option>2027</option>
+                          <option>2028</option>
+                          <option>2029</option>
+                          <option>2030</option>
+                        </select>
+                      </div>
+                    )}
+
+                    {(Data?.possession === "Ready to move" ||
+                      PossessionState.ReadyToMove) && (
+                      <div
+                        div
+                        className="flex flex-col"
+                        id="possessionDetails2"
+                      >
+                        <label className="text-xl my-2 mr-4">
+                          Age of Construction
+                        </label>
+                        <select
+                          className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
+                          {...register("age_of_construction")}
+                          aria-invalid="false"
+                          defaultValue={Data?.age_of_construction}
+                        >
+                          <option>New Construction</option>
+                          <option>Less than 5 years old</option>
+                          <option>5 to 10 years old</option>
+                          <option>10 to 15 years old</option>
+                          <option>15 to 20 years old</option>
+                          <option>20 to 25 years old</option>
+                          <option>25 to 30 years old</option>
+                        </select>
+                      </div>
+                    )}
+                  </div>
+
+                  {Data?.PProperty_For === "sell" && (
+                    <div>
+                      <p className="text-xl my-2">Purchase Type</p>
+                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                        <input
+                          className=" w-5 h-5 "
+                          type="radio"
+                          {...register("purchase_type")}
+                          value="New Booking"
+                        />
+                        <span className="text-lg ml-4 text-gray-600">
+                          New Booking
+                        </span>
+                      </div>
+
+                      <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                        <input
+                          className=" w-5 h-5 "
+                          type="radio"
+                          {...register("purchase_type")}
+                          value="Resale"
+                        />
+                        <span className="text-lg ml-4 text-gray-600">
+                          Resale
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             )}
           </div>

@@ -163,12 +163,7 @@ const BannerModal = ({
                       )}
                     />
                   </div>
-                  <label
-                    for="locality_id"
-                    className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
-                  >
-                    Locality / Area / Sector
-                  </label>
+
                   <p className="text-lg ml-4">
                     Current Locality - {Data?.locality_name}
                   </p>
@@ -240,12 +235,7 @@ const BannerModal = ({
                       )}
                     />
                   </div>
-                  <label
-                    for="locality_id"
-                    className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
-                  >
-                    Locality / Area / Sector
-                  </label>
+
                   <p className="text-lg ml-4">
                     Current Locality - {Data?.locality_name}
                   </p>
@@ -316,12 +306,7 @@ const BannerModal = ({
                       )}
                     />
                   </div>
-                  <label
-                    for="locality_id"
-                    className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
-                  >
-                    Locality / Area / Sector
-                  </label>
+
                   <p className="text-lg ml-4">
                     Current Locality - {Data?.locality_name}
                   </p>
@@ -381,12 +366,7 @@ const BannerModal = ({
                       )}
                     />
                   </div>
-                  <label
-                    for="locality_id"
-                    className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
-                  >
-                    Locality / Area / Sector
-                  </label>
+
                   <p className="text-lg ml-4">
                     Current Locality - {Data?.locality_name}
                   </p>
@@ -553,12 +533,6 @@ const BannerModal = ({
                     />
                   </div>
 
-                  <label
-                    for="locality_id"
-                    className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
-                  >
-                    Locality / Area / Sector
-                  </label>
                   <p className="text-lg ml-4">
                     Current Locality - {Data?.locality_name}
                   </p>
@@ -658,12 +632,6 @@ const BannerModal = ({
                     />
                   </div>
 
-                  <label
-                    for="locality_id"
-                    className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
-                  >
-                    Locality / Area / Sector
-                  </label>
                   <p className="text-lg ml-4">
                     Current Locality - {Data?.locality_name}
                   </p>
@@ -745,12 +713,6 @@ const BannerModal = ({
                     />
                   </div>
 
-                  <label
-                    for="locality_id"
-                    className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
-                  >
-                    Locality / Area / Sector
-                  </label>
                   <p className="text-lg ml-4">
                     Current Locality - {Data?.locality_name}
                   </p>

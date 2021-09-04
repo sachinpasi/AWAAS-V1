@@ -126,7 +126,7 @@ const ProfilePropertyListing = () => {
                             item.property_type === "villa") && (
                             <>
                               {item.bedroom && item.bedroom}{" "}
-                              {item.bedroom && "BHK"}
+                              {item.bedroom && "BHK"}{" "}
                             </>
                           )}
                           {item.property_type} for {item.property_for}
