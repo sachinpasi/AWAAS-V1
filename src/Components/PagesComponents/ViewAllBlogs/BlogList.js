@@ -10,7 +10,7 @@ const BlogList = () => {
   const FetchArticlesList = async () => {
     if (selectedCategory !== undefined) {
       const res = await axios.get(
-        `${API}/blogs/list?category=${selectedCategory}`
+        `${API}/blogs/list?category=${selectedCategory}&type=1`
       );
       setArticlesList(res.data.data);
     } else {
@@ -92,13 +92,15 @@ const BlogList = () => {
           </div>
         </div>
       </div>
-      <div className="lg:w-80vw w-90vw mx-auto grid lg:grid-cols-3 grid-cols-1 gap-10">
+      <div className="lg:w-80vw w-90vw mx-auto grid lg:grid-cols-3 grid-cols-1 gap-10 mb-12">
         {ArticlesList.map((item) => (
           <div
             key={item.id}
-            style={{
-              height: "384px",
-            }}
+            style={
+              {
+                // height: "384px",
+              }
+            }
             className="w-full h-400px flex flex-col justify-between items-center"
           >
             {console.log(item)}
@@ -115,7 +117,7 @@ const BlogList = () => {
                 className="w-full h-full absolute top-0"
               ></div>
             </div>
-            <div className="w-full lg:h-44 bg-textbg">
+            <div className="w-full lg:h-48 bg-textbg">
               <div className="relative p-5 h-full ">
                 <div
                   style={{
@@ -126,7 +128,7 @@ const BlogList = () => {
                   <div className="flex flex-col items-start">
                     <p
                       style={{ lineHeight: "22px" }}
-                      className="text-2xl font-semibold "
+                      className="text-2xl font-semibold line-clamp-2 "
                     >
                       {item.title}
                     </p>

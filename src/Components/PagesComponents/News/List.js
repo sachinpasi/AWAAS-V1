@@ -10,7 +10,7 @@ const List = () => {
   const [ArticlesList, setArticlesList] = useState([]);
 
   const FetchArticlesList = async () => {
-    const res = await axios.get(`${API}/blogs/list?category=1`);
+    const res = await axios.get(`${API}/blogs/list?category=1&type=1`);
     setArticlesList(res.data.data);
     console.log(res.data.data);
   };
