@@ -14,7 +14,7 @@ const BlogList = () => {
       );
       setArticlesList(res.data.data);
     } else {
-      const res = await axios.get(`${API}/blogs/list`);
+      const res = await axios.get(`${API}/blogs/list?type=1`);
       setArticlesList(res.data.data);
     }
   };
