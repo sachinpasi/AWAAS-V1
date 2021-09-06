@@ -8,7 +8,7 @@ const RecommendedBlogs = () => {
   const [ArticlesList, setArticlesList] = useState([]);
 
   const FetchArticlesList = async () => {
-    const res = await axios.get(`${API}/blogs/list?category=2}`);
+    const res = await axios.get(`${API}/blogs/list?category=2&type=1`);
     setArticlesList(res.data.data);
   };
 
@@ -21,7 +21,7 @@ const RecommendedBlogs = () => {
         Read our blogs related to Investment{" "}
       </p>
       <div className="lg:w-80vw w-90vw mx-auto grid lg:grid-cols-3 grid-cols-1 gap-10 py-8">
-        {ArticlesList.splice(0, 3).map((item) => (
+        {ArticlesList.slice(0, 3).map((item) => (
           <div
             key={item.id}
             style={{
@@ -29,7 +29,7 @@ const RecommendedBlogs = () => {
             }}
             className="w-full  flex flex-col justify-between items-center"
           >
-            {console.log(item)}
+            {/* {console.log(item)} */}
             <div className="relative w-full h-52 ">
               <img
                 className="w-full h-full object-cover"
@@ -44,16 +44,16 @@ const RecommendedBlogs = () => {
               ></div>
             </div>
             <div className="w-full lg:h-44 bg-textbg ">
-              <div className="relative p-5 h-full flex flex-col justify-between  ">
+              <div className="relative p-5 pt-3 h-full flex flex-col justify-between  ">
                 <div
                   style={{
                     borderBottom: "1px solid #7070702E",
                   }}
-                  className="flex justify-between items-center  pb-4"
+                  className="flex justify-between items-center  pb-2"
                 >
                   <div className="flex flex-col items-start">
                     <p
-                      style={{ lineHeight: "22px" }}
+                      // style={{ lineHeight: "25px" }}
                       className="text-2xl font-semibold line-clamp-1"
                     >
                       {item.title}
@@ -71,7 +71,7 @@ const RecommendedBlogs = () => {
                     </p>
                     <Link
                       className="bg-blue py-2 px-8 text-white font-medium tracking-tight"
-                      to={`article/${item.bid}`}
+                      to={`/article/${item.bid}`}
                     >
                       View Details
                     </Link>

@@ -25,7 +25,7 @@ const BlogList = () => {
   return (
     <div className="w-full h-full py-8 ">
       <div className="lg:w-80vw w-90vw mx-auto mb-8">
-        <div className="flex  items-center">
+        <div className="flex  items-center scrollbar-hide overflow-y-scroll">
           <div
             onClick={() => setselectedCategory(1)}
             className={` ${

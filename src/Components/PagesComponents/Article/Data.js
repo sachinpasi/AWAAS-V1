@@ -82,7 +82,7 @@ const Data = ({ ArticleData }) => {
               </p>
               <Link
                 className="flex justify-center items-center w-36 font-medium tracking-tight  px-5 py-1.5 my-2 text-white bg-blue"
-                to={`article/${item.bid}`}
+                to={`/article/${item.bid}`}
               >
                 Read More
               </Link>

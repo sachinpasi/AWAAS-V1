@@ -8,7 +8,7 @@ const RecommendedBlogs = () => {
   const [ArticlesList, setArticlesList] = useState([]);
 
   const FetchArticlesList = async () => {
-    const res = await axios.get(`${API}/blogs/list?category=4}`);
+    const res = await axios.get(`${API}/blogs/list?category=4&type=1`);
     setArticlesList(res.data.data);
   };
 
@@ -21,7 +21,7 @@ const RecommendedBlogs = () => {
         Read our blogs related to Vastu{" "}
       </p>
       <div className="lg:w-80vw w-90vw mx-auto grid lg:grid-cols-3 grid-cols-1 gap-10 py-8">
-        {ArticlesList.splice(0, 3).map((item) => (
+        {ArticlesList.slice(0, 3).map((item) => (
           <div
             key={item.id}
             style={{
@@ -29,7 +29,7 @@ const RecommendedBlogs = () => {
             }}
             className="w-full  flex flex-col justify-between items-center"
           >
-            {console.log(item)}
+            {/* {console.log(item)} */}
             <div className="relative w-full h-52 ">
               <img
                 className="w-full h-full object-cover"
