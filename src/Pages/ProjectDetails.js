@@ -20,6 +20,9 @@ const ProjectDetails = () => {
   const dispatch = useDispatch();
   const [isLoading, setisLoading] = useState();
   const [Data, setData] = useState();
+  const [Title, setTitle] = useState(
+    "Awaasonline - Buy, Sell, Rent Property In Panipat"
+  );
 
   const { id } = useParams();
 
@@ -41,17 +44,24 @@ const ProjectDetails = () => {
 
   useEffect(() => {
     FetchData();
+
     window.scrollTo(0, 0);
     return () => {
       dispatch(REMOVE_PROJECT_DETAILS());
     };
     // eslint-disable-next-line
   }, [id]);
+  useEffect(() => {
+    if (Data) {
+      setTitle(`${Data?.parent?.title} | ${Data?.parent?.locality}
+              ${Data?.parent?.city}`);
+    }
+  }, [Data]);
   return (
     <Layout>
       <Helmet>
-        <meta charset="utf-8" />
-        <title>{Data?.parent?.title}</title>
+        <meta charset="utf-8" />(<title>{Title}</title>
+        )
         <meta name="description" content="" />
       </Helmet>
       <Banner />
