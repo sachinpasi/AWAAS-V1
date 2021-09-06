@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 import { API } from "../API";
 import Layout from "../Components/Layout/Layout";
@@ -18,6 +19,7 @@ import Loader from "../Components/Preloader/Loader";
 const ProjectDetails = () => {
   const dispatch = useDispatch();
   const [isLoading, setisLoading] = useState();
+  const [Data, setData] = useState();
 
   const { id } = useParams();
 
@@ -27,6 +29,7 @@ const ProjectDetails = () => {
     // console.log(res.data.data);
 
     if (res.status === 200) {
+      setData(res.data.data);
       dispatch(
         SET_PROJECT_DETAILS({
           Data: res.data.data,
@@ -46,6 +49,11 @@ const ProjectDetails = () => {
   }, [id]);
   return (
     <Layout>
+      <Helmet>
+        <meta charset="utf-8" />
+        <title>{Data?.parent?.title}</title>
+        <meta name="description" content="" />
+      </Helmet>
       <Banner />
       {isLoading && <Loader />}
       <ProjectDetailsSection />
