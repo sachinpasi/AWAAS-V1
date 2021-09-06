@@ -9,6 +9,7 @@ import IvestorsWords from "../Components/PagesComponents/InvestmentAssist/Ivesto
 import Opportunities from "../Components/PagesComponents/InvestmentAssist/Opportunities";
 import RecommendedBlogs from "../Components/PagesComponents/InvestmentAssist/RecommendedBlogs";
 import Loader from "../Components/Preloader/Loader";
+import { Helmet } from "react-helmet";
 
 const InvestmentAssist = () => {
   const [isLoading, setisLoading] = useState(true);
@@ -21,6 +22,12 @@ const InvestmentAssist = () => {
   }, []);
   return (
     <Layout>
+      <Helmet>
+        <meta charset="utf-8" />(
+        <title>Investment Assistance | Awaasonline</title>
+        )
+        <meta name="description" content="" />
+      </Helmet>
       {isLoading && <Loader />}
       <Banner />
       <Features />

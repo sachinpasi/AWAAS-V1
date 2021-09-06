@@ -11,6 +11,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../Redux/_features/_userSlice";
 import { API } from "../../API";
+import { Helmet } from "react-helmet";
 
 const Profile = () => {
   const [isLoading, setisLoading] = useState(false);
@@ -61,6 +62,11 @@ const Profile = () => {
   }, []);
   return (
     <Layout>
+      <Helmet>
+        <meta charset="utf-8" />(<title>Overview | Awaasonline</title>
+        )
+        <meta name="description" content="" />
+      </Helmet>
       <main className=" hidden w-full min-h-screen bg-white relative lg:flex items-start justify-between ">
         <Sidebar />
         <div className="w-4/5 h-full p-8 mt-4">

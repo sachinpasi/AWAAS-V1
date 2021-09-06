@@ -62,7 +62,7 @@ const ProjectDetails = () => {
       <Helmet>
         <meta charset="utf-8" />(<title>{Title}</title>
         )
-        <meta name="description" content="" />
+        <meta name="description" content={Data?.parent?.description} />
       </Helmet>
       <Banner />
       {isLoading && <Loader />}

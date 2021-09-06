@@ -6,6 +6,7 @@ import Filter from "../Components/PagesComponents/Search/Filter";
 import Result from "../Components/PagesComponents/Search/Result";
 import SearchNav from "../Components/PagesComponents/Search/SearchNav";
 import queryString from "query-string";
+import { Helmet } from "react-helmet";
 
 const Search = () => {
   const { search } = useLocation();
@@ -21,6 +22,11 @@ const Search = () => {
   }, []);
   return (
     <Layout>
+      <Helmet>
+        <meta charset="utf-8" />(<title>Search</title>
+        )
+        <meta name="description" content="" />
+      </Helmet>
       <SearchNav
         setLocality={setLocality}
         PropertyFor={PropertyFor}

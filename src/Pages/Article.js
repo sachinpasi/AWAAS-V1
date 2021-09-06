@@ -7,11 +7,16 @@ import { API } from "../API";
 import { Link, useParams } from "react-router-dom";
 import moment from "moment";
 import Loader from "../Components/Preloader/Loader";
+import { Helmet } from "react-helmet";
 
 const Article = () => {
   const [ArticleData, setArticleData] = useState();
   const [ArticlesList, setArticlesList] = useState([]);
   const [isLoading, setisLoading] = useState(true);
+
+  const [Title, setTitle] = useState(
+    "Awaasonline - Buy, Sell, Rent Property In Panipat"
+  );
 
   const { id } = useParams();
 
@@ -44,6 +49,11 @@ const Article = () => {
   useEffect(() => {
     FetchArticlesList();
   }, []);
+  useEffect(() => {
+    if (ArticleData) {
+      setTitle(`${ArticleData?.title} `);
+    }
+  }, [ArticleData]);
 
   useEffect(() => {
     FetchData();
@@ -54,7 +64,13 @@ const Article = () => {
   }, [id]);
   return (
     <Layout>
+      <Helmet>
+        <meta charset="utf-8" />(<title>{Title}</title>
+        )
+        <meta name="description" content={ArticleData?.description} />
+      </Helmet>
       <Banner ArticleData={ArticleData} />
+
       {isLoading && <Loader />}
       <div className="  h-full bg-textbg">
         <div className=" lg:w-80vw w-90vw mx-auto flex flex-col lg:flex-row justify-between items-start  relative">

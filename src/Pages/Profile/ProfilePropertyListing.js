@@ -10,6 +10,7 @@ import Sidebar from "../../Components/PagesComponents/Profile/Sidebar";
 import Loader from "../../Components/Preloader/Loader";
 import { selectUser } from "../../Redux/_features/_userSlice";
 import { GrValidate } from "react-icons/gr";
+import { Helmet } from "react-helmet";
 
 const ProfilePropertyListing = () => {
   const [isLoading, setisLoading] = useState(false);
@@ -85,6 +86,11 @@ const ProfilePropertyListing = () => {
   };
   return (
     <Layout>
+      <Helmet>
+        <meta charset="utf-8" />(<title>Property Listing | Awaasonline</title>
+        )
+        <meta name="description" content="" />
+      </Helmet>
       {isDeleteModalOpen && <DeleteModal />}
       <main className="w-full min-h-screen bg-white relative flex  justify-between ">
         <Sidebar />

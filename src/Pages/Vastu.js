@@ -6,6 +6,7 @@ import Contact from "../Components/PagesComponents/Vastu/Contact";
 import HowItWorks from "../Components/PagesComponents/Vastu/HowItWorks";
 import Loader from "../Components/Preloader/Loader";
 import RecommendedBlogs from "../Components/PagesComponents/Vastu/RecommendedBlogs";
+import { Helmet } from "react-helmet";
 
 const Vastu = () => {
   const [isLoading, setisLoading] = useState(true);
@@ -18,6 +19,11 @@ const Vastu = () => {
   }, []);
   return (
     <Layout>
+      <Helmet>
+        <meta charset="utf-8" />(<title>Vastu | Awaasonline</title>
+        )
+        <meta name="description" content="" />
+      </Helmet>
       {isLoading && <Loader />}
       <Banner />
       <Contact />
