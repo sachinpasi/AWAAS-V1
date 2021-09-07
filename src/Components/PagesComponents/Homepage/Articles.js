@@ -48,11 +48,14 @@ const Articles = () => {
                 }}
                 className="w-full  relative"
               >
-                <img
-                  className="object-cover w-full h-full"
-                  src={item.img}
-                  alt="banner_img"
-                />
+                <Link to={`article/${item.bid}`} className="w-full h-full">
+                  <img
+                    className="object-cover w-full h-full"
+                    src={item.img}
+                    alt="banner_img"
+                  />
+                </Link>
+
                 <div className="absolute top-4 left-4  w-14 h-14 flex flex-col bg-blue justify-center items-center text-white">
                   <h6 className="text-xl font-bold">
                     {getDate(item.created_at)}

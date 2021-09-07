@@ -40,9 +40,9 @@ const Sidebar = () => {
           }}
           className="pb-3 flex flex-col justify-center items-start h-1/5"
         >
-          <p className="text-3xl text-white leading-5 mb-2">
+          <h3 className="text-3xl text-white leading-5 mb-2">
             Request A Callback
-          </p>
+          </h3>
           <p
             style={{
               color: "#B8D0FF",
@@ -58,7 +58,7 @@ const Sidebar = () => {
           className="flex justify-center items-start flex-col py-2"
         >
           <div className="flex-col flex justify-center items-start w-full my-1">
-            <p className="text-white">Name</p>
+            <label className="text-white">Name</label>
             <input
               style={{
                 background: "#3F74DB",
@@ -71,7 +71,7 @@ const Sidebar = () => {
             />
           </div>
           <div className="flex-col flex justify-center items-start w-full my-1">
-            <p className="text-white">Email Address</p>
+            <label className="text-white">Email Address</label>
             <input
               style={{
                 background: "#3F74DB",
@@ -84,7 +84,7 @@ const Sidebar = () => {
             />
           </div>
           <div className="flex-col flex justify-center items-start w-full my-1">
-            <p className="text-white">Phone Number</p>
+            <label className="text-white">Phone Number</label>
             <input
               style={{
                 background: "#3F74DB",

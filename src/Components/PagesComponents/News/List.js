@@ -70,9 +70,9 @@ const List = () => {
                 </div>
 
                 <div className="w-11/12 p-4 flex flex-col items-start text-darkgray">
-                  <p className="lg:text-2xl text-xl font-medium text-darkgray py-2">
+                  <h4 className="lg:text-2xl text-xl font-medium text-darkgray py-2">
                     {item.title}
-                  </p>
+                  </h4>
                   <p className="text-darkgray line-clamp-1">
                     {item.description}
                   </p>

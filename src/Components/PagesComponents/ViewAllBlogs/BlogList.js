@@ -34,13 +34,13 @@ const BlogList = () => {
                 : "bg-white border-lightgray"
             }  px-5 py-1  rounded-full border-1 cursor-pointer mr-4 `}
           >
-            <p
+            <h5
               className={`${
                 selectedCategory === 1 ? "text-white" : " text-black"
               } text-lg`}
             >
               News
-            </p>
+            </h5>
           </div>
           <div
             onClick={() => setselectedCategory(2)}
@@ -50,13 +50,13 @@ const BlogList = () => {
                 : "bg-white border-lightgray"
             }  px-5 py-1  rounded-full border-1 cursor-pointer mr-4 `}
           >
-            <p
+            <h5
               className={`${
                 selectedCategory === 2 ? "text-white" : " text-black"
               } text-lg`}
             >
               Investment
-            </p>
+            </h5>
           </div>
           <div
             onClick={() => setselectedCategory(3)}
@@ -66,13 +66,13 @@ const BlogList = () => {
                 : "bg-white border-lightgray"
             }  px-5 py-1  rounded-full border-1 cursor-pointer mr-4 `}
           >
-            <p
+            <h5
               className={`${
                 selectedCategory === 3 ? "text-white" : " text-black"
               } text-lg`}
             >
               Homeloan
-            </p>
+            </h5>
           </div>
           <div
             onClick={() => setselectedCategory(4)}
@@ -82,13 +82,13 @@ const BlogList = () => {
                 : "bg-white border-lightgray"
             }  px-5 py-1  rounded-full border-1 cursor-pointer mr-4 `}
           >
-            <p
+            <h5
               className={`${
                 selectedCategory === 4 ? "text-white" : " text-black"
               } text-lg`}
             >
               Vastu
-            </p>
+            </h5>
           </div>
         </div>
       </div>
@@ -104,7 +104,7 @@ const BlogList = () => {
             className="w-full h-400px flex flex-col justify-between items-center"
           >
             {console.log(item)}
-            <div className="relative w-full h-52">
+            <Link to={`article/${item.bid}`} className="relative w-full h-52">
               <img
                 className="w-full h-full object-cover"
                 src={item?.img}
@@ -116,7 +116,7 @@ const BlogList = () => {
                 }}
                 className="w-full h-full absolute top-0"
               ></div>
-            </div>
+            </Link>
             <div className="w-full lg:h-48 bg-textbg">
               <div className="relative p-5 h-full ">
                 <div
@@ -126,12 +126,12 @@ const BlogList = () => {
                   className="flex justify-between items-center  pb-4"
                 >
                   <div className="flex flex-col items-start">
-                    <p
+                    <h3
                       style={{ lineHeight: "22px" }}
                       className="text-2xl font-semibold line-clamp-2 "
                     >
                       {item.title}
-                    </p>
+                    </h3>
                   </div>
                 </div>
 
@@ -140,9 +140,9 @@ const BlogList = () => {
                     {item.description}
                   </p>
                   <div className="flex items-center justify-between w-full py-2 ">
-                    <p className="text-sm text-darkgray pt-2 tracking-tight">
+                    <span className="text-sm text-darkgray pt-2 tracking-tight">
                       Posted By {item.author_name}
-                    </p>
+                    </span>
                     <Link
                       className="bg-blue py-2 px-8 text-white font-medium tracking-tight"
                       to={`article/${item.bid}`}

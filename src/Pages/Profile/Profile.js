@@ -82,9 +82,9 @@ const Profile = () => {
                 </p>
               </div>
               <div className="w-full flex-col flex items-start">
-                <p className="text-3xl font-medium text-darkgray py-2  ">
+                <h3 className="text-3xl font-medium text-darkgray py-2  ">
                   Property Listing
-                </p>
+                </h3>
               </div>
             </Link>
 
@@ -100,9 +100,9 @@ const Profile = () => {
                   </p>
                 </div>
                 <div className="w-full flex-col flex items-start">
-                  <p className="text-3xl font-medium text-darkgray py-2  ">
+                  <h3 className="text-3xl font-medium text-darkgray py-2  ">
                     Project Listing
-                  </p>
+                  </h3>
                 </div>
               </Link>
             )}
@@ -118,9 +118,9 @@ const Profile = () => {
                   </p>
                 </div>
                 <div className="w-full flex-col flex items-start">
-                  <p className="text-3xl font-medium text-darkgray py-2  ">
+                  <h3 className="text-3xl font-medium text-darkgray py-2  ">
                     Home Loan
-                  </p>
+                  </h3>
                 </div>
               </Link>
             )}
@@ -132,9 +132,9 @@ const Profile = () => {
                 <MdHelp className="text-6xl text-darkblue" />
               </div>
               <div className="w-full flex-col flex items-start">
-                <p className="text-3xl font-medium text-darkgray py-2  ">
+                <h3 className="text-3xl font-medium text-darkgray py-2  ">
                   Help
-                </p>
+                </h3>
               </div>
             </a>
           </div>

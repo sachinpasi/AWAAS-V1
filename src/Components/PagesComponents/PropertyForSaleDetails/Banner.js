@@ -86,21 +86,21 @@ const Banner = ({
         />
 
         <div className="  relative lg:w-80vw w-90vw mx-auto h-full flex flex-col items-start justify-center">
-          <p
+          <h1
             style={{
               textShadow: "2px 3px 5px #000",
             }}
             className="text-white lg:text-5xl text-4xl tracking-tight font-medium capitalize"
           >
             {Data?.title}
-          </p>
+          </h1>
 
           <div className="flex justify-center items-center py-4 ">
             <div className="flex justify-center items-center">
               <MdLocationOn className="text-blue text-3xl font-medium" />
-              <p className="text-white lg:text-lg text-base font-medium whitespace-nowrap">
+              <h4 className="text-white lg:text-lg text-base font-medium whitespace-nowrap">
                 {Data?.locality_name}, {Data?.city}
-              </p>{" "}
+              </h4>{" "}
             </div>
             {Data?.validated === 1 && (
               <div className="mx-4">

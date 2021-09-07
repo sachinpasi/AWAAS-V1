@@ -11,6 +11,7 @@ import Articles from "../Components/PagesComponents/Homepage/Articles";
 import Footer from "../Components/Layout/Footer";
 import PreloaderStart from "../Components/Preloader/PreloaderStart";
 import CookieBox from "../Components/Common/CookieBox";
+import MetaComponent from "../Components/Common/MetaComponent";
 
 const Homepage = () => {
   const [isLoading, setisLoading] = useState(true);
@@ -25,8 +26,26 @@ const Homepage = () => {
       setisCookieAggred(true);
     }
   }, []);
+
+  let SchemaData = {
+    "@context": "https://schema.org/",
+    "@type": "WebSite",
+    name: "Awaasonline",
+    url: "https://www.awaasonline.com/",
+    icon: "https://www.awaasonline.com/assets/images/logo/logo.svg",
+    phone: "9996398965",
+    email: "help@awaasonline.com",
+    potentialAction: {
+      "@type": "SearchAction",
+      target:
+        "https://www.awaasonline.com/search?property_for=sell{search_term_string}",
+      "query-input": "required name=search_term_string",
+    },
+  };
   return (
     <>
+      <MetaComponent jsonLd={SchemaData} />
+
       <PreloaderStart isLoading={isLoading} />
       <HomeNav />
       <Banner setisLoading={setisLoading} />

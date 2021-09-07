@@ -27,7 +27,7 @@ const Amenities = ({ setisAnyThingUpdated, isAnyThingUpdated }) => {
       className="w-full h-full border-1 border-projectsborder rounded px-4 my-4"
     >
       <div className="w-full border-b-1 border-projectsborder py-4 px-4 relative flex justify-between items-center">
-        <p className="text-3xl text-darkgray ">Amenities</p>
+        <h3 className="text-3xl text-darkgray ">Amenities</h3>
         {location.pathname === `/profile/property/listings/${id}` && (
           <div
             onClick={() => setisAmenitiesEditOpen(!isAmenitiesEditOpen)}
@@ -57,9 +57,9 @@ const Amenities = ({ setisAnyThingUpdated, isAnyThingUpdated }) => {
               src={item.icon}
               alt=""
             />
-            <p className="lg:text-lg text-sm capitalize my-2 whitespace-nowrap ">
+            <h6 className="lg:text-lg text-sm capitalize my-2 whitespace-nowrap ">
               {item.name}
-            </p>
+            </h6>
           </div>
         ))}{" "}
       </div>

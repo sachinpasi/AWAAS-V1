@@ -11,9 +11,9 @@ const Banner = () => {
     >
       <div className="w-full h-full bg-black bg-opacity-50">
         <div className="lg:w-80vw w-90vw mx-auto h-full flex flex-col items-center justify-center">
-          <p className="lg:text-6xl text-2xl font-semibold text-white tracking-tight">
+          <h1 className="lg:text-6xl text-2xl font-semibold text-white tracking-tight">
             Panipat Real Estate Updates
-          </p>
+          </h1>
 
           <div className="mt-8">
             <div className="w-36 h-1 border-b-3 border-t-4 border-green rounded-full"></div>

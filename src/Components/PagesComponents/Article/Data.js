@@ -39,7 +39,7 @@ const Data = ({ ArticleData }) => {
           {ReactHtmlParser(ArticleData?.content)}
         </div>
       </div>
-      <p className="text-3xl font-medium">Recommened Blogs</p>
+      <h3 className="text-3xl font-medium">Recommened Blogs</h3>
       <div className="w-full grid gap-4 lg:grid-cols-3 grid-cols-1 h-auto my-8">
         {ArticlesList.slice(0, 3).map((item) => (
           <div

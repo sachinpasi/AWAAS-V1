@@ -11,9 +11,9 @@ const Banner = () => {
     >
       <div className="w-full h-full bg-black bg-opacity-50">
         <div className="lg:w-80vw w-90vw mx-auto h-full flex flex-col items-center justify-center">
-          <p className="lg:text-6xl text-4xl font-semibold text-white tracking-tight">
+          <h1 className="lg:text-6xl text-4xl font-semibold text-white tracking-tight">
             Projects In Panipat
-          </p>
+          </h1>
           <p className="lg:text-lg text-base py-4 capitalize text-white tracking-tight text-center">
             We Are Proud To Present The Most Reputable Projects And Townships Of
             <br />

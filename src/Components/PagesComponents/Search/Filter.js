@@ -137,12 +137,12 @@ const Filter = ({
       } else {
         params.delete("max_budget");
       }
-
       if (NoOfBedroom) {
         params.append("bedroom", NoOfBedroom);
       } else {
         params.delete("bedroom");
       }
+
       if (ParentPropertyType) {
         params.append("parent_type", ParentPropertyType);
       } else {
@@ -250,8 +250,10 @@ const Filter = ({
 
     if (NoOfBedroom) {
       params.append("bedroom", NoOfBedroom);
+      params.append("parent_type", "residential");
     } else {
       params.delete("bedroom");
+      params.delete("parent_type");
     }
     if (ParentPropertyType) {
       params.append("parent_type", ParentPropertyType);
@@ -698,7 +700,10 @@ const Filter = ({
 
           <div className="w-full flex  flex-wrap items-center  border-t-1 py-1">
             <div
-              onClick={() => setNoOfBedroom(1)}
+              onClick={() => {
+                setNoOfBedroom(1);
+                setParentPropertyType("residential");
+              }}
               className={`${
                 NoOfBedroom === 1
                   ? "bg-blue border-blue text-white"
@@ -981,7 +986,10 @@ const Filter = ({
               <p className="text-xl font-medium">No. of Bedrooms</p>
               <div className="w-full  py-4 flex flex-wrap ">
                 <div
-                  onClick={() => setNoOfBedroom(1)}
+                  onClick={() => {
+                    setNoOfBedroom(1);
+                    setParentPropertyType("residential");
+                  }}
                   className={`${
                     NoOfBedroom === 1
                       ? "bg-blue border-blue text-white"
@@ -992,7 +1000,10 @@ const Filter = ({
                 </div>
 
                 <div
-                  onClick={() => setNoOfBedroom(2)}
+                  onClick={() => {
+                    setNoOfBedroom(2);
+                    setParentPropertyType("residential");
+                  }}
                   className={`${
                     NoOfBedroom === 2
                       ? "bg-blue border-blue text-white"
@@ -1002,7 +1013,10 @@ const Filter = ({
                   <p>+ 2BHK</p>
                 </div>
                 <div
-                  onClick={() => setNoOfBedroom(3)}
+                  onClick={() => {
+                    setNoOfBedroom(3);
+                    setParentPropertyType("residential");
+                  }}
                   className={`${
                     NoOfBedroom === 3
                       ? "bg-blue border-blue text-white"
@@ -1012,7 +1026,10 @@ const Filter = ({
                   <p>+ 3BHK</p>
                 </div>
                 <div
-                  onClick={() => setNoOfBedroom(4)}
+                  onClick={() => {
+                    setNoOfBedroom(4);
+                    setParentPropertyType("residential");
+                  }}
                   className={`${
                     NoOfBedroom === 4
                       ? "bg-blue border-blue text-white"
@@ -1022,7 +1039,10 @@ const Filter = ({
                   <p>+ 4BHK</p>
                 </div>
                 <div
-                  onClick={() => setNoOfBedroom(5)}
+                  onClick={() => {
+                    setNoOfBedroom(5);
+                    setParentPropertyType("residential");
+                  }}
                   className={`${
                     NoOfBedroom === 5
                       ? "bg-blue border-blue text-white"

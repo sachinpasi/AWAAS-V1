@@ -24,7 +24,7 @@ const Configuration = ({ setisAnyThingUpdated, isAnyThingUpdated }) => {
             className="absolute right-0 bg-green text-white font-semibold  px-4 py-1 shadow-2xl cursor-pointer flex items-center transform rounded-full hover:scale-95 transition-transform"
           >
             <MdModeEdit className="text-xl -mb-0.5 mr-0.5" />
-            <p>Edit Configuration</p>
+            <h6>Edit Configuration</h6>
           </div>
         )}
       </div>
@@ -46,12 +46,12 @@ const Configuration = ({ setisAnyThingUpdated, isAnyThingUpdated }) => {
             }}
             className="w-full h-24 border-1 border-projectsborder rounded shadow-xl cursor-pointer  flex flex-col justify-center items-center"
           >
-            <p className="lg:text-base text-sm text-white uppercase text-center">
+            <h4 className="lg:text-base text-sm text-white uppercase text-center">
               {item?.title}
-            </p>
-            <p className="text-2xl font-medium text-white capitalize">
+            </h4>
+            <h5 className="text-2xl font-medium text-white capitalize">
               {item?.value}
-            </p>
+            </h5>
           </div>
         ))}
       </div>

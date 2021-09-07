@@ -41,7 +41,8 @@ const PropertyRent = () => {
                   className="w-full flex justify-between items-center h-72 my-4"
                 >
                   {/* {console.log(item)} */}
-                  <div
+                  <Link
+                    to={`/property/${item.property_for}/${item.p_id}`}
                     style={{
                       width: "60%",
                     }}
@@ -52,7 +53,7 @@ const PropertyRent = () => {
                       src={item?.photos && JSON.parse(item?.photos)[0]}
                       alt="banner_img"
                     />
-                  </div>
+                  </Link>
                   <div
                     style={{
                       width: "40%",
@@ -109,13 +110,16 @@ const PropertyRent = () => {
                   key={item.p_id}
                   className="w-full flex flex-col justify-between items-center my-4"
                 >
-                  <div className="w-full relative h-60 ">
+                  <Link
+                    to={`/property/${item.property_for}/${item.p_id}`}
+                    className="w-full relative h-60 "
+                  >
                     <img
                       className="w-full h-full object-cover"
                       src={item?.photos && JSON.parse(item?.photos)[0]}
                       alt="banner_img"
                     />
-                  </div>
+                  </Link>
                   <div className="w-full h-2/4 bg-white flex-col flex justify-center items-start p-4">
                     <h3
                       style={{

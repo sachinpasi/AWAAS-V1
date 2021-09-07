@@ -56,23 +56,23 @@ const ProjectList = () => {
                   className="flex flex-col lg:flex-row justify-between lg:items-center  pb-2"
                 >
                   <div className="flex flex-col items-start">
-                    <p
+                    <h4
                       style={{ lineHeight: "22px" }}
                       className="text-2xl font-semibold whitespace-nowrap"
                     >
                       {item.title}
-                    </p>
-                    <p
+                    </h4>
+                    <h6
                       style={{ lineHeight: "25px" }}
                       className="text-base text-lightgray"
                     >
                       {item.developerName}
-                    </p>
+                    </h6>
                   </div>
 
-                  <p className="text-lg font-medium capitalize text-darkgray py-2">
+                  <h5 className="text-lg font-medium capitalize text-darkgray py-2">
                     {item.city} : {item.locality}
-                  </p>
+                  </h5>
                 </div>
 
                 <div className="flex flex-col justify-between items-start">
@@ -80,9 +80,9 @@ const ProjectList = () => {
                     {item.description}
                   </p>
                   <div className="flex items-center justify-between w-full py-2 ">
-                    <p className="lg:text-sm text-xs text-darkgray pt-2 tracking-tight ">
+                    <span className="lg:text-sm text-xs text-darkgray pt-2 tracking-tight ">
                       Marketed By {item.developerName}
-                    </p>
+                    </span>
                     <Link
                       className="bg-blue py-2 px-8 text-white font-medium tracking-tight whitespace-nowrap mt-2 lg:mt-0"
                       to={`/projects/${item.id}`}

@@ -96,11 +96,11 @@ const Result = ({ PropertyFor }) => {
     <div className="lg:w-72percent w-full min-h-screen  h-auto flex flex-col items-start  my-4">
       {/* <p className="text-sm text-widgetborder ">Home > Property in Panipat</p> */}
       {isLoading && <Loader />}
-      <p className="text-2xl text-darkgray my-2 leading-8 capitalize">
+      <h3 className="text-2xl text-darkgray my-2 leading-8 capitalize">
         {SearchResult?.length} results |{parentProperty} | {propertyType} for
         {property_for === "buy" && " sale"} in Panipat Above {mini_budget} with
         Photo
-      </p>
+      </h3>
       <div className="w-full h-full flex flex-col ">
         {SearchResult.map((item, index) => (
           <div
@@ -109,20 +109,25 @@ const Result = ({ PropertyFor }) => {
             className="bg-white lg:h-64 w-full lg:p-4 p-2 rounded-md shadow-md border-b-4 border-blue  my-4"
           >
             <div className="w-full  h-full flex">
-              {item.photos === null ? (
-                <img
-                  className="h-full w-30percent object-cover rounded"
-                  src="/assets/images/search/palceholder.jpg"
-                  alt=""
-                />
-              ) : (
-                <img
-                  className="h-full w-30percent object-cover rounded"
-                  // src="/assets/images/search/1.jpg"
-                  src={`${JSON.parse(item?.photos)}`}
-                  alt=""
-                />
-              )}
+              <Link
+                to={`property/${item.property_for}/${item.p_id}`}
+                className="h-full w-30percent object-cover rounded"
+              >
+                {item.photos === null ? (
+                  <img
+                    className="h-full w-full object-cover rounded"
+                    src="/assets/images/search/palceholder.jpg"
+                    alt=""
+                  />
+                ) : (
+                  <img
+                    className="h-full w-full object-cover rounded"
+                    // src="/assets/images/search/1.jpg"
+                    src={`${JSON.parse(item?.photos)}`}
+                    alt=""
+                  />
+                )}
+              </Link>
 
               <div className="lg:ml-4 ml-2 w-70percent flex flex-col ">
                 <div className="w-full lg:my-2 my-1 flex flex-col items-start border-b-1 border-dashed border-navborder lg:pb-2">

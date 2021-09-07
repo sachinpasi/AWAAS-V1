@@ -24,14 +24,14 @@ const PriceSection = ({ setisAnyThingUpdated, isAnyThingUpdated }) => {
           <img src="/assets/images/propertysale/price.svg" alt="" />
         </div>
         <div className="flex-col flex justify-center items-start ml-4 w-4/5">
-          <p className="text-lg lg:text-xl text-lightgray whitespace-nowrap">
+          <h4 className="text-lg lg:text-xl text-lightgray whitespace-nowrap">
             Asking Price
-          </p>
+          </h4>
 
-          <p className="text-xl lg:text-2xl font-medium">
+          <h5 className="text-xl lg:text-2xl font-medium">
             {" "}
             &#8377; {Data?.total_price}{" "}
-          </p>
+          </h5>
         </div>
       </div>
       {location.pathname === `/profile/property/listings/${id}` && (
@@ -56,14 +56,14 @@ const PriceSection = ({ setisAnyThingUpdated, isAnyThingUpdated }) => {
           <img src="/assets/images/propertysale/price.svg" alt="" />
         </div>
         <div className="flex-col flex justify-center items-start ml-4 w-4/5">
-          <p className="text-lg lg:text-xl text-lightgray whitespace-nowrap">
+          <h4 className="text-lg lg:text-xl text-lightgray whitespace-nowrap">
             Booking Price
-          </p>
+          </h4>
 
-          <p className="text-xl lg:text-2xl font-medium">
+          <h5 className="text-xl lg:text-2xl font-medium">
             {" "}
             &#8377; {Data?.booking_amount}
-          </p>
+          </h5>
         </div>
       </div>
     </div>

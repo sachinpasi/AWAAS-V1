@@ -42,7 +42,10 @@ const PropertySale = () => {
                   key={item.p_id}
                   className="w-full flex flex-col justify-between items-center h-450px my-4"
                 >
-                  <div className="w-full h-2/4 relative ">
+                  <Link
+                    to={`/property/${item.property_for}/${item.p_id}`}
+                    className="w-full h-2/4 relative "
+                  >
                     {item?.photos && (
                       <img
                         className="w-full h-full object-cover"
@@ -50,7 +53,7 @@ const PropertySale = () => {
                         alt="banner_img"
                       />
                     )}
-                  </div>
+                  </Link>
                   <div className="w-full h-2/4 bg-white flex-col flex justify-center items-start p-4">
                     <h3
                       style={{

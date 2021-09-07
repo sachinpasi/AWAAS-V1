@@ -18,7 +18,7 @@ const PropertyDescription = ({ setisAnyThingUpdated, isAnyThingUpdated }) => {
       className="w-full h-full border-1 border-projectsborder rounded px-4 mt-4"
     >
       <div className="w-full border-b-1 border-projectsborder py-4 px-4 relative flex justify-between items-center">
-        <p className="text-3xl text-darkgray "> Property Description</p>
+        <h3 className="text-3xl text-darkgray "> Property Description</h3>
         {location.pathname === `/profile/property/listings/${id}` && (
           <div
             onClick={() => setisDescriptionEditOpen(!isDescriptionEditOpen)}
@@ -38,9 +38,9 @@ const PropertyDescription = ({ setisAnyThingUpdated, isAnyThingUpdated }) => {
         />
       </div>
       <div className="py-4">
-        <p className="text-base text-darkgray  leading-7 pb-4">
+        <h5 className="text-base text-darkgray  leading-7 pb-4">
           {Data?.description}
-        </p>
+        </h5>
       </div>
     </div>
   );

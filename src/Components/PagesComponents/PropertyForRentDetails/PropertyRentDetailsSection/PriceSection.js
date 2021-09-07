@@ -18,13 +18,13 @@ const PriceSection = ({ setisAnyThingUpdated, isAnyThingUpdated }) => {
           <img src="/assets/images/propertysale/price.svg" alt="" />
         </div>
         <div className="flex-col flex justify-center items-start lg:ml-4 ml-2 w-4/5">
-          <p className="lg:text-xl text-base text-lightgray whitespace-nowrap">
+          <h4 className="lg:text-xl text-base text-lightgray whitespace-nowrap">
             Monthly Rent
-          </p>
-          <p className="lg:text-2xl text-xl font-medium">
+          </h4>
+          <h5 className="lg:text-2xl text-xl font-medium">
             {" "}
             &#8377; {Data?.expected_rent}{" "}
-          </p>
+          </h5>
         </div>
       </div>
       {location.pathname === `/profile/property/listings/${id}` && (
@@ -50,13 +50,13 @@ const PriceSection = ({ setisAnyThingUpdated, isAnyThingUpdated }) => {
           <img src="/assets/images/propertysale/price.svg" alt="" />
         </div>
         <div className="flex-col flex justify-center items-start lg:ml-4 ml-2 w-4/5">
-          <p className="lg:text-xl text-base text-lightgray lg:whitespace-nowrap">
+          <h4 className="lg:text-xl text-base text-lightgray lg:whitespace-nowrap">
             Security Deposit
-          </p>
-          <p className="lg:text-2xl text-xl font-medium">
+          </h4>
+          <h5 className="lg:text-2xl text-xl font-medium">
             {" "}
             &#8377; {Data?.security_amount}
-          </p>
+          </h5>
         </div>
       </div>
     </div>

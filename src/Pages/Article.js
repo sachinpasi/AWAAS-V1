@@ -76,9 +76,9 @@ const Article = () => {
         <div className=" lg:w-80vw w-90vw mx-auto flex flex-col lg:flex-row justify-between items-start  relative">
           <Data ArticleData={ArticleData} />
           <div className="lg:w-2/6 w-full  lg:ml-8  flex flex-col items-start my-8 sticky top-8">
-            <p className="text-2xl font-semibold mb-4">
+            <h3 className="text-2xl font-semibold mb-4">
               Recent Real Estate Updates
-            </p>
+            </h3>
             {ArticlesList.map((item) => (
               <Link
                 to={`/news/${item.bid}`}
@@ -94,9 +94,9 @@ const Article = () => {
                 </div>
 
                 <div className="w-11/12 p-4 flex flex-col items-start text-darkgray">
-                  <p className="text-xl font-medium text-darkgray py-2 line-clamp-2">
+                  <h4 className="text-xl font-medium text-darkgray py-2 line-clamp-2">
                     {item.title}
-                  </p>
+                  </h4>
                   <p className="text-darkgray line-clamp-1">
                     {item.description}
                   </p>

@@ -24,7 +24,7 @@ const Gallery = ({ setisAnyThingUpdated, isAnyThingUpdated }) => {
       className="w-full h-full border-1 border-projectsborder rounded lg:px-4 my-4"
     >
       <div className="w-full border-b-1 border-projectsborder py-4 px-4 relative flex justify-between items-center">
-        <p className="text-3xl text-darkgray ">Project Gallery</p>
+        <h3 className="text-3xl text-darkgray ">Project Gallery</h3>
         {location.pathname === `/profile/property/listings/${id}` && (
           <div
             onClick={() => setisGalleryEditOpen(!isGalleryEditOpen)}
@@ -54,7 +54,7 @@ const Gallery = ({ setisAnyThingUpdated, isAnyThingUpdated }) => {
         >
           {Data?.library?.map((item) => (
             <SwiperSlide>
-              {console.log(item)}
+              {/* {console.log(item)} */}
               <img
                 style={{
                   maxHeight: "400px",
