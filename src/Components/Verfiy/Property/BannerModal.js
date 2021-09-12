@@ -95,7 +95,7 @@ const BannerModal = ({
         } `}
       ></div>
       <div
-        className={`w-1000 h-450px bg-white fixed z-40  shadow-xl rounded-2xl transform transition-transform  left-2/4 -translate-x-2/4 -translate-y-2/4 p-8  ${
+        className={`lg:w-1000 lg:h-450px w-90vw h-70vh bg-white fixed z-40  shadow-xl rounded-2xl transform transition-transform  left-2/4 -translate-x-2/4 -translate-y-2/4 lg:p-8 p-6  ${
           isEditOpen ? "top-2/4" : "-top-full"
         }`}
       >
@@ -110,19 +110,19 @@ const BannerModal = ({
           className="w-full h-full flex justify-between flex-col "
         >
           <div>
-            <h4 className="text-2xl font-medium  uppercase mb-5">
+            <h4 className="lg:text-2xl text-xl text-center font-medium  uppercase mb-5">
               Update Location Details
             </h4>
             {Data?.property_type === "land" && (
               <div className="flex justify-between flex-col">
                 <input
-                  className="border-1 h-11  px-2 text-lg w-72 my-1.5 "
+                  className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1.5 "
                   type="text"
                   placeholder="City"
                   defaultValue="Panipat"
                   disabled
                 />
-                <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                <div className="outline relative h-11  lg:w-72 w-full focus-within:border-blue-500 my-1.5">
                   <input
                     {...register("project_name")}
                     className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
@@ -140,9 +140,9 @@ const BannerModal = ({
                     Colony / Society
                   </label>
                 </div>
-                <div className="outline relative h-11 flex items-center focus-within:border-blue-500 my-1.5 ">
+                <div className="  outline relative h-11 flex items-center focus-within:border-blue-500 my-1.5 ">
                   <div
-                    className={`border-1 h-11  text-lg w-72  placeholder-gray-600   ${
+                    className={`border-1 h-11  text-lg lg:w-72 w-full  placeholder-gray-600   ${
                       errors?.locality_id?.type === "required" && "border-red"
                     }`}
                   >
@@ -164,12 +164,15 @@ const BannerModal = ({
                     />
                   </div>
 
-                  <p className="text-lg ml-4">
+                  <p className="text-lg ml-4 lg:flex hidden">
                     Current Locality - {Data?.locality_name}
                   </p>
                 </div>
+                <p className="text-lg ml-4 lg:hidden mb-2">
+                  Current Locality - {Data?.locality_name}
+                </p>
 
-                <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                <div className="outline relative h-11  lg:w-72 w-full focus-within:border-blue-500 my-1.5">
                   <input
                     {...register("plot_no")}
                     className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
@@ -192,7 +195,7 @@ const BannerModal = ({
 
             {Data?.property_type === "flat" && (
               <div className="flex justify-between flex-col">
-                <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                <div className="outline relative h-11  lg:w-72 w-full focus-within:border-blue-500 my-1.5">
                   <input
                     {...register("project_name")}
                     className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
@@ -214,7 +217,7 @@ const BannerModal = ({
                 </div>
                 <div className="outline relative h-11 flex items-center focus-within:border-blue-500 my-1.5 ">
                   <div
-                    className={`border-1 h-11  text-lg w-72  placeholder-gray-600   ${
+                    className={`border-1 h-11  text-lg lg:w-72 w-full  placeholder-gray-600   ${
                       errors?.locality_id?.type === "required" && "border-red"
                     }`}
                   >
@@ -236,10 +239,13 @@ const BannerModal = ({
                     />
                   </div>
 
-                  <p className="text-lg ml-4">
+                  <p className="text-lg ml-4 hidden lg:flex">
                     Current Locality - {Data?.locality_name}
                   </p>
                 </div>
+                <p className="text-lg ml-4 lg:hidden">
+                  Current Locality - {Data?.locality_name}
+                </p>
                 {/* <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
                   <input
                     // {...register("plot_no", { required: true })}
@@ -263,7 +269,7 @@ const BannerModal = ({
 
             {Data?.property_type === "villa" && (
               <div className="flex justify-between flex-col">
-                <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                <div className="outline relative h-11  lg:w-72 w-full focus-within:border-blue-500 my-1.5">
                   <input
                     {...register("project_name")}
                     className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
@@ -285,7 +291,7 @@ const BannerModal = ({
                 </div>
                 <div className="outline relative h-11 flex items-center focus-within:border-blue-500 my-1.5 ">
                   <div
-                    className={`border-1 h-11  text-lg w-72  placeholder-gray-600   ${
+                    className={`border-1 h-11  text-lg lg:w-72 w-full  placeholder-gray-600   ${
                       errors?.locality_id?.type === "required" && "border-red"
                     }`}
                   >
@@ -307,24 +313,27 @@ const BannerModal = ({
                     />
                   </div>
 
-                  <p className="text-lg ml-4">
+                  <p className="text-lg ml-4 hidden lg:flex">
                     Current Locality - {Data?.locality_name}
                   </p>
                 </div>
+                <p className="text-lg ml-4 lg:hidden">
+                  Current Locality - {Data?.locality_name}
+                </p>
               </div>
             )}
 
             {Data?.property_type === "farmhouse" && (
               <div className="flex justify-between flex-col">
                 <input
-                  className="border-1 h-11  px-2 text-lg w-72 my-1.5 placeholder-gray-600"
+                  className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1.5 placeholder-gray-600"
                   type="text"
                   placeholder="City"
                   id="city"
                   value="Panipat"
                   disabled=""
                 />
-                <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                <div className="outline relative h-11  lg:w-72 w-full focus-within:border-blue-500 my-1.5">
                   <input
                     {...register("project_name")}
                     className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
@@ -345,7 +354,7 @@ const BannerModal = ({
                 </div>
                 <div className="outline relative h-11 flex items-center focus-within:border-blue-500 my-1.5 ">
                   <div
-                    className={`border-1 h-11  text-lg w-72  placeholder-gray-600   ${
+                    className={`border-1 h-11  text-lg lg:w-72 w-full  placeholder-gray-600   ${
                       errors?.locality_id?.type === "required" && "border-red"
                     }`}
                   >
@@ -367,24 +376,27 @@ const BannerModal = ({
                     />
                   </div>
 
-                  <p className="text-lg ml-4">
+                  <p className="text-lg ml-4 hidden lg:flex">
                     Current Locality - {Data?.locality_name}
                   </p>
                 </div>
+                <p className="text-lg ml-4 lg:hidden">
+                  Current Locality - {Data?.locality_name}
+                </p>
               </div>
             )}
 
             {Data?.property_type === "floor" && (
               <div className="flex justify-between flex-col">
                 <input
-                  className="border-1 h-11  px-2 text-lg w-72 my-1.5 placeholder-gray-600"
+                  className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1.5 placeholder-gray-600"
                   type="text"
                   placeholder="City"
                   id="city"
                   value="Panipat"
                   disabled=""
                 />
-                <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                <div className="outline relative h-11  lg:w-72 w-full focus-within:border-blue-500 my-1.5">
                   <input
                     {...register("project_name")}
                     className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
@@ -406,7 +418,7 @@ const BannerModal = ({
                 </div>
                 <div className="outline relative h-11 flex items-center focus-within:border-blue-500 my-1.5 ">
                   <div
-                    className={`border-1 h-11  text-lg w-72  placeholder-gray-600   ${
+                    className={`border-1 h-11  text-lg lg:w-72 w-full  placeholder-gray-600   ${
                       errors?.locality_id?.type === "required" && "border-red"
                     }`}
                   >
@@ -434,12 +446,15 @@ const BannerModal = ({
                   >
                     Locality / Area / Sector
                   </label>
-                  <p className="text-lg ml-4">
+                  <p className="text-lg ml-4 hidden lg:flex">
                     Current Locality - {Data?.locality_name}
                   </p>
                 </div>
+                <p className="text-lg ml-4 lg:hidden">
+                  Current Locality - {Data?.locality_name}
+                </p>
 
-                <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                <div className="outline relative h-11  lg:w-72 w-full focus-within:border-blue-500 my-1.5">
                   <input
                     {...register("unit_no", { required: true })}
                     className={`block p-4 w-full border-1 h-11 text-lg appearance-none focus:outline-none bg-transparent ${
@@ -463,14 +478,14 @@ const BannerModal = ({
             {Data?.property_type === "office" && (
               <div className="flex justify-between flex-col">
                 <input
-                  className="border-1 h-11  px-2 text-lg w-72 my-1.5 placeholder-gray-600"
+                  className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1.5 placeholder-gray-600"
                   type="text"
                   placeholder="City"
                   id="city"
                   value="Panipat"
                   disabled=""
                 />
-                <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                <div className="outline relative h-11  lg:w-72 w-full focus-within:border-blue-500 my-1.5">
                   <input
                     {...register("project_name")}
                     className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
@@ -490,7 +505,7 @@ const BannerModal = ({
                     Colony / Society
                   </label>
                 </div>
-                <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                <div className="outline relative h-11  lg:w-72 w-full focus-within:border-blue-500 my-1.5">
                   <input
                     className={`block p-4 w-full border-1 h-11 text-lg appearance-none focus:outline-none bg-transparent ${
                       errors?.project?.type === "required" && "border-red  "
@@ -511,7 +526,7 @@ const BannerModal = ({
 
                 <div className="outline relative h-11 flex items-center focus-within:border-blue-500 my-1.5 ">
                   <div
-                    className={`border-1 h-11  text-lg w-72  placeholder-gray-600   ${
+                    className={`border-1 h-11  text-lg lg:w-72 w-full  placeholder-gray-600   ${
                       errors?.locality_id?.type === "required" && "border-red"
                     }`}
                   >
@@ -533,12 +548,15 @@ const BannerModal = ({
                     />
                   </div>
 
-                  <p className="text-lg ml-4">
+                  <p className="text-lg ml-4 hidden lg:flex">
                     Current Locality - {Data?.locality_name}
                   </p>
                 </div>
+                <p className="text-lg ml-4 lg:hidden">
+                  Current Locality - {Data?.locality_name}
+                </p>
 
-                <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                <div className="outline relative h-11  lg:w-72 w-full focus-within:border-blue-500 my-1.5">
                   <input
                     {...register("unit_no", { required: true })}
                     className={`block p-4 w-full border-1 h-11 text-lg appearance-none focus:outline-none bg-transparent ${
@@ -562,14 +580,14 @@ const BannerModal = ({
             {Data?.property_type === "shop" && (
               <div className="flex justify-between flex-col">
                 <input
-                  className="border-1 h-11  px-2 text-lg w-72 my-1.5 placeholder-gray-600"
+                  className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1.5 placeholder-gray-600"
                   type="text"
                   placeholder="City"
                   id="city"
                   value="Panipat"
                   disabled=""
                 />
-                <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                <div className="outline relative h-11  lg:w-72 w-full focus-within:border-blue-500 my-1.5">
                   <input
                     {...register("project_name")}
                     className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
@@ -589,7 +607,7 @@ const BannerModal = ({
                     Colony / Society
                   </label>
                 </div>
-                <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                <div className="outline relative h-11  lg:w-72 w-full focus-within:border-blue-500 my-1.5">
                   <input
                     {...register("project")}
                     className={`block p-4 w-full border-1 h-11 text-lg appearance-none focus:outline-none bg-transparent ${
@@ -610,7 +628,7 @@ const BannerModal = ({
 
                 <div className="outline relative h-11 flex items-center focus-within:border-blue-500 my-1.5 ">
                   <div
-                    className={`border-1 h-11  text-lg w-72  placeholder-gray-600   ${
+                    className={`border-1 h-11  text-lg lg:w-72 w-full  placeholder-gray-600   ${
                       errors?.locality_id?.type === "required" && "border-red"
                     }`}
                   >
@@ -632,12 +650,15 @@ const BannerModal = ({
                     />
                   </div>
 
-                  <p className="text-lg ml-4">
+                  <p className="text-lg ml-4 hidden lg:flex">
                     Current Locality - {Data?.locality_name}
                   </p>
                 </div>
+                <p className="text-lg ml-4 lg:hidden">
+                  Current Locality - {Data?.locality_name}
+                </p>
 
-                <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                <div className="outline relative h-11  lg:w-72 w-full focus-within:border-blue-500 my-1.5">
                   <input
                     {...register("shop_no", { required: true })}
                     className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
@@ -662,14 +683,14 @@ const BannerModal = ({
               Data?.property_type === "warehouse") && (
               <div className="flex justify-between flex-col">
                 <input
-                  className="border-1 h-11  px-2 text-lg w-72 my-1.5 placeholder-gray-600"
+                  className="border-1 h-11  px-2 text-lg lg:w-72 w-full my-1.5 placeholder-gray-600"
                   type="text"
                   placeholder="City"
                   id="city"
                   value="Panipat"
                   disabled=""
                 />
-                <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">
+                <div className="outline relative h-11  lg:w-72 w-full focus-within:border-blue-500 my-1.5">
                   <input
                     {...register("project_name")}
                     className={`block p-4 w-full border-1 h-11 text-lg appearance-none focus:outline-none bg-transparent ${
@@ -691,7 +712,7 @@ const BannerModal = ({
 
                 <div className="outline relative h-11 flex items-center focus-within:border-blue-500 my-1.5 ">
                   <div
-                    className={`border-1 h-11  text-lg w-72  placeholder-gray-600   ${
+                    className={`border-1 h-11  text-lg lg:w-72 w-full  placeholder-gray-600   ${
                       errors?.locality_id?.type === "required" && "border-red"
                     }`}
                   >
@@ -713,10 +734,13 @@ const BannerModal = ({
                     />
                   </div>
 
-                  <p className="text-lg ml-4">
+                  <p className="text-lg ml-4 hidden lg:flex">
                     Current Locality - {Data?.locality_name}
                   </p>
                 </div>
+                <p className="text-lg ml-4 lg:hidden">
+                  Current Locality - {Data?.locality_name}
+                </p>
               </div>
             )}
           </div>
@@ -724,7 +748,7 @@ const BannerModal = ({
           <div className="flex justify-end items-end ">
             <button
               type="submit"
-              className="bg-blue text-white font-medium py-2 px-6 rounded-full text-lg"
+              className="bg-blue w-full lg:w-auto text-white font-medium py-2 px-6 rounded-full text-lg"
             >
               Apply Changes
             </button>

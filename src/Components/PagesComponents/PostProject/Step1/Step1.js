@@ -1,19 +1,18 @@
 import axios from "axios";
-import { async } from "q";
+import Fuse from "fuse.js";
+import { MdClose } from "react-icons/md";
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
+import SelectSearch from "react-select-search";
 import { API } from "../../../../API";
-import {
-  RESET_POST_PROJECT_ID,
-  selectPostProjectId,
-  SET_POST_PROJECT_ID,
-} from "../../../../Redux/_features/_PostProjectSlice";
+import { SET_POST_PROJECT_ID } from "../../../../Redux/_features/_PostProjectSlice";
 import { SET_CURRENT_STEP } from "../../../../Redux/_features/_PostProjectStepSlice";
 import { selectUser } from "../../../../Redux/_features/_userSlice";
 
 const Step1 = () => {
+  const [LocalityList, setLocalityList] = useState([]);
   const [PossessionState, setPossessionState] = useState({
     UnderConstruction: undefined,
     ReadyToMove: undefined,
@@ -70,7 +69,7 @@ const Step1 = () => {
     return source?.map((photo) => {
       return (
         <img
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover rounded-xl"
           src={photo}
           key={photo}
           alt=""
@@ -88,6 +87,7 @@ const Step1 = () => {
   const {
     register,
     formState: { errors },
+    control,
     handleSubmit,
   } = useForm();
 
@@ -107,7 +107,6 @@ const Step1 = () => {
     } = data;
     const formData = new FormData();
 
-    formData.append("bannerImg", BannerImg);
     formData.append("logo", ProjectLogo);
     formData.append("developerlogo", DeveloperLogo);
     formData.append("projectCity", "Panipat");
@@ -135,6 +134,49 @@ const Step1 = () => {
     }
   };
 
+  const FetchLocality = async () => {
+    const res = await axios.get(`${API}/locality/list`);
+    if (res.status === 200) {
+      setLocalityList(res.data.data);
+    }
+  };
+
+  const options = LocalityList.sort()
+    .reverse()
+    .map((_) => ({
+      name: _.name,
+      value: _.name,
+    }));
+
+  function fuzzySearch(options) {
+    const fuse = new Fuse(options, {
+      keys: ["name", "groupName", "items.name"],
+      threshold: 0.3,
+    });
+
+    return (value) => {
+      if (!value.length) {
+        return options;
+      }
+
+      return fuse.search(value);
+    };
+  }
+
+  console.log(errors);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    FetchLocality();
+  }, []);
+
+  const BannnerImageField = register("bannerImg", { required: true });
+  const ProjectLogoField = register("logo", { required: true });
+  const DeveloperLogoField = register("developerlogo", { required: true });
+
   return (
     <form
       onSubmit={handleSubmit(HandleStep1Submit)}
@@ -147,42 +189,89 @@ const Step1 = () => {
             <div className="lg:w-3/4 w-full flex flex-col lg:flex-row justify-between">
               <div className="flex flex-col items-start my-4 w-full">
                 <input
-                  className="border-1 h-11  px-2 text-lg lg:w-80 w-full my-1 placeholder-gray-600"
+                  className="border-1 h-11  px-4  text-lg lg:w-80 w-full my-1.5 placeholder-gray-600"
                   type="text"
                   defaultValue="Panipat"
                   disabled
                 />
-                <input
-                  className="border-1 h-11  px-2 text-lg lg:w-80 w-full my-1 placeholder-gray-600"
-                  placeholder="Project Title"
-                  type="text"
-                  {...register("projectTitle")}
-                />
-                <input
-                  className="border-1 h-11  px-2 text-lg lg:w-80 w-full my-1 placeholder-gray-600"
-                  placeholder="Developer Title"
-                  type="text"
-                  {...register("developerName")}
-                />
-                <input
-                  className="border-1 h-11  px-2 text-lg lg:w-80 w-full my-1 placeholder-gray-600"
-                  placeholder="RERA Number"
-                  type="text"
-                  {...register("rera")}
-                />
-                <input
-                  className="border-1 h-11  px-2 text-lg lg:w-80 w-full my-1 placeholder-gray-600"
-                  placeholder="Locality / Area"
-                  type="text"
-                  {...register("projectLocality")}
-                />
-                <div>
+                <div className="outline relative h-11  w-80 focus-within:border-blue-500 my-1.5">
+                  <input
+                    className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                      errors?.projectTitle?.type === "required" && "border-red"
+                    }`}
+                    placeholder=" "
+                    type="text"
+                    {...register("projectTitle", { required: true })}
+                  />
+                  <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                    Project Title
+                  </label>
+                </div>
+                <div className="outline relative h-11  w-80 focus-within:border-blue-500 my-1.5">
+                  <input
+                    className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                      errors?.developerName?.type === "required" && "border-red"
+                    }`}
+                    placeholder=" "
+                    type="text"
+                    {...register("developerName", { required: true })}
+                  />
+                  <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                    Developer Title
+                  </label>
+                </div>
+
+                <div className="outline relative h-11  w-80 focus-within:border-blue-500 my-1.5">
+                  <input
+                    className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                      errors?.rera?.type === "required" && "border-red"
+                    }`}
+                    placeholder=" "
+                    type="text"
+                    {...register("rera", { required: true })}
+                  />
+                  <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                    RERA Number
+                  </label>
+                </div>
+
+                <div className="outline relative h-11  w-80 focus-within:border-blue-500 my-1.5">
+                  <div
+                    className={`border-1 h-11  text-lg w-full  placeholder-gray-600   ${
+                      errors?.projectLocality?.type === "required" &&
+                      "border-red"
+                    }`}
+                  >
+                    <Controller
+                      name="projectLocality"
+                      control={control}
+                      {...register("projectLocality", { required: true })}
+                      render={({ field: { onChange } }) => (
+                        <SelectSearch
+                          options={options}
+                          placeholder="Locality / Area / Sector "
+                          filterOptions={fuzzySearch}
+                          search
+                          onChange={(selected) => onChange(selected)}
+                        />
+                      )}
+                    />
+                  </div>
+                </div>
+                <div className="px-2 lg:px-0 ">
                   <p className="text-xl my-2">Possession </p>
-                  <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                  <label
+                    for="underConstruction"
+                    className={` px-2 py-2 border-1 w-80 flex  cursor-pointerjustify-start items-center cursor-pointer my-2  ${
+                      errors?.possession?.type === "required" && "border-red"
+                    } `}
+                  >
                     <input
-                      className=" w-5 h-5 "
+                      className=" w-5 h-5  "
                       type="radio"
-                      {...register("possession")}
+                      {...register("possession", {
+                        required: true,
+                      })}
                       id="underConstruction"
                       value="Under Construction"
                       onClick={(e) =>
@@ -195,13 +284,21 @@ const Step1 = () => {
                       {" "}
                       Under Construction
                     </span>
-                  </div>
-                  <div className=" px-2 py-2 border-1 w-72 flex justify-start items-center my-2 ">
+                  </label>
+                  <label
+                    for="Ready to move"
+                    className={` px-2 py-2 border-1 w-80 flex justify-start cursor-pointer items-center my-2   ${
+                      errors?.possession?.type === "required" && "border-red"
+                    } `}
+                  >
                     <input
+                      id="Ready to move"
                       className=" w-5 h-5 "
                       type="radio"
-                      {...register("possession")}
-                      value="Ready To Move"
+                      {...register("possession", {
+                        required: true,
+                      })}
+                      value="Ready to move"
                       onClick={(e) =>
                         setPossessionState({
                           ReadyToMove: "Ready To Move",
@@ -211,14 +308,15 @@ const Step1 = () => {
                     <span className="text-lg ml-4 text-gray-600">
                       Ready To Move
                     </span>
-                  </div>
+                  </label>
+
                   {PossessionState.UnderConstruction && (
                     <div className="flex flex-col">
                       <label className="text-xl my-2 mr-4">Possession By</label>
                       <select
                         className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
                         id="possessionByMonth"
-                        {...register("possessionByMonth")}
+                        {...register("possession_month")}
                       >
                         <option selected="" disabled>
                           Month
@@ -239,7 +337,7 @@ const Step1 = () => {
 
                       <select
                         className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
-                        {...register("possessionByYear")}
+                        {...register("possession_year")}
                       >
                         <option selected="" disabled>
                           Year
@@ -264,7 +362,7 @@ const Step1 = () => {
                       </label>
                       <select
                         className="border-1 h-11  px-2 text-lg w-72 my-1 mr-2 placeholder-gray-600"
-                        {...register("ageOfConstruction")}
+                        {...register("age_of_construction")}
                         aria-invalid="false"
                       >
                         <option>New Construction</option>
@@ -279,19 +377,37 @@ const Step1 = () => {
                   )}
                 </div>
               </div>
+
               <div className="flex flex-col items-start my-4 w-full">
-                <textarea
-                  className="border-1 h-28 py-2  px-2 text-lg lg:w-96 w-full my-1 mb-3 placeholder-gray-600"
-                  placeholder="About The Project"
-                  {...register("description")}
-                />
-                <textarea
-                  className="border-1 h-28 py-2  px-2 text-lg lg:w-96 w-full my-1 mt-3 placeholder-gray-600"
-                  placeholder="Developer Description"
-                  {...register("aboutDeveloper")}
-                />
-                <div className="flex justify-start my-2 w-full">
-                  <label className="customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
+                <div className="outline relative h-28 lg:w-96 w-full focus-within:border-blue-500 my-1.5">
+                  <textarea
+                    className={`block px-4 py-2 border-1 w-full h-28 text-lg appearance-none placeholder-black focus:outline-none bg-transparent ${
+                      errors?.description?.type === "required" && "border-red"
+                    }`}
+                    placeholder="About The Project "
+                    {...register("description", { required: true })}
+                  />
+                </div>
+
+                <div className="outline relative h-28 lg:w-96 w-full focus-within:border-blue-500 my-1.5">
+                  <textarea
+                    className={`block px-4 py-2 border-1 w-full h-28 text-lg appearance-none placeholder-black focus:outline-none bg-transparent ${
+                      errors?.aboutDeveloper?.type === "required" &&
+                      "border-red"
+                    }`}
+                    placeholder="Developer Description"
+                    {...register("aboutDeveloper", { required: true })}
+                  />
+                </div>
+
+                <div className="flex justify-start my-2 w-full ">
+                  <label
+                    className={`customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed  rounded-2xl ${
+                      errors?.bannerImg?.type === "required"
+                        ? "border-red"
+                        : "border-lightgray"
+                    } `}
+                  >
                     <svg
                       class="w-8 h-8 mr-2"
                       fill="currentColor"
@@ -302,14 +418,20 @@ const Step1 = () => {
                     </svg>
                     Choose Banner Image
                     <input
-                      onChange={HandleBannerImgChange}
                       type="file"
-                      name="file"
+                      {...BannnerImageField}
+                      onChange={(e) => HandleBannerImgChange(e)}
                     />
                   </label>
                 </div>
                 <div className="flex justify-start my-2 w-full ">
-                  <label className="customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
+                  <label
+                    className={`customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed  rounded-2xl ${
+                      errors?.logo?.type === "required"
+                        ? "border-red"
+                        : "border-lightgray"
+                    } `}
+                  >
                     <svg
                       class="w-8 h-8 mr-2"
                       fill="currentColor"
@@ -320,14 +442,20 @@ const Step1 = () => {
                     </svg>
                     Choose Project Logo
                     <input
-                      onChange={HandleProjectLogoChange}
                       type="file"
-                      name="file"
+                      {...ProjectLogoField}
+                      onChange={HandleProjectLogoChange}
                     />
                   </label>
                 </div>
                 <div className="flex justify-start my-2 w-full">
-                  <label className="customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
+                  <label
+                    className={`customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed  rounded-2xl ${
+                      errors?.developerlogo?.type === "required"
+                        ? "border-red"
+                        : "border-lightgray"
+                    } `}
+                  >
                     <svg
                       class="w-8 h-8 mr-2"
                       fill="currentColor"
@@ -338,9 +466,9 @@ const Step1 = () => {
                     </svg>
                     Choose Developer Logo
                     <input
-                      onChange={HandleDeveloperLogoChange}
                       type="file"
-                      name="file"
+                      {...DeveloperLogoField}
+                      onChange={HandleDeveloperLogoChange}
                     />
                   </label>
                 </div>
@@ -348,17 +476,29 @@ const Step1 = () => {
             </div>
             <div className="hidden lg:flex w-1/5 flex-col items-start">
               {BannerImg && (
-                <div className="my-2">
-                  <p className="text-lg">Project Logo Preview</p>
-                  <div className="w-40 h-20 border-1 my-2 ">
+                <div className="my-3">
+                  <p className="text-lg">Banner Image Preview</p>
+                  <div className="w-40 h-20  my-2 relative ">
+                    {/* <div
+                      onClick={() => setBannerImg(null)}
+                      className="absolute -right-2 -top-2 text-xl p-0.5 text-red bg-white rounded-full flex justify-center items-center shadow cursor-pointer hover:scale-95 transform"
+                    >
+                      <MdClose />
+                    </div> */}
                     {RenderPhotos(BannerImgPrev)}
                   </div>
                 </div>
               )}
               {ProjectLogo && (
-                <div className="my-3">
-                  <p className="text-lg">Banner Image Preview</p>
-                  <div className="w-40 h-20 border-1 my-2 ">
+                <div className="my-2">
+                  <p className="text-lg">Project Logo Preview</p>
+                  <div className="w-40 h-20  my-2 relative ">
+                    {/* <div
+                      onClick={() => setProjectLogo(null)}
+                      className="absolute -right-2 -top-2 text-xl p-0.5 text-red bg-white rounded-full flex justify-center items-center shadow cursor-pointer hover:scale-95 transform"
+                    >
+                      <MdClose />
+                    </div> */}
                     {RenderPhotos(ProjectLogoPrev)}
                   </div>
                 </div>
@@ -367,7 +507,13 @@ const Step1 = () => {
               {DeveloperLogo && (
                 <div className="my-3">
                   <p className="text-lg">Developer Logo Preview</p>
-                  <div className="w-40 h-20 border-1 my-2 ">
+                  <div className="w-40 h-20  my-2 relative ">
+                    {/* <div
+                      onClick={() => setDeveloperLogo(null)}
+                      className="absolute -right-2 -top-2 text-xl p-0.5 text-red bg-white rounded-full flex justify-center items-center shadow cursor-pointer hover:scale-95 transform"
+                    >
+                      <MdClose />
+                    </div> */}
                     {RenderPhotos(DeveloperLogoPrev)}
                   </div>
                 </div>

@@ -146,21 +146,22 @@ const Card = ({ Name, Image }) => (
 
     <div className="h-2/4 w-full  flex items-center flex-col  ">
       <div className="w-full h-full flex justify-between items-center py-4">
-        <input className="hidden" id="option1" type="radio"></input>
         <label
           for="option1"
-          className="w-2/4 h-full rounded-xl border-1 shadow cursor-pointer border-blue mr-4 flex flex-col justify-center items-center"
+          className="w-2/4 h-full rounded-xl border-1 shadow cursor-pointer border-blue mr-2 flex flex-col justify-center items-center"
         >
           <p className="text-darkgray font-medium text-center text-base leading-5 capitalize">
             Trial pack <br /> (talk for 15 min)
           </p>
+          <input className="hidden" id="option1" type="radio"></input>
           <p className="text-xl font-medium text-blue mt-1">&#8377; 499</p>
         </label>
-        <input className="hidden" id="option2" type="radio"></input>
+
         <label
           for="option2"
-          className="w-2/4 h-full border-1 rounded-xl cursor-pointer shadow border-lightgrayplus ml-4 flex flex-col justify-center items-center"
+          className="w-2/4 h-full border-1 rounded-xl cursor-pointer shadow border-lightgrayplus ml-2 flex flex-col justify-center items-center"
         >
+          <input className="hidden" id="option2" type="radio"></input>
           <p className="text-darkgray font-medium text-center text-base leading-5 capitalize">
             Telephonic <br /> consultancy with Report
           </p>

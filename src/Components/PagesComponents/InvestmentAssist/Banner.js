@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { API } from "../../../API";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useForm } from "react-hook-form";
 const Banner = () => {
-  const [Name, setName] = useState("");
-  const [Phone, setPhone] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const HandleSubmit = async () => {
+  const onSubmit = async (data) => {
     const res = await axios.post(`${API}/leads/store-investment`, {
-      name: Name,
-      phone: Phone,
+      ...data,
     });
     if (res.status === 200) {
       return toast.success("You Will Get A Callback Soon!");
@@ -49,32 +52,52 @@ const Banner = () => {
                 Get investment advice from our experienced advisers
               </p>
             </div>
-            <div className="flex justify-center items-center flex-col w-full py-2">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="flex justify-center items-center flex-col w-full py-2"
+            >
               <p className="text-2xl font-medium pb-3">Request Callback</p>
               <div className="w-full flex justify-between items-center flex-col">
                 <input
                   className="w-full h-10 rounded border-2 mr-1 px-4 "
                   type="text"
                   placeholder="Name"
-                  value={Name}
-                  onChange={(e) => setName(e.target.value)}
+                  {...register("name", { required: true })}
                 />
                 <input
                   className="w-full h-10 my-2  rounded border-2 mx-2 px-4 "
                   type="text"
                   placeholder="Phone Number"
-                  value={Phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  {...register("phone", {
+                    required: true,
+                    maxLength: 10,
+                    minLength: 10,
+                  })}
                 />
                 <button
-                  onClick={HandleSubmit}
+                  type="submit"
                   className="w-full h-10 my-2 bg-blue rounded text-white font-medium ml-1"
                 >
                   {" "}
                   Get Call Back
                 </button>
               </div>
-            </div>
+              <div className="w-full mb-1">
+                {(errors?.phone?.type === "required" ||
+                  errors?.email?.type === "required" ||
+                  errors?.name?.type === "required") && (
+                  <span className="py-1 text-red">
+                    * All Fields Are required
+                  </span>
+                )}
+                {(errors?.phone?.type === "maxLength" ||
+                  errors?.phone?.type === "minLength") && (
+                  <span className="py-1 text-red">
+                    * Mobile Number Must be of 10 Digits
+                  </span>
+                )}
+              </div>
+            </form>
           </div>
         </div>
       </div>

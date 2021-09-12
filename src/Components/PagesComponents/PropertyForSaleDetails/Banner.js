@@ -111,10 +111,10 @@ const Banner = ({
           {location.pathname === `/profile/property/listings/${id}` && (
             <div
               onClick={() => setisEditOpen(!isEditOpen)}
-              className="absolute right-0 bg-green text-white font-semibold text-lg px-4 py-1 shadow-2xl cursor-pointer flex items-center transform rounded-full hover:scale-95 transition-transform"
+              className="absolute right-0 bg-green text-white font-semibold text-lg lg:px-4 w-10 h-10 lg:w-auto lg:h-auto  py-1 shadow-2xl cursor-pointer flex items-center justify-center transform rounded-full hover:scale-95 transition-transform"
             >
-              <MdModeEdit className="text-2xl mr-0.5 -mb-0.5" />
-              <p>Edit Location</p>
+              <MdModeEdit className="text-2xl lg:mr-0.5 lg:-mb-0.5" />
+              <p className="hidden lg:flex">Edit Location</p>{" "}
             </div>
           )}
 

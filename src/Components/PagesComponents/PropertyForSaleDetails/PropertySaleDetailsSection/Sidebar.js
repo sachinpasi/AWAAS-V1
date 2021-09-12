@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { API } from "../../../../API";
 import { selectPropertySaleDetails } from "../../../../Redux/_features/_PropertySaleDetailsSlice";
-
+import { useLocation } from "react-router";
 const Sidebar = () => {
   const { Data } = useSelector(selectPropertySaleDetails);
   const {
@@ -14,7 +14,7 @@ const Sidebar = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
-
+  const location = useLocation();
   const { id } = useParams();
   const onSubmit = async (data) => {
     const res = await axios.post(`${API}/leads/store-potential`, {
@@ -116,14 +116,16 @@ const Sidebar = () => {
           </div>
         </form>
       </div>
-      <div className="w-full h-16 fixed bottom-0 lg:hidden bg-white left-0 right-0 z-40 border-t-1 flex justify-center items-center">
-        <a
-          href="#contact"
-          className="text-xl capitalize bg-green py-2 px-10 text-white font-medium rounded"
-        >
-          I am Interested
-        </a>
-      </div>
+      {location.pathname !== `/profile/property/listings/${id}` && (
+        <div className="w-full h-16 fixed bottom-0 lg:hidden bg-white left-0 right-0 z-40 border-t-1 flex justify-center items-center">
+          <a
+            href="#contact"
+            className="text-xl capitalize bg-green py-2 px-10 text-white font-medium rounded"
+          >
+            I am Interested
+          </a>
+        </div>
+      )}
     </>
   );
 };

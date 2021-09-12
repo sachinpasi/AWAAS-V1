@@ -179,13 +179,13 @@ const ProfilePropertyListing = () => {
                     <div className="flex justify-end w-full items-center">
                       <Link
                         to={`/profile/property/listings/${item.p_id}`}
-                        className="w-20 lg:py-1 py-1 mr-1 bg-green border-1 border-green font-medium text-white text-center  rounded-md"
+                        className="w-20 lg:py-1 py-0.5 mt-2 mr-1 bg-green border-1 border-green font-medium text-white text-center  rounded-md"
                       >
                         View
                       </Link>
                       <button
                         onClick={() => setisDeleteModalOpen(item.p_id)}
-                        className="w-20 lg:py-1 py-1 ml-1 border-1 border-red text-red font-medium   rounded-md "
+                        className="w-20 lg:py-1 py-0.5 mt-2 ml-1 border-1 border-red text-red font-medium   rounded-md "
                       >
                         Delete
                       </button>

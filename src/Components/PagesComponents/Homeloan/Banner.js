@@ -6,21 +6,23 @@ import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../../Redux/_features/_userSlice";
 import Login from "../Login/Login";
+import { useForm } from "react-hook-form";
 
 const Banner = () => {
-  const [Name, setName] = useState("");
-  const [Amount, setAmount] = useState("");
-  const [Phone, setPhone] = useState("");
   const [isLoginModalOpen, setisLoginModalOpen] = useState(false);
 
   const user = useSelector(selectUser);
   const history = useHistory();
 
-  const HandleSubmit = async () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = async (data) => {
     const res = await axios.post(`${API}/leads/store-home-loan`, {
-      name: Name,
-      amount: Amount,
-      phone: Phone,
+      ...data,
     });
     if (res.status === 200) {
       return toast.success("You Will Get A Callback Soon!");
@@ -76,12 +78,15 @@ const Banner = () => {
                 Track Your Application
               </div>
             </div>
-            <div className="lg:w-30percent w-full h-full flex justify-end">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="lg:w-30percent w-full h-full flex justify-end"
+            >
               <div
                 style={{
                   background: " rgb(9 27 92 / 62%)",
                 }}
-                className="rounded shadow-lg mt-14 lg:w-4/5 w-full lg:h-full h-5/6  text-white flex flex-col justify-between items-start px-6"
+                className="rounded shadow-lg mt-14 lg:w-80 w-full lg:h-96 h-5/6  text-white flex flex-col justify-between items-start px-6"
               >
                 <p className="text-2xl tracking-tight border-b-1 py-2 w-full text-white">
                   Apply for loan
@@ -92,8 +97,7 @@ const Banner = () => {
                   </p>
                   <input
                     type="text"
-                    value={Name}
-                    onChange={(e) => setName(e.target.value)}
+                    {...register("name", { required: true })}
                     placeholder="Name"
                     className="w-full h-11 border-1 rounded px-2 text-darkgray"
                   />
@@ -104,8 +108,11 @@ const Banner = () => {
                   </p>
                   <input
                     type="text"
-                    value={Phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    {...register("phone", {
+                      required: true,
+                      maxLength: 10,
+                      minLength: 10,
+                    })}
                     placeholder="Phone Number"
                     className="w-full h-11 border-1 rounded px-2 text-darkgray"
                   />
@@ -116,21 +123,37 @@ const Banner = () => {
                   </p>
                   <input
                     type="text"
-                    value={Amount}
-                    onChange={(e) => setAmount(e.target.value)}
+                    {...register("amount", {
+                      required: true,
+                    })}
                     placeholder="Amount"
                     className="w-full h-11 border-1 rounded px-2 text-darkgray"
                   />
                 </div>
                 <button
-                  onClick={HandleSubmit}
+                  type="submit"
                   className="w-full h-12 bg-blue text-white text-lg font-medium my-4 rounded"
                 >
                   {" "}
                   Get Call Back
                 </button>
+                <div className="w-full mb-2">
+                  {(errors?.phone?.type === "required" ||
+                    errors?.amount?.type === "required" ||
+                    errors?.name?.type === "required") && (
+                    <span className="py-1 text-lightred">
+                      * All Fields Are required
+                    </span>
+                  )}
+                  {(errors?.phone?.type === "maxLength" ||
+                    errors?.phone?.type === "minLength") && (
+                    <span className="py-1  text-lightred">
+                      * Mobile Number Must be of 10 Digits
+                    </span>
+                  )}
+                </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </section>

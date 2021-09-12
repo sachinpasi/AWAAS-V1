@@ -20,6 +20,7 @@ import { GrDocument } from "react-icons/gr";
 const ProfileHomeLoanDetails = () => {
   const [HomeLoanDetials, setHomeLoanDetails] = useState();
   const [isLoading, setisLoading] = useState(false);
+  const [CurrentStep, setCurrentStep] = useState(1);
 
   const user = useSelector(selectUser);
   const { id } = useParams();
@@ -50,6 +51,22 @@ const ProfileHomeLoanDetails = () => {
   useEffect(() => {
     FetchHomeLoanList();
   }, []);
+
+  useEffect(() => {
+    if (HomeLoanDetials) {
+      if (HomeLoanDetials?.status === "We have recieved your application") {
+        setCurrentStep(1);
+      } else if (
+        HomeLoanDetials?.status === "Document Verification Under process"
+      ) {
+        setCurrentStep(2);
+      } else if (HomeLoanDetials?.status === "Application submitted to Bank") {
+        setCurrentStep(3);
+      } else if (HomeLoanDetials?.status === "Loan Has Been Granted") {
+        setCurrentStep(4);
+      }
+    }
+  }, [HomeLoanDetials]);
   return (
     <Layout>
       <main className="w-full min-h-screen bg-white relative flex  justify-between ">
@@ -65,18 +82,12 @@ const ProfileHomeLoanDetails = () => {
             <div className="flex items-center justify-center my-12">
               <div
                 className={`w-20 h-20 rounded-full  -mr-4 relative bg-blue flex justify-center items-center ${
-                  HomeLoanDetials?.status ===
-                  "We have recieved your application"
-                    ? "bg-blue"
-                    : ""
+                  CurrentStep === 1 ? "bg-blue" : ""
                 }`}
               >
                 <HiOutlineDocumentDuplicate
                   className={`${
-                    HomeLoanDetials?.status ===
-                    "We have recieved your application"
-                      ? ""
-                      : ""
+                    CurrentStep === 1 ? "" : ""
                   } text-3xl text-white `}
                 />
                 <p className="font-medium uppercase text-lg absolute -bottom-10 left-2/4  transform -translate-x-2/4">
@@ -85,24 +96,21 @@ const ProfileHomeLoanDetails = () => {
               </div>
               <div
                 className={`w-64 h-3  ${
-                  HomeLoanDetials?.status ===
-                  "Document Verification Under process"
+                  CurrentStep === 2 || CurrentStep === 3 || CurrentStep === 4
                     ? "bg-blue"
                     : "bg-gray-300"
                 }`}
               ></div>
               <div
                 className={`w-20 h-20 -mx-4 rounded-full bg-gray-300 relative flex justify-center items-center ${
-                  HomeLoanDetials?.status ===
-                  "Document Verification Under process"
+                  CurrentStep === 2 || CurrentStep === 3 || CurrentStep === 4
                     ? "bg-blue"
                     : "bg-gray-300"
                 }`}
               >
                 <HiOutlineShieldCheck
                   className={`text-4xl  ${
-                    HomeLoanDetials?.status ===
-                    "Document Verification Under process"
+                    CurrentStep === 2 || CurrentStep === 3 || CurrentStep === 4
                       ? "text-white"
                       : "text-darkgray"
                   }`}
@@ -113,21 +121,21 @@ const ProfileHomeLoanDetails = () => {
               </div>{" "}
               <div
                 className={`w-64 h-3  ${
-                  HomeLoanDetials?.status === "Application submitted to Bank"
+                  CurrentStep === 3 || CurrentStep === 4
                     ? "bg-blue"
                     : "bg-gray-300"
                 }`}
               ></div>
               <div
                 className={`w-20 h-20 -mx-4 rounded-full bg-gray-300 relative flex justify-center items-center ${
-                  HomeLoanDetials?.status === "Application submitted to Bank"
+                  CurrentStep === 3 || CurrentStep === 4
                     ? "bg-blue"
                     : "bg-gray-300"
                 }`}
               >
                 <RiBankLine
-                  className={`text-3xl text-darkgray ${
-                    HomeLoanDetials?.status === "Application submitted to Bank"
+                  className={`text-3xl  ${
+                    CurrentStep === 3 || CurrentStep === 4
                       ? "text-white"
                       : "text-darkgray"
                   }`}
@@ -138,24 +146,20 @@ const ProfileHomeLoanDetails = () => {
               </div>
               <div
                 className={`w-64 h-3  ${
-                  HomeLoanDetials?.status === "Loan Has Been approved"
-                    ? "bg-blue"
-                    : "bg-gray-300"
+                  CurrentStep === 4 ? "bg-blue" : "bg-gray-300"
                 }`}
               ></div>
               <div
                 className={`w-20 h-20 -ml-4 rounded-full bg-gray-300 relative flex justify-center items-center ${
-                  HomeLoanDetials?.status === "Loan Has Been approved"
-                    ? "bg-blue"
-                    : "bg-gray-300"
+                  CurrentStep === 4 ? "bg-blue" : "bg-gray-300"
                 }`}
               >
                 <svg
                   stroke="currentColor"
                   fill={`${
-                    HomeLoanDetials?.status === "Loan Has Been approved"
-                      ? "#292929"
-                      : ""
+                    HomeLoanDetials?.status === "Loan Has Been Granted"
+                      ? "#fff"
+                      : "#292929"
                   }`}
                   stroke-width="0"
                   version="1"
@@ -164,18 +168,22 @@ const ProfileHomeLoanDetails = () => {
                   height="1em"
                   width="1em"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="text-4xl text-darkgray"
+                  className="text-4xl "
                 >
                   <polygon
                     fill={`${
-                      HomeLoanDetials?.status === "Loan Has Been approved"
-                        ? "#292929"
+                      HomeLoanDetials?.status === "Loan Has Been Granted"
+                        ? "#fff"
                         : ""
                     }`}
                     points="24,3 28.7,6.6 34.5,5.8 36.7,11.3 42.2,13.5 41.4,19.3 45,24 41.4,28.7 42.2,34.5 36.7,36.7 34.5,42.2 28.7,41.4 24,45 19.3,41.4 13.5,42.2 11.3,36.7 5.8,34.5 6.6,28.7 3,24 6.6,19.3 5.8,13.5 11.3,11.3 13.5,5.8 19.3,6.6"
                   ></polygon>
                   <polygon
-                    fill="#ffffff"
+                    fill={`${
+                      HomeLoanDetials?.status === "Loan Has Been Granted"
+                        ? "rgba(77, 129, 232)"
+                        : "#fff"
+                    }`}
                     points="34.6,14.6 21,28.2 15.4,22.6 12.6,25.4 21,33.8 37.4,17.4"
                   ></polygon>
                 </svg>
