@@ -119,6 +119,9 @@ const Step4 = () => {
     }
   };
   const history = useHistory();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   window.addEventListener("scroll", HandleNavScroll);
 

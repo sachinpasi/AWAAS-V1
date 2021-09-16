@@ -83,6 +83,9 @@ const Step2 = () => {
   // console.log("Response", Response);
   // console.log("TotalRequest", TotalRequest);
   // console.log("Error", Error);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     const CheckTrue = (value) => value === true;

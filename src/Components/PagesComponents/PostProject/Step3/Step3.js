@@ -64,6 +64,9 @@ const Step3 = () => {
   useEffect(() => {
     FetchAmenities();
   }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="w-full h-full flex flex-col items-center ">
