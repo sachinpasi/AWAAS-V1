@@ -1,27 +1,33 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { set, useForm } from "react-hook-form";
+import { useFieldArray, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router";
 import { toast } from "react-toastify";
 import { API } from "../../../../API";
-
 import {
-  SET_POST_PROJECT_PROPERTY,
-  RESET_POST_PROJECT,
   selectPostProject,
-  RESET_POST_PROJECT_PROPERTY,
   selectPostProjectId,
+  SET_POST_PROJECT_PROPERTY,
 } from "../../../../Redux/_features/_PostProjectSlice";
-import { SET_CURRENT_STEP } from "../../../../Redux/_features/_PostProjectStepSlice";
 import { selectUser } from "../../../../Redux/_features/_userSlice";
+import Loader from "../../../Preloader/Loader";
 
 const Step4 = () => {
-  const dispatch = useDispatch();
+  const [isNavOpen, setisNavOpen] = useState(false);
+  const [Error, setError] = useState([]);
+  const [Response, setResponse] = useState([]);
+  const [isLoading, setisLoading] = useState(false);
 
-  const ActiveTabs = useSelector(selectPostProject);
-
-  const [Data, setData] = useState();
+  const [TotalRequestObject, setTotalRequestObject] = useState({
+    Flat: 0,
+    Villa: 0,
+    Sco: 0,
+    Plot: 0,
+    Commercial: 0,
+    Office: 0,
+  });
+  console.log(isLoading);
 
   const [AddFlat, setAddFlat] = useState(false);
   const [AddVilla, setAddVilla] = useState(false);
@@ -30,130 +36,80 @@ const Step4 = () => {
   const [AddCommercial, setAddCommercial] = useState(null);
   const [AddOffice, setAddOffice] = useState(null);
 
-  const [FLAT, setFLAT] = useState([]);
-  const [VILLA, setVILLA] = useState([]);
-  const [SCO, setSCO] = useState([]);
-  const [PLOT, setPLOT] = useState([]);
-  const [COMMERCIAL, setCOMMERCIAL] = useState([]);
-  const [OFFICE, setOFFICE] = useState([]);
-
-  const [FLAT_COUNTER, setFLAT_COUNTER] = useState(0);
-  const [VILLA_COUNTER, setVILLA_COUNTER] = useState(0);
-  const [SCO_COUNTER, setSCO_COUNTER] = useState(0);
-  const [PLOT_COUNTER, setPLOT_COUNTER] = useState(0);
-  const [COMMERCIAL_COUNTER, setCOMMERCIAL_COUNTER] = useState(0);
-  const [OFFICE_COUNTER, setOFFICE_COUNTER] = useState(0);
-
-  const [TotalFlatRequest, setTotalFlatRequest] = useState(0);
-  const [TotalVillaRequest, setTotalVillaRequest] = useState(0);
-  const [TotalScoRequest, setTotalScoRequest] = useState(0);
-  const [TotalPlotRequest, setTotalPlotRequest] = useState(0);
-  const [TotalCommercialtRequest, setTotalCommercialRequest] = useState(0);
-  const [TotalOfficeRequest, setTotalOfficeRequest] = useState(0);
-
-  const [Error, setError] = useState([]);
-  const [isLoading, setisLoading] = useState(false);
-
-  console.log(
-    TotalFlatRequest +
-      TotalVillaRequest +
-      TotalScoRequest +
-      TotalPlotRequest +
-      TotalCommercialtRequest +
-      TotalOfficeRequest
-  );
-
-  const ResetEveryThing = () => {
-    setTotalFlatRequest(0);
-    setTotalVillaRequest(0);
-    setTotalScoRequest(0);
-    setTotalPlotRequest(0);
-    setTotalCommercialRequest(0);
-    setTotalOfficeRequest(0);
-    setError([]);
-  };
-
-  const [Response, setResponse] = useState([]);
-
-  console.log(isLoading);
-
-  const [isNavOpen, setisNavOpen] = useState(false);
-
-  const { register, handleSubmit } = useForm();
-
+  const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const TableId = useSelector(selectPostProjectId);
-  const history = useHistory();
 
-  const addFlatField = () => {
-    setFLAT((prevIndexes) => [...prevIndexes, FLAT_COUNTER]);
-    setFLAT_COUNTER((prevCounter) => prevCounter + 1);
-  };
+  const ActiveTabs = useSelector(selectPostProject);
 
-  const addVillaField = () => {
-    setVILLA((prevIndexes) => [...prevIndexes, VILLA_COUNTER]);
-    setVILLA_COUNTER((prevCounter) => prevCounter + 1);
-  };
+  const {
+    register,
+    control,
+    handleSubmit,
+    getValues,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      Flat: [],
+      Villa: [],
+      Sco: [],
+      Plot: [],
+      Commercial: [],
+      Office: [],
+    },
+  });
 
-  const addScoField = () => {
-    setSCO((prevIndexes) => [...prevIndexes, SCO_COUNTER]);
-    setSCO_COUNTER((prevCounter) => prevCounter + 1);
-  };
+  const {
+    fields: FLAT_FIELDS,
+    remove: REMOVE_FLAT,
+    append: ADD_FLAT,
+  } = useFieldArray({
+    control,
+    name: "Flat",
+  });
 
-  const addPlotField = () => {
-    setPLOT((prevIndexes) => [...prevIndexes, PLOT_COUNTER]);
-    setPLOT_COUNTER((prevCounter) => prevCounter + 1);
-  };
+  const {
+    fields: VILLA_FIELDS,
+    remove: REMOVE_VILLA,
+    append: ADD_VILLA,
+  } = useFieldArray({
+    control,
+    name: "Villa",
+  });
+  const {
+    fields: SCO_FIELDS,
+    remove: REMOVE_SCO,
+    append: ADD_SC0,
+  } = useFieldArray({
+    control,
+    name: "Sco",
+  });
+  const {
+    fields: PLOT_FIELDS,
+    remove: REMOVE_PLOT,
+    append: ADD_PLOT,
+  } = useFieldArray({
+    control,
+    name: "Plot",
+  });
 
-  const addCommercialField = () => {
-    setCOMMERCIAL((prevIndexes) => [...prevIndexes, COMMERCIAL_COUNTER]);
-    setCOMMERCIAL_COUNTER((prevCounter) => prevCounter + 1);
-  };
+  const {
+    fields: COMMERCIAL_FIELDS,
+    remove: REMOVE_COMMERCIAL,
+    append: ADD_COMMERCIAL,
+  } = useFieldArray({
+    control,
+    name: "Commercial",
+  });
 
-  const addOfficeField = () => {
-    setOFFICE((prevIndexes) => [...prevIndexes, OFFICE_COUNTER]);
-    setOFFICE_COUNTER((prevCounter) => prevCounter + 1);
-  };
-
-  const removeFlatField = (index) => () => {
-    setFLAT((prevIndexes) => {
-      console.log(prevIndexes);
-      console.log([...prevIndexes.filter((i) => i !== index)]);
-      return [...prevIndexes.filter((item) => item !== index)];
-    });
-    setFLAT_COUNTER((prevCounter) => prevCounter - 1);
-  };
-
-  const removeVillaField = (index) => () => {
-    setVILLA((prevIndexes) => [
-      ...prevIndexes.filter((item) => item !== index),
-    ]);
-    setVILLA_COUNTER((prevCounter) => prevCounter - 1);
-  };
-
-  const removeScoField = (index) => () => {
-    setSCO((prevIndexes) => [...prevIndexes.filter((item) => item !== index)]);
-    setSCO_COUNTER((prevCounter) => prevCounter - 1);
-  };
-
-  const removePlotField = (index) => () => {
-    setPLOT((prevIndexes) => [...prevIndexes.filter((item) => item !== index)]);
-    setPLOT_COUNTER((prevCounter) => prevCounter - 1);
-  };
-
-  const removeCommercialField = (index) => () => {
-    setCOMMERCIAL((prevIndexes) => [
-      ...prevIndexes.filter((item) => item !== index),
-    ]);
-    setCOMMERCIAL_COUNTER((prevCounter) => prevCounter - 1);
-  };
-
-  const removeOfficeField = (index) => () => {
-    setOFFICE((prevIndexes) => [
-      ...prevIndexes.filter((item) => item !== index),
-    ]);
-    setOFFICE_COUNTER((prevCounter) => prevCounter - 1);
-  };
+  const {
+    fields: OFFICE_FIELDS,
+    remove: REMOVE_OFFICE,
+    append: ADD_OFFICE,
+  } = useFieldArray({
+    control,
+    name: "Office",
+  });
 
   const HandleNavScroll = () => {
     if (window.scrollY >= 150) {
@@ -162,88 +118,98 @@ const Step4 = () => {
       setisNavOpen(false);
     }
   };
+  const history = useHistory();
 
   window.addEventListener("scroll", HandleNavScroll);
 
   const onSubmit = (data) => {
-    setData(data);
-    if (data) {
-      setisLoading(true);
-    }
+    setisLoading(true);
+    setTotalRequestObject((prevState) => ({
+      ...prevState,
+      Flat: 0,
+      Villa: 0,
+      Sco: 0,
+      Plot: 0,
+      Commercial: 0,
+      Office: 0,
+    }));
+    setResponse([]);
+    setError([]);
     console.log(data);
 
-    if (data?.FLAT) {
-      const FLAT_ARRAY = data?.FLAT;
-      console.log(data?.FLAT);
+    if (data?.Flat) {
+      const FLAT_ARRAY = data?.Flat;
+      setTotalRequestObject((prevState) => ({
+        ...prevState,
+        Flat: FLAT_ARRAY?.length,
+      }));
+      FLAT_ARRAY?.forEach((item, index) => {
+        if (item) {
+          const formData = new FormData();
+          formData.append("flatTitle", item.flatTitle);
+          formData.append("flatName", item.flatName);
+          formData.append("flatArea", item.flatArea);
+          formData.append("flatAreaUnit", item.flatAreaUnit);
+          formData.append("flatCarpetArea", item.flatCarpetArea);
+          formData.append("flatCarpetAreaUnit", item.flatCarpetAreaUnit);
+          formData.append("flatBuiltUpArea", item.flatBuiltUpArea);
+          formData.append("flatBuiltUpAreaUnit", item.flatBuiltUpAreaUnit);
+          formData.append("flatSuperBuiltUpArea", item.flatSuperBuiltUpArea);
+          formData.append(
+            "flatSuperBuiltUpAreaUnit",
+            item.flatSuperBuiltUpAreaUnit
+          );
+          formData.append("flatPrice", item.flatPrice);
+          formData.append("flatPriceUnit", item.flatPriceUnit);
+          formData.append("flatTotalPrice", item.flatTotalPrice);
+          formData.append("flatMinimunPrice", item.flatMinimunPrice);
+          formData.append("flatMaximumPrice", item.flatMaximumPrice);
 
-      FLAT_ARRAY.forEach((item, index) => {
-        console.log(index);
-        if (FLAT.includes(index)) {
-          setTotalFlatRequest(TotalFlatRequest + FLAT_ARRAY?.length);
-          if (item) {
-            const formData = new FormData();
-            formData.append("flatTitle", item.flatTitle);
-            formData.append("flatName", item.flatName);
-            formData.append("flatArea", item.flatArea);
-            formData.append("flatAreaUnit", item.flatAreaUnit);
-            formData.append("flatCarpetArea", item.flatCarpetArea);
-            formData.append("flatCarpetAreaUnit", item.flatCarpetAreaUnit);
-            formData.append("flatBuiltUpArea", item.flatBuiltUpArea);
-            formData.append("flatBuiltUpAreaUnit", item.flatBuiltUpAreaUnit);
-            formData.append("flatSuperBuiltUpArea", item.flatSuperBuiltUpArea);
-            formData.append(
-              "flatSuperBuiltUpAreaUnit",
-              item.flatSuperBuiltUpAreaUnit
-            );
-            formData.append("flatPrice", item.flatPrice);
-            formData.append("flatPriceUnit", item.flatPriceUnit);
-            formData.append("flatTotalPrice", item.flatTotalPrice);
-            formData.append("flatMinimunPrice", item.flatMinimunPrice);
-            formData.append("flatMaximumPrice", item.flatMaximumPrice);
+          formData.append("id", TableId);
 
-            formData.append("id", TableId);
+          Array.from(item.flatFloorPlan).map((file, index) =>
+            formData.append(`flatFloorPlan[${index}]`, file)
+          );
+          Array.from(item.flatImages).map((file, index) =>
+            formData.append(`flatImages[${index}]`, file)
+          );
 
-            Array.from(item.flatFloorPlan).map((file, index) =>
-              formData.append(`flatFloorPlan[${index}]`, file)
-            );
-            Array.from(item.flatImages).map((file, index) =>
-              formData.append(`flatImages[${index}]`, file)
-            );
-
-            const UploadFlat = async () => {
-              try {
-                const res = await axios.post(
-                  `${API}/projects/store-flat`,
-                  formData,
-                  {
-                    headers: {
-                      Method: "POST",
-                      ContentType: "multipart/form-data",
-                      Authorization: `Bearer ${user.token}`,
-                    },
-                  }
-                );
-
-                console.log(res);
-                if (res.status === 200) {
-                  setResponse((Prev) => [...Prev, true]);
+          const UploadFlat = async () => {
+            try {
+              const res = await axios.post(
+                `${API}/projects/store-flat`,
+                formData,
+                {
+                  headers: {
+                    Method: "POST",
+                    ContentType: "multipart/form-data",
+                    Authorization: `Bearer ${user.token}`,
+                  },
                 }
-              } catch (error) {
-                if (error.response.status !== 200) {
-                  setResponse((Prev) => [...Prev, false]);
-                  setError((prev) => [...prev, ["FLAT", index]]);
-                }
+              );
+
+              console.log(res);
+              if (res.status === 200) {
+                setResponse((Prev) => [...Prev, true]);
               }
-            };
-            UploadFlat();
-          }
+            } catch (error) {
+              if (error?.response?.status !== 200) {
+                setResponse((Prev) => [...Prev, false]);
+                setError((prev) => [...prev, ["Flat", index]]);
+              }
+            }
+          };
+          UploadFlat();
         }
       });
     }
 
-    if (data?.VILLA) {
-      const VILLA_ARRAY = data?.VILLA;
-      setTotalVillaRequest(TotalVillaRequest + VILLA_ARRAY?.length);
+    if (data?.Villa) {
+      const VILLA_ARRAY = data?.Villa;
+      setTotalRequestObject((prevState) => ({
+        ...prevState,
+        Villa: VILLA_ARRAY?.length,
+      }));
       VILLA_ARRAY.forEach((item, index) => {
         if (item) {
           const formData = new FormData();
@@ -293,7 +259,7 @@ const Step4 = () => {
                 setResponse((Prev) => [...Prev, true]);
               }
             } catch (error) {
-              if (error.response.status !== 200) {
+              if (error?.response?.status !== 200) {
                 setResponse((Prev) => [...Prev, false]);
                 setError((prev) => [...prev, ["VILLA", index]]);
               }
@@ -305,10 +271,12 @@ const Step4 = () => {
       });
     }
 
-    if (data?.SCO) {
-      const SCO_ARRAY = data?.SCO;
-      setTotalScoRequest(TotalScoRequest + SCO_ARRAY?.length);
-
+    if (data?.Sco) {
+      const SCO_ARRAY = data?.Sco;
+      setTotalRequestObject((prevState) => ({
+        ...prevState,
+        Sco: SCO_ARRAY?.length,
+      }));
       SCO_ARRAY.forEach((item, index) => {
         if (item) {
           const formData = new FormData();
@@ -368,11 +336,12 @@ const Step4 = () => {
         }
       });
     }
-
-    if (data?.PLOT) {
-      const PLOT_ARRAY = data?.PLOT;
-      setTotalPlotRequest(TotalPlotRequest + PLOT_ARRAY?.length);
-
+    if (data?.Plot) {
+      const PLOT_ARRAY = data?.Plot;
+      setTotalRequestObject((prevState) => ({
+        ...prevState,
+        Plot: PLOT_ARRAY?.length,
+      }));
       PLOT_ARRAY.forEach((item, index) => {
         if (item) {
           const formData = new FormData();
@@ -426,14 +395,13 @@ const Step4 = () => {
         }
       });
     }
-
-    if (data?.COMMERCIAL) {
-      const COMMERCIAL_ARRAY = data?.COMMERCIAL;
-      setTotalCommercialRequest(
-        TotalCommercialtRequest + COMMERCIAL_ARRAY?.length
-      );
-
-      COMMERCIAL_ARRAY.forEach((item, index) => {
+    if (data?.Commercial) {
+      const COMMERCIAL_ARRAY = data?.Commercial;
+      setTotalRequestObject((prevState) => ({
+        ...prevState,
+        Commercial: COMMERCIAL_ARRAY?.length,
+      }));
+      COMMERCIAL_ARRAY?.forEach((item, index) => {
         if (item) {
           const formData = new FormData();
           formData.append("Title", item.Title);
@@ -449,6 +417,8 @@ const Step4 = () => {
           formData.append("TotalPrice", item.TotalPrice);
           formData.append("MinimunPrice", item.MinimunPrice);
           formData.append("MaximumPrice", item.MaximumPrice);
+          formData.append("TotalFloor", item.TotalFloor);
+          formData.append("Basement", item.Basement);
 
           formData.append("id", TableId);
 
@@ -475,7 +445,7 @@ const Step4 = () => {
                 setResponse((Prev) => [...Prev, true]);
               }
             } catch (error) {
-              if (error.response.status !== 200) {
+              if (error?.response?.status !== 200) {
                 setResponse((Prev) => [...Prev, false]);
                 setError((prev) => [...prev, ["COMMERCIAL", index]]);
               }
@@ -486,10 +456,12 @@ const Step4 = () => {
         }
       });
     }
-
-    if (data?.OFFICE) {
-      const OFFICE_ARRAY = data?.OFFICE;
-      setTotalOfficeRequest(TotalOfficeRequest + OFFICE_ARRAY?.length);
+    if (data?.Office) {
+      const OFFICE_ARRAY = data?.Office;
+      setTotalRequestObject((prevState) => ({
+        ...prevState,
+        Office: OFFICE_ARRAY?.length,
+      }));
       OFFICE_ARRAY.forEach((item, index) => {
         if (item) {
           const formData = new FormData();
@@ -551,44 +523,32 @@ const Step4 = () => {
         }
       });
     }
-
-    setisLoading(false);
   };
+
+  console.log(Error);
 
   useEffect(() => {
     const CheckTrue = (value) => value === true;
-    if (
-      Response.length ===
-      TotalFlatRequest +
-        TotalVillaRequest +
-        TotalScoRequest +
-        TotalPlotRequest +
-        TotalCommercialtRequest +
-        TotalOfficeRequest
-    ) {
+    const reducer = (previousValue, currentValue) =>
+      previousValue + currentValue;
+    const TotalNoOfRequest = Object.values(TotalRequestObject).reduce(reducer);
+
+    if ((Response.length !== 0 && Response?.length) === TotalNoOfRequest) {
       if (Response.length !== 0) {
         if (Response.every(CheckTrue)) {
-          history.push("/");
+          setisLoading(false);
+          setTimeout(() => {
+            history.push("/profile/projects/listings");
+          }, 1000);
           return toast.success("Project Added Sucessfully");
         } else {
+          setisLoading(false);
+
           return toast.error("All Fields Are Mandatory");
         }
       }
     }
-  }, [Response]);
-
-  useEffect(() => {
-    if (Error.length !== 0) {
-      Error?.forEach((item, index) => {
-        console.log(`${item[0]}[${item[1]}]`);
-        if (item !== null) {
-          document
-            .getElementById(`${item[0]}[${item[1]}]`)
-            ?.scrollIntoView(true);
-        }
-      });
-    }
-  }, [Error]);
+  }, [Response, TotalRequestObject]);
 
   useEffect(() => {
     dispatch(
@@ -602,19 +562,19 @@ const Step4 = () => {
       })
     );
   }, [dispatch, AddFlat, AddVilla, AddSco, AddPlot, AddCommercial, AddOffice]);
-
   return (
     <>
+      {isLoading && <Loader />}
       <header
         className={`${
           isNavOpen ? "visible" : "hidden"
-        } hidden w-full fixed bg-white h-20 z-40 top-0 flex justify-center items-center shadow transition-all`}
+        } w-full fixed bg-white h-20 z-40 top-0 flex justify-center items-center shadow transition-all`}
       >
         <div className="flex my-1   ">
           <div
             onClick={() => {
               setAddFlat(true);
-              addFlatField();
+              ADD_FLAT({});
             }}
             className={`px-7 py-2 bg-blue  rounded-full cursor-pointer mr-4`}
           >
@@ -627,7 +587,7 @@ const Step4 = () => {
           <div
             onClick={() => {
               setAddVilla(true);
-              addVillaField();
+              ADD_VILLA({});
             }}
             className={`px-7 py-2 bg-blue  rounded-full cursor-pointer mr-4`}
           >
@@ -640,7 +600,7 @@ const Step4 = () => {
           <div
             onClick={() => {
               setAddSco(true);
-              addScoField();
+              ADD_SC0({});
             }}
             className={`px-7 py-2 bg-blue  rounded-full cursor-pointer mr-4`}
           >
@@ -653,7 +613,7 @@ const Step4 = () => {
           <div
             onClick={() => {
               setAddPlot(true);
-              addPlotField();
+              ADD_PLOT({});
             }}
             className={`px-7 py-2 bg-blue  rounded-full cursor-pointer mr-4`}
           >
@@ -666,7 +626,7 @@ const Step4 = () => {
           <div
             onClick={() => {
               setAddCommercial(true);
-              addCommercialField();
+              ADD_COMMERCIAL({});
             }}
             className={`px-7 py-2 bg-blue  rounded-full cursor-pointer mr-4`}
           >
@@ -679,7 +639,7 @@ const Step4 = () => {
           <div
             onClick={() => {
               setAddOffice(true);
-              addOfficeField();
+              ADD_OFFICE({});
             }}
             className={`px-7 py-2 bg-blue  rounded-full cursor-pointer mr-4`}
           >
@@ -691,6 +651,7 @@ const Step4 = () => {
           </div>
         </div>
       </header>
+
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-full min flex flex-col items-center pt-12 lg:pt-0 "
@@ -701,7 +662,7 @@ const Step4 = () => {
               <div
                 onClick={() => {
                   setAddFlat(true);
-                  addFlatField();
+                  ADD_FLAT({});
                 }}
                 style={{
                   backgroundImage: "url(/assets/images/postproject/flat.jpg)",
@@ -719,7 +680,7 @@ const Step4 = () => {
               <div
                 onClick={() => {
                   setAddVilla(true);
-                  addVillaField();
+                  ADD_VILLA({});
                 }}
                 style={{
                   backgroundImage: "url(/assets/images/postproject/villa.jpg)",
@@ -737,7 +698,7 @@ const Step4 = () => {
               <div
                 onClick={() => {
                   setAddSco(true);
-                  addScoField();
+                  ADD_SC0({});
                 }}
                 style={{
                   backgroundImage: "url(/assets/images/postproject/sco.jpg)",
@@ -755,7 +716,7 @@ const Step4 = () => {
               <div
                 onClick={() => {
                   setAddPlot(true);
-                  addPlotField();
+                  ADD_PLOT({});
                 }}
                 style={{
                   backgroundImage: "url(/assets/images/postproject/plot.jpg)",
@@ -773,7 +734,7 @@ const Step4 = () => {
               <div
                 onClick={() => {
                   setAddCommercial(true);
-                  addCommercialField();
+                  ADD_COMMERCIAL({});
                 }}
                 style={{
                   backgroundImage:
@@ -792,7 +753,7 @@ const Step4 = () => {
               <div
                 onClick={() => {
                   setAddOffice(true);
-                  addOfficeField();
+                  ADD_OFFICE({});
                 }}
                 style={{
                   backgroundImage: "url(/assets/images/postproject/mall.jpg)",
@@ -811,48 +772,74 @@ const Step4 = () => {
 
             {ActiveTabs?.addFlat && (
               <>
-                {FLAT.map((index, i) => {
-                  const fieldName = `FLAT[${index}]`;
+                {FLAT_FIELDS.map((item, index) => {
                   return (
-                    <fieldset
-                      name={fieldName}
-                      key={fieldName}
-                      id={fieldName}
+                    <li
+                      id={item.id}
                       className="lg:w-3/4 w-full  my-4  flex flex-col items-start border-b-2 relative"
                     >
                       <div className="lg:absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
                         {`Flat No `}
                         <div className="bg-blue text-white w-12 h-12 flex justify-center items-center rounded-full">
-                          {i + 1}
-                          {console.log(index)}
+                          {index + 1}
                         </div>
                       </div>
                       <h4 className="lg:text-2xl text-lg font-medium  uppercase mb-4">
                         {" "}
                         Flat / APARTMENT / FLOOR DETAILS
                       </h4>
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full  my-1 placeholder-gray-600"
-                        type="text"
-                        placeholder="Flat / Apartment / Floor Title"
-                        {...register(`${fieldName}.flatTitle`)}
-                      />{" "}
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
-                        type="text"
-                        placeholder="Flat / Apartment / Floor Name"
-                        {...register(`${fieldName}.flatName`)}
-                      />
-                      <div className="flex ">
+                      <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
                         <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.Flat &&
+                            errors?.Flat[index]?.flatTitle?.type ===
+                              "required" &&
+                            "border-red"
+                          }`}
                           type="text"
-                          placeholder="Plot Area"
-                          {...register(`${fieldName}.flatArea`)}
+                          placeholder=" "
+                          {...register(`Flat[${index}].flatTitle`)}
                         />
+                        <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                          Flat / Apartment / Floor Title
+                        </label>
+                      </div>{" "}
+                      <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.Flat &&
+                            errors?.Flat[index]?.flatName?.type ===
+                              "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          placeholder=" "
+                          {...register(`Flat[${index}].flatName`)}
+                        />
+                        <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                          Flat / Apartment / Floor Name
+                        </label>
+                      </div>{" "}
+                      <div className="flex ">
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Flat &&
+                              errors?.Flat[index]?.flatArea?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Flat[${index}].flatArea`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Plot Area
+                          </label>
+                        </div>{" "}
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-2/5  my-1 placeholder-gray-600"
-                          {...register(`${fieldName}.flatAreaUnit`)}
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-2/5  my-1.5 lg:ml-2 placeholder-gray-600"
+                          {...register(`Flat[${index}].flatAreaUnit`)}
                           title="sq-ft"
                         >
                           <option>Sq-ft</option>
@@ -864,15 +851,25 @@ const Step4 = () => {
                         </select>
                       </div>
                       <div className=" flex">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="Carpet Area"
-                          {...register(`${fieldName}.flatCarpetArea`)}
-                        />
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Flat &&
+                              errors?.Flat[index]?.flatCarpetArea?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Flat[${index}].flatCarpetArea`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Carpet Area
+                          </label>
+                        </div>{" "}
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-2/5  my-1 placeholder-gray-600"
-                          {...register(`${fieldName}.flatCarpetAreaUnit`)}
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-2/5  my-1.5 lg:ml-2 placeholder-gray-600"
+                          {...register(`Flat[${index}].flatCarpetAreaUnit`)}
                           title="sq-ft"
                         >
                           <option>Sq-ft</option>
@@ -881,17 +878,28 @@ const Step4 = () => {
                         </select>
                       </div>
                       <div className=" flex">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="Built Up Area"
-                          {...register(`${fieldName}.flatBuiltUpArea`)}
-                        />
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Flat &&
+                              errors?.Flat[index]?.flatBuiltUpArea?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Flat[${index}].flatBuiltUpArea`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Built Up Area
+                          </label>
+                        </div>
+
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-2/5  my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-2/5  my-1.5 lg:ml-2 placeholder-gray-600"
                           id="builtup-area-type"
                           title="sq-ft"
-                          {...register(`${fieldName}.flatBuiltUpAreaUnit`)}
+                          {...register(`Flat[${index}].flatBuiltUpAreaUnit`)}
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
@@ -899,17 +907,30 @@ const Step4 = () => {
                         </select>
                       </div>
                       <div className=" flex">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="Super Built Up Area"
-                          {...register(`${fieldName}.flatSuperBuiltUpArea`)}
-                        />
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Flat &&
+                              errors?.Flat[index]?.flatSuperBuiltUpArea
+                                ?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Flat[${index}].flatSuperBuiltUpArea`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Super Built Up Area
+                          </label>
+                        </div>
+
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-2/5  my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-2/5  my-1.5 lg:ml-2 placeholder-gray-600"
                           id="super-builtup-area-type"
                           title="sq-ft"
-                          {...register(`${fieldName}.flatSuperBuiltUpAreaUnit`)}
+                          {...register(
+                            `Flat[${index}].flatSuperBuiltUpAreaUnit`
+                          )}
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
@@ -917,45 +938,96 @@ const Step4 = () => {
                         </select>
                       </div>
                       <div className=" flex">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="Price Per"
-                          {...register(`${fieldName}.flatPrice`)}
-                        />
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Flat &&
+                              errors?.Flat[index]?.flatPrice?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Flat[${index}].flatPrice`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Price Per
+                          </label>
+                        </div>
+
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-2/5  my-1 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-2/5  my-1.5 lg:ml-2 placeholder-gray-600"
                           id="price-per-area-type"
                           title="sq-ft"
-                          {...register(`${fieldName}.flatPriceUnit`)}
+                          {...register(`Flat[${index}].flatPriceUnit`)}
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
                         </select>
                       </div>
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
-                        type="text"
-                        placeholder="Total Price"
-                        {...register(`${fieldName}.flatTotalPrice`)}
-                      />
+                      <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.Flat &&
+                            errors?.Flat[index]?.flatTotalPrice?.type ===
+                              "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          placeholder=" "
+                          {...register(`Flat[${index}].flatTotalPrice`)}
+                        />
+                        <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                          Total Price
+                        </label>
+                      </div>
                       <div className="flex flex-col lg:flex-row w-full">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="Minimum Price"
-                          {...register(`${fieldName}.flatMinimunPrice`)}
-                        />
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 lg:ml-2 placeholder-gray-600"
-                          type="text"
-                          placeholder="Maximum Price"
-                          {...register(`${fieldName}.flatMaximumPrice`)}
-                        />
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Flat &&
+                              errors?.Flat[index]?.flatMinimunPrice?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Flat[${index}].flatMinimunPrice`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Minimum Price
+                          </label>
+                        </div>
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5 lg:ml-2  text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Flat &&
+                              errors?.Flat[index]?.flatMinimunPrice?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Flat[${index}].flatMaximumPrice`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Maximum Price
+                          </label>
+                        </div>
                       </div>
                       <div className="my-4 flex flex-col w-full">
-                        <label className="customfileUpload my-4  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
+                        <label
+                          className={`${
+                            errors?.Flat &&
+                            (errors?.Flat[index]?.flatFloorPlan?.type ===
+                              "acceptedFormats" ||
+                              errors?.Flat[index]?.flatFloorPlan?.type ===
+                                "required")
+                              ? "border-red"
+                              : "border-lightgray"
+                          } customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed  rounded-2xl my-1.5`}
+                        >
                           <svg
                             class="w-8 h-8 mr-2"
                             fill="currentColor"
@@ -966,13 +1038,22 @@ const Step4 = () => {
                           </svg>
                           Upload Flat / Floor Plan
                           <input
-                            {...register(`${fieldName}.flatFloorPlan[]`)}
+                            {...register(`Flat[${index}].flatFloorPlan[]`)}
                             type="file"
-                            name="file"
                           />
                         </label>
 
-                        <label className="customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
+                        <label
+                          className={`${
+                            errors?.Flat &&
+                            (errors?.Flat[index]?.flatImages?.type ===
+                              "acceptedFormats" ||
+                              errors?.Flat[index]?.flatImages?.type ===
+                                "required")
+                              ? "border-red"
+                              : "border-lightgray"
+                          } customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed  rounded-2xl my-1.5`}
+                        >
                           <svg
                             class="w-8 h-8 mr-2"
                             fill="currentColor"
@@ -984,26 +1065,28 @@ const Step4 = () => {
                           Upload Flat / Floor Images
                           <input
                             multiple
-                            {...register(`${fieldName}.flatImages[]`)}
+                            {...register(`Flat[${index}].flatImages[]`)}
                             type="file"
                           />
                         </label>
                       </div>
                       <div className=" flex flex-col  lg:items-end my-2 w-full">
                         <div
-                          onClick={removeFlatField(index)}
+                          onClick={() => REMOVE_FLAT(index)}
                           className="bg-red text-white flex justify-center items-center h-10 mb-2 font-medium text-lg lg:w-52 w-full rounded-full lg:rounded-none "
                         >
                           Remove
                         </div>
                         <div
-                          onClick={addFlatField}
+                          onClick={() => {
+                            ADD_FLAT({});
+                          }}
                           className="bg-blue text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-52 w-full rounded-full lg:rounded-none  "
                         >
                           Add Another Flat
                         </div>
                       </div>
-                    </fieldset>
+                    </li>
                   );
                 })}
               </>
@@ -1011,12 +1094,10 @@ const Step4 = () => {
 
             {ActiveTabs?.addVilla && (
               <>
-                {VILLA.map((index) => {
-                  const fieldName = `VILLA[${index}]`;
+                {VILLA_FIELDS.map((item, index) => {
                   return (
-                    <fieldset
-                      name={fieldName}
-                      key={fieldName}
+                    <li
+                      key={item.id}
                       className="lg:w-3/4 w-full my-4  flex flex-col items-start border-b-2 relative"
                     >
                       <div className="lg:absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
@@ -1029,39 +1110,72 @@ const Step4 = () => {
                         {" "}
                         VILLA DETAILS
                       </h4>
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
-                        type="text"
-                        placeholder="VILLA Title"
-                        {...register(`${fieldName}.villaTitle`)}
-                      />{" "}
-                      <div>
+
+                      <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
                         <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full  my-1 placeholder-gray-600"
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.Villa &&
+                            errors?.Villa[index]?.villaTitle?.type ===
+                              "required" &&
+                            "border-red"
+                          }`}
                           type="text"
-                          placeholder="VILLA Type / Name"
-                          {...register(`${fieldName}.villaName`)}
+                          placeholder=" "
+                          {...register(`Villa[${index}].villaTitle`)}
                         />
+                        <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                          VILLA Title
+                        </label>
+                      </div>
+
+                      <div className="flex">
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Villa &&
+                              errors?.Villa[index]?.villaName?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Villa[${index}].villaName`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            VILLA Type / Name
+                          </label>
+                        </div>
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-40 w-full my-1 lg:mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-full my-1.5 lg:mx-2 placeholder-gray-600"
                           id="price-per-area-type"
                           title="sq-ft"
-                          {...register(`${fieldName}.villaType`)}
+                          {...register(`Villa[${index}].villaType`)}
                         >
                           <option value="simplex">Simplex</option>
                           <option value="duplex">Duplex</option>
                         </select>
                       </div>
                       <div className=" flex">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="Carpet Area"
-                          {...register(`${fieldName}.villaCarpetArea`)}
-                        />
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Villa &&
+                              errors?.Villa[index]?.villaCarpetArea?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Villa[${index}].villaCarpetArea`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Carpet Area
+                          </label>
+                        </div>
+
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1 lg:mx-2 placeholder-gray-600"
-                          {...register(`${fieldName}.villaCarpetAreaUnit`)}
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1.5 lg:mx-2 placeholder-gray-600"
+                          {...register(`Villa[${index}].villaCarpetAreaUnit`)}
                           title="sq-ft"
                         >
                           <option>Sq-ft</option>
@@ -1070,17 +1184,28 @@ const Step4 = () => {
                         </select>
                       </div>
                       <div className=" flex">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="Built Up Area"
-                          {...register(`${fieldName}.villaBuiltUpArea`)}
-                        />
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Villa &&
+                              errors?.Villa[index]?.villaBuiltUpArea?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Villa[${index}].villaBuiltUpArea`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Built Up Area
+                          </label>
+                        </div>
+
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1 lg:mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1.5 lg:mx-2 placeholder-gray-600"
                           id="builtup-area-type"
                           title="sq-ft"
-                          {...register(`${fieldName}.villaBuiltUpAreaUnit`)}
+                          {...register(`Villa[${index}].villaBuiltUpAreaUnit`)}
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
@@ -1088,18 +1213,31 @@ const Step4 = () => {
                         </select>
                       </div>
                       <div className=" flex">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="Super Built Up Area"
-                          {...register(`${fieldName}.villaSuperBuiltUpArea`)}
-                        />
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Villa &&
+                              errors?.Villa[index]?.villaSuperBuiltUpArea
+                                ?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(
+                              `Villa[${index}].villaSuperBuiltUpArea`
+                            )}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Super Built Up Area
+                          </label>
+                        </div>
+
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1 lg:mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1.5 lg:mx-2 placeholder-gray-600"
                           id="super-builtup-area-type"
                           title="sq-ft"
                           {...register(
-                            `${fieldName}.villaSuperBuiltUpAreaUnit`
+                            `Villa[${index}].villaSuperBuiltUpAreaUnit`
                           )}
                         >
                           <option>Sq-ft</option>
@@ -1108,45 +1246,98 @@ const Step4 = () => {
                         </select>
                       </div>
                       <div className=" flex">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="Price Per"
-                          {...register(`${fieldName}.villaPrice`)}
-                        />
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Villa &&
+                              errors?.Villa[index]?.villaPrice?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Villa[${index}].villaPrice`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Price Per
+                          </label>
+                        </div>
+
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1 lg:mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1.5 lg:mx-2 placeholder-gray-600"
                           id="price-per-area-type"
                           title="sq-ft"
-                          {...register(`${fieldName}.villaPriceUnit`)}
+                          {...register(`Villa[${index}].villaPriceUnit`)}
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
                         </select>
                       </div>
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
-                        type="text"
-                        placeholder="Total Price"
-                        {...register(`${fieldName}.villaTotalPrice`)}
-                      />
+                      <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.Villa &&
+                            errors?.Villa[index]?.villaTotalPrice?.type ===
+                              "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          placeholder=" "
+                          {...register(`Villa[${index}].villaTotalPrice`)}
+                        />
+                        <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                          Total Price
+                        </label>
+                      </div>
+
                       <div className="flex flex-col lg:flex-row w-full">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="Minimum Price"
-                          {...register(`${fieldName}.villaMinimunPrice`)}
-                        />
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 lg:ml-2 placeholder-gray-600"
-                          type="text"
-                          placeholder="Maximum Price"
-                          {...register(`${fieldName}.villaMaximumPrice`)}
-                        />
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Villa &&
+                              errors?.Villa[index]?.villaMinimunPrice?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Villa[${index}].villaMinimunPrice`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Minimum Price
+                          </label>
+                        </div>
+
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5 lg:ml-2  text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Villa &&
+                              errors?.Villa[index]?.villaMaximumPrice?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Villa[${index}].villaMaximumPrice`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Maximum Price
+                          </label>
+                        </div>
                       </div>
                       <div className="my-4 flex flex-col w-full">
-                        <label className="customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
+                        <label
+                          className={`${
+                            errors?.Villa &&
+                            (errors?.Villa[index]?.villaFloorPlan?.type ===
+                              "acceptedFormats" ||
+                              errors?.Villa[index]?.villaFloorPlan?.type ===
+                                "required")
+                              ? "border-red"
+                              : "border-lightgray"
+                          } customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed  rounded-2xl my-1.5`}
+                        >
                           <svg
                             class="w-8 h-8 mr-2"
                             fill="currentColor"
@@ -1158,12 +1349,22 @@ const Step4 = () => {
                           Upload Villa / Floor Plan
                           <input
                             multiple
-                            {...register(`${fieldName}.villaFloorPlan[]`)}
+                            {...register(`Villa[${index}].villaFloorPlan[]`)}
                             type="file"
                           />
                         </label>
 
-                        <label className="customfileUpload my-4  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
+                        <label
+                          className={`${
+                            errors?.Villa &&
+                            (errors?.Villa[index]?.villaImages?.type ===
+                              "acceptedFormats" ||
+                              errors?.Villa[index]?.villaImages?.type ===
+                                "required")
+                              ? "border-red"
+                              : "border-lightgray"
+                          } customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed  rounded-2xl my-1.5`}
+                        >
                           <svg
                             class="w-8 h-8 mr-2"
                             fill="currentColor"
@@ -1175,26 +1376,28 @@ const Step4 = () => {
                           Upload Vill Images
                           <input
                             multiple
-                            {...register(`${fieldName}.villaImages[]`)}
+                            {...register(`Villa[${index}].villaImages[]`)}
                             type="file"
                           />
                         </label>
                       </div>
                       <div className="w-full flex flex-col  items-end my-2">
                         <div
-                          onClick={removeVillaField(index)}
+                          onClick={() => REMOVE_VILLA(index)}
                           className="bg-red text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-52 w-full rounded-full lg:rounded-none "
                         >
                           Remove
                         </div>
                         <div
-                          onClick={addVillaField}
+                          onClick={() => {
+                            ADD_VILLA({});
+                          }}
                           className="bg-blue text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-52 w-full rounded-full lg:rounded-none "
                         >
                           Add Another Villa
                         </div>
                       </div>
-                    </fieldset>
+                    </li>
                   );
                 })}
               </>
@@ -1202,12 +1405,10 @@ const Step4 = () => {
 
             {ActiveTabs?.addSco && (
               <>
-                {SCO.map((index) => {
-                  const fieldName = `SCO[${index}]`;
+                {SCO_FIELDS.map((item, index) => {
                   return (
-                    <fieldset
-                      name={fieldName}
-                      key={fieldName}
+                    <li
+                      key={item.id}
                       className="lg:w-3/4 w-full my-4  flex flex-col items-start border-b-2 relative"
                     >
                       <div className="lg:absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
@@ -1220,30 +1421,59 @@ const Step4 = () => {
                         {" "}
                         SCO (SHOP CUM OFFICE) DETAILS
                       </h4>
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
-                        type="text"
-                        placeholder="SCO Title"
-                        {...register(`${fieldName}.Title`)}
-                      />{" "}
-                      <div className="w-full">
+                      <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
                         <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.Sco &&
+                            errors?.Sco[index]?.Title?.type === "required" &&
+                            "border-red"
+                          }`}
                           type="text"
-                          placeholder="SCO Type / Name"
-                          {...register(`${fieldName}.Name`)}
+                          placeholder=" "
+                          {...register(`Sco[${index}].Title`)}
                         />
+                        <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                          SCO Title
+                        </label>
                       </div>
-                      <div className=" flex w-full">
+
+                      <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
                         <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.Sco &&
+                            errors?.Sco[index]?.Name?.type === "required" &&
+                            "border-red"
+                          }`}
                           type="text"
-                          placeholder="Carpet Area"
-                          {...register(`${fieldName}.CarpetArea`)}
+                          placeholder=" "
+                          {...register(`Sco[${index}].Name`)}
                         />
+                        <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                          SCO Type / Name
+                        </label>
+                      </div>
+
+                      <div className=" flex w-full">
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Sco &&
+                              errors?.Sco[index]?.CarpetArea?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Sco[${index}].CarpetArea`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Carpet Area
+                          </label>
+                        </div>
+
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1 lg:mx-2 placeholder-gray-600"
-                          {...register(`${fieldName}.CarpetAreaUnit`)}
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1.5 lg:mx-2 placeholder-gray-600"
+                          {...register(`Sco[${index}].CarpetAreaUnit`)}
                           title="sq-ft"
                         >
                           <option>Sq-ft</option>
@@ -1252,17 +1482,28 @@ const Step4 = () => {
                         </select>
                       </div>
                       <div className=" flex w-full">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="Built Up Area"
-                          {...register(`${fieldName}.BuiltUpArea`)}
-                        />
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Sco &&
+                              errors?.Sco[index]?.BuiltUpArea?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Sco[${index}].BuiltUpArea`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Built Up Area
+                          </label>
+                        </div>
+
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5  my-1 lg:mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5  my-1.5 lg:mx-2 placeholder-gray-600"
                           id="builtup-area-type"
                           title="sq-ft"
-                          {...register(`${fieldName}.BuiltUpAreaUnit`)}
+                          {...register(`Sco[${index}].BuiltUpAreaUnit`)}
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
@@ -1270,35 +1511,66 @@ const Step4 = () => {
                         </select>
                       </div>
                       <div className=" flex w-full">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="Super Built Up Area"
-                          {...register(`${fieldName}.SuperBuiltUpArea`)}
-                        />
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Sco &&
+                              errors?.Sco[index]?.SuperBuiltUpArea?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Sco[${index}].SuperBuiltUpArea`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Super Built Up Area
+                          </label>
+                        </div>
+
                         <select
-                          className="border-1 h-11  px-2 text-lg w-2/5 lg:w-40  my-1 lg:mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg w-2/5 lg:w-40  my-1.5 lg:mx-2 placeholder-gray-600"
                           id="super-builtup-area-type"
                           title="sq-ft"
-                          {...register(`${fieldName}.SuperBuiltUpAreaUnit`)}
+                          {...register(`Sco[${index}].SuperBuiltUpAreaUnit`)}
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
                         </select>
                       </div>
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full mr-2 my-1 placeholder-gray-600"
-                        placeholder="Floor No"
-                        type="number"
-                        {...register(`${fieldName}.floor_no`)}
-                      />
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full  my-1 placeholder-gray-600"
-                        placeholder="Total Floors"
-                        type="number"
-                        {...register(`${fieldName}.total_floor`)}
-                      />
+                      <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.Sco &&
+                            errors?.Sco[index]?.floor_no?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          placeholder=" "
+                          {...register(`Sco[${index}].floor_no`)}
+                        />
+                        <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                          Floor No
+                        </label>
+                      </div>
+                      <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.Sco &&
+                            errors?.Sco[index]?.total_floor?.type ===
+                              "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          placeholder=" "
+                          {...register(`Sco[${index}].total_floor`)}
+                        />
+                        <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                          Total Floors
+                        </label>
+                      </div>
+
                       <div className="flex items-center my-2">
                         <p className="text-xl lg:mr-8 mr-4">
                           Basemenent Included
@@ -1307,7 +1579,7 @@ const Step4 = () => {
                           <input
                             className="w-5 h-5"
                             type="radio"
-                            {...register(`${fieldName}.basement`)}
+                            {...register(`Sco[${index}].basement`)}
                             value="yes"
                           />
                           <p className="text-xl pl-2">Yes</p>
@@ -1316,52 +1588,105 @@ const Step4 = () => {
                           <input
                             className="w-5 h-5"
                             type="radio"
-                            {...register(`${fieldName}.basement`)}
+                            {...register(`Sco[${index}].basement`)}
                             value="no"
                           />
                           <p className="text-xl pl-2">No</p>
                         </div>
                       </div>
                       <div className=" flex w-full">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="Price Per"
-                          {...register(`${fieldName}.Price`)}
-                        />
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Sco &&
+                              errors?.Sco[index]?.Price?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Sco[${index}].Price`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Price Per
+                          </label>
+                        </div>
+
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5  my-1 mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5  my-1.5 mx-2 placeholder-gray-600"
                           id="PriceUnit"
                           title="sq-ft"
-                          {...register(`${fieldName}.PriceUnit`)}
+                          {...register(`Sco[${index}].PriceUnit`)}
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
                         </select>
                       </div>
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
-                        type="text"
-                        placeholder="Total Price"
-                        {...register(`${fieldName}.TotalPrice`)}
-                      />
-                      <div className="flex">
+                      <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
                         <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-2/4 mr-2 my-1 placeholder-gray-600"
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.Sco &&
+                            errors?.Sco[index]?.TotalPrice?.type ===
+                              "required" &&
+                            "border-red"
+                          }`}
                           type="text"
-                          placeholder="Minimum Price"
-                          {...register(`${fieldName}.MinimunPrice`)}
+                          placeholder=" "
+                          {...register(`Sco[${index}].TotalPrice`)}
                         />
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-2/4 my-1 ml-2 placeholder-gray-600"
-                          type="text"
-                          placeholder="Maximum Price"
-                          {...register(`${fieldName}.MaximumPrice`)}
-                        />
+                        <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                          Total Price
+                        </label>
                       </div>
+
+                      <div className="flex flex-col lg:flex-row w-full">
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Sco &&
+                              errors?.Sco[index]?.villaMinimunPrice?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Sco[${index}].MinimunPrice`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Minimum Price
+                          </label>
+                        </div>
+
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5 lg:ml-2  text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Sco &&
+                              errors?.Sco[index]?.villaMaximumPrice?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Sco[${index}].MaximumPrice`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Maximum Price
+                          </label>
+                        </div>
+                      </div>
+
                       <div className="my-4 flex flex-col w-full">
-                        <label className="customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
+                        <label
+                          className={`${
+                            errors?.Sco &&
+                            (errors?.Sco[index]?.FloorPlan?.type ===
+                              "acceptedFormats" ||
+                              errors?.Sco[index]?.FloorPlan?.type ===
+                                "required")
+                              ? "border-red"
+                              : "border-lightgray"
+                          } customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed  rounded-2xl my-1.5`}
+                        >
                           <svg
                             class="w-8 h-8 mr-2"
                             fill="currentColor"
@@ -1373,12 +1698,21 @@ const Step4 = () => {
                           Upload SCO / Floor Plan
                           <input
                             multiple
-                            {...register(`${fieldName}.FloorPlan[]`)}
+                            {...register(`Sco[${index}].FloorPlan[]`)}
                             type="file"
                           />
                         </label>
 
-                        <label className="customfileUpload my-4  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
+                        <label
+                          className={`${
+                            errors?.Sco &&
+                            (errors?.Sco[index]?.Images?.type ===
+                              "acceptedFormats" ||
+                              errors?.Villa[index]?.Images?.type === "required")
+                              ? "border-red"
+                              : "border-lightgray"
+                          } customfileUpload  font-medium lg:w-72 w-full  border-2 border-dashed  rounded-2xl my-1.5`}
+                        >
                           <svg
                             class="w-8 h-8 mr-2"
                             fill="currentColor"
@@ -1390,26 +1724,28 @@ const Step4 = () => {
                           Upload SCO Images
                           <input
                             multiple
-                            {...register(`${fieldName}.Images[]`)}
+                            {...register(`Sco[${index}].Images[]`)}
                             type="file"
                           />
                         </label>
                       </div>
                       <div className="w-full flex flex-col  items-end my-2">
                         <div
-                          onClick={removeScoField(index)}
+                          onClick={() => REMOVE_SCO(index)}
                           className="bg-red text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-52 w-full rounded-full lg:rounded-none "
                         >
                           Remove
                         </div>
                         <div
-                          onClick={addScoField}
+                          onClick={() => {
+                            ADD_SC0({});
+                          }}
                           className="bg-blue text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-52 w-full rounded-full lg:rounded-none "
                         >
                           Add Another SCO
                         </div>
                       </div>
-                    </fieldset>
+                    </li>
                   );
                 })}
               </>
@@ -1417,12 +1753,10 @@ const Step4 = () => {
 
             {ActiveTabs?.addPlot && (
               <>
-                {PLOT.map((index) => {
-                  const fieldName = `PLOT[${index}]`;
+                {PLOT_FIELDS.map((item, index) => {
                   return (
-                    <fieldset
-                      name={fieldName}
-                      key={fieldName}
+                    <li
+                      key={item.id}
                       className="lg:w-3/4 w-full my-4  flex flex-col items-start border-b-2  relative"
                     >
                       <div className="lg:absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
@@ -1435,30 +1769,49 @@ const Step4 = () => {
                         {" "}
                         PLOT / LAND DETAILS
                       </h4>
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
-                        type="text"
-                        placeholder="PLOT Title"
-                        {...register(`${fieldName}.Title`)}
-                      />{" "}
-                      <div className="w-full">
+                      <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5   text-lg">
                         <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.Plot &&
+                            errors?.Plot[index]?.Title?.type === "required" &&
+                            "border-red"
+                          }`}
                           type="text"
-                          placeholder="PLOT Type / Name"
-                          {...register(`${fieldName}.ProjectTitle`)}
+                          placeholder=" "
+                          {...register(`Plot[${index}].Title`)}
                         />
+                        <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                          PLOT Title
+                        </label>
+                      </div>{" "}
+                      <div className="w-full">
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5   text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Plot &&
+                              errors?.Plot[index]?.ProjectTitle?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Plot[${index}].ProjectTitle`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            PLOT Type / Name
+                          </label>
+                        </div>{" "}
                       </div>
                       {/* <div className="flex">
                         <input
                           className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
                           type="text"
                           placeholder="PLOT Area"
-                          {...register(`${fieldName}.Name`)}
+                          {...register(`Plot[${index}].Name`)}
                         />
                         <select
                           className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
-                          {...register(`${fieldName}.flatAreaUnit`)}
+                          {...register(`Plot[${index}].flatAreaUnit`)}
                           title="sq-ft"
                         >
                           <option>Sq-ft</option>
@@ -1467,21 +1820,42 @@ const Step4 = () => {
                         </select>
                       </div> */}
                       <div className="flex flex-col lg:flex-row w-full">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="Length"
-                          {...register(`${fieldName}.Length`)}
-                        />{" "}
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600 lg:ml-2"
-                          type="text"
-                          placeholder="Width"
-                          {...register(`${fieldName}.Width`)}
-                        />
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5   text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Plot &&
+                              errors?.Plot[index]?.Length?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Plot[${index}].Length`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Length
+                          </label>
+                        </div>
+
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5 lg:ml-2   text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Plot &&
+                              errors?.Plot[index]?.Width?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Plot[${index}].Width`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Width
+                          </label>
+                        </div>
+
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-40 w-full my-1 lg:mx-2 placeholder-gray-600"
-                          {...register(`${fieldName}.LengthwidthUnit`)}
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-full my-1.5 lg:mx-2 placeholder-gray-600"
+                          {...register(`Plot[${index}].LengthwidthUnit`)}
                           title="sq-ft"
                         >
                           <option>Sq-ft</option>
@@ -1489,49 +1863,98 @@ const Step4 = () => {
                           <option>Sq-yards</option>
                         </select>
                       </div>
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600 "
-                        type="text"
-                        placeholder="Mention Various Plot Sizes  (By Commas) "
-                        {...register(`${fieldName}.Name`)}
-                      />
-                      <div className=" flex">
+                      <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5   text-lg">
                         <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.Plot &&
+                            errors?.Plot[index]?.Name?.type === "required" &&
+                            "border-red"
+                          }`}
                           type="text"
-                          placeholder="Price Per"
-                          {...register(`${fieldName}.Price`)}
+                          placeholder=" "
+                          {...register(`Plot[${index}].Name`)}
                         />
+                        <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                          Mention Various Plot Sizes (By Commas)
+                        </label>
+                      </div>
+                      <div className=" flex">
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5   text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Plot &&
+                              errors?.Plot[index]?.Price?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Plot[${index}].Price`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Price Per
+                          </label>
+                        </div>
+
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1 lg:mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1.5 lg:mx-2 placeholder-gray-600"
                           id="price-per-area-type"
                           title="sq-ft"
-                          {...register(`${fieldName}.PriceUnit`)}
+                          {...register(`Plot[${index}].PriceUnit`)}
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
                         </select>
                       </div>
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
-                        type="text"
-                        placeholder="Total Price"
-                        {...register(`${fieldName}.TotalPrice`)}
-                      />
+                      <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5   text-lg">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.Plot &&
+                            errors?.Plot[index]?.TotalPrice?.type ===
+                              "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          placeholder=" "
+                          {...register(`Plot[${index}].TotalPrice`)}
+                        />
+                        <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                          Total Price
+                        </label>
+                      </div>
                       <div className="flex flex-col lg:flex-row w-full">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="Minimum Price"
-                          {...register(`${fieldName}.MinimunPrice`)}
-                        />
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 lg:full  lg:ml-2 placeholder-gray-600"
-                          type="text"
-                          placeholder="Maximum Price"
-                          {...register(`${fieldName}.MaximumPrice`)}
-                        />
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5   text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Plot &&
+                              errors?.Plot[index]?.MinimunPrice?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Plot[${index}].MinimunPrice`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Minimum Price
+                          </label>
+                        </div>
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5 lg:ml-2   text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Plot &&
+                              errors?.Plot[index]?.MaximumPrice?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Plot[${index}].MaximumPrice`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2  py-1.5 -z-1 duration-300 origin-0">
+                            Maximum Price
+                          </label>
+                        </div>
                       </div>
                       <div className="my-4 flex flex-col w-full">
                         <label className="customfileUpload my-4  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
@@ -1546,26 +1969,28 @@ const Step4 = () => {
                           Upload Plot Images
                           <input
                             multiple
-                            {...register(`${fieldName}.Images[]`)}
+                            {...register(`Plot[${index}].Images[]`)}
                             type="file"
                           />
                         </label>
                       </div>
                       <div className="w-full flex flex-col  items-end my-2">
                         <div
-                          onClick={removePlotField(index)}
+                          onClick={() => REMOVE_PLOT(index)}
                           className="bg-red text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-52 w-full rounded-full lg:rounded-none "
                         >
                           Remove
                         </div>
                         <div
-                          onClick={addPlotField}
+                          onClick={() => {
+                            ADD_PLOT({});
+                          }}
                           className="bg-blue text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-52 w-full rounded-full lg:rounded-none  "
                         >
                           Add Another Plot
                         </div>
                       </div>
-                    </fieldset>
+                    </li>
                   );
                 })}
               </>
@@ -1573,12 +1998,10 @@ const Step4 = () => {
 
             {ActiveTabs?.addCommercial && (
               <>
-                {COMMERCIAL.map((index) => {
-                  const fieldName = `COMMERCIAL[${index}]`;
+                {COMMERCIAL_FIELDS.map((item, index) => {
                   return (
-                    <fieldset
-                      name={fieldName}
-                      key={fieldName}
+                    <li
+                      key={item.id}
                       className="lg:w-3/4 w-full my-4  flex flex-col items-start border-b-2  relative"
                     >
                       <div className="lg:absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
@@ -1591,262 +2014,76 @@ const Step4 = () => {
                         {" "}
                         Commercial Plot / Land Details
                       </h4>
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
-                        type="text"
-                        placeholder="SCO / Commercial Project Title"
-                        {...register(`${fieldName}.ProjectTitle`)}
-                      />{" "}
-                      <div className="w-full">
+                      <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5   text-lg">
                         <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.Plot &&
+                            errors?.Plot[index]?.ProjectTitle?.type ===
+                              "required" &&
+                            "border-red"
+                          }`}
                           type="text"
-                          placeholder="SCO / Commercial Plot Title"
-                          {...register(`${fieldName}.Title`)}
+                          placeholder=" "
+                          {...register(`Commercial[${index}].ProjectTitle`)}
                         />
-                      </div>
-                      {/* <div className="flex">
-                        <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="PLOT Area"
-                          {...register(`${fieldName}.Name`)}
-                        />
-                        <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
-                          {...register(`${fieldName}.flatAreaUnit`)}
-                          title="sq-ft"
-                        >
-                          <option>Sq-ft</option>
-                          <option>Sq-mt</option>
-                          <option>Sq-yards</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                          <option>bigha</option>
-                        </select>
-                      </div> */}
-                      <div className="flex w-full flex-col lg:flex-row">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="Length"
-                          {...register(`${fieldName}.Length`)}
-                        />{" "}
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600 lg:ml-2"
-                          type="text"
-                          placeholder="Width"
-                          {...register(`${fieldName}.Width`)}
-                        />
-                        <select
-                          className="border-1 h-11  px-2 text-lg lg:w-40 w-full my-1 lg:mx-2 placeholder-gray-600"
-                          {...register(`${fieldName}.LengthwidthUnit`)}
-                          title="sq-ft"
-                        >
-                          <option>Sq-ft</option>
-                          <option>Sq-mt</option>
-                          <option>Sq-yards</option>
-                        </select>
-                      </div>
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600 "
-                        type="text"
-                        placeholder="Mention Various Plot Sizes  (By Commas) "
-                        {...register(`${fieldName}.PlotSize`)}
-                      />
-                      <div className=" flex">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="Price Per"
-                          {...register(`${fieldName}.Price`)}
-                        />
-                        <select
-                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1 lg:mx-2 placeholder-gray-600"
-                          id="price-per-area-type"
-                          title="sq-ft"
-                          {...register(`${fieldName}.PriceUnit`)}
-                        >
-                          <option>Sq-ft</option>
-                          <option>Sq-mt</option>
-                          <option>Sq-yards</option>
-                        </select>
-                      </div>
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
-                        type="text"
-                        placeholder="Total Price"
-                        {...register(`${fieldName}.TotalPrice`)}
-                      />
-                      <div className="flex">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="Minimum Price"
-                          {...register(`${fieldName}.MinimunPrice`)}
-                        />
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 ml-2 placeholder-gray-600"
-                          type="text"
-                          placeholder="Maximum Price"
-                          {...register(`${fieldName}.MaximumPrice`)}
-                        />
-                      </div>
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
-                        type="text"
-                        placeholder="Total Floors"
-                        {...register(`${fieldName}.TotalFloor`)}
-                      />
-                      <div className="flex items-center my-2">
-                        <p className="text-xl mr-8">Basemenent Included</p>
-                        <div className="flex items-center">
-                          <input
-                            className="w-5 h-5"
-                            type="radio"
-                            {...register(`${fieldName}.Basement`)}
-                            value="Yes"
-                          />
-                          <p className="text-xl pl-2">Yes</p>
-                        </div>
-                        <div className="flex items-center ml-4">
-                          <input
-                            className="w-5 h-5"
-                            type="radio"
-                            {...register(`${fieldName}.Basement`)}
-                            value="No"
-                          />
-                          <p className="text-xl pl-2">No</p>
-                        </div>
-                      </div>
-                      <div className="my-4 flex flex-col w-full">
-                        <label className="customfileUpload my-4  font-medium lg:w-72 w-full  border-2 border-dashed border-lightgray rounded-2xl">
-                          <svg
-                            class="w-8 h-8 mr-2"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20"
-                          >
-                            <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
-                          </svg>
-                          Upload Plot Images
-                          <input
-                            multiple
-                            {...register(`${fieldName}.Images[]`)}
-                            type="file"
-                          />
+                        <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                          SCO / Commercial Project Title
                         </label>
                       </div>
-                      <div className="w-full flex flex-col  items-end my-2">
-                        <div
-                          onClick={removeCommercialField(index)}
-                          className="bg-red text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-52 w-full rounded-full lg:rounded-none "
-                        >
-                          Remove
-                        </div>
-                        <div
-                          onClick={addCommercialField}
-                          className="bg-blue text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-60 w-full rounded-full lg:rounded-none "
-                        >
-                          Add Another Commercial
-                        </div>
-                      </div>
-                    </fieldset>
-                  );
-                })}
-              </>
-            )}
 
-            {ActiveTabs?.addOffice && (
-              <>
-                {OFFICE.map((index) => {
-                  const fieldName = `OFFICE[${index}]`;
-                  return (
-                    <fieldset
-                      name={fieldName}
-                      key={fieldName}
-                      className="lg:w-3/4 w-full my-4  flex flex-col items-start border-b-2  relative"
-                    >
-                      <div className="lg:absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
-                        {`OFFICE No `}
-                        <div className="bg-blue text-white w-12 h-12 flex justify-center items-center rounded-full">
-                          {index + 1}
+                      <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5   text-lg">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.Plot &&
+                            errors?.Plot[index]?.Title?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          placeholder=" "
+                          {...register(`Commercial[${index}].Title`)}
+                        />
+                        <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                          SCO / Commercial Plot Title
+                        </label>
+                      </div>
+
+                      <div className="flex w-full flex-col lg:flex-row">
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5   text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Plot &&
+                              errors?.Plot[index]?.Length?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Commercial[${index}].Length`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Length
+                          </label>
                         </div>
-                      </div>
-                      <h4 className="lg:text-2xl text-lg font-medium  uppercase mb-4">
-                        {" "}
-                        MALL / OFFICE SPACE DETAILS
-                      </h4>
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
-                        type="text"
-                        placeholder="Mall / Office Project Title"
-                        {...register(`${fieldName}.ProjectTitle`)}
-                      />{" "}
-                      <div className="w-full">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="Mall / Office Plot Title"
-                          {...register(`${fieldName}.Title`)}
-                        />
-                      </div>
-                      {/* <div className="flex">
-                        <input
-                          className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="PLOT Area"
-                          {...register(`${fieldName}.Name`)}
-                        />
+
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5 lg:ml-2   text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Plot &&
+                              errors?.Plot[index]?.Width?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Commercial[${index}].Width`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Width
+                          </label>
+                        </div>
+
                         <select
-                          className="border-1 h-11  px-2 text-lg w-40 my-1 mx-2 placeholder-gray-600"
-                          {...register(`${fieldName}.flatAreaUnit`)}
-                          title="sq-ft"
-                        >
-                          <option>Sq-ft</option>
-                          <option>Sq-mt</option>
-                          <option>Sq-yards</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                          <option>bigha</option>
-                        </select>
-                      </div> */}
-                      <div className="flex flex-col lg:flex-row w-full">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="Length"
-                          {...register(`${fieldName}.Length`)}
-                        />{" "}
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600 lg:ml-2"
-                          type="text"
-                          placeholder="Width"
-                          {...register(`${fieldName}.Width`)}
-                        />
-                        <select
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 lg:mx-2 placeholder-gray-600"
-                          {...register(`${fieldName}.LengthwidthUnit`)}
-                          title="sq-ft"
-                        >
-                          <option>Sq-ft</option>
-                          <option>Sq-mt</option>
-                          <option>Sq-yards</option>
-                          <option>acres</option>
-                          <option>hectares</option>
-                          <option>bigha</option>
-                        </select>
-                      </div>
-                      <div className=" flex w-full">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="Carpet Area"
-                          {...register(`${fieldName}.CarpetArea`)}
-                        />
-                        <select
-                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1 lg:mx-2 placeholder-gray-600"
-                          {...register(`${fieldName}.CarpetAreaUnit`)}
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-full my-1.5 lg:mx-2 placeholder-gray-600"
+                          {...register(`Commercial[${index}].LengthwidthUnit`)}
                           title="sq-ft"
                         >
                           <option>Sq-ft</option>
@@ -1854,99 +2091,128 @@ const Step4 = () => {
                           <option>Sq-yards</option>
                         </select>
                       </div>
-                      <div className=" flex w-full">
+
+                      <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5    text-lg">
                         <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.Plot &&
+                            errors?.Plot[index]?.PlotSize?.type ===
+                              "required" &&
+                            "border-red"
+                          }`}
                           type="text"
-                          placeholder="Built Up Area"
-                          {...register(`${fieldName}.BuiltUpArea`)}
+                          placeholder=" "
+                          {...register(`Commercial[${index}].PlotSize`)}
                         />
-                        <select
-                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1 lg:mx-2 placeholder-gray-600"
-                          id="builtup-area-type"
-                          title="sq-ft"
-                          {...register(`${fieldName}.BuiltUpAreaUnit`)}
-                        >
-                          <option>Sq-ft</option>
-                          <option>Sq-mt</option>
-                          <option>Sq-yards</option>
-                        </select>
+                        <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                          Mention Various Plot Sizes (By Commas)
+                        </label>
                       </div>
-                      <div className=" flex w-full">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="Super Built Up Area"
-                          {...register(`${fieldName}.SuperBuiltUpArea`)}
-                        />
+
+                      <div className=" flex">
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5    text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Plot &&
+                              errors?.Plot[index]?.Price?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Commercial[${index}].Price`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Price Per
+                          </label>
+                        </div>
+
                         <select
-                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5  my-1 lg:mx-2 placeholder-gray-600"
-                          id="super-builtup-area-type"
-                          title="sq-ft"
-                          {...register(`${fieldName}.SuperBuiltUpAreaUnit`)}
-                        >
-                          <option>Sq-ft</option>
-                          <option>Sq-mt</option>
-                          <option>Sq-yards</option>
-                        </select>
-                      </div>
-                      {/* <input
-                        className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600 "
-                        type="text"
-                        placeholder="Mention Various Plot Sizes  (By Commas) "
-                        {...register(`${fieldName}.Name`)}
-                      /> */}
-                      <div className=" flex w-full">
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-3/5 mr-2 my-1 placeholder-gray-600"
-                          type="text"
-                          placeholder="Price Per"
-                          {...register(`${fieldName}.Price`)}
-                        />
-                        <select
-                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1 lg:mx-2 placeholder-gray-600"
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1.5 lg:mx-2 placeholder-gray-600"
                           id="price-per-area-type"
                           title="sq-ft"
-                          {...register(`${fieldName}.PriceUnit`)}
+                          {...register(`Commercial[${index}].PriceUnit`)}
                         >
                           <option>Sq-ft</option>
                           <option>Sq-mt</option>
                           <option>Sq-yards</option>
                         </select>
                       </div>
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
-                        type="text"
-                        placeholder="Total Price"
-                        {...register(`${fieldName}.TotalPrice`)}
-                      />
-                      <div className="flex w-full">
+                      <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5    text-lg">
                         <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-2/4 mr-2 my-1 placeholder-gray-600"
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.Plot &&
+                            errors?.Plot[index]?.TotalPrice?.type ===
+                              "required" &&
+                            "border-red"
+                          }`}
                           type="text"
-                          placeholder="Minimum Price"
-                          {...register(`${fieldName}.MinimunPrice`)}
+                          placeholder=" "
+                          {...register(`Commercial[${index}].TotalPrice`)}
                         />
-                        <input
-                          className="border-1 h-11  px-2 text-lg lg:w-96 w-2/4 my-1 lg:ml-2 placeholder-gray-600"
-                          type="text"
-                          placeholder="Maximum Price"
-                          {...register(`${fieldName}.MaximumPrice`)}
-                        />
+                        <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                          Total Price
+                        </label>
                       </div>
-                      <input
-                        className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1 placeholder-gray-600"
-                        type="text"
-                        placeholder="No Of  Floors"
-                        {...register(`${fieldName}.TotalFloor`)}
-                      />
+
+                      <div className="flex">
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5    text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Plot &&
+                              errors?.Plot[index]?.MinimunPrice?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Commercial[${index}].MinimunPrice`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Minimum Price
+                          </label>
+                        </div>
+
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5 lg:ml-2   text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Plot &&
+                              errors?.Plot[index]?.MaximumPrice?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Commercial[${index}].MaximumPrice`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Maximum Price
+                          </label>
+                        </div>
+                      </div>
+                      <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5    text-lg">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.Plot &&
+                            errors?.Plot[index]?.TotalFloor?.type ===
+                              "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          placeholder=" "
+                          {...register(`Commercial[${index}].TotalFloor`)}
+                        />
+                        <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                          Total Floors
+                        </label>
+                      </div>
+
                       <div className="flex items-center my-2">
                         <p className="text-xl mr-8">Basemenent Included</p>
                         <div className="flex items-center">
                           <input
                             className="w-5 h-5"
                             type="radio"
-                            {...register(`${fieldName}.Basement`)}
+                            {...register(`Commercial[${index}].Basement`)}
                             value="yes"
                           />
                           <p className="text-xl pl-2">Yes</p>
@@ -1955,7 +2221,7 @@ const Step4 = () => {
                           <input
                             className="w-5 h-5"
                             type="radio"
-                            {...register(`${fieldName}.Basement`)}
+                            {...register(`Commercial[${index}].Basement`)}
                             value="no"
                           />
                           <p className="text-xl pl-2">No</p>
@@ -1971,29 +2237,357 @@ const Step4 = () => {
                           >
                             <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
                           </svg>
-                          Upload Mall / Office Images
+                          Upload Plot Images
                           <input
                             multiple
-                            {...register(`${fieldName}.Images[]`)}
+                            {...register(`Commercial[${index}].Images[]`)}
                             type="file"
                           />
                         </label>
                       </div>
                       <div className="w-full flex flex-col  items-end my-2">
                         <div
-                          onClick={removeOfficeField(index)}
+                          onClick={() => REMOVE_COMMERCIAL(index)}
                           className="bg-red text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-52 w-full rounded-full lg:rounded-none "
                         >
                           Remove
                         </div>
                         <div
-                          onClick={addOfficeField}
+                          onClick={() => ADD_COMMERCIAL({})}
                           className="bg-blue text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-60 w-full rounded-full lg:rounded-none "
+                        >
+                          Add Another Commercial
+                        </div>
+                      </div>
+                    </li>
+                  );
+                })}
+              </>
+            )}
+
+            {ActiveTabs?.addOffice && (
+              <>
+                {OFFICE_FIELDS.map((item, index) => {
+                  return (
+                    <li
+                      key={item.id}
+                      className="lg:w-3/4 w-full my-4  flex flex-col items-start border-b-2  relative"
+                    >
+                      <div className="lg:absolute right-0 my-4  py-2 px-2 text-lg font-medium flex flex-col items-center justify-center">
+                        {`OFFICE No `}
+                        <div className="bg-blue text-white w-12 h-12 flex justify-center items-center rounded-full">
+                          {index + 1}
+                        </div>
+                      </div>
+                      <h4 className="lg:text-2xl text-lg font-medium  uppercase mb-4">
+                        {" "}
+                        MALL / OFFICE SPACE DETAILS
+                      </h4>
+                      <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5    text-lg">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.Plot &&
+                            errors?.Plot[index]?.ProjectTitle?.type ===
+                              "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          placeholder=" "
+                          {...register(`Office[${index}].ProjectTitle`)}
+                        />
+                        <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                          Mall / Office Project Title
+                        </label>
+                      </div>
+
+                      <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5    text-lg">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.Plot &&
+                            errors?.Plot[index]?.Title?.type === "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          placeholder=" "
+                          {...register(`Office[${index}].Title`)}
+                        />
+                        <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                          Mall / Office Plot Title
+                        </label>
+                      </div>
+
+                      <div className="flex flex-col lg:flex-row w-full">
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5    text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Plot &&
+                              errors?.Plot[index]?.Length?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Office[${index}].Length`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Length
+                          </label>
+                        </div>
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5  lg:ml-2  text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Plot &&
+                              errors?.Plot[index]?.Width?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Office[${index}].Width`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Width
+                          </label>
+                        </div>
+
+                        <select
+                          className="border-1 h-11  px-2 text-lg lg:w-96 w-full my-1.5 lg:mx-2 placeholder-gray-600"
+                          {...register(`Office[${index}].LengthwidthUnit`)}
+                          title="sq-ft"
+                        >
+                          <option>Sq-ft</option>
+                          <option>Sq-mt</option>
+                          <option>Sq-yards</option>
+                          <option>acres</option>
+                          <option>hectares</option>
+                          <option>bigha</option>
+                        </select>
+                      </div>
+                      <div className=" flex w-full">
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5    text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Plot &&
+                              errors?.Plot[index]?.CarpetArea?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Office[${index}].CarpetArea`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Carpet Area
+                          </label>
+                        </div>
+
+                        <select
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1.5 lg:mx-2 placeholder-gray-600"
+                          {...register(`Office[${index}].CarpetAreaUnit`)}
+                          title="sq-ft"
+                        >
+                          <option>Sq-ft</option>
+                          <option>Sq-mt</option>
+                          <option>Sq-yards</option>
+                        </select>
+                      </div>
+                      <div className=" flex w-full">
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5    text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Plot &&
+                              errors?.Plot[index]?.BuiltUpArea?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Office[${index}].BuiltUpArea`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Built Up Area
+                          </label>
+                        </div>
+
+                        <select
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1.5 lg:mx-2 placeholder-gray-600"
+                          id="builtup-area-type"
+                          title="sq-ft"
+                          {...register(`Office[${index}].BuiltUpAreaUnit`)}
+                        >
+                          <option>Sq-ft</option>
+                          <option>Sq-mt</option>
+                          <option>Sq-yards</option>
+                        </select>
+                      </div>
+                      <div className=" flex w-full">
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5    text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Plot &&
+                              errors?.Plot[index]?.SuperBuiltUpArea?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Office[${index}].SuperBuiltUpArea`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Super Built Up Area
+                          </label>
+                        </div>
+
+                        <select
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5  my-1.5 lg:mx-2 placeholder-gray-600"
+                          id="super-builtup-area-type"
+                          title="sq-ft"
+                          {...register(`Office[${index}].SuperBuiltUpAreaUnit`)}
+                        >
+                          <option>Sq-ft</option>
+                          <option>Sq-mt</option>
+                          <option>Sq-yards</option>
+                        </select>
+                      </div>
+                      {/* <input
+                        className="border-1 h-11  px-2 text-lg w-96 my-1 placeholder-gray-600 "
+                        type="text"
+                        placeholder="Mention Various Plot Sizes  (By Commas) "
+                        {...register(`Office[${index}].Name`)}
+                      /> */}
+                      <div className=" flex w-full">
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5    text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Plot &&
+                              errors?.Plot[index]?.Price?.type === "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Office[${index}].Price`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Price Per
+                          </label>
+                        </div>
+
+                        <select
+                          className="border-1 h-11  px-2 text-lg lg:w-40 w-2/5 my-1.5 lg:mx-2 placeholder-gray-600"
+                          id="price-per-area-type"
+                          title="sq-ft"
+                          {...register(`Office[${index}].PriceUnit`)}
+                        >
+                          <option>Sq-ft</option>
+                          <option>Sq-mt</option>
+                          <option>Sq-yards</option>
+                        </select>
+                      </div>
+                      <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5    text-lg">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.Plot &&
+                            errors?.Plot[index]?.TotalPrice?.type ===
+                              "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          placeholder=" "
+                          {...register(`Office[${index}].TotalPrice`)}
+                        />
+                        <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                          Total Price
+                        </label>
+                      </div>
+
+                      <div className="flex w-full">
+                        <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5    text-lg">
+                          <input
+                            className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                              errors?.Plot &&
+                              errors?.Plot[index]?.MinimunPrice?.type ===
+                                "required" &&
+                              "border-red"
+                            }`}
+                            type="text"
+                            placeholder=" "
+                            {...register(`Office[${index}].MinimunPrice`)}
+                          />
+                          <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                            Maximum Price
+                          </label>
+                        </div>
+                      </div>
+                      <div className="outline relative h-11  w-96 focus-within:border-blue-500 my-1.5    text-lg">
+                        <input
+                          className={`block p-4 border-1 w-full h-11 text-lg appearance-none focus:outline-none bg-transparent ${
+                            errors?.Plot &&
+                            errors?.Plot[index]?.TotalFloor?.type ===
+                              "required" &&
+                            "border-red"
+                          }`}
+                          type="text"
+                          placeholder=" "
+                          {...register(`Office[${index}].TotalFloor`)}
+                        />
+                        <label className="absolute top-0.5 left-2 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0">
+                          No Of Floors
+                        </label>
+                      </div>
+
+                      <div className="flex items-center my-2">
+                        <p className="text-xl mr-8">Basemenent Included</p>
+                        <div className="flex items-center">
+                          <input
+                            className="w-5 h-5"
+                            type="radio"
+                            {...register(`Office[${index}].Basement`)}
+                            value="yes"
+                          />
+                          <p className="text-xl pl-2">Yes</p>
+                        </div>
+                        <div className="flex items-center ml-4">
+                          <input
+                            className="w-5 h-5"
+                            type="radio"
+                            {...register(`Office[${index}].Basement`)}
+                            value="no"
+                          />
+                          <p className="text-xl pl-2">No</p>
+                        </div>
+                      </div>
+                      <div className="my-4 flex flex-col w-full">
+                        <label className="customfileUpload my-4  font-medium lg:w-80 w-full  border-2 border-dashed border-lightgray rounded-2xl">
+                          <svg
+                            class="w-8 h-8 mr-2"
+                            fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                          </svg>
+                          Upload Mall / Office Images
+                          <input
+                            multiple
+                            {...register(`Office[${index}].Images[]`)}
+                            type="file"
+                          />
+                        </label>
+                      </div>
+                      <div className="w-full flex flex-col  items-end my-2">
+                        <div
+                          onClick={() => REMOVE_OFFICE(index)}
+                          className="bg-red cursor-pointer text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-52 w-full rounded-full lg:rounded-none "
+                        >
+                          Remove
+                        </div>
+                        <div
+                          onClick={() => ADD_OFFICE({})}
+                          className="bg-blue cursor-pointer text-white flex justify-center items-center  h-10 mb-2 font-medium text-lg lg:w-60 w-full rounded-full lg:rounded-none "
                         >
                           Add Another Office
                         </div>
                       </div>
-                    </fieldset>
+                    </li>
                   );
                 })}
               </>
@@ -2006,7 +2600,7 @@ const Step4 = () => {
               <button
                 className="bg-blue text-white flex justify-center items-center  h-10 my-2 font-medium text-lg lg:w-52 w-full rounded-full lg:rounded-none  "
                 type="submit"
-                onClick={ResetEveryThing}
+                // onClick={ResetEveryThing}
               >
                 POST PROJECT
               </button>
