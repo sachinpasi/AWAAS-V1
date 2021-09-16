@@ -213,9 +213,7 @@ const Step2 = () => {
                     </h4>
 
                     <input
-                      {...register("city", {
-                        required: true,
-                      })}
+                      {...register("city")}
                       className="border-1 h-11  px-2 text-lg w-72 my-1.5 placeholder-gray-600"
                       type="text"
                       placeholder="City"
@@ -232,7 +230,6 @@ const Step2 = () => {
                           "border-red  "
                         }`}
                         type="text"
-                        name="project_name"
                         placeholder=" "
                         id="apart"
                       />
@@ -266,12 +263,6 @@ const Step2 = () => {
                           )}
                         />
                       </div>
-                      {/* <label
-                        for="locality_id"
-                        className="absolute top-0 text-lg bg-white px-2 py-1.5 -z-1 duration-300 origin-0"
-                      >
-                        Locality / Area / Sector
-                      </label> */}
                     </div>
 
                     <div className="outline relative h-11  w-72 focus-within:border-blue-500 my-1.5">

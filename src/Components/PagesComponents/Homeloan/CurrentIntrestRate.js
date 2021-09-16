@@ -1,4 +1,8 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { API } from "../../../API";
 import "./Slider.css";
 const CurrentIntrestRate = () => {
   const [HomeLoanAmount, setHomeLoanAmount] = useState("90");
@@ -9,6 +13,12 @@ const CurrentIntrestRate = () => {
     TotalIntrestPayable: 0,
     TotalAmountPayable: 0,
   });
+
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
 
   const EMI_CALCULATION = () => {
     const userAmount = Number(HomeLoanAmount * 100000);
@@ -39,6 +49,17 @@ const CurrentIntrestRate = () => {
         TotalAmountPayable: totalPaymentCalculated,
       });
       return;
+    }
+  };
+
+  const onSubmit = async (data) => {
+    const res = await axios.post(`${API}/leads/store-home-loan`, {
+      ...data,
+      amount: 0,
+      name: "null",
+    });
+    if (res.status === 200) {
+      return toast.success("We Will Contact You Soon!");
     }
   };
 
@@ -194,7 +215,10 @@ const CurrentIntrestRate = () => {
             </div>
           </div>
 
-          <div className="lg:w-30percent w-full h-full lg:pl-8 my-5  ">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="lg:w-30percent w-full h-full lg:pl-8 my-5  "
+          >
             <div className="w-full h-auto bg-white shadow-lg rounded p-4 flex flex-col items-start justify-between sticky top-0 ">
               <div>
                 <p className="text-2xl text-darkgray mb-2">Contact Us</p>
@@ -236,14 +260,23 @@ const CurrentIntrestRate = () => {
                 <input
                   type="text"
                   placeholder="Mobile Number"
+                  {...register("phone", { required: true })}
                   className="w-full h-12 border-1 border-navborder rounded px-2 text-xl"
                 />
-                <button className="text-xl font-medium text-white bg-blue rounded w-full h-12 mt-8">
+                {errors?.phone?.type === "required" && (
+                  <p className="text-red mx-1 text-sm ">
+                    * Please enter mobile number.
+                  </p>
+                )}
+                <button
+                  type="submit"
+                  className="text-xl font-medium text-white bg-blue rounded w-full h-12 mt-8"
+                >
                   Submit
                 </button>
               </div>
             </div>
-          </div>
+          </form>
         </div>
 
         <div className="w-full flex flex-col lg:flex-row justify-between mt-20  ">
