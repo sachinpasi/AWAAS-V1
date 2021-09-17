@@ -324,7 +324,7 @@ const HomeNav = () => {
             <MobileNavItem
               Icon={MdMonetizationOn}
               Name="Home Loan "
-              To="/home-loan"
+              To="/home-loans"
             />{" "}
             <MobileNavItem
               Icon={RiBankLine}

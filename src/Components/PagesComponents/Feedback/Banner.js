@@ -32,10 +32,10 @@ const Banner = () => {
       }}
       className="w-full h-screen bg-right bg-no-repeat bg-cover"
     >
-      <div className="lg:w-80vw pt-14  w-90vw mx-auto flex justify-between items-center">
+      <div className="lg:w-80vw pt-14 h-full lg:h-auto w-90vw mx-auto flex lg:flex-row flex-col-reverse lg:justify-between justify-center items-center">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="w-2/5 bg-white h-5/6 -mt-8 bg-opacity-30 rounded-3xl border-2 border-lightblue flex flex-col  items-center py-4"
+          className="lg:w-2/5 w-full bg-white h-5/6 -mt-8 bg-opacity-30 rounded-3xl border-2 border-lightblue flex flex-col  items-center py-4"
         >
           <p className="text-2xl text-blue font-medium tracking-tight uppercase ">
             Share Your Review
@@ -231,17 +231,17 @@ const Banner = () => {
           </div>
         </form>
 
-        <div className="w=1/5 flex-col flex items-end">
+        <div className=" hidden flex-col lg:flex items-end">
           <div className="flex justify-center items-center">
-            <BsStarFill className="text-6xl text-yellow-500 mx-1.5" />
-            <BsStarFill className="text-6xl text-yellow-500 mx-1.5" />
-            <BsStarFill className="text-6xl text-yellow-500 mx-1.5" />
+            <BsStarFill className="lg:text-6xl text-3xl text-yellow-500 mx-1.5" />
+            <BsStarFill className="lg:text-6xl text-3xl text-yellow-500 mx-1.5" />
+            <BsStarFill className="lg:text-6xl text-3xl text-yellow-500 mx-1.5" />
           </div>
           <p
             style={{
               textShadow: "rgb(0 0 0) 2px 3px 5px",
             }}
-            className="text-5xl font-semibold text-white"
+            className="lg:text-5xl text-3xl font-semibold text-white"
           >
             Your Feedback
           </p>
@@ -249,7 +249,7 @@ const Banner = () => {
             style={{
               textShadow: "rgb(0 0 0) 2px 3px 5px",
             }}
-            className="text-5xl font-semibold text-white"
+            className="lg:text-5xl text-3xl font-semibold text-white"
           >
             is our guide
           </p>

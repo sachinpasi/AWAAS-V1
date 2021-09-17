@@ -11,23 +11,23 @@ const HowDoesItWork = () => {
       style={{
         backgroundColor: "#e9f3fd",
       }}
-      className="w-full h-screen "
+      className="w-full lg:h-screen "
     >
       <div className="lg:w-80vw w-90vw h-full mx-auto flex-col flex justify-evenly items-center">
-        <div className="w-full flex-col flex items-center justify-center -mt-10 ">
-          <p className="text-blue font-medium text-5xl capitalize my-6">
+        <div className="w-full flex-col flex items-center justify-center lg:-mt-10 ">
+          <p className="text-blue font-medium lg:text-5xl text-4xl capitalize my-6">
             How does it work
           </p>
-          <p className="text-darkgray text-xl capitalize">
+          <p className="text-darkgray lg:text-xl  capitalize">
             Our Approach is customer centric
           </p>
-          <p className="text-darkgray text-xl capitalize">
+          <p className="text-darkgray lg:text-xl  capitalize">
             so acting on our feedback is our protocol{" "}
           </p>
         </div>
 
-        <div className="w-full  flex justify-center items-start mt-12">
-          <div className="w-1/5 flex flex-col justify-center items-center">
+        <div className="w-full flex-col lg:flex-row  flex justify-center lg:items-start items-center lg:mt-12 mt-6 mb-6">
+          <div className="lg:w-1/5 flex flex-col justify-center items-center">
             <div className="bg-blue p-3 rounded-full">
               <GiVibratingSmartphone className="text-6xl text-white" />
             </div>
@@ -36,11 +36,11 @@ const HowDoesItWork = () => {
               Collection of reviews from Website, Mobile and Phone calls
             </p>
           </div>
-          <div className="w-1/5 h-60 flex justify-center items-center">
-            <BsArrowRight className="text-6xl" />
+          <div className="w-1/5 lg:h-60 h-32 flex justify-center items-center">
+            <BsArrowRight className="text-6xl transform rotate-90 lg:rotate-90 " />
           </div>
 
-          <div className="w-1/5 flex flex-col justify-center items-center">
+          <div className="lg:w-1/5 flex flex-col justify-center items-center">
             <div className="bg-blue p-3 rounded-full">
               <AiOutlineUser className="text-6xl text-white" />
             </div>
@@ -51,11 +51,11 @@ const HowDoesItWork = () => {
             </p>
           </div>
 
-          <div className="w-1/5 h-60 flex justify-center items-center">
-            <BsArrowRight className="text-6xl" />
+          <div className="w-1/5 lg:h-60 h-32 flex justify-center items-center">
+            <BsArrowRight className="text-6xl transform rotate-90 lg:rotate-90 " />
           </div>
 
-          <div className="w-1/5 flex flex-col justify-center items-center">
+          <div className="lg:w-1/5 flex flex-col justify-center items-center">
             <div className="bg-blue p-3 rounded-full">
               <HiOutlineDocumentText className="text-6xl text-white" />
             </div>
@@ -66,11 +66,11 @@ const HowDoesItWork = () => {
             </p>
           </div>
 
-          <div className="w-1/5 h-60 flex justify-center items-center">
-            <BsArrowRight className="text-6xl" />
+          <div className="w-1/5 lg:h-60 h-32 flex justify-center items-center">
+            <BsArrowRight className="text-6xl transform rotate-90 lg:rotate-90 " />
           </div>
 
-          <div className="w-1/5 flex flex-col justify-center items-center">
+          <div className="lg:w-1/5 flex flex-col justify-center items-center">
             <div className="bg-blue p-3 rounded-full">
               <AiOutlineStar className="text-6xl text-white" />
             </div>

@@ -95,8 +95,8 @@ const Login = ({ isLoginModalOpen, setisLoginModalOpen }) => {
       <div
         onClick={() => setisLoginModalOpen(false)}
         className={`${
-          isLoginModalOpen ? "bg-opacity-50 top-0 " : "bg-opacity-0 -top-full "
-        } w-full h-screen fixed z-40 flex justify-center bg-black items-center bg-opacity-50  transition-opacity`}
+          isLoginModalOpen ? " flex " : "hidden "
+        } w-full h-screen fixed z-40 flex justify-center top-0 bg-opacity-50 bg-black items-center  transition-opacity`}
       ></div>
       {/* 
       <div

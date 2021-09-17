@@ -15,6 +15,11 @@ const CookieBox = ({ isLoading }) => {
   return (
     <>
       <div
+        className={`bg-black bg-opacity-50 fixed top-0 bottom-0 right-0 left-0 z-30 ${
+          IsOpen ? "flex" : "hidden"
+        }`}
+      ></div>
+      <div
         className={`${
           IsOpen ? "bottom-8" : "-bottom-full"
         } w-3/4 h-24 bg-white border-1 border-extralightgray fixed  left-2/4 transform -translate-x-2/4 z-40 rounded-2xl transition-all duration-1000 shadow-2xl hidden lg:grid`}
