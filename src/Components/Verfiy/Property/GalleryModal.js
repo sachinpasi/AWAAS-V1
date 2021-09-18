@@ -165,14 +165,16 @@ const GalleryModal = ({
               {RenderPhotos(SelectedFileForPrev)}
             </div>
 
-            <div className="flex justify-end items-end w-full pb-3 pr-3">
-              <button
-                onClick={HandleImageUpload}
-                className="bg-blue text-white font-medium py-2 px-6 rounded-full text-lg"
-              >
-                Upload Images
-              </button>
-            </div>
+            {SelectedFile?.length !== 0 && (
+              <div className="flex justify-end items-end w-full pb-3 pr-3">
+                <button
+                  onClick={HandleImageUpload}
+                  className="bg-blue text-white font-medium py-2 px-6 rounded-full text-lg"
+                >
+                  Upload Images
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
